@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MasterCreditos : MonoBehaviour
 {
-
+    [SerializeField] Transform creditos;
+    [SerializeField] float velCreditos;
     void Start()
     {
         
@@ -18,5 +19,7 @@ public class MasterCreditos : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+
+        creditos.position += (new Vector3(0f, velCreditos, 0f)) * Time.deltaTime;
     }
 }
