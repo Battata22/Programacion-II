@@ -9,6 +9,8 @@ public class PlayerMovementTesting : MonoBehaviour
     // [Tootltip("<color=green>True</color>: Explicacion del bool en True. \n<color=red>False</color>: Explicacion del bool en False")] --> el \n es para bajar la linea como enter
     [Header("<color=green>Movement</color>")] //[Header("")] Para indicar como titulo encima de algo
     [SerializeField] float speed, rotSpeed;
+    [SerializeField] GameObject gitTest;
+    bool gitActive=false;
     float xAxis, zAxis;
     Vector3 dir = new();
 
@@ -35,6 +37,12 @@ public class PlayerMovementTesting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Terminator();
+        }
+
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            gitActive = !gitActive;
+            gitTest.SetActive(gitActive);
         }
     }
 
