@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object1 : MonoBehaviour
+public class FacingCamNivel1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    [SerializeField] Transform _camera;
+    Vector3 _dir = new();
     // Update is called once per frame
     void Update()
     {
-        
+        transform.up = -_camera.forward;
     }
 }
