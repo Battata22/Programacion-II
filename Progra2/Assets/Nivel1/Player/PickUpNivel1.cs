@@ -17,6 +17,11 @@ public class PickUpNivel1 : MonoBehaviour
             {
                 hit.transform.gameObject.GetComponent<Obj_InteractuableNivel1>().Interact();
             }
+            if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance, LayerMask.GetMask("Sonoros")))
+            {
+                hit.transform.gameObject.GetComponent<Sonoros>().PlayMusic();
+            }
+
         }
         
     }

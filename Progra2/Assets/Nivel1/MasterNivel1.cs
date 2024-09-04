@@ -14,10 +14,10 @@ public class MasterNivel1 : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    SceneManager.LoadScene("Menu");
-        //}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {

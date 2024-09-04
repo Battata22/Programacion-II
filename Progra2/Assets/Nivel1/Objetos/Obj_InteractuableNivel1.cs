@@ -7,7 +7,7 @@ public class Obj_InteractuableNivel1 : MonoBehaviour
     [SerializeField] protected Transform _camera;
     [SerializeField] protected float _cd; //de momento no usado
     [SerializeField] protected float _speed; //del objeto volando en tu direccion
-    protected bool canMove = false;
+    protected bool canMove = false, holding = false;
     [SerializeField] protected Transform _itemHolder; // punto al que va el objeto
     protected Rigidbody _rb;
 
@@ -23,8 +23,18 @@ public class Obj_InteractuableNivel1 : MonoBehaviour
 
     protected void Movement(Transform _target)
     {
-        Vector3 dir = (_target.position - transform.position).normalized;
-        transform.position += dir * _speed * Time.deltaTime;
+        if((_target.position.x - transform.position.x) >= 0.2 || (_target.position.x - transform.position.x) <= 0 && (_target.position.z - transform.position.z) >= 0.2 || (_target.position.z - transform.position.z) <= 0)
+        {
+            Vector3 dir = (_target.position - transform.position).normalized;
+            transform.position += dir * _speed * Time.deltaTime;
+        }
+        else holding = true;
+
+        if(holding)
+        {
+            transform.position = _target.position;
+        }
+
     }
 
 }

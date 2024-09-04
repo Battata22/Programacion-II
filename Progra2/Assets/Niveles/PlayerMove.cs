@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (moving == false && Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene("Nivel" + (posPlayer + 1));
+        }
+
         if (Input.GetKeyDown(KeyCode.D) && moving == false)
         {
             moving = true;

@@ -28,6 +28,7 @@ public class PickableNivel1 : Obj_InteractuableNivel1
 
     void Throw()
     {
+        holding = false;
         canMove = false;
         _pickedUp = false;
         _rb.useGravity = true;
