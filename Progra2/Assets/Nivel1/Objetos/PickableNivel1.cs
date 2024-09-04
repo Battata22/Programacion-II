@@ -5,6 +5,12 @@ using UnityEngine;
 public class PickableNivel1 : Obj_InteractuableNivel1
 {
     bool _pickedUp;
+    public PickUpNivel1 pickUpScript;
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -21,9 +27,14 @@ public class PickableNivel1 : Obj_InteractuableNivel1
     }
     public override void Interact()
     {
-        _rb.useGravity = false;
-        canMove = true;    
-        _pickedUp = true;
+        if(pickUpScript.isHolding == false)
+        {
+            _rb.useGravity = false;
+            canMove = true;
+            _pickedUp = true;
+            pickUpScript.isHolding = true;
+        }
+
     }
 
     void Throw()
@@ -33,5 +44,6 @@ public class PickableNivel1 : Obj_InteractuableNivel1
         _pickedUp = false;
         _rb.useGravity = true;
         _rb.AddForce(_camera.forward * 50f, ForceMode.Impulse);
+        pickUpScript.isHolding = false;
     }
 }

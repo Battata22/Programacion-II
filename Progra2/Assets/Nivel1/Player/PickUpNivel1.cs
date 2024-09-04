@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUpNivel1 : MonoBehaviour
 {
     [SerializeField] float _rayDistance;
+    public bool isHolding = false;
 
     private void Update()
     {
