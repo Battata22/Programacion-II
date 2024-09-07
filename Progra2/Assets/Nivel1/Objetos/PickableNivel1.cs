@@ -14,21 +14,26 @@ public class PickableNivel1 : Obj_InteractuableNivel1
 
     private void Update()
     {
+
+        if(holding && Input.GetMouseButtonDown(1))
+        {
+            Throw(pickUpScript._audioSource, pickUpScript.tirar);
+        }
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (canMove)
         {
             Movement(_itemHolder);
         }
-
-        if(_pickedUp && Input.GetMouseButtonDown(0))
-        {
-            Throw();
-        }
-        
     }
-    public override void Interact()
+    public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
     {
         if(pickUpScript.isHolding == false)
         {
+            base.Interact(_audio, agarre, error);
             _rb.useGravity = false;
             canMove = true;
             _pickedUp = true;
@@ -37,13 +42,13 @@ public class PickableNivel1 : Obj_InteractuableNivel1
 
     }
 
-    void Throw()
-    {
-        holding = false;
-        canMove = false;
+    public override void Throw(AudioSource _audio, AudioClip arrojar)
+    { 
+        base.Throw(pickUpScript._audioSource, pickUpScript.tirar);
         _pickedUp = false;
-        _rb.useGravity = true;
-        _rb.AddForce(_camera.forward * 50f, ForceMode.Impulse);
         pickUpScript.isHolding = false;
+        _audio.clip = arrojar;
+        _audio.Play();
+
     }
 }

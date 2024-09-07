@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerNivel1 : MonoBehaviour
 {
+    int random1;
+
     [Header("Cosas necesarias")]
     Rigidbody _rb;
     Vector3 Spawn = new Vector3(0f, 1f, 0f);
@@ -11,10 +13,10 @@ public class PlayerNivel1 : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] float _speed;
-    [SerializeField] float salto;
+    float salto;
     float _xAxis,_zAxis;
     Vector3 _dir = new();
-    
+
 
 
     private void Awake()
@@ -29,10 +31,10 @@ public class PlayerNivel1 : MonoBehaviour
 
         LifeSaver(transform.position.y);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Jump();
+        //}
     }
 
     private void FixedUpdate()

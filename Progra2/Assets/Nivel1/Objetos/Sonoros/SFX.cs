@@ -2,24 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sonoros : MonoBehaviour
+public class SFX : MonoBehaviour
 {
-    [SerializeField] bool isPlaying = false, clip = false;
-    AudioSource _audioSource;
-    [SerializeField] AudioClip _cancion;
-    void Start()
+    public AudioSource _audioSource;
+    [SerializeField] protected bool isPlaying = false, clip = false;
+    protected int random1;
+
+    public void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
     }
 
 
-    void Update()
-    {
-        //si el player le da a la e que se reproduzca
-        //si le vuelve a dar que se pare (en pausa asi no se reinicia la cancion desde 0)
-    }
-
-    public virtual void PlayMusic()
+    public virtual void PlayMusic(AudioClip _audio1)
     {
         if (isPlaying == false)
         {
@@ -27,7 +22,7 @@ public class Sonoros : MonoBehaviour
             if (clip == false)
             {
                 clip = true;
-                _audioSource.clip = _cancion;
+                _audioSource.clip = _audio1;
             }
             _audioSource.Play();
         }
