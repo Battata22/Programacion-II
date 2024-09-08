@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AINodeManager : MonoBehaviour
 {
-    [SerializeField] private Transform[] _nodes;
+    private Transform[] _nodes;    
 
     private void Start()
     {
         _nodes = GetComponentsInChildren<Transform>();
 
-        foreach(NPC npc in GameManager.Instance.NPC)
+        //GameManager.Instance.AiNodes.AddRange(_nodes);
+
+        foreach(NPC npc in GameManager.Instance.Npc)
         {
             npc.NavMeshNodes.AddRange(_nodes);
-            npc.Initialized();
+            npc.Initialize();
         }
-    }
+    }  
 
 }

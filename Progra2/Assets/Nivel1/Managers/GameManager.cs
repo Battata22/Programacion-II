@@ -28,21 +28,21 @@ public class GameManager : MonoBehaviour
         set { _player = value; }
     }
 
-    private List<NPC> _npc;
-    public List<NPC> NPC
+    [SerializeField] private List<NPC> _npc;
+    public List<NPC> Npc
     {
         get { return _npc; }
         set { _npc = value; }
     }
 
-    [SerializeField] private Cam _camera;
+    private Cam _camera;
     public Cam Camera 
     {
         get { return _camera; } 
         set {  _camera = value; } 
     }
 
-    [SerializeField] private Transform _itemHolde;
+    private Transform _itemHolde;
     public Transform ItemHolde
     {
         get { return _itemHolde;}
