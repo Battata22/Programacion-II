@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFX : MonoBehaviour
+public class SFX : Pickable
 {
     public AudioSource _audioSource;
     [SerializeField] protected bool isPlaying = false, clip = false;
