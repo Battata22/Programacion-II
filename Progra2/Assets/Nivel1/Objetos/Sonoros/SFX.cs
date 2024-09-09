@@ -10,6 +10,11 @@ public class SFX : Pickable
 
     public void Awake()
     {
+        //_audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
         _audioSource = GetComponent<AudioSource>();
     }
 

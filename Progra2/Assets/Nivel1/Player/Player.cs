@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     Rigidbody _rb;
     Vector3 Spawn = new Vector3(0f, 1f, 0f);
     [SerializeField] private Transform _itemHolder;
+    public int _nivel = 1;
+    AudioSource _audioSource;
+    [SerializeField] AudioClip clipLevelUp;
 
 
     [Header("Movement")]
@@ -24,10 +27,11 @@ public class Player : MonoBehaviour
 
 
 
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -44,7 +48,24 @@ public class Player : MonoBehaviour
         LifeSaver(transform.position.y);
         if (Input.GetKeyDown(KeyCode.LeftShift)) CreateShadow();
         if (Input.GetKeyDown(KeyCode.F)) MakeNoise();//posible cambio a E si no hay nada con lo que interactuar
-        
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            _nivel--;
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            LevelUp();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _speed = _speed * 0.5f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _speed = _speed * 2f;
+        }
+
 
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
@@ -91,6 +112,13 @@ public class Player : MonoBehaviour
     void MakeNoise()
     {
         Debug.Log("BOO");
+    }
+
+    public void LevelUp()
+    {
+        _nivel++;
+        _audioSource.clip = clipLevelUp;
+        _audioSource.Play();
     }
     
 }

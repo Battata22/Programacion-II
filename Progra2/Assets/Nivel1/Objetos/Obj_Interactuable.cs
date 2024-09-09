@@ -10,7 +10,7 @@ public class Obj_Interactuable : MonoBehaviour
     protected bool canMove = false, holding = false;
     [SerializeField] protected Transform _itemHolder; // punto al que va el objeto
     protected Rigidbody _rb;
-    public bool _sonoro = false, mediano = false, grande = false;
+    public bool mediano = false, grande = false;
 
 
     private void Awake()

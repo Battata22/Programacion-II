@@ -8,6 +8,9 @@ public class NPC : MonoBehaviour
 {
     [Header("AI")]
     [SerializeField] float _changeNodeDist = 0.5f;
+    public float tiempoDeSusto, cdDeSusto;
+    float wait;
+    public bool shivers = false;
 
     [SerializeField] Transform _actualNode;
     [SerializeField] List<Transform> _navMeshNodes = new();
@@ -44,8 +47,20 @@ public class NPC : MonoBehaviour
 
             _agent.SetDestination(_actualNode.position);
 
-            Debug.Log($"Nodo actua {_actualNode}");
+            //Debug.Log($"Nodo actua {_actualNode}");
         }
+
+        wait += Time.deltaTime;
+
+        if(wait >= tiempoDeSusto && shivers == true)
+        {
+            _agent.speed = 5;
+        }
+        if(wait >= cdDeSusto && shivers == true)
+        {
+            shivers = false;
+        }
+
     }
 
     Transform GetNewNode(Transform lastNode = null)
@@ -67,6 +82,13 @@ public class NPC : MonoBehaviour
         _agent.speed = 10f;
 
         _agent.SetDestination(_actualNode.position);
+    }
+
+    public void GetShivers()
+    {
+       wait = 0;
+       _agent.speed = 0;
+       shivers = true;
     }
 
     //miedo calculador
