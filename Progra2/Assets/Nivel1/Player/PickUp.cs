@@ -30,7 +30,10 @@ public class PickUp : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance, LayerMask.GetMask("Objeto")))
             {
-                hit.transform.gameObject.GetComponent<SFX>().PlayMusic(error);
+                if(hit.transform.gameObject.GetComponent<SFX>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<SFX>().PlayMusic(error);
+                }
             }
         }
         

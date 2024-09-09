@@ -41,15 +41,15 @@ public class Pickable : Obj_Interactuable
         if(pickUpScript.isHolding == false)
         {
             base.Interact(_audio, agarre, error);
-            Debug.Log("audios");
+            //Debug.Log("audios");
             _rb.useGravity = false;
-            Debug.Log("gravedad");
+            //Debug.Log("gravedad");
             canMove = true;
-            Debug.Log("canmove");
+            //Debug.Log("canmove");
             _pickedUp = true;
-            Debug.Log("agarrado");
+            //Debug.Log("agarrado");
             pickUpScript.isHolding = true;
-            Debug.Log("algo");
+            //Debug.Log("algo");
         }
 
     }
