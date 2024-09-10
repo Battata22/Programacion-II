@@ -10,7 +10,7 @@ public class NPC : MonoBehaviour
     [SerializeField] float _changeNodeDist = 0.5f;
     public float tiempoDeSusto, cdDeSusto;
     public float wait, waitscared;
-    public bool shivers = false, _scared = false;
+    public bool shivers = false, _scared = false, _doubt = false;
     AudioSource _audioSource;
     [SerializeField] AudioClip gritoClip;
 
@@ -106,6 +106,8 @@ public class NPC : MonoBehaviour
     public void GetDoubt(Vector3 pos)
     {
         print("estamos en eso");
+        //mientras _doubt sea true ella va a ir hacia la direccion y va a mostrar el png de interrogante
+        //_doubt = true
         //poner nodo en (pos)
         //hacer que el nodo que sigue el npc sea ese y bajarle la velocidad
         //_agent.speed = 2f;
@@ -114,6 +116,7 @@ public class NPC : MonoBehaviour
         //_agent.speed = 0f;
         // if (pasaron 2s entonces _agent.speed = 5f)
         //que se le asigne el siguiente nodo a seguir con el orden
+        //_doubt = false
     }
 
     //miedo calculador
