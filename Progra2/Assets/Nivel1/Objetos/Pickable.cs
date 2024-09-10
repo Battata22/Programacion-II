@@ -50,6 +50,8 @@ public class Pickable : Obj_Interactuable
             //Debug.Log("agarrado");
             pickUpScript.isHolding = true;
             //Debug.Log("algo");
+            _col.enabled = false;
+            _rb.constraints = RigidbodyConstraints.None;
         }
 
     }
@@ -57,10 +59,22 @@ public class Pickable : Obj_Interactuable
     public override void Throw(AudioSource _audio, AudioClip arrojar)
     { 
         base.Throw(pickUpScript._audioSource, pickUpScript.tirar);
+        _col.enabled = true;
         _pickedUp = false;
         pickUpScript.isHolding = false;
+        onAir = true;
         _audio.clip = arrojar;
         _audio.Play();
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Chocamiento choc = GetComponent<Chocamiento>();
+        if (choc != null && onAir == true)
+        {
+            choc.Choco(transform.position);
+            onAir = false;
+        }
     }
 }

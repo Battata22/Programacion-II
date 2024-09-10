@@ -9,8 +9,10 @@ public class NPC : MonoBehaviour
     [Header("AI")]
     [SerializeField] float _changeNodeDist = 0.5f;
     public float tiempoDeSusto, cdDeSusto;
-    float wait;
-    public bool shivers = false;
+    public float wait, waitscared;
+    public bool shivers = false, _scared = false;
+    AudioSource _audioSource;
+    [SerializeField] AudioClip gritoClip;
 
     [SerializeField] Transform _actualNode;
     [SerializeField] List<Transform> _navMeshNodes = new();
@@ -21,10 +23,10 @@ public class NPC : MonoBehaviour
     }
 
     NavMeshAgent _agent;
-    bool _scared = false;
 
     void Start()
     {
+        _audioSource = GetComponentInChildren<AudioSource>();
         _agent = GetComponent<NavMeshAgent>();
         GameManager.Instance.Npc.Add(this);
         //_actualNode = GetNewNode();
@@ -51,6 +53,7 @@ public class NPC : MonoBehaviour
         }
 
         wait += Time.deltaTime;
+        waitscared += Time.deltaTime;
 
         if(wait >= tiempoDeSusto && shivers == true)
         {
@@ -60,6 +63,13 @@ public class NPC : MonoBehaviour
         {
             shivers = false;
         }
+
+        if (_scared == true && waitscared >= 5)
+        {
+            _agent.speed = 5;
+            _scared = false;
+        }
+
 
     }
 
@@ -77,10 +87,12 @@ public class NPC : MonoBehaviour
 
     public void GetScare()
     {
+        _audioSource.clip = gritoClip;
+        _audioSource.Play();
+        waitscared = 0;
         GetNewNode(_actualNode);
         _scared = true;
-        _agent.speed = 10f;
-
+        _agent.speed = 15f;
         _agent.SetDestination(_actualNode.position);
     }
 
@@ -89,6 +101,19 @@ public class NPC : MonoBehaviour
        wait = 0;
        _agent.speed = 0;
        shivers = true;
+    }
+
+    public void GetDoubt(Vector3 pos)
+    {
+        print("estamos en eso");
+        //poner nodo en (pos)
+        //hacer que el nodo que sigue el npc sea ese y bajarle la velocidad
+        //_agent.speed = 2f;
+        //una vez que llegue a la pos del nodo que se elimine ese nodo
+        //que se quede quieta un par de segundos como investigando
+        //_agent.speed = 0f;
+        // if (pasaron 2s entonces _agent.speed = 5f)
+        //que se le asigne el siguiente nodo a seguir con el orden
     }
 
     //miedo calculador

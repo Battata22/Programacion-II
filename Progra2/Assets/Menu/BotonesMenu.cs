@@ -48,6 +48,6 @@ public class BotonesMenu : MonoBehaviour
     public void TestingOnClicked()
     {
         print("Testing click");
-        SceneManager.LoadScene("Testing");
+        SceneManager.LoadScene("Nivel1");
     }
 }

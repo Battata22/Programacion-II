@@ -7,15 +7,17 @@ public class Obj_Interactuable : MonoBehaviour
     [SerializeField] protected Transform _camera;
     [SerializeField] protected float _cd; //de momento no usado
     [SerializeField] protected float _speed; //del objeto volando en tu direccion
-    protected bool canMove = false, holding = false;
+    protected bool canMove = false, holding = false, onAir = false;
     [SerializeField] protected Transform _itemHolder; // punto al que va el objeto
     protected Rigidbody _rb;
     public bool mediano = false, grande = false;
+    protected Collider _col;
 
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _col = GetComponent<Collider>();
     }
 
     public virtual void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
@@ -56,7 +58,5 @@ public class Obj_Interactuable : MonoBehaviour
     //{
     //    base.PlayMusic(_audio1);
     //}
-
-
 
 }

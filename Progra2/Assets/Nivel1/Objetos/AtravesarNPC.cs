@@ -10,7 +10,6 @@ public class AtravesarNPC : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = shiver;
         npcScript = GetComponentInParent<NPC>();
     }
 
@@ -29,6 +28,7 @@ public class AtravesarNPC : MonoBehaviour
             if (npcScript.shivers == false)
             {
                 npcScript.GetShivers();
+                _audioSource.clip = shiver;
                 _audioSource.Play();
             }
         }
