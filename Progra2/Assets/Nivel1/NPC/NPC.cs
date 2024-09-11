@@ -162,10 +162,8 @@ public class NPC : MonoBehaviour
     public void GetDoubt(Vector3 pos)
     {
         if (_scared) return;
-        print("estamos en eso");
         
         _doubt = true;
-        Debug.Log("DUDOSO");
                 
         _agent.speed = speedDoubt;
         

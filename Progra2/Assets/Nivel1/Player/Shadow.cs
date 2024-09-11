@@ -5,11 +5,12 @@ using UnityEngine;
 public class Shadow : MonoBehaviour
 {
     Player player;
+    [SerializeField] float _lTShadow;
     public void Initialize(Player newPlayer)
     {
         //pedir a manager lista de npc para girar a verlos o algo
         player = newPlayer;
-        Destroy(gameObject, 15f);
+        Destroy(gameObject, _lTShadow);
     }
     private void OnTriggerEnter(Collider other)
     {
