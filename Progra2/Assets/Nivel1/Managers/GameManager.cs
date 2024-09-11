@@ -16,11 +16,15 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
+        {           
             Destroy(this);
         }
+
+        //_npc = null;
     }
     #endregion
+    
+    
 
     private Player _player;
     public Player Player 
@@ -33,7 +37,7 @@ public class GameManager : MonoBehaviour
     public List<NPC> Npc
     {
         get { return _npc; }
-        set { _npc = value; }
+        set { _npc = value; }        
     }
 
     [SerializeField] private Cam _camera;

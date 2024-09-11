@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,12 +18,13 @@ public class NPC : MonoBehaviour
     [SerializeField] float speedNormal, speedScared, speedDoubt;
 
     AudioSource _audioSource;
-    [SerializeField] AudioClip gritoClip;
+    [SerializeField] AudioClip gritoClip, doubtClip;
 
     [SerializeField] Transform _actualNode;
     [SerializeField] List<Transform> _navMeshNodes = new();
 
     Vector3 _searchingPos;
+    [SerializeField] bool _AIActive;
 
     public List<Transform> NavMeshNodes    
     { 
@@ -34,9 +36,11 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.Npc.Add(this);
         _audioSource = GetComponentInChildren<AudioSource>();
         _agent = GetComponent<NavMeshAgent>();
-        GameManager.Instance.Npc.Add(this);
+        _agent.speed = speedNormal;
+        //Initialize();
         //_actualNode = GetNewNode();
     }
 
@@ -47,10 +51,14 @@ public class NPC : MonoBehaviour
         _actualNode = GetNewNode();
 
         _agent.SetDestination(_actualNode.position);
+
+        _AIActive = true;
     }
 
     private void Update()
     {
+        if (!_AIActive) return;
+        if(_actualNode == null) Initialize();
         if((!_doubt && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
         {
             _actualNode = GetNewNode(_actualNode);
@@ -164,7 +172,10 @@ public class NPC : MonoBehaviour
         if (_scared) return;
         
         _doubt = true;
-                
+
+        _audioSource.clip = doubtClip;
+        _audioSource.Play();
+
         _agent.speed = speedDoubt;
         
         _agent.SetDestination(pos);
@@ -185,5 +196,10 @@ public class NPC : MonoBehaviour
         _inPlace = false;
         GetNewNode();
         _agent.SetDestination(_actualNode.position);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.Npc.Remove(this);
     }
 }
