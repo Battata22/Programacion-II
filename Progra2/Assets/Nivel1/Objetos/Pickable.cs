@@ -25,6 +25,8 @@ public class Pickable : Obj_Interactuable
         if (holding && Input.GetMouseButtonDown(1))
         {
             Throw(pickUpScript._audioSource, pickUpScript.tirar);
+            pickUpScript.sosteniendoBool = false;
+            pickUpScript._audioSource.loop = false;
         }
         
     }
@@ -38,21 +40,21 @@ public class Pickable : Obj_Interactuable
     }
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
     {
+
         if(pickUpScript.isHolding == false)
         {
             base.Interact(_audio, agarre, error);
-            //Debug.Log("audios");
             _rb.useGravity = false;
-            //Debug.Log("gravedad");
             canMove = true;
-            //Debug.Log("canmove");
             _pickedUp = true;
-            //Debug.Log("agarrado");
             pickUpScript.isHolding = true;
-            //Debug.Log("algo");
             _col.enabled = false;
             _rb.constraints = RigidbodyConstraints.None;
+            pickUpScript.esperaragarre = 0;
+            _renderer = GetComponent<Renderer>();
+            _renderer.material = _materialFade;
         }
+
 
     }
 
@@ -63,6 +65,7 @@ public class Pickable : Obj_Interactuable
         _pickedUp = false;
         pickUpScript.isHolding = false;
         onAir = true;
+        _renderer.material = _materialNormal;
         _audio.clip = arrojar;
         _audio.Play();
 

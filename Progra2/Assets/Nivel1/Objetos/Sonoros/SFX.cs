@@ -8,14 +8,15 @@ public class SFX : Pickable
     [SerializeField] protected bool isPlaying = false, clip = false;
     protected int random1;
 
-    public void Awake()
+    private void Awake()
     {
-        //_audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
+        _col = GetComponent<Collider>();
     }
 
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        //_audioSource = GetComponent<AudioSource>();
     }
 
 

@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] Shadow _shadowPrefab;
 
+    [SerializeField] int _maxShadows;
+    public int currentShadows;
+
 
 
 
@@ -105,8 +108,10 @@ public class Player : MonoBehaviour
 
     void CreateShadow()
     {
+        if (currentShadows >= _maxShadows) return;
         Shadow newShadow = Instantiate(_shadowPrefab, transform.position, Quaternion.identity);
-        newShadow.Initialize();
+        newShadow.Initialize(this);
+        currentShadows++;
     }
 
     void MakeNoise()

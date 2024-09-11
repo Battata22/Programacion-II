@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class AINodeManager : MonoBehaviour
 {
-    private Transform[] _nodes;    
+    private Transform[] _nodes;
+    //NPC _npc;
 
     private void Start()
     {
@@ -18,7 +19,19 @@ public class AINodeManager : MonoBehaviour
         {
             npc.NavMeshNodes.AddRange(_nodes);
             npc.Initialize();
+            //npc.gameObject.SetActive(true);
         }
-    }  
+    }
+
+    private void Update()
+    {
+        foreach (NPC npc in GameManager.Instance.Npc)
+        {
+            if (npc.NavMeshNodes != null) return;
+            npc.NavMeshNodes.AddRange(_nodes);
+            npc.Initialize();
+            //npc.gameObject.SetActive(true);
+        }
+    }
 
 }
