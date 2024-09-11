@@ -17,7 +17,7 @@ public class AreasSustoYDuda : MonoBehaviour
             transform.position = muymuylejano;
         }
     }
-
+        
     public void chito()
     {
         asustado = true;

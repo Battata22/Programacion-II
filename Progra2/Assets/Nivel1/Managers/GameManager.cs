@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         set { _npc = value; }
     }
 
-    private Cam _camera;
+    [SerializeField] private Cam _camera;
     public Cam Camera 
     {
         get { return _camera; } 

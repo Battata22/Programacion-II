@@ -7,23 +7,26 @@ using UnityEngine.UI;
 public class Particulas : MonoBehaviour
 {
     [SerializeField] Sprite exclamation, question;
-    [SerializeField] Transform _player;
+    [SerializeField] Transform _lookingAt;
     NPC _npcScript;
     SpriteRenderer _spriteRenderer;
-    Vector3 dir;
+
     public float wait;
 
     private void Start()
     {
-       _spriteRenderer = GetComponent<SpriteRenderer>();
-       _npcScript = GetComponentInParent<NPC>();
-       _spriteRenderer.sprite = null;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _npcScript = GetComponentInParent<NPC>();
+        _spriteRenderer.sprite = null;
+        //_lookingAt = GameManager.Instance.Camera.transform;
     }
     void Update()
     {
+        if(_lookingAt == null) _lookingAt = GameManager.Instance.Camera.transform;
+        
         wait += Time.deltaTime;
 
-        transform.LookAt(_player.position);
+        transform.LookAt(_lookingAt.position);
 
         if(_npcScript._scared == true)
         {

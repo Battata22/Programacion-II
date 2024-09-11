@@ -38,6 +38,7 @@ public class Pickable : Obj_Interactuable
     }
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
     {
+
         if(pickUpScript.isHolding == false)
         {
             base.Interact(_audio, agarre, error);
@@ -51,8 +52,11 @@ public class Pickable : Obj_Interactuable
             pickUpScript.isHolding = true;
             //Debug.Log("algo");
             _col.enabled = false;
+            //Debug.Log("Coliflor");
             _rb.constraints = RigidbodyConstraints.None;
+            //Debug.Log("Rigida");
         }
+        //Debug.Log("DespuesIF");
 
     }
 
