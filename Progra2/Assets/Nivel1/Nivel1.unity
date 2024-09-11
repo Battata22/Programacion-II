@@ -18380,8 +18380,11 @@ MonoBehaviour:
   agarrado: {fileID: 8300000, guid: 453d255a50c06824b8d88c003ecc43a5, type: 3}
   error: {fileID: 0}
   tirar: {fileID: 8300000, guid: dc99b340a1edd90469e77014d1f951d3, type: 3}
+  sosteniendo: {fileID: 8300000, guid: 24d507999c5fb6745861dbd65f9d086a, type: 3}
   _rayDistance: 5
   isHolding: 0
+  sosteniendoBool: 0
+  esperaragarre: 0
 --- !u!114 &477688330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77517,6 +77520,10 @@ PrefabInstance:
     - target: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
       propertyPath: m_Name
       value: AreasSustoYDuda
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657454650159279443, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
+      propertyPath: m_Volume
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

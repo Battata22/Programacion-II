@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Duda : AreasSustoYDuda
 {
+    protected override void Awake()
+    {
+
+    }
+
+    protected override void Start()
+    {
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         NPC _npcScript = other.GetComponent<NPC>();

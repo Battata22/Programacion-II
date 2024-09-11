@@ -25,6 +25,8 @@ public class Pickable : Obj_Interactuable
         if (holding && Input.GetMouseButtonDown(1))
         {
             Throw(pickUpScript._audioSource, pickUpScript.tirar);
+            pickUpScript.sosteniendoBool = false;
+            pickUpScript._audioSource.loop = false;
         }
         
     }
@@ -42,21 +44,15 @@ public class Pickable : Obj_Interactuable
         if(pickUpScript.isHolding == false)
         {
             base.Interact(_audio, agarre, error);
-            //Debug.Log("audios");
             _rb.useGravity = false;
-            //Debug.Log("gravedad");
             canMove = true;
-            //Debug.Log("canmove");
             _pickedUp = true;
-            //Debug.Log("agarrado");
             pickUpScript.isHolding = true;
-            //Debug.Log("algo");
             _col.enabled = false;
-            //Debug.Log("Coliflor");
             _rb.constraints = RigidbodyConstraints.None;
-            //Debug.Log("Rigida");
+            pickUpScript.esperaragarre = 0;
         }
-        //Debug.Log("DespuesIF");
+
 
     }
 
