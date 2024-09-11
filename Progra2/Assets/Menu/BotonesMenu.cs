@@ -48,6 +48,6 @@ public class BotonesMenu : MonoBehaviour
     public void TestingOnClicked()
     {
         print("Testing click");
-        SceneManager.LoadScene("Nivel1");
+        SceneManager.LoadScene("AssetsMuseo");
     }
 }
