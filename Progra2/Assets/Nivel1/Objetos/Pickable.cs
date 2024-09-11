@@ -51,6 +51,8 @@ public class Pickable : Obj_Interactuable
             _col.enabled = false;
             _rb.constraints = RigidbodyConstraints.None;
             pickUpScript.esperaragarre = 0;
+            _material = GetComponent<Renderer>().material;
+            _material.color = new Color(_material.color.r, _material.color.g, _material.color.b, 0.4f);
         }
 
 
@@ -63,6 +65,7 @@ public class Pickable : Obj_Interactuable
         _pickedUp = false;
         pickUpScript.isHolding = false;
         onAir = true;
+        _material.color = new Color(_material.color.r, _material.color.g, _material.color.b, 1f);
         _audio.clip = arrojar;
         _audio.Play();
 

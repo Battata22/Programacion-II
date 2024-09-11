@@ -12,6 +12,7 @@ public class Obj_Interactuable : MonoBehaviour
     protected Rigidbody _rb;
     public bool mediano = false, grande = false;
     protected Collider _col;
+    [SerializeField] protected Material _material;
 
 
     private void Awake()
