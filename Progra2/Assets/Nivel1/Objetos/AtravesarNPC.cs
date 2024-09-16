@@ -25,12 +25,11 @@ public class AtravesarNPC : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            if (npcScript.shivers == false)
-            {
-                npcScript.GetShivers();
-                _audioSource.clip = shiver;
-                _audioSource.Play();
-            }
+            
+            npcScript.GetShivers();
+            npcScript._audioSource.clip = shiver;
+            //npcScript._audioSource.Play();
+            
         }
     }
 }

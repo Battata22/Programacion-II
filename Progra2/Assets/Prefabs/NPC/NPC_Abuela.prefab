@@ -230,8 +230,8 @@ GameObject:
   - component: {fileID: 4512291099129788915}
   - component: {fileID: 6075900653584577158}
   - component: {fileID: -3175675799126346687}
-  - component: {fileID: -250055447550329426}
   - component: {fileID: -4416715110483357594}
+  - component: {fileID: 4550086011221655227}
   m_Layer: 10
   m_Name: NPC_Abuela
   m_TagString: Untagged
@@ -302,33 +302,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-250055447550329426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5605427606292873878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3a861adfd05674c99cbc1e7514a875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _changeNodeDist: 0.5
-  tiempoDeSusto: 2
-  cdDeSusto: 10
-  shivers: 0
-  _scared: 0
-  _doubt: 0
-  _inPlace: 0
-  speedNormal: 5
-  speedScared: 15
-  speedDoubt: 2.5
-  gritoClip: {fileID: 8300000, guid: 48eb6ea57a3e8f34f91c5fe95eec0de4, type: 3}
-  doubtClip: {fileID: 8300000, guid: 010829522d58ec84a896907199dcd622, type: 3}
-  _actualNode: {fileID: 0}
-  _navMeshNodes: []
-  _AIActive: 0
 --- !u!54 &-4416715110483357594
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -356,6 +329,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &4550086011221655227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5605427606292873878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c231f16c44bc6a14496c1ac47bde408a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _changeNodeDist: 0.5
+  _inPlace: 0
+  _doubt: 0
+  speedNormal: 5
+  speedScared: 15
+  speedDoubt: 2.5
+  _audioSource: {fileID: 0}
+  _actualNode: {fileID: 0}
+  _navMeshNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _AIActive: 1
+  tiempoDeSusto: 2
+  cdDeSusto: 10
+  shivers: 0
+  _scared: 0
+  gritoClip: {fileID: 8300000, guid: 48eb6ea57a3e8f34f91c5fe95eec0de4, type: 3}
+  doubtClip: {fileID: 8300000, guid: 010829522d58ec84a896907199dcd622, type: 3}
 --- !u!1 &7234628894668910167
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +557,7 @@ MonoBehaviour:
   exclamation: {fileID: 21300000, guid: d04c907244112c344b3d23ceb93569c5, type: 3}
   question: {fileID: 21300000, guid: 45e2bc22234774f44bf731b33c02f2eb, type: 3}
   _lookingAt: {fileID: 0}
+  scared: 0
   wait: 0
 --- !u!1 &8708620041717629787
 GameObject:

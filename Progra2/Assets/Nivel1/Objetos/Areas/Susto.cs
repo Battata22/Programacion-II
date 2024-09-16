@@ -15,9 +15,9 @@ public class Susto : AreasSustoYDuda
     }
     private void OnTriggerEnter(Collider other)
     {
-        NPC _npcScript = other.GetComponent<NPC>();
+        //NPC _npcScript = other.GetComponent<NPC>();
 
-        if (_npcScript != null)
+        if (other.TryGetComponent<NPC>(out NPC _npcScript))
         {
             _npcScript.GetScare();
             asustado = true;

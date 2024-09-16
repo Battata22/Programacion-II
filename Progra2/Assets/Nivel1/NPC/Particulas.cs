@@ -9,6 +9,7 @@ public class Particulas : MonoBehaviour
     [SerializeField] Sprite exclamation, question;
     [SerializeField] Transform _lookingAt;
     NPC _npcScript;
+    public bool scared = false;
     SpriteRenderer _spriteRenderer;
 
     public float wait;
@@ -28,7 +29,7 @@ public class Particulas : MonoBehaviour
 
         transform.LookAt(_lookingAt.position);
 
-        if(_npcScript._scared == true)
+        if(scared == true)
         {
             wait = 0;
             _spriteRenderer.sprite = exclamation;
