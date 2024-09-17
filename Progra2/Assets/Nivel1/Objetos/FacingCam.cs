@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FacingCam : MonoBehaviour
 {
-    [SerializeField] Transform _camera;
+    Transform _camera;
     Vector3 _dir = new();
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        transform.up = -_camera.forward;
+        if (_camera == null) _camera = GameManager.Instance.Camera.transform;
+
+        transform.LookAt(_camera.position);
     }
 }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+
     int random1;
 
     [Header("Cosas necesarias")]
+    [SerializeField] int _hp;
     Rigidbody _rb;
     Vector3 Spawn = new Vector3(0f, 1f, 0f);
     [SerializeField] private Transform _itemHolder;
@@ -19,8 +20,12 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float _speed;
     float salto;
-    float _xAxis,_zAxis;
+    float _xAxis, _zAxis;
     Vector3 _dir = new();
+
+    //Attack logic
+    public bool underAttack;
+    public Ghostbuster attacker;
 
     [Header("Prefabs")]
     [SerializeField] Shadow _shadowPrefab;
@@ -88,9 +93,27 @@ public class Player : MonoBehaviour
 
     void Movement(float xAxis, float zAxis)
     {
-        _dir = (transform.right * xAxis + transform.forward * zAxis).normalized;
+        if (underAttack)
+        {
+            LockedMovement();
+        }
+        else
+        {
+            _dir = (transform.right * xAxis + transform.forward * zAxis).normalized;
 
-        transform.position += _dir * _speed * Time.deltaTime;
+            transform.position += _dir * _speed * Time.deltaTime;
+        }
+    }
+
+    void LockedMovement()
+    {
+        transform.RotateAround(attacker.transform.position, Vector3.up, _xAxis * 100 * Time.fixedDeltaTime);
+    }
+
+    public void ApplyForce(Vector3 direction, float forceMult)
+    {
+        if (forceMult == 0) _rb.velocity = Vector3.zero;
+        _rb.AddForce(direction * forceMult * Time.fixedDeltaTime, ForceMode.Force);
     }
 
     void Jump()
@@ -124,6 +147,16 @@ public class Player : MonoBehaviour
         _nivel++;
         _audioSource.clip = clipLevelUp;
         _audioSource.Play();
+    }
+
+    public void GetDamage()
+    {
+        Debug.Log("<color=#6916c1> Auch </color>");
+        _hp--;
+        if (_hp <=0)
+        {
+            Debug.Log("<color=#6916c1> IM Dead ... /n wait a minute </color> ");
+        }
     }
     
 }

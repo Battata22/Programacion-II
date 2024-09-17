@@ -9,9 +9,10 @@ public class Asustable : NPC
     //[SerializeField] float _changeNodeDist = 0.5f;
 
     public float tiempoDeSusto, cdDeSusto;
-    float _waitShivers, _waitscared;//, _waitDoubt, _searchingTimer;
+    float _waitShivers, _waitscared, _waitRandom;//, _waitDoubt, _searchingTimer;
 
     public bool shivers = false, _scared = false;//, _doubt = false, _inPlace = false;
+    bool _lookingActive =  false;
 
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
 
@@ -58,11 +59,14 @@ public class Asustable : NPC
     {
         if (!_AIActive) return;
         if (_actualNode == null) Initialize();
-        if ((!_doubt && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
+        if ((!_doubt && !_lookingActive &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
         {
-            _actualNode = GetNewNode(_actualNode);
+            
 
-            _agent.SetDestination(_actualNode.position);
+            StartCoroutine(LookAround());
+            //_actualNode = GetNewNode(_actualNode);
+
+            //_agent.SetDestination(_actualNode.position);
 
             //Debug.Log($"Nodo actua {_actualNode}");
         }
@@ -174,6 +178,27 @@ public class Asustable : NPC
 
         _agent.SetDestination(pos);
         _searchingPos = pos;
+    }
+
+    private IEnumerator LookAround()
+    {
+        _lookingActive = true;
+
+        if (!_scared)
+        {
+            _waitRandom = Random.Range(2f, 5f);
+            //Debug.Log($"<color=#adf947> LLegue espero por {_waitRandom} segundos </color>");
+        }
+        else
+            _waitRandom = 0f;
+
+        yield return new WaitForSeconds(2f);
+
+        _actualNode = GetNewNode(_actualNode);
+
+        _agent.SetDestination(_actualNode.position);
+
+        _lookingActive = false;
     }
 
     private void OnDestroy()

@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent (typeof(Chocamiento))]
 public class Pickable : Obj_Interactuable
 {
     bool _pickedUp;
@@ -13,7 +16,16 @@ public class Pickable : Obj_Interactuable
         //_camera = GameManager.Instance.Camera.transform;
         //_itemHolder = GameManager.Instance.ItemHolde;
         //pickUpScript = GameManager.Instance.Player.GetComponentInChildren<PickUp>();
-        _speed = 7f;
+        _speed = 10f;
+        if (mediano)
+        {
+            _rb.mass = 4f;          
+        }
+        if (grande) _rb.mass = 7f;
+        if ((mediano || grande) && !GetComponent<NavMeshObstacle>())
+        { 
+            this.AddComponent<NavMeshObstacle>();
+        }
     }
 
     private void Update()
