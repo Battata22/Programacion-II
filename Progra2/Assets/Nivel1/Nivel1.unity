@@ -2973,13 +2973,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -543142060052151656, guid: 3c05b470cb48ddf4b9d4ad38c5c67015, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -543142060052151656, guid: 3c05b470cb48ddf4b9d4ad38c5c67015, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 239541862321122981, guid: 3c05b470cb48ddf4b9d4ad38c5c67015, type: 3}
       propertyPath: m_Name
       value: LibroSmall01
       objectReference: {fileID: 0}
     - target: {fileID: 1343469742552610763, guid: 3c05b470cb48ddf4b9d4ad38c5c67015, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.226133
+      value: 9.647
       objectReference: {fileID: 0}
     - target: {fileID: 1343469742552610763, guid: 3c05b470cb48ddf4b9d4ad38c5c67015, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6254,6 +6262,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 493484608789555585, guid: 5e60e76b46a2e674d88d27b63e9a6c32, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1641348303133183043, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
+    - target: {fileID: 4282366136726615493, guid: 5e60e76b46a2e674d88d27b63e9a6c32, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1641348303133183043, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
     - target: {fileID: 4512291099129788915, guid: 5e60e76b46a2e674d88d27b63e9a6c32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.98
@@ -9982,6 +9998,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sillon01B
       objectReference: {fileID: 0}
+    - target: {fileID: 4553142724005055704, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650464119144930124, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 4650464119144930124, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 8756881240401359662, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.27446
@@ -11936,6 +11964,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -4408078467075703647, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.2828293
@@ -11980,6 +12012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SillonAlmohada01B (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11993,6 +12029,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -4057730588994747146, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -4057730588994747146, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 3288031442301862163, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
       propertyPath: m_Name
       value: TV01 (1)
@@ -12048,7 +12092,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3288031442301862163, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 973024348}
   m_SourcePrefab: {fileID: 100100000, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
 --- !u!43 &286357724
 Mesh:
@@ -12661,7 +12708,7 @@ AudioSource:
   m_GameObject: {fileID: 296850822}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -12911,6 +12958,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RelojAntiguo01
       objectReference: {fileID: 0}
+    - target: {fileID: 5188175306731683019, guid: 2ba88ea88f2a40b43be8213577794222, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906691621485876154, guid: 2ba88ea88f2a40b43be8213577794222, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 6906691621485876154, guid: 2ba88ea88f2a40b43be8213577794222, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12956,7 +13015,7 @@ AudioSource:
   m_GameObject: {fileID: 311990404}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -13147,7 +13206,7 @@ Transform:
   m_GameObject: {fileID: 311990404}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.98505, y: 2.6848497, z: 14.204689}
+  m_LocalPosition: {x: 27.98505, y: 2.6848497, z: 13.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13264,7 +13323,7 @@ AudioSource:
   m_GameObject: {fileID: 327711167}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 65140806530729732, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -13434,7 +13493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!43 &329853882
 Mesh:
   m_ObjectHideFlags: 0
@@ -13930,6 +13989,107 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &350513951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3288031442301862163, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+  m_PrefabInstance: {fileID: 477711864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &350513958
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350513951}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!43 &360869943
 Mesh:
   m_ObjectHideFlags: 0
@@ -14468,9 +14628,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LibroSmall02
       objectReference: {fileID: 0}
+    - target: {fileID: 6196710445587744579, guid: 2f5a7674292847a48b0d06034210855e, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 6196710445587744579, guid: 2f5a7674292847a48b0d06034210855e, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 8503703006786566550, guid: 2f5a7674292847a48b0d06034210855e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.226133
+      value: 8.945
       objectReference: {fileID: 0}
     - target: {fileID: 8503703006786566550, guid: 2f5a7674292847a48b0d06034210855e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15467,7 +15635,7 @@ AudioSource:
   m_GameObject: {fileID: 429795270}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -15908,7 +16076,7 @@ AudioSource:
   m_GameObject: {fileID: 431781421}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 65140806530729732, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -16034,7 +16202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!1 &447588959
 GameObject:
   m_ObjectHideFlags: 0
@@ -19581,6 +19749,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -4057730588994747146, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -4057730588994747146, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 3288031442301862163, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
       propertyPath: m_Name
       value: TV01
@@ -19636,7 +19812,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3288031442301862163, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350513958}
   m_SourcePrefab: {fileID: 100100000, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
 --- !u!1 &477858623
 GameObject:
@@ -20055,7 +20234,7 @@ AudioSource:
   m_GameObject: {fileID: 477858623}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -20673,8 +20852,8 @@ MonoBehaviour:
   _itemHolder: {fileID: 1899984560}
   mediano: 0
   grande: 0
-  _materialNormal: {fileID: 0}
-  _materialFade: {fileID: 0}
+  _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
+  _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
   _renderer: {fileID: 0}
   pickUpScript: {fileID: 477688329}
 --- !u!114 &488727804
@@ -20689,7 +20868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!1 &495126713
 GameObject:
   m_ObjectHideFlags: 0
@@ -22412,8 +22591,8 @@ MonoBehaviour:
   _itemHolder: {fileID: 1899984560}
   mediano: 0
   grande: 1
-  _materialNormal: {fileID: 0}
-  _materialFade: {fileID: 0}
+  _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
+  _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
   _renderer: {fileID: 0}
   pickUpScript: {fileID: 477688329}
 --- !u!54 &504012257
@@ -22455,7 +22634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!1 &504167908
 GameObject:
   m_ObjectHideFlags: 0
@@ -23262,6 +23441,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -122072596547169604, guid: 6d969de23fddcae42ab21e38bb4b0e79, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -122072596547169604, guid: 6d969de23fddcae42ab21e38bb4b0e79, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 6003657355991738582, guid: 6d969de23fddcae42ab21e38bb4b0e79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.689592
@@ -24292,7 +24479,7 @@ AudioSource:
   m_GameObject: {fileID: 524882606}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.77
@@ -24897,6 +25084,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MesaRatona01
       objectReference: {fileID: 0}
+    - target: {fileID: 2140225070507709830, guid: 48c00373ee29a324c8cfff1b03aed6cc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725830398667990349, guid: 48c00373ee29a324c8cfff1b03aed6cc, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 3725830398667990349, guid: 48c00373ee29a324c8cfff1b03aed6cc, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 7645496157880661385, guid: 48c00373ee29a324c8cfff1b03aed6cc, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009999999
@@ -26512,7 +26711,7 @@ AudioSource:
   m_GameObject: {fileID: 602305800}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1641348303133183043, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -28172,6 +28371,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: 2191855663338592679, guid: 051786c5f1b0e534fafeb9e6e60a6584, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 2191855663338592679, guid: 051786c5f1b0e534fafeb9e6e60a6584, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 3874354296800679910, guid: 051786c5f1b0e534fafeb9e6e60a6584, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.638086
@@ -28215,6 +28422,10 @@ PrefabInstance:
     - target: {fileID: 8545576564092442297, guid: 051786c5f1b0e534fafeb9e6e60a6584, type: 3}
       propertyPath: m_Name
       value: Fruit02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8545576564092442297, guid: 051786c5f1b0e534fafeb9e6e60a6584, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30132,7 +30343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1716692418732688779, guid: 4c85829b9909b1049a725e2e8402635f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.500894
+      value: 15.18
       objectReference: {fileID: 0}
     - target: {fileID: 1716692418732688779, guid: 4c85829b9909b1049a725e2e8402635f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30162,6 +30373,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2309276446815397091, guid: 4c85829b9909b1049a725e2e8402635f, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 2309276446815397091, guid: 4c85829b9909b1049a725e2e8402635f, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 7637494743612393615, guid: 4c85829b9909b1049a725e2e8402635f, type: 3}
       propertyPath: m_Name
       value: LibroMedium02
@@ -30179,6 +30398,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -2448096081300867894, guid: 96dcb02c659dab74ab01069e54e6cc49, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -2448096081300867894, guid: 96dcb02c659dab74ab01069e54e6cc49, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 7628952885851466146, guid: 96dcb02c659dab74ab01069e54e6cc49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.638086
@@ -30222,6 +30449,10 @@ PrefabInstance:
     - target: {fileID: 8266249934811714245, guid: 96dcb02c659dab74ab01069e54e6cc49, type: 3}
       propertyPath: m_Name
       value: Fruit03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266249934811714245, guid: 96dcb02c659dab74ab01069e54e6cc49, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31685,9 +31916,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2456640656801200302, guid: a27c0657cedaae8488040cecc5ff4a28, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 2456640656801200302, guid: a27c0657cedaae8488040cecc5ff4a28, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 8629282793830148524, guid: a27c0657cedaae8488040cecc5ff4a28, type: 3}
       propertyPath: m_Name
       value: Sillon01A
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629282793830148524, guid: a27c0657cedaae8488040cecc5ff4a28, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32340,9 +32583,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4029582598893291405, guid: bdc81384b6828cf4ea94c6abd1b73490, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 4029582598893291405, guid: bdc81384b6828cf4ea94c6abd1b73490, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 8524559550683817852, guid: bdc81384b6828cf4ea94c6abd1b73490, type: 3}
       propertyPath: m_Name
       value: TorreGatuna
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524559550683817852, guid: bdc81384b6828cf4ea94c6abd1b73490, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32800,7 +33055,7 @@ AudioSource:
   m_GameObject: {fileID: 748866035}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -33006,6 +33261,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: 33119673611423073, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 33119673611423073, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 5675161946700271839, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.152689
@@ -33050,6 +33313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EstanteriaMueble02
       objectReference: {fileID: 0}
+    - target: {fileID: 8001958513672800376, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33063,13 +33330,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -7234784658838001036, guid: 3111f7b35b269dd42a8703b35173ecb7, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -7234784658838001036, guid: 3111f7b35b269dd42a8703b35173ecb7, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 2007239021449569046, guid: 3111f7b35b269dd42a8703b35173ecb7, type: 3}
       propertyPath: m_Name
       value: LibroBiblia
       objectReference: {fileID: 0}
     - target: {fileID: 8257844509342504948, guid: 3111f7b35b269dd42a8703b35173ecb7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.226133
+      value: 9.081
       objectReference: {fileID: 0}
     - target: {fileID: 8257844509342504948, guid: 3111f7b35b269dd42a8703b35173ecb7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -36147,6 +36422,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fruit01
       objectReference: {fileID: 0}
+    - target: {fileID: 1283374114030598581, guid: 727d267c864a55648bd4b631df1eef1b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116839869505621248, guid: 727d267c864a55648bd4b631df1eef1b, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 2116839869505621248, guid: 727d267c864a55648bd4b631df1eef1b, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 6638572797308927285, guid: 727d267c864a55648bd4b631df1eef1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.638086
@@ -36981,6 +37268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SillonAlmohada01A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3009739638849225516, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009999999
@@ -37028,6 +37319,10 @@ PrefabInstance:
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898494024827002969, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38111,7 +38406,7 @@ AudioSource:
   m_GameObject: {fileID: 878127898}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -38609,7 +38904,7 @@ AudioSource:
   m_GameObject: {fileID: 895318662}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.364
@@ -39159,9 +39454,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -1639236786450054820, guid: 7f5863ac796fadf49b70dacc23ec5c2f, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -1639236786450054820, guid: 7f5863ac796fadf49b70dacc23ec5c2f, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 4666739150781384885, guid: 7f5863ac796fadf49b70dacc23ec5c2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.226133
+      value: 9.385
       objectReference: {fileID: 0}
     - target: {fileID: 4666739150781384885, guid: 7f5863ac796fadf49b70dacc23ec5c2f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -39445,8 +39748,8 @@ MonoBehaviour:
   _itemHolder: {fileID: 1899984560}
   mediano: 0
   grande: 0
-  _materialNormal: {fileID: 0}
-  _materialFade: {fileID: 0}
+  _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
+  _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
   _renderer: {fileID: 0}
   pickUpScript: {fileID: 477688329}
 --- !u!114 &937418052
@@ -39461,7 +39764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!4 &939625494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7631633567720187450, guid: a18bf8ed9bd029044afe789a2f1e39de, type: 3}
@@ -41684,6 +41987,107 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
+--- !u!1 &973024341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3288031442301862163, guid: 10332b076b085f6439225ec4e65de00e, type: 3}
+  m_PrefabInstance: {fileID: 272924924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &973024348
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973024341}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &982212374
 GameObject:
   m_ObjectHideFlags: 0
@@ -42304,6 +42708,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -4408078467075703647, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009999999
@@ -42355,6 +42763,10 @@ PrefabInstance:
     - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_Name
       value: SillonAlmohada01B (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44486,8 +44898,8 @@ MonoBehaviour:
   _itemHolder: {fileID: 1899984560}
   mediano: 0
   grande: 0
-  _materialNormal: {fileID: 0}
-  _materialFade: {fileID: 0}
+  _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
+  _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
   _renderer: {fileID: 0}
   pickUpScript: {fileID: 477688329}
 --- !u!114 &1082023188
@@ -45681,8 +46093,8 @@ MonoBehaviour:
   _itemHolder: {fileID: 1899984560}
   mediano: 0
   grande: 0
-  _materialNormal: {fileID: 0}
-  _materialFade: {fileID: 0}
+  _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
+  _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
   _renderer: {fileID: 0}
   pickUpScript: {fileID: 477688329}
 --- !u!114 &1116699696
@@ -45697,7 +46109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!1 &1124931824
 GameObject:
   m_ObjectHideFlags: 0
@@ -54380,6 +54792,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frutero
       objectReference: {fileID: 0}
+    - target: {fileID: 89767898964615153, guid: a18bf8ed9bd029044afe789a2f1e39de, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647239877977201147, guid: a18bf8ed9bd029044afe789a2f1e39de, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 6647239877977201147, guid: a18bf8ed9bd029044afe789a2f1e39de, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 7631633567720187450, guid: a18bf8ed9bd029044afe789a2f1e39de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.74417
@@ -54620,7 +55044,7 @@ AudioSource:
   m_GameObject: {fileID: 1254047555}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -54853,7 +55277,7 @@ AudioSource:
   m_GameObject: {fileID: 1266136941}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -55805,6 +56229,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: 3001544138935697708, guid: db9639295a85df844aa0b2b9b3e86cfa, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 3001544138935697708, guid: db9639295a85df844aa0b2b9b3e86cfa, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 4179141731066768055, guid: db9639295a85df844aa0b2b9b3e86cfa, type: 3}
       propertyPath: m_Name
       value: LibroMini01
@@ -55819,7 +56251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8793613318951405581, guid: db9639295a85df844aa0b2b9b3e86cfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.500894
+      value: 14.92
       objectReference: {fileID: 0}
     - target: {fileID: 8793613318951405581, guid: db9639295a85df844aa0b2b9b3e86cfa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -56404,7 +56836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1295192914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58383,7 +58815,7 @@ AudioSource:
   m_GameObject: {fileID: 1332280280}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -58574,7 +59006,7 @@ Transform:
   m_GameObject: {fileID: 1332280280}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4349499, y: 2.6848497, z: 1.9946883}
+  m_LocalPosition: {x: -2.51, y: 2.6848497, z: 2.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58781,7 +59213,7 @@ AudioSource:
   m_GameObject: {fileID: 1345811406}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -58972,7 +59404,7 @@ Transform:
   m_GameObject: {fileID: 1345811406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.98505, y: 2.6848497, z: 28.324688}
+  m_LocalPosition: {x: 31.72, y: 2.6848497, z: 28.324688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59963,8 +60395,8 @@ MonoBehaviour:
   _itemHolder: {fileID: 1899984560}
   mediano: 0
   grande: 0
-  _materialNormal: {fileID: 0}
-  _materialFade: {fileID: 0}
+  _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
+  _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
   _renderer: {fileID: 0}
   pickUpScript: {fileID: 477688329}
 --- !u!114 &1397418985
@@ -59979,7 +60411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!43 &1401268502
 Mesh:
   m_ObjectHideFlags: 0
@@ -60621,6 +61053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SillonAlmohada01A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3009739638849225516, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009999999
@@ -60668,6 +61104,10 @@ PrefabInstance:
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898494024827002969, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61966,7 +62406,7 @@ AudioSource:
   m_GameObject: {fileID: 1516728940}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 65140806530729732, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -62136,7 +62576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 0}
+  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
 --- !u!1 &1524084907
 GameObject:
   m_ObjectHideFlags: 0
@@ -63447,6 +63887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SillonAlmohada01A (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3009739638849225516, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.284828
@@ -63486,6 +63930,10 @@ PrefabInstance:
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898494024827002969, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -64027,6 +64475,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -4408078467075703647, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009999999
@@ -64078,6 +64530,10 @@ PrefabInstance:
     - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_Name
       value: SillonAlmohada01B
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -65355,7 +65811,7 @@ AudioSource:
   m_GameObject: {fileID: 1616214300}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -65546,7 +66002,7 @@ Transform:
   m_GameObject: {fileID: 1616214300}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.2850494, y: 2.6848497, z: 28.324688}
+  m_LocalPosition: {x: 6.97, y: 2.6848497, z: 28.324688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -66052,6 +66508,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Acuario
       objectReference: {fileID: 0}
+    - target: {fileID: 5038879241827236706, guid: 22e045cc52cbb3c429c9bfda2fa17372, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5456746700185725961, guid: 22e045cc52cbb3c429c9bfda2fa17372, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.04529
@@ -66092,6 +66552,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5583710282180216939, guid: 22e045cc52cbb3c429c9bfda2fa17372, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 5583710282180216939, guid: 22e045cc52cbb3c429c9bfda2fa17372, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -67780,6 +68248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SillonAlmohada01A
       objectReference: {fileID: 0}
+    - target: {fileID: 3009739638849225516, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009999999
@@ -67827,6 +68299,10 @@ PrefabInstance:
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898494024827002969, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69609,6 +70085,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -1577464756083122002, guid: 750c4fcd07d0a734d9007aaf48995569, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -1577464756083122002, guid: 750c4fcd07d0a734d9007aaf48995569, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 8321654949621411411, guid: 750c4fcd07d0a734d9007aaf48995569, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.226133
@@ -69619,7 +70103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8321654949621411411, guid: 750c4fcd07d0a734d9007aaf48995569, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.500894
+      value: 15.803
       objectReference: {fileID: 0}
     - target: {fileID: 8321654949621411411, guid: 750c4fcd07d0a734d9007aaf48995569, type: 3}
       propertyPath: m_LocalRotation.w
@@ -69688,7 +70172,7 @@ AudioSource:
   m_GameObject: {fileID: 1738785187}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -69916,7 +70400,7 @@ AudioSource:
   m_GameObject: {fileID: 1770699832}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -70745,7 +71229,7 @@ AudioSource:
   m_GameObject: {fileID: 1789972063}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.45
@@ -71685,6 +72169,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -8037901717769734075, guid: 7c044e2d1f37976468ad1951b55de9d5, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: -8037901717769734075, guid: 7c044e2d1f37976468ad1951b55de9d5, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 5403360722581626341, guid: 7c044e2d1f37976468ad1951b55de9d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.226133
@@ -72162,6 +72654,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatoPet01
       objectReference: {fileID: 0}
+    - target: {fileID: 1417817633657479558, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 1417817633657479558, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 1836880719009460438, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.358145
@@ -73392,17 +73892,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -4408078467075703647, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.2828293
       objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5614552
+      value: -2.529
       objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.045069
+      value: 21.027
       objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -73435,6 +73939,10 @@ PrefabInstance:
     - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_Name
       value: SillonAlmohada01B (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -73666,6 +74174,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EstanteriaMueble01
       objectReference: {fileID: 0}
+    - target: {fileID: 6186199682530418449, guid: 06cb458a403de234b86a106bcd87051f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287196291469956741, guid: 06cb458a403de234b86a106bcd87051f, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 7287196291469956741, guid: 06cb458a403de234b86a106bcd87051f, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75482,6 +76002,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1174504957}
     m_Modifications:
+    - target: {fileID: -4408078467075703647, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7493097765872497014, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009999999
@@ -75533,6 +76057,10 @@ PrefabInstance:
     - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
       propertyPath: m_Name
       value: SillonAlmohada01B (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070208432637081286, guid: 6ea501d8791c05a459ae99e91576a5ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -77085,6 +77613,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sillon01B (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4553142724005055704, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650464119144930124, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
+      propertyPath: _materialFade
+      value: 
+      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+    - target: {fileID: 4650464119144930124, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
+      propertyPath: _materialNormal
+      value: 
+      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
     - target: {fileID: 8756881240401359662, guid: 3c7e404ef146ff34585513c3b5eb049e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.27446
@@ -77160,7 +77700,7 @@ AudioSource:
   m_GameObject: {fileID: 2029437258}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -77535,6 +78075,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SillonAlmohada01A (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3009739638849225516, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.284828
@@ -77574,6 +78118,10 @@ PrefabInstance:
     - target: {fileID: 4236506300983397184, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898494024827002969, guid: 7900e2d65f4eeb4428f90cbe594b721c, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -77874,7 +78422,7 @@ AudioSource:
   m_GameObject: {fileID: 2042290321}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.536
@@ -78065,7 +78613,7 @@ Transform:
   m_GameObject: {fileID: 2042290321}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9450493, y: -2.9051502, z: 34.534687}
+  m_LocalPosition: {x: 1.94, y: -2.90515, z: 34.59}
   m_LocalScale: {x: 0.73483, y: 0.73483, z: 0.73483}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79148,7 +79696,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 5
-  m_Range: 10
+  m_Range: 5.3440514
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -81871,6 +82419,10 @@ PrefabInstance:
       propertyPath: _navMeshNodes.Array.data[15]
       value: 
       objectReference: {fileID: 1506979717}
+    - target: {fileID: 4441103370495016658, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1641348303133183043, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
     - target: {fileID: 7134040274822169308, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.08

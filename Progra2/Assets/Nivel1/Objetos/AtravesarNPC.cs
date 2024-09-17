@@ -6,11 +6,11 @@ public class AtravesarNPC : MonoBehaviour
 {
     AudioSource _audioSource;
     [SerializeField] AudioClip shiver;
-    [SerializeField] NPC npcScript;
+    [SerializeField] Asustable asustableScript;
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        npcScript = GetComponentInParent<NPC>();
+        asustableScript = GetComponentInParent<Asustable>();
     }
 
 
@@ -26,9 +26,9 @@ public class AtravesarNPC : MonoBehaviour
         if (player != null)
         {
             
-            npcScript.GetShivers();
-            npcScript._audioSource.clip = shiver;
-            //npcScript._audioSource.Play();
+            asustableScript.GetShivers();
+            asustableScript._audioSource.clip = shiver;
+            asustableScript._audioSource.Play();
             
         }
     }

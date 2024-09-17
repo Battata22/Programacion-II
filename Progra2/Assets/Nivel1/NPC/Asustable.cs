@@ -153,7 +153,7 @@ public class Asustable : NPC
     {
         if (shivers) return;
         //Debug.Log("Escalofios de asustable");
-        _audioSource.Play();
+        //a_audioSource.Play();
         _waitShivers = 0;
         _agent.speed = 0;
         shivers = true;

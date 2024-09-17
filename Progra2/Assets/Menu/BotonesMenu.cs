@@ -34,6 +34,7 @@ public class BotonesMenu : MonoBehaviour
     public void OpcionesOnClicked()
     {
         print("Opciones click");
+        SceneManager.LoadScene("Opciones");
     }
     public void CreditosOnClicked()
     {
