@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent (typeof(AudioSource))]
@@ -62,6 +65,7 @@ public class NPC : MonoBehaviour
         _AIActive = true;
     }
 
+    #region Comment
     //private void Update()
     //{
     //    if (!_AIActive) return;
@@ -130,6 +134,7 @@ public class NPC : MonoBehaviour
 
 
     //}
+    #endregion
 
     protected Transform GetNewNode(Transform lastNode = null)
     {

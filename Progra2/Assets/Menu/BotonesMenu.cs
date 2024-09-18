@@ -18,7 +18,14 @@ public class BotonesMenu : MonoBehaviour
 
     void Update()
     {
-        
+        if(Input.GetKeyUp(KeyCode.L))
+        {
+            SceneManager.LoadScene("Victoria");
+        }
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            SceneManager.LoadScene("Derrota");
+        }
     }
 
     public void PlayOnClicked()

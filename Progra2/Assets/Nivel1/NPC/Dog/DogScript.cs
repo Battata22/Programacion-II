@@ -7,6 +7,9 @@ public class DogScript : NPC
 {
     [Header("<color=#c5a53f> Capibara, coconut doggy </color>")]
     [SerializeField] Player _target;
+    [SerializeField] AudioClip _clipLadrido;
+    [SerializeField] GameObject _areDuda;
+    bool playing = false;
 
     private void Update()
     {
@@ -22,5 +25,24 @@ public class DogScript : NPC
 
             _agent.SetDestination(_actualNode.position);
         }
+
+        if (playing)
+        {
+            Instantiate(_areDuda, transform.position, Quaternion.identity);
+        }
+
+    }
+
+    public void Ladrido()
+    {
+        playing = true;
+        _audioSource.clip = _clipLadrido;
+        _audioSource.Play();
+    }
+
+    public void StopLadrido()
+    {
+        playing = false;
+        _audioSource.Stop();
     }
 }

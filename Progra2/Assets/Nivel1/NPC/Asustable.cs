@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Asustable : NPC
 {
@@ -14,10 +16,14 @@ public class Asustable : NPC
     public bool shivers = false, _scared = false;//, _doubt = false, _inPlace = false;
     bool _lookingActive =  false;
 
+    [SerializeField] Slider _sliderBarra;
+
+    [SerializeField] AudioClip gritoClip, doubtClip;
+
+    #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
 
     //AudioSource _audioSource;
-    [SerializeField] AudioClip gritoClip, doubtClip;
 
     //[SerializeField] Transform _actualNode;
     //[SerializeField] List<Transform> _navMeshNodes = new();
@@ -54,6 +60,7 @@ public class Asustable : NPC
 
     //    _AIActive = true;
     //}
+    #endregion
 
     private void Update()
     {
@@ -128,7 +135,8 @@ public class Asustable : NPC
     }
 
     public override void GetScare()
-    {               
+    {
+        Ganarga();
         //Debug.Log("Susto de Asustable");
         _doubt = false;
         _particulas.scared = true;
@@ -204,5 +212,14 @@ public class Asustable : NPC
     private void OnDestroy()
     {
         GameManager.Instance.Npc.Remove(this);
+    }
+
+    void Ganarga()
+    {
+        _sliderBarra.value++;
+        if (_sliderBarra.value >= 10)
+        {
+            SceneManager.LoadScene("Victoria");
+        }
     }
 }

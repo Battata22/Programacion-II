@@ -14,6 +14,7 @@ public class Ghostbuster : NPC
 
     bool _lastState;
     [SerializeField] bool _angry, _isAttacking, _canAttack;
+    [SerializeField] AudioClip _clipAspiradora, doubtClip, _clipAngry;
     bool _activeChase = false;
 
     protected override void Start()
@@ -102,8 +103,8 @@ public class Ghostbuster : NPC
 
         _doubt = true;
 
-        //_audioSource.clip = doubtClip;
-        //_audioSource.Play();
+        _audioSource.clip = doubtClip;
+        _audioSource.Play();
 
         _agent.speed = speedDoubt;
 
@@ -120,7 +121,9 @@ public class Ghostbuster : NPC
 
     void GetAngry()
     {
-
+        _audioSource.clip = _clipAngry;
+        _audioSource.Play();
+        print("alakazam");
         _angry = true;
         _waitAnger = Time.time;
         StartCoroutine(ChaseTarget());
@@ -140,6 +143,8 @@ public class Ghostbuster : NPC
         //Debug.Log("Iniciando Ataque");
         _target.underAttack = true;
         _target.attacker = this;
+        _audioSource.clip = _clipAspiradora;
+        _audioSource.Play();
     }
 
     void Attack()
@@ -172,6 +177,7 @@ public class Ghostbuster : NPC
         _isAttacking = false;
         _angry = false;
         _lastAttack = Time.time;
+        _audioSource.Stop();
 
         _agent.speed = speedNormal;
     }

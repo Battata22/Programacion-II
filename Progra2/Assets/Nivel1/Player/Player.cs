@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -155,7 +157,8 @@ public class Player : MonoBehaviour
         _hp--;
         if (_hp <=0)
         {
-            Debug.Log("<color=#6916c1> IM Dead ... /n wait a minute </color> ");
+            //Debug.Log("<color=#6916c1> IM Dead ... /n wait a minute </color> ");
+            SceneManager.LoadScene("Derrota");
         }
     }
     
