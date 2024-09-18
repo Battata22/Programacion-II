@@ -13,7 +13,8 @@ public class AreasDuda : MonoBehaviour
 
         if (wait >= 0.5f)
         {
-            transform.position = muymuylejano;
+            //transform.position = muymuylejano;
+            Destroy(gameObject);
         }
     }
 }

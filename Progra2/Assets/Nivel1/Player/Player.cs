@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     AudioSource _audioSource;
     [SerializeField] AudioClip clipLevelUp;
 
+    [SerializeField] Sprite _vidaFull, _vidaMedia, _vidaBaja;
+    [SerializeField] Image _vidaUI;
+
 
     [Header("Movement")]
     [SerializeField] float _speed;
@@ -81,6 +84,19 @@ public class Player : MonoBehaviour
         //{
         //    Jump();
         //}
+
+        if (_hp == 3)
+        {
+            _vidaUI.sprite = _vidaFull;
+        }
+        else if (_hp == 2)
+        {
+            _vidaUI.sprite = _vidaMedia;
+        }
+        else if (_hp == 1)
+        {
+            _vidaUI.sprite = _vidaBaja;
+        }
     }
 
     private void FixedUpdate()
