@@ -53,4 +53,11 @@ public class GameManager : MonoBehaviour
         get { return _itemHolde;}
         set { _itemHolde = value;}
     }
+
+    private HandState _handState;
+    public HandState HandState 
+    { 
+        get { return _handState; } 
+        set { _handState = value; }
+    }
 }

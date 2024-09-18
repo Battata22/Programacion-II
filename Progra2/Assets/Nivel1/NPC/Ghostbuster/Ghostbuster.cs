@@ -30,6 +30,8 @@ public class Ghostbuster : NPC
         if(_target == null) _target = GameManager.Instance.Player;
         if (_actualNode == null) Initialize();
 
+        if (!_canAttack && Time.time - _lastAttack > _attackCD) _canAttack = true;
+
         if ((!_doubt && !_angry &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
         {
             //Debug.Log("<color=#26c5f0> LLege al destino </color>");
@@ -80,7 +82,6 @@ public class Ghostbuster : NPC
             StartCoroutine(DelayAttack());
         }
 
-        if (!_canAttack && Time.time - _lastAttack > _attackCD) _canAttack = true;
         
     }
 
@@ -121,6 +122,7 @@ public class Ghostbuster : NPC
 
     void GetAngry()
     {
+        if (!_canAttack) return;
         _audioSource.clip = _clipAngry;
         _audioSource.Play();
         print("alakazam");

@@ -20,6 +20,7 @@ public class Obj_Interactuable : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
+        //_materialNormal = GetComponent<Material>(); 
     }
 
     public virtual void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
@@ -35,7 +36,16 @@ public class Obj_Interactuable : MonoBehaviour
         {
             transform.position += dir.normalized * _speed * Time.fixedDeltaTime;
         }
-        else holding = true;
+        else
+        {
+
+            GameManager.Instance.HandState.holding = true;
+            GameManager.Instance.HandState.relax = false;
+            GameManager.Instance.HandState.ChangeState();
+
+            holding = true;
+        }
+
 
         if(holding)
         {
@@ -50,6 +60,11 @@ public class Obj_Interactuable : MonoBehaviour
         {
             return;
         }
+        GameManager.Instance.HandState.holding = false;
+        GameManager.Instance.HandState.pointing = false;
+        GameManager.Instance.HandState.relax = true;
+        GameManager.Instance.HandState.ChangeState();
+
         holding = false;
         canMove = false;
         _rb.useGravity = true;

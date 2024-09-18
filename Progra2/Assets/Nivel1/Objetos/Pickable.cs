@@ -10,12 +10,14 @@ public class Pickable : Obj_Interactuable
 {
     bool _pickedUp;
     public PickUp pickUpScript;
+    //Material _originalMaterial;
 
     private void Start()
     {
         //_camera = GameManager.Instance.Camera.transform;
         //_itemHolder = GameManager.Instance.ItemHolde;
         //pickUpScript = GameManager.Instance.Player.GetComponentInChildren<PickUp>();
+        //_materialNormal = GetComponent<Material>();
         _speed = 10f;
         if (mediano)
         {
@@ -30,7 +32,8 @@ public class Pickable : Obj_Interactuable
 
     private void Update()
     {
-        if(_camera == null) _camera = GameManager.Instance.Camera.transform;
+        //if(_materialNormal == null) _materialNormal = GetComponent<Material>();
+        if (_camera == null) _camera = GameManager.Instance.Camera.transform;
         if(_itemHolder == null) _itemHolder = GameManager.Instance.ItemHolde;
         if(pickUpScript == null) pickUpScript = GameManager.Instance.Player.GetComponentInChildren<PickUp>();
         if (_rb == null) _rb = GetComponent<Rigidbody>();

@@ -30,7 +30,12 @@ public class PickUp : MonoBehaviour
         RaycastHit hit;
         if (Physics.SphereCast(transform.position, _radius, transform.forward, out hit, _rayDistance, LayerMask.GetMask("Objeto")))
         {
-
+            if(!GameManager.Instance.HandState.holding && !GameManager.Instance.HandState.pointing)
+            {
+                GameManager.Instance.HandState.pointing = true;
+                GameManager.Instance.HandState.relax = false;
+                GameManager.Instance.HandState.ChangeState();
+            }
             
             if (Input.GetMouseButtonDown(0))
             {
@@ -66,6 +71,14 @@ public class PickUp : MonoBehaviour
                         hit.transform.gameObject.GetComponent<Luces>().LightSwitch();
                     }
                 }
+            }
+        }
+        else
+        {
+            if (GameManager.Instance.HandState.pointing)
+            {
+                GameManager.Instance.HandState.pointing = false;
+                GameManager.Instance.HandState.ChangeState();
             }
         }
 
