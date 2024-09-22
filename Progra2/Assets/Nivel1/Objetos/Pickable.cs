@@ -70,7 +70,7 @@ public class Pickable : Obj_Interactuable
 
     private void FixedUpdate()
     {
-        if (canMove)
+        if (_canMove)
         {
             Movement(_itemHolder);
         }
@@ -84,10 +84,10 @@ public class Pickable : Obj_Interactuable
             base.Interact(_audio, agarre, error);
             _rb.useGravity = false;
             _rb.velocity = Vector3.zero;
-            canMove = true;
+            _canMove = true;
             _pickedUp = true;
             pickUpScript.isHolding = true;
-            onAir = true;
+            _onAir = true;
             _col.enabled = false;
             _rb.constraints = RigidbodyConstraints.None;
             pickUpScript.esperaragarre = 0;
@@ -105,7 +105,7 @@ public class Pickable : Obj_Interactuable
         _col.enabled = true;
         _pickedUp = false;
         pickUpScript.isHolding = false;
-        onAir = true;
+        _onAir = true;
         _renderer.material = _materialNormal;
         _audio.clip = arrojar;
         _audio.Play();
@@ -125,9 +125,9 @@ public class Pickable : Obj_Interactuable
         _col.enabled = true;
         _pickedUp = false;
         pickUpScript.isHolding = false;
-        onAir = false;
+        _onAir = false;
         holding = false;
-        canMove = false;
+        _canMove = false;
         _rb.useGravity = true;
         _renderer.material = _materialNormal;
         GameManager.Instance.Player.GetComponent<AudioSource>().Stop();
@@ -137,7 +137,7 @@ public class Pickable : Obj_Interactuable
     private void OnCollisionEnter(Collision collision)
     {
         //if (canMove) Drop();
-        if(onAir)
+        if(_onAir)
         {
             //Collider[] hitObjs = Physics.OverlapSphere(transform.position, 0.5f, _layerMask);
             if (_trowed && TryGetComponent<Chocamiento>(out Chocamiento choc))
@@ -149,7 +149,7 @@ public class Pickable : Obj_Interactuable
                 //    onAir = false;
                 //}
                 choc.Choco(transform.position);
-                onAir = false;
+                _onAir = false;
                 _trowed = false;
             }
             //else if (hitObjs.Length != 0)//collision.gameObject.layer != 7

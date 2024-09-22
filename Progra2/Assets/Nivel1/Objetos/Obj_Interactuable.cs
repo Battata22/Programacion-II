@@ -7,10 +7,10 @@ public class Obj_Interactuable : MonoBehaviour
     [SerializeField] protected Transform _camera;
     [SerializeField] protected float _cd, _lastInteract; //de momento no usado
     [SerializeField] protected float _speed; //del objeto volando en tu direccion
-    protected bool canMove = false, holding = false, onAir = false;
     [SerializeField] protected Transform _itemHolder; // punto al que va el objeto
     protected Rigidbody _rb;
-    public bool mediano = false, grande = false;
+    public bool mediano = false, grande = false, holding = false;
+    protected bool _canMove = false, _onAir = false;
     protected Collider _col;
     [SerializeField] protected Material _materialNormal, _materialFade;
     [SerializeField] protected Renderer _renderer;
@@ -71,7 +71,7 @@ public class Obj_Interactuable : MonoBehaviour
         GameManager.Instance.HandState.ChangeState();
 
         holding = false;
-        canMove = false;
+        _canMove = false;
         _rb.useGravity = true;
         _rb.AddForce(_camera.forward * 50f, ForceMode.Impulse);
     }
