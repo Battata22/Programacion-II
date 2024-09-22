@@ -21,7 +21,7 @@ public class AreaLadrido : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            print("adentro");
+            //print("adentro");
             dogScript.Ladrido();
         }
     }
@@ -31,7 +31,7 @@ public class AreaLadrido : MonoBehaviour
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            print("afuera");
+            //print("afuera");
             dogScript.StopLadrido();
         }
     }

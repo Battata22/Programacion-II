@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
-    [Header("AI")]
+    [Header("<color=#e3f4aa>AI</color>")]
     [SerializeField] protected float _changeNodeDist = 0.5f;
 
     //public float tiempoDeSusto, cdDeSusto;
@@ -134,7 +134,7 @@ public class NPC : MonoBehaviour
     //}
     #endregion
 
-    protected Transform GetNewNode(Transform lastNode = null)
+    protected virtual Transform GetNewNode(Transform lastNode = null)
     {
         Transform newNode = _navMeshNodes[Random.Range(1, _navMeshNodes.Count)];
 

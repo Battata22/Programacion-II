@@ -15,10 +15,11 @@ public class Ghostbuster : NPC
     bool _lastState;
     [SerializeField] bool _angry, _isAttacking, _canAttack;
     [SerializeField] AudioClip _clipAspiradora, doubtClip, _clipAngry;
-    bool _activeChase = false;
+    bool _activeChase = false, _startingAttack;
 
     protected override void Start()
     {
+        //_agent.speed;
         base.Start();
         //_target = GameManager.Instance.Player;
         _gbFov = GetComponent<GB_FOV>();
@@ -30,7 +31,14 @@ public class Ghostbuster : NPC
         if(_target == null) _target = GameManager.Instance.Player;
         if (_actualNode == null) Initialize();
 
-        if (!_canAttack && Time.time - _lastAttack > _attackCD) _canAttack = true;
+        if (!_canAttack && Time.time - _lastAttack > _attackCD)
+        {
+            _canAttack = true;
+            _agent.speed = speedNormal;
+            _actualNode = GetNewNode(_actualNode);
+            _agent.SetDestination(_actualNode.position);
+            return;
+        }
 
         if ((!_doubt && !_angry &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
         {
@@ -77,7 +85,7 @@ public class Ghostbuster : NPC
             _agent.SetDestination(GetNewNode(_actualNode).position);
             //Debug.Log("<color=green> Despues de set destination </color>");
         }
-        if (!_isAttacking && !_target.underAttack && _canAttack &&_gbFov.hasLOS && Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
+        if (!_isAttacking && !_target.underAttack && _canAttack && _gbFov.hasLOS && !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
         {
             StartCoroutine(DelayAttack());
         }
@@ -97,9 +105,11 @@ public class Ghostbuster : NPC
     public override void GetDoubt(Vector3 pos)
     {
         //activar duda
-        Debug.Log("<color=yellow> Escuche algo </color>");
+        //Debug.Log("<color=yellow> Escuche algo </color>");
 
         if (_angry) return;
+        if (_isAttacking) return;
+        if (!_canAttack) return;
         //Debug.Log("Duda de asustable");
 
         _doubt = true;
@@ -115,6 +125,7 @@ public class Ghostbuster : NPC
 
     public override void GetScare()
     {
+
         //Activar Anger supongo
         Debug.Log("<color=red> YA TE VOY A AGARRAR </color>");
         GetAngry()  ;
@@ -123,9 +134,10 @@ public class Ghostbuster : NPC
     void GetAngry()
     {
         if (!_canAttack) return;
+        if(_isAttacking) return;
         _audioSource.clip = _clipAngry;
         _audioSource.Play();
-        print("alakazam");
+        //print("alakazam");
         _angry = true;
         _waitAnger = Time.time;
         StartCoroutine(ChaseTarget());
@@ -140,9 +152,14 @@ public class Ghostbuster : NPC
 
     void StartAttack()
     {
+        if (!_canAttack) return;
+        _startingAttack = false;
         //Activar modo Luigi
         //Los objetos libianos cercanos tambien seria succionados? idea
         //Debug.Log("Iniciando Ataque");
+        _isAttacking = true;
+        _angry=false;   
+        _agent.speed = 0f;
         _target.underAttack = true;
         _target.attacker = this;
         _audioSource.clip = _clipAspiradora;
@@ -171,7 +188,8 @@ public class Ghostbuster : NPC
     void EndAttack()
     {
         //if(!_isAttacking) return;
-        Debug.Log("Terminando Ataque");
+        //Debug.Log("Terminando Ataque");
+        //_agent.speed = speedNormal;
         _target.underAttack = false;
         _target.attacker = null;
         _target.ApplyForce(new Vector3(), 0);
@@ -181,7 +199,7 @@ public class Ghostbuster : NPC
         _lastAttack = Time.time;
         _audioSource.Stop();
 
-        _agent.speed = speedNormal;
+        //_agent.speed = speedNormal;
     }
 
     void RotateToTarget()
@@ -204,12 +222,12 @@ public class Ghostbuster : NPC
         {
             if (Vector3.Angle(transform.right, direction) <= 90f)
             {
-                Debug.Log("Giro Horario");
+                //Debug.Log("Giro Horario");
                 transform.Rotate(0f, _torque * Time.fixedDeltaTime, 0f);
             }
             else
             {
-                Debug.Log("Giro Antihorario");
+                //Debug.Log("Giro Antihorario");
                 transform.Rotate(0f, -_torque * Time.fixedDeltaTime, 0f);
             }
         }
@@ -218,6 +236,7 @@ public class Ghostbuster : NPC
 
     private IEnumerator ChaseTarget()
     {
+        
         _activeChase = true;
         //Debug.Log("<color=#825aef>Inicia Cazeria</color>");
         //consigue pos de Gus cada medio segundo
@@ -227,7 +246,7 @@ public class Ghostbuster : NPC
         //if(!_angry) yield return null;
         WaitForSeconds wait = new WaitForSeconds(0.5f);
 
-        while (_angry)
+        while (_angry && _canAttack)
         {
             yield return wait;
             Debug.Log("<color=red>Cazando</color>");
@@ -235,7 +254,7 @@ public class Ghostbuster : NPC
             _agent.SetDestination(_actualNode.position  );
         }
 
-        if (!_isAttacking)
+        if (!_isAttacking && _canAttack)
         {
             //Debug.Log("<color=#ef5ae4>Termina Cazeria</color>");
             _actualNode = GetNewNode(_actualNode);
@@ -247,14 +266,20 @@ public class Ghostbuster : NPC
 
     private IEnumerator DelayAttack()
     {
-        _isAttacking = true;
         _agent.speed = 0f;
-        Debug.Log("Preparando ataque");
-
+        //Debug.Log("Preparando ataque");
+        _startingAttack =true;
         yield return new WaitForSeconds(_atkDelay);
+        //_isAttacking = true;
         StartAttack();
 
         yield return new WaitForSeconds(_attackDuration);
         EndAttack();
     }
+
+    //protected override Transform GetNewNode(Transform lastNode = null)
+    //{
+    //    if (!_canAttack) return null;            
+    //    return base.GetNewNode(lastNode);
+    //}
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamDistance : MonoBehaviour
 {
     [SerializeField] Cam _cam;
+    [SerializeField] LayerMask _layerMask;
     
     //destino del raycast
     [SerializeField] Transform _lookingAt;
@@ -35,7 +36,7 @@ public class CamDistance : MonoBehaviour
         //Cuando el raycast es cortado por la pared entre medio se pone a hacer magia
 
         // Crea Raycast     origen  / direccion   /devuelve algo/  largo del ray/  layer que lo puede cortar/
-        if (Physics.Raycast(_origin, _ray.normalized, out hit, _rayDistance, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(_origin, _ray.normalized, out hit, _rayDistance, _layerMask))
         {
             //Debug de testeo
             //Debug.Log(hit.transform.name);

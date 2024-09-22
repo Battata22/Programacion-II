@@ -45,4 +45,10 @@ public class DogScript : NPC
         playing = false;
         _audioSource.Stop();
     }
+
+    public override void GetDoubt(Vector3 pos)
+    {
+        if (playing) return;        
+        base.GetDoubt(pos);
+    }
 }

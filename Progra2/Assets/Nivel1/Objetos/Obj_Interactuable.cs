@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obj_Interactuable : MonoBehaviour 
 {
     [SerializeField] protected Transform _camera;
-    [SerializeField] protected float _cd; //de momento no usado
+    [SerializeField] protected float _cd, _lastInteract; //de momento no usado
     [SerializeField] protected float _speed; //del objeto volando en tu direccion
     protected bool canMove = false, holding = false, onAir = false;
     [SerializeField] protected Transform _itemHolder; // punto al que va el objeto
@@ -14,19 +14,22 @@ public class Obj_Interactuable : MonoBehaviour
     protected Collider _col;
     [SerializeField] protected Material _materialNormal, _materialFade;
     [SerializeField] protected Renderer _renderer;
+    [SerializeField] protected LayerMask _dropLayers;
 
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
+        
         //_materialNormal = GetComponent<Material>(); 
     }
 
     public virtual void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
     {
-        _audio.clip = agarre;
-        _audio.Play();
+        _lastInteract = Time.time;
+        _audio.clip = agarre;   
+        _audio.PlayOneShot(agarre);
     }
     Vector3 dir = Vector3.zero;
     protected void Movement(Transform _target)
@@ -60,6 +63,8 @@ public class Obj_Interactuable : MonoBehaviour
         {
             return;
         }
+        _lastInteract = Time.time;
+
         GameManager.Instance.HandState.holding = false;
         GameManager.Instance.HandState.pointing = false;
         GameManager.Instance.HandState.relax = true;

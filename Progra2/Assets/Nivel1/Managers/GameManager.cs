@@ -60,4 +60,6 @@ public class GameManager : MonoBehaviour
         get { return _handState; } 
         set { _handState = value; }
     }
+
+    public LayerMask DropLayers;
 }
