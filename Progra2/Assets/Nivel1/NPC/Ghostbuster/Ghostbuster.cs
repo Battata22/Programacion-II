@@ -209,12 +209,12 @@ public class Ghostbuster : NPC
         {
             if(Vector3.Angle(transform.right, direction) <= 90f)
             {
-                Debug.Log("Giro Horario");
+                //Debug.Log("Giro Horario");
                 transform.Rotate(0f, _torque * Time.fixedDeltaTime, 0f);
             }
             else
             {
-                Debug.Log("Giro Antihorario");
+                //ebug.Log("Giro Antihorario");
                 transform.Rotate(0f, -_torque * Time.fixedDeltaTime, 0f);
             }
         }

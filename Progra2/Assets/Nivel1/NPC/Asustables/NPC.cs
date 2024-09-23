@@ -169,7 +169,8 @@ public class NPC : MonoBehaviour
 
     public virtual void GetDoubt(Vector3 pos)
     {
-        Debug.Log(" Duda de Npc");
+        if (!_agent.enabled) return;
+        //Debug.Log(" Duda de Npc");
         _doubt = true;
 
         //_audioSource.clip = doubtClip;
