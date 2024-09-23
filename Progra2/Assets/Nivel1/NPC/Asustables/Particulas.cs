@@ -38,6 +38,7 @@ public class Particulas : MonoBehaviour
         if (_npcScript._doubt == true)
         {
             wait = 0;
+            _spriteRenderer.flipX = true;
             _spriteRenderer.sprite = question;
         }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    [SerializeField] Transform playerj;
     public AudioSource _audioSource;
     public AudioClip agarrado, error, tirar, sosteniendo;
     [SerializeField] float _rayDistance, _radius;
@@ -62,6 +63,10 @@ public class PickUp : MonoBehaviour
                     if (hit.transform.gameObject.GetComponent<SFX>() != null)
                     {
                         hit.transform.gameObject.GetComponent<SFX>().PlayMusic(error);
+                    }
+                    if (hit.transform.gameObject.GetComponent<BotonInicio>() != null)
+                    {
+                        hit.transform.gameObject.GetComponent<BotonInicio>().Teleport(playerj);
                     }
                 }
                 if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance * 1.5f, LayerMask.GetMask("Objeto")))

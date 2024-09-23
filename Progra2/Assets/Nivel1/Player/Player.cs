@@ -64,11 +64,17 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            _nivel--;
+            if (_nivel > 1)
+            {
+                _nivel--;
+            }
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
-            LevelUp();
+            if (_nivel < 3)
+            {
+                LevelUp();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

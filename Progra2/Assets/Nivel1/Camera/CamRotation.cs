@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class CamRotation : MonoBehaviour
 {
-    [Header("Sensibilidad")]
-    [SerializeField] float _xSens;
-    [SerializeField] float _ySens;
+    //[Header("Sensibilidad")]
+    //[SerializeField] float _xSens;
+    //[SerializeField] float _ySens;
 
     //Inputs
     float _mouseX, _mouseY;
@@ -18,7 +19,6 @@ public class CamRotation : MonoBehaviour
 
     private void Start()
     {
-
         //centra y oculta mouse
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -26,9 +26,14 @@ public class CamRotation : MonoBehaviour
 
     private void Update()
     {
+        string json = File.ReadAllText(Application.dataPath + "/SensDataFile.json");
+        CamData data = JsonUtility.FromJson<CamData>(json);
+        print(data._xSens);
         //Inputs
-        _mouseX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime *  _xSens;
-        _mouseY = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime *  _ySens;
+        _mouseX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime * data._xSens;
+        _mouseY = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime * data._ySens;
+        //_mouseX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime *  _xSens;
+        //_mouseY = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime *  _ySens;
 
         //pasar inputs a la camara
         _yRotation += _mouseX;

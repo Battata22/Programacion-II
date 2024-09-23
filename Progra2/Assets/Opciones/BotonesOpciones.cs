@@ -5,15 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class BotonesOpciones : MonoBehaviour
 {
-    [SerializeField] VolumeSettings volumeSettingsScript;
+    [SerializeField] SlidersSettings volumeSettingsScript;
     void Start()
     {
-        volumeSettingsScript = GetComponentInParent<VolumeSettings>();
+        volumeSettingsScript = GetComponentInParent<SlidersSettings>();
     }
 
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
 
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     public void VolverOnClicked()
