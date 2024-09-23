@@ -28,7 +28,7 @@ public class CamRotation : MonoBehaviour
     {
         string json = File.ReadAllText(Application.dataPath + "/SensDataFile.json");
         CamData data = JsonUtility.FromJson<CamData>(json);
-        print(data._xSens);
+        //print(data._xSens);
         //Inputs
         _mouseX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime * data._xSens;
         _mouseY = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime * data._ySens;

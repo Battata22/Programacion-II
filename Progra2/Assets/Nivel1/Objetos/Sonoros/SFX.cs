@@ -14,8 +14,10 @@ public class SFX : Pickable
         _col = GetComponent<Collider>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+        
         //_audioSource = GetComponent<AudioSource>();
     }
 

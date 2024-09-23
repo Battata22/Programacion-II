@@ -21213,6 +21213,9 @@ MonoBehaviour:
   isHolding: 0
   sosteniendoBool: 0
   esperaragarre: 0
+  _detectableMask:
+    serializedVersion: 2
+    m_Bits: 2147483776
 --- !u!114 &477688330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65581,6 +65584,7 @@ GameObject:
   - component: {fileID: 1543798504}
   - component: {fileID: 1543798503}
   - component: {fileID: 1543798502}
+  - component: {fileID: 1543798507}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -65627,8 +65631,9 @@ MonoBehaviour:
   - {fileID: 1506979717}
   _AIActive: 1
   _targetObject: {fileID: 0}
-  _jumpCD: 10
+  _jumpCD: 3
   _jumpDis: 3
+  _jumpForce: 3
   _canJump: 1
   _mask:
     serializedVersion: 2
@@ -65790,6 +65795,33 @@ Transform:
   - {fileID: 778973977}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1543798507
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543798501}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!43 &1546731645
 Mesh:
   m_ObjectHideFlags: 0
@@ -68350,11 +68382,11 @@ PrefabInstance:
     - target: {fileID: 5583710282180216939, guid: 22e045cc52cbb3c429c9bfda2fa17372, type: 3}
       propertyPath: _materialFade
       value: 
-      objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
+      objectReference: {fileID: 2100000, guid: 609070fb572da0d4e82f08588d1d64cc, type: 2}
     - target: {fileID: 5583710282180216939, guid: 22e045cc52cbb3c429c9bfda2fa17372, type: 3}
       propertyPath: _materialNormal
       value: 
-      objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
+      objectReference: {fileID: 2100000, guid: 609070fb572da0d4e82f08588d1d64cc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -73811,7 +73843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9258254307dbd4a8359e77108c0681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adentro: {x: 17, y: 2.5, z: 5}
+  adentro: {fileID: 1300744053}
 --- !u!136 &1799861018
 CapsuleCollider:
   m_ObjectHideFlags: 0

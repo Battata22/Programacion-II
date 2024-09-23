@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody  ))]
 public class Cat : NPC
 {
     [Header("<color=#560833> Lucifer, Ruler of mankind </color>")]
     
     [SerializeField] Pickable _targetObject;
-    [SerializeField] float _jumpCD, _jumpDis;
+    [SerializeField] float _jumpCD, _jumpDis, _jumpForce;
     [SerializeField] bool _canJump;
     [SerializeField] LayerMask _mask;
+    Rigidbody _rb;
+    float _lastJump;
 
     Collider[] _objs;
 
@@ -17,6 +20,7 @@ public class Cat : NPC
     {
         base.Start();
         StartCoroutine(CheckForObjects());
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -33,6 +37,18 @@ public class Cat : NPC
 
             _agent.SetDestination(_actualNode.position);
         }
+
+        if (!_canJump && Time.time - _lastJump > _jumpCD)
+        {
+            _canJump = true;
+        }
+
+        if (_targetObject && _canJump)
+        {
+            //_agent.isStopped = true;
+            //Imposible de despegar al gato del piso
+            JumpToObject();
+        }
     }
 
     private IEnumerator CheckForObjects()
@@ -45,7 +61,7 @@ public class Cat : NPC
             _objs = Physics.OverlapSphere(transform.position, _jumpDis, _mask);
             foreach (Collider obj in _objs)
             {
-                Debug.Log($"<color=orange>Detectado {obj.name}</color>");
+                //Debug.Log($"<color=orange>Detectado {obj.name}</color>");
                 if (obj.TryGetComponent<Pickable>(out Pickable p) && p.holding == true)
                 {
                     //Debug.Log($"<color=orange>Detectado {p.name}</color>");
@@ -58,6 +74,10 @@ public class Cat : NPC
 
     void JumpToObject()
     {
-        
+        var dir = (_targetObject.transform.position - transform.position).normalized;
+        _canJump = false;
+        _rb.AddForce(transform.up * _jumpForce  , ForceMode.Impulse);
+        _rb.AddForce(dir * _jumpForce, ForceMode.Impulse);
+        _lastJump = Time.time;
     }
 }

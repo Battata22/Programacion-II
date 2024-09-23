@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BotonInicio : MonoBehaviour
 {
-    [SerializeField] Vector3 adentro = new Vector3(17f, 2f, 5f);
+    [SerializeField] Transform adentro;
 
     public void Teleport(Transform player)
     {
-        player.transform.position = adentro;
+        player.transform.position = adentro.position;
     }
 
 }

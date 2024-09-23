@@ -13,6 +13,8 @@ public class PickUp : MonoBehaviour
     public float esperaragarre;
     Player _playerScript;
     Obj_Interactuable _objScript;
+    [SerializeField] LayerMask _detectableMask;
+    
     
     
 
@@ -20,6 +22,7 @@ public class PickUp : MonoBehaviour
     {
         _playerScript = GetComponentInParent<Player>();
         _audioSource = GetComponentInParent<AudioSource>();
+        
     }
 
     private void Update()
@@ -29,16 +32,21 @@ public class PickUp : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * _rayDistance, Color.red);
 
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, _radius, transform.forward, out hit, _rayDistance, LayerMask.GetMask("Objeto")))
+        
+        if (Physics.SphereCast(transform.position, _radius, transform.forward, out hit, _rayDistance, _detectableMask))
         {
-            if(!GameManager.Instance.HandState.holding && !GameManager.Instance.HandState.pointing)
+            // Layer Objeto in slot 7
+            bool interactuable = hit.transform.gameObject.layer == 7;
+            //Debug.Log(interactuable);
+
+            if(interactuable && !GameManager.Instance.HandState.holding && !GameManager.Instance.HandState.pointing)
             {
                 GameManager.Instance.HandState.pointing = true;
                 GameManager.Instance.HandState.relax = false;
                 GameManager.Instance.HandState.ChangeState();
             }
             
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && interactuable)
             {
                 _objScript = hit.transform.gameObject.GetComponent<Obj_Interactuable>();
                 if (_objScript.grande == true && _playerScript._nivel >= 3)
@@ -56,9 +64,9 @@ public class PickUp : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && interactuable)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance, LayerMask.GetMask("Objeto")))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance, _detectableMask))
                 {
                     if (hit.transform.gameObject.GetComponent<SFX>() != null)
                     {
@@ -69,7 +77,7 @@ public class PickUp : MonoBehaviour
                         hit.transform.gameObject.GetComponent<BotonInicio>().Teleport(playerj);
                     }
                 }
-                if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance * 1.5f, LayerMask.GetMask("Objeto")))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance * 1.5f, _detectableMask))
                 {
                     if (hit.transform.gameObject.GetComponent<Luces>() != null)
                     {

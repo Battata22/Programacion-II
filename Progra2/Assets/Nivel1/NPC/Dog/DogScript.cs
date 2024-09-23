@@ -31,6 +31,13 @@ public class DogScript : NPC
             Instantiate(_areDuda, transform.position, Quaternion.identity);
         }
 
+        if (_doubt)
+            _searchingTimer += Time.deltaTime;
+        if (_searchingTimer > 12f) StopSearching();
+        if (_doubt && _inPlace && _waitDoubt >= 2)
+        {
+            StopSearching();
+        }
     }
 
     public void Ladrido()

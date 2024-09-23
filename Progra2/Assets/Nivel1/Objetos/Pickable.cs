@@ -11,13 +11,13 @@ public class Pickable : Obj_Interactuable
     
     //Material _originalMaterial;
 
-    private void Start()
+    protected virtual void Start()
     {      
         //_camera = GameManager.Instance.Camera.transform;
         //_itemHolder = GameManager.Instance.ItemHolde;
         //pickUpScript = GameManager.Instance.Player.GetComponentInChildren<PickUp>();
         //_materialNormal = GetComponent<Material>();
-        
+        if(_rb == null) _rb = GetComponent<Rigidbody>();
         _speed = 10f;
         _cd = 1;
         if (mediano)
@@ -84,7 +84,8 @@ public class Pickable : Obj_Interactuable
             _pickedUp = true;
             pickUpScript.isHolding = true;
             _onAir = true;
-            _col.enabled = false;
+            //_col.enabled = false;
+            _col.isTrigger = true;
             _rb.constraints = RigidbodyConstraints.None;
             pickUpScript.esperaragarre = 0;
             _renderer = GetComponent<Renderer>();
@@ -98,7 +99,8 @@ public class Pickable : Obj_Interactuable
     { 
         base.Throw(pickUpScript._audioSource, pickUpScript.tirar);
         _trowed = true;
-        _col.enabled = true;
+        //_col.enabled = true;
+        _col.isTrigger = false;
         _pickedUp = false;
         pickUpScript.isHolding = false;
         _onAir = true;
@@ -118,7 +120,8 @@ public class Pickable : Obj_Interactuable
         GameManager.Instance.HandState.relax = true;
         GameManager.Instance.HandState.ChangeState();
 
-        _col.enabled = true;
+        //_col.enabled = true;
+        _col.isTrigger = false;
         _pickedUp = false;
         pickUpScript.isHolding = false;
         _onAir = false;
