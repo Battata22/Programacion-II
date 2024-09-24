@@ -2,31 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class Ghostbuster : NPC
 {
     [Header("<color=red> Ghostbuster </color>")]
     [SerializeField] GB_FOV _gbFov;
     [SerializeField] float _torque, _angerRange, _angerTime , _attackRange, _suctionForce, _attackDuration, _atkDelay, _attackCD, _killRange;
-    float _waitAnger, _lastAttack = -1;
+    public float _waitAnger, _lastAttack = -1, waitTrampa, waitTrampaRandom;
 
     [SerializeField] Player _target;
+    [SerializeField] GameObject trampaPrefab;
 
     bool _lastState;
     [SerializeField] bool _angry, _isAttacking, _canAttack;
     [SerializeField] AudioClip _clipAspiradora, doubtClip, _clipAngry;
-    bool _activeChase = false, _startingAttack;
+    bool _activeChase = false, _startingAttack, _firstAnger = false;
 
     protected override void Start()
     {
         //_agent.speed;
         base.Start();
+        waitTrampaRandom = Random.Range(5, 101);
         //_target = GameManager.Instance.Player;
         _gbFov = GetComponent<GB_FOV>();
     }
 
     private void Update()
     {
+
+        if (_firstAnger == true)
+        {
+            waitTrampa += Time.deltaTime;
+            if (waitTrampa >= waitTrampaRandom)
+            {
+                PutTrap(transform);
+            }
+        }
+
         if (!_AIActive) return;
         if(_target == null) _target = GameManager.Instance.Player;
         if (_actualNode == null) Initialize();
@@ -133,6 +146,7 @@ public class Ghostbuster : NPC
 
     void GetAngry()
     {
+        _firstAnger = true;
         if (!_canAttack) return;
         if(_isAttacking) return;
         _audioSource.clip = _clipAngry;
@@ -232,6 +246,13 @@ public class Ghostbuster : NPC
             }
         }
         
+    }
+
+    void PutTrap(Transform lugar)
+    {
+        waitTrampa = 0;
+        waitTrampaRandom = Random.Range(15, 121);
+        Instantiate(trampaPrefab, lugar.position, Quaternion.identity);
     }
 
     private IEnumerator ChaseTarget()

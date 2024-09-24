@@ -1,4 +1,6 @@
 using System.IO;
+using TMPro;
+using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -8,6 +10,7 @@ public class SlidersSettings : MonoBehaviour
     [SerializeField] AudioMixer _audioMixer;
     [SerializeField] Slider _masterSlider, _sFXSlider, _nPCSlider, _musicSFXSlider, _sensSlider;
     [SerializeField] Text _textMaster, _textSFX, _textNPC, _textMusicSFX, _textSens;
+
 
     private void Start()
     {
@@ -27,12 +30,7 @@ public class SlidersSettings : MonoBehaviour
         SensCargarJSON();
     }
 
-    private void Update()
-    {
-
-    }
-
-    public void SetMusicVolume()
+    public void SetVolume()
     {
         float volumeMaster = _masterSlider.value;
         float volumeSFX = _sFXSlider.value;
@@ -43,7 +41,6 @@ public class SlidersSettings : MonoBehaviour
         _textSFX.text = ((volumeSFX * 100).ToString("0") + "%");
         _textNPC.text = ((volumeNPC * 100).ToString("0") + "%");
         _textMusicSFX.text = ((volumeMusicSFX * 100).ToString("0") + "%");
-
 
         _audioMixer.SetFloat("Master", Mathf.Log10(volumeMaster) * 20);
         _audioMixer.SetFloat("SFX", Mathf.Log10(volumeSFX) * 20);

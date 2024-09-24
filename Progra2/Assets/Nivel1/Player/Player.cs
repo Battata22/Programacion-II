@@ -23,13 +23,13 @@ public class Player : MonoBehaviour
 
 
     [Header("Movement")]
-    [SerializeField] float _speed;
+    [SerializeField] float _speed, _frezzeCD, _slowCD;
     float salto;
     float _xAxis, _zAxis;
     Vector3 _dir = new();
 
     //Attack logic
-    public bool underAttack;
+    public bool underAttack, _traped = false, _canFrezze;
     public Ghostbuster attacker;
 
     [Header("Prefabs")]
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] int _maxShadows;
     public int currentShadows;
+    public float waitFrezze, waitSlow;
 
 
 
@@ -55,6 +56,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (_traped == true)
+        {
+            waitFrezze += Time.deltaTime;
+            waitFrezze += Time.deltaTime;
+            print("pre metodo");
+            LockedTrampa();
+        }
+
         _xAxis = Input.GetAxisRaw("Horizontal");
         _zAxis = Input.GetAxisRaw("Vertical");
 
@@ -86,10 +95,6 @@ public class Player : MonoBehaviour
         }
 
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Jump();
-        //}
 
         if (_hp == 3)
         {
@@ -132,6 +137,34 @@ public class Player : MonoBehaviour
     void LockedMovement()
     {
         transform.RotateAround(attacker.transform.position, Vector3.up, _xAxis * 100 * Time.fixedDeltaTime);
+    }
+
+    void LockedTrampa()
+    {
+        print("metodo");
+        if (_canFrezze == true)
+        {
+            _speed = 0;
+            if (waitFrezze >= _frezzeCD)
+            {
+                print("if1");
+                _speed = 2;
+                _canFrezze = false;
+            }
+        }
+        else
+        {
+            waitSlow = 0;
+
+            if (waitSlow >= _slowCD)
+            {
+                _speed = 5;
+                _traped = false;
+                _canFrezze = true;
+            }
+
+        }
+
     }
 
     public void ApplyForce(Vector3 direction, float forceMult)
