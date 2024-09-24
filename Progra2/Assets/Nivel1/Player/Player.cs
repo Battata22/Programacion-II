@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip clipLevelUp;
 
     [SerializeField] Sprite _vidaFull, _vidaMedia, _vidaBaja;
-    [SerializeField] Image _vidaUI;
+    [SerializeField] Image _vidaUI, _marcoLvl1, _marcoLvl2, _marcoLvl3;
 
 
     [Header("Movement")]
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     Vector3 _dir = new();
 
     //Attack logic
-    public bool underAttack, _traped = false, _canFrezze;
+    public bool underAttack, _traped = false, _canFrezze2 = true;
     public Ghostbuster attacker;
 
     [Header("Prefabs")]
@@ -37,7 +37,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] int _maxShadows;
     public int currentShadows;
-    public float waitFrezze, waitSlow;
+    float waitFrezze, waitSlow;
+    [SerializeField] float opacidadMarco;
 
 
 
@@ -59,8 +60,7 @@ public class Player : MonoBehaviour
         if (_traped == true)
         {
             waitFrezze += Time.deltaTime;
-            waitFrezze += Time.deltaTime;
-            print("pre metodo");
+            waitSlow += Time.deltaTime;
             LockedTrampa();
         }
 
@@ -94,20 +94,10 @@ public class Player : MonoBehaviour
             _speed = _speed * 2f;
         }
 
+        SpriteVidaUpdate();
 
+        MarcoUpdate();
 
-        if (_hp == 3)
-        {
-            _vidaUI.sprite = _vidaFull;
-        }
-        else if (_hp == 2)
-        {
-            _vidaUI.sprite = _vidaMedia;
-        }
-        else if (_hp == 1)
-        {
-            _vidaUI.sprite = _vidaBaja;
-        }
     }
 
     private void FixedUpdate()
@@ -134,6 +124,53 @@ public class Player : MonoBehaviour
         }
     }
 
+    void SpriteVidaUpdate()
+    {
+        if (_hp == 3)
+        {
+            _vidaUI.sprite = _vidaFull;
+        }
+        else if (_hp == 2)
+        {
+            _vidaUI.sprite = _vidaMedia;
+        }
+        else if (_hp == 1)
+        {
+            _vidaUI.sprite = _vidaBaja;
+        }
+    }
+
+    void MarcoUpdate()
+    {
+        if (_nivel == 3)
+        {
+            _marcoLvl1.enabled = true;
+            _marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
+            _marcoLvl2.enabled = true;
+            _marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
+            _marcoLvl3.enabled = true;
+            _marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
+        }
+        if (_nivel == 2)
+        {
+            _marcoLvl1.enabled = true;
+            _marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
+            _marcoLvl2.enabled = true;
+            _marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
+            _marcoLvl3.enabled = false;
+            _marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
+        }
+        if (_nivel == 1)
+        {
+            _marcoLvl1.enabled = true;
+            _marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
+            _marcoLvl2.enabled = false;
+            _marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
+            _marcoLvl3.enabled = false;
+            _marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
+        }
+    }
+
     void LockedMovement()
     {
         transform.RotateAround(attacker.transform.position, Vector3.up, _xAxis * 100 * Time.fixedDeltaTime);
@@ -141,26 +178,25 @@ public class Player : MonoBehaviour
 
     void LockedTrampa()
     {
-        print("metodo");
-        if (_canFrezze == true)
+        if (_canFrezze2 == true)
         {
             _speed = 0;
             if (waitFrezze >= _frezzeCD)
             {
-                print("if1");
                 _speed = 2;
-                _canFrezze = false;
+                waitSlow = 0;
+                _canFrezze2 = false;
             }
         }
         else
         {
-            waitSlow = 0;
-
             if (waitSlow >= _slowCD)
             {
                 _speed = 5;
                 _traped = false;
-                _canFrezze = true;
+                _canFrezze2 = true;
+                waitFrezze = 0;
+                waitSlow = 0;
             }
 
         }
