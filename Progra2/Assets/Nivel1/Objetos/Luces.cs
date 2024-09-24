@@ -9,10 +9,12 @@ public class Luces : Obj_Interactuable
     [SerializeField] bool on = true;
     AudioSource _audioSource;
     [SerializeField] AudioClip _clip;
+    [SerializeField] Chocamiento _chocamiento;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        _chocamiento = GetComponent<Chocamiento>();
         _audioSource.clip = _clip; 
     }
 
@@ -27,6 +29,7 @@ public class Luces : Obj_Interactuable
             }
             on = false;
             _audioSource.Play();
+            _chocamiento.Choco(transform.position);
         }
         else if (_luces[0].enabled == false)
         {
@@ -36,6 +39,7 @@ public class Luces : Obj_Interactuable
             }
             on = true;
             _audioSource.Play();
+            _chocamiento.Choco(transform.position);
         }
     }
 

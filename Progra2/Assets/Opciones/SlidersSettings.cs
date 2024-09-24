@@ -11,6 +11,10 @@ public class SlidersSettings : MonoBehaviour
     [SerializeField] Slider _masterSlider, _sFXSlider, _nPCSlider, _musicSFXSlider, _sensSlider;
     [SerializeField] Text _textMaster, _textSFX, _textNPC, _textMusicSFX, _textSens;
     [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioMixerGroup groupMaster, groupSFX, groupNPC, groupMusic;
+    float waitSonido, menuTimer;
+    bool sono = true;
+    int output = 1; // 1 = master, 2 = SFX, 3 = NPCs, 4 = MusicSFX
 
 
     private void Start()
@@ -31,6 +35,53 @@ public class SlidersSettings : MonoBehaviour
         SensCargarJSON();
     }
 
+    private void Update()
+    {
+        waitSonido += Time.deltaTime;
+        menuTimer += Time.deltaTime;
+
+        if (waitSonido >= 0.1f && menuTimer >= 0.2f && sono == false)
+        {
+            sono = true;
+            _audioSource.Play();
+        }
+
+        //podria estar mejor? si, pero funciona.
+        if (menuTimer <= 0.3)
+        {
+            _audioSource.volume = 0;
+        }
+        else
+        {
+            _audioSource.volume = 1;
+        }
+    }
+
+    public void MasterOutput()
+    {
+        _audioSource.outputAudioMixerGroup = groupMaster;
+    }
+
+    public void SFXOutput()
+    {
+        _audioSource.outputAudioMixerGroup = groupSFX;
+    }
+
+    public void NPCsOutput()
+    {
+        _audioSource.outputAudioMixerGroup = groupNPC;
+    }
+
+    public void MusicSFXOutput()
+    {
+        _audioSource.outputAudioMixerGroup = groupMusic;
+    }
+    public void SensOutput()
+    {
+        _audioSource.outputAudioMixerGroup = groupMaster;
+    }
+
+
     public void SetVolume()
     {
         float volumeMaster = _masterSlider.value;
@@ -48,7 +99,8 @@ public class SlidersSettings : MonoBehaviour
         _audioMixer.SetFloat("NPCs", Mathf.Log10(volumeNPC) * 20);
         _audioMixer.SetFloat("MusicSFX", Mathf.Log10(volumeMusicSFX) * 20);
 
-        //_audioSource.Play();
+        waitSonido = 0;
+        sono = false;
 
         #region Comment
         //PlayerPrefs.SetFloat("MasterVolume", volumeMaster);
@@ -65,6 +117,9 @@ public class SlidersSettings : MonoBehaviour
     public void SetSens()
     {
         _textSens.text = ((_sensSlider.value).ToString("0") + "%");
+
+        waitSonido = 0;
+        sono = false;
 
         SensGuardarJSON(_sensSlider.value);
     }

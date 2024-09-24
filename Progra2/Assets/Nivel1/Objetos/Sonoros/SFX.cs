@@ -7,11 +7,13 @@ public class SFX : Pickable
     public AudioSource _audioSource;
     [SerializeField] protected bool isPlaying = false, clip = false;
     protected int random1;
+    Chocamiento _chocamiento;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _col = GetComponent<Collider>();
+        _chocamiento = GetComponent<Chocamiento>();
     }
 
     protected override void Start()
@@ -39,5 +41,6 @@ public class SFX : Pickable
             isPlaying = false;
             _audioSource.Pause();
         }
+        _chocamiento.ChocoSonoro(transform.position);
     }
 }

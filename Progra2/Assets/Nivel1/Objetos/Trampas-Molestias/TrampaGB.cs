@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrampaGB : MonoBehaviour
 {
     [SerializeField] Chocamiento chocamientoScript;
+    [SerializeField] Ghostbuster _gBScript;
 
     void Start()
     {
@@ -23,7 +24,8 @@ public class TrampaGB : MonoBehaviour
 
         if (player != null)
         {
-            chocamientoScript.Choco(player.transform.position);
+            //chocamientoScript.Choco(player.transform.position);
+            _gBScript.GetDoubt(player.transform.position);
             player._traped = true;
             //dejarte quieto 1s o 0.5s
             //relentizarte durante 5s
@@ -31,4 +33,5 @@ public class TrampaGB : MonoBehaviour
         }
 
     }
+
 }
