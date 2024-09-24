@@ -10,6 +10,7 @@ public class SlidersSettings : MonoBehaviour
     [SerializeField] AudioMixer _audioMixer;
     [SerializeField] Slider _masterSlider, _sFXSlider, _nPCSlider, _musicSFXSlider, _sensSlider;
     [SerializeField] Text _textMaster, _textSFX, _textNPC, _textMusicSFX, _textSens;
+    [SerializeField] AudioSource _audioSource;
 
 
     private void Start()
@@ -46,6 +47,8 @@ public class SlidersSettings : MonoBehaviour
         _audioMixer.SetFloat("SFX", Mathf.Log10(volumeSFX) * 20);
         _audioMixer.SetFloat("NPCs", Mathf.Log10(volumeNPC) * 20);
         _audioMixer.SetFloat("MusicSFX", Mathf.Log10(volumeMusicSFX) * 20);
+
+        //_audioSource.Play();
 
         #region Comment
         //PlayerPrefs.SetFloat("MasterVolume", volumeMaster);

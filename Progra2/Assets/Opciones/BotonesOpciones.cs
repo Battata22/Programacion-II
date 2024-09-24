@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class BotonesOpciones : MonoBehaviour
 {
     [SerializeField] SlidersSettings volumeSettingsScript;
+    [SerializeField] AudioSource _audioSource;
     void Start()
     {
         volumeSettingsScript = GetComponentInParent<SlidersSettings>();
@@ -22,7 +23,6 @@ public class BotonesOpciones : MonoBehaviour
 
     public void VolverOnClicked()
     {
-
         SceneManager.LoadScene("Menu");
     }
 }
