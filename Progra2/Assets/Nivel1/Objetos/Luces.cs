@@ -29,7 +29,7 @@ public class Luces : Obj_Interactuable
             }
             on = false;
             _audioSource.Play();
-            _chocamiento.Choco(transform.position);
+            _chocamiento.ChocoSonoro(transform.position);
         }
         else if (_luces[0].enabled == false)
         {
@@ -39,7 +39,7 @@ public class Luces : Obj_Interactuable
             }
             on = true;
             _audioSource.Play();
-            _chocamiento.Choco(transform.position);
+            _chocamiento.ChocoSonoro(transform.position);
         }
     }
 

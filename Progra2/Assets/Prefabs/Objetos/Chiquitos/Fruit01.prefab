@@ -32,14 +32,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2465507699304117427}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.31497553, z: -0, w: 0.94909984}
+  m_LocalRotation: {x: 0, y: 0.3149782, z: 0, w: 0.9490989}
   m_LocalPosition: {x: -0.6890001, y: 1.095, z: -7.183}
-  m_LocalScale: {x: 0.010000001, y: 0.01, z: 0.010000001}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8548905915343813825}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 36.719, z: 0}
 --- !u!33 &5979747769982949172
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
-  areaSonoro: {fileID: 0}
+  areaSonoro: {fileID: 6479006537298369615, guid: 73f6cff95ec2f9d45a5f76c2ed13b5c1, type: 3}
 --- !u!114 &6123068353002734372
 MonoBehaviour:
   m_ObjectHideFlags: 0

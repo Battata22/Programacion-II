@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 //using static UnityEditor.PlayerSettings;
 
@@ -16,6 +17,9 @@ public class Ghostbuster : NPC
     [SerializeField] bool _angry, _isAttacking, _canAttack;
     [SerializeField] AudioClip _clipAspiradora, doubtClip, _clipAngry;
     bool _activeChase = false, _startingAttack, _firstAnger = false;
+
+    [SerializeField] int maxTraps;
+    [SerializeField] int currentTraps;
 
     ParticleSystem _particleGen;
 
@@ -253,10 +257,14 @@ public class Ghostbuster : NPC
 
     void PutTrap(Transform lugar)
     {
-        waitTrampa = 0;
-        waitTrampaRandom = Random.Range(15, 121);
-        var newTrap = Instantiate(trampaPrefab, lugar.position, Quaternion.identity);
-        newTrap.Initialize(this);
+        if(currentTraps < maxTraps)
+        {
+            currentTraps++;
+            waitTrampa = 0;
+            waitTrampaRandom = Random.Range(15, 121);
+            var newTrap = Instantiate(trampaPrefab, lugar.position, Quaternion.identity);
+            newTrap.Initialize(this);
+        }
 
     }
 

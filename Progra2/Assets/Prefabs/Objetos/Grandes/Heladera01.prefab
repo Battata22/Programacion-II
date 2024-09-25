@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4955247353599719660}
   - component: {fileID: 6874627398478504718}
   - component: {fileID: 6341445973394224487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Heladera01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -14.43, y: 0, z: 1.98}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.017, y: 0.017, z: 0.017}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,11 +109,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!114 &4955247353599719660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
-  areaSonoro: {fileID: 0}
+  areaSonoro: {fileID: 6479006537298369615, guid: 73f6cff95ec2f9d45a5f76c2ed13b5c1, type: 3}
 --- !u!114 &6874627398478504718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   mediano: 0
   grande: 1
   holding: 0
-  _materialNormal: {fileID: 0}
+  _materialNormal: {fileID: 2100000, guid: a0e3d7673478830478a467042d8d8b7b, type: 2}
   _materialFade: {fileID: 2100000, guid: 23fd5126f5d62e34b8c1f1c6495e80bb, type: 2}
   _renderer: {fileID: 0}
   _dropLayers:
