@@ -8,11 +8,11 @@ public class Cat : NPC
     [Header("<color=#560833> Lucifer, Ruler of mankind </color>")]
     
     [SerializeField] Pickable _targetObject;
-    [SerializeField] float _jumpCD, _jumpDis, _jumpForce;
+    [SerializeField] float _jumpCD, _jumpDis, _jumpForce, _dropDis;
     [SerializeField] bool _canJump, _onFloor, _searchObj;
     [SerializeField] LayerMask _mask, _floorMask;
     Rigidbody _rb;
-    float _lastJump;
+    float _lastJump, _rbDrag;
     bool _antiSpam;
 
     
@@ -23,6 +23,7 @@ public class Cat : NPC
         base.Start();
         //StartCoroutine(CheckForObjects());
         _rb = GetComponent<Rigidbody>();
+        _rbDrag = _rb.drag;
     }
 
     private void Update()
@@ -64,43 +65,77 @@ public class Cat : NPC
 
         RaycastHit _floor;
 
-        if (!_onFloor && Time.time - _lastJump > 0.05f)
+        if(!_onFloor && Time.time - _lastJump > _jumpCD / 2)
+        {
+            OnFloor();
+        }
+        else if (!_onFloor && Time.time - _lastJump > 0.05f)
         {
             if (Physics.Raycast(transform.position, -transform.up, out _floor, 0.3f, LayerMask.GetMask("NoTras")))
             {
                 OnFloor();
             }
-        }
+        }        
 
         if (!_antiSpam && _searchObj)
         {
             StartCoroutine(CheckForObjects());
+        }
+
+        if(!_onFloor && _targetObject != null && Vector3.SqrMagnitude(transform.position - _targetObject.transform.position) <= (_dropDis * _dropDis))
+        {
+            _targetObject.Drop();
+        }
+    }
+
+    void CheckObjects()
+    {
+        _targetObject = null;
+        Collider[] _objs;
+        //Debug.Log("Chequeando");
+        _objs = Physics.OverlapSphere(transform.position, _jumpDis, _mask);
+        foreach (Collider obj in _objs)
+        {
+            //Debug.Log($"<color=orange>Detectado {obj.name}</color>");
+            if (obj.TryGetComponent<Pickable>(out Pickable p) && p.holding == true)
+            {
+                //Debug.Log($"<color=orange>Detectado {p.name}</color>");
+                Debug.Log("Encontrado");
+                _targetObject = p;
+                Debug.Log($"<color=green>Target {_targetObject.name}</color>");
+            }
         }
     }
 
     private IEnumerator CheckForObjects()
     {
         _antiSpam = true;
+        
         WaitForSeconds wait = new WaitForSeconds(0.2f);
-        Debug.Log("Funcionando");
+        //Debug.Log("Funcionando");
         while (_searchObj)
         {
             yield return wait;
-            Collider[] _objs;
-            Debug.Log("Chequeando");
-            _objs = Physics.OverlapSphere(transform.position, _jumpDis, _mask);
-            foreach (Collider obj in _objs)
-            {
-                //Debug.Log($"<color=orange>Detectado {obj.name}</color>");
-                if (obj.TryGetComponent<Pickable>(out Pickable p) && p.holding == true)
-                {
-                    //Debug.Log($"<color=orange>Detectado {p.name}</color>");
-                    Debug.Log("Encontrado");
-                    _targetObject = p;
-                    Debug.Log($"<color=green>Target {_targetObject.name}</color>");
-                }
-            }
+            //_targetObject = null;
+            //Collider[] _objs;
+            //Debug.Log("Chequeando");
+            //_objs = Physics.OverlapSphere(transform.position, _jumpDis, _mask);
+            //foreach (Collider obj in _objs)
+            //{
+            //    //Debug.Log($"<color=orange>Detectado {obj.name}</color>");
+            //    if (obj.TryGetComponent<Pickable>(out Pickable p) && p.holding == true)
+            //    {
+            //        //Debug.Log($"<color=orange>Detectado {p.name}</color>");
+            //        Debug.Log("Encontrado");
+            //        _targetObject = p;
+            //        Debug.Log($"<color=green>Target {_targetObject.name}</color>");
+            //    }
+            //}
+
+            CheckObjects();
+            
         }
+        
         Debug.Log("Stoped");
     }
 
@@ -109,13 +144,18 @@ public class Cat : NPC
         var dir = (_targetObject.transform.position - transform.position).normalized;
         _agent.enabled = false;
         _canJump = false;
-        _antiSpam=true;
+        _antiSpam=false;
         _rb.useGravity = true;
         _onFloor = false;
         _searchObj = false;
         //_rb.AddForce(transform.up * _jumpForce  , ForceMode.Impulse);
-        _rb.AddForce(transform.up * _jumpForce * 0.5f, ForceMode.Impulse);
-        _rb.AddForce(dir * _jumpForce, ForceMode.Impulse);
+        _rb.drag = 0f;
+        transform.forward = new Vector3(dir.x, 0, dir.z);
+        _rb.AddForce(transform.up * _jumpForce* _rb.mass * 0.5f, ForceMode.Impulse);
+        _rb.AddForce(dir * _jumpForce * _rb.mass, ForceMode.Impulse);
+
+        //_targetObject.Drop();
+
         _targetObject = null;
         _lastJump = Time.time;
     }
@@ -124,7 +164,9 @@ public class Cat : NPC
     {
         if (_onFloor) return;
         //StartCoroutine(CheckForObjects());
+        _targetObject = null;
         _rb.velocity = Vector3.zero;
+        _rb.drag = _rbDrag;
         _agent.enabled = true;
         _agent.SetDestination(_actualNode.position);
         _rb.useGravity = false;

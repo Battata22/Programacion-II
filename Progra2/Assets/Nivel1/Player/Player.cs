@@ -145,29 +145,29 @@ public class Player : MonoBehaviour
         if (_nivel == 3)
         {
             _marcoLvl1.enabled = true;
-            _marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
             _marcoLvl2.enabled = true;
-            _marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
             _marcoLvl3.enabled = true;
-            _marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
         }
         if (_nivel == 2)
         {
             _marcoLvl1.enabled = true;
-            _marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
             _marcoLvl2.enabled = true;
-            _marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
             _marcoLvl3.enabled = false;
-            _marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
         }
         if (_nivel == 1)
         {
             _marcoLvl1.enabled = true;
-            _marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
             _marcoLvl2.enabled = false;
-            _marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
             _marcoLvl3.enabled = false;
-            _marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
+            //_marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
         }
     }
 

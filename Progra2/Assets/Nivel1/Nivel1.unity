@@ -669,6 +669,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &10551845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -753,7 +755,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -1321,6 +1323,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &25563944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1770,6 +1774,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &27460600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,7 +2199,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -2652,6 +2658,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &57500393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3472,6 +3480,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &90685415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3894,6 +3904,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &91419470
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4651,6 +4663,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &130322812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5052,6 +5066,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!65 &141667489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5940,7 +5956,6 @@ GameObject:
   - component: {fileID: 179027423}
   - component: {fileID: 179027426}
   - component: {fileID: 179027425}
-  - component: {fileID: 179027424}
   - component: {fileID: 179027427}
   m_Layer: 5
   m_Name: Marco3
@@ -5968,27 +5983,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1082.8125}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &179027424
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179027422}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 642bfcdc8cd829242ab4a10efdafba77, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &179027425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6002,7 +5996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.25, g: 0.25, b: 0.25, a: 0.101960786}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6429,6 +6423,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &181400584
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6836,7 +6832,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 1.7
   m_Range: 5
   m_SpotAngle: 30
@@ -6980,6 +6976,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -7551,7 +7549,6 @@ GameObject:
   - component: {fileID: 201346668}
   - component: {fileID: 201346671}
   - component: {fileID: 201346670}
-  - component: {fileID: 201346669}
   - component: {fileID: 201346672}
   m_Layer: 5
   m_Name: MarcoBase
@@ -7579,27 +7576,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &201346669
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201346667}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 70e669b3936555842be4b2ae4a49ade4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &201346670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7613,7 +7589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.496, g: 0.496, b: 0.496, a: 0.14901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9993,6 +9969,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &213675998
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10877,10 +10855,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 201346668}
-  - {fileID: 1864311927}
-  - {fileID: 1240910565}
   - {fileID: 179027423}
+  - {fileID: 1240910565}
+  - {fileID: 1864311927}
+  - {fileID: 201346668}
   - {fileID: 1458472418}
   - {fileID: 796551206}
   - {fileID: 1073795181}
@@ -12543,6 +12521,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &245657216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13500,6 +13480,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &295146590
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14220,6 +14202,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -17306,6 +17290,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -17750,6 +17736,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -18904,6 +18892,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &457802967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18988,7 +18978,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -19420,6 +19410,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &462274625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21602,6 +21594,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &476650983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22221,6 +22215,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -22863,6 +22859,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &488727804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23538,6 +23536,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &495126722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23949,6 +23949,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &497564390
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24456,6 +24458,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &504012257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24878,6 +24882,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &504167916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25912,6 +25918,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!65 &517360922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26366,6 +26374,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -27602,6 +27612,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &556946551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27994,7 +28006,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -28454,6 +28466,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &600380139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29304,6 +29318,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &615972587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29864,6 +29880,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &625218205
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31756,6 +31774,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &660261345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33418,6 +33438,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &690954355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33856,6 +33878,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &698450141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34303,6 +34327,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &714550891
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34842,6 +34868,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &722659589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35512,6 +35540,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &748702261
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36273,15 +36303,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.021666998
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.021666998
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.021666998
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36293,7 +36323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.03
+      value: 16.46
       objectReference: {fileID: 0}
     - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36322,6 +36352,10 @@ PrefabInstance:
     - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536700027973076346, guid: f8fe8a9bf46637846817d73ad23056d9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36838,6 +36872,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &777521228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37249,6 +37285,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &778452367
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38917,6 +38955,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &823609021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39843,6 +39883,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &835295046
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40844,6 +40886,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &850170810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41632,6 +41676,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &871315900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43113,6 +43159,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &915142802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43564,6 +43612,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &937418052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46547,6 +46597,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &982212382
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48393,6 +48445,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1045491737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -49002,6 +49056,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1082023188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50204,6 +50260,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1116699696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50734,6 +50792,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1129448805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51157,6 +51217,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1132435341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51596,6 +51658,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1134691322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51834,7 +51898,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 1.7
   m_Range: 5
   m_SpotAngle: 30
@@ -52293,6 +52357,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1148223451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52800,6 +52866,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1155989776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53222,6 +53290,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1170791179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53515,7 +53585,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -53947,6 +54017,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1205903654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -54369,6 +54441,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1209108565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -54824,6 +54898,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1224805559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55235,6 +55311,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1225465443
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -58681,7 +58759,6 @@ GameObject:
   - component: {fileID: 1240910565}
   - component: {fileID: 1240910568}
   - component: {fileID: 1240910567}
-  - component: {fileID: 1240910566}
   - component: {fileID: 1240910569}
   m_Layer: 5
   m_Name: Marco2
@@ -58709,27 +58786,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1082.8125}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1240910566
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240910564}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 89ae8e4870a795046ac624920971460f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1240910567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58743,7 +58799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3, g: 0.3, b: 0.3, a: 0.101960786}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -59552,6 +59608,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1269206939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61786,6 +61844,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1315841955
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62401,7 +62461,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -62913,7 +62973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4776833676195320638, guid: 1b621bf1d559ad74fb73fb8bbef8a3fb, type: 3}
       propertyPath: m_Name
-      value: Particle System (1)
+      value: P_Objetos
       objectReference: {fileID: 0}
     - target: {fileID: 6066973831700820996, guid: 1b621bf1d559ad74fb73fb8bbef8a3fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63640,6 +63700,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1352004307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64230,6 +64292,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1397418985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65700,6 +65764,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1463423108
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66531,6 +66597,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -67129,15 +67197,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6676531401928408294, guid: c384bf1dc05eecf41bb1f94373fa8b2c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.017071
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 6676531401928408294, guid: c384bf1dc05eecf41bb1f94373fa8b2c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.017071
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 6676531401928408294, guid: c384bf1dc05eecf41bb1f94373fa8b2c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.017071
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 6676531401928408294, guid: c384bf1dc05eecf41bb1f94373fa8b2c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67178,6 +67246,10 @@ PrefabInstance:
     - target: {fileID: 6676531401928408294, guid: c384bf1dc05eecf41bb1f94373fa8b2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676531401928408294, guid: c384bf1dc05eecf41bb1f94373fa8b2c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67570,6 +67642,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1542424408
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67673,9 +67747,10 @@ MonoBehaviour:
   _targetObject: {fileID: 0}
   _jumpCD: 4
   _jumpDis: 3
-  _jumpForce: 15
+  _jumpForce: 6
+  _dropDis: 1.2
   _canJump: 1
-  _onFloor: 0
+  _onFloor: 1
   _searchObj: 1
   _mask:
     serializedVersion: 2
@@ -68321,7 +68396,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -68781,6 +68856,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1561426681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68811,6 +68888,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!4 &1572158468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+  m_PrefabInstance: {fileID: 1976082903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1578958126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68959,6 +69041,10 @@ PrefabInstance:
     - target: {fileID: 8463811624589154721, guid: df243c43271705a4d97913675df1f777, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463811624589154721, guid: df243c43271705a4d97913675df1f777, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69346,6 +69432,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1599666199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -70342,7 +70430,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -70901,6 +70989,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!65 &1691968082
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71372,6 +71462,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1693225529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73514,6 +73606,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1719805642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74313,6 +74407,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1732475154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75716,6 +75812,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -75961,19 +76059,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2441370855837294524, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.020179883
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 2441370855837294524, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.020179883
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 2441370855837294524, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.020179883
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 2441370855837294524, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.38
+      value: 25.72
       objectReference: {fileID: 0}
     - target: {fileID: 2441370855837294524, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
       propertyPath: m_LocalPosition.y
@@ -76010,6 +76108,10 @@ PrefabInstance:
     - target: {fileID: 2441370855837294524, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441370855837294524, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7303316168938796322, guid: 7dc2ff9902b5bf44489524e3182eff28, type: 3}
       propertyPath: m_Name
@@ -76428,6 +76530,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1803015121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76823,6 +76927,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1805799400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77330,6 +77436,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &1820561017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77552,15 +77660,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.017071
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.017071
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.017071
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77601,6 +77709,10 @@ PrefabInstance:
     - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7806473840883879312, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_Name
@@ -78493,7 +78605,6 @@ GameObject:
   - component: {fileID: 1864311927}
   - component: {fileID: 1864311930}
   - component: {fileID: 1864311929}
-  - component: {fileID: 1864311928}
   - component: {fileID: 1864311931}
   m_Layer: 5
   m_Name: Marco1
@@ -78521,27 +78632,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1082.8125}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1864311928
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864311926}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 428458c47051b324f9ae194bb5c4f720, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1864311929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78555,7 +78645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.4, b: 0.4, a: 0.101960786}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -79612,17 +79702,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1910685525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
-  m_PrefabInstance: {fileID: 3193108461530179667}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c76d68ad97e2d46b7fe5d9afce59b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1919919378
 GameObject:
   m_ObjectHideFlags: 0
@@ -79839,6 +79918,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1953394373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3629897706112696924, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+  m_PrefabInstance: {fileID: 3193108461530179667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1960549492
 GameObject:
   m_ObjectHideFlags: 0
@@ -80331,6 +80415,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1963352361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80770,6 +80856,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1967590462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80800,6 +80888,63 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1001 &1976082903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1953394373}
+    m_Modifications:
+    - target: {fileID: 6555032066282854364, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_Name
+      value: P_Aspiradora
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461484159994156924, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8eff8521047fb9541b407c8ca666b4f3, type: 3}
 --- !u!1001 &1979208982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81495,6 +81640,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &1992802074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81568,7 +81715,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -83044,7 +83191,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.47084573, g: 0.31367925, b: 0.5, a: 1}
+  m_Color: {r: 0.35906243, g: 0.239375, b: 0.383, a: 1}
   m_Intensity: 0.15
   m_Range: 10
   m_SpotAngle: 30
@@ -83854,6 +84001,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &2045277103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84551,6 +84700,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &2056803723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84624,7 +84775,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 1.7
   m_Range: 5
   m_SpotAngle: 30
@@ -84952,6 +85103,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!65 &2079310175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85676,6 +85829,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!114 &2086254472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86092,6 +86247,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pickUpScript: {fileID: 477688329}
+  particleGen: {fileID: 0}
+  parTime: 0
 --- !u!54 &2090207380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86176,7 +86333,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.33, b: 0.120000005, a: 1}
   m_Intensity: 9.5
   m_Range: 11
   m_SpotAngle: 109.38
@@ -86364,15 +86521,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3930720990671811732, guid: 9254762081b3ac240a132173117ea5ee, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.017350383
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3930720990671811732, guid: 9254762081b3ac240a132173117ea5ee, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.02022534
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3930720990671811732, guid: 9254762081b3ac240a132173117ea5ee, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.017350383
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3930720990671811732, guid: 9254762081b3ac240a132173117ea5ee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -86412,6 +86569,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3930720990671811732, guid: 9254762081b3ac240a132173117ea5ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930720990671811732, guid: 9254762081b3ac240a132173117ea5ee, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5931710862911683288, guid: 9254762081b3ac240a132173117ea5ee, type: 3}
@@ -87460,18 +87621,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghostbuster
       objectReference: {fileID: 0}
+    - target: {fileID: 3079976728656513823, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528524870732373835, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: _canAttack
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: _killRange
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: _attackRange
       value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
-      propertyPath: trampaPrefab
-      value: 
-      objectReference: {fileID: 4477114628775355629, guid: 7fa031236f82ea4489a86ce1db0a6eb9, type: 3}
     - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: _suctionForce
       value: 35
@@ -87586,7 +87759,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3629897706112696924, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1572158468}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
 --- !u!1001 &5107572936931249845
@@ -87654,10 +87830,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4159578573783807037, guid: 7fa031236f82ea4489a86ce1db0a6eb9, type: 3}
-      propertyPath: _gBScript
-      value: 
-      objectReference: {fileID: 1910685525}
     - target: {fileID: 4477114628775355629, guid: 7fa031236f82ea4489a86ce1db0a6eb9, type: 3}
       propertyPath: m_Name
       value: TrampaBase
@@ -87754,6 +87926,18 @@ PrefabInstance:
     - target: {fileID: 7420479667558392966, guid: e7b7de8e4d066d64b9ca9b1bdb7f93d4, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107456206473804558, guid: e7b7de8e4d066d64b9ca9b1bdb7f93d4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107456206473804558, guid: e7b7de8e4d066d64b9ca9b1bdb7f93d4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107456206473804558, guid: e7b7de8e4d066d64b9ca9b1bdb7f93d4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 8107456206473804558, guid: e7b7de8e4d066d64b9ca9b1bdb7f93d4, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,12 +10,14 @@ public class Ghostbuster : NPC
     public float _waitAnger, _lastAttack = -1, waitTrampa, waitTrampaRandom;
 
     [SerializeField] Player _target;
-    [SerializeField] GameObject trampaPrefab;
+    [SerializeField] TrampaGB trampaPrefab;
 
     bool _lastState;
     [SerializeField] bool _angry, _isAttacking, _canAttack;
     [SerializeField] AudioClip _clipAspiradora, doubtClip, _clipAngry;
     bool _activeChase = false, _startingAttack, _firstAnger = false;
+
+    ParticleSystem _particleGen;
 
     protected override void Start()
     {
@@ -24,6 +26,7 @@ public class Ghostbuster : NPC
         waitTrampaRandom = Random.Range(5, 101);
         //_target = GameManager.Instance.Player;
         _gbFov = GetComponent<GB_FOV>();
+        _particleGen = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Update()
@@ -166,6 +169,7 @@ public class Ghostbuster : NPC
     {
         if (!_canAttack) return;
         _startingAttack = false;
+        _particleGen.Play();
         //Activar modo Luigi
         //Los objetos libianos cercanos tambien seria succionados? idea
         //Debug.Log("Iniciando Ataque");
@@ -202,6 +206,7 @@ public class Ghostbuster : NPC
         //if(!_isAttacking) return;
         //Debug.Log("Terminando Ataque");
         //_agent.speed = speedNormal;
+        _particleGen.Stop();
         _target.underAttack = false;
         _target.attacker = null;
         _target.ApplyForce(new Vector3(), 0);
@@ -250,7 +255,9 @@ public class Ghostbuster : NPC
     {
         waitTrampa = 0;
         waitTrampaRandom = Random.Range(15, 121);
-        Instantiate(trampaPrefab, lugar.position, Quaternion.identity);
+        var newTrap = Instantiate(trampaPrefab, lugar.position, Quaternion.identity);
+        newTrap.Initialize(this);
+
     }
 
     private IEnumerator ChaseTarget()
@@ -290,9 +297,11 @@ public class Ghostbuster : NPC
         _startingAttack =true;
         yield return new WaitForSeconds(_atkDelay);
         //_isAttacking = true;
+        //_particleGen.gameObject.SetActive(true);
         StartAttack();
 
         yield return new WaitForSeconds(_attackDuration);
+        
         EndAttack();
     }
 

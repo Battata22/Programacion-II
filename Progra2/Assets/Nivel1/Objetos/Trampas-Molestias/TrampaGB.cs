@@ -18,6 +18,11 @@ public class TrampaGB : MonoBehaviour
         
     }
 
+    public void Initialize(Ghostbuster newGB)
+    {
+        _gBScript = newGB;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.gameObject.GetComponent<Player>();

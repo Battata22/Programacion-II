@@ -8,6 +8,9 @@ public class Pickable : Obj_Interactuable
 {
     bool _pickedUp, _trowed;
     public PickUp pickUpScript;
+    public ParticleSystem particleGen;
+    float _parMaxTime = 5f; 
+    public float parTime;
     
     //Material _originalMaterial;
 
@@ -35,6 +38,7 @@ public class Pickable : Obj_Interactuable
             this.AddComponent<NavMeshObstacle>();
         }
         _dropLayers = GameManager.Instance.DropLayers;
+        particleGen = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Update()
@@ -58,9 +62,14 @@ public class Pickable : Obj_Interactuable
             pickUpScript._audioSource.loop = false;
         }
 
-        if(holding && !_trowed)
+        if (holding && !_trowed)
         {
             CheckForDrop();
+        }
+
+        if(particleGen != null && Time.time - parTime > _parMaxTime)
+        {
+            particleGen.Stop();
         }
     }
 
@@ -100,6 +109,8 @@ public class Pickable : Obj_Interactuable
         base.Throw(pickUpScript._audioSource, pickUpScript.tirar);
         _trowed = true;
         //_col.enabled = true;
+        if(particleGen)
+            particleGen.Stop();
         _col.isTrigger = false;
         _pickedUp = false;
         pickUpScript.isHolding = false;
@@ -119,7 +130,8 @@ public class Pickable : Obj_Interactuable
         GameManager.Instance.HandState.pointing = false;
         GameManager.Instance.HandState.relax = true;
         GameManager.Instance.HandState.ChangeState();
-
+        if (particleGen)
+            particleGen.Stop();
         //_col.enabled = true;
         _col.isTrigger = false;
         _pickedUp = false;
@@ -151,9 +163,9 @@ public class Pickable : Obj_Interactuable
                 _onAir = false;
                 _trowed = false;
             }
-            //else if (hitObjs.Length != 0)//collision.gameObject.layer != 7
+            //else if (hitObjs.length != 0)//collision.gameobject.layer != 7
             //{
-            //    Drop(); 
+            //    Drop();
             //}
         }
     }

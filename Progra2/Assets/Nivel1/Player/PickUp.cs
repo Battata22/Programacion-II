@@ -14,6 +14,7 @@ public class PickUp : MonoBehaviour
     Player _playerScript;
     Obj_Interactuable _objScript;
     [SerializeField] LayerMask _detectableMask;
+    GameObject _lastObj;
     
     
     
@@ -37,9 +38,18 @@ public class PickUp : MonoBehaviour
         {
             // Layer Objeto in slot 7
             bool interactuable = hit.transform.gameObject.layer == 7;
+            //if (interactuable)
+                _lastObj = hit.transform.gameObject;
+            
+            if (_lastObj.TryGetComponent<Pickable>(out Pickable p) && p.particleGen !=null && !p.particleGen.isPlaying && !isHolding)
+            {
+                Debug.Log($"<color=green>Particulas prendidas en </color> <color=purple> {_lastObj.name} </color>");
+                p.particleGen.Play();
+                p.parTime = Time.time;
+            }
             //Debug.Log(interactuable);
 
-            if(interactuable && !GameManager.Instance.HandState.holding && !GameManager.Instance.HandState.pointing)
+            if (interactuable && !GameManager.Instance.HandState.holding && !GameManager.Instance.HandState.pointing)
             {
                 GameManager.Instance.HandState.pointing = true;
                 GameManager.Instance.HandState.relax = false;
@@ -88,6 +98,11 @@ public class PickUp : MonoBehaviour
         }
         else
         {
+            if (_lastObj && _lastObj.TryGetComponent<Pickable>(out Pickable p) && p.particleGen != null && p.particleGen.isPlaying)
+            {
+                p.particleGen.Stop();
+                Debug.Log($"<color=red>Particulas apagadas en </color> <color=yellow> {_lastObj.name} </color>");
+            }
             if (GameManager.Instance.HandState.pointing)
             {
                 GameManager.Instance.HandState.pointing = false;

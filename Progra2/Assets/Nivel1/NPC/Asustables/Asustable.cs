@@ -136,6 +136,7 @@ public class Asustable : NPC
 
     public override void GetScare()
     {
+        if (_scared) return;
         Ganarga();
         //Debug.Log("Susto de Asustable");
         _doubt = false;
@@ -199,8 +200,9 @@ public class Asustable : NPC
         }
         else
             _waitRandom = 0f;
-
-        yield return new WaitForSeconds(2f);
+        WaitForSeconds wait = new WaitForSeconds(2f);
+        if (_scared) wait = new WaitForSeconds(0f);
+        yield return wait;
 
         _actualNode = GetNewNode(_actualNode);
 
