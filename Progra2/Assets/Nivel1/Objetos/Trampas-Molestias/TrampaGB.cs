@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrampaGB : MonoBehaviour
 {
+    // Script de Martin hecho con ayuda de Gianluca, te amamos Gianluca
     [SerializeField] Chocamiento chocamientoScript;
     [SerializeField] Ghostbuster _gBScript;
 
@@ -34,7 +35,7 @@ public class TrampaGB : MonoBehaviour
             player._traped = true;
             //dejarte quieto 1s o 0.5s
             //relentizarte durante 5s
-            //sacarte 1 de vida quiza?
+            //sacarte 1 de vida quiza? UwU
         }
 
     }
