@@ -120,7 +120,9 @@ public class Player : MonoBehaviour
         {
             _dir = (transform.right * xAxis + transform.forward * zAxis).normalized;
 
-            transform.position += _dir * _speed * Time.deltaTime;
+            //transform.position += _dir * _speed * Time.fixedDeltaTime;
+            _rb.position += _dir * _speed *Time.fixedDeltaTime;
+            //_rb.AddForce(_dir * _speed * Time.fixedDeltaTime, ForceMode.Force);
         }
     }
 

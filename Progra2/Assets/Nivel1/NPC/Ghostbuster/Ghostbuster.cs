@@ -8,7 +8,7 @@ public class Ghostbuster : NPC
     [Header("<color=red> Ghostbuster </color>")]
     [SerializeField] GB_FOV _gbFov;
     [SerializeField] float _torque, _angerRange, _angerTime , _attackRange, _suctionForce, _attackDuration, _atkDelay, _attackCD, _killRange;
-    public float _waitAnger, _lastAttack = -1, waitTrampa, waitTrampaRandom;
+    public float _waitAnger, _lastAttack = -1, _waitTrampa, _waitTrampaRandom, _waitKill;
 
     [SerializeField] Player _target;
     [SerializeField] TrampaGB trampaPrefab;
@@ -27,7 +27,7 @@ public class Ghostbuster : NPC
     {
         //_agent.speed;
         base.Start();
-        waitTrampaRandom = Random.Range(5, 101);
+        _waitTrampaRandom = Random.Range(5, 101);
         //_target = GameManager.Instance.Player;
         _gbFov = GetComponent<GB_FOV>();
         _particleGen = GetComponentInChildren<ParticleSystem>();
@@ -36,14 +36,6 @@ public class Ghostbuster : NPC
     private void Update()
     {
 
-        if (_firstAnger == true)
-        {
-            waitTrampa += Time.deltaTime;
-            if (waitTrampa >= waitTrampaRandom)
-            {
-                PutTrap(transform);
-            }
-        }
 
         if (!_AIActive) return;
         if(_target == null) _target = GameManager.Instance.Player;
@@ -56,6 +48,15 @@ public class Ghostbuster : NPC
             _actualNode = GetNewNode(_actualNode);
             _agent.SetDestination(_actualNode.position);
             return;
+        }
+
+        if (_firstAnger == true)
+        {
+            _waitTrampa += Time.deltaTime;
+            if (_waitTrampa >= _waitTrampaRandom)
+            {
+                PutTrap(transform);
+            }
         }
 
         if ((!_doubt && !_angry &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
@@ -169,6 +170,7 @@ public class Ghostbuster : NPC
         
     }
 
+    
     void StartAttack()
     {
         if (!_canAttack) return;
@@ -184,13 +186,14 @@ public class Ghostbuster : NPC
         _target.attacker = this;
         _audioSource.clip = _clipAspiradora;
         _audioSource.Play();
+        _waitKill = Time.time;
     }
 
     void Attack()
     {
         Vector3 direction = _target.transform.position - transform.position;
         transform.Rotate(direction);
-        if (Vector3.SqrMagnitude(direction) <= (_killRange * _killRange))
+        if (Vector3.SqrMagnitude(direction) <= (_killRange * _killRange) && Time.time - _waitKill > _atkDelay)
         {
             _target.GetDamage();
             EndAttack();
@@ -218,6 +221,7 @@ public class Ghostbuster : NPC
         _isAttacking = false;
         _angry = false;
         _lastAttack = Time.time;
+        _agent.speed = 0;
         _audioSource.Stop();
 
         //_agent.speed = speedNormal;
@@ -260,8 +264,8 @@ public class Ghostbuster : NPC
         if(currentTraps < maxTraps)
         {
             currentTraps++;
-            waitTrampa = 0;
-            waitTrampaRandom = Random.Range(15, 121);
+            _waitTrampa = 0;
+            _waitTrampaRandom = Random.Range(15, 121);
             var newTrap = Instantiate(trampaPrefab, lugar.position, Quaternion.identity);
             newTrap.Initialize(this);
         }
@@ -282,10 +286,10 @@ public class Ghostbuster : NPC
 
         while (_angry && _canAttack)
         {
-            yield return wait;
             Debug.Log("<color=red>Cazando</color>");
             _actualNode = _target.transform;
             _agent.SetDestination(_actualNode.position  );
+            yield return wait;
         }
 
         if (!_isAttacking && _canAttack)

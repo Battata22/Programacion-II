@@ -14940,7 +14940,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1948.145, y: 400.00003, z: 1}
+  m_Size: {x: 2182, y: 400.00003, z: 1}
   m_Center: {x: 0, y: 200.00002, z: -992}
 --- !u!65 &321812853
 BoxCollider:
@@ -14961,7 +14961,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1948.145, y: 400.00003, z: 1}
+  m_Size: {x: 2182, y: 400.00003, z: 1}
   m_Center: {x: 0, y: 200.00002, z: 992}
 --- !u!65 &321812854
 BoxCollider:
@@ -14982,7 +14982,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 400.00003, z: 2060.603}
+  m_Size: {x: 1, y: 400.00003, z: 2295.22}
   m_Center: {x: -771.5, y: 200.00002, z: -0.000061035156}
 --- !u!65 &321812855
 BoxCollider:
@@ -15003,7 +15003,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 400.00003, z: 2060.603}
+  m_Size: {x: 1, y: 400.00003, z: 2295.22}
   m_Center: {x: 942.5, y: 200.00002, z: -0.000061035156}
 --- !u!4 &324058584 stripped
 Transform:
@@ -46620,7 +46620,7 @@ Rigidbody:
   m_GameObject: {fileID: 895318662}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -46837,7 +46837,7 @@ MonoBehaviour:
   _marcoLvl1: {fileID: 1864311929}
   _marcoLvl2: {fileID: 1240910567}
   _marcoLvl3: {fileID: 179027425}
-  _speed: 5
+  _speed: 6
   _frezzeCD: 1
   _slowCD: 5
   underAttack: 0
@@ -84641,7 +84641,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804165028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 38.75, y: 8, z: 28.750002}
@@ -95182,7 +95182,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548316704}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 20.806002, y: 4.5, z: 21.047}
@@ -106798,7 +106798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: _suctionForce
-      value: 35
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: _attackDuration
