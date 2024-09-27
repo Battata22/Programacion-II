@@ -158,11 +158,13 @@ public class Asustable : NPC
     }
 
 
-    public override void GetShivers()
+    public override void GetShivers(AudioClip a)
     {
         if (shivers) return;
         //Debug.Log("Escalofios de asustable");
         //a_audioSource.Play();
+        _audioSource.clip = a;
+        _audioSource.Play();
         _waitShivers = 0;
         _agent.speed = 0;
         shivers = true;

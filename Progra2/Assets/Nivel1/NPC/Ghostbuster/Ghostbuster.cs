@@ -18,6 +18,9 @@ public class Ghostbuster : NPC
     [SerializeField] AudioClip _clipAspiradora, doubtClip, _clipAngry;
     bool _activeChase = false, _startingAttack, _firstAnger = false;
 
+    [SerializeField] Animator _anim;
+    //[SerializeField]bool idle = false, walking, running = false, aiming = false;
+
     [SerializeField] int maxTraps;
     [SerializeField] int currentTraps;
 
@@ -31,11 +34,12 @@ public class Ghostbuster : NPC
         //_target = GameManager.Instance.Player;
         _gbFov = GetComponent<GB_FOV>();
         _particleGen = GetComponentInChildren<ParticleSystem>();
+        _anim = GetComponentInChildren<Animator>();
+        _anim.SetBool("Walking", true);
     }
 
     private void Update()
     {
-
 
         if (!_AIActive) return;
         if(_target == null) _target = GameManager.Instance.Player;
@@ -47,6 +51,8 @@ public class Ghostbuster : NPC
             _agent.speed = speedNormal;
             _actualNode = GetNewNode(_actualNode);
             _agent.SetDestination(_actualNode.position);
+            _anim.SetBool("Idle", false);
+            _anim.SetBool("Walking", true);
             return;
         }
 
@@ -80,10 +86,15 @@ public class Ghostbuster : NPC
             if (!_inPlace)
             {
                 StartSearching();
+                _anim.SetBool("Idle", true);
+                _anim.SetBool("Walking", false);
             }
         }
         if (_doubt && _inPlace && _waitDoubt >= 2)
-        {           
+        {
+            _anim.SetBool("Idle", false);
+            _anim.SetBool("Walking", true);
+            _anim.SetFloat("zAxis", 0);
             StopSearching();
         }
 
@@ -125,7 +136,7 @@ public class Ghostbuster : NPC
     {
         //activar duda
         //Debug.Log("<color=yellow> Escuche algo </color>");
-
+        _anim.SetFloat("zAxis", 1);
         if (_angry) return;
         if (_isAttacking) return;
         if (!_canAttack) return;
@@ -152,6 +163,7 @@ public class Ghostbuster : NPC
 
     void GetAngry()
     {
+        _anim.SetFloat("zAxis", 1);
         _firstAnger = true;
         if (!_canAttack) return;
         if(_isAttacking) return;
@@ -165,6 +177,7 @@ public class Ghostbuster : NPC
 
     void StopAnger()
     {
+        _anim.SetFloat("zAxis", 0);
         _angry = false;
         //StopCoroutine(ChaseTarget());
         
@@ -174,6 +187,8 @@ public class Ghostbuster : NPC
     void StartAttack()
     {
         if (!_canAttack) return;
+        _anim.SetBool("Idle", true);
+        _anim.SetBool("Walking", false);
         _startingAttack = false;
         _particleGen.Play();
         //Activar modo Luigi
@@ -213,6 +228,7 @@ public class Ghostbuster : NPC
         //if(!_isAttacking) return;
         //Debug.Log("Terminando Ataque");
         //_agent.speed = speedNormal;
+        _anim.SetFloat("zAxis", 0);
         _particleGen.Stop();
         _target.underAttack = false;
         _target.attacker = null;

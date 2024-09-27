@@ -27,6 +27,7 @@ public class NPC : MonoBehaviour
 
     [SerializeField] protected Transform _actualNode;
     [SerializeField] protected List<Transform> _navMeshNodes = new();
+    //protected Animator _anim;
 
     public List<Transform> NavMeshNodes    
     { 
@@ -157,7 +158,7 @@ public class NPC : MonoBehaviour
     }
 
 
-    public virtual void GetShivers()
+    public virtual void GetShivers(AudioClip a)
     {
         
     }
@@ -190,6 +191,10 @@ public class NPC : MonoBehaviour
 
     protected void StopSearching()
     {
+        //if(_anim != null)
+        //{
+        //    _anim.SetBool("Idle", false);
+        //}
         _searchingTimer = 0;
         _agent.speed = speedNormal;
         _doubt = false;

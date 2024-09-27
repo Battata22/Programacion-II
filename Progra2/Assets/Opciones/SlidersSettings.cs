@@ -173,4 +173,9 @@ public class SlidersSettings : MonoBehaviour
 
         _sensSlider.value = camData._xSens;
     }
+
+    public void PlaySound()
+    {
+        _audioSource.Play();
+    }
 }
