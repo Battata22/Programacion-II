@@ -52,6 +52,7 @@ public class Ghostbuster : NPC
             _actualNode = GetNewNode(_actualNode);
             _agent.SetDestination(_actualNode.position);
             _anim.SetBool("Idle", false);
+            _anim.SetFloat("zAxis", 0f);
             _anim.SetBool("Walking", true);
             return;
         }
@@ -94,8 +95,9 @@ public class Ghostbuster : NPC
         {
             _anim.SetBool("Idle", false);
             _anim.SetBool("Walking", true);
-            _anim.SetFloat("zAxis", 0);
             StopSearching();
+            
+            if(!_angry)_anim.SetFloat("zAxis", 0);
         }
 
         if (_gbFov.hasLOS != _lastState)
@@ -136,10 +138,10 @@ public class Ghostbuster : NPC
     {
         //activar duda
         //Debug.Log("<color=yellow> Escuche algo </color>");
-        _anim.SetFloat("zAxis", 1);
         if (_angry) return;
         if (_isAttacking) return;
         if (!_canAttack) return;
+        _anim.SetFloat("zAxis", 1);
         //Debug.Log("Duda de asustable");
 
         _doubt = true;
@@ -163,10 +165,10 @@ public class Ghostbuster : NPC
 
     void GetAngry()
     {
-        _anim.SetFloat("zAxis", 1);
-        _firstAnger = true;
         if (!_canAttack) return;
         if(_isAttacking) return;
+        _firstAnger = true;
+        _anim.SetFloat("zAxis", 1);
         _audioSource.clip = _clipAngry;
         _audioSource.Play();
         //print("alakazam");
