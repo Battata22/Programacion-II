@@ -19,6 +19,7 @@ public class Asustable : NPC
     [SerializeField] Slider _sliderBarra;
 
     [SerializeField] AudioClip gritoClip, doubtClip;
+    [SerializeField] Animator _anim;
 
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
@@ -61,6 +62,11 @@ public class Asustable : NPC
     //    _AIActive = true;
     //}
     #endregion
+    protected override void Start()
+    {
+        base.Start();
+        _anim = GetComponentInChildren<Animator>();
+    }
 
     private void Update()
     {
@@ -139,6 +145,9 @@ public class Asustable : NPC
         if (_scared) return;
         Ganarga();
         //Debug.Log("Susto de Asustable");
+        _anim.SetFloat("zAxis", 1f);
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
         _doubt = false;
         _particulas.scared = true;
         _audioSource.clip = gritoClip;
@@ -151,7 +160,9 @@ public class Asustable : NPC
     }
 
     protected override void StopScare()
-    { 
+    {
+        _anim.SetFloat("zAxis", 0f);
+        
         _agent.speed = speedNormal;
         _scared = false;
         _particulas.scared = false;
@@ -163,6 +174,8 @@ public class Asustable : NPC
         if (shivers) return;
         //Debug.Log("Escalofios de asustable");
         //a_audioSource.Play();
+        _anim.SetBool("Walking", false);
+        _anim.SetBool("Idle", true);
         _audioSource.clip = a;
         _audioSource.Play();
         _waitShivers = 0;
@@ -172,6 +185,8 @@ public class Asustable : NPC
 
     protected override void StopShivers()
     {
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
         _agent.speed = speedNormal;
     }
 
@@ -179,7 +194,8 @@ public class Asustable : NPC
     {
         if (_scared) return;
         //Debug.Log("Duda de asustable");
-
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
         _doubt = true;
 
         _audioSource.clip = doubtClip;
@@ -198,14 +214,19 @@ public class Asustable : NPC
         if (!_scared)
         {
             _waitRandom = Random.Range(2f, 5f);
+            //_anim.SetFloat("zAxis", 1f);
+            _anim.SetBool("Walking", false);
+            _anim.SetBool("Idle", true);
             //Debug.Log($"<color=#adf947> LLegue espero por {_waitRandom} segundos </color>");
         }
         else
             _waitRandom = 0f;
-        WaitForSeconds wait = new WaitForSeconds(2f);
+        WaitForSeconds wait = new WaitForSeconds(_waitRandom);
         if (_scared) wait = new WaitForSeconds(0f);
         yield return wait;
 
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
         _actualNode = GetNewNode(_actualNode);
 
         _agent.SetDestination(_actualNode.position);

@@ -187,8 +187,9 @@ public class Ghostbuster : NPC
     void StartAttack()
     {
         if (!_canAttack) return;
-        _anim.SetBool("Idle", true);
+        _anim.SetBool("Idle", false);
         _anim.SetBool("Walking", false);
+        _anim.SetBool("Attacking", true);
         _startingAttack = false;
         _particleGen.Play();
         //Activar modo Luigi
@@ -229,6 +230,9 @@ public class Ghostbuster : NPC
         //Debug.Log("Terminando Ataque");
         //_agent.speed = speedNormal;
         _anim.SetFloat("zAxis", 0);
+        _anim.SetBool("Attacking", false);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("Walking", false);
         _particleGen.Stop();
         _target.underAttack = false;
         _target.attacker = null;
