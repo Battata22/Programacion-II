@@ -1,18 +1,36 @@
+//using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent (typeof(Chocamiento))]
+[RequireComponent(typeof(Chocamiento))]
 public class Pickable : Obj_Interactuable
 {
     bool _pickedUp, _trowed;
     public PickUp pickUpScript;
     public ParticleSystem particleGen;
-    float _parMaxTime = 5f; 
+    float _parMaxTime = 5f;
     public float parTime;
-    
+
     //Material _originalMaterial;
+
+    protected Material _outLine, _fade;
+    public Material OutLine
+    { 
+        get { return _outLine;} 
+        protected set { _outLine = value; } 
+    }
+    public Material Fade
+    { 
+        get { return _fade; }
+        protected set { _fade = value; } 
+    }
+    protected float _OGthik;
+    protected Color _OGcolor;
 
     protected virtual void Start()
     {      
@@ -37,6 +55,29 @@ public class Pickable : Obj_Interactuable
         { 
             this.AddComponent<NavMeshObstacle>();
         }
+
+        if (_renderer != null)
+        {
+            foreach (var mat in _renderer.materials)
+            {
+                //print(mat.name);
+                if (mat.name == "M_Outline (Instance)")
+                {
+                    OutLine = mat;
+                    _OGthik = OutLine.GetFloat("_Thickness");
+                    OutLine.SetFloat("_Thickness", 0f);
+                }
+                else if (mat.name == "M_Fade (Instance)")
+                {
+                    Fade = mat;
+                    _OGcolor = Fade.GetColor("_baseColor");
+                    var noAlpha = new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f);
+                    Fade.SetColor("_baseColor", noAlpha);//     = new Color(_fade.color.r, _fade.color.g, _fade.color.b, 0f);   
+                    
+                }
+            }
+        }
+
         _dropLayers = GameManager.Instance.DropLayers;
         particleGen = GetComponentInChildren<ParticleSystem>();
     }
@@ -80,6 +121,65 @@ public class Pickable : Obj_Interactuable
             Movement(_itemHolder);
         }
     }
+
+    private void LateUpdate()
+    {
+        if (Fade == null) return;
+        
+        if (holding)
+        {
+            //transform.position = _target.position;
+            if (Fade.GetColor("_baseColor") != _OGcolor)
+            {
+                Fade.SetColor("_baseColor", _OGcolor);
+            }
+        }
+        else
+        {
+            if (Fade.GetColor("_baseColor") == _OGcolor)
+            {
+                Fade.SetColor("_baseColor", new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f));
+            }
+        }
+    }
+
+    protected Vector3 dir = Vector3.zero;
+    protected void Movement(Transform _target)
+    {
+        if (!holding) dir = (_target.position - transform.position);
+        if (dir.sqrMagnitude > 0.2f)
+        {
+            transform.position += dir.normalized * _speed * Time.fixedDeltaTime;
+        }
+        else
+        {
+
+            GameManager.Instance.HandState.holding = true;
+            GameManager.Instance.HandState.relax = false;
+            GameManager.Instance.HandState.ChangeState();
+
+            holding = true;
+        }
+
+
+        if (holding)
+        {
+            transform.position = _target.position;
+            if (Fade.GetColor("_baseColor") != _OGcolor)
+            {
+                Fade.SetColor("_baseColor", _OGcolor);
+            }
+        }
+        else
+        {
+            if (Fade.GetColor("_baseColor") == _OGcolor)
+            {
+                Fade.SetColor("_baseColor", new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f));
+            }
+        }
+
+    }
+
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
     {
 
@@ -178,6 +278,25 @@ public class Pickable : Obj_Interactuable
         {
             Drop();
         }
+    }
+
+    public void SlcFxOn()
+    {
+        //particleGen.Play();
+        //parTime = Time.time;
+
+        //shaders aca
+        Debug.Log("<Color=blue> Prendido</color>");
+        OutLine.SetFloat("_Thickness", _OGthik);
+    }
+
+    public void SlcFxOff()
+    {
+        //particleGen.Stop();
+
+        //sader aca
+        Debug.Log("<Color=red> APAGADO </color>");
+        OutLine.SetFloat("_Thickness", 0f);
     }
 
 }

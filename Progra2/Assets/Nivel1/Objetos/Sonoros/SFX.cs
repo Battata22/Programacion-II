@@ -9,6 +9,8 @@ public class SFX : Pickable
     protected int random1;
     Chocamiento _chocamiento;
 
+    
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -18,8 +20,30 @@ public class SFX : Pickable
 
     protected override void Start()
     {
+        _renderer = GetComponent<Renderer>();
         base.Start();
-        
+        //print(_renderer.name);
+        //if (_renderer != null)
+        //{
+        //    foreach (var mat in _renderer.materials)
+        //    {
+        //        print(mat.name);
+        //        if (mat.name == "M_Outline (Material)")
+        //        {
+        //            OutLine = mat;
+        //            _OGthik = OutLine.GetFloat("_Thickness");
+        //            OutLine.SetFloat("_Thickness", 0f);
+        //        }
+        //        else if (mat.name == "M_Fade (Material)")
+        //        {
+        //            Fade = mat;
+        //            _OGcolor = Fade.GetColor("_baseColor");
+        //            var noAlpha = new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f);
+        //            Fade.SetColor("_baseColor", noAlpha);//     = new Color(_fade.color.r, _fade.color.g, _fade.color.b, 0f);   
+
+        //        }
+        //    }
+        //}
         //_audioSource = GetComponent<AudioSource>();
     }
 

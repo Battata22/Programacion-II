@@ -65,6 +65,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a0e3d7673478830478a467042d8d8b7b, type: 2}
+  - {fileID: 2100000, guid: 43cdf23c8ce6ea34ebbaac5fa93f7be7, type: 2}
+  - {fileID: 2100000, guid: 3347a6b0c3eaad64d8f61f5fccea0bda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
+  areaSonoro: {fileID: 0}
 --- !u!114 &1991259256253329067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,11 +143,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
   _cd: 0
+  _lastInteract: 0
   _speed: 10
   _itemHolder: {fileID: 0}
   mediano: 1
   grande: 0
+  holding: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 2100000, guid: 23fd5126f5d62e34b8c1f1c6495e80bb, type: 2}
   _renderer: {fileID: 0}
+  _dropLayers:
+    serializedVersion: 2
+    m_Bits: 0
   pickUpScript: {fileID: 0}
+  particleGen: {fileID: 0}
+  parTime: 0

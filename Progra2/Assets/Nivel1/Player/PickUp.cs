@@ -14,7 +14,8 @@ public class PickUp : MonoBehaviour
     Player _playerScript;
     Obj_Interactuable _objScript;
     [SerializeField] LayerMask _detectableMask;
-    GameObject _lastObj;
+    GameObject _lastObj, _lastOn;
+    bool lineOn = false;
     
     
     
@@ -43,10 +44,13 @@ public class PickUp : MonoBehaviour
             
             if (_lastObj.TryGetComponent<Pickable>(out Pickable p) && p.particleGen !=null && !p.particleGen.isPlaying && !isHolding)
             {
-                Debug.Log($"<color=green>Particulas prendidas en </color> <color=purple> {_lastObj.name} </color>");
+                //Debug.Log($"<color=green>Particulas prendidas en </color> <color=purple> {_lastObj.name} </color>");
                 p.particleGen.Play();
                 p.parTime = Time.time;
+                //p.SlcFxOn();
             }
+
+            
             //Debug.Log(interactuable);
 
             if (interactuable && !GameManager.Instance.HandState.holding && !GameManager.Instance.HandState.pointing)
@@ -101,12 +105,40 @@ public class PickUp : MonoBehaviour
             if (_lastObj && _lastObj.TryGetComponent<Pickable>(out Pickable p) && p.particleGen != null && p.particleGen.isPlaying)
             {
                 p.particleGen.Stop();
-                Debug.Log($"<color=red>Particulas apagadas en </color> <color=yellow> {_lastObj.name} </color>");
+                //p.SlcFxOff();
+                //Debug.Log($"<color=red>Particulas apagadas en </color> <color=yellow> {_lastObj.name} </color>");
             }
+
+            
             if (GameManager.Instance.HandState.pointing)
             {
                 GameManager.Instance.HandState.pointing = false;
                 GameManager.Instance.HandState.ChangeState();
+            }
+        }
+
+        if (Physics.SphereCast(transform.position, _radius, transform.forward, out hit, _rayDistance, _detectableMask))
+        {
+            var obj = hit.transform.gameObject;
+            if (obj!=_lastOn && _lastOn != null)
+            {
+                lineOn = false;
+                _lastOn.GetComponent<Pickable>().SlcFxOff();
+            }
+            if (!lineOn && obj.TryGetComponent<Pickable>(out Pickable o) && o.OutLine != null)
+            {
+                _lastOn = obj;
+                lineOn = true;
+                o.SlcFxOn();
+            }
+            
+        }
+        else
+        {
+            if (lineOn && _lastOn && _lastOn.TryGetComponent<Pickable>(out Pickable o) && o.OutLine != null)
+            {
+                lineOn = false;
+                o.SlcFxOff();
             }
         }
 

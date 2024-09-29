@@ -16,11 +16,33 @@ public class Obj_Interactuable : MonoBehaviour
     [SerializeField] protected Renderer _renderer;
     [SerializeField] protected LayerMask _dropLayers;
 
+    //Material[] _mats;
+    //Material _outLine, _fade;
+    //float _OGthik, _OGalpha;
+
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
+        _renderer = GetComponent<Renderer>();
+        //_mats = GetComponents<Material>();
+        //foreach(var mat in _mats)
+        //{
+        //    if (mat.name == "M_Outline")
+        //    {
+        //        _outLine = mat;
+        //        _OGthik = _outLine.GetFloat("Thickness");
+        //        _outLine.SetFloat("Thickness", 0f);
+        //    }
+        //    else if (mat.name == "M_Fade")
+        //    {
+        //        _fade = mat;
+        //        _OGalpha = _fade.GetColor("Base Color").a;
+        //        _fade.SetFloat("Base Texture", 0f);
+        //    }
+        //}
+        
         
         //_materialNormal = GetComponent<Material>(); 
     }
@@ -31,31 +53,31 @@ public class Obj_Interactuable : MonoBehaviour
         _audio.clip = agarre;   
         _audio.PlayOneShot(agarre);
     }
-    Vector3 dir = Vector3.zero;
-    protected void Movement(Transform _target)
-    {
-        if(!holding) dir = (_target.position - transform.position);
-        if (dir.sqrMagnitude > 0.2f)
-        {
-            transform.position += dir.normalized * _speed * Time.fixedDeltaTime;
-        }
-        else
-        {
+    //Vector3 dir = Vector3.zero;
+    //protected void Movement(Transform _target)
+    //{
+    //    if(!holding) dir = (_target.position - transform.position);
+    //    if (dir.sqrMagnitude > 0.2f)
+    //    {
+    //        transform.position += dir.normalized * _speed * Time.fixedDeltaTime;
+    //    }
+    //    else
+    //    {
 
-            GameManager.Instance.HandState.holding = true;
-            GameManager.Instance.HandState.relax = false;
-            GameManager.Instance.HandState.ChangeState();
+    //        GameManager.Instance.HandState.holding = true;
+    //        GameManager.Instance.HandState.relax = false;
+    //        GameManager.Instance.HandState.ChangeState();
 
-            holding = true;
-        }
+    //        holding = true;
+    //    }
 
 
-        if(holding)
-        {
-            transform.position = _target.position;
-        }
+    //    if(holding)
+    //    {
+    //        transform.position = _target.position;
+    //    }
 
-    }
+    //}
 
     public virtual void Throw(AudioSource _audio, AudioClip tirar)
     {

@@ -159,7 +159,7 @@ public class Ghostbuster : NPC
     {
 
         //Activar Anger supongo
-        Debug.Log("<color=red> YA TE VOY A AGARRAR </color>");
+        //Debug.Log("<color=red> YA TE VOY A AGARRAR </color>");
         GetAngry()  ;
     }
 
@@ -308,7 +308,7 @@ public class Ghostbuster : NPC
 
         while (_angry && _canAttack)
         {
-            Debug.Log("<color=red>Cazando</color>");
+            //Debug.Log("<color=red>Cazando</color>");  
             _actualNode = _target.transform;
             _agent.SetDestination(_actualNode.position  );
             yield return wait;
