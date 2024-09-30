@@ -12,8 +12,8 @@ public class Luces : Obj_Interactuable
     [SerializeField] AudioClip _clip;
     [SerializeField] Chocamiento _chocamiento;
 
-    protected Material _outLine, _fade;
-    public Material OutLine
+    protected Material /*_outLine, */_fade;
+    public override Material OutLine
     {
         get { return _outLine; }
         protected set { _outLine = value; }
@@ -23,7 +23,7 @@ public class Luces : Obj_Interactuable
         get { return _fade; }
         protected set { _fade = value; }
     }
-    protected float _OGthik;
+    //protected float _OGthik;
     protected Color _OGcolor;
 
     private void Awake()

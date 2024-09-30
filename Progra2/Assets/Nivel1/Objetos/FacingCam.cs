@@ -5,7 +5,7 @@ using UnityEngine;
 public class FacingCam : MonoBehaviour
 {
     Transform _camera;
-    Vector3 _dir = new();
+    //Vector3 _dir = new();
     // Update is called once per frame
     void Update()
     {

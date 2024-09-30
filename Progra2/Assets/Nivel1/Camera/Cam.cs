@@ -30,11 +30,13 @@ public class Cam : MonoBehaviour
         transform.forward = _target.forward;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Menu");
-        }
-    }
+    //QUIZA ESTO ESTABA PARA EL MUSEO
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        SceneManager.LoadScene("Menu");
+    //    }
+    //}
 }

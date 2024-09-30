@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip clipLevelUp;
 
     [SerializeField] Sprite _vidaFull, _vidaMedia, _vidaBaja;
-    [SerializeField] Image _vidaUI, _marcoLvl1, _marcoLvl2, _marcoLvl3;
+    [SerializeField] Image _vidaUI;
+    [SerializeField] GameObject _marcoLvl1, _marcoLvl2, _marcoLvl3;
 
 
     [Header("Movement")]
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.Player = this;
         GameManager.Instance.ItemHolde = _itemHolder;
+        Marco1();
     }
 
     private void Update()
@@ -95,8 +97,6 @@ public class Player : MonoBehaviour
         }
 
         SpriteVidaUpdate();
-
-        MarcoUpdate();
 
     }
 
@@ -142,35 +142,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    void MarcoUpdate()
+
+    public void Marco1()
     {
-        if (_nivel == 3)
-        {
-            _marcoLvl1.enabled = true;
-            //_marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
-            _marcoLvl2.enabled = true;
-            //_marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
-            _marcoLvl3.enabled = true;
-            //_marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
-        }
-        if (_nivel == 2)
-        {
-            _marcoLvl1.enabled = true;
-            //_marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
-            _marcoLvl2.enabled = true;
-            //_marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
-            _marcoLvl3.enabled = false;
-            //_marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
-        }
-        if (_nivel == 1)
-        {
-            _marcoLvl1.enabled = true;
-            //_marcoLvl1.color = new Color(1f, 1f, 1f, opacidadMarco);
-            _marcoLvl2.enabled = false;
-            //_marcoLvl2.color = new Color(1f, 1f, 1f, opacidadMarco);
-            _marcoLvl3.enabled = false;
-            //_marcoLvl3.color = new Color(1f, 1f, 1f, opacidadMarco);
-        }
+        _marcoLvl1.SetActive(true);
+        _marcoLvl2.SetActive(false);
+        _marcoLvl3.SetActive(false);
+        print("marco1");
+    }
+    public void Marco2()
+    {
+        _marcoLvl1.SetActive(true);
+        _marcoLvl2.SetActive(true);
+        _marcoLvl3.SetActive(false);
+        print("marco2");
+    }
+    public void Marco3()
+    {
+        _marcoLvl1.SetActive(true);
+        _marcoLvl2.SetActive(true);
+        _marcoLvl3.SetActive(true);
+        print("marco3");
     }
 
     void LockedMovement()
@@ -242,6 +234,14 @@ public class Player : MonoBehaviour
         _nivel++;
         _audioSource.clip = clipLevelUp;
         _audioSource.Play();
+        if (_nivel == 2)
+        {
+            Marco2();
+        }
+        else if (_nivel == 3)
+        {
+            Marco3();
+        }
     }
 
     public void GetDamage()

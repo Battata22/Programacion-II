@@ -22,6 +22,7 @@ public class CamRotation : MonoBehaviour
         //centra y oculta mouse
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        SensGuardarJSON();
     }
 
     private void Update()
@@ -30,8 +31,15 @@ public class CamRotation : MonoBehaviour
         CamData data = JsonUtility.FromJson<CamData>(json);
         //print(data._xSens);
         //Inputs
-        _mouseX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime * data._xSens;
-        _mouseY = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime * data._ySens;
+        if (data != null )
+        {
+            _mouseX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime * data._xSens;
+            _mouseY = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime * data._ySens;
+        }
+        else
+        {
+
+        }
         //_mouseX = Input.GetAxis("Mouse X") * Time.fixedDeltaTime *  _xSens;
         //_mouseY = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime *  _ySens;
 
@@ -59,5 +67,13 @@ public class CamRotation : MonoBehaviour
         _meshOrientation.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
     }
 
+    private void SensGuardarJSON()
+    {
+        CamData camDataScript = new CamData();
+        camDataScript._xSens = 90;
+        camDataScript._ySens = 90;
 
+        string json = JsonUtility.ToJson(camDataScript, true);
+        File.WriteAllText(Application.dataPath + "/SensDataFile.json", json);
+    }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44773388, g: 0.49771112, b: 0.57540613, a: 1}
+  m_IndirectSpecularColor: {r: 0.18115726, g: 0.22674559, b: 0.30732173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -773,6 +773,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4666739150781384885, guid: 7f5863ac796fadf49b70dacc23ec5c2f, type: 3}
   m_PrefabInstance: {fileID: 5883502856637645455}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &414132135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414132136}
+  - component: {fileID: 414132137}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414132136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414132135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2105857827}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &414132137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414132135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 6cf6a7edb9272b040834364b222db28f, type: 2}
 --- !u!1 &421783745
 GameObject:
   m_ObjectHideFlags: 0
@@ -7120,6 +7169,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8201690405046959715, guid: f6131b3352414a34cae119c75c45cc29, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2964757151606022318}
+    - targetCorrespondingSourceObject: {fileID: 8201690405046959715, guid: f6131b3352414a34cae119c75c45cc29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 414132136}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6131b3352414a34cae119c75c45cc29, type: 3}
 --- !u!1001 &4207779874618428841

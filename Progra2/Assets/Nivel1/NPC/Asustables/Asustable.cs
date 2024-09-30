@@ -242,7 +242,21 @@ public class Asustable : NPC
     void Ganarga()
     {
         _sliderBarra.value++;
-        if (_sliderBarra.value >= 10)
+        if (_sliderBarra.value <= 1)
+        {
+            GameManager.Instance.Player._nivel = 1;
+        }
+        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.4 && GameManager.Instance.Player._nivel < 2)
+        {
+            GameManager.Instance.Player.LevelUp();
+            GameManager.Instance.Master1.ActivarGB();
+        }
+        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.7 && GameManager.Instance.Player._nivel < 3)
+        {
+            GameManager.Instance.Player.LevelUp();
+        }
+
+        if (_sliderBarra.value >= _sliderBarra.maxValue)
         {
             SceneManager.LoadScene("Victoria");
         }

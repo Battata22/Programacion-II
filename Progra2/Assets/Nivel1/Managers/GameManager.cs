@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -61,5 +62,14 @@ public class GameManager : MonoBehaviour
         set { _handState = value; }
     }
 
+    private MasterNivel1 _master1;
+    public MasterNivel1 Master1
+    {
+        get { return _master1; }
+        set { _master1 = value; }
+    }
+
     public LayerMask DropLayers;
 }
+
+

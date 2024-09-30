@@ -5,8 +5,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SlidersSettings : MonoBehaviour
+public class P_SlidersSettings : MonoBehaviour
 {
+    //EL AUDIO DEL BOTON NO FUNCIONA POR QUE EL SOURCE DE LA CAMARA ESTA EN MUTE, POR QUE COMO EL TIMESCALE ESTA EN 0 EL SONIDO RECIEN SUENA CUANDO VUELVE AL PLAY
+
     [SerializeField] AudioMixer _audioMixer;
     [SerializeField] Slider _masterSlider, _sFXSlider, _nPCSlider, _musicSFXSlider, _sensSlider;
     [SerializeField] Text _textMaster, _textSFX, _textNPC, _textMusicSFX, _textSens;
