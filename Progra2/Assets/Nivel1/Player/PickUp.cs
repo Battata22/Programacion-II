@@ -123,9 +123,9 @@ public class PickUp : MonoBehaviour
             if (obj!=_lastOn && _lastOn != null)
             {
                 lineOn = false;
-                _lastOn.GetComponent<Pickable>().SlcFxOff();
+                _lastOn.GetComponent<Obj_Interactuable>().SlcFxOff();
             }
-            if (!lineOn && obj.TryGetComponent<Pickable>(out Pickable o) && o.OutLine != null)
+            if (!lineOn && obj.TryGetComponent<Obj_Interactuable>(out Obj_Interactuable o) && o.OutLine != null)
             {
                 _lastOn = obj;
                 lineOn = true;
@@ -135,7 +135,7 @@ public class PickUp : MonoBehaviour
         }
         else
         {
-            if (lineOn && _lastOn && _lastOn.TryGetComponent<Pickable>(out Pickable o) && o.OutLine != null)
+            if (lineOn && _lastOn && _lastOn.TryGetComponent<Obj_Interactuable>(out Obj_Interactuable o) && o.OutLine != null)
             {
                 lineOn = false;
                 o.SlcFxOff();

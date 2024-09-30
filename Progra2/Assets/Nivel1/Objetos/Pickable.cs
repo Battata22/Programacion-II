@@ -18,8 +18,8 @@ public class Pickable : Obj_Interactuable
 
     //Material _originalMaterial;
 
-    protected Material _outLine, _fade;
-    public Material OutLine
+    protected Material /*_outLine,*/ _fade;
+    public override Material OutLine
     { 
         get { return _outLine;} 
         protected set { _outLine = value; } 
@@ -29,7 +29,7 @@ public class Pickable : Obj_Interactuable
         get { return _fade; }
         protected set { _fade = value; } 
     }
-    protected float _OGthik;
+    //protected float _OGthik;
     protected Color _OGcolor;
 
     protected virtual void Start()
@@ -280,7 +280,7 @@ public class Pickable : Obj_Interactuable
         }
     }
 
-    public void SlcFxOn()
+    public override void SlcFxOn()
     {
         //particleGen.Play();
         //parTime = Time.time;
@@ -290,7 +290,7 @@ public class Pickable : Obj_Interactuable
         OutLine.SetFloat("_Thickness", _OGthik);
     }
 
-    public void SlcFxOff()
+    public override void SlcFxOff()
     {
         //particleGen.Stop();
 

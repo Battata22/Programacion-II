@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Obj_Interactuable : MonoBehaviour 
 {
@@ -16,6 +17,14 @@ public class Obj_Interactuable : MonoBehaviour
     [SerializeField] protected Renderer _renderer;
     [SerializeField] protected LayerMask _dropLayers;
 
+    protected Material _outLine;
+    public virtual Material OutLine
+    {
+        get { return _outLine; }
+        protected set { _outLine = value; }
+    }
+    protected float _OGthik;
+
     //Material[] _mats;
     //Material _outLine, _fade;
     //float _OGthik, _OGalpha;
@@ -26,6 +35,7 @@ public class Obj_Interactuable : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<Collider>();
         _renderer = GetComponent<Renderer>();
+        #region Comment
         //_mats = GetComponents<Material>();
         //foreach(var mat in _mats)
         //{
@@ -42,9 +52,10 @@ public class Obj_Interactuable : MonoBehaviour
         //        _fade.SetFloat("Base Texture", 0f);
         //    }
         //}
-        
-        
+
+
         //_materialNormal = GetComponent<Material>(); 
+        #endregion
     }
 
     public virtual void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
@@ -53,6 +64,7 @@ public class Obj_Interactuable : MonoBehaviour
         _audio.clip = agarre;   
         _audio.PlayOneShot(agarre);
     }
+    #region Comment
     //Vector3 dir = Vector3.zero;
     //protected void Movement(Transform _target)
     //{
@@ -78,7 +90,7 @@ public class Obj_Interactuable : MonoBehaviour
     //    }
 
     //}
-
+    #endregion
     public virtual void Throw(AudioSource _audio, AudioClip tirar)
     {
         if (holding == false)
@@ -102,5 +114,23 @@ public class Obj_Interactuable : MonoBehaviour
     //{
     //    base.PlayMusic(_audio1);
     //}
+    public virtual void SlcFxOn()
+    {
+        //particleGen.Play();
+        //parTime = Time.time;
+
+        //shaders aca
+        Debug.Log("<Color=blue> Prendido</color>");
+        OutLine.SetFloat("_Thickness", _OGthik);
+    }
+
+    public virtual void SlcFxOff()
+    {
+        //particleGen.Stop();
+
+        //sader aca
+        Debug.Log("<Color=red> APAGADO </color>");
+        OutLine.SetFloat("_Thickness", 0f);
+    }
 
 }
