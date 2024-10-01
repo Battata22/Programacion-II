@@ -14,7 +14,7 @@ public class SFX : Pickable
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _col = GetComponent<Collider>();
+        _col = GetComponents<Collider>();
         _chocamiento = GetComponent<Chocamiento>();
     }
 

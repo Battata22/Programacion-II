@@ -12,7 +12,7 @@ public class Obj_Interactuable : MonoBehaviour
     protected Rigidbody _rb;
     public bool mediano = false, grande = false, holding = false;
     protected bool _canMove = false, _onAir = false;
-    protected Collider _col;
+    protected Collider[] _col;
     [SerializeField] protected Material _materialNormal, _materialFade;
     [SerializeField] protected Renderer _renderer;
     [SerializeField] protected LayerMask _dropLayers;
@@ -33,7 +33,7 @@ public class Obj_Interactuable : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _col = GetComponent<Collider>();
+        _col = GetComponents<Collider>();
         _renderer = GetComponent<Renderer>();
         #region Comment
         //_mats = GetComponents<Material>();

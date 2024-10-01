@@ -15,7 +15,12 @@ public class Shadow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log($"Chocaste con {other.name}");
-        if (other.gameObject.GetComponent<NPC>())
+        if(other.GetComponent<Ghostbuster>()) 
+        {
+            other.GetComponent<Ghostbuster>().AttackShadow(this.gameObject);
+            
+        }
+        else if (other.gameObject.GetComponent<NPC>())
         {
             other.GetComponent<NPC>().GetScare();
         }

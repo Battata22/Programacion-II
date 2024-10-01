@@ -15,6 +15,7 @@ public class Pickable : Obj_Interactuable
     public ParticleSystem particleGen;
     float _parMaxTime = 5f;
     public float parTime;
+    NavMeshObstacle _navObstacle;
 
     //Material _originalMaterial;
 
@@ -54,7 +55,9 @@ public class Pickable : Obj_Interactuable
         if ((mediano || grande) && !GetComponent<NavMeshObstacle>())
         { 
             this.AddComponent<NavMeshObstacle>();
+            
         }
+        _navObstacle = GetComponent<NavMeshObstacle>();
 
         if (_renderer != null)
         {
@@ -103,10 +106,10 @@ public class Pickable : Obj_Interactuable
             pickUpScript._audioSource.loop = false;
         }
 
-        if (holding && !_trowed)
-        {
-            CheckForDrop();
-        }
+        //if (holding && !_trowed)
+        //{
+        //    CheckForDrop();
+        //}
 
         if(particleGen != null && Time.time - parTime > _parMaxTime)
         {
@@ -193,8 +196,10 @@ public class Pickable : Obj_Interactuable
             _pickedUp = true;
             pickUpScript.isHolding = true;
             _onAir = true;
+            if(_navObstacle != null) _navObstacle.enabled = false;
             //_col.enabled = false;
-            _col.isTrigger = true;
+            foreach(Collider c in _col)
+                c.isTrigger = true;
             _rb.constraints = RigidbodyConstraints.None;
             pickUpScript.esperaragarre = 0;
             _renderer = GetComponent<Renderer>();
@@ -209,9 +214,11 @@ public class Pickable : Obj_Interactuable
         base.Throw(pickUpScript._audioSource, pickUpScript.tirar);
         _trowed = true;
         //_col.enabled = true;
-        if(particleGen)
+        if (_navObstacle != null) _navObstacle.enabled = true;
+        if (particleGen)
             particleGen.Stop();
-        _col.isTrigger = false;
+        foreach(Collider c in _col)
+            c.isTrigger = false;
         _pickedUp = false;
         pickUpScript.isHolding = false;
         _onAir = true;
@@ -230,10 +237,12 @@ public class Pickable : Obj_Interactuable
         GameManager.Instance.HandState.pointing = false;
         GameManager.Instance.HandState.relax = true;
         GameManager.Instance.HandState.ChangeState();
+        if (_navObstacle != null) _navObstacle.enabled = true;
         if (particleGen)
             particleGen.Stop();
         //_col.enabled = true;
-        _col.isTrigger = false;
+        foreach (Collider c in _col) 
+            c.isTrigger = false;
         _pickedUp = false;
         pickUpScript.isHolding = false;
         _onAir = false;
@@ -270,6 +279,14 @@ public class Pickable : Obj_Interactuable
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if((other.gameObject.layer == 31 ||  other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
+        {
+            Drop();
+        }
+    }
+
     Collider[] hitObjs;
     void CheckForDrop()
     {
@@ -286,7 +303,7 @@ public class Pickable : Obj_Interactuable
         //parTime = Time.time;
 
         //shaders aca
-        Debug.Log("<Color=blue> Prendido</color>");
+        //Debug.Log("<Color=blue> Prendido</color>");
         OutLine.SetFloat("_Thickness", _OGthik);
     }
 
@@ -295,7 +312,7 @@ public class Pickable : Obj_Interactuable
         //particleGen.Stop();
 
         //sader aca
-        Debug.Log("<Color=red> APAGADO </color>");
+        //Debug.Log("<Color=red> APAGADO </color>");
         OutLine.SetFloat("_Thickness", 0f);
     }
 

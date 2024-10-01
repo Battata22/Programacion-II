@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent (typeof(AudioSource))]
 
-public class NPC : MonoBehaviour
+public abstract class NPC : MonoBehaviour
 {
     [Header("<color=#e3f4aa>AI</color>")]
     [SerializeField] protected float _changeNodeDist = 0.5f;
