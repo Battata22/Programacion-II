@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class VideoIntro : MonoBehaviour
 {
     [SerializeField] Image marco1, marco2, marco3, vida, negro;
-    [SerializeField] GameObject gato, abuela, perro, player, entrada, barra, crosshair;
+    [SerializeField] GameObject gato, abuela, perro, player, entrada, barra, crosshair, skipBoton;
     [SerializeField] VideoPlayer videoPlayer;
     float waitVideo;
     bool tepeado = false;
@@ -16,20 +16,16 @@ public class VideoIntro : MonoBehaviour
 
     void Start()
     {
-        //desactivar todo lo que se tenga que desactivar antes de que empiece el nivel 1 como el perro, gato, abuela, GB, tiempo, bebes, etc, UI.
-        //mostrar el video
-        //cuando el video termine activar las cosas
         apagado();
         waitVideo = 0;
         videoPlayer.Play();
         tepeado = false;
-
-
     }
 
 
     void Update()
     {
+        
         if (waitVideo >= videoPlayer.length && tepeado == false)
         {
             prendido();
@@ -37,7 +33,13 @@ public class VideoIntro : MonoBehaviour
             tepeado = true;
             GameManager.Instance.Player.Marco1();
         }
+
         waitVideo += Time.deltaTime;
+
+        if (Input.GetKeyUp(KeyCode.F) && tepeado == false)
+        {
+            SkipButton();
+        }
     }
 
     void apagado()
@@ -52,6 +54,7 @@ public class VideoIntro : MonoBehaviour
         perro.SetActive(false);
         abuela.SetActive(false);
         negro.enabled = false;
+        skipBoton.SetActive(true);
     }
 
     void prendido()
@@ -66,10 +69,16 @@ public class VideoIntro : MonoBehaviour
         perro.SetActive(true);
         abuela.SetActive(true);
         videoPlayer.enabled = false;
+        skipBoton.SetActive(false);
     }
 
     void TPGus()
         {
         player.transform.position = entrada.transform.position;
         }
+
+    public void SkipButton()
+    {
+        waitVideo = 1000;
+    }
 }
