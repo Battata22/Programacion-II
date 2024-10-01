@@ -9,7 +9,7 @@ public class DogScript : NPC
     [SerializeField] Player _target;
     [SerializeField] AudioClip _clipLadrido;
     [SerializeField] GameObject _areDuda;
-    bool playing = false;
+    bool playing = false, areaSpawn = false;
 
     private void Update()
     {
@@ -26,9 +26,10 @@ public class DogScript : NPC
             _agent.SetDestination(_actualNode.position);
         }
 
-        if (playing)
+        if (playing && areaSpawn == false)
         {
             Instantiate(_areDuda, transform.position, Quaternion.identity);
+            areaSpawn = true;
         }
 
         if (_doubt)
@@ -49,6 +50,7 @@ public class DogScript : NPC
 
     public void StopLadrido()
     {
+        areaSpawn = false;
         playing = false;
         _audioSource.Stop();
     }

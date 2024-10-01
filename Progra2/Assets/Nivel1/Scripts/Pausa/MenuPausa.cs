@@ -7,6 +7,8 @@ public class MenuPausa : MonoBehaviour
 {
     public GameObject pausaMenu, pausaOpciones;
     public CamRotation camScript;
+    [SerializeField] List<AudioSource> audioSources;
+    [SerializeField] List<AudioSource> sonando;
     bool paused = false;
 
     void Update()
@@ -32,6 +34,15 @@ public class MenuPausa : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         camScript.enabled = false;
+        for(int i = 0; i < audioSources.Count; i++)
+        {
+            if (audioSources[i].isPlaying == true)
+            {
+                audioSources[i].Pause();
+                sonando.Add(audioSources[i]);
+            }
+
+        }
     }
 
     public void Despausar()
@@ -42,6 +53,11 @@ public class MenuPausa : MonoBehaviour
         paused = false;
         pausaMenu.SetActive(false);
         Time.timeScale = 1;
+        for (int i = 0; i < sonando.Count; i++)
+        {
+            sonando[i].Play();
+        }
+        sonando.Clear();
     }
 
     public void MenuOpciones()
