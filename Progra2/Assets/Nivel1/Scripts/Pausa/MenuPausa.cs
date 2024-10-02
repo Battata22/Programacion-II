@@ -9,13 +9,14 @@ public class MenuPausa : MonoBehaviour
     public CamRotation camScript;
     [SerializeField] List<AudioSource> audioSources;
     [SerializeField] List<AudioSource> sonando;
+    [SerializeField] VideoIntro videoIntroScript;
     bool paused = false, inOptions = false;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (paused == false)
+            if (paused == false && videoIntroScript.videoPlayer.isPlaying == false)
             {
                 Pausar();
             }
