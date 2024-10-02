@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 865891064116614104}
   - component: {fileID: 6064390596172873015}
   - component: {fileID: 2582456273170368244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bolaDeGato01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,6 +159,7 @@ MonoBehaviour:
     m_Bits: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
+  trailGen: {fileID: 0}
   parTime: 0
 --- !u!135 &2582456273170368244
 SphereCollider:
@@ -192,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 4776833676195320638, guid: 1b621bf1d559ad74fb73fb8bbef8a3fb, type: 3}
       propertyPath: m_Name
       value: PObjetos
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776833676195320638, guid: 1b621bf1d559ad74fb73fb8bbef8a3fb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6066973831700820996, guid: 1b621bf1d559ad74fb73fb8bbef8a3fb, type: 3}
       propertyPath: m_LocalPosition.x
