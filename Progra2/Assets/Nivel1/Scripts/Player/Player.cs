@@ -306,6 +306,7 @@ public class Player : MonoBehaviour
         _marcoColor[2].color = _OGmarcoColor3;
     }
 
+    #region Comment
     //public void Marco1()
     //{
     //    _marcoLvl1.SetActive(true);
@@ -327,22 +328,25 @@ public class Player : MonoBehaviour
     //    _marcoLvl3.SetActive(true);
     //    //print("marco3");
     //}
+    #endregion
 
     void LockedMovement()
     {
+        #region Comment
         //RaycastHit hitR, hitL;
         //if (Physics.SphereCast(transform.position, 0.25f, transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")))
         //{
         //    //Debug.Log("<color=ellow> Wall Detected R </color>");
-            
+
         //    return;
         //}
         //if (Physics.SphereCast(transform.position, 0.25f, -transform.right, out hitL, 0.52f, LayerMask.GetMask("NoTras")))
         //{
         //    //Debug.Log("<color=ellow> Wall Detected L </color>");
-            
+
         //    return;
         //}
+        #endregion
 
         transform.RotateAround(attacker.transform.position, Vector3.up, randomAxis * 200 * Time.fixedDeltaTime);
     }
