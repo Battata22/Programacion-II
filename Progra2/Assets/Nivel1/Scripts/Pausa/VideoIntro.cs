@@ -31,7 +31,7 @@ public class VideoIntro : MonoBehaviour
             prendido();
             TPGus();
             tepeado = true;
-            GameManager.Instance.Player.Marco1();
+            GameManager.Instance.Player.UpdateTerrorFrame();
         }
 
         waitVideo += Time.deltaTime;

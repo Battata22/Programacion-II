@@ -143,7 +143,6 @@ public class Asustable : NPC
     public override void GetScare()
     {
         if (_scared) return;
-        Ganarga();
         //Debug.Log("Susto de Asustable");
         _anim.SetFloat("zAxis", 1f);
         _anim.SetBool("Walking", true);
@@ -157,6 +156,7 @@ public class Asustable : NPC
         _scared = true;
         _agent.speed = speedScared;
         _agent.SetDestination(_actualNode.position);
+        Ganarga();
     }
 
     protected override void StopScare()

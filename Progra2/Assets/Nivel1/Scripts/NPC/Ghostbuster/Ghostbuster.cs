@@ -1,13 +1,14 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 //using static UnityEditor.PlayerSettings;
 
 public class Ghostbuster : NPC
 {
     [Header("<color=red> Ghostbuster </color>")]
     [SerializeField] GB_FOV _gbFov;
-    [SerializeField] float _torque, _angerRange, _angerTime , _attackRange, _suctionForce, _attackDuration, _atkDelay, _attackCD, _killRange, _shadowFightTime;
+    [SerializeField] float _torque, _angerRange, _angerTime , _attackRange, _suctionForce, _attackDuration, _atkDelay, _attackCD, _killRange, _shadowFightTime, _spamScape;
     public float _waitAnger, _lastAttack = -1, _waitTrampa, _waitTrampaRandom, _waitKill;
 
     [SerializeField] Player _target;
@@ -204,6 +205,8 @@ public class Ghostbuster : NPC
         _anim.SetBool("Idle", false);
         _anim.SetBool("Walking", false);
         _anim.SetBool("Attacking", true);
+        //GameManager.Instance.VolumeManager.ChangeVignette("#ff0000",new ClampedFloatParameter(1f,0f,1f));
+        _target.ChangeFrameColor("#ff0000", 0.5f);
         _startingAttack = false;
         _tornadoGen.Play();
         //Activar modo Luigi
@@ -223,7 +226,7 @@ public class Ghostbuster : NPC
 
     void Attack()
     {
-        if(_target.scapeSpam >=30)
+        if(_target.scapeSpam >= _spamScape)
             EndAttack();
         Vector3 direction = _target.transform.position - transform.position;
         transform.Rotate(direction);
@@ -253,6 +256,7 @@ public class Ghostbuster : NPC
         _anim.SetBool("Idle", false);
         _anim.SetBool("Walking", false);
         _tornadoGen.Stop();
+        _target.ResetFrameColor();
         _target.underAttack = false;
         _target.attacker = null;
         _target.ApplyForce(new Vector3(), 0);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -70,6 +71,11 @@ public class GameManager : MonoBehaviour
     }
 
     public LayerMask DropLayers;
+
+    public GameObject TrailGen;
+
+    public GameObject ParticleObj;
+    //public VolumeManager VolumeManager;
 }
 
 

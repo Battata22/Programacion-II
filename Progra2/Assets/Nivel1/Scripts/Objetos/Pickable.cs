@@ -12,10 +12,12 @@ public class Pickable : Obj_Interactuable
 {
     bool _pickedUp, _trowed;
     public PickUp pickUpScript;
-    public ParticleSystem particleGen;
+    public ParticleSystem particleGen, trailGen;
     float _parMaxTime = 5f;
     public float parTime;
     NavMeshObstacle _navObstacle;
+
+    //GameObject newTrail;
 
     //Material _originalMaterial;
 
@@ -214,7 +216,7 @@ public class Pickable : Obj_Interactuable
         base.Throw(pickUpScript._audioSource, pickUpScript.tirar);
         _trowed = true;
         //_col.enabled = true;
-        if (_navObstacle != null) _navObstacle.enabled = true;
+        //if (_navObstacle != null) _navObstacle.enabled = true;
         if (particleGen)
             particleGen.Stop();
         foreach(Collider c in _col)
@@ -226,6 +228,13 @@ public class Pickable : Obj_Interactuable
         _audio.clip = arrojar;
         _audio.Play();
 
+        if (trailGen != null)
+            trailGen.Play();
+        else
+        {
+            var newTrail = Instantiate(GameManager.Instance.TrailGen, transform);
+            trailGen = newTrail.GetComponent<ParticleSystem>();
+        }
     }
 
     public void Drop()
@@ -268,9 +277,12 @@ public class Pickable : Obj_Interactuable
                 //    choc.Choco(transform.position);
                 //    onAir = false;
                 //}
+                if (_navObstacle != null && collision.gameObject.layer == 8) _navObstacle.enabled = true;
                 choc.Choco(transform.position);
                 _onAir = false;
                 _trowed = false;
+
+                trailGen.Stop();
             }
             //else if (hitObjs.length != 0)//collision.gameobject.layer != 7
             //{
