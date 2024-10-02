@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4955247353599719660}
   - component: {fileID: 6874627398478504718}
   - component: {fileID: 6341445973394224487}
+  - component: {fileID: 3017855419731056757}
   m_Layer: 7
   m_Name: Heladera01
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -14.43, y: 0, z: 1.98}
-  m_LocalScale: {x: 0.017, y: 0.017, z: 0.017}
+  m_LocalScale: {x: 0.016999997, y: 0.017, z: 0.016999997}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -158,6 +159,7 @@ MonoBehaviour:
     m_Bits: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
+  trailGen: {fileID: 0}
   parTime: 0
 --- !u!208 &6341445973394224487
 NavMeshObstacle:
@@ -171,7 +173,28 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 44.334003, y: 94.344, z: 52.980003}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.094000004, y: 92.788, z: 0}
-  m_TimeToStationary: 0.5
+  m_TimeToStationary: 0.4
+--- !u!65 &3017855419731056757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176552413933412721}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 88.668945, y: 188.68774, z: 105.9599}
+  m_Center: {x: -0.09361267, y: 92.787674, z: 0.000015258789}

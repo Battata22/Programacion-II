@@ -107,7 +107,15 @@ public class Obj_Interactuable : MonoBehaviour
         holding = false;
         _canMove = false;
         _rb.useGravity = true;
-        _rb.AddForce(_camera.forward * 50f, ForceMode.Impulse);
+        if(grande == true)
+        {
+            _rb.AddForce(_camera.forward * 200f, ForceMode.Impulse);
+        }
+        else
+        {
+            _rb.AddForce(_camera.forward * 50f, ForceMode.Impulse);
+        }
+
     }
 
     //public override void PlayMusic(AudioClip _audio1)

@@ -52,7 +52,7 @@ public class Pickable : Obj_Interactuable
         if (grande)
         {
             _cd = 3;
-            _rb.mass = 7f;
+            _rb.mass = 20f;
         }
         if ((mediano || grande) && !GetComponent<NavMeshObstacle>())
         { 

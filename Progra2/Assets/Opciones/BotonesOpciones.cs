@@ -17,10 +17,9 @@ public class BotonesOpciones : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape))
         {
 
-            SceneManager.LoadScene("Menu");
+            //SceneManager.LoadScene("Menu");
         }
     }
-
     public void VolverOnClicked()
     {
         SceneManager.LoadScene("Menu");

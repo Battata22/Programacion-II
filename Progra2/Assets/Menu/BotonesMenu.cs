@@ -24,6 +24,10 @@ public class BotonesMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Nivel1");
     }
+    public void HTPOnClicked()
+    {
+        SceneManager.LoadScene("HTP");
+    }
     public void NivelesOnClicked()
     {
         SceneManager.LoadScene("Niveles");

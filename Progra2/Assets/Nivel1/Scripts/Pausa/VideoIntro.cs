@@ -10,6 +10,7 @@ public class VideoIntro : MonoBehaviour
     [SerializeField] Image marco1, marco2, marco3, vida, negro;
     [SerializeField] GameObject gato, abuela, perro, player, entrada, barra, crosshair, skipBoton;
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] MeshRenderer gus, hand;
     float waitVideo;
     bool tepeado = false;
     //[SerializeField] tiempo
@@ -44,6 +45,8 @@ public class VideoIntro : MonoBehaviour
 
     void apagado()
     {
+        gus.enabled = false;
+        hand.enabled = false;
         marco1.enabled = false;
         marco2.enabled = false;
         marco3.enabled = false;
@@ -59,6 +62,8 @@ public class VideoIntro : MonoBehaviour
 
     void prendido()
     {
+        gus.enabled = true;
+        hand.enabled = true;
         marco1.enabled = true;
         marco2.enabled = true;
         marco3.enabled = true;

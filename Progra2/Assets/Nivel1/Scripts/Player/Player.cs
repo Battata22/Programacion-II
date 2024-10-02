@@ -77,9 +77,9 @@ public class Player : MonoBehaviour
         _OGmarcoColor2 = _marcoColor[1].color;
         _OGmarcoColor3 = _marcoColor[2].color;
 
-        Debug.Log(_OGmarcoColor1);
-        Debug.Log(_OGmarcoColor2);
-        Debug.Log(_OGmarcoColor3);
+        //Debug.Log(_OGmarcoColor1);
+        //Debug.Log(_OGmarcoColor2);
+        //Debug.Log(_OGmarcoColor3);
     }
 
     private void Update()
@@ -102,8 +102,12 @@ public class Player : MonoBehaviour
         _zAxis = Input.GetAxisRaw("Vertical");
 
         LifeSaver(transform.position.y);
-        if (Input.GetKeyDown(KeyCode.LeftShift)) CreateShadow();
-        if (Input.GetKeyDown(KeyCode.F)) MakeNoise();//posible cambio a E si no hay nada con lo que interactuar
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            CreateShadow();
+        }
+
+        //if (Input.GetKeyDown(KeyCode.F)) MakeNoise();//posible cambio a E si no hay nada con lo que interactuar
 
         if (Input.GetKeyDown(KeyCode.C))
         {

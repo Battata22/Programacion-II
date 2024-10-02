@@ -9,7 +9,7 @@ public class MenuPausa : MonoBehaviour
     public CamRotation camScript;
     [SerializeField] List<AudioSource> audioSources;
     [SerializeField] List<AudioSource> sonando;
-    bool paused = false;
+    bool paused = false, inOptions = false;
 
     void Update()
     {
@@ -19,7 +19,7 @@ public class MenuPausa : MonoBehaviour
             {
                 Pausar();
             }
-            else if (paused == true)
+            else if (paused == true && inOptions == false)
             {
                 Despausar();
             }
@@ -62,12 +62,14 @@ public class MenuPausa : MonoBehaviour
 
     public void MenuOpciones()
     {
+        inOptions = true;
         pausaMenu.SetActive(false);
         pausaOpciones.SetActive(true);
     }
 
     public void SalirMenuOpciones()
     {
+        inOptions = false;
         pausaMenu.SetActive(true);
         pausaOpciones.SetActive(false);
     }
