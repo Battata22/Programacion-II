@@ -164,7 +164,7 @@ public class Ghostbuster : NPC
         _searchingPos = pos;
     }
 
-    public override void GetScare()
+    public override void GetScared()
     {
 
         //Activar Anger supongo

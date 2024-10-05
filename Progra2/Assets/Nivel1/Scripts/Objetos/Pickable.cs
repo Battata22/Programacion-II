@@ -10,7 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(Chocamiento))]
 public class Pickable : Obj_Interactuable
 {
-    bool _pickedUp, _trowed;
+    public bool _pickedUp, _trowed;
     public PickUp pickUpScript;
     public ParticleSystem particleGen, trailGen;
     float _parMaxTime = 5f;

@@ -19,7 +19,7 @@ public class Susto : AreasSustoYDuda
 
         if (other.TryGetComponent<NPC>(out NPC _npcScript))
         {
-            _npcScript.GetScare();
+            _npcScript.GetScared();
             asustado = true;
         }
     }

@@ -140,7 +140,7 @@ public class Asustable : NPC
 
     }
 
-    public override void GetScare()
+    public override void GetScared()
     {
         if (_scared) return;
         //Debug.Log("Susto de Asustable");

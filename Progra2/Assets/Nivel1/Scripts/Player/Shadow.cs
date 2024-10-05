@@ -22,7 +22,7 @@ public class Shadow : MonoBehaviour
         }
         else if (other.gameObject.GetComponent<NPC>())
         {
-            other.GetComponent<NPC>().GetScare();
+            other.GetComponent<NPC>().GetScared();
         }
     }
 
