@@ -11,6 +11,8 @@ public class VideoIntro : MonoBehaviour
     [SerializeField] GameObject gato, abuela, perro, player, entrada, barra, crosshair, skipBoton;
     public VideoPlayer videoPlayer;
     [SerializeField] MeshRenderer gus, hand;
+
+    [SerializeField] TutorialManager tutorialManager;
     float waitVideo;
     bool tepeado = false;
     //[SerializeField] tiempo
@@ -75,6 +77,7 @@ public class VideoIntro : MonoBehaviour
         abuela.SetActive(true);
         videoPlayer.enabled = false;
         skipBoton.SetActive(false);
+        GameManager.Instance.Tutorial.StartPickUp();
     }
 
     void TPGus()

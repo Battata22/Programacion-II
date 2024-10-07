@@ -29,23 +29,27 @@ public class HandState : MonoBehaviour
             //  transform.up = _up;
             
             _filter.mesh = _holdingMesh;
+            Debug.Log("<color=cyan> Mano agarrando </color>");
         }
         if (pointing && !holding && !relax)
         {
             
             _filter.mesh = _pointingMesh;
+            Debug.Log("<color=magenta> Mano apuntando </color>");
         }
         if (!pointing && !holding && relax)
         {
             //transform.up = _up;
             
             _filter.mesh = _relaxMesh;
+            Debug.Log("<color=green> Mano relajada </color>");
         }
         if(!pointing && !holding && !relax)
         {
             //transform.up = _up;
             
             _filter.mesh= _relaxMesh;
+            Debug.Log("<color=green> Mano relajada </color>");
         }
 
     }

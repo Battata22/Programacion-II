@@ -11,6 +11,11 @@ public class Obj_Interactuable : MonoBehaviour
     [SerializeField] protected Transform _itemHolder; // punto al que va el objeto
     protected Rigidbody _rb;
     public bool mediano = false, grande = false, holding = false;
+    public int lvlRequired;
+    //{
+    //    get { return lvlRequired; }
+    //    protected set { lvlRequired = value; }
+    //}//geter seter
     protected bool _canMove = false, _onAir = false;
     protected Collider[] _col;
     [SerializeField] protected Material _materialNormal, _materialFade;
@@ -35,6 +40,9 @@ public class Obj_Interactuable : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponents<Collider>();
         _renderer = GetComponent<Renderer>();
+        if (grande) lvlRequired = 3;
+        else if(mediano) lvlRequired = 2;
+        else lvlRequired = 1;
         #region Comment
         //_mats = GetComponents<Material>();
         //foreach(var mat in _mats)
@@ -58,7 +66,7 @@ public class Obj_Interactuable : MonoBehaviour
         #endregion
     }
 
-    public virtual void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
+    public virtual void Interact(AudioSource _audio, AudioClip agarre, AudioClip error, int playerLevel)
     {
         _lastInteract = Time.time;
         _audio.clip = agarre;   
@@ -110,10 +118,14 @@ public class Obj_Interactuable : MonoBehaviour
         if(grande == true)
         {
             _rb.AddForce(_camera.forward * 200f, ForceMode.Impulse);
+            _rb.AddTorque(transform.up * 100f);
+            _rb.AddTorque(transform.right * 100f);
         }
         else
         {
             _rb.AddForce(_camera.forward * 50f, ForceMode.Impulse);
+            _rb.AddTorque(transform.up * 200f);
+            _rb.AddTorque(transform.right * 200f);
         }
 
     }

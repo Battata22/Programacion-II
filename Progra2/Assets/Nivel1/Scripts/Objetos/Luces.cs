@@ -104,7 +104,7 @@ public class Luces : Obj_Interactuable
         }
     }
 
-    public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
+    public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error, int playerLevel)
     {
         
     }

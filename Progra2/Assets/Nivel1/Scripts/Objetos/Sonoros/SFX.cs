@@ -16,6 +16,9 @@ public class SFX : Pickable
         _audioSource = GetComponent<AudioSource>();
         _col = GetComponents<Collider>();
         _chocamiento = GetComponent<Chocamiento>();
+        if (grande) lvlRequired = 3;
+        else if (mediano) lvlRequired = 2;
+        else lvlRequired = 1;
     }
 
     protected override void Start()

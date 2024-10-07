@@ -97,6 +97,10 @@ public class Pickable : Obj_Interactuable
         if (holding && Input.GetMouseButtonDown(1))
         {
             Throw(pickUpScript._audioSource, pickUpScript.tirar);
+            if (GameManager.Instance.Tutorial != null && GameManager.Instance.Tutorial.throwTuto)
+            {
+                GameManager.Instance.Tutorial.EndThrow();
+            }
             pickUpScript.sosteniendoBool = false;
             pickUpScript._audioSource.loop = false;
         }
@@ -104,6 +108,10 @@ public class Pickable : Obj_Interactuable
         if (holding && Input.GetMouseButtonDown(0))
         {
             Drop();
+            if (GameManager.Instance.Tutorial != null && GameManager.Instance.Tutorial.dropTuto)
+            {
+                GameManager.Instance.Tutorial.EndDrop();
+            }
             pickUpScript.sosteniendoBool = false;
             pickUpScript._audioSource.loop = false;
         }
@@ -113,10 +121,10 @@ public class Pickable : Obj_Interactuable
         //    CheckForDrop();
         //}
 
-        if(particleGen != null && Time.time - parTime > _parMaxTime)
-        {
-            particleGen.Stop();
-        }
+        //if(particleGen != null && Time.time - parTime > _parMaxTime)
+        //{
+        //    particleGen.Stop();
+        //}
     }
 
     private void FixedUpdate()
@@ -156,7 +164,7 @@ public class Pickable : Obj_Interactuable
         {
             transform.position += dir.normalized * _speed * Time.fixedDeltaTime;
         }
-        else
+        else if (!holding)
         {
 
             GameManager.Instance.HandState.holding = true;
@@ -185,13 +193,19 @@ public class Pickable : Obj_Interactuable
 
     }
 
-    public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error)
+    public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error,int playerLevel)
     {
 
         if (pickUpScript.isHolding == false && Time.time - _lastInteract > _cd)
         {
+            if (!(playerLevel >= lvlRequired))
+            {
+                Debug.Log("<color=yellow> Nivel Insuficiente</color>");
+                return;
+            }
+            base.Interact(_audio, agarre, error, playerLevel);
             _lastInteract = Time.time;
-            base.Interact(_audio, agarre, error);
+
             _rb.useGravity = false;
             _rb.velocity = Vector3.zero;
             _canMove = true;
@@ -317,6 +331,8 @@ public class Pickable : Obj_Interactuable
         //shaders aca
         //Debug.Log("<Color=blue> Prendido</color>");
         OutLine.SetFloat("_Thickness", _OGthik);
+        particleGen.Play();
+        parTime = Time.time;
     }
 
     public override void SlcFxOff()
@@ -326,6 +342,7 @@ public class Pickable : Obj_Interactuable
         //sader aca
         //Debug.Log("<Color=red> APAGADO </color>");
         OutLine.SetFloat("_Thickness", 0f);
+        particleGen.Stop(); 
     }
 
 }

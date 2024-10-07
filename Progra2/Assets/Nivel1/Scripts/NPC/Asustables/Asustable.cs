@@ -244,14 +244,14 @@ public class Asustable : NPC
         _sliderBarra.value++;
         if (_sliderBarra.value <= 1)
         {
-            GameManager.Instance.Player._nivel = 1;
+            GameManager.Instance.Player.nivel = 1;
         }
-        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.4 && GameManager.Instance.Player._nivel < 2)
+        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.4 && GameManager.Instance.Player.nivel < 2)
         {
             GameManager.Instance.Player.LevelUp();
             GameManager.Instance.Master1.ActivarGB();
         }
-        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.7 && GameManager.Instance.Player._nivel < 3)
+        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.7 && GameManager.Instance.Player.nivel < 3)
         {
             GameManager.Instance.Player.LevelUp();
         }

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         {           
             Destroy(this);
         }
-
+  
         //_npc = null;
     }
     #endregion
@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject ParticleObj;
     //public VolumeManager VolumeManager;
+    
+    public TutorialManager Tutorial;
 }
 
 

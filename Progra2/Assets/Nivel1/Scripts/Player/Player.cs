@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 //using System.Drawing;
-using Unity.Burst.CompilerServices;
+//using Unity.Burst.CompilerServices;
 //using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     Rigidbody _rb;
     Vector3 Spawn = new Vector3(0f, 1f, 0f);
     [SerializeField] private Transform _itemHolder;
-    public int _nivel = 1;
+    public int nivel = 1;
     AudioSource _audioSource;
     [SerializeField] AudioClip clipLevelUp;
 
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] float _speed, _frezzeCD, _slowCD;
-    float salto;
+    float _salto;
     float _xAxis, _zAxis;
     Vector3 _dir = new();
 
@@ -111,15 +111,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (_nivel > 1)
+            if (nivel > 1)
             {
-                _nivel--;
+                nivel--;
                 UpdateTerrorFrame();
             }
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
-            if (_nivel < 3)
+            if (nivel < 3)
             {
                 LevelUp();
             }
@@ -248,7 +248,7 @@ public class Player : MonoBehaviour
 
     public void UpdateTerrorFrame()
     {
-        switch (_nivel)
+        switch (nivel)
         {
             case 3:
                 _marcoLvl1.SetActive(true);
@@ -386,7 +386,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        _rb.AddForce(transform.up * salto, ForceMode.Impulse);
+        _rb.AddForce(transform.up * _salto, ForceMode.Impulse);
     }
 
     void LifeSaver(float _dis)
@@ -412,7 +412,7 @@ public class Player : MonoBehaviour
 
     public void LevelUp()
     {
-        _nivel++;
+        nivel++;
         _audioSource.clip = clipLevelUp;
         _audioSource.Play();
         UpdateTerrorFrame();
