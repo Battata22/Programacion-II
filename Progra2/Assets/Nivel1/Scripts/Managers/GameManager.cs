@@ -70,6 +70,20 @@ public class GameManager : MonoBehaviour
         set { _master1 = value; }
     }
 
+    private Animator _animPuerta;
+    public Animator AnimPuerta
+    {
+        get { return _animPuerta; }
+        set { _animPuerta = value; }
+    }
+
+    private CamaraCanvas _camGBCanvas;
+    public CamaraCanvas CamGBCanvas
+    {
+        get { return _camGBCanvas; }
+        set { _camGBCanvas = value; }
+    }
+
     public LayerMask DropLayers;
 
     public GameObject TrailGen;

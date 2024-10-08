@@ -146,6 +146,13 @@ public class Asustable : NPC
 
         //if (!_doubt) _waitDoubt = 0;
 
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            Ganarga();
+            Ganarga();
+            Ganarga();
+            Ganarga();
+        }
 
     }
 
@@ -298,4 +305,5 @@ public class Asustable : NPC
             SceneManager.LoadScene("Victoria");
         }
     }
+
 }

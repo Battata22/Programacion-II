@@ -19,7 +19,10 @@ public class MasterCreditos : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+    }
 
-        creditos.position += (new Vector3(0f, velCreditos, 0f)) * Time.deltaTime;
+    private void FixedUpdate()
+    {
+        creditos.position += (new Vector3(0f, velCreditos, 0f)) * Time.fixedDeltaTime;
     }
 }

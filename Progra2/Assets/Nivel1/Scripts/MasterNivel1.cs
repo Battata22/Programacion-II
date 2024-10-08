@@ -54,6 +54,13 @@ public class MasterNivel1 : MonoBehaviour
 
     public void ActivarGB()
     {
+        Invoke("GB", 1.46f);
+        GameManager.Instance.AnimPuerta.SetTrigger("GB_Arrives");
+        GameManager.Instance.CamGBCanvas.PrendidoRAW();
+    }
+
+    void GB()
+    {
         gb.SetActive(true);
     }
 }
