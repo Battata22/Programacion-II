@@ -12,6 +12,11 @@ public class Luces : Obj_Interactuable
     [SerializeField] AudioClip _clip;
     [SerializeField] Chocamiento _chocamiento;
 
+    public override Material OutLine
+    {
+        get { return _outLine; }
+        protected set { _outLine = value; }
+    }
     //protected Material /*_outLine, */_fade;
     //public override Material OutLine
 
@@ -57,7 +62,23 @@ public class Luces : Obj_Interactuable
         //    }
         //}
     }
+    private void Start()
+    {
+        if (_renderer != null)
+        {
+            foreach (var mat in _renderer.materials)
+            {
+                //print(mat.name);
+                if (mat.name == "M_Outline (Instance)")
+                {
+                    OutLine = mat;
+                    _OGthik = OutLine.GetFloat("_Thickness");
+                    OutLine.SetFloat("_Thickness", 0f);
+                }
+            }
+        }
 
+    }
     private void LateUpdate()
     {
         //if (Fade == null) return;

@@ -29,6 +29,7 @@ public class Obj_Interactuable : MonoBehaviour
         protected set { _outLine = value; }
     }
     protected float _OGthik;
+    protected bool _outLineAntispam;
 
     //Material[] _mats;
     //Material _outLine, _fade;
@@ -140,8 +141,9 @@ public class Obj_Interactuable : MonoBehaviour
         //parTime = Time.time;
 
         //shaders aca
-        Debug.Log("<Color=blue> Prendido</color>");
+        //Debug.Log("<Color=blue> Prendido</color>");
         OutLine.SetFloat("_Thickness", _OGthik);
+        _outLineAntispam = false;
     }
 
     public virtual void SlcFxOff()
@@ -149,8 +151,10 @@ public class Obj_Interactuable : MonoBehaviour
         //particleGen.Stop();
 
         //sader aca
-        Debug.Log("<Color=red> APAGADO </color>");
+        if (_outLineAntispam) return;
+        //Debug.Log("<Color=red> APAGADO </color>");
         OutLine.SetFloat("_Thickness", 0f);
+        _outLineAntispam = true ;
     }
 
 }

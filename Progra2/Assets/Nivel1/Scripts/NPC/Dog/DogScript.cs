@@ -57,7 +57,7 @@ public class DogScript : NPC
 
     public override void GetDoubt(Vector3 pos)
     {
-        if (playing) return;        
-        base.GetDoubt(pos);
+        //if (playing) return;        
+        //base.GetDoubt(pos);
     }
 }

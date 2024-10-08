@@ -86,13 +86,15 @@ public class Asustable : NPC
         if (_doubt && Vector3.SqrMagnitude(transform.position - new Vector3(_searchingPos.x, transform.position.y, _searchingPos.z)) <= (_changeNodeDist * _changeNodeDist))
         {
             _agent.speed = 0;
-
+            
             if (!_inPlace)
             {
                 //_inPlace = true;
                 //_waitDoubt = 0;
 
+                _anim.SetBool("Doubt", false);
                 StartSearching();
+                _anim.SetBool("Search", true);
             }
         }
 
@@ -102,7 +104,12 @@ public class Asustable : NPC
         if (_doubt)
             _searchingTimer += Time.deltaTime;
 
-        if (_searchingTimer > 12f) StopSearching();
+        if (_searchingTimer > 12f)
+        {
+            StopSearching();
+            _anim.SetBool("Walking", true);
+            _anim.SetBool("Doubt", false);
+        }
 
         if (_inPlace) _waitDoubt += Time.deltaTime;
 
@@ -131,8 +138,10 @@ public class Asustable : NPC
             //_inPlace = false;
             //GetNewNode();
             //_agent.SetDestination(_actualNode.position);
-
+            
             StopSearching();
+            _anim.SetBool("Walking", true);
+            _anim.SetBool("Search", false);
         }
 
         //if (!_doubt) _waitDoubt = 0;
@@ -147,14 +156,19 @@ public class Asustable : NPC
         _anim.SetFloat("zAxis", 1f);
         _anim.SetBool("Walking", true);
         _anim.SetBool("Idle", false);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+        _anim.SetBool("Doubt", false);
+
         _doubt = false;
         _particulas.scared = true;
+        _scared = true;
+        _agent.speed = speedScared;
+        _waitRandom = 0f;
         _audioSource.clip = gritoClip;
         _audioSource.Play();
         _waitscared = 0;
         GetNewNode(_actualNode);
-        _scared = true;
-        _agent.speed = speedScared;
         _agent.SetDestination(_actualNode.position);
         Ganarga();
     }
@@ -162,7 +176,8 @@ public class Asustable : NPC
     protected override void StopScare()
     {
         _anim.SetFloat("zAxis", 0f);
-        
+        _anim.SetBool("Doubt", false);
+
         _agent.speed = speedNormal;
         _scared = false;
         _particulas.scared = false;
@@ -176,6 +191,10 @@ public class Asustable : NPC
         //a_audioSource.Play();
         _anim.SetBool("Walking", false);
         _anim.SetBool("Idle", true);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+        _anim.SetBool("Doubt", false);
+
         _audioSource.clip = a;
         _audioSource.Play();
         _waitShivers = 0;
@@ -187,6 +206,9 @@ public class Asustable : NPC
     {
         _anim.SetBool("Walking", true);
         _anim.SetBool("Idle", false);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+
         _agent.speed = speedNormal;
     }
 
@@ -194,8 +216,11 @@ public class Asustable : NPC
     {
         if (_scared) return;
         //Debug.Log("Duda de asustable");
-        _anim.SetBool("Walking", true);
+        _anim.SetBool("Doubt", true);
+        _anim.SetBool("Walking", false);
+        _anim.SetBool("InPos", false);
         _anim.SetBool("Idle", false);
+        _anim.SetBool("Search", false);
         _doubt = true;
 
         _audioSource.clip = doubtClip;
@@ -216,20 +241,32 @@ public class Asustable : NPC
             _waitRandom = Random.Range(2f, 5f);
             //_anim.SetFloat("zAxis", 1f);
             _anim.SetBool("Walking", false);
-            _anim.SetBool("Idle", true);
+            _anim.SetBool("Idle", false);
+            _anim.SetBool("Search", false);
+            _anim.SetBool("Doubt", false);
+
+
             //Debug.Log($"<color=#adf947> LLegue espero por {_waitRandom} segundos </color>");
         }
         else
             _waitRandom = 0f;
+
+        _anim.SetBool("InPos", true);
+
         WaitForSeconds wait = new WaitForSeconds(_waitRandom);
         if (_scared) wait = new WaitForSeconds(0f);
         yield return wait;
 
         _anim.SetBool("Walking", true);
+        _anim.SetBool("InPos", false);
         _anim.SetBool("Idle", false);
-        _actualNode = GetNewNode(_actualNode);
+        _anim.SetBool("Search", false);
 
-        _agent.SetDestination(_actualNode.position);
+        if (!_doubt)
+        {
+            _actualNode = GetNewNode(_actualNode);
+            _agent.SetDestination(_actualNode.position);
+        }
 
         _lookingActive = false;
     }
