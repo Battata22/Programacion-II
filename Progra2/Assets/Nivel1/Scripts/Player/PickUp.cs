@@ -16,7 +16,9 @@ public class PickUp : MonoBehaviour
     [SerializeField] LayerMask _detectableMask;
     GameObject _lastObj, _lastOn;
     bool lineOn = false;
-    
+
+    public delegate void EventDelegateVoid();
+    public event EventDelegateVoid OnPickUp, OnInteract;
     
     
 
@@ -79,10 +81,14 @@ public class PickUp : MonoBehaviour
                 //}
                 #endregion
 
-                if(GameManager.Instance.Tutorial != null && GameManager.Instance.Tutorial.pickUpTuto)
-                {                   
-                    GameManager.Instance.Tutorial.EndPickUp();
+                if(OnPickUp != null)
+                {
+                    OnPickUp();
                 }
+                //if(GameManager.Instance.Tutorial != null && GameManager.Instance.Tutorial.pickUpTuto)
+                //{                   
+                //    GameManager.Instance.Tutorial.EndPickUp();
+                //}
                 _objScript.Interact(_audioSource, agarrado, error, _playerScript.nivel);
             }
 
@@ -106,10 +112,14 @@ public class PickUp : MonoBehaviour
                         hit.transform.gameObject.GetComponent<Luces>().LightSwitch();
                     }
                 //}
-                if (GameManager.Instance.Tutorial != null && GameManager.Instance.Tutorial.interactTuto)
+                if (OnInteract != null)
                 {
-                    GameManager.Instance.Tutorial.EndInteract();
+                    OnInteract();
                 }
+                //if (GameManager.Instance.Tutorial != null && GameManager.Instance.Tutorial.interactTuto)
+                //{
+                //    GameManager.Instance.Tutorial.EndInteract();
+                //}
             }
         }
         #region comment efectos visuales de particulas y manos

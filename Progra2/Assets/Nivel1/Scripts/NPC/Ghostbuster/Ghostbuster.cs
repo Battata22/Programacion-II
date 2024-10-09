@@ -41,6 +41,8 @@ public class Ghostbuster : NPC
         _smokeGen = _parGens[0];
         _anim = GetComponentInChildren<Animator>();
         _anim.SetBool("Walking", true);
+        if (_actualNode != null)
+            _agent.SetDestination(_actualNode.position);
     }
 
     private void Update()
@@ -48,7 +50,7 @@ public class Ghostbuster : NPC
 
         if (!_AIActive) return;
         if(_target == null) _target = GameManager.Instance.Player;
-        if (_actualNode == null) Initialize();
+        if (_actualNode == null) Initialize();  
         if (_fighting) return;
         if (!_canAttack && Time.time - _lastAttack > _attackCD)
         {

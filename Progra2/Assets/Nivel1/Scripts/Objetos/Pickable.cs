@@ -17,6 +17,8 @@ public class Pickable : Obj_Interactuable
     public float parTime;
     NavMeshObstacle _navObstacle;
 
+    //public delegate void DelegateEventVoid();
+    //public event DelegateEventVoid OnThrow, OnDrop;
     //GameObject newTrail;
 
     //Material _originalMaterial;
@@ -200,7 +202,7 @@ public class Pickable : Obj_Interactuable
         {
             if (!(playerLevel >= lvlRequired))
             {
-                Debug.Log("<color=yellow> Nivel Insuficiente</color>");
+                //Debug.Log("<color=yellow> Nivel Insuficiente</color>");
                 return;
             }
             base.Interact(_audio, agarre, error, playerLevel);

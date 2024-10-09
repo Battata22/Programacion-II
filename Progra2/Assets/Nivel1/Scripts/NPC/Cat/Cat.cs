@@ -100,9 +100,9 @@ public class Cat : NPC
             if (obj.TryGetComponent<Pickable>(out Pickable p) && p.holding == true)
             {
                 //Debug.Log($"<color=orange>Detectado {p.name}</color>");
-                Debug.Log("Encontrado");
+                //Debug.Log("Encontrado");
                 _targetObject = p;
-                Debug.Log($"<color=green>Target {_targetObject.name}</color>");
+                //Debug.Log($"<color=green>Target {_targetObject.name}</color>");
             }
         }
     }
@@ -136,7 +136,7 @@ public class Cat : NPC
             
         }
         
-        Debug.Log("Stoped");
+        //Debug.Log("Stoped");
     }
 
     void JumpToObject()

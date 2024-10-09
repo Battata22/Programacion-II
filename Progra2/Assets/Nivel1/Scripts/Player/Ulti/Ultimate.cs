@@ -34,9 +34,10 @@ public class Ultimate : MonoBehaviour
 
         if (GameManager.Instance.Player.nivel >= 3 && used == false)
         {
-            ultState.color = Color.green;
+            //ultState.color = Color.green;
             ultState.gameObject.SetActive(true);
         }
+        else if(used == true && ultState.gameObject.activeSelf) ultState.gameObject.SetActive(false);
     }
 
     void Levitar()

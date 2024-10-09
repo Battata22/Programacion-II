@@ -10,6 +10,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] Image _pickUpImg;
     [SerializeField] Image _throwImg, _dropImg, _interactImg;
 
+    [SerializeField] PickUp pickUpScript;
+
     //[SerializeField] TextMeshPro _pickUpTxt, _throwTxt, _dropTxt, _interactTxt, _catTxt, _grannyTxt, _gbTxt;
     public bool pickUpTuto = false, throwTuto = false, dropTuto = false, interactTuto = false, catTuto = false, grannyTuto = false, gbTuto = false;
     [SerializeField] float _speedMult;
@@ -25,6 +27,8 @@ public class TutorialManager : MonoBehaviour
     private void Awake()
     {
         _tutoPick = GetComponentsInChildren<TutoImage>();
+        pickUpScript.OnPickUp += EndPickUp;
+        pickUpScript.OnInteract += EndInteract;
     }
     private void Start()
     {
@@ -44,6 +48,7 @@ public class TutorialManager : MonoBehaviour
         pickUpTuto = false;       
         _tutoPick[0].animator.SetBool("Out", true);
         StartDrop();
+        pickUpScript.OnPickUp -= EndPickUp;
     }
 
     public void StartThrow()
@@ -79,6 +84,7 @@ public class TutorialManager : MonoBehaviour
     {
         interactTuto = false;
         _tutoPick[3].animator.SetBool("Out", true);
+        pickUpScript.OnInteract -= EndInteract;
     }
 
     //void MoveImage()
