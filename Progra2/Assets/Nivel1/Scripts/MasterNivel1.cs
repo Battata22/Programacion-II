@@ -27,12 +27,7 @@ public class MasterNivel1 : MonoBehaviour
 
         Time.timeScale = 1;
 
-        string json = File.ReadAllText(Application.dataPath + "/VolumenDataFile.json");
-        VolumenData data = JsonUtility.FromJson<VolumenData>(json);
-        audioMixer.SetFloat("Master", Mathf.Log10(data.Master) * 20);
-        audioMixer.SetFloat("SFX", Mathf.Log10(data.SFX) * 20);
-        audioMixer.SetFloat("NPCs", Mathf.Log10(data.NPC) * 20);
-        audioMixer.SetFloat("MusicSFX", Mathf.Log10(data.MusicSFX) * 20);
+        CargarVolumen();
     }
 
 
@@ -62,5 +57,15 @@ public class MasterNivel1 : MonoBehaviour
     void GB()
     {
         gb.SetActive(true);
+    }
+
+    void CargarVolumen()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/VolumenDataFile.json");
+        VolumenData data = JsonUtility.FromJson<VolumenData>(json);
+        audioMixer.SetFloat("Master", Mathf.Log10(data.Master) * 20);
+        audioMixer.SetFloat("SFX", Mathf.Log10(data.SFX) * 20);
+        audioMixer.SetFloat("NPCs", Mathf.Log10(data.NPC) * 20);
+        audioMixer.SetFloat("MusicSFX", Mathf.Log10(data.MusicSFX) * 20);
     }
 }

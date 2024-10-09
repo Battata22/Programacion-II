@@ -412,6 +412,7 @@ public class Player : MonoBehaviour
 
     public void LevelUp()
     {
+        _audioSource.loop = false;
         nivel++;
         _audioSource.clip = clipLevelUp;
         _audioSource.Play();

@@ -11,7 +11,6 @@ public class GravedadSlider : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        checkBox = GetComponentInChildren<Toggle>();
     }
 
 

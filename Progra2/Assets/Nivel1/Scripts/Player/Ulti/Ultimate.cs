@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class Ultimate : MonoBehaviour
 {
+    [SerializeField] PhysicMaterial phyParedes, phyPiso;
     [SerializeField] float radio, fuerzaTorque, tiempoInAir;
-    float countDown, waitScared;
-    bool active = false, used = false;
     [SerializeField] LayerMask maskUlti, maskNPC;
     [SerializeField] Image ultState;
+    float countDown, waitScared;
+    bool active = false, used = false;
 
     void Start()
     {
@@ -131,6 +132,11 @@ public class Ultimate : MonoBehaviour
         }
 
         active = false;
+    }
+
+    void CambioFisicas()
+    {
+
     }
 
 }
