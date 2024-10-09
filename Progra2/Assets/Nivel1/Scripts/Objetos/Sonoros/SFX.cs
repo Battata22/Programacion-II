@@ -8,7 +8,6 @@ public class SFX : Pickable
     [SerializeField] protected bool isPlaying = false, clip = false;
     protected int random1;
     Chocamiento _chocamiento;
-
     
 
     private void Awake()
@@ -25,6 +24,7 @@ public class SFX : Pickable
     {
         _renderer = GetComponent<Renderer>();
         base.Start();
+        #region Comment
         //print(_renderer.name);
         //if (_renderer != null)
         //{
@@ -47,7 +47,8 @@ public class SFX : Pickable
         //        }
         //    }
         //}
-        //_audioSource = GetComponent<AudioSource>();
+        //_audioSource = GetComponent<AudioSource>(); 
+        #endregion
     }
 
 

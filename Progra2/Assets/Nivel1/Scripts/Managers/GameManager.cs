@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         set { _camGBCanvas = value; }
     }
 
+
     public LayerMask DropLayers;
 
     public GameObject TrailGen;
