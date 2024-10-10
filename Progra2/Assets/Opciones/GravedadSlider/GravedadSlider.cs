@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GravedadSlider : MonoBehaviour
 {
-    [SerializeField] Slider slider;
-    [SerializeField] Toggle checkBox;
+    public Slider slider;
+    public Toggle checkBox;
     [SerializeField] float vel, ace;
     void Start()
     {
@@ -28,6 +28,12 @@ public class GravedadSlider : MonoBehaviour
                 slider.value -= (vel * Time.deltaTime * ace);
             }
         }
+
+        //if (checkBox.isOn == true)
+        //{
+        //    print("on");
+        //}
+        //else print("off");
 
     }
 }

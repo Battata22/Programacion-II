@@ -23,6 +23,7 @@ public class Ghostbuster : NPC
     //[SerializeField]bool idle = false, walking, running = false, aiming = false;
 
     [SerializeField] int maxTraps;
+    [SerializeField] int minTrapTime;
     [SerializeField] int currentTraps;
 
     ParticleSystem[] _parGens; 
@@ -311,7 +312,7 @@ public class Ghostbuster : NPC
         {
             currentTraps++;
             _waitTrampa = 0;
-            _waitTrampaRandom = Random.Range(15, 121);
+            _waitTrampaRandom = Random.Range(minTrapTime, 121);
             var newTrap = Instantiate(trampaPrefab, lugar.position, Quaternion.identity);
             newTrap.Initialize(this);
         }

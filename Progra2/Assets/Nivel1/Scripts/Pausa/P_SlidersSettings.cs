@@ -126,16 +126,6 @@ public class P_SlidersSettings : MonoBehaviour
         SensGuardarJSON(_sensSlider.value);
     }
 
-    //void LoadVolume()
-    //{
-    //    _masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-    //    _sFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-    //    _nPCSlider.value = PlayerPrefs.GetFloat("NPCsVolume");
-    //    _musicSFXSlider.value = PlayerPrefs.GetFloat("MusicSFXVolume");
-
-    //    SetMusicVolume();
-    //}
-
     public void VolGuardarJSON()
     {
         VolumenData data = new VolumenData();

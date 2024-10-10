@@ -150,14 +150,14 @@ RectTransform:
   m_GameObject: {fileID: 33120631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7435915, y: 0.7435915, z: 0.7435915}
+  m_LocalScale: {x: 1.86753, y: 1.86753, z: 1.86753}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1424591655}
+  m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 25.3}
+  m_AnchoredPosition: {x: 0, y: 109}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &33120633
@@ -320,14 +320,14 @@ RectTransform:
   m_GameObject: {fileID: 74209576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7435915, y: 0.7435915, z: 0.7435915}
+  m_LocalScale: {x: 1.86753, y: 1.86753, z: 1.86753}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1091246890}
+  m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 24.9}
+  m_AnchoredPosition: {x: 0, y: -68}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &74209578
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MusicSFX
+  m_text: Radio Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -671,14 +671,14 @@ RectTransform:
   m_GameObject: {fileID: 232542289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.74359, y: 0.74359, z: 0.74359}
+  m_LocalScale: {x: 1.8675262, y: 1.8675262, z: 1.8675262}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2012513309}
+  m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 27.1}
+  m_AnchoredPosition: {x: 0, y: 461}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232542291
@@ -1458,7 +1458,6 @@ RectTransform:
   - {fileID: 1551827999}
   - {fileID: 749564714}
   - {fileID: 286046988}
-  - {fileID: 1540293112}
   m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1532,6 +1531,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1737584086}
         m_TargetAssemblyTypeName: SlidersSettings, Assembly-CSharp
         m_MethodName: SetVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1737584086}
+        m_TargetAssemblyTypeName: SlidersSettings, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2374,7 +2385,6 @@ RectTransform:
   - {fileID: 745988684}
   - {fileID: 2128859459}
   - {fileID: 1249180817}
-  - {fileID: 74209577}
   m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2448,6 +2458,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1737584086}
         m_TargetAssemblyTypeName: SlidersSettings, Assembly-CSharp
         m_MethodName: SetVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1737584086}
+        m_TargetAssemblyTypeName: SlidersSettings, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3105,7 +3127,6 @@ RectTransform:
   - {fileID: 532104038}
   - {fileID: 2031241888}
   - {fileID: 2074482300}
-  - {fileID: 33120632}
   m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3188,6 +3209,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1737584086}
+        m_TargetAssemblyTypeName: SlidersSettings, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1540293111
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,14 +3248,14 @@ RectTransform:
   m_GameObject: {fileID: 1540293111}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7435915, y: 0.7435915, z: 0.7435915}
+  m_LocalScale: {x: 1.86753, y: 1.86753, z: 1.86753}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 677329018}
+  m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 25.9}
+  m_AnchoredPosition: {x: 0, y: 279}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540293113
@@ -3987,10 +4020,14 @@ RectTransform:
   - {fileID: 1806183084}
   - {fileID: 655679652}
   - {fileID: 2012513309}
+  - {fileID: 232542290}
   - {fileID: 380540368}
   - {fileID: 677329018}
+  - {fileID: 1540293112}
   - {fileID: 1424591655}
+  - {fileID: 33120632}
   - {fileID: 1091246890}
+  - {fileID: 74209577}
   - {fileID: 1410659698}
   - {fileID: 2011988400}
   - {fileID: 1922592238}
@@ -4019,6 +4056,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
+  masterClip: {fileID: 8300000, guid: b2b5270686c409945b2216432f048127, type: 3}
+  sfxClip: {fileID: 8300000, guid: 74cc41edebb95db45b740173feb3fee5, type: 3}
+  npcClip: {fileID: 8300000, guid: 010829522d58ec84a896907199dcd622, type: 3}
+  musicClip: {fileID: 8300000, guid: 0d2d197e42b96af48b48eae08957663a, type: 3}
   _masterSlider: {fileID: 2012513308}
   _sFXSlider: {fileID: 677329019}
   _nPCSlider: {fileID: 1424591656}
@@ -4775,6 +4816,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1737584086}
+        m_TargetAssemblyTypeName: SlidersSettings, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &2012513309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4790,7 +4843,6 @@ RectTransform:
   - {fileID: 1118269353}
   - {fileID: 1331099956}
   - {fileID: 769860943}
-  - {fileID: 232542290}
   m_Father: {fileID: 1737584085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

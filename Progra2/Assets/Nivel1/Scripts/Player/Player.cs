@@ -34,27 +34,25 @@ public class Player : MonoBehaviour
     float _xAxis, _zAxis;
     Vector3 _dir = new();
 
-    //Attack logic
+
     public bool underAttack, _traped = false, _canFrezze2 = true;
     public Ghostbuster attacker;
 
-    //Shadow
+
     [Header("Prefabs")]
     [SerializeField] Shadow _shadowPrefab;
 
     [SerializeField] int _maxShadows;
     public int currentShadows;
 
-    //
+    
     float waitFrezze, waitSlow;
     [SerializeField] float opacidadMarco;
 
-    //Under attack beahvior
+
     public int scapeSpam;
     [SerializeField]int randomAxis = 0;
-    //Ritmo
-    //[SerializeField] float _rythmTime;
-    //bool _rythmOn;
+
 
 
 
@@ -68,28 +66,16 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.Player = this;
         GameManager.Instance.ItemHolde = _itemHolder;
-        //Marco1();
+
         UpdateTerrorFrame();
-        //_marcoColor1 = _marcoLvl1.GetComponent<Image>();
-        //_marcoColor2 = _marcoLvl2.GetComponent<Image>();
-        //_marcoColor3 = _marcoLvl3.GetComponent<Image>();
+
         _OGmarcoColor1 = _marcoColor[0].color;
         _OGmarcoColor2 = _marcoColor[1].color;
         _OGmarcoColor3 = _marcoColor[2].color;
-
-        //Debug.Log(_OGmarcoColor1);
-        //Debug.Log(_OGmarcoColor2);
-        //Debug.Log(_OGmarcoColor3);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G)) 
-        {
-            _audioSource.clip = clipLevelUp;
-            _audioSource.Play();
-            inmortal = !inmortal;
-        }
 
         if (_traped == true)
         {
@@ -107,9 +93,26 @@ public class Player : MonoBehaviour
             CreateShadow();
         }
 
-        //if (Input.GetKeyDown(KeyCode.F)) MakeNoise();//posible cambio a E si no hay nada con lo que interactuar
-
-        if (Input.GetKeyDown(KeyCode.C))
+        #region ControlesF
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            RestartScene();
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            _audioSource.clip = clipLevelUp;
+            _audioSource.Play();
+            inmortal = !inmortal;
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            _speed = _speed * 0.5f;
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            _speed = _speed * 2f;
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
         {
             if (nivel > 1)
             {
@@ -117,21 +120,14 @@ public class Player : MonoBehaviour
                 UpdateTerrorFrame();
             }
         }
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.F6))
         {
             if (nivel < 3)
             {
                 LevelUp();
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _speed = _speed * 0.5f;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _speed = _speed * 2f;
-        }
+        } 
+        #endregion
 
         SpriteVidaUpdate();
 
@@ -184,6 +180,8 @@ public class Player : MonoBehaviour
     void Movement(float xAxis, float zAxis)
     {       
         if (underAttack) return;
+
+        #region Comment
         //{
         //    //LockedMovement();
         //    //transform.RotateAround(attacker.transform.position, Vector3.up, lastAxis * 100 * Time.fixedDeltaTime);
@@ -195,12 +193,10 @@ public class Player : MonoBehaviour
         //    //transform.position += _dir * _speed * Time.fixedDeltaTime;
         //    _rb.position += _dir * _speed *Time.fixedDeltaTime;
         //    //_rb.AddForce(_dir * _speed * Time.fixedDeltaTime, ForceMode.Force);
-        //}
+        //} 
+        #endregion
+
         RaycastHit hitR, hitL, hitF, hitB;
-        //Physics.Raycast(transform.position, transform.right, out hitR, 0.2f, LayerMask.GetMask("NoTras"));
-        //Physics.Raycast(transform.position, -transform.right, out hitL, 0.2f, LayerMask.GetMask("NoTras"));
-        //Physics.Raycast(transform.position, transform.forward, out hitF, 0.2f, LayerMask.GetMask("NoTras"));
-        //Physics.Raycast(transform.position, -transform.forward, out hitB, 0.2f, LayerMask.GetMask("NoTras"));
         Vector3 pos = new Vector3(transform.position.x, transform.position.y+1f, transform.position.z);
 
         if (Physics.SphereCast(pos,0.25f, transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")) && xAxis > 0)
@@ -224,7 +220,6 @@ public class Player : MonoBehaviour
             return;
         }
 
-        //Debug.Log("<color=orange> MOVIENDOME </color>");
         _dir = (transform.right * xAxis + transform.forward * zAxis).normalized;
         _rb.position += _dir * _speed * Time.fixedDeltaTime;
     }
@@ -417,6 +412,8 @@ public class Player : MonoBehaviour
         _audioSource.clip = clipLevelUp;
         _audioSource.Play();
         UpdateTerrorFrame();
+
+        #region Comment
         //if (_nivel == 2)
         //{
         //    Marco2();
@@ -424,21 +421,21 @@ public class Player : MonoBehaviour
         //else if (_nivel == 3)
         //{
         //    Marco3();
-        //}
+        //} 
+        #endregion
     }
 
     public void GetDamage()
     {
-        //Debug.Log("<color=#6916c1> Auch </color>");
         if(inmortal) return;
         _hp--;
         if (_hp <=0)
         {
-            //Debug.Log("<color=#6916c1> IM Dead ... /n wait a minute </color> ");
             SceneManager.LoadScene("Derrota");
         }
     }
 
+    #region Comment
     //IEnumerator RythmEscape()
     //{
     //    WaitForSeconds wait = new WaitForSeconds(_rythmTime);
@@ -459,6 +456,12 @@ public class Player : MonoBehaviour
 
     //    }
 
-    //}
-    
+    //} 
+    #endregion
+
+    void RestartScene()
+    {
+        SceneManager.LoadScene("Nivel1");
+    }
+
 }

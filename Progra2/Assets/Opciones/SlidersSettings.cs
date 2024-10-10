@@ -3,16 +3,18 @@ using TMPro;
 using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SlidersSettings : MonoBehaviour
 {
     [SerializeField] AudioMixer _audioMixer;
+    [SerializeField] AudioClip masterClip, sfxClip, npcClip, musicClip;
     [SerializeField] Slider _masterSlider, _sFXSlider, _nPCSlider, _musicSFXSlider, _sensSlider;
     [SerializeField] Text _textMaster, _textSFX, _textNPC, _textMusicSFX, _textSens;
     [SerializeField] AudioSource _audioSource;
     [SerializeField] AudioMixerGroup groupMaster, groupSFX, groupNPC, groupMusic;
-    float waitSonido, menuTimer;
+    float waitSonido, menuTimer, wait1;
     bool sono = true;
     //int output = 1; // 1 = master, 2 = SFX, 3 = NPCs, 4 = MusicSFX
 
@@ -31,8 +33,17 @@ public class SlidersSettings : MonoBehaviour
         //}
         #endregion
 
-        VolCargarJSON();
+        //if (File.Exists(Application.dataPath + "/VolumenDataFile.json") == true)
+        //{
+        //    SceneManager.LoadScene("Nivel1");
+        //}
+        //else SceneManager.LoadScene("Opciones");
+
+        //print("olaaa???");
+
         SensCargarJSON();
+        VolCargarJSON();
+
     }
 
     private void Update()
@@ -55,30 +66,45 @@ public class SlidersSettings : MonoBehaviour
         {
             _audioSource.volume = 1;
         }
+
+        if(_audioSource.isPlaying)
+        {
+            wait1 += Time.deltaTime;
+            if (wait1 >= 1 && _audioSource.clip == musicClip)
+            {
+                _audioSource.Stop();
+                wait1 = 0;
+            }
+        }
     }
 
     public void MasterOutput()
     {
         _audioSource.outputAudioMixerGroup = groupMaster;
+        _audioSource.clip = masterClip;
     }
 
     public void SFXOutput()
     {
         _audioSource.outputAudioMixerGroup = groupSFX;
+        _audioSource.clip = sfxClip;
     }
 
     public void NPCsOutput()
     {
         _audioSource.outputAudioMixerGroup = groupNPC;
+        _audioSource.clip = npcClip;
     }
 
     public void MusicSFXOutput()
     {
         _audioSource.outputAudioMixerGroup = groupMusic;
+        _audioSource.clip = musicClip;
     }
     public void SensOutput()
     {
         _audioSource.outputAudioMixerGroup = groupMaster;
+        _audioSource.clip = masterClip;
     }
 
 
@@ -176,6 +202,6 @@ public class SlidersSettings : MonoBehaviour
 
     public void PlaySound()
     {
-        _audioSource.Play();
+        //_audioSource.Play();
     }
 }

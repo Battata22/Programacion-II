@@ -21,9 +21,6 @@ public class MasterNivel1 : MonoBehaviour
 
     void Start()
     {
-        //videoPlayer.Play();
-        ////Time.timeScale = 0;
-        //canvas.SetActive(false);
 
         Time.timeScale = 1;
 
@@ -33,18 +30,7 @@ public class MasterNivel1 : MonoBehaviour
 
     void Update()
     {
-        //waitVideo += Time.deltaTime;
-        //if (waitVideo >= videoPlayer.length * 2)
-        //{
-        //    videoPlayer.enabled = false;
-        //    Time.timeScale = 1;
-        //    canvas.SetActive(true);
-        //}
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            SceneManager.LoadScene("Nivel1");
-        }
     }
 
     public void ActivarGB()
