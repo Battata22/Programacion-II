@@ -87,6 +87,7 @@ public class TutorialManager : MonoBehaviour
         pickUpScript.OnInteract -= EndInteract;
     }
 
+    #region Comment
     //void MoveImage()
     //{
     //    if (!canMove) return;
@@ -96,7 +97,7 @@ public class TutorialManager : MonoBehaviour
 
     //void MoveInAxis(int num)
     //{
-        
+
     //    switch (num)
     //    {
     //        case 0:
@@ -112,7 +113,8 @@ public class TutorialManager : MonoBehaviour
     //            _actualImage.transform.position += _actualImage.transform.right * Time.deltaTime * -_speedMult;
     //            break;           
     //    }
-    //}
+    //} 
+    #endregion
 
     private void OnDestroy()
     {
