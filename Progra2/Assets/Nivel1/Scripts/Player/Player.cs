@@ -133,10 +133,12 @@ public class Player : MonoBehaviour
 
         if (underAttack)
         {
-
+            if (!_suctionAntiSpam)
+                StartCoroutine(SuctionMult());
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
             {
                 scapeSpam++;
+                _suctionMul = 0.5f;
 
                 _marcoColor[0].color = Color.Lerp(_actCol1, _OGmarcoColor1, scapeSpam * 0.1f / 3);
                 _marcoColor[1].color = Color.Lerp(_actCol2, _OGmarcoColor2, scapeSpam * 0.1f / 3);
@@ -373,10 +375,28 @@ public class Player : MonoBehaviour
 
     }
 
+    float _suctionMul = 1;
+    bool _suctionAntiSpam = false;
+
+    private IEnumerator SuctionMult()
+    {
+        _suctionAntiSpam = true;
+        while (underAttack)
+        {
+            var lastSpamnum = scapeSpam;
+            yield return new WaitForSeconds(0.5f);
+            if (lastSpamnum == scapeSpam) 
+                _suctionMul = 10f;
+            
+        }
+        _suctionMul = 0.5f;
+        _suctionAntiSpam = false;
+    }
+
     public void ApplyForce(Vector3 direction, float forceMult)
     {
         if (forceMult == 0) _rb.velocity = Vector3.zero;
-        _rb.AddForce(direction * forceMult * Time.fixedDeltaTime, ForceMode.Force);
+        _rb.AddForce(direction * forceMult * Time.fixedDeltaTime * _suctionMul, ForceMode.Force);
     }
 
     void Jump()

@@ -69,11 +69,11 @@ public class Luces : Obj_Interactuable
             foreach (var mat in _renderer.materials)
             {
                 //print(mat.name);
-                if (mat.name == "M_Outline (Instance)")
+                if (mat.name == "M_OutlineL (Instance)")
                 {
                     OutLine = mat;
                     _OGthik = OutLine.GetFloat("_Thickness");
-                    OutLine.SetFloat("_Thickness", 0f);
+                    OutLine.SetFloat("_Thickness", -0.02f);
                 }
             }
         }
@@ -123,6 +123,14 @@ public class Luces : Obj_Interactuable
             _audioSource.Play();
             _chocamiento.ChocoSonoro(transform.position);
         }
+    }
+
+    public override void SlcFxOff()
+    {
+        if (_outLineAntispam) return;
+        //Debug.Log("<Color=red> APAGADO </color>");
+        OutLine.SetFloat("_Thickness", -0.02f);
+        _outLineAntispam = true;
     }
 
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error, int playerLevel)

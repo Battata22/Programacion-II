@@ -203,7 +203,7 @@ public abstract class NPC : MonoBehaviour
         _agent.SetDestination(_actualNode.position);
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         GameManager.Instance.Npc.Remove(this);
     }

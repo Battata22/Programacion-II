@@ -7,17 +7,7 @@ public class TrampaGB : MonoBehaviour
     // Script de Martin hecho con ayuda de Gianluca, te amamos Gianluca
     [SerializeField] Chocamiento chocamientoScript;
     [SerializeField] Ghostbuster _gBScript;
-
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-        
-    }
+    [SerializeField] GameObject _electricArea;
 
     public void Initialize(Ghostbuster newGB)
     {
@@ -33,6 +23,7 @@ public class TrampaGB : MonoBehaviour
             //chocamientoScript.Choco(player.transform.position);
             _gBScript.GetDoubt(player.transform.position);
             player._traped = true;
+            var _newObj = Instantiate(_electricArea, this.transform.position,Quaternion.identity);
             //dejarte quieto 1s o 0.5s
             //relentizarte durante 5s
             //sacarte 1 de vida quiza? UwU

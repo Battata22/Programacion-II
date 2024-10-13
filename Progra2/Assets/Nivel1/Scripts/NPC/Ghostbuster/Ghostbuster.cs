@@ -26,6 +26,9 @@ public class Ghostbuster : NPC
     [SerializeField] int minTrapTime;
     [SerializeField] int currentTraps;
 
+    public delegate void EventVoid();
+    public event EventVoid OnAttackStart, OnAttackEnd;
+
     ParticleSystem[] _parGens; 
     ParticleSystem _tornadoGen;
     ParticleSystem _smokeGen;
@@ -34,6 +37,7 @@ public class Ghostbuster : NPC
     {
         //_agent.speed;
         base.Start();
+        GameManager.Instance.Gb.Add(this);
         _waitTrampaRandom = Random.Range(5, 101);
         //_target = GameManager.Instance.Player;
         _gbFov = GetComponent<GB_FOV>();
@@ -205,6 +209,8 @@ public class Ghostbuster : NPC
     void StartAttack()
     {
         if (!_canAttack) return;
+        if(OnAttackStart != null)
+            OnAttackStart();
         _anim.SetBool("Idle", false);
         _anim.SetBool("Walking", false);
         _anim.SetBool("Attacking", true);
@@ -254,6 +260,8 @@ public class Ghostbuster : NPC
         //if(!_isAttacking) return;
         //Debug.Log("Terminando Ataque");
         //_agent.speed = speedNormal;
+        if (OnAttackEnd != null)
+            OnAttackEnd();
         _anim.SetFloat("zAxis", 0);
         _anim.SetBool("Attacking", false);
         _anim.SetBool("Idle", false);
@@ -428,5 +436,11 @@ public class Ghostbuster : NPC
         {
             _agent.speed = 0f;
         }
+    }
+
+    protected override void OnDestroy()
+    {
+        GameManager.Instance.Gb.Remove(this);
+        base.OnDestroy();    
     }
 }

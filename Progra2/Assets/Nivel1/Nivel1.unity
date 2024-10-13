@@ -752,6 +752,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &10551845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1645,6 +1646,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &25563944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2176,6 +2178,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &27460600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3238,6 +3241,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &57500393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4292,6 +4296,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &90685415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4720,6 +4725,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &91419470
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6094,6 +6100,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &130322812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6675,6 +6682,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!65 &141667489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8344,6 +8352,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &181400584
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8979,6 +8988,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -11700,6 +11710,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &213675998
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12708,6 +12719,7 @@ GameObject:
   - component: {fileID: 235440597}
   - component: {fileID: 235440596}
   - component: {fileID: 235440600}
+  - component: {fileID: 235440601}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12801,6 +12813,7 @@ RectTransform:
   - {fileID: 25819580}
   - {fileID: 1477873387}
   - {fileID: 733106907}
+  - {fileID: 1966000976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12837,6 +12850,19 @@ MonoBehaviour:
   gus: {fileID: 1960549494}
   hand: {fileID: 352871891}
   tutorialManager: {fileID: 0}
+--- !u!114 &235440601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235440595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde7b3170cffc284eaeea13b85ec5cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spamImage: {fileID: 1966000978}
 --- !u!1 &235905540
 GameObject:
   m_ObjectHideFlags: 0
@@ -14746,6 +14772,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &245657216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16315,6 +16342,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &295146590
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17355,6 +17383,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -21588,6 +21617,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -22038,6 +22068,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -23822,6 +23853,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &457802967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24368,6 +24400,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &462274625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26687,6 +26720,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &476650983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27312,6 +27346,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -27961,6 +27996,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &488727804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28745,6 +28781,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &495126722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29162,6 +29199,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &497564390
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29966,6 +30004,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &504012257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30394,6 +30433,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &504167916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30518,10 +30558,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7689945040952473463, guid: 6d969de23fddcae42ab21e38bb4b0e79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1804165035}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d969de23fddcae42ab21e38bb4b0e79, type: 3}
 --- !u!43 &512013213
 Mesh:
@@ -31054,6 +31091,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!65 &517360922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31645,6 +31683,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -32241,11 +32280,6 @@ NavMeshObstacle:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8359436629121408831, guid: d31a690d99640714f9f73dce3d57d534, type: 3}
   m_PrefabInstance: {fileID: 907732410}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &548316704 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 401512192074926200, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
-  m_PrefabInstance: {fileID: 1833925047}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &548872126
 Mesh:
@@ -33267,6 +33301,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &556946551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34451,6 +34486,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &600380139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35451,6 +35487,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &615972587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36244,6 +36281,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &625218205
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38308,6 +38346,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &660261345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40208,6 +40247,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &690954355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40841,6 +40881,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &698450141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41776,6 +41817,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &714550891
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42321,6 +42363,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &722659589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43544,6 +43587,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &748702261
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45092,6 +45136,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &777521228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45509,6 +45554,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &778452367
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48049,6 +48095,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &823609021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49050,6 +49097,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &835295046
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50499,6 +50547,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &850170810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51575,6 +51624,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &871315900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53794,6 +53844,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &915142802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54374,6 +54425,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &937418052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57484,6 +57536,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &982212382
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -59874,6 +59927,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1045491737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61068,6 +61122,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1082023188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62441,6 +62496,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1116699696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63359,6 +63415,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1129448805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63824,6 +63881,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1132435341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64269,6 +64327,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1134691322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65050,6 +65109,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1148223451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65563,6 +65623,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1155989776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66136,6 +66197,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1170791179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67311,6 +67373,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1205903654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67744,6 +67807,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1209108565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68431,6 +68495,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1224805559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68848,6 +68913,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1225465443
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73675,6 +73741,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1269206939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76357,6 +76424,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1315841955
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78436,6 +78504,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1352004307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79832,6 +79901,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1397418985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81997,6 +82067,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1463423108
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83491,6 +83562,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -85088,6 +85160,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1542424408
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86235,6 +86308,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1561426681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87276,6 +87350,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1599666199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -89907,6 +89982,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!65 &1691968082
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -90457,6 +90533,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1693225529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92710,6 +92787,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1719805642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93718,6 +93796,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1732475154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95310,6 +95389,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -96077,6 +96157,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1803015121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96091,27 +96172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
   areaSonoro: {fileID: 0}
---- !u!1 &1804165028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7689945040952473463, guid: 6d969de23fddcae42ab21e38bb4b0e79, type: 3}
-  m_PrefabInstance: {fileID: 510309347}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &1804165035
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804165028}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 38.75, y: 8, z: 28.750002}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 8.0390005, z: 0}
-  m_TimeToStationary: 0.4
 --- !u!4 &1804301477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5403988729613085381, guid: 8f07fd4d5fac48d4ca8c060f1f99ff4f, type: 3}
@@ -96504,6 +96564,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1805799400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97165,6 +97226,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &1820561017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97698,10 +97760,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 401512192074926200, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2089020470}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
 --- !u!1001 &1833943935
 PrefabInstance:
@@ -101588,6 +101647,100 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1966000975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1966000976}
+  - component: {fileID: 1966000979}
+  - component: {fileID: 1966000978}
+  - component: {fileID: 1966000977}
+  m_Layer: 5
+  m_Name: SpamImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1966000976
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966000975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 235440599}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1966000977
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966000975}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89a89bf34b0096b48bf19a7ec10aa6c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1966000978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966000975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 1bf146664201da64fbc999abf8529e8d, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1966000979
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966000975}
+  m_CullTransparentMesh: 1
 --- !u!1 &1967590453
 GameObject:
   m_ObjectHideFlags: 0
@@ -102003,6 +102156,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1967590462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102897,6 +103051,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &1992802074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105591,6 +105746,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &2045277103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106567,6 +106723,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &2056803723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107335,6 +107492,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!65 &2079310175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108065,6 +108223,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!114 &2086254472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108100,22 +108259,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1836880719009460438, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
   m_PrefabInstance: {fileID: 1833925047}
   m_PrefabAsset: {fileID: 0}
---- !u!208 &2089020470
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548316704}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 20.806002, y: 4.5, z: 21.047}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 4.5, z: 0}
-  m_TimeToStationary: 0.4
 --- !u!1 &2090207372
 GameObject:
   m_ObjectHideFlags: 0
@@ -108503,6 +108646,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!54 &2090207380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -120707,6 +120851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog
       objectReference: {fileID: 0}
+    - target: {fileID: 7275722901949425985, guid: c0a086ddbc713634281b9bf7a9eeeb05, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8034bd89d6fb0034f83fbac960582ad9, type: 2}
     - target: {fileID: 8169357983576010605, guid: c0a086ddbc713634281b9bf7a9eeeb05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.4838305
@@ -120848,7 +120996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3079976728656513823, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3469977869186367396, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -122023,6 +122171,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!4 &7967565569276737659
 Transform:
   m_ObjectHideFlags: 0
@@ -122074,6 +122223,7 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

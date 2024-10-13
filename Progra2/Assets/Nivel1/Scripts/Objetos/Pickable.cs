@@ -1,4 +1,5 @@
 //using System.Drawing;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,7 +16,7 @@ public class Pickable : Obj_Interactuable
     public ParticleSystem particleGen, trailGen;
     float _parMaxTime = 5f;
     public float parTime;
-    NavMeshObstacle _navObstacle;
+    [SerializeField] NavMeshObstacle _navObstacle;
 
     //public delegate void DelegateEventVoid();
     //public event DelegateEventVoid OnThrow, OnDrop;
@@ -56,12 +57,16 @@ public class Pickable : Obj_Interactuable
             _cd = 3;
             _rb.mass = 20f;
         }
-        if ((mediano || grande) && !GetComponent<NavMeshObstacle>())
+        if (mediano || grande)
         { 
-            this.AddComponent<NavMeshObstacle>();
-            
+            if (!GetComponent<NavMeshObstacle>())
+                this.AddComponent<NavMeshObstacle>();
+            _navObstacle = GetComponent<NavMeshObstacle>();
+            _navObstacle.carving = true;
+            _navObstacle.carvingMoveThreshold = 0.1f;
+            _navObstacle.carvingTimeToStationary = 0.4f;
+            _navObstacle.carveOnlyStationary = true;
         }
-        _navObstacle = GetComponent<NavMeshObstacle>();
 
         if (_renderer != null)
         {
@@ -158,6 +163,8 @@ public class Pickable : Obj_Interactuable
         }
     }
 
+    
+
     protected Vector3 dir = Vector3.zero;
     protected void Movement(Transform _target)
     {
@@ -237,6 +244,11 @@ public class Pickable : Obj_Interactuable
             particleGen.Stop();
         foreach(Collider c in _col)
             c.isTrigger = false;
+        if (_navObstacle != null)
+        {
+            //Debug.Log("AHHHHHHHHH de tirar");
+            StartCoroutine(ActivateNavObstacle());
+        }
         _pickedUp = false;
         pickUpScript.isHolding = false;
         _onAir = true;
@@ -262,7 +274,12 @@ public class Pickable : Obj_Interactuable
         GameManager.Instance.HandState.pointing = false;
         GameManager.Instance.HandState.relax = true;
         GameManager.Instance.HandState.ChangeState();
-        if (_navObstacle != null) _navObstacle.enabled = true;
+        if (_navObstacle != null)
+        {
+            //_navObstacle.enabled = true;
+            //Debug.Log("AHHHHHHHHH de soltar");
+            StartCoroutine(ActivateNavObstacle());
+        }
         if (particleGen)
             particleGen.Stop();
         //_col.enabled = true;
@@ -287,13 +304,20 @@ public class Pickable : Obj_Interactuable
             //Collider[] hitObjs = Physics.OverlapSphere(transform.position, 0.5f, _layerMask);
             if (_trowed && TryGetComponent<Chocamiento>(out Chocamiento choc))
             {
+                #region comment
                 //Chocamiento choc = GetComponent<Chocamiento>();
                 //if (TryGetComponent<Chocamiento>(out Chocamiento choc))//choc != null && 
                 //{
                 //    choc.Choco(transform.position);
                 //    onAir = false;
                 //}
-                if (_navObstacle != null && collision.gameObject.layer == 8) _navObstacle.enabled = true;
+                //if (_navObstacle != null && collision.gameObject.layer == 8)
+                //{
+                //    //_navObstacle.enabled = true;
+                //    ActivateNavObstacle();
+                //}
+                #endregion
+
                 choc.Choco(transform.position);
                 _onAir = false;
                 _trowed = false;
@@ -309,21 +333,21 @@ public class Pickable : Obj_Interactuable
 
     private void OnTriggerEnter(Collider other)
     {
-        if((other.gameObject.layer == 31 ||  other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
+        if ((other.gameObject.layer == 31 || other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
         {
             Drop();
         }
     }
 
-    Collider[] hitObjs;
-    void CheckForDrop()
-    {
-        Collider[] hitObjs = Physics.OverlapSphere(transform.position, 0.5f, _dropLayers);
-        if (hitObjs.Length != 0)//collision.gameObject.layer != 7
-        {
-            Drop();
-        }
-    }
+    //Collider[] hitObjs;
+    //void CheckForDrop()
+    //{
+    //    Collider[] hitObjs = Physics.OverlapSphere(transform.position, 0.5f, _dropLayers);
+    //    if (hitObjs.Length != 0)//collision.gameObject.layer != 7
+    //    {
+    //        Drop();
+    //    }
+    //}
 
     public override void SlcFxOn()
     {
@@ -347,4 +371,18 @@ public class Pickable : Obj_Interactuable
         particleGen.Stop(); 
     }
 
+    protected IEnumerator ActivateNavObstacle()
+    {
+        Debug.Log("<color=blue> LLAMADO A ACTIVAR </color>");
+        yield return new WaitForSeconds(2f);
+        if (holding || _onAir || _navObstacle.enabled)
+        {
+            Debug.Log("<color=red> NO ACTIVAR </color>");
+        }
+        else
+        {
+            Debug.Log("<color=green> ACTIVADO </color>");
+            _navObstacle.enabled = true;
+        }
+    }
 }

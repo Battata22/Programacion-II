@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         set { _npc = value; }        
     }
 
+    public List<Ghostbuster> Gb;
+
     [SerializeField] private Cam _camera;
     public Cam Camera 
     {
