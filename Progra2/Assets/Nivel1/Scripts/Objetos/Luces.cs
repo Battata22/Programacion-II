@@ -12,6 +12,11 @@ public class Luces : Obj_Interactuable
     [SerializeField] AudioClip _clip;
     [SerializeField] Chocamiento _chocamiento;
 
+    public delegate void DelegateVoidInt(int number);
+    public event DelegateVoidInt OnBroken;
+    int _useToBroke, _currenUses;
+    bool broken = false;
+
     public override Material OutLine
     {
         get { return _outLine; }
@@ -39,6 +44,10 @@ public class Luces : Obj_Interactuable
         _chocamiento = GetComponent<Chocamiento>();
         _renderer = GetComponent<Renderer>();
         _audioSource.clip = _clip;
+
+        _useToBroke = Random.Range(5, 11);
+
+        
 
         //if (_renderer != null)
         //{
@@ -78,6 +87,7 @@ public class Luces : Obj_Interactuable
             }
         }
 
+        GameManager.Instance._lights.Add(this);
     }
     private void LateUpdate()
     {
@@ -103,6 +113,30 @@ public class Luces : Obj_Interactuable
     public void LightSwitch()
     {
         //on == true
+        if (broken) return;
+        if(_currenUses >= _useToBroke && !broken)
+        {
+            Debug.Log("<color=red> LUZ QUEMADA </color>");
+
+            //for (int i = 0; i < _luces.Count; i++)
+            //{
+            //    _luces[i].enabled = false;
+            //}
+            //on = false;
+            //_audioSource.Play();
+            //_chocamiento.ChocoSonoro(transform.position);
+            for (int i = 0; i < _luces.Count; i++)
+            {
+                _luces[i].enabled = true;
+            }
+            on = true;
+            _audioSource.Play();
+            _chocamiento.ChocoSonoro(transform.position);
+
+            broken = true;
+            OnBroken(2);
+        }
+
         if (_luces[0].enabled == true)
         {
             for(int i = 0;  i < _luces.Count; i++)
@@ -120,6 +154,9 @@ public class Luces : Obj_Interactuable
                 _luces[i].enabled = true;
             }
             on = true;
+
+            _currenUses++;
+
             _audioSource.Play();
             _chocamiento.ChocoSonoro(transform.position);
         }

@@ -13,7 +13,7 @@ public class PickUp : MonoBehaviour
     public float esperaragarre;
     Player _playerScript;
     Obj_Interactuable _objScript;
-    [SerializeField] LayerMask _detectableMask;
+    [SerializeField] LayerMask _detectableMask, _objMask;
     GameObject _lastObj, _lastOn;
     bool lineOn = false;
 
@@ -40,7 +40,7 @@ public class PickUp : MonoBehaviour
         if (Physics.SphereCast(transform.position, _radius, transform.forward, out hit, _rayDistance, _detectableMask))
         {
             // Layer Objeto in slot 7
-            bool interactuable = hit.transform.gameObject.layer == 7;
+            bool interactuable = (hit.transform.gameObject.layer == 7) || (hit.transform.gameObject.layer == 12);
             //if (interactuable)
                 _lastObj = hit.transform.gameObject;
             #region comment efectos visuales de particulas y manos

@@ -14,9 +14,9 @@ public class Pickable : Obj_Interactuable
     public bool _pickedUp, _trowed;
     public PickUp pickUpScript;
     public ParticleSystem particleGen, trailGen;
-    float _parMaxTime = 5f;
+    protected float _parMaxTime = 5f;
     public float parTime;
-    [SerializeField] NavMeshObstacle _navObstacle;
+    [SerializeField]protected NavMeshObstacle _navObstacle;
 
     //public delegate void DelegateEventVoid();
     //public event DelegateEventVoid OnThrow, OnDrop;
@@ -94,7 +94,7 @@ public class Pickable : Obj_Interactuable
         particleGen = GetComponentInChildren<ParticleSystem>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         //if(_materialNormal == null) _materialNormal = GetComponent<Material>();
         if (_camera == null) _camera = GameManager.Instance.Camera.transform;
@@ -134,7 +134,7 @@ public class Pickable : Obj_Interactuable
         //}
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (_canMove)
         {
@@ -142,7 +142,7 @@ public class Pickable : Obj_Interactuable
         }
     }
 
-    private void LateUpdate()
+    protected void LateUpdate()
     {
         if (Fade == null) return;
         
@@ -296,7 +296,7 @@ public class Pickable : Obj_Interactuable
     }
 
     
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         //if (canMove) Drop();
         if(_onAir)
@@ -331,7 +331,7 @@ public class Pickable : Obj_Interactuable
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if ((other.gameObject.layer == 31 || other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
         {

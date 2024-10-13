@@ -73,7 +73,7 @@ public class Ghostbuster : NPC
         if (_firstAnger == true)
         {
             _waitTrampa += Time.deltaTime;
-            if (_waitTrampa >= _waitTrampaRandom)
+            if (_waitTrampa >= _waitTrampaRandom && _canAttack && !_isAttacking)
             {
                 PutTrap(transform);
             }

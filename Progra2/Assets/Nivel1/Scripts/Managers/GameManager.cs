@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     public List<Ghostbuster> Gb;
 
+    public List<Luces> _lights;
+
     [SerializeField] private Cam _camera;
     public Cam Camera 
     {
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
     //public VolumeManager VolumeManager;
     
     public TutorialManager Tutorial;
+
 }
 
 

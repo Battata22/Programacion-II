@@ -385,8 +385,11 @@ public class Player : MonoBehaviour
         {
             var lastSpamnum = scapeSpam;
             yield return new WaitForSeconds(0.5f);
-            if (lastSpamnum == scapeSpam) 
+            if (lastSpamnum == scapeSpam)
+            {
+                _rb.velocity = Vector3.zero;
                 _suctionMul = 10f;
+            }
             
         }
         _suctionMul = 0.5f;
