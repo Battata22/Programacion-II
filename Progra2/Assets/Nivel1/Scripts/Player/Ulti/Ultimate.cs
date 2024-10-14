@@ -124,7 +124,7 @@ public class Ultimate : MonoBehaviour
                 if (collider.GetComponent<Asustable>() != null)
                 {
                     Asustable asustableScript = collider.GetComponent<Asustable>();
-                    asustableScript.GetScared();
+                    asustableScript.GetScared(1f);
 
                 }
             }

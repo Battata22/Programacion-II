@@ -21,6 +21,7 @@ public class Cat : NPC
     protected override void Start()
     {
         base.Start();
+        //yield return null;
         //StartCoroutine(CheckForObjects());
         _rb = GetComponent<Rigidbody>();
         _rbDrag = _rb.drag;

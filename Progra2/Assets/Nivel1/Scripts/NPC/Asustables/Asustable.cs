@@ -65,6 +65,7 @@ public class Asustable : NPC
     protected override void Start()
     {
         base.Start();
+        //yield return null;
         _anim = GetComponentInChildren<Animator>();
     }
 
@@ -148,17 +149,18 @@ public class Asustable : NPC
 
         if(Input.GetKeyDown(KeyCode.M))
         {
-            Ganarga();
-            Ganarga();
-            Ganarga();
-            Ganarga();
+            Ganarga(4f);
+            //Ganarga(1f);
+            //Ganarga(1f);
+            //Ganarga(1f);
         }
 
     }
 
-    public override void GetScared()
+    public override void GetScared(float scareAmount)
     {
         if (_scared) return;
+        //if (scareAmount < 0.1f) return;
         //Debug.Log("Susto de Asustable");
         _anim.SetFloat("zAxis", 1f);
         _anim.SetBool("Walking", true);
@@ -177,7 +179,7 @@ public class Asustable : NPC
         _waitscared = 0;
         GetNewNode(_actualNode);
         _agent.SetDestination(_actualNode.position);
-        Ganarga();
+        Ganarga(scareAmount);
     }
 
     protected override void StopScare()
@@ -283,9 +285,9 @@ public class Asustable : NPC
         GameManager.Instance.Npc.Remove(this);
     }
 
-    void Ganarga()
+    void Ganarga(float num)
     {
-        _sliderBarra.value++;
+        _sliderBarra.value += num;
         if (_sliderBarra.value <= 1)
         {
             GameManager.Instance.Player.nivel = 1;

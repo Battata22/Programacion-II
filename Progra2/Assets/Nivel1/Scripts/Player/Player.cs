@@ -53,6 +53,10 @@ public class Player : MonoBehaviour
     public int scapeSpam;
     [SerializeField]int randomAxis = 0;
 
+    public delegate void DelegateVoidFLoat(float a);
+    public event DelegateVoidFLoat NerfLvl1, NerfLvl2, NerfLvl3;
+
+
 
 
 
@@ -60,12 +64,12 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
+        GameManager.Instance.Player = this;
+        GameManager.Instance.ItemHolde = _itemHolder;
     }
 
     private void Start()
     {
-        GameManager.Instance.Player = this;
-        GameManager.Instance.ItemHolde = _itemHolder;
 
         UpdateTerrorFrame();
 
@@ -88,7 +92,7 @@ public class Player : MonoBehaviour
         _zAxis = Input.GetAxisRaw("Vertical");
 
         LifeSaver(transform.position.y);
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && nivel > 1)
         {
             CreateShadow();
         }
@@ -435,6 +439,21 @@ public class Player : MonoBehaviour
         _audioSource.clip = clipLevelUp;
         _audioSource.Play();
         UpdateTerrorFrame();
+
+        switch (nivel)
+        {
+            case 1:
+                //NerfLvl1(0);
+                break;
+            case 2:
+                if (NerfLvl1 != null)
+                    NerfLvl1(0);
+                break;
+            case 3:
+                if (NerfLvl2 != null)
+                    NerfLvl2(0);
+                break;
+        }
 
         #region Comment
         //if (_nivel == 2)

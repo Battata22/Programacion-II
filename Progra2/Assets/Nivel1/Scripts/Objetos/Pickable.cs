@@ -18,6 +18,8 @@ public class Pickable : Obj_Interactuable
     public float parTime;
     [SerializeField]protected NavMeshObstacle _navObstacle;
 
+    [SerializeField] protected float _scareAmount;
+
     //public delegate void DelegateEventVoid();
     //public event DelegateEventVoid OnThrow, OnDrop;
     //GameObject newTrail;
@@ -47,10 +49,15 @@ public class Pickable : Obj_Interactuable
         if(_rb == null) _rb = GetComponent<Rigidbody>();
         _speed = 10f;
         _cd = 1;
+        if (!mediano && !grande)
+        {
+            GameManager.Instance.Player.NerfLvl1 += NerfObj;
+        }
         if (mediano)
         {
             _cd = 2;
-            _rb.mass = 4f;          
+            _rb.mass = 4f;
+            GameManager.Instance.Player.NerfLvl2 += NerfObj;
         }
         if (grande)
         {
@@ -90,6 +97,7 @@ public class Pickable : Obj_Interactuable
             }
         }
 
+        _scareAmount = 1f;
         _dropLayers = GameManager.Instance.DropLayers;
         particleGen = GetComponentInChildren<ParticleSystem>();
     }
@@ -318,6 +326,7 @@ public class Pickable : Obj_Interactuable
                 //}
                 #endregion
 
+                choc.scareAmount = _scareAmount;
                 choc.Choco(transform.position);
                 _onAir = false;
                 _trowed = false;
@@ -371,6 +380,11 @@ public class Pickable : Obj_Interactuable
         particleGen.Stop(); 
     }
 
+    public virtual void NerfObj(float num = 0.5f)
+    {
+        Debug.Log("<color=red> Objeto nerfeado </color>");
+        _scareAmount *= num;
+    }
     protected IEnumerator ActivateNavObstacle()
     {
         Debug.Log("<color=blue> LLAMADO A ACTIVAR </color>");

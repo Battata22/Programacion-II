@@ -27,6 +27,7 @@ public abstract class NPC : MonoBehaviour
 
     [SerializeField] protected Transform _actualNode;
     [SerializeField] protected List<Transform> _navMeshNodes = new();
+    [SerializeField] public List<Transform> _testNodes = new();
     //protected Animator _anim;
 
     public List<Transform> NavMeshNodes    
@@ -46,9 +47,14 @@ public abstract class NPC : MonoBehaviour
     {
         GameManager.Instance.Npc.Add(this);
         _audioSource = GetComponentInChildren<AudioSource>();
+        _particulas = GetComponentInChildren<Particulas>();
+
+        //yield return new WaitForEndOfFrame();
+        //_navMeshNodes.Clear();
+        //_navMeshNodes = GameManager.Instance.AiNodes;
+        _testNodes = GameManager.Instance.AiNodes;
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = speedNormal;
-        _particulas = GetComponentInChildren<Particulas>();
         //Initialize();
         //_actualNode = GetNewNode();
     }
@@ -147,7 +153,7 @@ public abstract class NPC : MonoBehaviour
         return newNode;
     }
 
-    public virtual void GetScared()
+    public virtual void GetScared(float a)
     {
         //https://www.youtube.com/watch?v=eVrYbKBrI7o
     }

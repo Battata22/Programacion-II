@@ -37,6 +37,7 @@ public class Ghostbuster : NPC
     {
         //_agent.speed;
         base.Start();
+        //yield return null;
         GameManager.Instance.Gb.Add(this);
         _waitTrampaRandom = Random.Range(5, 101);
         //_target = GameManager.Instance.Player;
@@ -171,7 +172,7 @@ public class Ghostbuster : NPC
         _searchingPos = pos;
     }
 
-    public override void GetScared()
+    public override void GetScared(float scareAmount)
     {
 
         //Activar Anger supongo

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
     public List<Ghostbuster> Gb;
 
     public List<Luces> _lights;
+
+    public List<Transform> AiNodes;
 
     [SerializeField] private Cam _camera;
     public Cam Camera 
@@ -91,12 +94,16 @@ public class GameManager : MonoBehaviour
 
     public LayerMask DropLayers;
 
+    public LayerMask NpcLayers;
+
     public GameObject TrailGen;
 
     public GameObject ParticleObj;
     //public VolumeManager VolumeManager;
-    
+
     public TutorialManager Tutorial;
+
+    public AudioMixerGroup AudioGroupMusic, AudioGroupSfx;
 
 }
 

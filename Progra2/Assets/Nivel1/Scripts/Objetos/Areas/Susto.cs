@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class Susto : AreasSustoYDuda
 {
-    protected override void Awake()
-    {
-        
-    }
+    public float scareAmount;
 
-    protected override void Start()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         //NPC _npcScript = other.GetComponent<NPC>();
 
         if (other.TryGetComponent<NPC>(out NPC _npcScript))
         {
-            _npcScript.GetScared();
+            _npcScript.GetScared(scareAmount);
             asustado = true;
         }
     }

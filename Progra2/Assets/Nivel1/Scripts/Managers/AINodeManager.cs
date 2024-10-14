@@ -9,29 +9,36 @@ public class AINodeManager : MonoBehaviour
     private Transform[] _nodes;
     //NPC _npc;
 
-    private void Start()
+    private IEnumerator Start()
     {
         _nodes = GetComponentsInChildren<Transform>();
 
-        //GameManager.Instance.AiNodes.AddRange(_nodes);
+        GameManager.Instance.AiNodes.AddRange(_nodes);
 
-        foreach(NPC npc in GameManager.Instance.Npc)
-        {
-            npc.NavMeshNodes.AddRange(_nodes);
-            npc.Initialize();
-            //npc.gameObject.SetActive(true);
-        }
+        yield return new WaitForEndOfFrame();
+
+        //foreach (NPC npc in GameManager.Instance.Npc)
+        //{
+        //    npc._testNodes.AddRange(_nodes);
+        //    //npc.Initialize();
+        //    //npc.gameObject.SetActive(true);
+        //}
     }
 
     private void Update()
     {
-        foreach (NPC npc in GameManager.Instance.Npc)
-        {
-            if (npc.NavMeshNodes != null) return;
-            npc.NavMeshNodes.AddRange(_nodes);
-            npc.Initialize();
-            //npc.gameObject.SetActive(true);
-        }
+        //foreach (NPC npc in GameManager.Instance.Npc)
+        //{
+        //    if (npc.NavMeshNodes != null) return;
+        //    npc.NavMeshNodes.AddRange(_nodes);
+        //    npc.Initialize();
+        //    //npc.gameObject.SetActive(true);
+        //}
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.AiNodes.Clear();
     }
 
 }
