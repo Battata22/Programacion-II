@@ -65,7 +65,7 @@ public class VideoIntro : MonoBehaviour
 
     void prendido()
     {
-        //postit.SetActive(true);
+        postit.SetActive(true);
         gus.enabled = true;
         hand.enabled = true;
         marco1.enabled = true;
