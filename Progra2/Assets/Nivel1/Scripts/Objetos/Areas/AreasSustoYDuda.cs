@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AreasSustoYDuda : MonoBehaviour
 {
+    
     private AudioSource _audioSource;
     [SerializeField] AudioClip chocar1;
     float wait;

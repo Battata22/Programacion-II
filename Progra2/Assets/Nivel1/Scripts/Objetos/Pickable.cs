@@ -11,7 +11,7 @@ using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(Chocamiento))]
 public class Pickable : Obj_Interactuable
 {
-    public bool _pickedUp, _trowed;
+    public bool _pickedUp, _trowed, rompible = false;
     public PickUp pickUpScript;
     public ParticleSystem particleGen, trailGen;
     protected float _parMaxTime = 5f;
@@ -40,13 +40,16 @@ public class Pickable : Obj_Interactuable
     //protected float _OGthik;
     protected Color _OGcolor;
 
+    Rompible rompscript;
+
     protected virtual void Start()
-    {      
+    {
+        rompscript = GetComponent<Rompible>();
         //_camera = GameManager.Instance.Camera.transform;
         //_itemHolder = GameManager.Instance.ItemHolde;
         //pickUpScript = GameManager.Instance.Player.GetComponentInChildren<PickUp>();
         //_materialNormal = GetComponent<Material>();
-        if(_rb == null) _rb = GetComponent<Rigidbody>();
+        if (_rb == null) _rb = GetComponent<Rigidbody>();
         _speed = 10f;
         _cd = 1;
         if (!mediano && !grande)
@@ -330,8 +333,12 @@ public class Pickable : Obj_Interactuable
                 choc.Choco(transform.position);
                 _onAir = false;
                 _trowed = false;
-
                 trailGen.Stop();
+                if (rompible == true)
+                {
+                    rompscript.Rompe();
+                    Destroy(gameObject);
+                }
             }
             //else if (hitObjs.length != 0)//collision.gameobject.layer != 7
             //{

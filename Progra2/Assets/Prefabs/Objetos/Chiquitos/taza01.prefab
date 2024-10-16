@@ -4844,13 +4844,14 @@ GameObject:
   - component: {fileID: 4300067486931221936}
   - component: {fileID: 8734932431037900855}
   - component: {fileID: 1252099150393104490}
+  - component: {fileID: 4900447431428024643}
   m_Layer: 7
   m_Name: taza01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6366962387193377499
 Transform:
   m_ObjectHideFlags: 0
@@ -4859,9 +4860,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8179115279587598792}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.3059998, y: 0.64, z: -9.007999}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.009999997, y: 0.017, z: 0.009999997}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6066973831700820996}
@@ -4965,7 +4966,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &4300067486931221936
 MonoBehaviour:
@@ -5016,6 +5017,7 @@ MonoBehaviour:
     m_Bits: 0
   _pickedUp: 0
   _trowed: 0
+  rompible: 1
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -5118,3 +5120,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4900447431428024643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8179115279587598792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26f3c9e6a2d5ad44a92d3801e1d210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 4993438573607717194, guid: 070cf5e3ffc78a240bd28a0a1e93ac71, type: 3}
+  - {fileID: 3025025616689489219, guid: b9c2d0508f8adb44e91ff95f4bcd86c0, type: 3}
+  - {fileID: 4506167664076144054, guid: f03faea19cf1c964390d840da1e0f623, type: 3}
+  - {fileID: 347630094992859576, guid: 1a03e942c1e67514892a3115d5fe1fec, type: 3}

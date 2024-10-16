@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class VideoIntro : MonoBehaviour
 {
     [SerializeField] Image marco1, marco2, marco3, vida, negro;
-    [SerializeField] GameObject gato, abuela, perro, player, entrada, barra, crosshair, skipBoton;
+    [SerializeField] GameObject gato, abuela, perro, player, entrada, barra, crosshair, skipBoton, postit;
     public VideoPlayer videoPlayer;
     [SerializeField] MeshRenderer gus, hand;
 
@@ -60,10 +60,12 @@ public class VideoIntro : MonoBehaviour
         abuela.SetActive(false);
         negro.enabled = false;
         skipBoton.SetActive(true);
+        postit.SetActive(false);
     }
 
     void prendido()
     {
+        //postit.SetActive(true);
         gus.enabled = true;
         hand.enabled = true;
         marco1.enabled = true;

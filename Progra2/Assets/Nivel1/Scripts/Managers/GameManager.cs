@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
 
     public AudioMixerGroup AudioGroupMusic, AudioGroupSfx;
 
+    public AudioClip choque;
+
 }
 
 

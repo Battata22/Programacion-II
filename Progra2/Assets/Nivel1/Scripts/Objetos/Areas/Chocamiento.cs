@@ -17,7 +17,6 @@ public class Chocamiento : MonoBehaviour
 
     LayerMask _layer;
     AudioSource _audioSource;
-    AudioClip _audioClip;
 
     [SerializeField] bool musicOutput;
 
@@ -26,7 +25,6 @@ public class Chocamiento : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _objScript = gameObject.GetComponent<Pickable>();  
-
     }
     private void Start()
     {
@@ -41,7 +39,7 @@ public class Chocamiento : MonoBehaviour
         //Instantiate(areas, pos, Quaternion.identity);
         //Debug.Log("<color=yellow> CHocamiento </color>");
 
-        _audioSource.clip = _audioClip;
+        _audioSource.clip = GameManager.Instance.choque;
         _audioSource.Play();
 
         Collider[] colliders;
@@ -71,11 +69,13 @@ public class Chocamiento : MonoBehaviour
 
     public void ChocoSonoro(Vector3 pos)
     {
+        #region Comment
         //Instantiate(areasSonoro, pos, Quaternion.identity);
         //Debug.Log("<color=yellow> Sonoro </color>");
 
-        _audioSource.clip = _audioClip;
-        _audioSource.Play();
+        //_audioSource.clip = GameManager.Instance.choque;
+        //_audioSource.Play(); 
+        #endregion
 
         Collider[] colliders;
         colliders = Physics.OverlapSphere(pos, _doubtRange, _layer);
@@ -86,6 +86,7 @@ public class Chocamiento : MonoBehaviour
             {
                 _npcInRange.GetDoubt(pos);
 
+                #region Comment
                 //Debug.Log("<color=pink> NPC en area Duda </color>");
                 //if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange))
                 //{
@@ -94,7 +95,8 @@ public class Chocamiento : MonoBehaviour
                 //else
                 //{
                 //    _npcInRange.GetDoubt(pos);
-                //}
+                //} 
+                #endregion
             }
         }
     }

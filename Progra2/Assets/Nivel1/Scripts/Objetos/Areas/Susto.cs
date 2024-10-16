@@ -6,6 +6,16 @@ public class Susto : AreasSustoYDuda
 {
     public float scareAmount;
 
+    protected override void Awake()
+    {
+
+    }
+
+    protected override void Start()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //NPC _npcScript = other.GetComponent<NPC>();
