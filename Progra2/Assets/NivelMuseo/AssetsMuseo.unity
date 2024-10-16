@@ -2669,6 +2669,7 @@ GameObject:
   - component: {fileID: 1983797650}
   - component: {fileID: 1983797649}
   - component: {fileID: 1983797648}
+  - component: {fileID: 1983797654}
   m_Layer: 7
   m_Name: Fruit01
   m_TagString: Untagged
@@ -3243,6 +3244,8 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
+  _scareAmount: 0
 --- !u!114 &1983797650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3256,7 +3259,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
-  areaSonoro: {fileID: 0}
+  areasSonoro: {fileID: 0}
+  _objScript: {fileID: 0}
+  _npcInRange: {fileID: 0}
+  _scareRange: 16
+  _doubtRange: 40
+  scareAmount: 0
+  musicOutput: 0
 --- !u!54 &1983797651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3334,6 +3343,102 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475481596}
   m_Mesh: {fileID: -4162253513501663206, guid: 7b75aa25c3fab03428f62c6c4e8f12e2, type: 3}
+--- !u!82 &1983797654
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475481596}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &2007610537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3874354296800679910, guid: 051786c5f1b0e534fafeb9e6e60a6584, type: 3}
@@ -5694,6 +5799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7426851618627373640, guid: 7c044e2d1f37976468ad1951b55de9d5, type: 3}
+      propertyPath: areas
+      value: 
+      objectReference: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
     - target: {fileID: 8919446555850319300, guid: 7c044e2d1f37976468ad1951b55de9d5, type: 3}
       propertyPath: m_Name
       value: LibroMini02
@@ -6731,6 +6840,7 @@ GameObject:
   - component: {fileID: 4571139708928408942}
   - component: {fileID: 4571139708928408941}
   - component: {fileID: 4571139708928408940}
+  - component: {fileID: 4571139708928408943}
   m_Layer: 7
   m_Name: Cruz chica personaje
   m_TagString: Untagged
@@ -7522,6 +7632,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 121506184}
     m_Modifications:
+    - target: {fileID: -5165115950096450373, guid: 750c4fcd07d0a734d9007aaf48995569, type: 3}
+      propertyPath: areas
+      value: 
+      objectReference: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
     - target: {fileID: 5899591716462863422, guid: 750c4fcd07d0a734d9007aaf48995569, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -9310,6 +9424,8 @@ MonoBehaviour:
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
+  _scareAmount: 0
 --- !u!114 &4571139708928408941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9323,7 +9439,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
-  areaSonoro: {fileID: 0}
+  areasSonoro: {fileID: 0}
+  _objScript: {fileID: 0}
+  _npcInRange: {fileID: 0}
+  _scareRange: 16
+  _doubtRange: 40
+  scareAmount: 0
+  musicOutput: 0
 --- !u!54 &4571139708928408942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9351,6 +9473,102 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!82 &4571139708928408943
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2625333774936939710}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4573050163312156965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10128,6 +10346,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1977908147038066167, guid: 7e454c2c803baf94d9fb7e3ddb5af292, type: 3}
+      propertyPath: areas
+      value: 
+      objectReference: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
     - target: {fileID: 2043891011013094477, guid: 7e454c2c803baf94d9fb7e3ddb5af292, type: 3}
       propertyPath: m_Name
       value: Cuadro4
@@ -10860,6 +11082,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 121506184}
     m_Modifications:
+    - target: {fileID: -4903417094295461051, guid: 7f5863ac796fadf49b70dacc23ec5c2f, type: 3}
+      propertyPath: areas
+      value: 
+      objectReference: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
     - target: {fileID: -4874459176234530144, guid: 7f5863ac796fadf49b70dacc23ec5c2f, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -12257,6 +12483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heladera01
       objectReference: {fileID: 0}
+    - target: {fileID: 4955247353599719660, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
+      propertyPath: areas
+      value: 
+      objectReference: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
     - target: {fileID: 8574801626698771017, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.43
