@@ -14,7 +14,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] PickUp pickUpScript;
 
     //[SerializeField] TextMeshPro _pickUpTxt, _throwTxt, _dropTxt, _interactTxt, _catTxt, _grannyTxt, _gbTxt;
-    public bool pickUpTuto = false, throwTuto = false, dropTuto = false, interactTuto = false, catTuto = false, grannyTuto = false, gbTuto = false;
+    public bool pickUpTuto = false, throwTuto = false, dropTuto = false, interactTuto = false, catTuto = false, grannyTuto = false, gbTuto = false, wallingTuto = false;
     [SerializeField] float _speedMult;
 
     TutoImage[] _tutoPick;
@@ -74,6 +74,7 @@ public class TutorialManager : MonoBehaviour
     {
         dropTuto = false;
         _tutoPick[2].animator.SetBool("Out", true);
+        StartWalling();
     }
 
     public void StartInteract()
@@ -86,6 +87,18 @@ public class TutorialManager : MonoBehaviour
         interactTuto = false;
         _tutoPick[3].animator.SetBool("Out", true);
         pickUpScript.OnInteract -= EndInteract;
+    }
+
+    public void StartWalling()
+    {
+        wallingTuto = true;
+        _tutoPick[4].animator.SetBool("In", true);
+    }
+
+    public void EndWalling()
+    {
+        wallingTuto = false;
+        _tutoPick[4].animator.SetBool("Out", true);
     }
 
     #region Comment
