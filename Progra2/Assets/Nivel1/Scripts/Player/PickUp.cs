@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    [SerializeField] Transform playerj;
+    Player _player;
     public AudioSource _audioSource;
     public AudioClip agarrado, error, tirar, sosteniendo;
     [SerializeField] float _rayDistance, _radius;
@@ -18,12 +18,14 @@ public class PickUp : MonoBehaviour
     bool lineOn = false;
 
     public delegate void EventDelegateVoid();
-    public event EventDelegateVoid OnPickUp, OnInteract;
+    public event EventDelegateVoid OnPickUp, OnInteract, OnEnchanted;
     
     
 
     private void Awake()
     {
+        _player = GetComponentInParent<Player>();
+        //Debug.Log(_player.name);
         _playerScript = GetComponentInParent<Player>();
         _audioSource = GetComponentInParent<AudioSource>();
         
@@ -102,7 +104,7 @@ public class PickUp : MonoBehaviour
                     }
                     if (hit.transform.gameObject.GetComponent<BotonInicio>() != null)
                     {
-                        hit.transform.gameObject.GetComponent<BotonInicio>().Teleport(playerj);
+                        hit.transform.gameObject.GetComponent<BotonInicio>().Teleport(_player.transform);
                     }
                 //}
                 //if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance * 1.5f, _detectableMask))
@@ -120,6 +122,24 @@ public class PickUp : MonoBehaviour
                 //{
                 //    GameManager.Instance.Tutorial.EndInteract();
                 //}
+            }
+
+            if(Input.GetKeyDown(KeyCode.F) && interactuable)
+            {
+                IEnchantable ench;
+                if(hit.transform.TryGetComponent<IEnchantable>(out ench))
+                {
+                    ench.GetEnchanted(_player);
+                }
+
+                if(OnEnchanted != null)
+                    OnEnchanted();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0)
+            {
+                _objScript.gameObject.AddComponent<PossessObject>();
+                _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
             }
         }
         #region comment efectos visuales de particulas y manos

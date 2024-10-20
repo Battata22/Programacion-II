@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7426851618627373640}
   - component: {fileID: -8037901717769734075}
   - component: {fileID: -997576072365233069}
+  - component: {fileID: 635028936975461431}
   m_Layer: 7
   m_Name: LibroMini02
   m_TagString: Untagged
@@ -129,8 +130,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
-  areaSonoro: {fileID: 0}
+  areas: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
+  areasSonoro: {fileID: 0}
+  _objScript: {fileID: 0}
+  _npcInRange: {fileID: 0}
+  _scareRange: 16
+  _doubtRange: 40
+  scareAmount: 0
+  musicOutput: 0
 --- !u!114 &-8037901717769734075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,18 +155,24 @@ MonoBehaviour:
   _lastInteract: 0
   _speed: 10
   _itemHolder: {fileID: 0}
-  mediano: 0
-  grande: 0
   holding: 0
+  weight: 0
+  lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5011899ffe7b95849ade645119229756, type: 2}
   _materialFade: {fileID: 2100000, guid: 04222de32546f93448b403911e2b4655, type: 2}
   _renderer: {fileID: 0}
   _dropLayers:
     serializedVersion: 2
     m_Bits: 0
+  _pickedUp: 0
+  _trowed: 0
+  rompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
+  trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
+  _scareAmount: 0
 --- !u!65 &-997576072365233069
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -181,6 +194,102 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0000305, y: 22.25552, z: 16.172976}
   m_Center: {x: 0, y: 10.998739, z: 0.0000009536743}
+--- !u!82 &635028936975461431
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919446555850319300}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &3542910765998530071
 PrefabInstance:
   m_ObjectHideFlags: 0

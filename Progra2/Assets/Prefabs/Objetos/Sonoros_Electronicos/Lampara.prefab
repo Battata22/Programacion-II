@@ -177,8 +177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60311974bfff42e4b86654f5d4c5f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areas: {fileID: 6479006537298369615, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
-  areaSonoro: {fileID: 6479006537298369615, guid: 73f6cff95ec2f9d45a5f76c2ed13b5c1, type: 3}
+  areas: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
+  areasSonoro: {fileID: 0}
+  _objScript: {fileID: 0}
+  _npcInRange: {fileID: 0}
+  _scareRange: 16
+  _doubtRange: 40
+  scareAmount: 0
+  musicOutput: 0
 --- !u!114 &3861401194478906065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,9 +202,9 @@ MonoBehaviour:
   _lastInteract: 0
   _speed: 10
   _itemHolder: {fileID: 0}
-  mediano: 0
-  grande: 0
   holding: 0
+  weight: 0
+  lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5c39ea8f893fa094ab85df457275351c, type: 2}
   _materialFade: {fileID: 2100000, guid: 04222de32546f93448b403911e2b4655, type: 2}
   _renderer: {fileID: 0}
@@ -322,19 +328,24 @@ MonoBehaviour:
   _lastInteract: 0
   _speed: 0
   _itemHolder: {fileID: 0}
-  mediano: 1
-  grande: 0
   holding: 0
+  weight: 0
+  lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5c39ea8f893fa094ab85df457275351c, type: 2}
   _materialFade: {fileID: 2100000, guid: 326c3fc1aafa1e14cb8c54a91275fdd3, type: 2}
   _renderer: {fileID: 0}
   _dropLayers:
     serializedVersion: 2
     m_Bits: 0
+  _pickedUp: 0
+  _trowed: 0
+  rompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
+  _navObstacle: {fileID: 0}
+  _scareAmount: 0
 --- !u!1 &7419908758555068440
 GameObject:
   m_ObjectHideFlags: 0

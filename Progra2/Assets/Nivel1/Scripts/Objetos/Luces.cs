@@ -127,14 +127,15 @@ public class Luces : Obj_Interactuable
             //_chocamiento.ChocoSonoro(transform.position);
             for (int i = 0; i < _luces.Count; i++)
             {
-                _luces[i].enabled = true;
+                _luces[i].enabled = false;
             }
-            on = true;
+            on = false;
             _audioSource.Play();
             _chocamiento.ChocoSonoro(transform.position);
 
             broken = true;
-            OnBroken(2);
+            if(OnBroken != null)
+                OnBroken(2);
         }
 
         if (_luces[0].enabled == true)

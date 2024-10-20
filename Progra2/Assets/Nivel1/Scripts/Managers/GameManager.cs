@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public List<Ghostbuster> Gb;
 
-    public List<Luces> _lights;
+    public List<Luces> _lights = new ();
 
     public List<Transform> AiNodes;
 

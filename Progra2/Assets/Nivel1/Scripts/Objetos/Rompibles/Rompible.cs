@@ -7,6 +7,10 @@ public class Rompible : MonoBehaviour
     [SerializeField] List<GameObject> prefabs = new List<GameObject>();
     [SerializeField] GameObject prefabSonido;
 
+    private void Awake()
+    {
+        GetComponent<Pickable>().rompible = true;
+    }
     public void Rompe()
     {
         for(int i = 0; i < prefabs.Count; i++)

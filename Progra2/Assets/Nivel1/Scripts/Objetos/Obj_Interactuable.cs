@@ -10,7 +10,17 @@ public class Obj_Interactuable : MonoBehaviour
     [SerializeField] protected float _speed; //del objeto volando en tu direccion
     [SerializeField] protected Transform _itemHolder; // punto al que va el objeto
     protected Rigidbody _rb;
-    public bool mediano = false, grande = false, holding = false;
+    //public bool mediano = false, grande = false,
+    public bool holding = false;
+    public Weight weight;
+
+    public enum Weight
+    {
+        low,
+        mid,
+        high
+    }
+
     public int lvlRequired;
     //{
     //    get { return lvlRequired; }
@@ -41,8 +51,8 @@ public class Obj_Interactuable : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponents<Collider>();
         _renderer = GetComponent<Renderer>();
-        if (grande) lvlRequired = 3;
-        else if(mediano) lvlRequired = 2;
+        if (weight == Weight.high) lvlRequired = 3;
+        else if(weight == Weight.mid) lvlRequired = 2;
         else lvlRequired = 1;
         #region Comment
         //_mats = GetComponents<Material>();
@@ -116,7 +126,7 @@ public class Obj_Interactuable : MonoBehaviour
         holding = false;
         _canMove = false;
         _rb.useGravity = true;
-        if(grande == true)
+        if(weight == Weight.high)
         {
             _rb.AddForce(_camera.forward * 200f, ForceMode.Impulse);
             _rb.AddTorque(transform.up * 100f);

@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areas: {fileID: 1674815366505999365, guid: 2bb4815a2193bf746bd5ea3a1d44c442, type: 3}
   areasSonoro: {fileID: 0}
+  _objScript: {fileID: 0}
   _npcInRange: {fileID: 0}
   _scareRange: 16
   _doubtRange: 40
@@ -276,9 +277,8 @@ MonoBehaviour:
   _lastInteract: 0
   _speed: 0
   _itemHolder: {fileID: 0}
-  mediano: 0
-  grande: 0
   holding: 0
+  weight: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: bfac56422fb9af14688d5ee0fbb894b7, type: 2}
   _materialFade: {fileID: 2100000, guid: 7baa7a45a7d5e414f8e63446a0158e2d, type: 2}
@@ -288,12 +288,14 @@ MonoBehaviour:
     m_Bits: 0
   _pickedUp: 0
   _trowed: 0
+  rompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
   _navObstacle: {fileID: 0}
   _scareAmount: 0
+  _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
@@ -302,6 +304,12 @@ MonoBehaviour:
   _cancionParlante3: {fileID: 8300000, guid: 0d2d197e42b96af48b48eae08957663a, type: 3}
   _cancionParlante4: {fileID: 8300000, guid: b28cd5815fbdc4c408d7cfa33e1be6e2, type: 3}
   _cancionParlante5: {fileID: 8300000, guid: de9a6390747e58847ae80e7d6c47ccb5, type: 3}
+  _posibleAudios:
+  - {fileID: 8300000, guid: 80d21cdb708bec24ba7f57cb1b3ed85f, type: 3}
+  - {fileID: 8300000, guid: f7167c889f156ab4b908bd4aea30f3f3, type: 3}
+  - {fileID: 8300000, guid: 0d2d197e42b96af48b48eae08957663a, type: 3}
+  - {fileID: 8300000, guid: b28cd5815fbdc4c408d7cfa33e1be6e2, type: 3}
+  - {fileID: 8300000, guid: de9a6390747e58847ae80e7d6c47ccb5, type: 3}
 --- !u!82 &1208564910014099038
 AudioSource:
   m_ObjectHideFlags: 0

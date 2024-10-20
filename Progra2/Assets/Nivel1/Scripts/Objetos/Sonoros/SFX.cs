@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFX : Pickable
+public abstract class SFX : Pickable
 {
     public AudioSource _audioSource;
     [SerializeField] protected bool isPlaying = false, clip = false;
     protected int random1;
     Chocamiento _chocamiento;
+    protected AudioClip _audioClip;
     
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _col = GetComponents<Collider>();
         _chocamiento = GetComponent<Chocamiento>();
-        if (grande) lvlRequired = 3;
-        else if (mediano) lvlRequired = 2;
+        if (weight == Weight.high) lvlRequired = 3;
+        else if (weight == Weight.mid) lvlRequired = 2;
         else lvlRequired = 1;
     }
 
@@ -70,5 +71,16 @@ public class SFX : Pickable
             _audioSource.Pause();
         }
         _chocamiento.ChocoSonoro(transform.position);
+    }
+
+    public override void EnchantedAction(Player _player)
+    {
+        //base.EnchantedAction(_player);
+        _player.enchantedObjects.Remove(this);
+
+        PlayMusic(_audioClip);
+
+        _enchanted = false;
+        Debug.Log("<color=purple> Accion realizada </color>");
     }
 }

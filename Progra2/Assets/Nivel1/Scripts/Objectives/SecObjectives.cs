@@ -6,7 +6,7 @@ using UnityEngine;
 public class SecObjectives : MonoBehaviour
 {
     [SerializeField] TMP_Text[] _toDoText;
-    List<Luces> _lights;
+    [SerializeField] List<Luces> _lights;
     [SerializeField] Plunger _plunger;
     [SerializeField] BathColission _bath;
 

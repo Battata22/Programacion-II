@@ -56,7 +56,9 @@ public class Chocamiento : MonoBehaviour
                     if (_objScript)
                     {
                         //Debug.Log("<color=green> LLamado a nerfeo </color>");
-                        _objScript.NerfObj();
+                        
+                        //Nerf si asusta
+                        //_objScript.NerfObj();
                     }
                 }
                 else

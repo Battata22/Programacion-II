@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.ProBuilder;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Chocamiento))]
-public class Pickable : Obj_Interactuable
+public class Pickable : Obj_Interactuable , IEnchantable
 {
     public bool _pickedUp, _trowed, rompible = false;
     public PickUp pickUpScript;
@@ -52,31 +53,68 @@ public class Pickable : Obj_Interactuable
         if (_rb == null) _rb = GetComponent<Rigidbody>();
         _speed = 10f;
         _cd = 1;
-        if (!mediano && !grande)
+        //if (!mediano && !grande)
+        //{
+        //    GameManager.Instance.Player.NerfLvl1 += NerfObj;
+        //}
+        //if (mediano)
+        //{
+        //    _cd = 2;
+        //    _rb.mass = 4f;
+        //    GameManager.Instance.Player.NerfLvl2 += NerfObj;
+        //}
+        //if (grande)
+        //{
+        //    _cd = 3;
+        //    _rb.mass = 20f;
+        //}
+
+        switch (weight)
         {
-            GameManager.Instance.Player.NerfLvl1 += NerfObj;
+            case Weight.low:
+                _speed = 10f;
+                _cd = 1;
+                //GameManager.Instance.Player.NerfLvl1 += NerfObj;
+                break;
+
+            case Weight.mid:
+                _cd = 2;
+                _rb.mass = 4f;
+                //GameManager.Instance.Player.NerfLvl2 += NerfObj;
+
+                if (!GetComponent<NavMeshObstacle>())
+                    this.AddComponent<NavMeshObstacle>();
+                _navObstacle = GetComponent<NavMeshObstacle>();
+                _navObstacle.carving = true;
+                _navObstacle.carvingMoveThreshold = 0.1f;
+                _navObstacle.carvingTimeToStationary = 0.4f;
+                _navObstacle.carveOnlyStationary = true;
+                break;
+
+            case Weight.high:
+                _cd = 3;
+                _rb.mass = 20f;
+
+                if (!GetComponent<NavMeshObstacle>())
+                    this.AddComponent<NavMeshObstacle>();
+                _navObstacle = GetComponent<NavMeshObstacle>();
+                _navObstacle.carving = true;
+                _navObstacle.carvingMoveThreshold = 0.1f;
+                _navObstacle.carvingTimeToStationary = 0.4f;
+                _navObstacle.carveOnlyStationary = true;
+                break;
         }
-        if (mediano)
-        {
-            _cd = 2;
-            _rb.mass = 4f;
-            GameManager.Instance.Player.NerfLvl2 += NerfObj;
-        }
-        if (grande)
-        {
-            _cd = 3;
-            _rb.mass = 20f;
-        }
-        if (mediano || grande)
-        { 
-            if (!GetComponent<NavMeshObstacle>())
-                this.AddComponent<NavMeshObstacle>();
-            _navObstacle = GetComponent<NavMeshObstacle>();
-            _navObstacle.carving = true;
-            _navObstacle.carvingMoveThreshold = 0.1f;
-            _navObstacle.carvingTimeToStationary = 0.4f;
-            _navObstacle.carveOnlyStationary = true;
-        }
+
+        //if (mediano || grande)
+        //{
+        //    if (!GetComponent<NavMeshObstacle>())
+        //        this.AddComponent<NavMeshObstacle>();
+        //    _navObstacle = GetComponent<NavMeshObstacle>();
+        //    _navObstacle.carving = true;
+        //    _navObstacle.carvingMoveThreshold = 0.1f;
+        //    _navObstacle.carvingTimeToStationary = 0.4f;
+        //    _navObstacle.carveOnlyStationary = true;
+        //}
 
         if (_renderer != null)
         {
@@ -225,6 +263,7 @@ public class Pickable : Obj_Interactuable
             }
             base.Interact(_audio, agarre, error, playerLevel);
             _lastInteract = Time.time;
+            Unenchant(GameManager.Instance.Player);
 
             _rb.useGravity = false;
             _rb.velocity = Vector3.zero;
@@ -389,7 +428,7 @@ public class Pickable : Obj_Interactuable
 
     public virtual void NerfObj(float num = 0.5f)
     {
-        Debug.Log("<color=red> Objeto nerfeado </color>");
+        Debug.Log("<color=red> Objeto nerfeado </color>");  
         _scareAmount *= num;
     }
     protected IEnumerator ActivateNavObstacle()
@@ -405,5 +444,79 @@ public class Pickable : Obj_Interactuable
             Debug.Log("<color=green> ACTIVADO </color>");
             _navObstacle.enabled = true;
         }
+    }
+
+    public bool _enchanted = false;
+    public virtual void GetEnchanted(Player pl)
+    {
+        if (_enchanted) return;
+        if (!(pl.nivel >= lvlRequired))
+        {
+            //Debug.Log("<color=yellow> Nivel Insuficiente</color>");
+            return;
+        }
+        //ad to list of enchanted object
+
+        Debug.Log("<color=green> Objeto encantado </color>");
+
+        pl.enchantedObjects.Add(this);
+        if(pl.enchantedObjects.Count > pl.maxEnchantable)
+        {
+            pl.enchantedObjects[0].Unenchant(pl);
+        }
+        _enchanted = true;
+    }
+    public virtual void EnchantedAction(Player _player)
+    {
+
+        //Debug.Log("<color=yellow> Accion llamada </color>");
+        
+        _player.enchantedObjects.Remove(this);
+        //Throw
+        holding = false;
+        _canMove = false;
+        _rb.useGravity = true;
+
+        var dir = new Vector3(Random.Range(0,2), Random.Range(0, 2), Random.Range(0, 2)).normalized;
+        if (weight == Weight.high)
+        {
+            _rb.AddForce(dir * 200f, ForceMode.Impulse);
+            _rb.AddTorque(transform.up * 100f);
+            _rb.AddTorque(transform.right * 100f);
+        }
+        else
+        {
+            _rb.AddForce(dir * 50f, ForceMode.Impulse);
+            _rb.AddTorque(transform.up * 200f);
+            _rb.AddTorque(transform.right * 200f);
+        }
+
+        if(TryGetComponent<Chocamiento>(out Chocamiento choc))
+        {
+            choc.scareAmount = _scareAmount;
+            choc.Choco(transform.position);
+        }
+        if (rompible == true)
+        {
+            rompscript.Rompe();
+            Destroy(gameObject);
+        }
+
+        _enchanted = false;
+        Debug.Log("<color=purple> Accion realizada </color>");
+    }
+
+    public virtual void Unenchant(Player player)
+    {
+        //if (i == 0)
+        //{
+        //    player.enchantedObjects[0].Unenchant(player);
+        //    //player.enchantedObjects.RemoveAt(i);
+        //}
+        //else
+        //{
+        //}        
+            player.enchantedObjects.Remove(this);
+            _enchanted = false;
     }
 }

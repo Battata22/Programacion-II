@@ -10,8 +10,16 @@ public class Ultimate : MonoBehaviour
     [SerializeField] float radio, fuerzaTorque, tiempoInAir;
     [SerializeField] LayerMask maskUlti, maskNPC;
     [SerializeField] Image ultState;
+
+    Player _player;
+
     float countDown, waitScared;
     bool active = false, used = false;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
 
     void Start()
     {
@@ -23,7 +31,7 @@ public class Ultimate : MonoBehaviour
         countDown += Time.deltaTime;
         waitScared += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.Player.nivel >= 3 && used == false)
+        if (Input.GetKeyDown(KeyCode.Space) && _player.nivel >= 3 && used == false)
         {
             Levitar();
         }
@@ -33,7 +41,7 @@ public class Ultimate : MonoBehaviour
             Caida();
         }
 
-        if (GameManager.Instance.Player.nivel >= 3 && used == false)
+        if (_player.nivel >= 3 && used == false) //GameManager.Instance.Player.nivel
         {
             //ultState.color = Color.green;
             ultState.gameObject.SetActive(true);

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 {
 
     bool inmortal = false;
+    bool _canMove = true;
 
     [Header("Cosas necesarias")]
     [SerializeField] int _hp;
@@ -45,8 +46,10 @@ public class Player : MonoBehaviour
     [SerializeField] int _maxShadows;
     public int currentShadows;
 
-    
+
     float waitFrezze, waitSlow;
+
+
     [SerializeField] float opacidadMarco;
 
 
@@ -56,19 +59,30 @@ public class Player : MonoBehaviour
     public delegate void DelegateVoidFLoat(float a);
     public event DelegateVoidFLoat NerfLvl1, NerfLvl2, NerfLvl3;
 
+    public List<IEnchantable> enchantedObjects = new();
+    public int maxEnchantable;
 
 
+    PickUp _pickUpScript;
+    Collider _colider;
+    [SerializeField] GameObject _mesh;
 
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
+        _camCenter = GetComponentInChildren<CamRotation>();
+        _pickUpScript = GetComponentInChildren<PickUp>();
+        _ogCamPos = _camCenter.transform.localPosition;
+        _colider = GetComponentInChildren<Collider>();
+        maxEnchantable = 3;
+        //yield return new WaitForEndOfFrame();
         GameManager.Instance.Player = this;
         GameManager.Instance.ItemHolde = _itemHolder;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
 
         UpdateTerrorFrame();
@@ -76,6 +90,10 @@ public class Player : MonoBehaviour
         _OGmarcoColor1 = _marcoColor[0].color;
         _OGmarcoColor2 = _marcoColor[1].color;
         _OGmarcoColor3 = _marcoColor[2].color;
+
+        yield return null; //new WaitForEndOfFrame();
+        //GameManager.Instance.Player = this;
+        //GameManager.Instance.ItemHolde = _itemHolder;
     }
 
     private void Update()
@@ -95,6 +113,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && nivel > 1)
         {
             CreateShadow();
+        }
+
+        if(Input.GetKeyDown(KeyCode.V) && enchantedObjects.Count > 0)
+        {
+            StartCoroutine(ActivateEnchanteds());
         }
 
         #region ControlesF
@@ -168,6 +191,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!_canMove) return;
         if (_xAxis != 0 || _zAxis != 0)
         {
             Movement(_xAxis, _zAxis);
@@ -175,7 +199,8 @@ public class Player : MonoBehaviour
         if (underAttack) LockedMovement();
 
         RaycastHit hit;
-        if (!Physics.Raycast(transform.position, -transform.up, out hit, 0.2f, LayerMask.GetMask("NoTras"))) _rb.AddForce(-transform.up * _speed, ForceMode.Force);
+        if (!Physics.Raycast(transform.position, -transform.up, out hit, 0.2f, LayerMask.GetMask("NoTras"))) 
+            _rb.AddForce(-transform.up * _speed, ForceMode.Force);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -504,6 +529,62 @@ public class Player : MonoBehaviour
     void RestartScene()
     {
         SceneManager.LoadScene("Nivel1");
+    }
+
+    private IEnumerator ActivateEnchanteds()
+    {
+        while (enchantedObjects.Count > 0)
+        {
+            enchantedObjects[0].EnchantedAction(this);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    PossessObject possesObject = null;
+    bool possessing = false;
+    CamRotation _camCenter;
+    Vector3 _ogCamPos;
+    public void PossessMovement()
+    {
+        var pos = possesObject.transform.position;
+        transform.position = pos;
+
+        possesObject.transform.rotation = transform.rotation;
+    }
+
+    public void StartPossession(PossessObject obj)
+    {
+        possessing = true;
+        possesObject = obj;
+        possesObject.player = this;
+        possesObject.gameObject.GetComponent<Pickable>().Drop();
+        _camCenter.transform.localPosition = new Vector3(_ogCamPos.x,_ogCamPos.y-1f,_ogCamPos.z);
+
+        _rb.useGravity = false;
+        _colider.enabled = false;
+        _mesh.SetActive(false);
+        
+        _pickUpScript.enabled = false;
+        possesObject.gameObject.GetComponent<Pickable>().enabled=false;
+
+        //evento para desactivar ignores de perro y GB
+    }
+
+    public void EndPossession()
+    {
+        possessing = false;
+        _camCenter.transform.localPosition = _ogCamPos;
+
+        _pickUpScript.enabled = true;
+        _colider.enabled = true;
+        _mesh.SetActive(true);
+
+        possesObject.gameObject.GetComponent<Pickable>().enabled = true;
+
+        _rb.useGravity = true;
+
+        //evento para desactivar ignores de perro y GB
     }
 
 }
