@@ -70,6 +70,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.Instance.Player = this;
+        GameManager.Instance.ItemHolde = _itemHolder;
         _rb = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
         _camCenter = GetComponentInChildren<CamRotation>();
@@ -78,8 +80,6 @@ public class Player : MonoBehaviour
         _colider = GetComponentInChildren<Collider>();
         maxEnchantable = 3;
         //yield return new WaitForEndOfFrame();
-        GameManager.Instance.Player = this;
-        GameManager.Instance.ItemHolde = _itemHolder;
     }
 
     private IEnumerator Start()
