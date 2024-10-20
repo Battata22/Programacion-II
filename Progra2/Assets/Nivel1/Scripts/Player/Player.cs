@@ -542,7 +542,7 @@ public class Player : MonoBehaviour
     }
 
     PossessObject possesObject = null;
-    bool possessing = false;
+    public bool possessing = false;
     CamRotation _camCenter;
     Vector3 _ogCamPos;
     public void PossessMovement()

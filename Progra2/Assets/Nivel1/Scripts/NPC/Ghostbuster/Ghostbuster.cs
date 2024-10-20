@@ -132,7 +132,7 @@ public class Ghostbuster : NPC
             _agent.SetDestination(GetNewNode(_actualNode).position);
             //Debug.Log("<color=green> Despues de set destination </color>");
         }
-        if (!_isAttacking && !_target.underAttack && _canAttack && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
+        if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
         {
             StartCoroutine(DelayAttack());
         }
