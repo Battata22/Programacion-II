@@ -3,10 +3,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.ProBuilder;
-using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.GraphicsBuffer;
+
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Chocamiento))]

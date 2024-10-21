@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class BotonesMenu : MonoBehaviour
 {
+    [SerializeField] GameObject[] objMenu;
+    [SerializeField] GameObject[] objOpciones;
 
     void Update()
     {
@@ -34,7 +36,15 @@ public class BotonesMenu : MonoBehaviour
     }
     public void OpcionesOnClicked()
     {
-        SceneManager.LoadScene("Opciones");
+        //SceneManager.LoadScene("Opciones");
+        foreach(GameObject obj in objMenu)
+        {
+            obj.SetActive(false);
+        }
+        foreach(GameObject obj in objOpciones)
+        {
+            obj.SetActive(true);
+        }
     }
     public void CreditosOnClicked()
     {

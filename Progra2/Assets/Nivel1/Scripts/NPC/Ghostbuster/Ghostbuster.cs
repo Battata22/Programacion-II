@@ -227,6 +227,7 @@ public class Ghostbuster : NPC
         //_agent.speed = 0f;
         StopSearching();
         SetSpeed();
+        _target.cameraShake = true;
         _target.underAttack = true;
         _target.attacker = this;
         _audioSource.clip = _clipAspiradora;
@@ -275,6 +276,7 @@ public class Ghostbuster : NPC
         _canAttack = false;
         _isAttacking = false;
         _angry = false;
+        _target.cameraShake = false;
         _lastAttack = Time.time;
         //_agent.speed = 0;
         SetSpeed();

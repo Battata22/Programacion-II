@@ -6,6 +6,8 @@ using UnityEngine;
 public class TornadoItems : MonoBehaviour
 {
     [SerializeField] GameObject tornadoPrefab;
+    Ray ray;
+    RaycastHit hit;
 
     //lanzarlo
     //overlapsesphere para obtener objetos cercanos
@@ -18,7 +20,13 @@ public class TornadoItems : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Instantiate(tornadoPrefab, new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Instantiate(tornadoPrefab, new Vector3(hit.point.x, hit.point.y + 1, hit.point.z), Quaternion.identity);
+            }
+
         }
     }
 

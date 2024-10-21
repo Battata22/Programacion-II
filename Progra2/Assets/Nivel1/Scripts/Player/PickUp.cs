@@ -124,19 +124,13 @@ public class PickUp : MonoBehaviour
                 //}
             }
 
-            if(Input.GetKeyDown(KeyCode.F) && interactuable)
+            if (Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0)
             {
-                IEnchantable ench;
-                if(hit.transform.TryGetComponent<IEnchantable>(out ench))
-                {
-                    ench.GetEnchanted(_player);
-                }
-
-                if(OnEnchanted != null)
-                    OnEnchanted();
+                _objScript.gameObject.AddComponent<PossessObject>();
+                _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
             }
 
-            if(Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0)
+            if (Input.GetKeyDown(KeyCode.E) && interactuable && _objScript.weight == 0 && _objScript.gameObject.GetComponent<Luces>() == null)
             {
                 _objScript.gameObject.AddComponent<PossessObject>();
                 _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());

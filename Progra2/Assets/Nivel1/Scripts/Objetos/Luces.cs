@@ -7,21 +7,21 @@ public class Luces : Obj_Interactuable
 {
     //[SerializeField] Light _luz;
     [SerializeField] List<Light> _luces;
-    [SerializeField] bool on = true;
+    [SerializeField] bool on = true, rotas = false;
     AudioSource _audioSource;
     [SerializeField] AudioClip _clip;
     [SerializeField] Chocamiento _chocamiento;
-
-    public delegate void DelegateVoidInt(int number);
-    public event DelegateVoidInt OnBroken;
-    int _useToBroke, _currenUses;
-    bool broken = false;
+    int random, usos;
+    [SerializeField] int minPos, maxPos;
+    [SerializeField] Luces switchPar;
 
     public override Material OutLine
     {
         get { return _outLine; }
         protected set { _outLine = value; }
     }
+
+    #region Comment
     //protected Material /*_outLine, */_fade;
     //public override Material OutLine
 
@@ -36,7 +36,8 @@ public class Luces : Obj_Interactuable
     //    protected set { _fade = value; }
     //}
     //protected float _OGthik;
-    //protected Color _OGcolor;
+    //protected Color _OGcolor; 
+    #endregion
 
     private void Awake()
     {
@@ -44,11 +45,7 @@ public class Luces : Obj_Interactuable
         _chocamiento = GetComponent<Chocamiento>();
         _renderer = GetComponent<Renderer>();
         _audioSource.clip = _clip;
-
-        _useToBroke = Random.Range(5, 11);
-
-        
-
+        #region Comment
         //if (_renderer != null)
         //{
         //    foreach (var mat in _renderer.materials)
@@ -69,10 +66,13 @@ public class Luces : Obj_Interactuable
 
         //        }
         //    }
-        //}
+        //} 
+        #endregion
     }
     private void Start()
     {
+        random = Random.Range(minPos, maxPos);
+
         if (_renderer != null)
         {
             foreach (var mat in _renderer.materials)
@@ -87,92 +87,64 @@ public class Luces : Obj_Interactuable
             }
         }
 
-        GameManager.Instance._lights.Add(this);
     }
-    private void LateUpdate()
-    {
-        //if (Fade == null) return;
 
-        //if (holding)
-        //{
-        //    //transform.position = _target.position;
-        //    if (Fade.GetColor("_baseColor") != _OGcolor)
-        //    {
-        //        Fade.SetColor("_baseColor", _OGcolor);
-        //    }
-        //}
-        //else
-        //{
-        //    if (Fade.GetColor("_baseColor") == _OGcolor)
-        //    {
-        //        Fade.SetColor("_baseColor", new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f));
-        //    }
-        //}
+    private void Update()
+    {
+        if (usos >= random)
+        {
+            rotas = true;
+            Bluetooth();
+        }
+
     }
 
     public void LightSwitch()
     {
-        //on == true
-        if (broken) return;
-        if(_currenUses >= _useToBroke && !broken)
+        if (!rotas)
         {
-            Debug.Log("<color=red> LUZ QUEMADA </color>");
+            usos++;
 
-            //for (int i = 0; i < _luces.Count; i++)
-            //{
-            //    _luces[i].enabled = false;
-            //}
-            //on = false;
-            //_audioSource.Play();
-            //_chocamiento.ChocoSonoro(transform.position);
-            for (int i = 0; i < _luces.Count; i++)
+            if (on)
             {
-                _luces[i].enabled = false;
+                Apagado();
             }
-            on = false;
-            _audioSource.Play();
-            _chocamiento.ChocoSonoro(transform.position);
-
-            broken = true;
-            if(OnBroken != null)
-                OnBroken(2);
-        }
-
-        if (_luces[0].enabled == true)
-        {
-            for(int i = 0;  i < _luces.Count; i++)
+            else
             {
-                _luces[i].enabled = false;
+                Encendido();
             }
-            on = false;
             _audioSource.Play();
             _chocamiento.ChocoSonoro(transform.position);
         }
-        else if (_luces[0].enabled == false)
+        else
         {
-            for (int i = 0; i < _luces.Count; i++)
-            {
-                _luces[i].enabled = true;
-            }
-            on = true;
-
-            _currenUses++;
-
-            _audioSource.Play();
-            _chocamiento.ChocoSonoro(transform.position);
+            Apagado();
         }
     }
 
-    public override void SlcFxOff()
+    public void Apagado()
     {
-        if (_outLineAntispam) return;
-        //Debug.Log("<Color=red> APAGADO </color>");
-        OutLine.SetFloat("_Thickness", -0.02f);
-        _outLineAntispam = true;
+        for (int i = 0; i < _luces.Count; i++)
+        {
+            _luces[i].enabled = false;
+        }
+        on = false;
     }
 
-    public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error, int playerLevel)
+    public void Encendido()
     {
-        
+        for (int i = 0; i < _luces.Count; i++)
+        {
+            _luces[i].enabled = true;
+        }
+        on = true;
+    }
+
+    public void Bluetooth()
+    {
+        if(switchPar != null)
+        {
+            switchPar.rotas = true;
+        }
     }
 }

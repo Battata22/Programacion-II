@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject _marcoLvl1, _marcoLvl2, _marcoLvl3;
     [SerializeField] Image[] _marcoColor;
     Color _OGmarcoColor1, _OGmarcoColor2, _OGmarcoColor3 , _actCol1, _actCol2, _actCol3;
+    [SerializeField] Camera _cam;
 
 
     [Header("Movement")]
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     Vector3 _dir = new();
 
 
-    public bool underAttack, _traped = false, _canFrezze2 = true;
+    public bool underAttack, _traped = false, _canFrezze2 = true, cameraShake = false;
     public Ghostbuster attacker;
 
 
@@ -98,6 +99,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        #region Comment
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    if (cameraShake)
+        //    {
+        //        cameraShake = false;
+        //    }
+        //    else
+        //    {
+        //        cameraShake = true;
+        //    }
+        //} 
+        #endregion
 
         if (_traped == true)
         {
