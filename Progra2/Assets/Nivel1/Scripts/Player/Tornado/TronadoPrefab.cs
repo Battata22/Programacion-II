@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TronadoPrefab : MonoBehaviour
 {
-    [SerializeField] float radio, fuerzaTorque, speed, rotSpeed, radioDist, fuerzaArriba;
+    [SerializeField] float duracion, radio, fuerzaTorque, speed, rotSpeed, radioDist, fuerzaArriba;
     [SerializeField] LayerMask maskTornado;
     [SerializeField] Collider[] colliders;
 
@@ -10,7 +10,7 @@ public class TronadoPrefab : MonoBehaviour
     void Start()
     {
         //Torque();
-        Invoke("SelfDestruct", 5);
+        Invoke("SelfDestruct", duracion);
     }
 
     void FixedUpdate()
@@ -109,7 +109,7 @@ public class TronadoPrefab : MonoBehaviour
     {
         Destroy(gameObject);
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radio - 0.5f, maskTornado);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radio - 0.8f, maskTornado);
 
         foreach (Collider collider in colliders)
         {

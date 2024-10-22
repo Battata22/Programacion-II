@@ -16,5 +16,6 @@ public class Espejo : MonoBehaviour
     public void Escritura()
     {
         animator.SetBool("Activado", true);
+        activo = true;
     }
 }

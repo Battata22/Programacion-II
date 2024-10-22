@@ -6,6 +6,9 @@ public class ParedesInv : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.Instance.Tutorial.EndWalling();
+        if (GameManager.Instance.Tutorial.wallingTuto == true) 
+        {
+            GameManager.Instance.Tutorial.EndWalling();
+        }
     }
 }

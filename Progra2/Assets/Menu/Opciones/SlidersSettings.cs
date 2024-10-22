@@ -194,10 +194,21 @@ public class SlidersSettings : MonoBehaviour
     }
     public void SensCargarJSON()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SensDataFile.json");
-        CamData camData = JsonUtility.FromJson<CamData>(json);
+        if (File.Exists(Application.dataPath + "/SensDataFile.json") == true)
+        {
+            string json = File.ReadAllText(Application.dataPath + "/SensDataFile.json");
+            CamData camData = JsonUtility.FromJson<CamData>(json);
 
-        _sensSlider.value = camData._xSens;
+            _sensSlider.value = camData._xSens;
+        }
+        else
+        {
+            CamData camDataScript = new CamData();
+
+            string json = JsonUtility.ToJson(camDataScript, true);
+            File.WriteAllText(Application.dataPath + "/SensDataFile.json", json);
+        }
+
     }
 
     public void PlaySound()
