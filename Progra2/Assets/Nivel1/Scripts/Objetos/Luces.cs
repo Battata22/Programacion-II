@@ -15,6 +15,9 @@ public class Luces : Obj_Interactuable
     [SerializeField] int minPos, maxPos;
     [SerializeField] Luces switchPar;
 
+    public delegate void DelegateVoidInt(int number);
+    public event DelegateVoidInt OnBroken;
+
     public override Material OutLine
     {
         get { return _outLine; }
@@ -71,6 +74,7 @@ public class Luces : Obj_Interactuable
     }
     private void Start()
     {
+        GameManager.Instance._lights.Add(this);
         random = Random.Range(minPos, maxPos);
 
         if (_renderer != null)
@@ -91,9 +95,14 @@ public class Luces : Obj_Interactuable
 
     private void Update()
     {
-        if (usos >= random)
+        if (usos >= random && !rotas)
         {
             rotas = true;
+            if (OnBroken != null)
+            {
+                OnBroken(2);
+                //Debug.Log("Luz Rota");
+            }
             Bluetooth();
         }
 

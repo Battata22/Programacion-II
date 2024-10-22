@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent (typeof(AudioSource))]
+[RequireComponent(typeof (Rigidbody))]
 
 public abstract class NPC : MonoBehaviour
 {
@@ -213,4 +214,9 @@ public abstract class NPC : MonoBehaviour
     {
         GameManager.Instance.Npc.Remove(this);
     }
+
+    //public virtual void Slide()
+    //{
+    //    Debug.Log("Slide de NPC");
+    //}
 }

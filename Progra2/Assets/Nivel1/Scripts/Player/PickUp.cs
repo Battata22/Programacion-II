@@ -124,16 +124,25 @@ public class PickUp : MonoBehaviour
                 //}
             }
 
-            if (Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0)
+            //if (Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0)
+            //{
+            //    _objScript.gameObject.AddComponent<PossessObject>();
+            //    _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
+            //}
+
+            // En vez de anhadir una condicion al de arriba lo escribiste otra vez XD
+            if (Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0 && _objScript.gameObject.GetComponent<Luces>() == null)
             {
                 _objScript.gameObject.AddComponent<PossessObject>();
                 _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && interactuable && _objScript.weight == 0 && _objScript.gameObject.GetComponent<Luces>() == null)
+            
+            IEnchantable obj;
+            if(Input.GetKeyDown(KeyCode.F)  && interactuable &&_playerScript.nivel >= _objScript.lvlRequired && _objScript.TryGetComponent<IEnchantable>(out obj))
             {
-                _objScript.gameObject.AddComponent<PossessObject>();
-                _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
+                obj.GetEnchanted(_playerScript);
+
             }
         }
         #region comment efectos visuales de particulas y manos

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 //using static UnityEditor.PlayerSettings;
 
-public class Ghostbuster : NPC
+public class Ghostbuster : NPC , ICanSlide
 {
     [Header("<color=red> Ghostbuster </color>")]
     [SerializeField] GB_FOV _gbFov;
@@ -33,6 +33,9 @@ public class Ghostbuster : NPC
     ParticleSystem _tornadoGen;
     ParticleSystem _smokeGen;
 
+    Rigidbody _rb;
+    bool _sliding;
+
     protected override void Start()
     {
         //_agent.speed;
@@ -43,6 +46,7 @@ public class Ghostbuster : NPC
         //_target = GameManager.Instance.Player;
         _gbFov = GetComponent<GB_FOV>();
         _parGens = GetComponentsInChildren<ParticleSystem>();
+        _rb = GetComponent<Rigidbody>();
         _tornadoGen = _parGens[1];
         _smokeGen = _parGens[0];
         _anim = GetComponentInChildren<Animator>();
@@ -118,7 +122,7 @@ public class Ghostbuster : NPC
         if (_gbFov.hasLOS != _lastState)
         {
             _lastState = _gbFov.hasLOS;
-            if (_gbFov.hasLOS && !_activeChase && !_isAttacking && !_target.underAttack)
+            if (_gbFov.hasLOS && !_activeChase && !_sliding && !_isAttacking && !_target.underAttack)
             {
                 //Debug.Log("Te veo");
                 GetAngry();
@@ -132,12 +136,16 @@ public class Ghostbuster : NPC
             _agent.SetDestination(GetNewNode(_actualNode).position);
             //Debug.Log("<color=green> Despues de set destination </color>");
         }
-        if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
+        if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && !_sliding 
+            && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
         {
             StartCoroutine(DelayAttack());
         }
 
-        
+        if (_sliding && _rb.velocity.sqrMagnitude < 0.5f * 0.5f)
+        {
+            StopSlide();
+        }
     }
 
     private void FixedUpdate()
@@ -445,5 +453,44 @@ public class Ghostbuster : NPC
     {
         GameManager.Instance.Gb.Remove(this);
         base.OnDestroy();    
+    }
+
+    public void StartSlide()
+    {
+        if (_isAttacking) return;
+        //Debug.Log("<color=green> Slide de Asustable </color>");
+        //desactivar navmesh
+        //activar gravedad
+        //desactivar friccion
+        //dar impulso
+        //setear animacion
+
+        //En vez de que salga disparado el GB podemos hacer que se caiga
+
+        StopAnger();
+        var dir = transform.forward;
+        var _impulseForce = 8f;
+
+        _agent.enabled = false;
+        _sliding = true;
+        _rb.useGravity = true;
+        _rb.drag = 0f;
+        _rb.AddForce(dir * _impulseForce * _rb.mass, ForceMode.Impulse);
+
+    }
+
+    public void StopSlide()
+    {
+        //desactivar gravedad
+        //activar friccion?
+        //activar navmesh
+        //sacar animacion
+        _sliding = false;
+        _rb.useGravity = false;
+        _rb.drag = 1f;
+        _rb.velocity = Vector3.zero;
+        _agent.enabled = true;
+        _agent.SetDestination(_actualNode.position);
+
     }
 }

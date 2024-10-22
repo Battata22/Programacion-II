@@ -17,11 +17,11 @@ public class SecObjectives : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitForEndOfFrame();
-        //_lights = GameManager.Instance._lights;
-        //foreach (var l in _lights)
-        //{
-        //    l.OnBroken += CompleteObjective;
-        //}
+        _lights = GameManager.Instance._lights;
+        foreach (var l in _lights)
+        {
+            l.OnBroken += CompleteObjective;
+        }
         _plunger.OnStuck += CompleteObjective;
         _bath.OnCatCol += CompleteObjective;
     }

@@ -68,6 +68,9 @@ public class Player : MonoBehaviour
     Collider _colider;
     [SerializeField] GameObject _mesh;
 
+    Material _electricMat;
+    //[SerializeField] MeshRenderer _renderer;
+
 
     private void Awake()
     {
@@ -91,6 +94,18 @@ public class Player : MonoBehaviour
         _OGmarcoColor1 = _marcoColor[0].color;
         _OGmarcoColor2 = _marcoColor[1].color;
         _OGmarcoColor3 = _marcoColor[2].color;
+
+        foreach(var mat in _mesh.GetComponent<MeshRenderer>().materials)
+        {
+            //Debug.Log(mat.name);
+            if (mat.name == "M_Electrycity (Instance)")
+            {
+                _electricMat = mat;
+                //Debug.Log(_electricMat.name);
+                _electricMat.SetFloat("_Active", 0f);
+                
+            }
+        }
 
         yield return null; //new WaitForEndOfFrame();
         //GameManager.Instance.Player = this;
@@ -396,6 +411,7 @@ public class Player : MonoBehaviour
         if (_canFrezze2 == true)
         {
             _speed = 0;
+            _electricMat.SetFloat("_Active", 1);
             if (waitFrezze >= _frezzeCD)
             {
                 _speed = 2;
@@ -412,6 +428,7 @@ public class Player : MonoBehaviour
                 _canFrezze2 = true;
                 waitFrezze = 0;
                 waitSlow = 0;
+               _electricMat.SetFloat("_Active", 0);
             }
 
         }

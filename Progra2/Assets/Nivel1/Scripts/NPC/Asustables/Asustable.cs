@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Asustable : NPC
+public class Asustable : NPC , ICanSlide
 {
     //[Header("AI")]
     //[SerializeField] float _changeNodeDist = 0.5f;
@@ -20,6 +20,9 @@ public class Asustable : NPC
 
     [SerializeField] AudioClip gritoClip, doubtClip;
     [SerializeField] Animator _anim;
+
+    Rigidbody _rb;
+    bool _sliding;
 
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
@@ -65,6 +68,7 @@ public class Asustable : NPC
     protected override void Start()
     {
         base.Start();
+        _rb = GetComponent<Rigidbody>();
         //yield return null;
         _anim = GetComponentInChildren<Animator>();
     }
@@ -153,6 +157,11 @@ public class Asustable : NPC
             //Ganarga(1f);
             //Ganarga(1f);
             //Ganarga(1f);
+        }
+
+        if(_sliding && _rb.velocity.sqrMagnitude < 0.5f * 0.5f)
+        {
+            StopSlide();
         }
 
     }
@@ -306,6 +315,45 @@ public class Asustable : NPC
         {
             SceneManager.LoadScene("Victoria");
         }
+    }
+
+    public void StartSlide()
+    {
+        Debug.Log("<color=green> Slide de Asustable </color>");
+        //desactivar navmesh
+        //activar gravedad
+        //desactivar friccion
+        //dar impulso
+        //setear animacion
+
+        var dir = transform.forward;
+        var _impulseForce = 8f;
+        
+        _agent.enabled = false;
+        _sliding = true;
+        _rb.useGravity = true;
+        _rb.drag = 0f;
+        _rb.AddForce(dir * _impulseForce * _rb.mass, ForceMode.Impulse);
+
+    }
+
+    public void StopSlide()
+    {
+        //desactivar gravedad
+        //activar friccion?
+        //activar navmesh
+        //sacar animacion
+
+        _sliding = false;
+        _rb.useGravity = false;
+        _rb.drag = 1f;
+        _rb.velocity = Vector3.zero;
+
+        //en vez de activar podemos llamar a Stun de golpe o caida despues de resbalar
+
+        _agent.enabled = true;
+        _agent.SetDestination(_actualNode.position);
+
     }
 
 }
