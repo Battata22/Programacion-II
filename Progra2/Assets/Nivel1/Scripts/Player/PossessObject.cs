@@ -11,7 +11,10 @@ public class PossessObject : MonoBehaviour
 
     Vector3 _dir;
 
+    private ParticleSystem trailGen;
+
     public Player player;
+    Pickable _objScript;
 
     private void Awake()
     {
@@ -20,12 +23,26 @@ public class PossessObject : MonoBehaviour
         _speed = 1000f;
         _rb.freezeRotation = true;
         _player = GameManager.Instance.Player;
+        _objScript = GetComponent<Pickable>();
+        trailGen = _objScript.trailGen;
     }
 
     private void Update()
     {
         _xAxis = Input.GetAxis("Horizontal");
         _zAxis = Input.GetAxis("Vertical");
+
+        if(_xAxis != 0  || _zAxis!= 0)
+        {
+            if(trailGen.isStopped)
+                trailGen.Play();          
+        }
+        else
+        {
+            if(trailGen.isPlaying)
+                trailGen.Stop();
+        }
+            
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -35,7 +52,7 @@ public class PossessObject : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RaycastHit floor;
+        //RaycastHit floor;
         //if (_xAxis != 0 || _zAxis != 0)
         //{
         //}
@@ -85,6 +102,7 @@ public class PossessObject : MonoBehaviour
         //destruir este script
         _rb.freezeRotation = false;
         player.EndPossession();
+        trailGen.Stop();
 
         Destroy(this);
     }

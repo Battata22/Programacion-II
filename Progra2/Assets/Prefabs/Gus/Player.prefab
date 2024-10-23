@@ -372,6 +372,10 @@ MonoBehaviour:
   randomAxis: 0
   maxEnchantable: 0
   _mesh: {fileID: 3414413881716956489}
+  _hpMats:
+  - {fileID: 2100000, guid: d96cd04684641c94caf7bbeafb008360, type: 2}
+  - {fileID: 2100000, guid: b8da2d19b34fb9f478aa28009eb48c37, type: 2}
+  - {fileID: 2100000, guid: af3595bcf8a7d554592f96aaa56c3e1d, type: 2}
   possessing: 0
 --- !u!114 &5894330111274566517
 MonoBehaviour:
@@ -572,6 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tornadoPrefab: {fileID: 4027203463996449342, guid: 6d2e61bed950b674b8f8c82398ab08a7, type: 3}
+  cooldown: 0
 --- !u!1 &7142187182563103209
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     Color _OGmarcoColor1, _OGmarcoColor2, _OGmarcoColor3 , _actCol1, _actCol2, _actCol3;
     [SerializeField] Camera _cam;
 
+    [SerializeField] Material[] _hpMats;
 
     [Header("Movement")]
     [SerializeField] float _speed, _frezzeCD, _slowCD;
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
         _ogCamPos = _camCenter.transform.localPosition;
         _colider = GetComponentInChildren<Collider>();
         maxEnchantable = 3;
+        _mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[0];
         //yield return new WaitForEndOfFrame();
     }
 
@@ -110,6 +112,7 @@ public class Player : MonoBehaviour
         yield return null; //new WaitForEndOfFrame();
         //GameManager.Instance.Player = this;
         //GameManager.Instance.ItemHolde = _itemHolder;
+        SpriteVidaUpdate();
     }
 
     private void Update()
@@ -185,7 +188,7 @@ public class Player : MonoBehaviour
         } 
         #endregion
 
-        SpriteVidaUpdate();
+        //SpriteVidaUpdate();
 
         if (underAttack)
         {
@@ -289,14 +292,20 @@ public class Player : MonoBehaviour
         if (_hp == 3)
         {
             _vidaUI.sprite = _vidaFull;
+            //_mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[0];
+            _mesh.GetComponent<MeshRenderer>().sharedMaterial = _hpMats[0];
         }
         else if (_hp == 2)
         {
             _vidaUI.sprite = _vidaMedia;
+            //_mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[1];
+            _mesh.GetComponent<MeshRenderer>().sharedMaterial = _hpMats[1];
         }
         else if (_hp == 1)
         {
             _vidaUI.sprite = _vidaBaja;
+            //_mesh.GetComponent<Renderer>().materials[0] = _hpMats[2];
+            _mesh.GetComponent<Renderer>().sharedMaterial = _hpMats[2];
         }
     }
 
@@ -527,6 +536,7 @@ public class Player : MonoBehaviour
     {
         if(inmortal) return;
         _hp--;
+        SpriteVidaUpdate();
         if (_hp <=0)
         {
             SceneManager.LoadScene("Derrota");

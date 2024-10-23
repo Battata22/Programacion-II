@@ -30,6 +30,10 @@ public class Pickable : Obj_Interactuable , IEnchantable
         get { return _outLine;} 
         protected set { _outLine = value; } 
     }
+    public  Material OutLineEnchanted
+    {
+        get; protected set;
+    }
     public Material Fade
     { 
         get { return _fade; }
@@ -132,7 +136,18 @@ public class Pickable : Obj_Interactuable , IEnchantable
                     Fade.SetColor("_baseColor", noAlpha);//     = new Color(_fade.color.r, _fade.color.g, _fade.color.b, 0f);   
                     
                 }
+                if(mat.name == "M_Outline_Yellow (Instance)")
+                {
+                    OutLineEnchanted = mat;
+                    OutLineEnchanted.SetFloat("_Thickness", 0f);
+                }
             }
+        }
+        if (trailGen == null)
+        {
+            var newTrail = Instantiate(GameManager.Instance.TrailGen, transform);
+            trailGen = newTrail.GetComponent<ParticleSystem>();
+            trailGen.Stop();
         }
 
         _scareAmount = 1f;
@@ -461,6 +476,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         {
             pl.enchantedObjects[0].Unenchant(pl);
         }
+
+        OutLineEnchanted.SetFloat("_Thickness", _OGthik - 0.005f);
         _enchanted = true;
     }
     public virtual void EnchantedAction(Player _player)
@@ -499,6 +516,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
             Destroy(gameObject);
         }
 
+        OutLineEnchanted.SetFloat("_Thickness", 0f);
         _enchanted = false;
         Debug.Log("<color=purple> Accion realizada </color>");
     }
@@ -513,7 +531,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //else
         //{
         //}        
-            player.enchantedObjects.Remove(this);
-            _enchanted = false;
+        OutLineEnchanted.SetFloat("_Thickness", 0f);
+        player.enchantedObjects.Remove(this);
+        _enchanted = false;
     }
 }

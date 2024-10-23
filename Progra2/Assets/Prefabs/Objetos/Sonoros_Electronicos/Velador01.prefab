@@ -292,6 +292,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: 5011899ffe7b95849ade645119229756, type: 2}
   - {fileID: 2100000, guid: 43cdf23c8ce6ea34ebbaac5fa93f7be7, type: 2}
   - {fileID: 2100000, guid: 3347a6b0c3eaad64d8f61f5fccea0bda, type: 2}
+  - {fileID: 2100000, guid: 854da2abd8d209b4a8aad738ad1de993, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -416,6 +417,7 @@ MonoBehaviour:
   parTime: 0
   _navObstacle: {fileID: 0}
   _scareAmount: 0
+  _enchanted: 0
 --- !u!65 &5323821212763949367
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -466,8 +468,12 @@ MonoBehaviour:
   _luces:
   - {fileID: 29325831632679689}
   on: 1
+  rotas: 0
   _clip: {fileID: 8300000, guid: 1c17cfd608bc54247b1b8288c8a243a7, type: 3}
   _chocamiento: {fileID: 0}
+  minPos: 0
+  maxPos: 0
+  switchPar: {fileID: 0}
 --- !u!82 &1702813343626159922
 AudioSource:
   m_ObjectHideFlags: 0
