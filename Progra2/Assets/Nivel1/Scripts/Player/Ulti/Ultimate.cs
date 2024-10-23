@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Ultimate : MonoBehaviour
@@ -66,7 +67,6 @@ public class Ultimate : MonoBehaviour
             {
                Asustable asustableScript = collider.GetComponent<Asustable>();
                 asustableScript.GetDoubt(collider.transform.position);
-
             }
 
         }
@@ -87,6 +87,12 @@ public class Ultimate : MonoBehaviour
                     rb.constraints = RigidbodyConstraints.None;
                     rb.AddForce(transform.up * fuerzaTorque);
                     rb.AddTorque(transform.right * fuerzaTorque);
+                }
+
+                if (collider.GetComponent<NavMeshObstacle>() != null)
+                {
+                    NavMeshObstacle obst = collider.GetComponent<NavMeshObstacle>();
+                    obst.enabled = false;
                 }
 
             }  
@@ -118,6 +124,12 @@ public class Ultimate : MonoBehaviour
                     Rigidbody rb = collider.GetComponent<Rigidbody>();
                     rb.useGravity = true;
                     rb.AddForce(transform.up * -fuerzaTorque);
+                }
+
+                if (collider.GetComponent<NavMeshObstacle>() != null)
+                {
+                    NavMeshObstacle obst = collider.GetComponent<NavMeshObstacle>();
+                    obst.enabled = true;
                 }
 
             }

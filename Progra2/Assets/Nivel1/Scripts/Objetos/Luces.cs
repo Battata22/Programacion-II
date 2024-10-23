@@ -122,6 +122,7 @@ public class Luces : Obj_Interactuable
             {
                 Encendido();
             }
+            _audioSource.clip = _clip;
             _audioSource.Play();
             _chocamiento.ChocoSonoro(transform.position);
         }

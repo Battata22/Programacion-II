@@ -18,7 +18,7 @@ public class ShakeAttack : MonoBehaviour
     {
         if (player.cameraShake == true)
         {
-            transform.localPosition = orgPos + Random.insideUnitSphere * shakePotencia * Time.deltaTime;
+            transform.localPosition = orgPos + Random.insideUnitSphere * shakePotencia * Time.fixedDeltaTime;
         }
         else
         {

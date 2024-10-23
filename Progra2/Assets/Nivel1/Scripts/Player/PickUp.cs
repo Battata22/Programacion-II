@@ -13,6 +13,7 @@ public class PickUp : MonoBehaviour
     public float esperaragarre;
     Player _playerScript;
     Obj_Interactuable _objScript;
+    Pickable _pickableScript;
     [SerializeField] LayerMask _detectableMask, _objMask;
     GameObject _lastObj, _lastOn;
     bool lineOn = false;
@@ -65,6 +66,7 @@ public class PickUp : MonoBehaviour
             #endregion
 
             _objScript = hit.transform.gameObject.GetComponent<Obj_Interactuable>();
+            //_pickableScript = hit.transform.gameObject.GetComponent<Pickable>();
             if (Input.GetMouseButtonDown(0) && interactuable)
             {
                 #region comment
