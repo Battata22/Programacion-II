@@ -139,6 +139,10 @@ public class PickUp : MonoBehaviour
                 _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
             }
 
+            if(Input.GetKeyDown(KeyCode.Alpha1) && hit.transform.TryGetComponent<IInteractable>(out var inte))
+            {
+                inte.Interact();
+            }
             //ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
             //IEnchantable obj;
             //if(Input.GetKeyDown(KeyCode.F)  && interactuable &&_playerScript.nivel >= _objScript.lvlRequired && _objScript.TryGetComponent<IEnchantable>(out obj))

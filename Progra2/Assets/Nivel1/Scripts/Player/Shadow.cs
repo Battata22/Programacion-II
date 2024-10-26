@@ -52,10 +52,10 @@ public class Shadow : MonoBehaviour
         return newNode;
     }
 
-    public void Initialize(Player newPlayer)
+    public void Initialize()
     {
         //pedir a manager lista de npc para girar a verlos o algo
-        player = newPlayer;
+        player = GameManager.Instance.Player;
 
         if (player.nivel > 2)
             _lTShadow *= 2.5f;

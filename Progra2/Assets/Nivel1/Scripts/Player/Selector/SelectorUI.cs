@@ -6,32 +6,36 @@ using UnityEngine.UI;
 
 public class SelectorUI : MonoBehaviour
 {
-    [SerializeField] KeyCode tecla, habilidad;
+    [SerializeField] KeyCode openMenu, useAbility;
     [SerializeField] GameObject pointerRef;
     [SerializeField] Image fondo, fondoCirc, s1, s2, s3, s4, s5, s6, s7, s8;
     [SerializeField] Canvas tab;
     [SerializeField] bool enTecla = false;
     public static int habAct;
-    public delegate void habManager();
-    public static event habManager habilitiesManager;
+    //public delegate void habManager();
+
+    /// <summary>
+    /// ESTO ES UN EVENTO, SOLO USAR += o -=
+    /// </summary>   
+    public static DelegateType.VoidDelegate habilitiesManager;
 
     void Start()
     {
-        habilitiesManager += Nada;
+        habilitiesManager = delegate { }; //Nada;
     }
 
 
     void Update()
     {
 
-        if (Input.GetKeyDown(habilidad))
+        if (Input.GetKeyDown(useAbility))
         {
             habilitiesManager();
         }
 
         pointerRef.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f);
 
-        if (Input.GetKey(tecla))
+        if (Input.GetKey(openMenu))
         {
 
             SelectorActivo();
@@ -47,6 +51,7 @@ public class SelectorUI : MonoBehaviour
 
     public void SelectorActivo()
     {
+        if (tab.enabled == true) return;
 
         pointerRef.SetActive(true);
 
@@ -70,6 +75,7 @@ public class SelectorUI : MonoBehaviour
 
     public void SelectorDesactivado()
     {
+        if (tab.enabled == false) return;
 
         pointerRef.SetActive(false);
 
@@ -96,10 +102,10 @@ public class SelectorUI : MonoBehaviour
         print("encima");
     }
 
-    public void Nada()
-    {
+    //public void Nada()
+    //{
 
-    }
+    //}
 
     //private void OnTriggerEnter2D(Collider2D collision)
     //{

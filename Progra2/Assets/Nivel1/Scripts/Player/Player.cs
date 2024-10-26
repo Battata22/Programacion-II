@@ -72,6 +72,8 @@ public class Player : MonoBehaviour
     Material _electricMat;
     //[SerializeField] MeshRenderer _renderer;
 
+    CreateShadow _createShadowScript;
+
 
     private void Awake()
     {
@@ -83,8 +85,9 @@ public class Player : MonoBehaviour
         _pickUpScript = GetComponentInChildren<PickUp>();
         _ogCamPos = _camCenter.transform.localPosition;
         _colider = GetComponentInChildren<Collider>();
-        maxEnchantable = 3;
+        //maxEnchantable = 3;
         _mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[0];
+        _createShadowScript = GetComponent<CreateShadow>();
         //yield return new WaitForEndOfFrame();
     }
 
@@ -142,9 +145,9 @@ public class Player : MonoBehaviour
         _zAxis = Input.GetAxisRaw("Vertical");
 
         LifeSaver(transform.position.y);
-        if (Input.GetKeyDown(KeyCode.LeftShift) && nivel > 1)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && nivel > 1 && currentShadows < _maxShadows)
         {
-            CreateShadow();
+            _createShadowScript.SpawnShadow();
         }
 
         if(Input.GetKeyDown(KeyCode.V) && enchantedObjects.Count > 0)
@@ -484,13 +487,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    void CreateShadow()
-    {
-        if (currentShadows >= _maxShadows) return;
-        Shadow newShadow = Instantiate(_shadowPrefab, transform.position, Quaternion.identity);
-        newShadow.Initialize(this);
-        currentShadows++;
-    }
+    //void CreateShadow()
+    //{
+    //    if (currentShadows >= _maxShadows) return;
+    //    Shadow newShadow = Instantiate(_shadowPrefab, transform.position, Quaternion.identity);
+    //    newShadow.Initialize();
+    //    currentShadows++;
+    //}
 
     void MakeNoise()
     {
