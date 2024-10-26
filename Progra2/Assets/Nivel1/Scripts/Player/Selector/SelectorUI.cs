@@ -6,20 +6,28 @@ using UnityEngine.UI;
 
 public class SelectorUI : MonoBehaviour
 {
-    [SerializeField] KeyCode tecla;
+    [SerializeField] KeyCode tecla, habilidad;
     [SerializeField] GameObject pointerRef;
     [SerializeField] Image fondo, fondoCirc, s1, s2, s3, s4, s5, s6, s7, s8;
     [SerializeField] Canvas tab;
     [SerializeField] bool enTecla = false;
+    public static int habAct;
+    public delegate void habManager();
+    public static event habManager habilitiesManager;
 
     void Start()
     {
-        
+        habilitiesManager += Nada;
     }
 
 
     void Update()
     {
+
+        if (Input.GetKeyDown(habilidad))
+        {
+            habilitiesManager();
+        }
 
         pointerRef.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f);
 
@@ -88,48 +96,21 @@ public class SelectorUI : MonoBehaviour
         print("encima");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Nada()
     {
-        enTecla = true;
 
-        //if (collision.gameObject.name == ("1"))
-        //{
-        //    print("1");
-        //}
-        //else if (collision.gameObject.name == ("2"))
-        //{
-        //    print("2");
-        //}
-        //else if (collision.gameObject.name == ("3"))
-        //{
-        //    print("3");
-        //}
-        //else if (collision.gameObject.name == ("4"))
-        //{
-        //    print("4");
-        //}
-        //else if (collision.gameObject.name == ("5"))
-        //{
-        //    print("5");
-        //}
-        //else if (collision.gameObject.name == ("6"))
-        //{
-        //    print("6");
-        //}
-        //else if (collision.gameObject.name == ("7"))
-        //{
-        //    print("7");
-        //}
-        //else if (collision.gameObject.name == ("8"))
-        //{
-        //    print("8");
-        //}
     }
 
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    enTecla = true;
+
+    //}
 
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        enTecla = false;
-    }
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    enTecla = false;
+    //}
 }

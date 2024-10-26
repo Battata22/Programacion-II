@@ -28,7 +28,21 @@ public class TornadoItems : MonoBehaviour
     {
         waitCD += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.R) && waitCD >= cooldown)
+        if (SelectorUI.habAct == 1)
+        {
+            SelectorUI.habilitiesManager += Tornado;
+        }
+        else
+        {
+            SelectorUI.habilitiesManager -= Tornado;
+        }
+
+
+    }
+
+    public void Tornado()
+    {
+        if (waitCD >= cooldown)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
