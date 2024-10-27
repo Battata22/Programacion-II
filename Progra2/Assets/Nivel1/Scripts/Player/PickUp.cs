@@ -139,17 +139,17 @@ public class PickUp : MonoBehaviour
                 _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
             }
 
-            if(Input.GetKeyDown(KeyCode.Alpha1) && hit.transform.TryGetComponent<IInteractable>(out var inte))
+            if(Input.GetKeyDown(KeyCode.E) && hit.transform.TryGetComponent<IInteractable>(out var inte))
             {
                 inte.Interact();
             }
-            //ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-            //IEnchantable obj;
-            //if(Input.GetKeyDown(KeyCode.F)  && interactuable &&_playerScript.nivel >= _objScript.lvlRequired && _objScript.TryGetComponent<IEnchantable>(out obj))
-            //{
-            //    obj.GetEnchanted(_playerScript);
 
-            //}
+            IEnchantable obj;
+            if (Input.GetKeyDown(KeyCode.F) && interactuable && SelectorUI.habAct == 3 && _objScript.TryGetComponent<IEnchantable>(out obj))
+            {
+                obj.GetEnchanted(_playerScript);
+
+            }
         }
         #region comment efectos visuales de particulas y manos
         //else

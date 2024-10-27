@@ -22,13 +22,14 @@ public class SelectorUI : MonoBehaviour
     void Start()
     {
         habilitiesManager = delegate { }; //Nada;
+        habilitiesManager += Test;
     }
 
 
     void Update()
     {
 
-        if (Input.GetKeyDown(useAbility))
+        if (Input.GetKeyDown(useAbility) && habAct !=3)
         {
             habilitiesManager();
         }
@@ -97,9 +98,9 @@ public class SelectorUI : MonoBehaviour
         #endregion
     }
 
-    public void test()
+    public void Test()
     {
-        print("encima");
+        print($"<color=#2CD9C9> Llamada Habilidad con F habilidad activa {habAct}</color>");
     }
 
     //public void Nada()

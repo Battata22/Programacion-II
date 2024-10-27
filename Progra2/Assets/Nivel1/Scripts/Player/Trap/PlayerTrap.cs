@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerTrap : MonoBehaviour, IInteractable
 {
     CreatePlayerTrap _createTrapScript;
+    CreateShadow _createShadowScript;
 
     //public delegate void VoidDelegate();
     public DelegateType.VoidDelegate myAction;
@@ -12,6 +13,12 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     private void Awake()
     {
         myAction = delegate { };
+        if (SelectorUI.habAct == 2)
+        {
+            gameObject.AddComponent<CreateShadow>();
+            _createShadowScript = GetComponent<CreateShadow>();
+        }
+
     }
     public void Initialize(CreatePlayerTrap newScript, DelegateType.VoidDelegate newAction)
     {
@@ -21,9 +28,14 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (myAction == null)
+        //if (myAction == null)
+        //{
+        //    print("<color=red> AHHHHHHHHHHHHHHHHHHHHHHH </color>");
+        //}
+        //else
+        if (_createShadowScript)
         {
-            print("<color=red> AHHHHHHHHHHHHHHHHHHHHHHH </color>");
+            _createShadowScript.SpawnShadow();
         }
         else
             myAction();

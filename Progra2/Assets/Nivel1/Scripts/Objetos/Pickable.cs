@@ -381,7 +381,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
                 #endregion
 
                 choc.scareAmount = _scareAmount;
-                choc.Choco(transform.position);
+                choc.ChocoSonoro(transform.position);
                 _onAir = false;
                 _trowed = false;
                 trailGen.Stop();
@@ -461,7 +461,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
     public bool _enchanted = false;
     public virtual void GetEnchanted(Player pl)
     {
-        if (_enchanted) return;
+        if (_enchanted || pl.enchantedTrap) return;
         if (!(pl.nivel >= lvlRequired))
         {
             //Debug.Log("<color=yellow> Nivel Insuficiente</color>");
@@ -471,11 +471,14 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
         Debug.Log("<color=green> Objeto encantado </color>");
 
-        pl.enchantedObjects.Add(this);
-        if(pl.enchantedObjects.Count > pl.maxEnchantable)
+        if (pl.enchantedObjects.Count > pl.maxEnchantable   )
         {
-            pl.enchantedObjects[0].Unenchant(pl);
+            //pl.enchantedObjects[pl.enchantedObjects.Count - 1].Unenchant(pl);
+            pl.createTrapScript.CreateTrap();
+            pl.enchantedTrap = true;
         }
+        //else
+            pl.enchantedObjects.Add(this);
 
         OutLineEnchanted.SetFloat("_Thickness", _OGthik - 0.005f);
         _enchanted = true;
@@ -508,7 +511,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
         if(TryGetComponent<Chocamiento>(out Chocamiento choc))
         {
             choc.scareAmount = _scareAmount;
-            choc.Choco(transform.position);
+            choc.ChocoSonoro(transform.position);
         }
         if (rompible == true)
         {

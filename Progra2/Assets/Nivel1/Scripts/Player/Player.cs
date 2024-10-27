@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] Shadow _shadowPrefab;
 
-    [SerializeField] int _maxShadows;
+    [SerializeField] public int maxShadows;
     public int currentShadows;
 
 
@@ -72,7 +72,9 @@ public class Player : MonoBehaviour
     Material _electricMat;
     //[SerializeField] MeshRenderer _renderer;
 
-    CreateShadow _createShadowScript;
+    //CreateShadow _createShadowScript;
+    public CreatePlayerTrap createTrapScript;
+    public bool enchantedTrap = true;
 
 
     private void Awake()
@@ -86,8 +88,9 @@ public class Player : MonoBehaviour
         _ogCamPos = _camCenter.transform.localPosition;
         _colider = GetComponentInChildren<Collider>();
         //maxEnchantable = 3;
+        createTrapScript = GetComponent<CreatePlayerTrap>();
         _mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[0];
-        _createShadowScript = GetComponent<CreateShadow>();
+        //_createShadowScript = GetComponent<CreateShadow>();
         //yield return new WaitForEndOfFrame();
     }
 
@@ -118,6 +121,8 @@ public class Player : MonoBehaviour
         SpriteVidaUpdate();
     }
 
+    bool _selected = false;
+
     private void Update()
     {
         #region Comment
@@ -145,14 +150,26 @@ public class Player : MonoBehaviour
         _zAxis = Input.GetAxisRaw("Vertical");
 
         LifeSaver(transform.position.y);
-        if (Input.GetKeyDown(KeyCode.LeftShift) && nivel > 1 && currentShadows < _maxShadows)
-        {
-            _createShadowScript.SpawnShadow();
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift) && nivel > 1 && currentShadows < maxShadows)
+        //{
+        //    _createShadowScript.SpawnShadow();
+        //}
 
         if(Input.GetKeyDown(KeyCode.V) && enchantedObjects.Count > 0)
         {
-            StartCoroutine(ActivateEnchanteds());
+            ActivateEnchantedCoroutine();
+            //StartCoroutine(ActivateEnchanteds());
+        }
+
+        if (SelectorUI.habAct == 3 && !_selected)
+        {
+            SelectorUI.habilitiesManager += ActivateEnchantedCoroutine;
+            _selected = true;
+        }
+        if(SelectorUI.habAct !=3 && _selected)
+        {
+            SelectorUI.habilitiesManager -= ActivateEnchantedCoroutine;
+            _selected = false;
         }
 
         #region ControlesF
@@ -575,6 +592,10 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene("Nivel1");
     }
 
+    void ActivateEnchantedCoroutine()
+    {
+        StartCoroutine(ActivateEnchanteds());
+    }
     private IEnumerator ActivateEnchanteds()
     {
         while (enchantedObjects.Count > 0)

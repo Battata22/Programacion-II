@@ -21,12 +21,17 @@ public class CreatePlayerTrap : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currentAbility = SelectorUI.habilitiesManager;
-            //crear Trampa
-            var newTrap = Instantiate(trapPrefab, transform.position, Quaternion.identity);
-            newTrap.Initialize(this, currentAbility);
-            //Iniciar trampa
+            CreateTrap();
         }
+    }
+
+    public void CreateTrap()
+    {
+        currentAbility = SelectorUI.habilitiesManager;
+        //crear Trampa
+        var newTrap = Instantiate(trapPrefab, transform.position, Quaternion.identity);
+        newTrap.Initialize(this, currentAbility);
+        //Iniciar trampa
     }
 
     void Test()

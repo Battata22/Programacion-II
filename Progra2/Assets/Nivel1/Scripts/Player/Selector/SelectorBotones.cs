@@ -126,7 +126,7 @@ public class SelectorBotones : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            print("click " +  gameObject.name);
+            print($"click { gameObject.name } : Tornado");
         }
 
         SelectorUI.habAct = 1;
@@ -138,7 +138,7 @@ public class SelectorBotones : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            print("click " + gameObject.name);
+            print($"click {gameObject.name} : Sombra");
         }
 
         SelectorUI.habAct = 2;
@@ -150,7 +150,7 @@ public class SelectorBotones : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            print("click " + gameObject.name);
+            print($"click {gameObject.name} : Encantar");
         }
 
         SelectorUI.habAct = 3;

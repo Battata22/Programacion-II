@@ -19,19 +19,19 @@ public class Shadow : MonoBehaviour
         _actualNode = GetNewNode();
     }
 
-    private void Update()
-    {
-        if(!_canMove && player.nivel > 2)
-        {
-            _canMove = true;
-            //_lTShadow += _lTShadow * 0.5f;
-        }
-        if (!_canMove) return;      
-        if (_col) return;
-        if (_nodes != null && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)) _actualNode = GetNewNode(_actualNode);
-        Movement();
+    //private void Update()
+    //{
+    //    if(!_canMove && player.nivel > 2)
+    //    {
+    //        _canMove = true;
+    //        //_lTShadow += _lTShadow * 0.5f;
+    //    }
+    //    if (!_canMove) return;      
+    //    if (_col) return;
+    //    if (_nodes != null && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)) _actualNode = GetNewNode(_actualNode);
+    //    Movement();
 
-    }
+    //}
 
     void Movement()
     {

@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
 
     public AudioClip choque;
 
+    public Shadow ShadowPrefab;
+
 }
 
 

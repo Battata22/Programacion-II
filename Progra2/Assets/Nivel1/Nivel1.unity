@@ -100804,7 +100804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8559236ab2b6eb4ba5422efc4e2717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desactivarKey: 308
+  desactivarKey: 290
   desact:
   - {fileID: 1895521786}
   - {fileID: 1311896952}
@@ -127997,6 +127997,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 179027422}
     - target: {fileID: 4263729220292724585, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+      propertyPath: maxShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263729220292724585, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
       propertyPath: maxEnchantable
       value: 3
       objectReference: {fileID: 0}
@@ -131920,6 +131924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7633268054846231982, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
+      propertyPath: ShadowPrefab
+      value: 
+      objectReference: {fileID: 1524492404015661005, guid: 21b91f5e330373c42afcab9c75e44de4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
