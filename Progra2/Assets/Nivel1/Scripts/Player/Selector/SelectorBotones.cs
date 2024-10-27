@@ -162,7 +162,7 @@ public class SelectorBotones : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            print("click " + gameObject.name);
+            print($"click { gameObject.name} : Moco");
         }
 
         SelectorUI.habAct = 4;
@@ -174,7 +174,7 @@ public class SelectorBotones : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            print("click " + gameObject.name);
+            print($"click {gameObject.name} : TrapWire");
         }
 
         SelectorUI.habAct = 5;

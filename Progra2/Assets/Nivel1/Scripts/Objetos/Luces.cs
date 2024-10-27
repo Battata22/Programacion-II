@@ -163,4 +163,9 @@ public class Luces : Obj_Interactuable
         base.SlcFxOff();
         OutLine.SetFloat("_Thickness", -0.02f);
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance._lights.Remove(this);
+    }
 }

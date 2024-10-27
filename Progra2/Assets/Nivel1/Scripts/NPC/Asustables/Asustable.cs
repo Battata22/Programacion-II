@@ -10,10 +10,10 @@ public class Asustable : NPC , ICanSlide
     //[Header("AI")]
     //[SerializeField] float _changeNodeDist = 0.5f;
 
-    public float tiempoDeSusto, cdDeSusto;
-    float _waitShivers, _waitscared, _waitRandom;//, _waitDoubt, _searchingTimer;
+    public float tiempoDeSusto, cdDeSusto, tiempoDeMoco, tiempoDeStun;
+    float _waitShivers, _waitscared, _waitRandom, waitMoco, waitStun;//, _waitDoubt, _searchingTimer;
 
-    public bool shivers = false, _scared = false;//, _doubt = false, _inPlace = false;
+    public bool shivers = false, _scared = false, mocod = false, stuned = false;//, _doubt = false, _inPlace = false;
     bool _lookingActive =  false;
 
     [SerializeField] Slider _sliderBarra;
@@ -106,6 +106,8 @@ public class Asustable : NPC , ICanSlide
 
         _waitShivers += Time.deltaTime;
         _waitscared += Time.deltaTime;
+        waitMoco += Time.deltaTime;
+        waitStun += Time.deltaTime;
         if (_doubt)
             _searchingTimer += Time.deltaTime;
 
@@ -126,6 +128,18 @@ public class Asustable : NPC , ICanSlide
         if (_waitShivers >= cdDeSusto && shivers == true)
         {
             shivers = false;
+        }
+
+        if(waitMoco >= tiempoDeMoco && mocod)
+        {
+            StopMoco();
+            mocod = false;
+        }
+
+        if (waitStun >= tiempoDeStun && stuned)
+        {
+            StopStun();
+            stuned = false;
         }
 
         if (_scared == true && _waitscared >= 5)
@@ -221,6 +235,58 @@ public class Asustable : NPC , ICanSlide
     }
 
     protected override void StopShivers()
+    {
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+
+        _agent.speed = speedNormal;
+    }
+
+    public void GetMoco(AudioClip a)
+    {
+
+        _anim.SetBool("Walking", false);
+        _anim.SetBool("Idle", true);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+        _anim.SetBool("Doubt", false);
+
+        _audioSource.clip = a;
+        _audioSource.Play();
+        _agent.speed = 0;
+        waitMoco = 0;
+        mocod = true;
+    }
+
+    public void StopMoco()
+    {
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+
+        _agent.speed = speedNormal;
+    }
+
+    public void GetStun(AudioClip a)
+    {
+
+        _anim.SetBool("Walking", false);
+        _anim.SetBool("Idle", true);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+        _anim.SetBool("Doubt", false);
+
+        _audioSource.clip = a;
+        _audioSource.Play();
+        _agent.speed = 0;
+        waitStun = 0;
+        stuned = true;
+    }
+
+    public void StopStun()
     {
         _anim.SetBool("Walking", true);
         _anim.SetBool("Idle", false);

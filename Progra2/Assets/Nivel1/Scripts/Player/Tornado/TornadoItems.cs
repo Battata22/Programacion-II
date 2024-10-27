@@ -48,7 +48,7 @@ public class TornadoItems : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                Instantiate(tornadoPrefab, new Vector3(hit.point.x, transform.position.y + 1, hit.point.z), Quaternion.identity);
+                Instantiate(tornadoPrefab, new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, hit.collider.transform.position.z), Quaternion.identity);
                 waitCD = 0;
             }
 

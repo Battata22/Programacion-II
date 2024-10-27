@@ -19,10 +19,19 @@ public class CreatePlayerTrap : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (SelectorUI.habAct != 5 && SelectorUI.habAct != 3)
         {
-            CreateTrap();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                CreateTrap();
+            }
         }
+
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    CreateTrap();
+        //}
+
     }
 
     public void CreateTrap()

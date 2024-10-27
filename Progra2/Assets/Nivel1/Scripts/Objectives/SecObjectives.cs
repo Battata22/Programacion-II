@@ -36,4 +36,14 @@ public class SecObjectives : MonoBehaviour
     {
         _toDoText[index].fontStyle = FontStyles.Strikethrough;
     }
+
+    //private void OnDestroy()
+    //{
+    //    foreach (var l in _lights)
+    //    {
+    //        l.OnBroken -= CompleteObjective;
+    //    }
+    //    _plunger.OnStuck -= CompleteObjective;
+    //    _bath.OnCatCol -= CompleteObjective;
+    //}
 }

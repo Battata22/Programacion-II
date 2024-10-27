@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
     //CreateShadow _createShadowScript;
     public CreatePlayerTrap createTrapScript;
-    public bool enchantedTrap = true;
+    public bool enchantedTrap = false;
 
 
     private void Awake()

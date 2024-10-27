@@ -19,6 +19,11 @@ public class SelectorUI : MonoBehaviour
     /// </summary>   
     public static DelegateType.VoidDelegate habilitiesManager;
 
+    private void Awake()
+    {
+        habAct = 0;
+    }
+
     void Start()
     {
         habilitiesManager = delegate { }; //Nada;
@@ -29,10 +34,10 @@ public class SelectorUI : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(useAbility) && habAct !=3)
-        {
-            habilitiesManager();
-        }
+        //if (Input.GetKeyDown(useAbility) && habAct !=3)
+        //{
+        //    habilitiesManager();
+        //}
 
         pointerRef.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f);
 

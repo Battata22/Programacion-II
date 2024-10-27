@@ -93,7 +93,10 @@ public class PickUp : MonoBehaviour
                 //{                   
                 //    GameManager.Instance.Tutorial.EndPickUp();
                 //}
-                _objScript.Interact(_audioSource, agarrado, error, _playerScript.nivel);
+                if (_objScript != null)
+                {
+                    _objScript.Interact(_audioSource, agarrado, error, _playerScript.nivel);
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.E) && interactuable)
