@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Asustable : NPC , ICanSlide
+public class Asustable : NPC , ICanSlide, IPossessable
 {
     //[Header("AI")]
     //[SerializeField] float _changeNodeDist = 0.5f;
@@ -346,7 +347,7 @@ public class Asustable : NPC , ICanSlide
         _anim.SetBool("Idle", false);
         _anim.SetBool("Search", false);
 
-        if (!_doubt)
+        if (!_doubt && !possesed)
         {
             _actualNode = GetNewNode(_actualNode);
             _agent.SetDestination(_actualNode.position);
@@ -422,4 +423,33 @@ public class Asustable : NPC , ICanSlide
 
     }
 
+    bool possesed = false;
+
+    public void GetPossess()
+    {
+        print("Llamado a poseer");
+        if (possesed) return;
+        _particulas.scared = false;
+        StopSearching();
+
+        possesed = true;
+        stuned = false;
+
+        //Add PossessBehavior
+        transform.AddComponent<PossessBehavior>();
+        _agent.enabled = false;
+        _rb.useGravity = true;
+        this.enabled = false;
+    }
+    public void EndPossession()
+    {
+        print("Saliendo de posesion");
+        if (!possesed) return;
+        possesed = false;
+
+        _rb.useGravity = false;
+        _agent.enabled = true; 
+        _agent.SetDestination(_actualNode.position);
+        //Remove PossessBehavior
+    }
 }

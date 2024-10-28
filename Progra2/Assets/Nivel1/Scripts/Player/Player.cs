@@ -610,14 +610,19 @@ public class Player : MonoBehaviour
     public bool possessing = false;
     CamRotation _camCenter;
     Vector3 _ogCamPos;
-    public void PossessMovement()
+    public void PossessMovement(Transform target)
     {
-        var pos = possesObject.transform.position;
-        transform.position = pos;
+        //var pos = possesObject.transform.position;
+        transform.position = target.position;
 
-        possesObject.transform.rotation = transform.rotation;
+        
+        target.rotation = transform.rotation;
     }
 
+    /// <summary>
+    /// Pasar objeto a poseer
+    /// </summary>
+    /// <param name="obj"></param>
     public void StartPossession(PossessObject obj)
     {
         possessing = true;
@@ -636,6 +641,21 @@ public class Player : MonoBehaviour
         //evento para desactivar ignores de perro y GB
     }
 
+    /// <summary>
+    /// Sin parametros para poseer NPC
+    /// </summary>
+    public void StartPossession()
+    {
+        print("Player poseyendo");
+        possessing = true;
+
+        _rb.useGravity = false;
+        _colider.enabled = false;
+        _mesh.SetActive(false);
+
+        _pickUpScript.enabled = false;
+    }
+
     public void EndPossession()
     {
         possessing = false;
@@ -645,11 +665,13 @@ public class Player : MonoBehaviour
         _colider.enabled = true;
         _mesh.SetActive(true);
 
-        possesObject.gameObject.GetComponent<Pickable>().enabled = true;
+        if (possesObject != null)
+        {
+            possesObject.gameObject.GetComponent<Pickable>().enabled = true;
+            possesObject = null;
+        }
 
         _rb.useGravity = true;
-
-        //evento para desactivar ignores de perro y GB
     }
 
 }

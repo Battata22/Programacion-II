@@ -9,7 +9,7 @@ public class TrapWireSet : MonoBehaviour
     RaycastHit hit;
     [SerializeField] bool primeraPuesta = false, segundaPuesta = false;
     [SerializeField] GameObject trapPrefab1, trapPrefab2;
-    [SerializeField] Vector3 primerTrapLugar, segundaTrapLugar;
+    [SerializeField] Transform primerTrapLugar, segundaTrapLugar;
     [SerializeField] LineRenderer linea;
 
     void Start()
@@ -36,8 +36,8 @@ public class TrapWireSet : MonoBehaviour
             if (primeraPuesta && segundaPuesta)
             {
                 linea.enabled = true;
-                linea.SetPosition(0, primerTrapLugar);
-                linea.SetPosition(1, segundaTrapLugar);
+                linea.SetPosition(0, primerTrapLugar.position);
+                linea.SetPosition(1, segundaTrapLugar.position);
             }
         }
 
@@ -63,8 +63,8 @@ public class TrapWireSet : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            Instantiate(trapPrefab1, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
-            primerTrapLugar = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            var newFirstTrap = Instantiate(trapPrefab1, hit.point /*new Vector3(hit.point.x, hit.point.y, hit.point.z)*/, Quaternion.identity);
+            primerTrapLugar = newFirstTrap.transform; //new Vector3(hit.point.x, hit.point.y, hit.point.z);
         }
     }
 
@@ -76,7 +76,7 @@ public class TrapWireSet : MonoBehaviour
         {
             var newSecondTrap = Instantiate(trapPrefab2, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
             newSecondTrap.gameObject.GetComponent<Trap2>().Initialize(primerTrapLugar);
-            segundaTrapLugar = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            segundaTrapLugar = newSecondTrap.transform; //new Vector3(hit.point.x, hit.point.y, hit.point.z);
         }
     }
 

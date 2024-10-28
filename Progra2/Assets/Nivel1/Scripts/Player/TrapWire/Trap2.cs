@@ -7,7 +7,9 @@ public class Trap2 : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;
-    Vector3 trap1;
+    Transform trap1;
+
+    [SerializeField] AudioClip clip;
 
     void Start()
     {
@@ -17,25 +19,26 @@ public class Trap2 : MonoBehaviour
 
     void Update()
     {
-        var dir = trap1 - transform.position;
-        ray = new Ray(dir, transform.forward);
+        var dir = trap1.position - transform.position;
+        ray = new Ray(transform.position, dir);
 
-        Debug.DrawRay(dir, transform.forward * 100000, Color.red);
+        Debug.DrawRay(transform.position, dir, Color.yellow);
         if(Physics.Raycast(ray, out hit))
         {
             if (hit.collider.gameObject.name == "Abuela")
             {
                 print("abuelita vivia en peguajo");
+                hit.transform.GetComponent<Asustable>().GetStun(clip);
             }
 
-            if (hit.collider != null)
-            {
-                print(hit.collider.gameObject.name);
-            }
+                //if (hit.collider != null)
+                //{
+                //    print(hit.collider.gameObject.name);
+                //}
         }
     }
 
-    public void Initialize(Vector3 localTrap1)
+    public void Initialize(Transform localTrap1)
     {
         trap1 = localTrap1;
 

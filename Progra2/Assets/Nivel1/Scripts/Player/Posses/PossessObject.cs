@@ -6,7 +6,7 @@ public class PossessObject : MonoBehaviour
 {
     float _xAxis, _zAxis;
     float _speed;
-    public Player _player;
+    //public Player _player;
     Rigidbody _rb;
 
     Vector3 _dir;
@@ -22,7 +22,7 @@ public class PossessObject : MonoBehaviour
         _rb.useGravity = true;
         _speed = 1000f;
         _rb.freezeRotation = true;
-        _player = GameManager.Instance.Player;
+        player = GameManager.Instance.Player;
         _objScript = GetComponent<Pickable>();
         trailGen = _objScript.trailGen;
     }
@@ -59,7 +59,7 @@ public class PossessObject : MonoBehaviour
         //else if(Physics.Raycast(transform.position, -transform.up, out floor, 0.1f, LayerMask.GetMask("NoTras")))
         //    _rb.velocity = Vector3.zero;    
         Movement(_xAxis, _zAxis);
-        player.PossessMovement();
+        player.PossessMovement(this.transform);
     }
 
     void Movement(float xAxis, float zAxis)

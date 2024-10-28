@@ -36,7 +36,7 @@ public class PickUp : MonoBehaviour
     {
         esperaragarre += Time.deltaTime;
 
-        Debug.DrawRay(transform.position, transform.forward * _rayDistance, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward * _rayDistance, Color.red);
 
         RaycastHit hit;
         
@@ -147,8 +147,8 @@ public class PickUp : MonoBehaviour
                 inte.Interact();
             }
 
-            IEnchantable obj;
-            if (Input.GetKeyDown(KeyCode.F) && interactuable && SelectorUI.habAct == 3 && _objScript.TryGetComponent<IEnchantable>(out obj))
+            //IEnchantable obj;
+            if (Input.GetKeyDown(KeyCode.F) && interactuable && SelectorUI.habAct == 3 && _objScript.TryGetComponent<IEnchantable>(out IEnchantable obj))
             {
                 obj.GetEnchanted(_playerScript);
 
