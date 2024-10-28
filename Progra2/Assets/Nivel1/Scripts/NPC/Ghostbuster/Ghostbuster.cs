@@ -180,7 +180,7 @@ public class Ghostbuster : NPC , ICanSlide
         _searchingPos = pos;
     }
 
-    public override void GetScared(float scareAmount)
+    public override void GetScared(float scareAmount, Transform a = null)
     {
 
         //Activar Anger supongo

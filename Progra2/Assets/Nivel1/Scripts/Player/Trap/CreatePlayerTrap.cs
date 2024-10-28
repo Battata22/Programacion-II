@@ -10,6 +10,8 @@ public class CreatePlayerTrap : MonoBehaviour
     public DelegateType.VoidDelegate currentAbility;
 
     [SerializeField] PlayerTrap trapPrefab;
+    public KeyCode trapKey = KeyCode.F;
+    [SerializeField] float _trapCD;
 
     private void Awake()
     {
@@ -21,7 +23,7 @@ public class CreatePlayerTrap : MonoBehaviour
     {
         if (SelectorUI.habAct != 5 && SelectorUI.habAct != 3)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(trapKey))
             {
                 CreateTrap();
             }
@@ -39,7 +41,7 @@ public class CreatePlayerTrap : MonoBehaviour
         currentAbility = SelectorUI.habilitiesManager;
         //crear Trampa
         var newTrap = Instantiate(trapPrefab, transform.position, Quaternion.identity);
-        newTrap.Initialize(this, currentAbility);
+        newTrap.Initialize(this, currentAbility, _trapCD);
         //Iniciar trampa
     }
 

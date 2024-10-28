@@ -154,7 +154,7 @@ public abstract class NPC : MonoBehaviour
         return newNode;
     }
 
-    public virtual void GetScared(float a)
+    public virtual void GetScared(float a, Transform t = null)
     {
         //https://www.youtube.com/watch?v=eVrYbKBrI7o
     }

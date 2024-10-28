@@ -66,12 +66,17 @@ public class Asustable : NPC , ICanSlide, IPossessable
     //    _AIActive = true;
     //}
     #endregion
+
+
     protected override void Start()
     {
         base.Start();
         _rb = GetComponent<Rigidbody>();
         //yield return null;
         _anim = GetComponentInChildren<Animator>();
+
+        PhaseManager.TrapPhaseActive += TrapPhase;
+        PhaseManager.GameplayPhaseActive += GameplayPhase;
     }
 
     private void Update()
@@ -79,15 +84,15 @@ public class Asustable : NPC , ICanSlide, IPossessable
         if (!_AIActive) return;
         if (_actualNode == null) Initialize();
         if ((!_doubt && !_lookingActive &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
-        {
-            
-
+        {          
             StartCoroutine(LookAround());
+            #region comment
             //_actualNode = GetNewNode(_actualNode);
 
             //_agent.SetDestination(_actualNode.position);
 
-            //Debug.Log($"Nodo actua {_actualNode}");
+            //Debug.Log($"Nodo actua {_actualNode}"); 
+            #endregion
         }
         if (_doubt && Vector3.SqrMagnitude(transform.position - new Vector3(_searchingPos.x, transform.position.y, _searchingPos.z)) <= (_changeNodeDist * _changeNodeDist))
         {
@@ -153,12 +158,14 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
         if (_doubt && _inPlace && _waitDoubt >= 2)
         {
+            #region comment
             //_agent.speed = speedNormal;
             //_doubt = false;
             //_inPlace = false;
             //GetNewNode();
             //_agent.SetDestination(_actualNode.position);
-            
+            #endregion
+
             StopSearching();
             _anim.SetBool("Walking", true);
             _anim.SetBool("Search", false);
@@ -181,8 +188,9 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     }
 
-    public override void GetScared(float scareAmount)
+    public override void GetScared(float scareAmount, Transform direction = null)
     {
+        if (!_AIActive) return;
         if (_scared) return;
         //if (scareAmount < 0.1f) return;
         //Debug.Log("Susto de Asustable");
@@ -202,12 +210,15 @@ public class Asustable : NPC , ICanSlide, IPossessable
         _audioSource.Play();
         _waitscared = 0;
         GetNewNode(_actualNode);
+        if (direction != null)
+            _actualNode = direction;
         _agent.SetDestination(_actualNode.position);
         Ganarga(scareAmount);
     }
 
     protected override void StopScare()
     {
+        //if (!_AIActive) return;
         _anim.SetFloat("zAxis", 0f);
         _anim.SetBool("Doubt", false);
 
@@ -219,6 +230,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     public override void GetShivers(AudioClip a)
     {
+        if (!_AIActive) return;
         if (shivers) return;
         //Debug.Log("Escalofios de asustable");
         //a_audioSource.Play();
@@ -273,7 +285,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     public void GetStun(AudioClip a)
     {
-
+        //if (!_AIActive) return;
         _anim.SetBool("Walking", false);
         _anim.SetBool("Idle", true);
         _anim.SetBool("InPos", false);
@@ -299,6 +311,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     public override void GetDoubt(Vector3 pos)
     {
+        if(!_AIActive) return;
         if (_scared) return;
         //Debug.Log("Duda de asustable");
         _anim.SetBool("Doubt", true);
@@ -451,5 +464,23 @@ public class Asustable : NPC , ICanSlide, IPossessable
         _agent.enabled = true; 
         _agent.SetDestination(_actualNode.position);
         //Remove PossessBehavior
+    }
+
+    void TrapPhase()
+    {
+        print($"<color=#8315d6> Asustable en fase de trampas </color>");
+        _AIActive = false;
+        _agent.speed = 0f;
+        _agent.enabled = false;
+    }
+
+    void GameplayPhase()
+    {
+        print($"<color=#15d629> Asustable en fase de Gameplay </color>");
+        _AIActive = true;
+        _agent.enabled = true;
+        _agent.speed = speedNormal;
+        if (_actualNode != null)
+            _agent.SetDestination(_actualNode.position);
     }
 }

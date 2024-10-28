@@ -381,7 +381,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
                 #endregion
 
                 choc.scareAmount = _scareAmount;
-                choc.ChocoSonoro(transform.position);
+                choc.Choco(transform.position);
                 _onAir = false;
                 _trowed = false;
                 trailGen.Stop();

@@ -20,6 +20,8 @@ public class Chocamiento : MonoBehaviour
 
     [SerializeField] bool musicOutput;
 
+    Transform _farthestNode;
+
 
     private void Awake()
     {
@@ -41,6 +43,8 @@ public class Chocamiento : MonoBehaviour
 
         _audioSource.clip = GameManager.Instance.choque;
         _audioSource.Play();
+        
+        GetFarthestNode();
 
         Collider[] colliders;
         colliders = Physics.OverlapSphere(pos, _doubtRange, _layer);
@@ -52,14 +56,14 @@ public class Chocamiento : MonoBehaviour
                 //Debug.Log("<color=pink> NPC en area Susto </color>");
                 if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
                 {
-                    _npcInRange.GetScared(scareAmount);
-                    if (_objScript)
-                    {
-                        //Debug.Log("<color=green> LLamado a nerfeo </color>");
+                    _npcInRange.GetScared(scareAmount, _farthestNode);
+                    //if (_objScript)
+                    //{
+                    //    //Debug.Log("<color=green> LLamado a nerfeo </color>");
                         
-                        //Nerf si asusta
-                        //_objScript.NerfObj();
-                    }
+                    //    //Nerf si asusta
+                    //    //_objScript.NerfObj();
+                    //}
                 }
                 else
                 {
@@ -101,6 +105,23 @@ public class Chocamiento : MonoBehaviour
                 #endregion
             }
         }
+    }
+
+    void GetFarthestNode()
+    {
+        _farthestNode = null;
+        var farthestDis = -1f;
+        var nodes = GameManager.Instance.AiNodes;
+        foreach(var node in nodes)
+        {
+            var Dis = (node.position - transform.position).sqrMagnitude;
+            if (Dis > farthestDis)
+            {
+                farthestDis = Dis;
+                _farthestNode = node;
+            }
+        }
+        print($"<color=magenta> Nodo mas lejano {_farthestNode.name} </color>");
     }
 
 }

@@ -109,6 +109,13 @@ public class GameManager : MonoBehaviour
 
     public Shadow ShadowPrefab;
 
+    public LvlPhase currentLvlPhase = LvlPhase.trap;
+    public enum LvlPhase
+    {
+        trap,
+        gameplay
+    }
+
 }
 
 

@@ -69,11 +69,11 @@ public class Shadow : MonoBehaviour
             other.GetComponent<Ghostbuster>().AttackShadow(this.gameObject);
             _col = true;
         }
-        else if (other.gameObject.GetComponent<Asustable>())
-        {
-            other.GetComponent<Asustable>().GetScared(0.5f);
-            _col = true;
-        }
+        //else if (other.gameObject.GetComponent<Asustable>())
+        //{
+        //    other.GetComponent<Asustable>().GetScared(0.5f);
+        //    _col = true;
+        //}
     }
 
     private void OnDestroy()

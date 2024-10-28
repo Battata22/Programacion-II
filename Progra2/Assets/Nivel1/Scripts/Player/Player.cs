@@ -90,6 +90,8 @@ public class Player : MonoBehaviour
         //maxEnchantable = 3;
         createTrapScript = GetComponent<CreatePlayerTrap>();
         _mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[0];
+
+    
         //_createShadowScript = GetComponent<CreateShadow>();
         //yield return new WaitForEndOfFrame();
     }
@@ -119,6 +121,9 @@ public class Player : MonoBehaviour
         //GameManager.Instance.Player = this;
         //GameManager.Instance.ItemHolde = _itemHolder;
         SpriteVidaUpdate();
+
+        PhaseManager.TrapPhaseActive += TrapPhase;
+        PhaseManager.GameplayPhaseActive += GameplayPhase;
     }
 
     bool _selected = false;
@@ -154,7 +159,7 @@ public class Player : MonoBehaviour
         //{
         //    _createShadowScript.SpawnShadow();
         //}
-
+        
         if(Input.GetKeyDown(KeyCode.V) && enchantedObjects.Count > 0)
         {
             ActivateEnchantedCoroutine();
@@ -329,7 +334,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     public void UpdateTerrorFrame()
     {
         switch (nivel)
@@ -491,11 +495,6 @@ public class Player : MonoBehaviour
         _rb.AddForce(direction * forceMult * Time.fixedDeltaTime * _suctionMul, ForceMode.Force);
     }
 
-    void Jump()
-    {
-        _rb.AddForce(transform.up * _salto, ForceMode.Impulse);
-    }
-
     void LifeSaver(float _dis)
     {
         if(_dis <= -15)
@@ -596,6 +595,7 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(ActivateEnchanteds());
     }
+
     private IEnumerator ActivateEnchanteds()
     {
         while (enchantedObjects.Count > 0)
@@ -610,6 +610,7 @@ public class Player : MonoBehaviour
     public bool possessing = false;
     CamRotation _camCenter;
     Vector3 _ogCamPos;
+
     public void PossessMovement(Transform target)
     {
         //var pos = possesObject.transform.position;
@@ -672,6 +673,20 @@ public class Player : MonoBehaviour
         }
 
         _rb.useGravity = true;
+    }
+
+    void TrapPhase()
+    {
+        print($"<color=#8315d6> Player en fase de trampas </color>");
+        _pickUpScript.interecatKey = KeyCode.None;
+        GetComponent<CreatePlayerTrap>().trapKey = KeyCode.F;
+    }
+
+    void GameplayPhase()
+    {
+        print($"<color=#15d629> Player en fase de Gameplay </color>");
+        _pickUpScript.interecatKey = KeyCode.E;
+        GetComponent<CreatePlayerTrap>().trapKey = KeyCode.None;
     }
 
 }

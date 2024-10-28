@@ -19,6 +19,8 @@ public class TornadoItems : MonoBehaviour
     // que roten a su alrededor durante x segundos
     // que se lancen en direcciones random
 
+    bool _added;
+
     private void Start()
     {
         waitCD = cooldown;
@@ -28,13 +30,15 @@ public class TornadoItems : MonoBehaviour
     {
         waitCD += Time.deltaTime;
 
-        if (SelectorUI.habAct == 1)
+        if (SelectorUI.habAct == 1 && !_added)
         {
             SelectorUI.habilitiesManager += Tornado;
+            _added = true;
         }
-        else
+        else if (_added)
         {
             SelectorUI.habilitiesManager -= Tornado;
+            _added = false;
         }
 
 

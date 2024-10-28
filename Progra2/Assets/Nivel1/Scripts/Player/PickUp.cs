@@ -20,8 +20,8 @@ public class PickUp : MonoBehaviour
 
     public delegate void EventDelegateVoid();
     public event EventDelegateVoid OnPickUp, OnInteract, OnEnchanted;
-    
-    
+
+    public KeyCode interecatKey = KeyCode.None;
 
     private void Awake()
     {
@@ -99,7 +99,7 @@ public class PickUp : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && interactuable)
+            if (Input.GetKeyDown(interecatKey) && interactuable)
             {
                 //if (Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance, _detectableMask))
                 //{
@@ -142,7 +142,7 @@ public class PickUp : MonoBehaviour
                 _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
             }
 
-            if(Input.GetKeyDown(KeyCode.E) && hit.transform.TryGetComponent<IInteractable>(out var inte))
+            if(Input.GetKeyDown(interecatKey) && hit.transform.TryGetComponent<IInteractable>(out var inte))
             {
                 inte.Interact();
             }
