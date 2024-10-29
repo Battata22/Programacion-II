@@ -6,6 +6,7 @@ public class PossessBehavior : MonoBehaviour
 {
     float _xAxis, _zAxis;
     [SerializeField] float _speed;
+    [SerializeField] Animator _anim;
     public Player player;
     Rigidbody _rb;
 
@@ -15,6 +16,7 @@ public class PossessBehavior : MonoBehaviour
 
     private void Awake()
     {
+        _anim = GetComponentInChildren<Animator>();
         _rb = GetComponent<Rigidbody>();
         _possessable = GetComponent<IPossessable>();
         _rb.useGravity = true;
@@ -32,6 +34,21 @@ public class PossessBehavior : MonoBehaviour
         {
             EndPossession();
         }
+
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            _anim.SetFloat("zAxis", 0f);
+            _anim.SetBool("Walking", true);
+            _anim.SetBool("Idle", false);
+        }
+        else
+        {
+            _anim.SetFloat("zAxis", 0f);
+            _anim.SetBool("Idle", true);
+            _anim.SetBool("Walking", false);
+        }
+        
     }
 
     private void FixedUpdate()

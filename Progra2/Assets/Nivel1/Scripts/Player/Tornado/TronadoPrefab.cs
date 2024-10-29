@@ -3,7 +3,7 @@ using UnityEngine;
 public class TronadoPrefab : MonoBehaviour
 {
     [SerializeField] float duracion, radio, fuerzaTorque, speed, rotSpeed, radioDist, fuerzaArriba;
-    [SerializeField] LayerMask maskTornado;
+    [SerializeField] LayerMask maskTornado, maskNPC;
     [SerializeField] Collider[] colliders;
 
 
@@ -11,6 +11,16 @@ public class TronadoPrefab : MonoBehaviour
     {
         //Torque();
         Invoke("SelfDestruct", duracion);
+
+        //Collider[] collidersNPCs = Physics.OverlapSphere(transform.position, radio * 2.5f, maskNPC);
+
+        //foreach (Collider colliderNPC in collidersNPCs)
+        //{
+        //    if (colliderNPC.TryGetComponent<Asustable>(out Asustable asusScript))
+        //    {
+        //        asusScript.GetDoubt(transform.position);
+        //    }
+        //}
     }
 
     void FixedUpdate()
@@ -120,6 +130,16 @@ public class TronadoPrefab : MonoBehaviour
                 rb.AddTorque(new Vector3(Random.Range(-600, 600 + 1), Random.Range(-600, 600 + 1), Random.Range(-600, 600 + 1)));
             }
   
+        }
+
+        Collider[] collidersNPCs = Physics.OverlapSphere(transform.position, radio * 2.5f, maskNPC);
+
+        foreach (Collider colliderNPC in collidersNPCs)
+        {
+            if (colliderNPC.TryGetComponent<Asustable>(out Asustable asusScript))
+            {
+                asusScript.GetScared(0.5f);
+            }
         }
     }
 

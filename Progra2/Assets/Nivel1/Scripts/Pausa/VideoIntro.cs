@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class VideoIntro : MonoBehaviour
 {
     [SerializeField] Image marco1, marco2, marco3, vida, negro;
-    [SerializeField] GameObject gato, abuela, perro, player, entrada, barra, crosshair, skipBoton, postit;
+    [SerializeField] GameObject player, entrada, barra, crosshair, skipBoton, postit /* gato, abuela, perro */;
     public VideoPlayer videoPlayer;
     [SerializeField] MeshRenderer gus, hand;
 
@@ -55,9 +55,9 @@ public class VideoIntro : MonoBehaviour
         vida.enabled = false;
         crosshair.SetActive(false);
         barra.SetActive(false);
-        gato.SetActive(false);
-        perro.SetActive(false);
-        abuela.SetActive(false);
+        //gato.SetActive(false);
+        //perro.SetActive(false);
+        //abuela.SetActive(false);
         negro.enabled = false;
         skipBoton.SetActive(true);
         postit.SetActive(false);
@@ -74,9 +74,9 @@ public class VideoIntro : MonoBehaviour
         vida.enabled = true;
         crosshair.SetActive(true);
         barra.SetActive(true);
-        gato.SetActive(true);
-        perro.SetActive(true);
-        abuela.SetActive(true);
+        //gato.SetActive(true);
+        //perro.SetActive(true);
+        //abuela.SetActive(true);
         videoPlayer.enabled = false;
         skipBoton.SetActive(false);
         GameManager.Instance.Tutorial.StartPickUp();

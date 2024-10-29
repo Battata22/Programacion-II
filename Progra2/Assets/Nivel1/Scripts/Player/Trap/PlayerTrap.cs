@@ -7,15 +7,21 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     CreatePlayerTrap _createTrapScript;
     CreateShadow _createShadowScript;
 
-    [SerializeField] GameObject _mesh;
+    [SerializeField] GameObject _mesh, icono;
 
     //public delegate void VoidDelegate();
     public DelegateType.VoidDelegate myAction;
     bool canAct = true;
     float _cd;
 
+    [SerializeField] Sprite tornadoFoto, sombraFoto, encantarFoto, mocoFoto, hiloFoto;
+    [SerializeField] Transform _lookingAt;
+    SpriteRenderer _spriteRenderer;
+
     private void Awake()
     {
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
         myAction = delegate { };
         if (SelectorUI.habAct == 2)
         {
@@ -23,6 +29,48 @@ public class PlayerTrap : MonoBehaviour, IInteractable
             _createShadowScript = GetComponent<CreateShadow>();
         }
 
+        #region Icono
+        if (SelectorUI.habAct == 1)
+        {
+            _spriteRenderer.sprite = tornadoFoto;
+        }
+        else if (SelectorUI.habAct == 2)
+        {
+            _spriteRenderer.sprite = sombraFoto;
+        }
+        else if (SelectorUI.habAct == 3)
+        {
+            _spriteRenderer.sprite = encantarFoto;
+        }
+        else if (SelectorUI.habAct == 4)
+        {
+            _spriteRenderer.sprite = mocoFoto;
+        }
+        else if (SelectorUI.habAct == 5)
+        {
+            _spriteRenderer.sprite = hiloFoto;
+        }
+        else if (SelectorUI.habAct == 6)
+        {
+            _spriteRenderer.sprite = null;
+        }
+        else if (SelectorUI.habAct == 7)
+        {
+            _spriteRenderer.sprite = null;
+        }
+        else if (SelectorUI.habAct == 8)
+        {
+            _spriteRenderer.sprite = null;
+        } 
+        #endregion
+
+    }
+
+    private void Update()
+    {
+        if (_lookingAt == null) _lookingAt = GameManager.Instance.Camera.transform;
+
+        icono.transform.LookAt(_lookingAt.position);
     }
     public void Initialize(CreatePlayerTrap newScript, DelegateType.VoidDelegate newAction, float newCD)
     {

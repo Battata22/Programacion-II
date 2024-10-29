@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PossessNPC : MonoBehaviour
 {
-    [SerializeField] float _radius, _rayDistance;
+    [SerializeField] float _radius, _rayDistance, carga, cargaTimer;
     [SerializeField] LayerMask _detectableMask;
 
     Player _player;
@@ -17,6 +16,25 @@ public class PossessNPC : MonoBehaviour
 
     private void Update()
     {
+
+        //if (Input.GetKey(KeyCode.Q) && carga <= tiempoDeCarga + 0.3)
+        //{
+        //    carga += Time.deltaTime;
+        //}
+        //else 
+        //{
+        //    if (carga > 0)
+        //    {
+        //        carga -= Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        carga = 0;
+        //    }
+        //}
+
+
+
         Debug.DrawRay(transform.position, transform.forward * _rayDistance, Color.blue);
 
         RaycastHit hit;
@@ -24,10 +42,11 @@ public class PossessNPC : MonoBehaviour
         if (Physics.SphereCast(transform.position, _radius, transform.forward, out hit, _rayDistance, _detectableMask))
         {
             var asustable = hit.transform.GetComponent<Asustable>();
-            if (Input.GetKeyDown(KeyCode.Q) && hit.transform.TryGetComponent<IPossessable>(out IPossessable target) && asustable.stuned)
-            {
+            if (Input.GetKeyDown(KeyCode.Q) /*carga >= cargaTimer */  && hit.transform.TryGetComponent<IPossessable>(out IPossessable target) && asustable.stuned)
+            {   
                 target.GetPossess();
                 _player.StartPossession();
+                
             }
         }
     }
