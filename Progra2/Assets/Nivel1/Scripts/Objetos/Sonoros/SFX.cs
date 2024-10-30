@@ -58,6 +58,7 @@ public abstract class SFX : Pickable
         if (isPlaying == false)
         {
             isPlaying = true;
+            _audioSource.loop = true;
             if (clip == false)
             {
                 clip = true;
@@ -69,6 +70,7 @@ public abstract class SFX : Pickable
         {
             isPlaying = false;
             _audioSource.Pause();
+            _audioSource.loop = false;
         }
         _chocamiento.ChocoSonoro(transform.position);
     }

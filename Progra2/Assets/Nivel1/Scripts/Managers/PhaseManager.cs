@@ -15,6 +15,11 @@ public class PhaseManager : MonoBehaviour
         GameplayPhaseActive = delegate { };
     }
 
+    private void Start()
+    {
+        ViejaDurmiente.startRun += GameplayPhase;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F8))

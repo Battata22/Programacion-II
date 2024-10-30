@@ -28,7 +28,7 @@ public class CamDistance : MonoBehaviour
         Vector3 _ray = (_lookingAt.position - _origin).normalized;
 
         //crea rayo verde solo para el editor en unity
-        Debug.DrawRay(_origin, _ray * _rayDistance, Color.green);
+        //Debug.DrawRay(_origin, _ray * _rayDistance, Color.green);
 
         RaycastHit hit;
         

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CreatePlayerTrap : MonoBehaviour
 {
@@ -11,12 +13,15 @@ public class CreatePlayerTrap : MonoBehaviour
 
     [SerializeField] PlayerTrap trapPrefab;
     public KeyCode trapKey = KeyCode.F;
-    [SerializeField] float _trapCD;
+    [SerializeField] float _trapCD, counterNum;
+    [SerializeField] Slider trapSliderGenerica;
+    static Slider trapSlider;
+    float counterTimer;
 
-    private void Awake()
+
+    private void Start()
     {
-        //currentAbility = SelectorUI.habilitiesManager;
-        //print(currentAbility);
+        trapSlider = trapSliderGenerica;
     }
 
     private void Update()
@@ -29,11 +34,20 @@ public class CreatePlayerTrap : MonoBehaviour
             }
         }
 
-        //if (Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            trapSlider.value++;
+        }
+
+        counterTimer += Time.deltaTime;
+
+        //if (counterTimer >= counterNum)
         //{
-        //    CreateTrap();
+        //    trapSlider.value--;
         //}
 
+
+        trapSliderGenerica.value = trapSlider.value;
     }
 
     public void CreateTrap()
@@ -43,6 +57,26 @@ public class CreatePlayerTrap : MonoBehaviour
         var newTrap = Instantiate(trapPrefab, transform.position, Quaternion.identity);
         newTrap.Initialize(this, currentAbility, _trapCD);
         //Iniciar trampa
+    }
+
+
+    public static void TrapActivada()
+    {
+
+        if (trapSlider.value < 0)
+        {
+            trapSlider.value++;
+            GameManager.Instance.Master1.ActivarGB();
+        }
+        else
+        {
+            trapSlider.value++;
+        }
+
+        if (trapSlider.value >= trapSlider.maxValue)
+        {
+            SceneManager.LoadScene("Victoria");
+        }
     }
 
     void Test()

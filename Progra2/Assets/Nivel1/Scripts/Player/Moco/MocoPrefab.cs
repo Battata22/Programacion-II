@@ -10,6 +10,7 @@ public class MocoPrefab : MonoBehaviour
     void Start()
     {
         self = GetComponent<Collider>();
+        Destroy(self.gameObject, 4f);
     }
 
 
@@ -25,4 +26,5 @@ public class MocoPrefab : MonoBehaviour
             script.GetMoco(clip);
         } 
     }
+
 }

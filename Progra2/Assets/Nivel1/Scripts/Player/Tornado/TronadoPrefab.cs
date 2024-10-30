@@ -12,15 +12,17 @@ public class TronadoPrefab : MonoBehaviour
         //Torque();
         Invoke("SelfDestruct", duracion);
 
-        //Collider[] collidersNPCs = Physics.OverlapSphere(transform.position, radio * 2.5f, maskNPC);
+        Collider[] collidersNPCs = Physics.OverlapSphere(transform.position, radio * 4, maskNPC);
+        print(collidersNPCs.Length);
 
-        //foreach (Collider colliderNPC in collidersNPCs)
-        //{
-        //    if (colliderNPC.TryGetComponent<Asustable>(out Asustable asusScript))
-        //    {
-        //        asusScript.GetDoubt(transform.position);
-        //    }
-        //}
+        foreach (Collider colliderNPC in collidersNPCs)
+        {
+            if (colliderNPC.TryGetComponent<Asustable>(out Asustable asusScript))
+            {
+                asusScript.GetDoubt(transform.position);
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -117,7 +119,6 @@ public class TronadoPrefab : MonoBehaviour
 
     void SelfDestruct()
     {
-        Destroy(gameObject);
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, radio - 0.8f, maskTornado);
 
@@ -141,6 +142,9 @@ public class TronadoPrefab : MonoBehaviour
                 asusScript.GetScared(0.5f);
             }
         }
+
+        Destroy(gameObject);
+
     }
 
     #region Comment

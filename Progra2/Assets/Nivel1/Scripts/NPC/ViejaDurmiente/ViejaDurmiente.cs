@@ -5,10 +5,14 @@ using UnityEngine;
 public class ViejaDurmiente : MonoBehaviour
 {
     [SerializeField] GameObject gato, abuela, perro;
+    [SerializeField] SpriteRenderer icono;
+    public delegate void StartRun();
+    public static event StartRun startRun;
 
     void Start()
     {
-        
+        icono = GetComponentInChildren<SpriteRenderer>();
+        icono.sprite = null;
     }
 
 
@@ -30,9 +34,10 @@ public class ViejaDurmiente : MonoBehaviour
 
     void StartGame()
     {
+        abuela.SetActive(true);
         gato.SetActive(true);
         perro.SetActive(true);
-        abuela.SetActive(true);
         gameObject.SetActive(false);
+        startRun();
     }
 }

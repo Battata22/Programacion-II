@@ -83,17 +83,16 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     {
         if (!canAct) return;
         StartCoroutine(SetInactive());
-        //if (myAction == null)
-        //{
-        //    print("<color=red> AHHHHHHHHHHHHHHHHHHHHHHH </color>");
-        //}
-        //else
+
         if (_createShadowScript)
         {
             _createShadowScript.SpawnShadow();
         }
         else
             myAction();
+
+        CreatePlayerTrap.TrapActivada();
+        print("cacaguete");
     }
 
     private void OnTriggerEnter(Collider other)

@@ -6,7 +6,9 @@ using UnityEngine;
 public class TornadoItems : MonoBehaviour
 {
     [SerializeField] GameObject tornadoPrefab;
+    [SerializeField] Transform camCenter;
     [SerializeField] float cooldown;
+    [SerializeField] LayerMask trap;
     float waitCD;
 
     Ray ray;
@@ -19,7 +21,7 @@ public class TornadoItems : MonoBehaviour
     // que roten a su alrededor durante x segundos
     // que se lancen en direcciones random
 
-    bool _added;
+    bool _added = false;
 
     private void Start()
     {
@@ -35,22 +37,27 @@ public class TornadoItems : MonoBehaviour
             SelectorUI.habilitiesManager += Tornado;
             _added = true;
         }
-        else if (_added)
+        else if (SelectorUI.habAct != 1 && _added)
         {
             SelectorUI.habilitiesManager -= Tornado;
             _added = false;
         }
 
+        //Debug.DrawRay(camCenter.position, camCenter.forward * 5, Color.green);
+        //if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, trap))
+        //{
+        //    print(hit.collider.gameObject.name);
 
+        //}
     }
 
     public void Tornado()
     {
         if (waitCD >= cooldown)
         {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, trap))
             {
                 Instantiate(tornadoPrefab, new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, hit.collider.transform.position.z), Quaternion.identity);
                 waitCD = 0;

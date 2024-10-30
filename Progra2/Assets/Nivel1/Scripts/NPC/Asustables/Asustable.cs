@@ -77,6 +77,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
         PhaseManager.TrapPhaseActive += TrapPhase;
         PhaseManager.GameplayPhaseActive += GameplayPhase;
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -376,25 +377,25 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     void Ganarga(float num)
     {
-        _sliderBarra.value += num;
-        if (_sliderBarra.value <= 1)
-        {
-            GameManager.Instance.Player.nivel = 1;
-        }
-        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.4 && GameManager.Instance.Player.nivel < 2)
-        {
-            GameManager.Instance.Player.LevelUp();
-            GameManager.Instance.Master1.ActivarGB();
-        }
-        else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.7 && GameManager.Instance.Player.nivel < 3)
-        {
-            GameManager.Instance.Player.LevelUp();
-        }
+        //_sliderBarra.value += num;
+        //if (_sliderBarra.value <= 1)
+        //{
+        //    GameManager.Instance.Player.nivel = 1;
+        //}
+        //else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.4 && GameManager.Instance.Player.nivel < 2)
+        //{
+        //    GameManager.Instance.Player.LevelUp();
+        //    GameManager.Instance.Master1.ActivarGB();
+        //}
+        //else if (_sliderBarra.value >= _sliderBarra.maxValue * 0.7 && GameManager.Instance.Player.nivel < 3)
+        //{
+        //    GameManager.Instance.Player.LevelUp();
+        //}
 
-        if (_sliderBarra.value >= _sliderBarra.maxValue)
-        {
-            SceneManager.LoadScene("Victoria");
-        }
+        //if (_sliderBarra.value >= _sliderBarra.maxValue)
+        //{
+        //    SceneManager.LoadScene("Victoria");
+        //}
     }
 
     public void StartSlide()

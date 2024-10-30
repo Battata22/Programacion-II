@@ -22,7 +22,7 @@ public class Trap2 : MonoBehaviour
         var dir = trap1.position - transform.position;
         ray = new Ray(transform.position, dir);
 
-        Debug.DrawRay(transform.position, dir, Color.yellow);
+        //Debug.DrawRay(transform.position, dir, Color.yellow);
         if(Physics.Raycast(ray, out hit))
         {
             if (hit.collider.gameObject.name == "Abuela")
