@@ -8,16 +8,18 @@ public class TrapWireSet : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     [SerializeField] bool primeraPuesta = false, segundaPuesta = false;
-    [SerializeField] GameObject trapPrefab1, trapPrefab2;
+    [SerializeField] GameObject trapPrefab1, trapPrefab2, visualRef;
     [SerializeField] Transform primerTrapLugar, segundaTrapLugar;
     [SerializeField] LineRenderer linea;
     [SerializeField] LayerMask mask;
     [SerializeField] Transform camCenter;
     [SerializeField] float _maxDistance;
+    [SerializeField] CreatePlayerTrap createPlayerTrapScript;
+    [SerializeField] Material verde, rojo;
 
     void Start()
     {
-
+        createPlayerTrapScript = GetComponent<CreatePlayerTrap>();
     }
 
 
@@ -29,7 +31,24 @@ public class TrapWireSet : MonoBehaviour
 
         if (SelectorUI.habAct == 5)
         {
-            if (Input.GetKeyUp(KeyCode.F) && !primeraPuesta)
+            if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 100, mask)) //5dist
+            {
+                visualRef.transform.position = hit.point;
+                Renderer visualRender = visualRef.GetComponent<Renderer>();
+
+                //if (Vector3.SqrMagnitude(transform.position - hit.point) < (/*_maxDistance * _maxDistance*/ 5 * 5))
+                if ((Vector3.Distance(transform.position, hit.point)) <= 5.4)
+                {
+                    visualRender.material = verde;
+                }
+                else
+                {
+                    visualRender.material = rojo;
+                }
+
+            }
+
+            if (Input.GetKeyUp(KeyCode.F) && !primeraPuesta && createPlayerTrapScript.currentTraps < createPlayerTrapScript.maxTraps)
             {
                 SetTrap();
                 //primeraPuesta = true;
@@ -47,6 +66,12 @@ public class TrapWireSet : MonoBehaviour
                 linea.SetPosition(1, segundaTrapLugar.position);
             }
         }
+        else
+        {
+            visualRef.transform.position = new Vector3(1000f, 1000f, 1000f);
+        }
+
+
 
         //if (SelectorUI.habAct == 4 && !puesto)
         //{
@@ -87,6 +112,7 @@ public class TrapWireSet : MonoBehaviour
             newSecondTrap.gameObject.GetComponent<Trap2>().Initialize(primerTrapLugar);
             segundaTrapLugar = newSecondTrap.transform; //new Vector3(hit.point.x, hit.point.y, hit.point.z);
             segundaPuesta = true;
+            createPlayerTrapScript.currentTraps++;
             ResetTrap();
         }
     }

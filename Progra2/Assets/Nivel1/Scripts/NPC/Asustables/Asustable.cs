@@ -12,7 +12,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
     //[SerializeField] float _changeNodeDist = 0.5f;
 
     public float tiempoDeSusto, cdDeSusto, tiempoDeMoco, tiempoDeStun;
-    float _waitShivers, _waitscared, _waitRandom, waitMoco, waitStun;//, _waitDoubt, _searchingTimer;
+    public float _waitShivers, _waitscared, _waitRandom, waitMoco, waitStun;//, _waitDoubt, _searchingTimer;
 
     public bool shivers = false, _scared = false, mocod = false, stuned = false;//, _doubt = false, _inPlace = false;
     bool _lookingActive =  false;
@@ -149,7 +149,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
             stuned = false;
         }
 
-        if (_scared == true && _waitscared >= 5)
+        if (_scared == true && _waitscared >= tiempoDeSusto)
         {
             //_agent.speed = speedNormal;
             //_scared = false;

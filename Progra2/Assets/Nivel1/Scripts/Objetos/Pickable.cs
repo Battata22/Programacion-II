@@ -510,7 +510,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         if(TryGetComponent<Chocamiento>(out Chocamiento choc))
         {
             choc.scareAmount = _scareAmount;
-            choc.ChocoSonoro(transform.position);
+            //choc.ChocoSonoro(transform.position);
+            choc.Choco(transform.position);
         }
         if (rompible == true)
         {

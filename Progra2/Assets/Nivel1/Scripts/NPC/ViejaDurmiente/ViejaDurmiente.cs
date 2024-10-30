@@ -39,5 +39,6 @@ public class ViejaDurmiente : MonoBehaviour
         perro.SetActive(true);
         gameObject.SetActive(false);
         startRun();
+        GameManager.Instance.Master1.ActivarGB();
     }
 }

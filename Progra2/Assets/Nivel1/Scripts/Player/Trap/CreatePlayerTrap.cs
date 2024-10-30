@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,10 +14,12 @@ public class CreatePlayerTrap : MonoBehaviour
 
     [SerializeField] PlayerTrap trapPrefab;
     public KeyCode trapKey = KeyCode.F;
-    [SerializeField] float _trapCD, counterNum;
+    public float _trapCD, counterNum, maxTraps, currentTraps;
     [SerializeField] Slider trapSlider;
+    [SerializeField] TextMeshProUGUI textoTraps;
     //Slider trapSlider;
-    float counterTimer; 
+    float counterTimer;
+
 
 
     //private void Start()
@@ -26,10 +29,12 @@ public class CreatePlayerTrap : MonoBehaviour
 
     private void Update()
     {
+        textoTraps.text = ("Trampas Utilizadas: " + currentTraps + " de " + maxTraps);
+
         // 0 siempre, 6 7 y 8 por que todavia no existe trampa para ellos
         if (SelectorUI.habAct != 0 && SelectorUI.habAct != 3 && SelectorUI.habAct != 5 && SelectorUI.habAct != 6 && SelectorUI.habAct != 7 && SelectorUI.habAct != 8)
         {
-            if (Input.GetKeyDown(trapKey))
+            if (Input.GetKeyDown(trapKey) && currentTraps < maxTraps)
             {
                 CreateTrap();
             }
@@ -42,11 +47,11 @@ public class CreatePlayerTrap : MonoBehaviour
 
         counterTimer += Time.deltaTime;
 
-        if (counterTimer >= counterNum)
-        {
-            trapSlider.value--;
-            counterTimer = 0;
-        }
+        //if (counterTimer >= counterNum)
+        //{
+        //    trapSlider.value--;
+        //    counterTimer = 0;
+        //}
 
 
         //trapSliderGenerica.value = trapSlider.value;
@@ -54,6 +59,7 @@ public class CreatePlayerTrap : MonoBehaviour
 
     public void CreateTrap()
     {
+        currentTraps++;
         currentAbility = SelectorUI.habilitiesManager;
         //crear Trampa
         var newTrap = Instantiate(trapPrefab, transform.position, Quaternion.identity);
@@ -66,15 +72,7 @@ public class CreatePlayerTrap : MonoBehaviour
     public void TrapActivada()
     {
 
-        if (trapSlider.value < 0)
-        {
-            trapSlider.value++;
-            GameManager.Instance.Master1.ActivarGB();
-        }
-        else
-        {
-            trapSlider.value++;
-        }
+        trapSlider.value++;
 
         if (trapSlider.value >= trapSlider.maxValue)
         {
