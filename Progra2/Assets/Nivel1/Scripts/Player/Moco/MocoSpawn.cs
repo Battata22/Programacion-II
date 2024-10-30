@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class MocoSpawn : MonoBehaviour
 {
-    public DelegateType.VoidDelegate myAction;
-    Ray ray;
+    public DelegateType.VoidDelegateTrans myAction;
+    //Ray ray;
     RaycastHit hit;
     [SerializeField] GameObject moco;
     [SerializeField] bool puesto = false;
@@ -53,25 +53,35 @@ public class MocoSpawn : MonoBehaviour
         }
     }
 
-    public void SetMoco()
+    public void SetMoco(Transform myPos)
     {
 
         //ray = new Ray(new Vector3 (transform.position.x, transform.position.y + 2, transform.position.z), transform.up);
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, trap))
+        //if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, trap))
+        //{
+
+        //    var pos = hit.collider.transform;
+
+        //    ray = new Ray(new Vector3(myPos.position.x, myPos.position.y + 2, myPos.position.z), myPos.transform.up);
+
+        //    if (Physics.Raycast(ray, out hit))
+        //    {
+        //        if (hit.collider.gameObject.GetComponent<Techo>())
+        //        {
+        //            Instantiate(moco, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
+        //        }
+        //    }
+        //}
+
+        var ray = new Ray(new Vector3(myPos.position.x, myPos.position.y + 2, myPos.position.z), myPos.transform.up);
+
+        if (Physics.Raycast(ray, out hit))
         {
-
-            var pos = hit.collider.transform;
-
-            ray = new Ray(new Vector3(pos.position.x, pos.position.y + 2, pos.position.z), pos.transform.up);
-
-            if (Physics.Raycast(ray, out hit))
+            if (hit.collider.gameObject.GetComponent<Techo>())
             {
-                if (hit.collider.gameObject.GetComponent<Techo>())
-                {
-                    Instantiate(moco, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
-                }
+                Instantiate(moco, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
             }
         }
 

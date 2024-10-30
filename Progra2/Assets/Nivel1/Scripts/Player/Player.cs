@@ -162,7 +162,7 @@ public class Player : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.V) && enchantedObjects.Count > 0)
         {
-            ActivateEnchantedCoroutine();
+            ActivateEnchantedCoroutine(transform);
             //StartCoroutine(ActivateEnchanteds());
         }
 
@@ -591,7 +591,7 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene("Nivel1");
     }
 
-    void ActivateEnchantedCoroutine()
+    void ActivateEnchantedCoroutine(Transform myPos)
     {
         StartCoroutine(ActivateEnchanteds());
     }

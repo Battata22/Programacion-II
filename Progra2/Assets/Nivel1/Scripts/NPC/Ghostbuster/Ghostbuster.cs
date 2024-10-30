@@ -53,6 +53,10 @@ public class Ghostbuster : NPC , ICanSlide
         _anim.SetBool("Walking", true);
         if (_actualNode != null)
             _agent.SetDestination(_actualNode.position);
+        foreach(var trap in GameManager.Instance.PlayerTraps)
+        {
+            trap.OnTrapActive += GetAngry;
+        }
     }
 
     private void Update()
@@ -128,14 +132,15 @@ public class Ghostbuster : NPC , ICanSlide
                 GetAngry();
             }           
         }
+        //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA agria
 
-        if(_angry && !_isAttacking && Time.time - _waitAnger > _angerTime)
-        {
-            StopAnger();
-            //Debug.Log("<color=red> Despues de stop </color>");
-            _agent.SetDestination(GetNewNode(_actualNode).position);
-            //Debug.Log("<color=green> Despues de set destination </color>");
-        }
+        //if(_angry && !_isAttacking && Time.time - _waitAnger > _angerTime)
+        //{
+        //    StopAnger();
+        //    //Debug.Log("<color=red> Despues de stop </color>");
+        //    _agent.SetDestination(GetNewNode(_actualNode).position);
+        //    //Debug.Log("<color=green> Despues de set destination </color>");
+        //}
         if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && !_sliding 
             && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
         {
@@ -159,25 +164,27 @@ public class Ghostbuster : NPC , ICanSlide
 
     public override void GetDoubt(Vector3 pos)
     {
-        //activar duda
-        //Debug.Log("<color=yellow> Escuche algo </color>");
-        if (_angry) return;
-        if (_isAttacking) return;
-        if (!_canAttack) return;
-        if (_fighting) return;
-        _anim.SetFloat("zAxis", 1);
-        //Debug.Log("Duda de asustable");
+        GetAngry();
 
-        _doubt = true;
+        ////activar duda
+        ////Debug.Log("<color=yellow> Escuche algo </color>");
+        //if (_angry) return;
+        //if (_isAttacking) return;
+        //if (!_canAttack) return;
+        //if (_fighting) return;
+        //_anim.SetFloat("zAxis", 1);
+        ////Debug.Log("Duda de asustable");
 
-        _audioSource.clip = doubtClip;
-        _audioSource.Play();
+        //_doubt = true;
 
-        //_agent.speed = speedDoubt;
-        SetSpeed();
+        //_audioSource.clip = doubtClip;
+        //_audioSource.Play();
 
-        _agent.SetDestination(pos);
-        _searchingPos = pos;
+        ////_agent.speed = speedDoubt;
+        //SetSpeed();
+
+        //_agent.SetDestination(pos);
+        //_searchingPos = pos;
     }
 
     public override void GetScared(float scareAmount, Transform a = null)
@@ -350,7 +357,7 @@ public class Ghostbuster : NPC , ICanSlide
         //if(!_angry) yield return null;
         WaitForSeconds wait = new WaitForSeconds(0.5f);
 
-        while (_angry && _canAttack)
+        while (_angry && _canAttack && _agent.enabled)
         {
             //Debug.Log("<color=red>Cazando</color>");  
             _actualNode = _target.transform;
@@ -358,11 +365,13 @@ public class Ghostbuster : NPC , ICanSlide
             yield return wait;
         }
 
-        if (!_isAttacking && _canAttack)
+        if (!_isAttacking && _canAttack && _agent.enabled)
         {
             //Debug.Log("<color=#ef5ae4>Termina Cazeria</color>");
             _actualNode = GetNewNode(_actualNode);
             _agent.SetDestination(_actualNode.position);
+
+            yield return null;
         }
         _activeChase = false;
         //yield return null;       
@@ -490,7 +499,9 @@ public class Ghostbuster : NPC , ICanSlide
         _rb.drag = 1f;
         _rb.velocity = Vector3.zero;
         _agent.enabled = true;
-        _agent.SetDestination(_actualNode.position);
+
+        GetAngry();
+        //_agent.SetDestination(_actualNode.position);
 
     }
 }

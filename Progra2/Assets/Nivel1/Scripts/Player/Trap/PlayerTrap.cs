@@ -10,7 +10,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     [SerializeField] GameObject _mesh, icono;
 
     //public delegate void VoidDelegate();
-    public DelegateType.VoidDelegate myAction;
+    public DelegateType.VoidDelegateTrans myAction;
     bool canAct = true;
     float _cd;
 
@@ -18,8 +18,12 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     [SerializeField] Transform _lookingAt;
     SpriteRenderer _spriteRenderer;
 
+    public delegate void VoidDelegate();
+    public event VoidDelegate OnTrapActive;
+
     private void Awake()
     {
+        GameManager.Instance.PlayerTraps.Add(this);
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         myAction = delegate { };
@@ -28,6 +32,8 @@ public class PlayerTrap : MonoBehaviour, IInteractable
             gameObject.AddComponent<CreateShadow>();
             _createShadowScript = GetComponent<CreateShadow>();
         }
+        if (SelectorUI.habAct == 3)
+            myAction += DestroyTrap;
 
         #region Icono
         if (SelectorUI.habAct == 1)
@@ -72,7 +78,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
         icono.transform.LookAt(_lookingAt.position);
     }
-    public void Initialize(CreatePlayerTrap newScript, DelegateType.VoidDelegate newAction, float newCD)
+    public void Initialize(CreatePlayerTrap newScript, DelegateType.VoidDelegateTrans newAction, float newCD)
     {
         _createTrapScript = newScript;
         myAction = newAction;
@@ -84,27 +90,26 @@ public class PlayerTrap : MonoBehaviour, IInteractable
         if (!canAct) return;
         StartCoroutine(SetInactive());
 
-        if (_createShadowScript)
-        {
-            _createShadowScript.SpawnShadow();
-        }
-        else
-            myAction();
-
-        CreatePlayerTrap.TrapActivada();
-        print("cacaguete");
+        //if (_createShadowScript)
+        //{
+        //    _createShadowScript.SpawnShadow(transform);
+        //}
+        //else
+            myAction(transform);
+        OnTrapActive();
+        //CreatePlayerTrap.TrapActivada();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var asus = other.gameObject.GetComponent<Asustable>();
-        if (asus && asus._scared)
-        {
-            AsustableDetected(asus);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    var asus = other.gameObject.GetComponent<Asustable>();
+    //    if (asus && asus._scared)
+    //    {
+    //        AsustableDetected(asus);
+    //    }
+    //}
 
-    void AsustableDetected(Asustable target)
+    public void AsustableDetected(Asustable target)
     {
         print($"<color=#18f18F> Austable detectado </color>");
         // Trampa Activada +1
@@ -125,5 +130,15 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
         _mesh.SetActive(true);
         canAct = true;
+    }
+
+    void DestroyTrap(Transform a)
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.PlayerTraps.Remove(this);
     }
 }

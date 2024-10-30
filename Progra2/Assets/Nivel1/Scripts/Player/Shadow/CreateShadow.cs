@@ -39,11 +39,11 @@ public class CreateShadow : MonoBehaviour
 
 
     }
-    public void SpawnShadow()
+    public void SpawnShadow(Transform myPos)
     {
         //if (player.currentShadows >= player.maxShadows) return;
         //if (waitCD <= cooldown) return;
-        Shadow newShadow = Instantiate(GameManager.Instance.ShadowPrefab, transform.position, Quaternion.identity);
+        Shadow newShadow = Instantiate(GameManager.Instance.ShadowPrefab, myPos.position, Quaternion.identity);
         newShadow.Initialize();
         player.currentShadows++;
     }

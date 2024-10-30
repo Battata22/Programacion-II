@@ -116,6 +116,8 @@ public class GameManager : MonoBehaviour
         gameplay
     }
 
+    public List<PlayerTrap> PlayerTraps;
+
 }
 
 

@@ -9,20 +9,20 @@ public class CreatePlayerTrap : MonoBehaviour
     //public delegate void VoidDelegate();
     //public VoidDelegate currentAbility;
 
-    public DelegateType.VoidDelegate currentAbility;
+    public DelegateType.VoidDelegateTrans currentAbility;
 
     [SerializeField] PlayerTrap trapPrefab;
     public KeyCode trapKey = KeyCode.F;
     [SerializeField] float _trapCD, counterNum;
-    [SerializeField] Slider trapSliderGenerica;
-    static Slider trapSlider;
-    float counterTimer;
+    [SerializeField] Slider trapSlider;
+    //Slider trapSlider;
+    float counterTimer; 
 
 
-    private void Start()
-    {
-        trapSlider = trapSliderGenerica;
-    }
+    //private void Start()
+    //{
+    //    trapSlider = trapSliderGenerica;
+    //}
 
     private void Update()
     {
@@ -41,13 +41,14 @@ public class CreatePlayerTrap : MonoBehaviour
 
         counterTimer += Time.deltaTime;
 
-        //if (counterTimer >= counterNum)
-        //{
-        //    trapSlider.value--;
-        //}
+        if (counterTimer >= counterNum)
+        {
+            trapSlider.value--;
+            counterTimer = 0;
+        }
 
 
-        trapSliderGenerica.value = trapSlider.value;
+        //trapSliderGenerica.value = trapSlider.value;
     }
 
     public void CreateTrap()
@@ -55,12 +56,13 @@ public class CreatePlayerTrap : MonoBehaviour
         currentAbility = SelectorUI.habilitiesManager;
         //crear Trampa
         var newTrap = Instantiate(trapPrefab, transform.position, Quaternion.identity);
+        newTrap.OnTrapActive += TrapActivada;
         newTrap.Initialize(this, currentAbility, _trapCD);
         //Iniciar trampa
     }
 
 
-    public static void TrapActivada()
+    public void TrapActivada()
     {
 
         if (trapSlider.value < 0)
@@ -77,6 +79,7 @@ public class CreatePlayerTrap : MonoBehaviour
         {
             SceneManager.LoadScene("Victoria");
         }
+        counterTimer = 0;
     }
 
     void Test()

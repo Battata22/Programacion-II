@@ -17,7 +17,7 @@ public class SelectorUI : MonoBehaviour
     /// <summary>
     /// ESTO ES UN EVENTO, SOLO USAR += o -=
     /// </summary>   
-    public static DelegateType.VoidDelegate habilitiesManager;
+    public static DelegateType.VoidDelegateTrans habilitiesManager;
 
     private void Awake()
     {
@@ -103,7 +103,7 @@ public class SelectorUI : MonoBehaviour
         #endregion
     }
 
-    public void Test()
+    public void Test(Transform noSeUsaPeroConfiaQueEstoEsLaMejorManera)
     {
         print($"<color=#2CD9C9> Llamada Habilidad con F habilidad activa {habAct}</color>");
     }

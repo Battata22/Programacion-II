@@ -51,19 +51,21 @@ public class TornadoItems : MonoBehaviour
         //}
     }
 
-    public void Tornado()
+    public void Tornado(Transform myPos)
     {
-        if (waitCD >= cooldown)
-        {
-            //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, trap))
-            {
-                Instantiate(tornadoPrefab, new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, hit.collider.transform.position.z), Quaternion.identity);
-                waitCD = 0;
-            }
+        ////ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        }
+        //if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, trap))
+        //{
+        //    //Instantiate(tornadoPrefab, new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, hit.collider.transform.position.z), Quaternion.identity);
+        //    //Instantiate(tornadoPrefab, new Vector3(myPos.position.x, myPos.position.y + 1, myPos.position.z), Quaternion.identity);
+
+        //    waitCD = 0;
+        //}
+
+        Instantiate(tornadoPrefab, new Vector3(myPos.position.x, myPos.position.y + 1, myPos.position.z), Quaternion.identity);
+
     }
 
 }

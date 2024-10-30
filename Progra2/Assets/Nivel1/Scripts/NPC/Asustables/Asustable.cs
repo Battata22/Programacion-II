@@ -192,7 +192,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
     public override void GetScared(float scareAmount, Transform direction = null)
     {
         if (!_AIActive) return;
-        if (_scared) return;
+        //if (_scared) return;
         //if (scareAmount < 0.1f) return;
         //Debug.Log("Susto de Asustable");
         _anim.SetFloat("zAxis", 1f);

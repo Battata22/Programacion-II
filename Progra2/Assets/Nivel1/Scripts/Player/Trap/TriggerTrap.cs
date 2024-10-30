@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TriggerTrap : MonoBehaviour
+{
+    PlayerTrap parentScript;
+
+    private void Awake()
+    {
+        parentScript = GetComponentInParent<PlayerTrap>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var asus = other.gameObject.GetComponent<Asustable>();
+        if (asus && asus._scared)
+        {
+            parentScript.AsustableDetected(asus);
+        }
+    }
+}

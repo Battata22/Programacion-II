@@ -488,7 +488,6 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
         //Debug.Log("<color=yellow> Accion llamada </color>");
         
-        _player.enchantedObjects.Remove(this);
         //Throw
         holding = false;
         _canMove = false;
@@ -519,8 +518,11 @@ public class Pickable : Obj_Interactuable , IEnchantable
             Destroy(gameObject);
         }
 
-        OutLineEnchanted.SetFloat("_Thickness", 0f);
-        _enchanted = false;
+        //_player.enchantedObjects.Remove(this);
+        //OutLineEnchanted.SetFloat("_Thickness", 0f);
+        //_enchanted = false;
+        Unenchant(_player);
+
         Debug.Log("<color=purple> Accion realizada </color>");
     }
 
