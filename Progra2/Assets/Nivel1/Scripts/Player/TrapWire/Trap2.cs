@@ -12,6 +12,12 @@ public class Trap2 : MonoBehaviour
 
     [SerializeField] AudioClip clip;
     [SerializeField] LineRenderer linea;
+    //[SerializeField] GameObject lineaPrefab;
+
+    private void Awake()
+    {
+        linea = Instantiate(linea, new Vector3(), Quaternion.identity);
+    }
 
     void Update()
     {

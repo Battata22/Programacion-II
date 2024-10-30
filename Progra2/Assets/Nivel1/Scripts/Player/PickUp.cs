@@ -144,7 +144,10 @@ public class PickUp : MonoBehaviour
 
             if(Input.GetKeyDown(interecatKey) && hit.transform.TryGetComponent<IInteractable>(out var inte))
             {
-                inte.Interact();
+                 if (hit.collider.gameObject.name != "PlayerTrap(Clone)")
+                 {
+                     inte.Interact();
+                 }
             }
 
             //IEnchantable obj;

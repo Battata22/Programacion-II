@@ -26,7 +26,8 @@ public class CreatePlayerTrap : MonoBehaviour
 
     private void Update()
     {
-        if (SelectorUI.habAct != 5 && SelectorUI.habAct != 3)
+        // 0 siempre, 6 7 y 8 por que todavia no existe trampa para ellos
+        if (SelectorUI.habAct != 0 && SelectorUI.habAct != 3 && SelectorUI.habAct != 5 && SelectorUI.habAct != 6 && SelectorUI.habAct != 7 && SelectorUI.habAct != 8)
         {
             if (Input.GetKeyDown(trapKey))
             {

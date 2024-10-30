@@ -67,7 +67,11 @@ public class PlayerTrap : MonoBehaviour, IInteractable
         else if (SelectorUI.habAct == 8)
         {
             _spriteRenderer.sprite = null;
-        } 
+        }
+        else if (SelectorUI.habAct == 0)
+        {
+            _spriteRenderer.sprite = null;
+        }
         #endregion
 
     }
