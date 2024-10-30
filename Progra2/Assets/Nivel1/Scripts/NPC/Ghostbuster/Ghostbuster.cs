@@ -200,6 +200,7 @@ public class Ghostbuster : NPC , ICanSlide
         if (!_canAttack) return;
         if(_isAttacking) return;
         if (_fighting) return;
+        if (_angry) return;
         _firstAnger = true;
         _anim.SetFloat("zAxis", 1);
         _audioSource.clip = _clipAngry;

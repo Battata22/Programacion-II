@@ -82,6 +82,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     private void Update()
     {
+
         if (!_AIActive) return;
         if (_actualNode == null) Initialize();
         if ((!_doubt && !_lookingActive &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
@@ -444,6 +445,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
         print("Llamado a poseer");
         if (possesed) return;
         _particulas.scared = false;
+        StopScare();
         StopSearching();
 
         possesed = true;

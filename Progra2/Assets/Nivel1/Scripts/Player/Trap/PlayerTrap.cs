@@ -30,7 +30,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
         if (SelectorUI.habAct == 2)
         {
             gameObject.AddComponent<CreateShadow>();
-            _createShadowScript = GetComponent<CreateShadow>();
+            //_createShadowScript = GetComponent<CreateShadow>();
         }
         if (SelectorUI.habAct == 3)
             myAction += DestroyTrap;
