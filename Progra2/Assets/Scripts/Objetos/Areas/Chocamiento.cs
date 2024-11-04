@@ -20,7 +20,7 @@ public class Chocamiento : MonoBehaviour
 
     [SerializeField] bool musicOutput;
 
-    Transform _farthestNode;
+    Transform _farthestNode, _farthestNode2, _farthestNode3, _finalNode;
 
 
     private void Awake()
@@ -56,7 +56,8 @@ public class Chocamiento : MonoBehaviour
                 //Debug.Log("<color=pink> NPC en area Susto </color>");
                 if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
                 {
-                    _npcInRange.GetScared(scareAmount, _farthestNode);
+                    GetBetterNode(_npcInRange, GameManager.Instance.Player);
+                    _npcInRange.GetScared(scareAmount, _finalNode);
                     //if (_objScript)
                     //{
                     //    //Debug.Log("<color=green> LLamado a nerfeo </color>");
@@ -118,10 +119,40 @@ public class Chocamiento : MonoBehaviour
             if (Dis > farthestDis)
             {
                 farthestDis = Dis;
+                _farthestNode3 = _farthestNode2;
+                _farthestNode2 = _farthestNode;
                 _farthestNode = node;
             }
         }
-        print($"<color=magenta> Nodo mas lejano {_farthestNode.name} </color>");
+        //print($"<color=magenta> Nodo mas lejano {_farthestNode.name} </color>");
+    }
+
+    void GetBetterNode(NPC target, Player player)
+    {
+        Debug.Log($"NPC detectado {target.name}");
+        Debug.Log($"Player detectado {player.name}");
+
+        var playerVector = player.transform.position - target.transform.position;
+        var node1vector = _farthestNode.position - target.transform.position;
+        var node2Vector = _farthestNode2.position - target.transform.position;
+        var node3Vector = _farthestNode3.position - target.transform.position;
+
+        var angle1 = Vector3.Angle(playerVector, node1vector);
+        var angle2 = Vector3.Angle(playerVector, node2Vector);
+        var angle3 = Vector3.Angle(playerVector, node3Vector);
+
+        _finalNode = _farthestNode;
+
+        if (angle1 > angle2 && angle1 > angle3)
+            _finalNode = _farthestNode;
+        if(angle2 > angle1 && angle2 > angle3)
+            _finalNode = _farthestNode2;
+        if(angle3 > angle1 && angle2 > angle3)
+            _finalNode = _farthestNode3;
+
+        _farthestNode = null;
+        _farthestNode2 = null;
+        _farthestNode3 = null;
     }
 
 }

@@ -30,7 +30,8 @@ public class CopyMotion : MonoBehaviour
         _originalRot = _copyLimb.localEulerAngles;
         _originalStrenght = _cj.slerpDrive.positionSpring;
         JointDrive n = _cj.slerpDrive;
-        n.positionSpring -= 1000f;
+        Debug.Log(n.positionSpring);
+        n.positionSpring = 0f;
         Debug.Log(n.positionSpring);
     }
 
@@ -82,10 +83,11 @@ public class CopyMotion : MonoBehaviour
     IEnumerator GiveStrenght()
     {
         Debug.Log("<color=red> ACTIVANDO AUTODESTRUCCION </color>");
+        var n = _cj.slerpDrive;
+        //n.positionSpring = 1000f;
 
         float time = 0;
         //float test;
-        var n = _cj.slerpDrive;
 
         while (_cj.slerpDrive.positionSpring < _originalStrenght)
         {
@@ -95,6 +97,5 @@ public class CopyMotion : MonoBehaviour
             yield return null;
         }
         Debug.Log(n.positionSpring);
-        //n.positionSpring = 1000f;
     }
 }

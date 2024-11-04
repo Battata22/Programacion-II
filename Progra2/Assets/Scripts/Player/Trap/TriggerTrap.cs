@@ -14,7 +14,7 @@ public class TriggerTrap : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var asus = other.gameObject.GetComponent<Asustable>();
-        if (asus && asus._scared)
+        if (asus && asus.scared)
         {
             parentScript.AsustableDetected(asus);
         }

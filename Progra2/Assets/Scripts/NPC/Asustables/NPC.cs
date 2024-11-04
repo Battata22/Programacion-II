@@ -215,6 +215,11 @@ public abstract class NPC : MonoBehaviour
         GameManager.Instance.Npc.Remove(this);
     }
 
+    public virtual void TurnOn() { }
+
+    public virtual void TurnOff() { }
+
+
     //public virtual void Slide()
     //{
     //    Debug.Log("Slide de NPC");

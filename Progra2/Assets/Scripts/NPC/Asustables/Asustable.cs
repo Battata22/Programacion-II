@@ -14,7 +14,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
     public float tiempoDeSusto, cdDeSusto, tiempoDeMoco, tiempoDeStun;
     public float _waitShivers, _waitscared, _waitRandom, waitMoco, waitStun;//, _waitDoubt, _searchingTimer;
 
-    public bool shivers = false, _scared = false, mocod = false, stuned = false;//, _doubt = false, _inPlace = false;
+    public bool shivers = false, scared = false, mocod = false, stuned = false;//, _doubt = false, _inPlace = false;
     bool _lookingActive =  false;
 
     [SerializeField] Slider _sliderBarra;
@@ -22,8 +22,12 @@ public class Asustable : NPC , ICanSlide, IPossessable
     [SerializeField] AudioClip gritoClip, doubtClip;
     [SerializeField] Animator _anim;
 
+    [SerializeField] GameObject _mesh;
+
     Rigidbody _rb;
     bool _sliding;
+
+    EnableRagdoll _myRagdollSwitch;
 
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
@@ -67,6 +71,10 @@ public class Asustable : NPC , ICanSlide, IPossessable
     //}
     #endregion
 
+    private void Awake()
+    {
+        _myRagdollSwitch = GetComponent<EnableRagdoll>();
+    }
 
     protected override void Start()
     {
@@ -82,6 +90,11 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     private void Update()
     {
+        if (waitStun >= tiempoDeStun && stuned)
+        {
+            StopStun();
+            stuned = false;
+        }
 
         if (!_AIActive) return;
         if (_actualNode == null) Initialize();
@@ -144,13 +157,9 @@ public class Asustable : NPC , ICanSlide, IPossessable
             mocod = false;
         }
 
-        if (waitStun >= tiempoDeStun && stuned)
-        {
-            StopStun();
-            stuned = false;
-        }
+        
 
-        if (_scared == true && _waitscared >= tiempoDeSusto)
+        if (scared == true && _waitscared >= tiempoDeSusto)
         {
             //_agent.speed = speedNormal;
             //_scared = false;
@@ -205,7 +214,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
         _doubt = false;
         _particulas.scared = true;
-        _scared = true;
+        scared = true;
         _agent.speed = speedScared;
         _waitRandom = 0f;
         _audioSource.clip = gritoClip;
@@ -225,7 +234,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
         _anim.SetBool("Doubt", false);
 
         _agent.speed = speedNormal;
-        _scared = false;
+        scared = false;
         _particulas.scared = false;
     }
 
@@ -288,6 +297,8 @@ public class Asustable : NPC , ICanSlide, IPossessable
     public void GetStun(AudioClip a)
     {
         //if (!_AIActive) return;
+        if (stuned) return;
+        //if (!scared) return;
         _anim.SetBool("Walking", false);
         _anim.SetBool("Idle", true);
         _anim.SetBool("InPos", false);
@@ -299,10 +310,14 @@ public class Asustable : NPC , ICanSlide, IPossessable
         _agent.speed = 0;
         waitStun = 0;
         stuned = true;
+
+        _myRagdollSwitch.ActivateRagdoll();
     }
 
     public void StopStun()
     {
+        print("<color=magenta> Asustable Stop Stun </color>");
+        _myRagdollSwitch.DeactivateRagdoll();
         _anim.SetBool("Walking", true);
         _anim.SetBool("Idle", false);
         _anim.SetBool("InPos", false);
@@ -314,7 +329,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
     public override void GetDoubt(Vector3 pos)
     {
         if(!_AIActive) return;
-        if (_scared) return;
+        if (scared) return;
         //Debug.Log("Duda de asustable");
         _anim.SetBool("Doubt", true);
         _anim.SetBool("Walking", false);
@@ -336,7 +351,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
     {
         _lookingActive = true;
 
-        if (!_scared)
+        if (!scared)
         {
             _waitRandom = Random.Range(2f, 5f);
             //_anim.SetFloat("zAxis", 1f);
@@ -354,7 +369,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
         _anim.SetBool("InPos", true);
 
         WaitForSeconds wait = new WaitForSeconds(_waitRandom);
-        if (_scared) wait = new WaitForSeconds(0f);
+        if (scared) wait = new WaitForSeconds(0f);
         yield return wait;
 
         _anim.SetBool("Walking", true);
@@ -479,8 +494,28 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     void GameplayPhase()
     {
-        print($"<color=#15d629> Asustable en fase de Gameplay </color>");
+        //print($"<color=#15d629> Asustable en fase de Gameplay </color>");
         _AIActive = true;
+        _agent.enabled = true;
+        _agent.speed = speedNormal;
+        if (_actualNode != null)
+            _agent.SetDestination(_actualNode.position);
+    }
+
+    public override void TurnOff()
+    {
+        transform.GetComponent<Collider>().enabled = false;
+        //_AIActive = false;
+        _agent.speed = 0f;
+        _agent.enabled = false;
+        _mesh.SetActive(false);
+    }
+
+    public override void TurnOn()
+    {
+        transform.GetComponent<Collider>().enabled = true;
+        _mesh.SetActive(true);
+        //_AIActive = true;
         _agent.enabled = true;
         _agent.speed = speedNormal;
         if (_actualNode != null)
