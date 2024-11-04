@@ -996,7 +996,7 @@ NavMeshAgent:
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 270
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1069,15 +1069,26 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _testNodes: []
   _AIActive: 1
   tiempoDeSusto: 2
   cdDeSusto: 10
+  tiempoDeMoco: 0
+  tiempoDeStun: 0
+  _waitShivers: 0
+  _waitscared: 0
+  _waitRandom: 0
+  waitMoco: 0
+  waitStun: 0
   shivers: 0
-  _scared: 0
+  scared: 0
+  mocod: 0
+  stuned: 0
   _sliderBarra: {fileID: 0}
   gritoClip: {fileID: 8300000, guid: 48eb6ea57a3e8f34f91c5fe95eec0de4, type: 3}
   doubtClip: {fileID: 8300000, guid: 010829522d58ec84a896907199dcd622, type: 3}
   _anim: {fileID: 0}
+  _mesh: {fileID: 0}
 --- !u!82 &1961191671246290836
 AudioSource:
   m_ObjectHideFlags: 0

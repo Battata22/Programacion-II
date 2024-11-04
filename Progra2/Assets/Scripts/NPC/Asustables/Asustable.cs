@@ -521,4 +521,14 @@ public class Asustable : NPC , ICanSlide, IPossessable
         if (_actualNode != null)
             _agent.SetDestination(_actualNode.position);
     }
+
+    public void CallRagdollOn()
+    {
+        _myRagdollSwitch.ActivateRagdoll();
+    }
+
+    public void CallRagdollOff()
+    {
+        _myRagdollSwitch.DeactivateRagdoll();
+    }
 }

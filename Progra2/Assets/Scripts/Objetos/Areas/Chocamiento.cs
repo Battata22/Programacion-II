@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -129,17 +130,27 @@ public class Chocamiento : MonoBehaviour
 
     void GetBetterNode(NPC target, Player player)
     {
-        Debug.Log($"NPC detectado {target.name}");
-        Debug.Log($"Player detectado {player.name}");
+        //Debug.Log($"NPC detectado {target.name}");
+        //Debug.Log($"Player detectado {player.name}");
 
         var playerVector = player.transform.position - target.transform.position;
         var node1vector = _farthestNode.position - target.transform.position;
-        var node2Vector = _farthestNode2.position - target.transform.position;
-        var node3Vector = _farthestNode3.position - target.transform.position;
-
         var angle1 = Vector3.Angle(playerVector, node1vector);
-        var angle2 = Vector3.Angle(playerVector, node2Vector);
-        var angle3 = Vector3.Angle(playerVector, node3Vector);
+
+        Single angle2 = angle1;
+        Single angle3 = angle1;
+        if (_farthestNode2 != null)
+        {
+            Vector3 node2Vector = _farthestNode2.position - target.transform.position;
+            angle2 = Vector3.Angle(playerVector, node2Vector);
+        }
+
+        if(_farthestNode3 != null)
+        {
+            var node3Vector = _farthestNode3.position - target.transform.position;
+            angle3 = Vector3.Angle(playerVector, node3Vector);
+        }
+
 
         _finalNode = _farthestNode;
 

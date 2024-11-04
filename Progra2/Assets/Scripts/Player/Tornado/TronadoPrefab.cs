@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TronadoPrefab : MonoBehaviour
@@ -6,6 +7,9 @@ public class TronadoPrefab : MonoBehaviour
     [SerializeField] LayerMask maskTornado, maskNPC;
     [SerializeField] Collider[] colliders;
 
+    List<Asustable> asustables = new();
+
+    List<RagdollHips> _npcRagdosll = new();
 
     void Start()
     {
@@ -20,10 +24,25 @@ public class TronadoPrefab : MonoBehaviour
             if (colliderNPC.TryGetComponent<Asustable>(out Asustable asusScript))
             {
                 asusScript.GetDoubt(transform.position);
+                asustables.Add(asusScript);
+                asusScript.CallRagdollOn();
+
             }
         }
 
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radio, maskTornado);
+        foreach (var col in colliders)
+        {
+            if (col.transform.GetComponent<RagdollHips>() != null)
+            {
+                print(col.transform.name);
+                _npcRagdosll.Add(col.transform.GetComponent<RagdollHips>());
+                doShit = true;
+            }
+        }
     }
+
+    bool doShit;
 
     void FixedUpdate()
     {
@@ -51,6 +70,25 @@ public class TronadoPrefab : MonoBehaviour
         //    }
         //} 
         #endregion
+
+        if (!doShit) return;
+
+        BullingASustable();
+    }
+
+    void BullingASustable()
+    {
+        foreach (var ragdolls in _npcRagdosll)
+        {
+            Debug.Log("Afectando a la vieja");
+            Rigidbody rb = ragdolls.GetComponent<Rigidbody>();
+            var dir = transform.position - ragdolls.transform.position;
+            rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, ragdolls.transform.position)) * Time.fixedDeltaTime) / rb.mass * 70, ForceMode.Impulse);
+
+            rb.AddForce(transform.up * Time.fixedDeltaTime * fuerzaArriba, ForceMode.Impulse);
+
+            rb.AddTorque(dir);
+        }
     }
 
     #region Comment
@@ -74,9 +112,9 @@ public class TronadoPrefab : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radio, maskTornado);
+        //Collider[] colliders = Physics.OverlapSphere(transform.position, radio, maskTornado);
 
-        if (other.GetComponent<Rigidbody>() != null && other.GetComponent<Pickable>() != null)
+        if (other.GetComponent<Rigidbody>() != null && (other.GetComponent<Pickable>() != null || other.GetComponent<RagdollHips>() !=null))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
@@ -93,6 +131,12 @@ public class TronadoPrefab : MonoBehaviour
                 {
                     rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass * 2, ForceMode.Impulse);
                 }
+                //if(rb.mass == 3.125f)
+                //{
+                //    Debug.Log("Afectando a la vieja");
+                //    rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass * 200, ForceMode.Impulse);
+                //} //masa exacta de la pelvis del ragdoll
+
             }
             else
             {
@@ -119,6 +163,7 @@ public class TronadoPrefab : MonoBehaviour
 
     void SelfDestruct()
     {
+        doShit = false;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, radio - 0.8f, maskTornado);
 
@@ -133,6 +178,11 @@ public class TronadoPrefab : MonoBehaviour
   
         }
 
+        for (int i = 0; i < asustables.Count; i++)
+        {
+            asustables[i].CallRagdollOff();
+        }
+
         Collider[] collidersNPCs = Physics.OverlapSphere(transform.position, radio * 2.5f, maskNPC);
 
         foreach (Collider colliderNPC in collidersNPCs)
@@ -142,6 +192,8 @@ public class TronadoPrefab : MonoBehaviour
                 asusScript.GetScared(0.5f);
             }
         }
+
+        
 
         Destroy(gameObject);
 
