@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -134,6 +135,8 @@ public class Chocamiento : MonoBehaviour
         //Debug.Log($"Player detectado {player.name}");
 
         var playerVector = player.transform.position - target.transform.position;
+        if (_farthestNode == null) Debug.Log("Nodo mas lejano = Null");
+        if (target == null) Debug.Log("Como carajo falta el nps?");
         var node1vector = _farthestNode.position - target.transform.position;
         var angle1 = Vector3.Angle(playerVector, node1vector);
 
