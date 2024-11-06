@@ -6,6 +6,7 @@ public class MocoPrefab : MonoBehaviour
 {
     Collider self;
     [SerializeField] AudioClip clip;
+    [SerializeField] GameObject charcoPrefab;
 
     void Start()
     {
@@ -25,6 +26,11 @@ public class MocoPrefab : MonoBehaviour
         {
             script.GetMoco(clip);
         } 
+
+        if (other.gameObject.GetComponent<Piso>())
+        {
+            Instantiate(charcoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        }
     }
 
 }

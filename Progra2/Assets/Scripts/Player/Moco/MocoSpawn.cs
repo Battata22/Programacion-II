@@ -56,6 +56,7 @@ public class MocoSpawn : MonoBehaviour
     public void SetMoco(Transform myPos)
     {
 
+        #region Comment
         //ray = new Ray(new Vector3 (transform.position.x, transform.position.y + 2, transform.position.z), transform.up);
         //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -73,7 +74,8 @@ public class MocoSpawn : MonoBehaviour
         //            Instantiate(moco, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
         //        }
         //    }
-        //}
+        //} 
+        #endregion
 
         var ray = new Ray(new Vector3(myPos.position.x, myPos.position.y + 2, myPos.position.z), myPos.transform.up);
 
@@ -85,6 +87,7 @@ public class MocoSpawn : MonoBehaviour
             }
         }
 
+        #region Comment
         //if (Physics.Raycast(ray, out hit))
         //{
         //    var pos = hit.collider.transform;
@@ -99,7 +102,8 @@ public class MocoSpawn : MonoBehaviour
         //        }
         //    }
 
-        //}
+        //} 
+        #endregion
     }
 
 }

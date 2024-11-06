@@ -12,6 +12,7 @@ public class EnableRagdoll : MonoBehaviour
     [SerializeField] bool _impulsePelvis;
     Rigidbody _rb;
     NPC _npc;
+    ParticulasEfectos partEfectosScript;
 
     public delegate void Cosa();
     public Cosa Action;
@@ -20,6 +21,7 @@ public class EnableRagdoll : MonoBehaviour
 
     private void Awake()
     {
+        partEfectosScript = GetComponent<ParticulasEfectos>();
         Action = ActivateRagdoll;
         _rb = GetComponent<Rigidbody>();
         _npc = GetComponent<NPC>();

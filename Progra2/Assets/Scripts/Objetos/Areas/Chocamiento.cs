@@ -60,13 +60,17 @@ public class Chocamiento : MonoBehaviour
                 {
                     GetBetterNode(_npcInRange, GameManager.Instance.Player);
                     _npcInRange.GetScared(scareAmount, _finalNode);
+
+                    #region Comment
                     //if (_objScript)
                     //{
                     //    //Debug.Log("<color=green> LLamado a nerfeo </color>");
-                        
+
                     //    //Nerf si asusta
                     //    //_objScript.NerfObj();
-                    //}
+                    //} 
+                    #endregion
+
                 }
                 else
                 {

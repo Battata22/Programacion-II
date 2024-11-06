@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerTrap> PlayerTraps;
 
+    public AudioClip bonk;
 }
 
 

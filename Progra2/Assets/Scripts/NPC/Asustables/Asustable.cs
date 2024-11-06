@@ -14,6 +14,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
     public float tiempoDeSusto, cdDeSusto, tiempoDeMoco, tiempoDeStun;
     public float _waitShivers, _waitscared, _waitRandom, waitMoco, waitStun;//, _waitDoubt, _searchingTimer;
 
+
     public bool shivers = false, scared = false, mocod = false, stuned = false;//, _doubt = false, _inPlace = false;
     bool _lookingActive =  false;
 
@@ -290,6 +291,28 @@ public class Asustable : NPC , ICanSlide, IPossessable
         _anim.SetBool("Idle", false);
         _anim.SetBool("InPos", false);
         _anim.SetBool("Search", false);
+
+        _agent.speed = speedNormal;
+    }
+
+    public void StartSlow()
+    {
+        //_anim.SetBool("Walking", false);
+        //_anim.SetBool("Idle", false);
+        //_anim.SetBool("InPos", false);
+        //_anim.SetBool("Search", false);
+        //_anim.SetBool("Doubt", false);
+
+        _agent.speed = _agent.speed * 0.5f;
+    }
+
+    public void StopSlow()
+    {
+        //_anim.SetBool("Walking", false);
+        //_anim.SetBool("Idle", false);
+        //_anim.SetBool("InPos", false);
+        //_anim.SetBool("Search", false);
+        //_anim.SetBool("Doubt", false);
 
         _agent.speed = speedNormal;
     }

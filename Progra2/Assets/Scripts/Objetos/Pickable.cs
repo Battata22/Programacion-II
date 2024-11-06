@@ -18,42 +18,54 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     [SerializeField] protected float _scareAmount;
 
+    #region Comment
     //public delegate void DelegateEventVoid();
     //public event DelegateEventVoid OnThrow, OnDrop;
     //GameObject newTrail;
 
-    //Material _originalMaterial;
+    //Material _originalMaterial; 
+    #endregion
 
+    #region Material
     protected Material /*_outLine,*/ _fade;
     public override Material OutLine
-    { 
-        get { return _outLine;} 
-        protected set { _outLine = value; } 
+    {
+        get { return _outLine; }
+        protected set { _outLine = value; }
     }
-    public  Material OutLineEnchanted
+    public Material OutLineEnchanted
     {
         get; protected set;
     }
     public Material Fade
-    { 
+    {
         get { return _fade; }
-        protected set { _fade = value; } 
+        protected set { _fade = value; }
     }
     //protected float _OGthik;
-    protected Color _OGcolor;
+    protected Color _OGcolor; 
+    #endregion
 
     Rompible rompscript;
+
+    ParticulasEfectos partEfectosScript;
 
     protected virtual void Start()
     {
         rompscript = GetComponent<Rompible>();
+
+        #region Comment
         //_camera = GameManager.Instance.Camera.transform;
         //_itemHolder = GameManager.Instance.ItemHolde;
         //pickUpScript = GameManager.Instance.Player.GetComponentInChildren<PickUp>();
-        //_materialNormal = GetComponent<Material>();
+        //_materialNormal = GetComponent<Material>(); 
+        #endregion
+
         if (_rb == null) _rb = GetComponent<Rigidbody>();
         _speed = 10f;
         _cd = 1;
+
+        #region Comment
         //if (!mediano && !grande)
         //{
         //    GameManager.Instance.Player.NerfLvl1 += NerfObj;
@@ -68,7 +80,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //{
         //    _cd = 3;
         //    _rb.mass = 20f;
-        //}
+        //} 
+        #endregion
 
         switch (weight)
         {
@@ -106,6 +119,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
                 break;
         }
 
+        #region Comment
         //if (mediano || grande)
         //{
         //    if (!GetComponent<NavMeshObstacle>())
@@ -115,7 +129,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //    _navObstacle.carvingMoveThreshold = 0.1f;
         //    _navObstacle.carvingTimeToStationary = 0.4f;
         //    _navObstacle.carveOnlyStationary = true;
-        //}
+        //} 
+        #endregion
 
         if (_renderer != null)
         {
@@ -184,6 +199,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
             pickUpScript._audioSource.loop = false;
         }
 
+        #region Comment
         //if (holding && !_trowed)
         //{
         //    CheckForDrop();
@@ -192,7 +208,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //if(particleGen != null && Time.time - parTime > _parMaxTime)
         //{
         //    particleGen.Stop();
-        //}
+        //} 
+        #endregion
     }
 
     protected void FixedUpdate()
@@ -385,16 +402,34 @@ public class Pickable : Obj_Interactuable , IEnchantable
                 _onAir = false;
                 _trowed = false;
                 trailGen.Stop();
+
+                if (collision.gameObject.GetComponentInChildren<ParticulasEfectos>() != null)
+                {
+                    partEfectosScript = collision.gameObject.GetComponentInChildren<ParticulasEfectos>();
+                    partEfectosScript.ActivarParticulas();
+
+                }
+
+                if (collision.gameObject.GetComponent<NPC>() != null)
+                {
+                    AudioSource source = GetComponent<AudioSource>();
+                    source.clip = GameManager.Instance.bonk;
+                    source.Play();
+
+                }
+
                 if (rompible == true)
                 {
                     rompscript.Rompe();
                     Destroy(gameObject);
                 }
             }
+            #region Comment
             //else if (hitObjs.length != 0)//collision.gameobject.layer != 7
             //{
             //    Drop();
-            //}
+            //} 
+            #endregion
         }
     }
 
@@ -406,6 +441,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
         }
     }
 
+    #region Comment
     //Collider[] hitObjs;
     //void CheckForDrop()
     //{
@@ -414,15 +450,18 @@ public class Pickable : Obj_Interactuable , IEnchantable
     //    {
     //        Drop();
     //    }
-    //}
+    //} 
+    #endregion
 
     public override void SlcFxOn()
     {
+        #region Comment
         //particleGen.Play();
         //parTime = Time.time;
 
         //shaders aca
-        //Debug.Log("<Color=blue> Prendido</color>");
+        //Debug.Log("<Color=blue> Prendido</color>"); 
+        #endregion
         OutLine.SetFloat("_Thickness", _OGthik);
         particleGen.Play();
         parTime = Time.time;
@@ -430,10 +469,12 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     public override void SlcFxOff()
     {
+        #region Comment
         //particleGen.Stop();
 
         //sader aca
-        //Debug.Log("<Color=red> APAGADO </color>");
+        //Debug.Log("<Color=red> APAGADO </color>"); 
+        #endregion
         OutLine.SetFloat("_Thickness", 0f);
         particleGen.Stop(); 
     }
@@ -519,9 +560,11 @@ public class Pickable : Obj_Interactuable , IEnchantable
             Destroy(gameObject);
         }
 
+        #region Comment
         //_player.enchantedObjects.Remove(this);
         //OutLineEnchanted.SetFloat("_Thickness", 0f);
-        //_enchanted = false;
+        //_enchanted = false; 
+        #endregion
         Unenchant(_player);
 
         Debug.Log("<color=purple> Accion realizada </color>");
@@ -529,6 +572,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     public virtual void Unenchant(Player player)
     {
+        #region Comment
         //if (i == 0)
         //{
         //    player.enchantedObjects[0].Unenchant(player);
@@ -536,7 +580,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //}
         //else
         //{
-        //}        
+        //}   
+        #endregion
         OutLineEnchanted.SetFloat("_Thickness", 0f);
         player.enchantedObjects.Remove(this);
         _enchanted = false;

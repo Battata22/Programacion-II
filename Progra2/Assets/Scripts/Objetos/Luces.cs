@@ -95,6 +95,8 @@ public class Luces : Obj_Interactuable
 
     private void Update()
     {
+
+
         if (usos >= random && !rotas)
         {
             rotas = true;
@@ -139,6 +141,7 @@ public class Luces : Obj_Interactuable
             _luces[i].enabled = false;
         }
         on = false;
+        switchPar.on = on;
     }
 
     public void Encendido()
@@ -148,6 +151,7 @@ public class Luces : Obj_Interactuable
             _luces[i].enabled = true;
         }
         on = true;
+        switchPar.on = on;
     }
 
     public void Bluetooth()
