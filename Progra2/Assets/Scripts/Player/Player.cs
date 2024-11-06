@@ -244,7 +244,8 @@ public class Player : MonoBehaviour
             scapeSpam = 0;
         }
     }
-    
+
+    //bool useMovement = true;
 
     private void FixedUpdate()
     {
@@ -263,11 +264,13 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (underAttack && collision.gameObject.layer == 8) randomAxis *=-1; //8 NoTras
+        
     }
 
     void Movement(float xAxis, float zAxis)
     {       
         if (underAttack) return;
+        //if(!useMovement) return;
 
         #region Comment
         //{
@@ -310,6 +313,26 @@ public class Player : MonoBehaviour
 
         _dir = (transform.right * xAxis + transform.forward * zAxis).normalized;
         _rb.position += _dir * _speed * Time.fixedDeltaTime;
+    }
+
+    [SerializeField] PhysicMaterial _bouncyMaterial;
+
+    public void CrazyScape(Vector3 dir)
+    {
+        Debug.Log("ESCAPE FANTASTICO LLAMADO");
+
+        _rb.drag = 0f;
+        _rb.AddForce(dir * 3000, ForceMode.Acceleration);
+        transform.GetComponent<Collider>().material = _bouncyMaterial;
+        StartCoroutine(StopBounce());
+    }
+
+    IEnumerator StopBounce()
+    {
+        yield return new WaitForSeconds(3f);    
+        _rb.velocity = Vector3.zero;
+        _rb.drag = 1f;
+        transform.GetComponent<Collider>().material = null;
     }
 
     void SpriteVidaUpdate()
@@ -474,6 +497,8 @@ public class Player : MonoBehaviour
     private IEnumerator SuctionMult()
     {
         _suctionAntiSpam = true;
+        //useMovement = false;
+        
         while (underAttack)
         {
             var lastSpamnum = scapeSpam;

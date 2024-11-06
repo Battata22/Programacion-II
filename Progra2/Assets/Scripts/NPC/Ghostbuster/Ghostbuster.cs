@@ -254,7 +254,11 @@ public class Ghostbuster : NPC , ICanSlide
     void Attack()
     {
         if(_target.scapeSpam >= _spamScape)
+        {
             EndAttack();
+            _target.CrazyScape((_target.transform.position - transform.position).normalized);
+            return;
+        }
         Vector3 direction = _target.transform.position - transform.position;
         transform.Rotate(direction);
         _target.ApplyForce(-direction, _suctionForce);
