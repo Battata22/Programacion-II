@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Charco : MonoBehaviour
 {
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip caminarNpc, reboteItem;
+
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.TryGetComponent<Asustable>(out Asustable asusScript))
         {
             asusScript.StartSlow();
+            source.clip = caminarNpc;
+            //source.loop = true;
+            source.Play();
         }
     }
 
@@ -18,6 +28,8 @@ public class Charco : MonoBehaviour
         if (other.gameObject.TryGetComponent<Asustable>(out Asustable asusScript))
         {
             asusScript.StopSlow();
+            //source.loop = false;
+            source.Stop();
         }
     }
 }

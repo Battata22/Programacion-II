@@ -5,7 +5,7 @@ using UnityEngine;
 public class MocoPrefab : MonoBehaviour
 {
     Collider self;
-    [SerializeField] AudioClip clip;
+    [SerializeField] AudioClip npcMoco;
     [SerializeField] GameObject charcoPrefab;
 
     void Start()
@@ -24,7 +24,7 @@ public class MocoPrefab : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Asustable>(out Asustable script))
         {
-            script.GetMoco(clip);
+            script.GetMoco(npcMoco);
         } 
 
         if (other.gameObject.GetComponent<Piso>())

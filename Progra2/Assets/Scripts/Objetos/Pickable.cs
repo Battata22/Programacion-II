@@ -18,6 +18,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     [SerializeField] protected float _scareAmount;
 
+    [SerializeField] AudioClip bonk;
+
     #region Comment
     //public delegate void DelegateEventVoid();
     //public event DelegateEventVoid OnThrow, OnDrop;
@@ -413,7 +415,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
                 if (collision.gameObject.GetComponent<NPC>() != null)
                 {
                     AudioSource source = GetComponent<AudioSource>();
-                    source.clip = GameManager.Instance.bonk;
+                    source.clip = bonk;
                     source.Play();
 
                 }

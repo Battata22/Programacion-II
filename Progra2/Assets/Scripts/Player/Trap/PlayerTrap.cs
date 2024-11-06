@@ -17,6 +17,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     [SerializeField] Sprite tornadoFoto, sombraFoto, encantarFoto, mocoFoto, hiloFoto;
     [SerializeField] Transform _lookingAt;
     SpriteRenderer _spriteRenderer;
+    [SerializeField] AudioClip setTrap, setSlime, activarTrap;
 
     public delegate void VoidDelegate();
     public event VoidDelegate OnTrapActive;

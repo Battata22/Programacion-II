@@ -303,7 +303,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
         //_anim.SetBool("Search", false);
         //_anim.SetBool("Doubt", false);
 
-        _agent.speed = _agent.speed * 0.5f;
+        _agent.speed = _agent.speed * 0.2f;
     }
 
     public void StopSlow()

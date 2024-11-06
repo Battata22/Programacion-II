@@ -9,7 +9,7 @@ public class Trap2 : MonoBehaviour
     RaycastHit hit;
     Transform trap1;
 
-    [SerializeField] AudioClip clip;
+    [SerializeField] AudioClip actNpc;
     [SerializeField] LineRenderer linea;
     [SerializeField] float _cooldown;
     [SerializeField] LayerMask _detectableMask;
@@ -36,7 +36,7 @@ public class Trap2 : MonoBehaviour
             if (hit.transform.TryGetComponent<Asustable>(out var asus) && !asus.stuned && asus.scared)
             {
                 print("abuelita vivia en peguajo");
-                asus.GetStun(clip);
+                asus.GetStun(actNpc);
                 _lastActiveTime = Time.time;
                 _canStun = false;
                 linea.enabled = false;

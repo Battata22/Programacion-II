@@ -85,7 +85,7 @@ public class TronadoPrefab : MonoBehaviour
             var dir = transform.position - ragdolls.transform.position;
             rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, ragdolls.transform.position)) * Time.fixedDeltaTime) / rb.mass * 70, ForceMode.Impulse);
 
-            rb.AddForce(transform.up * Time.fixedDeltaTime * fuerzaArriba * 20, ForceMode.Impulse);
+            rb.AddForce(transform.up * Time.fixedDeltaTime * fuerzaArriba * 25, ForceMode.Impulse);
 
             rb.AddTorque(dir);
         }

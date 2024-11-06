@@ -316,10 +316,13 @@ public class Player : MonoBehaviour
     }
 
     [SerializeField] PhysicMaterial _bouncyMaterial;
+    [SerializeField] bool bouncy = false;
 
     public void CrazyScape(Vector3 dir)
     {
         Debug.Log("ESCAPE FANTASTICO LLAMADO");
+
+        bouncy = true;
 
         _rb.drag = 0f;
         _rb.AddForce(dir * 3000, ForceMode.Acceleration);
@@ -329,7 +332,10 @@ public class Player : MonoBehaviour
 
     IEnumerator StopBounce()
     {
-        yield return new WaitForSeconds(3f);    
+        yield return new WaitForSeconds(3f);
+
+        bouncy = false;
+
         _rb.velocity = Vector3.zero;
         _rb.drag = 1f;
         transform.GetComponent<Collider>().material = null;
