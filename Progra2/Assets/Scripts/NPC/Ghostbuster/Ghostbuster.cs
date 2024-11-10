@@ -469,7 +469,7 @@ public class Ghostbuster : NPC , ICanSlide
         base.OnDestroy();    
     }
 
-    public void StartSlide()
+    public void StartSlide(Vector3 dir ,float _impulseForce = 8f)
     {
         if (_isAttacking) return;
         //Debug.Log("<color=green> Slide de Asustable </color>");
@@ -482,8 +482,8 @@ public class Ghostbuster : NPC , ICanSlide
         //En vez de que salga disparado el GB podemos hacer que se caiga
 
         StopAnger();
-        var dir = transform.forward;
-        var _impulseForce = 8f;
+        //var dir = transform.forward;
+        //var _impulseForce = 8f;
 
         _agent.enabled = false;
         _sliding = true;

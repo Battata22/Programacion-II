@@ -16,7 +16,7 @@ public class Resbalable : MonoBehaviour
         }
         if(onFloor && collision.gameObject.TryGetComponent<ICanSlide>(out _target))
         {
-            _target.StartSlide();
+            _target.StartSlide(collision.transform.forward);
         }
     }
 

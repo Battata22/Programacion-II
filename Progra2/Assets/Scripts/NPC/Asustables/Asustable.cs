@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Asustable : NPC , ICanSlide, IPossessable
+public class Asustable : NPC, ICanSlide, IPossessable
 {
     //[Header("AI")]
     //[SerializeField] float _changeNodeDist = 0.5f;
@@ -16,7 +16,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
 
     public bool shivers = false, scared = false, mocod = false, stuned = false;//, _doubt = false, _inPlace = false;
-    bool _lookingActive =  false;
+    bool _lookingActive = false;
 
     [SerializeField] Slider _sliderBarra;
 
@@ -99,8 +99,8 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
         if (!_AIActive) return;
         if (_actualNode == null) Initialize();
-        if ((!_doubt && !_lookingActive &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
-        {          
+        if ((!_doubt && !_lookingActive && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
+        {
             StartCoroutine(LookAround());
             #region comment
             //_actualNode = GetNewNode(_actualNode);
@@ -113,7 +113,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
         if (_doubt && Vector3.SqrMagnitude(transform.position - new Vector3(_searchingPos.x, transform.position.y, _searchingPos.z)) <= (_changeNodeDist * _changeNodeDist))
         {
             _agent.speed = 0;
-            
+
             if (!_inPlace)
             {
                 //_inPlace = true;
@@ -152,13 +152,13 @@ public class Asustable : NPC , ICanSlide, IPossessable
             shivers = false;
         }
 
-        if(waitMoco >= tiempoDeMoco && mocod)
+        if (waitMoco >= tiempoDeMoco && mocod)
         {
             StopMoco();
             mocod = false;
         }
 
-        
+
 
         if (scared == true && _waitscared >= tiempoDeSusto)
         {
@@ -185,7 +185,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
         //if (!_doubt) _waitDoubt = 0;
 
-        if(Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             Ganarga(4f);
             //Ganarga(1f);
@@ -193,7 +193,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
             //Ganarga(1f);
         }
 
-        if(_sliding && _rb.velocity.sqrMagnitude < 0.5f * 0.5f)
+        if (_sliding && _rb.velocity.sqrMagnitude < 0.5f * 0.5f)
         {
             StopSlide();
         }
@@ -351,7 +351,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
 
     public override void GetDoubt(Vector3 pos)
     {
-        if(!_AIActive) return;
+        if (!_AIActive) return;
         if (scared) return;
         //Debug.Log("Duda de asustable");
         _anim.SetBool("Doubt", true);
@@ -437,7 +437,9 @@ public class Asustable : NPC , ICanSlide, IPossessable
         //}
     }
 
-    public void StartSlide()
+
+    
+    public void StartSlide(Vector3 dir, float _impulseForce = 8f)
     {
         Debug.Log("<color=green> Slide de Asustable </color>");
         //desactivar navmesh
@@ -446,9 +448,12 @@ public class Asustable : NPC , ICanSlide, IPossessable
         //dar impulso
         //setear animacion
 
-        var dir = transform.forward;
-        var _impulseForce = 8f;
-        
+        //var dir = transform.forward;
+        //var _impulseForce = 8f;
+        StopSearching();
+
+        transform.forward = dir;
+
         _agent.enabled = false;
         _sliding = true;
         _rb.useGravity = true;
@@ -502,7 +507,7 @@ public class Asustable : NPC , ICanSlide, IPossessable
         possesed = false;
 
         _rb.useGravity = false;
-        _agent.enabled = true; 
+        _agent.enabled = true;
         _agent.SetDestination(_actualNode.position);
         //Remove PossessBehavior
     }
@@ -549,9 +554,17 @@ public class Asustable : NPC , ICanSlide, IPossessable
     {
         _myRagdollSwitch.ActivateRagdoll();
     }
-
-    public void CallRagdollOff()
+    /// <summary>
+    /// Cambia de ragdoll a NPC normal
+    /// </summary>
+    /// <param name="wait"> Delay al ser llamado (el objeto que llama debe existir por mas tiempo que el delay)</param>
+    /// <param name="scareOnEnd"> Asustar NPC al activarse</param>
+    /// <returns></returns>
+    public IEnumerator CallRagdollOff(float wait = 0f , bool scareOnEnd = false)
     {
+        yield return new WaitForSeconds(wait);
         _myRagdollSwitch.DeactivateRagdoll();
+        if (scareOnEnd)
+            GetScared(1f, _actualNode);
     }
 }

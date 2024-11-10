@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerTrap : MonoBehaviour, IInteractable
 {
-    CreatePlayerTrap _createTrapScript;
+    //CreatePlayerTrap _createTrapScript;
     CreateShadow _createShadowScript;
 
     [SerializeField] GameObject _mesh, icono;
@@ -85,7 +85,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     }
     public void Initialize(CreatePlayerTrap newScript, DelegateType.VoidDelegateTrans newAction, float newCD)
     {
-        _createTrapScript = newScript;
+        //_createTrapScript = newScript;
         myAction = newAction;
         _cd = newCD;
     }

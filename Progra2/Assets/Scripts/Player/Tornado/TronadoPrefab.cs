@@ -180,7 +180,7 @@ public class TronadoPrefab : MonoBehaviour
 
         for (int i = 0; i < asustables.Count; i++)
         {
-            asustables[i].CallRagdollOff();
+            StartCoroutine(asustables[i].CallRagdollOff());
         }
 
         Collider[] collidersNPCs = Physics.OverlapSphere(transform.position, radio * 2.5f, maskNPC);

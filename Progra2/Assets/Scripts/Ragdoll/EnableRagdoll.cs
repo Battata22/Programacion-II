@@ -29,10 +29,10 @@ public class EnableRagdoll : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            Action();
-        }
+        ////if (Input.GetKeyUp(KeyCode.P))
+        ////{
+        ////    Action();
+        ////}
     }
 
     public void ActivateRagdoll()
@@ -45,6 +45,16 @@ public class EnableRagdoll : MonoBehaviour
         Action = DeactivateRagdoll;
     }
 
+    public void ActivateRagdoll(Vector3 dir)
+    {
+        print("<color=green> Ragdoll Activado </color>");
+
+        var ragdoll = Instantiate(_ragdollPrefab, transform.position, Quaternion.identity);
+        ragdoll.Initialize(this, dir, _forceMult, _impulsePelvis);
+        _npc.TurnOff();
+        Action = DeactivateRagdoll;
+    }
+
     public void DeactivateRagdoll()
     {
 
@@ -53,7 +63,7 @@ public class EnableRagdoll : MonoBehaviour
         _npc.TurnOn();
         OnDeactivate();
 
-        Action = ActivateRagdoll;
+        //Action = ActivateRagdoll;
     }
 
 }

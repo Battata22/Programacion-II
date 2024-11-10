@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     Rigidbody _rb;
     Vector3 Spawn = new Vector3(0f, 1f, 0f);
     [SerializeField] private Transform _itemHolder;
-    public int nivel = 1;
+    [SerializeField] public int nivel;
     AudioSource _audioSource;
     [SerializeField] AudioClip clipLevelUp;
 

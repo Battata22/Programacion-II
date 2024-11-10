@@ -15,8 +15,8 @@ public class Shadow : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        _nodes = GameManager.Instance.AiNodes;
-        _actualNode = GetNewNode();
+        ///_nodes = GameManager.Instance.AiNodes;
+        //_actualNode = GetNewNode();
     }
 
     //private void Update()
@@ -57,8 +57,8 @@ public class Shadow : MonoBehaviour
         //pedir a manager lista de npc para girar a verlos o algo
         player = GameManager.Instance.Player;
 
-        if (player.nivel > 2)
-            _lTShadow *= 2.5f;
+        //if (player.nivel > 2)
+        //    _lTShadow *= 2.5f;
         Destroy(gameObject, _lTShadow);
     }
     private void OnTriggerEnter(Collider other)
@@ -68,6 +68,20 @@ public class Shadow : MonoBehaviour
         {
             other.GetComponent<Ghostbuster>().AttackShadow(this.gameObject);
             _col = true;
+        }
+        if(other.TryGetComponent<Asustable>(out Asustable asus))
+        {
+            if (asus.TryGetComponent<EnableRagdoll>(out EnableRagdoll enRag))
+            {
+                var dir = new Vector3(asus.transform.position.x - transform.position.x, asus.transform.position.y + 1 - transform.position.x, asus.transform.position.z - transform.position.z).normalized;
+                enRag.ActivateRagdoll(dir);
+            }
+            else
+                asus.CallRagdollOn();
+
+            StartCoroutine(asus.CallRagdollOff(2f, true));
+
+            Destroy(gameObject,2.1f);    
         }
         //else if (other.gameObject.GetComponent<Asustable>())
         //{

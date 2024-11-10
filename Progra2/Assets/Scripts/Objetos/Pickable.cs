@@ -412,11 +412,17 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
                 }
 
-                if (collision.gameObject.GetComponent<NPC>() != null)
+                if (collision.gameObject.TryGetComponent<Asustable>(out Asustable newNpc))
                 {
                     AudioSource source = GetComponent<AudioSource>();
                     source.clip = bonk;
                     source.Play();
+                    if (weight != Weight.low)
+                    {
+                        newNpc.CallRagdollOn();
+                        StartCoroutine(newNpc.CallRagdollOff(1f, true));
+
+                    }
 
                 }
 
