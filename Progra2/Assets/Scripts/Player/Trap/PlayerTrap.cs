@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerTrap : MonoBehaviour, IInteractable
 {
+    [Header("Para Tutorial")]
+    [SerializeField] bool tornado = false, moco = false, sombra = false;
     //CreatePlayerTrap _createTrapScript;
     CreateShadow _createShadowScript;
 
@@ -24,56 +26,72 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        GameManager.Instance.PlayerTraps.Add(this);
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
-        myAction = delegate { };
-        if (SelectorUI.habAct == 2)
-        {
-            gameObject.AddComponent<CreateShadow>();
-            //_createShadowScript = GetComponent<CreateShadow>();
-        }
-        if (SelectorUI.habAct == 3)
-            myAction += DestroyTrap;
-
-        #region Icono
-        if (SelectorUI.habAct == 1)
+        if (tornado)
         {
             _spriteRenderer.sprite = tornadoFoto;
         }
-        else if (SelectorUI.habAct == 2)
-        {
-            _spriteRenderer.sprite = sombraFoto;
-        }
-        else if (SelectorUI.habAct == 3)
-        {
-            _spriteRenderer.sprite = encantarFoto;
-        }
-        else if (SelectorUI.habAct == 4)
+        else if (moco)
         {
             _spriteRenderer.sprite = mocoFoto;
         }
-        else if (SelectorUI.habAct == 5)
+        else if (sombra)
         {
-            _spriteRenderer.sprite = hiloFoto;
+            _spriteRenderer.sprite = sombraFoto;
         }
-        else if (SelectorUI.habAct == 6)
+        else
         {
-            _spriteRenderer.sprite = null;
+            GameManager.Instance.PlayerTraps.Add(this);
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+            myAction = delegate { };
+            if (SelectorUI.habAct == 2)
+            {
+                gameObject.AddComponent<CreateShadow>();
+                //_createShadowScript = GetComponent<CreateShadow>();
+            }
+            if (SelectorUI.habAct == 3)
+                myAction += DestroyTrap;
+
+            #region Icono
+            if (SelectorUI.habAct == 1)
+            {
+                _spriteRenderer.sprite = tornadoFoto;
+            }
+            else if (SelectorUI.habAct == 2)
+            {
+                _spriteRenderer.sprite = sombraFoto;
+            }
+            else if (SelectorUI.habAct == 3)
+            {
+                _spriteRenderer.sprite = encantarFoto;
+            }
+            else if (SelectorUI.habAct == 4)
+            {
+                _spriteRenderer.sprite = mocoFoto;
+            }
+            else if (SelectorUI.habAct == 5)
+            {
+                _spriteRenderer.sprite = hiloFoto;
+            }
+            else if (SelectorUI.habAct == 6)
+            {
+                _spriteRenderer.sprite = null;
+            }
+            else if (SelectorUI.habAct == 7)
+            {
+                _spriteRenderer.sprite = null;
+            }
+            else if (SelectorUI.habAct == 8)
+            {
+                _spriteRenderer.sprite = null;
+            }
+            else if (SelectorUI.habAct == 0)
+            {
+                _spriteRenderer.sprite = null;
+            }
+            #endregion
         }
-        else if (SelectorUI.habAct == 7)
-        {
-            _spriteRenderer.sprite = null;
-        }
-        else if (SelectorUI.habAct == 8)
-        {
-            _spriteRenderer.sprite = null;
-        }
-        else if (SelectorUI.habAct == 0)
-        {
-            _spriteRenderer.sprite = null;
-        }
-        #endregion
+
 
     }
 

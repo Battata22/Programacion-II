@@ -523,7 +523,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
         if (pl.enchantedObjects.Count > pl.maxEnchantable   )
         {
             //pl.enchantedObjects[pl.enchantedObjects.Count - 1].Unenchant(pl);
-            pl.createTrapScript.CreateTrap();
+            pl.createTrapScript.CreateTrap(transform.position);
             pl.enchantedTrap = true;
         }
         //else

@@ -36,7 +36,7 @@ public class CreatePlayerTrap : MonoBehaviour
         {
             if (Input.GetKeyDown(trapKey) && currentTraps < maxTraps)
             {
-                CreateTrap();
+                CreateTrap(transform.position);
             }
         }
 
@@ -57,12 +57,12 @@ public class CreatePlayerTrap : MonoBehaviour
         //trapSliderGenerica.value = trapSlider.value;
     }
 
-    public void CreateTrap()
+    public void CreateTrap(Vector3 ubi)
     {
         currentTraps++;
         currentAbility = SelectorUI.habilitiesManager;
         //crear Trampa
-        var newTrap = Instantiate(trapPrefab, transform.position, Quaternion.identity);
+        var newTrap = Instantiate(trapPrefab, ubi, Quaternion.identity);
         newTrap.OnTrapActive += TrapActivada;
         newTrap.Initialize(this, currentAbility, _trapCD);
         //Iniciar trampa
