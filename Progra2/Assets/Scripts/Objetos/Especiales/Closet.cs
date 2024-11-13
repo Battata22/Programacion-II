@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Closet : SpecialObject
 {
+    [SerializeField] GameObject jumpScaredPrefab;
     protected override void Awake()
     {
         CreateTrap();
@@ -11,6 +12,9 @@ public class Closet : SpecialObject
 
     protected override void ObjectAbility(Transform origin)
     {
+
+        Instantiate(jumpScaredPrefab, transform.position, Quaternion.identity);
+
         Collider[] coliders = Physics.OverlapSphere(origin.position, _detectRadius, _detectableLayers);
         Debug.Log(coliders.Length);
         foreach (Collider colider in coliders)

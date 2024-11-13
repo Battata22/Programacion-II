@@ -167,7 +167,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
             trailGen.Stop();
         }
 
-        _scareAmount = 1f;
+        //_scareAmount = 1f;
         _dropLayers = GameManager.Instance.DropLayers;
         particleGen = GetComponentInChildren<ParticleSystem>();
     }

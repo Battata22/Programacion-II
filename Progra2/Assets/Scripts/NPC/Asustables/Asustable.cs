@@ -248,6 +248,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
             _actualNode = direction;
         _agent.SetDestination(_actualNode.position);
         Ganarga(scareAmount);
+
     }
 
     protected override void StopScare()
@@ -438,7 +439,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     void Ganarga(float num)
     {
-        //_sliderBarra.value += num;
+        _sliderBarra.value += num;
         //if (_sliderBarra.value <= 1)
         //{
         //    GameManager.Instance.Player.nivel = 1;
