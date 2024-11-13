@@ -582,7 +582,14 @@ public class Asustable : NPC, ICanSlide, IPossessable
     /// <param name="wait"> Delay al ser llamado (el objeto que llama debe existir por mas tiempo que el delay)</param>
     /// <param name="scareOnEnd"> Asustar NPC al activarse</param>
     /// <returns></returns>
-    public IEnumerator CallRagdollOff(float wait = 0f , bool scareOnEnd = false)
+    /// 
+
+    public void CallRagdollOff(float wait = 0f, bool scareOnEnd = false)
+    {
+        StartCoroutine(RagdollOff(wait, scareOnEnd));
+    }
+
+    private IEnumerator RagdollOff(float wait = 0f , bool scareOnEnd = false)
     {
         yield return new WaitForSeconds(wait);
         _myRagdollSwitch.DeactivateRagdoll();

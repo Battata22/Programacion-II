@@ -79,7 +79,9 @@ public class Shadow : MonoBehaviour
             else
                 asus.CallRagdollOn();
 
-            StartCoroutine(asus.CallRagdollOff(2f, true));
+            
+            asus.CallRagdollOff(2f, true);
+            //StartCoroutine(asus.CallRagdollOff(2f, true));
 
             Destroy(gameObject,2.1f);    
         }
