@@ -7,6 +7,7 @@ using UnityEngine.Video;
 
 public class VideoIntro : MonoBehaviour
 {
+    [SerializeField] bool tutorial = false;
     [SerializeField] Image marco1, marco2, marco3, vida, negro;
     [SerializeField] GameObject player, entrada, barra, crosshair, skipBoton, postit /* gato, abuela, perro */, textoTraps, abuelaDormida;
     public VideoPlayer videoPlayer;
@@ -19,29 +20,44 @@ public class VideoIntro : MonoBehaviour
 
     void Start()
     {
-        apagado();
-        waitVideo = 0;
-        videoPlayer.Play();
-        tepeado = false;
+        if (tutorial == false)
+        {
+            apagado();
+            waitVideo = 0;
+            videoPlayer.Play();
+            tepeado = false;
+        }
+        else if (tutorial == true)
+        {
+            waitVideo = 0;
+            videoPlayer.Play();
+        }
     }
 
 
     void Update()
     {
-        
-        if (waitVideo >= videoPlayer.length && tepeado == false)
+
+        if (tutorial == false)
         {
-            prendido();
-            TPGus();
-            tepeado = true;
-            GameManager.Instance.Player.UpdateTerrorFrame();
+            if (waitVideo >= videoPlayer.length && tepeado == false)
+            {
+                prendido();
+                TPGus();
+                tepeado = true;
+                GameManager.Instance.Player.UpdateTerrorFrame();
+            }
+
+            waitVideo += Time.deltaTime;
+
+            if (Input.GetKeyUp(KeyCode.F) && tepeado == false)
+            {
+                SkipButton();
+            }
         }
-
-        waitVideo += Time.deltaTime;
-
-        if (Input.GetKeyUp(KeyCode.F) && tepeado == false)
+        else if (tutorial == true)
         {
-            SkipButton();
+            GameManager.Instance.Player.UpdateTerrorFrame();
         }
     }
 

@@ -30,6 +30,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     EnableRagdoll _myRagdollSwitch;
 
+    [SerializeField] bool tutorial = false;
+
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
 
@@ -79,18 +81,38 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     protected override void Start()
     {
-        base.Start();
-        _rb = GetComponent<Rigidbody>();
-        //yield return null;
-        _anim = GetComponentInChildren<Animator>();
+        if (tutorial == false)
+        {
+            base.Start();
+            _rb = GetComponent<Rigidbody>();
+            //yield return null;
+            _anim = GetComponentInChildren<Animator>();
 
-        PhaseManager.TrapPhaseActive += TrapPhase;
-        PhaseManager.GameplayPhaseActive += GameplayPhase;
-        gameObject.SetActive(false);
+            PhaseManager.TrapPhaseActive += TrapPhase;
+            PhaseManager.GameplayPhaseActive += GameplayPhase;
+            gameObject.SetActive(false);
+        }
+        else if (tutorial == true)
+        {
+            base.Start();
+            _rb = GetComponent<Rigidbody>();
+            //yield return null;
+            _anim = GetComponentInChildren<Animator>();
+
+            PhaseManager.TrapPhaseActive += TrapPhase;
+            PhaseManager.GameplayPhaseActive += GameplayPhase;
+
+            GetScaredTuto();
+        }
     }
 
     private void Update()
     {
+        //if (tutorial == true)
+        //{
+        //    GetScaredTuto();
+        //}
+
         if (waitStun >= tiempoDeStun && stuned)
         {
             StopStun();
@@ -566,5 +588,27 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _myRagdollSwitch.DeactivateRagdoll();
         if (scareOnEnd)
             GetScared(1f, _actualNode);
+    }
+
+    public void GetScaredTuto()
+    {
+        _anim.SetFloat("zAxis", 1f);
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+        _anim.SetBool("Doubt", false);
+
+        _doubt = false;
+        _particulas.scared = true;
+        scared = true;
+        _agent.speed = speedScared;
+        _waitRandom = 0f;
+        _audioSource.clip = gritoClip;
+        _audioSource.Play();
+        _waitscared = 0;
+
+        
+        _rb.AddForce(transform.forward * 50 * Time.deltaTime, ForceMode.Force);
     }
 }
