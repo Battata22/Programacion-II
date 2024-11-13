@@ -420,7 +420,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
                     if (weight != Weight.low)
                     {
                         newNpc.CallRagdollOn();
-                        StartCoroutine(newNpc.CallRagdollOff(1f, true));
+                        newNpc.CallRagdollOff(1f, true);
+                        //StartCoroutine(newNpc.CallRagdollOff(1f, true));
 
                     }
 
