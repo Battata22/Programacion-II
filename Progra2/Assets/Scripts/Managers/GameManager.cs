@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -119,6 +119,11 @@ public class GameManager : MonoBehaviour
     public List<PlayerTrap> PlayerTraps;
 
     public AudioClip bonk;
+
+    public AudioClip ghostSong;
+
+    public Slider barraGanar;
+    
 }
 
 

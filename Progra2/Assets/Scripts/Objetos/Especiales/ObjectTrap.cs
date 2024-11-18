@@ -13,6 +13,12 @@ public class ObjectTrap : MonoBehaviour, IInteractable
     public DelegateType.VoidDelegateTrans myAction;
     bool canAct = true;
     float _cd;
+    SpriteRenderer _icono;
+
+    private void Start()
+    {
+        _icono = GetComponentInChildren<SpriteRenderer>();
+    }
 
     public void Initialize(DelegateType.VoidDelegateTrans newAction, float newCD)
     {
@@ -37,6 +43,7 @@ public class ObjectTrap : MonoBehaviour, IInteractable
     {
         _mesh.SetActive(false);
         canAct = false;
+        _icono.sprite = null;
 
         //Debug.Log($"Inactive for {_cd} seconds");
 

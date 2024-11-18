@@ -58,4 +58,9 @@ public class BotonesMenu : MonoBehaviour
     {
         SceneManager.LoadScene("AssetsMuseo");
     }
+
+    public void TutoOnClicked()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 }

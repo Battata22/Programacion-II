@@ -30,6 +30,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     EnableRagdoll _myRagdollSwitch;
 
+    [SerializeField] bool tutorial = false;
+
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
 
@@ -79,18 +81,38 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     protected override void Start()
     {
-        base.Start();
-        _rb = GetComponent<Rigidbody>();
-        //yield return null;
-        _anim = GetComponentInChildren<Animator>();
+        if (tutorial == false)
+        {
+            base.Start();
+            _rb = GetComponent<Rigidbody>();
+            //yield return null;
+            _anim = GetComponentInChildren<Animator>();
 
-        PhaseManager.TrapPhaseActive += TrapPhase;
-        PhaseManager.GameplayPhaseActive += GameplayPhase;
-        gameObject.SetActive(false);
+            PhaseManager.TrapPhaseActive += TrapPhase;
+            PhaseManager.GameplayPhaseActive += GameplayPhase;
+            gameObject.SetActive(false);
+        }
+        else if (tutorial == true)
+        {
+            base.Start();
+            _rb = GetComponent<Rigidbody>();
+            //yield return null;
+            _anim = GetComponentInChildren<Animator>();
+
+            PhaseManager.TrapPhaseActive += TrapPhase;
+            PhaseManager.GameplayPhaseActive += GameplayPhase;
+
+            GetScaredTuto();
+        }
     }
 
     private void Update()
     {
+        //if (tutorial == true)
+        //{
+        //    GetScaredTuto();
+        //}
+
         if (waitStun >= tiempoDeStun && stuned)
         {
             StopStun();
@@ -226,6 +248,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
             _actualNode = direction;
         _agent.SetDestination(_actualNode.position);
         Ganarga(scareAmount);
+
     }
 
     protected override void StopScare()
@@ -416,7 +439,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     void Ganarga(float num)
     {
-        //_sliderBarra.value += num;
+        _sliderBarra.value += num;
         //if (_sliderBarra.value <= 1)
         //{
         //    GameManager.Instance.Player.nivel = 1;
@@ -560,11 +583,40 @@ public class Asustable : NPC, ICanSlide, IPossessable
     /// <param name="wait"> Delay al ser llamado (el objeto que llama debe existir por mas tiempo que el delay)</param>
     /// <param name="scareOnEnd"> Asustar NPC al activarse</param>
     /// <returns></returns>
-    public IEnumerator CallRagdollOff(float wait = 0f , bool scareOnEnd = false)
+    /// 
+
+    public void CallRagdollOff(float wait = 0f, bool scareOnEnd = false)
+    {
+        StartCoroutine(RagdollOff(wait, scareOnEnd));
+    }
+
+    private IEnumerator RagdollOff(float wait = 0f , bool scareOnEnd = false)
     {
         yield return new WaitForSeconds(wait);
         _myRagdollSwitch.DeactivateRagdoll();
         if (scareOnEnd)
             GetScared(1f, _actualNode);
+    }
+
+    public void GetScaredTuto()
+    {
+        _anim.SetFloat("zAxis", 1f);
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+        _anim.SetBool("Doubt", false);
+
+        _doubt = false;
+        _particulas.scared = true;
+        scared = true;
+        _agent.speed = speedScared;
+        _waitRandom = 0f;
+        _audioSource.clip = gritoClip;
+        _audioSource.Play();
+        _waitscared = 0;
+
+        
+        _rb.AddForce(transform.forward * 50 * Time.deltaTime, ForceMode.Force);
     }
 }
