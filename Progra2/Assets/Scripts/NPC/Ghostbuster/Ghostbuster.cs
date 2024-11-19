@@ -134,13 +134,13 @@ public class Ghostbuster : NPC , ICanSlide
         }
         //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA agria
 
-        //if(_angry && !_isAttacking && Time.time - _waitAnger > _angerTime)
-        //{
-        //    StopAnger();
-        //    //Debug.Log("<color=red> Despues de stop </color>");
-        //    _agent.SetDestination(GetNewNode(_actualNode).position);
-        //    //Debug.Log("<color=green> Despues de set destination </color>");
-        //}
+        if (_angry && !_isAttacking && Time.time - _waitAnger > _angerTime)
+        {
+            StopAnger();
+            //Debug.Log("<color=red> Despues de stop </color>");
+            _agent.SetDestination(GetNewNode(_actualNode).position);
+            //Debug.Log("<color=green> Despues de set destination </color>");
+        }
         if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && !_sliding 
             && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
         {

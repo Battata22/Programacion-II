@@ -398,12 +398,14 @@ public class Pickable : Obj_Interactuable , IEnchantable
                 //    ActivateNavObstacle();
                 //}
                 #endregion
-
-                choc.scareAmount = _scareAmount;
-                choc.Choco(transform.position);
-                _onAir = false;
-                _trowed = false;
-                trailGen.Stop();
+                if (collision.gameObject.GetComponent<Asustable>() == null)
+                {
+                    choc.scareAmount = _scareAmount;
+                    choc.Choco(transform.position);
+                    _onAir = false;
+                    _trowed = false;
+                    trailGen.Stop();
+                }
 
                 if (collision.gameObject.GetComponentInChildren<ParticulasEfectos>() != null)
                 {
@@ -414,6 +416,10 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
                 if (collision.gameObject.TryGetComponent<Asustable>(out Asustable newNpc))
                 {
+                    _onAir = false;
+                    _trowed = false;
+                    trailGen.Stop();
+                    choc.ChocoNPC(transform.position, newNpc);
                     AudioSource source = GetComponent<AudioSource>();
                     source.clip = bonk;
                     source.Play();

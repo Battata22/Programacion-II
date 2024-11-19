@@ -29,6 +29,13 @@ public class CreatePlayerTrap : MonoBehaviour
 
     private void Update()
     {
+
+        if (currentTraps < 0)
+        {
+            currentTraps = 0;
+        }
+
+
         textoTraps.text = ("Trampas Utilizadas: " + currentTraps + " de " + maxTraps);
 
         // 0 siempre, 6 7 y 8 por que todavia no existe trampa para ellos
@@ -59,6 +66,7 @@ public class CreatePlayerTrap : MonoBehaviour
 
     public void CreateTrap(Vector3 ubi)
     {
+
         currentTraps++;
         currentAbility = SelectorUI.habilitiesManager;
         //crear Trampa

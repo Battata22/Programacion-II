@@ -482,7 +482,8 @@ public class Player : MonoBehaviour
             _electricMat.SetFloat("_Active", 1);
             if (waitFrezze >= _frezzeCD)
             {
-                _speed = 2;
+                _speed = 3;
+                print("se seteo a 2");
                 waitSlow = 0;
                 _canFrezze2 = false;
             }
@@ -491,7 +492,8 @@ public class Player : MonoBehaviour
         {
             if (waitSlow >= _slowCD)
             {
-                _speed = 5;
+                _speed = 7;
+                print("se seteo a 5");
                 _traped = false;
                 _canFrezze2 = true;
                 waitFrezze = 0;

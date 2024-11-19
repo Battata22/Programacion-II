@@ -26,6 +26,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
     private void Awake()
     {
+
         if (tornado)
         {
             _spriteRenderer.sprite = tornadoFoto;

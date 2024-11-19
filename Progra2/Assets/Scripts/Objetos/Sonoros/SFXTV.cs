@@ -12,6 +12,20 @@ public class SFXTV : SFX
         base.Awake();
         _audioClip = _tV;
     }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (_trowed)
+        {
+            _audioSource.clip = null;
+            _audioSource.loop = false;
+        }
+        else
+        {
+
+        }
+    }
     public override void PlayMusic(AudioClip _clip1)
     {
         if (isPlaying == false)
@@ -22,6 +36,10 @@ public class SFXTV : SFX
         {
             _pantalla.SetActive(false);
         }
-        base.PlayMusic(_tV);   
+
+        base.PlayMusic(_tV);
+        _audioSource.clip = _tV;
+        _audioSource.loop = true;
+
     }
 }

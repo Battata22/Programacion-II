@@ -13,6 +13,8 @@ public class TronadoPrefab : MonoBehaviour
 
     void Start()
     {
+
+
         //Torque();
         Invoke("SelfDestruct", duracion);
 
@@ -112,40 +114,42 @@ public class TronadoPrefab : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //Collider[] colliders = Physics.OverlapSphere(transform.position, radio, maskTornado);
 
-        if (other.GetComponent<Rigidbody>() != null && (other.GetComponent<Pickable>() != null || other.GetComponent<RagdollHips>() !=null))
-        {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            var dir = transform.position - other.transform.position;
-            var conterDir = other.transform.position - transform.position;
+            //Collider[] colliders = Physics.OverlapSphere(transform.position, radio, maskTornado);
 
-            if(Vector3.Distance(other.transform.position, transform.position) > 1)
+            if (other.GetComponent<Rigidbody>() != null && (other.GetComponent<Pickable>() != null || other.GetComponent<RagdollHips>() != null))
             {
-                if (rb.mass <= 2)
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+
+                var dir = transform.position - other.transform.position;
+                var conterDir = other.transform.position - transform.position;
+
+                if (Vector3.Distance(other.transform.position, transform.position) > 1)
                 {
-                    rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass, ForceMode.Impulse);
+                    if (rb.mass <= 2)
+                    {
+                        rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass, ForceMode.Impulse);
+                    }
+                    else if (rb.mass > 2 && rb.mass <= 4)
+                    {
+                        rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass * 2, ForceMode.Impulse);
+                    }
+                    //if(rb.mass == 3.125f)
+                    //{
+                    //    Debug.Log("Afectando a la vieja");
+                    //    rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass * 200, ForceMode.Impulse);
+                    //} //masa exacta de la pelvis del ragdoll
+
                 }
-                else if (rb.mass > 2 && rb.mass <= 4)
+                else
                 {
-                    rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass * 2, ForceMode.Impulse);
+                    rb.AddForce(conterDir * Time.fixedDeltaTime, ForceMode.Impulse);
                 }
-                //if(rb.mass == 3.125f)
-                //{
-                //    Debug.Log("Afectando a la vieja");
-                //    rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, other.transform.position)) * Time.fixedDeltaTime) / rb.mass * 200, ForceMode.Impulse);
-                //} //masa exacta de la pelvis del ragdoll
 
-            }
-            else
-            {
-                rb.AddForce(conterDir * Time.fixedDeltaTime, ForceMode.Impulse);
-            }
+                rb.AddForce(transform.up * Time.fixedDeltaTime * fuerzaArriba, ForceMode.Impulse);
 
-            rb.AddForce(transform.up * Time.fixedDeltaTime * fuerzaArriba, ForceMode.Impulse);
-
-            rb.AddTorque(dir);
+                rb.AddTorque(dir);
 
             #region Comment
             //rb.useGravity = false;
@@ -157,7 +161,7 @@ public class TronadoPrefab : MonoBehaviour
 
             //other.isTrigger = true; 
             #endregion
-        }
+            }
 
     }
 

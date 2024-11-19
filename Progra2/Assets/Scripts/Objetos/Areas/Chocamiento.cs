@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -29,6 +30,7 @@ public class Chocamiento : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _objScript = gameObject.GetComponent<Pickable>();  
+        
     }
     private void Start()
     {
@@ -45,7 +47,7 @@ public class Chocamiento : MonoBehaviour
 
         _audioSource.clip = GameManager.Instance.choque;
         _audioSource.Play();
-        
+ 
         GetFarthestNode();
 
         Collider[] colliders;
@@ -53,10 +55,11 @@ public class Chocamiento : MonoBehaviour
         foreach (var collider in colliders)
         {
             //Debug.Log("<color=blue> Buscando Npc en Susto</color>");
-            if (collider.TryGetComponent<NPC>(out _npcInRange))
+            if (collider.gameObject.TryGetComponent<NPC>(out _npcInRange))
             {
                 //Debug.Log("<color=pink> NPC en area Susto </color>");
-                if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
+                if (Vector3.Distance(pos, _npcInRange.transform.position) <= _scareRange)
+                //if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
                 {
                     GetBetterNode(_npcInRange, GameManager.Instance.Player);
                     _npcInRange.GetScared(scareAmount, _finalNode);
@@ -78,6 +81,23 @@ public class Chocamiento : MonoBehaviour
                 }
             }
         }
+
+    }
+
+    public void ChocoNPC(Vector3 pos, Asustable asustableScript)
+    {
+        //Instantiate(areas, pos, Quaternion.identity);
+        //Debug.Log("<color=yellow> CHocamiento </color>");
+
+        GetFarthestNode();
+
+
+        //print("antes del nodo");
+        //GetBetterNode(_npcInRange, GameManager.Instance.Player);
+        //print("despues del nodo");
+        asustableScript.GetScared(scareAmount/*, _finalNode*/);
+        print("despues del get scared");
+
     }
 
     public void ChocoSonoro(Vector3 pos)
