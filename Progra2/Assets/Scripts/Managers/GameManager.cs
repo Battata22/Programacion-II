@@ -123,7 +123,10 @@ public class GameManager : MonoBehaviour
     public AudioClip ghostSong;
 
     public Slider barraGanar;
-    
+
+    public bool canActiveTuto = true;
+
+
 }
 
 

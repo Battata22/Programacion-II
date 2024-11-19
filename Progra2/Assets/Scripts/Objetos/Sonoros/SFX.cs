@@ -21,6 +21,16 @@ public abstract class SFX : Pickable
         else lvlRequired = 1;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        if (_trowed)
+        {
+            _audioSource.clip = null;
+            _audioSource.loop = false;
+        }
+    }
+
     protected override void Start()
     {
         _renderer = GetComponent<Renderer>();

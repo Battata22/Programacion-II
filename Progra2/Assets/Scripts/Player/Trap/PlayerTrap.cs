@@ -114,16 +114,21 @@ public class PlayerTrap : MonoBehaviour, IInteractable
         if (!canAct) return;
         StartCoroutine(SetInactive());
 
+        #region Comment
         //if (_createShadowScript)
         //{
         //    _createShadowScript.SpawnShadow(transform);
         //}
-        //else
-            myAction(transform);
+        //else 
+        #endregion
+
+        myAction(transform);
         OnTrapActive();
+        Destroy(gameObject);
         //CreatePlayerTrap.TrapActivada();
     }
 
+    #region Comment
     //private void OnTriggerEnter(Collider other)
     //{
     //    var asus = other.gameObject.GetComponent<Asustable>();
@@ -131,7 +136,8 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     //    {
     //        AsustableDetected(asus);
     //    }
-    //}
+    //} 
+    #endregion
 
     public void AsustableDetected(Asustable target)
     {

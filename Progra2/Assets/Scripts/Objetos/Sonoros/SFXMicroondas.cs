@@ -15,5 +15,6 @@ public class SFXMicroondas : SFX
     public override void PlayMusic(AudioClip _clip1)
     {
         base.PlayMusic(_microondas);
+        _audioSource.clip = _microondas;
     }
 }

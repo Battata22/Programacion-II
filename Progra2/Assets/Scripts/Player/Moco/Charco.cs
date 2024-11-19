@@ -10,6 +10,7 @@ public class Charco : MonoBehaviour
     private void Awake()
     {
         source = GetComponent<AudioSource>();
+        Destroy(gameObject, 4.65f);
     }
 
     private void OnTriggerEnter(Collider other)

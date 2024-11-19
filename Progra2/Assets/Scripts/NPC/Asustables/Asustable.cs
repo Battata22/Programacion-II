@@ -103,6 +103,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
             PhaseManager.GameplayPhaseActive += GameplayPhase;
 
             GetScaredTuto();
+            Destroy(gameObject, 6);
         }
     }
 
@@ -596,6 +597,10 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _myRagdollSwitch.DeactivateRagdoll();
         if (scareOnEnd)
             GetScared(1f, _actualNode);
+        if (tutorial == true)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void GetScaredTuto()
@@ -608,7 +613,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _anim.SetBool("Doubt", false);
 
         _doubt = false;
-        _particulas.scared = true;
+        //_particulas.scared = true;
         scared = true;
         _agent.speed = speedScared;
         _waitRandom = 0f;
@@ -617,6 +622,6 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _waitscared = 0;
 
         
-        _rb.AddForce(transform.forward * 50 * Time.deltaTime, ForceMode.Force);
+        _rb.AddForce(transform.forward * 50 * Time.fixedDeltaTime, ForceMode.Impulse);
     }
 }

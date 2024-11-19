@@ -14,5 +14,6 @@ public class SFXLicuadora : SFX
     public override void PlayMusic(AudioClip _clip1)
     {
         base.PlayMusic(_licuadora);
+        _audioSource.clip = _licuadora;
     }
 }
