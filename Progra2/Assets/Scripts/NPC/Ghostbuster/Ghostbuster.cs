@@ -36,6 +36,9 @@ public class Ghostbuster : NPC , ICanSlide
     Rigidbody _rb;
     bool _sliding;
 
+    public event DelegateType.VoidDelegate OnSlideStop = delegate { };
+
+
     protected override void Start()
     {
         //_agent.speed;
@@ -147,7 +150,7 @@ public class Ghostbuster : NPC , ICanSlide
             StartCoroutine(DelayAttack());
         }
 
-        if (_sliding && _rb.velocity.sqrMagnitude < 0.5f * 0.5f)
+        if (_sliding && Time.time - lastSlide > minSlideTime && _rb.velocity.sqrMagnitude < 0.5f * 0.5f)
         {
             StopSlide();
         }
@@ -469,6 +472,8 @@ public class Ghostbuster : NPC , ICanSlide
         base.OnDestroy();    
     }
 
+    float lastSlide = -1, minSlideTime = 0.1f;
+
     public void StartSlide(Vector3 dir ,float _impulseForce = 8f)
     {
         if (_isAttacking) return;
@@ -507,6 +512,8 @@ public class Ghostbuster : NPC , ICanSlide
 
         GetAngry();
         //_agent.SetDestination(_actualNode.position);
+
+        OnSlideStop();
 
     }
 }

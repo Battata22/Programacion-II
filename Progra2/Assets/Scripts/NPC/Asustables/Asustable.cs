@@ -32,6 +32,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     [SerializeField] bool tutorial = false;
 
+    public event DelegateType.VoidDelegate OnSlideStop = delegate { };
+
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
 
@@ -216,7 +218,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
             //Ganarga(1f);
         }
 
-        if (_sliding && _rb.velocity.sqrMagnitude < 0.5f * 0.5f)
+        if (_sliding && Time.time - lastSlide > minSlideTime && _rb.velocity.sqrMagnitude < 0.1f * 0.1f)
         {
             StopSlide();
         }
@@ -461,7 +463,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
         //}
     }
 
-
+    float lastSlide = -1, minSlideTime = 0.1f;
     
     public void StartSlide(Vector3 dir, float _impulseForce = 8f)
     {
@@ -484,6 +486,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _rb.drag = 0f;
         _rb.AddForce(dir * _impulseForce * _rb.mass, ForceMode.Impulse);
 
+        lastSlide = Time.time;
     }
 
     public void StopSlide()
@@ -502,6 +505,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
         _agent.enabled = true;
         _agent.SetDestination(_actualNode.position);
+
+        OnSlideStop();
 
     }
 

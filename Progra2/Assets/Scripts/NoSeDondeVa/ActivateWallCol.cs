@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ActivateWallCol : MonoBehaviour
 {
-    LayerMask _ogMask;
+    [SerializeField] LayerMask _ogMask;
     [SerializeField] LayerMask _noTras;
 
     private void Awake()
     {
-        _ogMask = gameObject.layer;
+        //_ogMask = gameObject.layer;
         GameManager.Instance.Player.OnCrazyScape += ChangeToNoTras;
     }
 
@@ -23,10 +23,17 @@ public class ActivateWallCol : MonoBehaviour
 
     void ChangeToOG()
     {
-        int layerNum = (int)Mathf.Log(_ogMask.value, 2);
-        gameObject.layer = layerNum;
+        //Debug.Log($" {_ogMask.value}");
+        //int layerNum = (int)Mathf.Log(_ogMask.value, 2);
+        gameObject.layer = 31;// HardCoded because yes
         GameManager.Instance.Player.OnCrazyScape += ChangeToNoTras;
         GameManager.Instance.Player.OnStopBounce -= ChangeToOG;
 
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.Player.OnStopBounce -= ChangeToOG;
+        GameManager.Instance.Player.OnCrazyScape -= ChangeToNoTras;
     }
 }

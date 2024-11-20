@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Fridge : SpecialObject
 {
-    
+    [SerializeField] Ice icePrefab;
+    [SerializeField] GameObject partcleGen;
 
     protected override void Awake()
     {
@@ -59,7 +60,12 @@ public class Fridge : SpecialObject
             {
                 Debug.Log("Congelado");
                 target.StartSlide(transform.forward, 12f);
+
+                var newIce = Instantiate(icePrefab, colider.transform.position, Quaternion.identity);
+                newIce.Initialize(colider.transform);
             }
         }
+        var newSnowGen = Instantiate(partcleGen, transform.position + new Vector3(0,1.5f,0), transform.rotation);
+        Destroy(newSnowGen, 2f);
     }
 }
