@@ -16,7 +16,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
     public float parTime;
     [SerializeField]protected NavMeshObstacle _navObstacle;
 
-    [SerializeField] protected float _scareAmount;
+    [SerializeField] public float _scareAmount;
 
     [SerializeField] AudioClip bonk;
 

@@ -126,6 +126,8 @@ public class GameManager : MonoBehaviour
 
     public bool canActiveTuto = true;
 
+    public CreatePlayerTrap createPlayerTrap;
+
 
 }
 

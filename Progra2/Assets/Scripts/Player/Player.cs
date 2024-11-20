@@ -725,7 +725,7 @@ public class Player : MonoBehaviour
     {
         //print($"<color=#15d629> Player en fase de Gameplay </color>");
         _pickUpScript.interecatKey = KeyCode.E;
-        GetComponent<CreatePlayerTrap>().trapKey = KeyCode.None;
+        //GetComponent<CreatePlayerTrap>().trapKey = KeyCode.None;
     }
 
 }

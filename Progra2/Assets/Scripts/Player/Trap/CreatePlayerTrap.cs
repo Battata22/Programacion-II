@@ -14,13 +14,17 @@ public class CreatePlayerTrap : MonoBehaviour
 
     [SerializeField] PlayerTrap trapPrefab;
     public KeyCode trapKey = KeyCode.F;
-    public float _trapCD, counterNum, maxTraps, currentTraps;
+    public float _trapCD, counterNum, maxTraps, currentTraps, sumadoDeTrampasExtra;
     [SerializeField] Slider trapSlider;
     [SerializeField] TextMeshProUGUI textoTraps;
     //Slider trapSlider;
     float counterTimer;
+    bool sumado = false;
 
-
+    private void Awake()
+    {
+        GameManager.Instance.createPlayerTrap = this;
+    }
 
     //private void Start()
     //{
@@ -45,6 +49,13 @@ public class CreatePlayerTrap : MonoBehaviour
             {
                 CreateTrap(transform.position);
             }
+        }
+
+
+        if (trapSlider.value >= trapSlider.maxValue * 0.5 && !sumado)
+        {
+            maxTraps = maxTraps + sumadoDeTrampasExtra;
+            sumado = true;
         }
 
         if(Input.GetKeyDown(KeyCode.U))

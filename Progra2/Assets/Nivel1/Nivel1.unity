@@ -9486,6 +9486,7 @@ GameObject:
   - component: {fileID: 180522017}
   - component: {fileID: 180522016}
   - component: {fileID: 180522015}
+  - component: {fileID: 180522018}
   m_Layer: 0
   m_Name: CollHabitacion
   m_TagString: Untagged
@@ -9579,6 +9580,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180522013}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &180522018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180522013}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6b71a25c6863f4c8b994cbf1030f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &181400576
 GameObject:
   m_ObjectHideFlags: 0
@@ -43354,6 +43367,7 @@ GameObject:
   - component: {fileID: 663750935}
   - component: {fileID: 663750934}
   - component: {fileID: 663750933}
+  - component: {fileID: 663750936}
   m_Layer: 0
   m_Name: CollCocina
   m_TagString: Untagged
@@ -43447,6 +43461,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663750931}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &663750936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663750931}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6b71a25c6863f4c8b994cbf1030f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &664966276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91659,6 +91685,7 @@ GameObject:
   - component: {fileID: 1449214783}
   - component: {fileID: 1449214782}
   - component: {fileID: 1449214781}
+  - component: {fileID: 1449214784}
   m_Layer: 0
   m_Name: CollComedor
   m_TagString: Untagged
@@ -91752,6 +91779,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449214779}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1449214784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449214779}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6b71a25c6863f4c8b994cbf1030f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1453106713
 GameObject:
   m_ObjectHideFlags: 0
@@ -107988,23 +108027,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9090425097839622199, guid: c07cd17a06eea174faefc3fd28cc2c55, type: 3}
   m_PrefabInstance: {fileID: 1887571285}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1765677550 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6004991956307945265, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
-  m_PrefabInstance: {fileID: 5107572936931249845}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1765677553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765677550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78afb250f0356045baa21e324dd0360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1770699832
 GameObject:
   m_ObjectHideFlags: 0
@@ -118292,6 +118314,7 @@ GameObject:
   - component: {fileID: 2005226603}
   - component: {fileID: 2005226602}
   - component: {fileID: 2005226601}
+  - component: {fileID: 2005226604}
   m_Layer: 0
   m_Name: CollBano
   m_TagString: Untagged
@@ -118385,6 +118408,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005226599}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2005226604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005226599}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6b71a25c6863f4c8b994cbf1030f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2009680377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3205113250053483471, guid: 33e86a5028fe2bc4eb491e2fd27e6b8c, type: 3}
@@ -122525,6 +122560,7 @@ GameObject:
   - component: {fileID: 2067066437}
   - component: {fileID: 2067066436}
   - component: {fileID: 2067066435}
+  - component: {fileID: 2067066438}
   m_Layer: 0
   m_Name: CollLiving
   m_TagString: Untagged
@@ -122618,6 +122654,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067066433}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2067066438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067066433}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6b71a25c6863f4c8b994cbf1030f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2069666286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124007,6 +124055,7 @@ GameObject:
   - component: {fileID: 2088080902}
   - component: {fileID: 2088080901}
   - component: {fileID: 2088080900}
+  - component: {fileID: 2088080903}
   m_Layer: 0
   m_Name: CollPasillo
   m_TagString: Untagged
@@ -124100,6 +124149,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088080898}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2088080903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088080898}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6b71a25c6863f4c8b994cbf1030f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2089020463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1836880719009460438, guid: d15dccbc995a5a346b6f0d12e3660615, type: 3}
@@ -137308,7 +137369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1207496016938574403, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
       propertyPath: maxTraps
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1207496016938574403, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
       propertyPath: counterNum
@@ -137330,6 +137391,10 @@ PrefabInstance:
       propertyPath: trapSliderGenerica
       value: 
       objectReference: {fileID: 796551207}
+    - target: {fileID: 1207496016938574403, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+      propertyPath: sumadoDeTrampasExtra
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3617334581180235942, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
       propertyPath: cooldown
       value: 0
@@ -142096,10 +142161,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6004991956307945265, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1765677553}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
 --- !u!33 &5200658942575854528
 MeshFilter:

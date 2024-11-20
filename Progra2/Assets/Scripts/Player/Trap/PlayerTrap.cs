@@ -155,6 +155,8 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     {
         _mesh.SetActive(false);
         canAct = false;
+        Destroy(gameObject);
+        GameManager.Instance.createPlayerTrap.currentTraps--;
 
         yield return new WaitForSeconds(_cd);
 
