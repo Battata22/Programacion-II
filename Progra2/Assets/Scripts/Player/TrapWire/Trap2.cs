@@ -16,12 +16,15 @@ public class Trap2 : MonoBehaviour
     float _lastActiveTime = -1;
     [SerializeField] bool _canStun = true;
     //[SerializeField] GameObject lineaPrefab;
+    GameObject primer;
 
     private void Awake()
     {
         linea = Instantiate(linea, new Vector3(), Quaternion.identity);
+        primer = GameManager.Instance.firstVisualLinea;
+        GameManager.Instance.firstVisualLinea = null;
 
-        
+
     }
 
     void Update()
@@ -40,6 +43,11 @@ public class Trap2 : MonoBehaviour
                 _lastActiveTime = Time.time;
                 _canStun = false;
                 linea.enabled = false;
+
+                Destroy(linea.gameObject);
+                Destroy(primer.gameObject);
+                Destroy(gameObject);
+                GameManager.Instance.createPlayerTrap.currentTraps--;
                 //hit.transform.GetComponent<Asustable>().GetStun(clip);
             }
 
@@ -51,11 +59,11 @@ public class Trap2 : MonoBehaviour
 
 
 
-        if (Time.time - _lastActiveTime > _cooldown && !_canStun)
-        {
-            _canStun = true;
-            linea.enabled = true;
-        }
+        //if (Time.time - _lastActiveTime > _cooldown && !_canStun)
+        //{
+        //    _canStun = true;
+        //    linea.enabled = true;
+        //}
     }
 
     public void Initialize(Transform localTrap1)

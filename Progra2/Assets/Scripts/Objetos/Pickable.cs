@@ -351,6 +351,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //if (holding == false) return;
         _lastInteract= Time.time;
 
+        GameManager.Instance.imagenBlanco.SetActive(true);
+
         GameManager.Instance.HandState.holding = false;
         GameManager.Instance.HandState.pointing = false;
         GameManager.Instance.HandState.relax = true;
@@ -374,6 +376,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
         _rb.useGravity = true;
         _renderer.material = _materialNormal;
         GameManager.Instance.Player.GetComponent<AudioSource>().Stop();
+
     }
 
     

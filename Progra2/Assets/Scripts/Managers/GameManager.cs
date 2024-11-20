@@ -128,6 +128,12 @@ public class GameManager : MonoBehaviour
 
     public CreatePlayerTrap createPlayerTrap;
 
+    //public List<GameObject> visualesLineas1 = new List<GameObject>();
+
+    public GameObject firstVisualLinea;
+
+    public GameObject imagenBlanco, imagenRojo;
+
 
 }
 

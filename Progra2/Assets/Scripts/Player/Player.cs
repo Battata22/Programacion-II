@@ -594,6 +594,7 @@ public class Player : MonoBehaviour
     {
         if(inmortal) return;
         _hp--;
+        GameManager.Instance.imagenRojo.SetActive(true);
         SpriteVidaUpdate();
         if (_hp <=0)
         {
