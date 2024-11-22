@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Obj_Interactuable : MonoBehaviour 
+public class Obj_Interactuable : MonoBehaviour , IRoomDetectable
 {
     [SerializeField] protected Transform _camera;
     [SerializeField] protected float _cd, _lastInteract; //de momento no usado
@@ -167,4 +167,9 @@ public class Obj_Interactuable : MonoBehaviour
         _outLineAntispam = true ;
     }
 
+    public int actualRoom;
+    public virtual void SetRoom(int room)
+    {
+        actualRoom = room;
+    }
 }

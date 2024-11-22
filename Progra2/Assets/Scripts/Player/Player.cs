@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IRoomDetectable
 {
 
     bool inmortal = false;
@@ -290,22 +290,22 @@ public class Player : MonoBehaviour
         RaycastHit hitR, hitL, hitF, hitB;
         Vector3 pos = new Vector3(transform.position.x, transform.position.y+1f, transform.position.z);
 
-        if (Physics.SphereCast(pos,0.25f, transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")) && xAxis > 0)
+        if (Physics.SphereCast(pos,0.25f, transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")) && !hitR.transform.GetComponent<RoomTrigger>() && xAxis > 0)
         {
             //Debug.Log("<color=ellow> Wall Detected R </color>");
             return;
         }
-        if (Physics.SphereCast(pos,0.25f, -transform.right, out hitL, 0.52f, LayerMask.GetMask("NoTras")) && xAxis < 0)
+        if (Physics.SphereCast(pos,0.25f, -transform.right, out hitL, 0.52f, LayerMask.GetMask("NoTras")) && !hitL.transform.GetComponent<RoomTrigger>() && xAxis < 0)
         {
             //Debug.Log("<color=ellow> Wall Detected L </color>");
             return;
         }
-        if (Physics.SphereCast(pos,0.25f, transform.forward,out hitF, 0.52f, LayerMask.GetMask("NoTras")) && zAxis > 0)
+        if (Physics.SphereCast(pos,0.25f, transform.forward,out hitF, 0.52f, LayerMask.GetMask("NoTras")) && !hitF.transform.GetComponent<RoomTrigger>() && zAxis > 0)
         {
             //Debug.Log("<color=ellow> Wall Detected F </color>");
             return;
         }
-        if (Physics.SphereCast(pos,0.25f, -transform.forward,out hitB, 0.52f, LayerMask.GetMask("NoTras")) && zAxis < 0)
+        if (Physics.SphereCast(pos,0.25f, -transform.forward,out hitB, 0.52f, LayerMask.GetMask("NoTras")) && !hitB.transform.GetComponent<RoomTrigger>() && zAxis < 0)
         {
             //Debug.Log("<color=ellow> Wall Detected B </color>");
             return;
@@ -590,11 +590,17 @@ public class Player : MonoBehaviour
         #endregion
     }
 
+
+    [SerializeField] ParticleSystem _particleSystem;
     public void GetDamage()
     {
         if(inmortal) return;
         _hp--;
         GameManager.Instance.imagenRojo.SetActive(true);
+
+        if(_particleSystem != null)
+            _particleSystem.Play();
+
         SpriteVidaUpdate();
         if (_hp <=0)
         {
@@ -729,4 +735,10 @@ public class Player : MonoBehaviour
         //GetComponent<CreatePlayerTrap>().trapKey = KeyCode.None;
     }
 
+
+    public int actualRoom;
+    public void SetRoom(int room)
+    {
+        actualRoom = room;
+    }
 }

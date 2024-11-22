@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class Chocamiento : MonoBehaviour
+public class Chocamiento : MonoBehaviour, IRoomDetectable
 {
     [SerializeField] AreasSustoYDuda areas;
     [SerializeField] AreasSustoYDudaSonoros areasSonoro;
@@ -58,7 +58,7 @@ public class Chocamiento : MonoBehaviour
             if (collider.gameObject.TryGetComponent<NPC>(out _npcInRange))
             {
                 //Debug.Log("<color=pink> NPC en area Susto </color>");
-                if (Vector3.Distance(pos, _npcInRange.transform.position) <= _scareRange)
+                if (Vector3.Distance(pos, _npcInRange.transform.position) <= _scareRange && actualRoom == _npcInRange.actualRoom)
                 //if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
                 {
                     GetBetterNode(_npcInRange, GameManager.Instance.Player);
@@ -81,6 +81,7 @@ public class Chocamiento : MonoBehaviour
                 }
             }
         }
+        ResetFarthestNode();
 
     }
 
@@ -90,12 +91,12 @@ public class Chocamiento : MonoBehaviour
         //Debug.Log("<color=yellow> CHocamiento </color>");
 
         GetFarthestNode();
-
+        GetBetterNode(asustableScript, GameManager.Instance.Player);
 
         //print("antes del nodo");
         //GetBetterNode(_npcInRange, GameManager.Instance.Player);
         //print("despues del nodo");
-        asustableScript.GetScared(scareAmount/*, _finalNode*/);
+        asustableScript.GetScared(scareAmount, _finalNode);
         print("despues del get scared");
 
     }
@@ -188,9 +189,21 @@ public class Chocamiento : MonoBehaviour
         if(angle3 > angle1 && angle2 > angle3)
             _finalNode = _farthestNode3;
 
+        //_farthestNode = null;
+        //_farthestNode2 = null;
+        //_farthestNode3 = null;
+    }
+
+    void ResetFarthestNode()
+    {
         _farthestNode = null;
         _farthestNode2 = null;
         _farthestNode3 = null;
     }
 
+    public float actualRoom;
+    public void SetRoom(int room)
+    {
+        actualRoom = room;
+    }
 }

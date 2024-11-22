@@ -144,7 +144,7 @@ public class Ghostbuster : NPC , ICanSlide
             _agent.SetDestination(GetNewNode(_actualNode).position);
             //Debug.Log("<color=green> Despues de set destination </color>");
         }
-        if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && !_sliding 
+        if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && !_sliding && _gbFov.hasLOS
             && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
         {
             StartCoroutine(DelayAttack());
@@ -256,6 +256,11 @@ public class Ghostbuster : NPC , ICanSlide
 
     void Attack()
     {
+        //if (!_gbFov.hasLOS)
+        //{
+        //    EndAttack(false); 
+        //    return;
+        //}
         if(_target.scapeSpam >= _spamScape)
         {
             EndAttack();
@@ -280,7 +285,7 @@ public class Ghostbuster : NPC , ICanSlide
         //}
     }
 
-    void EndAttack()
+    void EndAttack(bool setLastAttack = true)
     {
         //if(!_isAttacking) return;
         //Debug.Log("Terminando Ataque");
@@ -300,7 +305,10 @@ public class Ghostbuster : NPC , ICanSlide
         _isAttacking = false;
         _angry = false;
         _target.cameraShake = false;
-        _lastAttack = Time.time;
+
+        if (setLastAttack)
+            _lastAttack = Time.time;
+
         //_agent.speed = 0;
         SetSpeed();
         _audioSource.Stop();
@@ -394,7 +402,8 @@ public class Ghostbuster : NPC , ICanSlide
         yield return new WaitForSeconds(_atkDelay);
         //_isAttacking = true;
         //_particleGen.gameObject.SetActive(true);
-        StartAttack();
+        //if (_gbFov.hasLOS)
+            StartAttack();
 
         //yield return new WaitForSeconds(_attackDuration);
         

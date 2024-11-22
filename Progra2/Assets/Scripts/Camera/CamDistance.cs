@@ -42,8 +42,12 @@ public class CamDistance : MonoBehaviour
             //Debug.Log(hit.transform.name);
 
             //Al colicionar con una pared, guarda el liugar y activa el uso de punto para la posicion d ela camara
+
             _point = hit.point;
-            _cam.usePoint=true;
+            //if (hit.transform.TryGetComponent<Pickable>(out var objecto) && objecto.holding)
+            //    _cam.usePoint = false;
+            //else
+                _cam.usePoint = true;
             
 
         }

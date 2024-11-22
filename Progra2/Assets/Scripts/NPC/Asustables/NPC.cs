@@ -9,7 +9,7 @@ using UnityEngine.UI;
 [RequireComponent (typeof(AudioSource))]
 [RequireComponent(typeof (Rigidbody))]
 
-public abstract class NPC : MonoBehaviour
+public abstract class NPC : MonoBehaviour, IRoomDetectable
 {
     [Header("<color=#e3f4aa>AI</color>")]
     [SerializeField] protected float _changeNodeDist = 0.5f;
@@ -218,6 +218,13 @@ public abstract class NPC : MonoBehaviour
     public virtual void TurnOn() { }
 
     public virtual void TurnOff() { }
+
+
+    public int actualRoom;
+    public virtual void SetRoom(int room)
+    {
+        actualRoom = room;
+    }
 
 
     //public virtual void Slide()

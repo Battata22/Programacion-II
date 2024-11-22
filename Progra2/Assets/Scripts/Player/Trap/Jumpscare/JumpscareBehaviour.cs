@@ -14,7 +14,7 @@ public class JumpscareBehaviour : MonoBehaviour
     [SerializeField] Transform hijo;
     [SerializeField] LayerMask npc;
     [SerializeField] Asustable _npcInRange;
-    [SerializeField] Slider sustos;
+    //[SerializeField] Slider sustos;
 
     void Start()
     {
@@ -105,7 +105,8 @@ public class JumpscareBehaviour : MonoBehaviour
             if(_npcInRange != null)
             {
                 _npcInRange.GetScared(1);
-                sustos.value++;
+                GameManager.Instance.barraGanar.value++;
+                //sustos.value++;
             }
         }
     }

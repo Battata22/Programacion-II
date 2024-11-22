@@ -310,6 +310,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
             pickUpScript.esperaragarre = 0;
             _renderer = GetComponent<Renderer>();
             _renderer.material = _materialFade;
+
+            gameObject.layer = 0;// default
         }
 
 
@@ -317,6 +319,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     public override void Throw(AudioSource _audio, AudioClip arrojar)
     { 
+        gameObject.layer = 7;//LayerObjeto
+
         base.Throw(pickUpScript._audioSource, pickUpScript.tirar);
         _trowed = true;
         //_col.enabled = true;
@@ -348,8 +352,10 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     public void Drop()
     {
+        gameObject.layer = 7;//LayerObjeto
+
         //if (holding == false) return;
-        _lastInteract= Time.time;
+        _lastInteract = Time.time;
 
         GameManager.Instance.imagenBlanco.SetActive(true);
 
@@ -453,7 +459,7 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     protected void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.layer == 31 || other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
+        if (!other.transform.GetComponent<RoomTrigger>() && (other.gameObject.layer == 31 || other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
         {
             Drop();
         }

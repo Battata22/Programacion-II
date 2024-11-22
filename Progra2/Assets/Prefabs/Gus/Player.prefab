@@ -138,6 +138,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &4594500204540109486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7828635271374688951}
+  m_Layer: 6
+  m_Name: CutoutTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7828635271374688951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594500204540109486}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5766728487237538168}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5140997602423290126
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,13 +524,18 @@ MonoBehaviour:
   cameraShake: 0
   attacker: {fileID: 0}
   _shadowPrefab: {fileID: 1524492404015661005, guid: 21b91f5e330373c42afcab9c75e44de4, type: 3}
-  _maxShadows: 1
+  maxShadows: 0
   currentShadows: 0
   opacidadMarco: 0.5
   scapeSpam: 0
   randomAxis: 0
   maxEnchantable: 0
   _mesh: {fileID: 3414413881716956489}
+  createTrapScript: {fileID: 0}
+  enchantedTrap: 0
+  _bouncyMaterial: {fileID: 0}
+  bouncy: 0
+  _particleSystem: {fileID: 0}
   possessing: 0
 --- !u!114 &5894330111274566517
 MonoBehaviour:
@@ -556,7 +592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tornadoPrefab: {fileID: 4027203463996449342, guid: 6d2e61bed950b674b8f8c82398ab08a7, type: 3}
+  camCenter: {fileID: 0}
   cooldown: 15
+  trap:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1207496016938574403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +610,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapPrefab: {fileID: 0}
+  trapKey: 102
+  _trapCD: 0
+  counterNum: 0
+  maxTraps: 0
+  currentTraps: 0
+  sumadoDeTrampasExtra: 0
+  trapSlider: {fileID: 0}
+  textoTraps: {fileID: 0}
 --- !u!114 &747365713452242041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,6 +725,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7377774913252028948}
+  - {fileID: 7828635271374688951}
   m_Father: {fileID: 6243371337675859211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &678197683415485215
@@ -721,6 +770,7 @@ MonoBehaviour:
   _objMask:
     serializedVersion: 2
     m_Bits: 4224
+  interecatKey: 0
 --- !u!114 &5041028379527682875
 MonoBehaviour:
   m_ObjectHideFlags: 0
