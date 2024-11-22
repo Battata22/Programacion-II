@@ -99,7 +99,7 @@ public class VideoIntro : MonoBehaviour
         videoPlayer.enabled = false;
         skipBoton.SetActive(false);
         textoTraps.SetActive(true);
-        GameManager.Instance.Tutorial.StartPickUp();
+        //GameManager.Instance.Tutorial.StartPickUp();
     }
 
     void TPGus()

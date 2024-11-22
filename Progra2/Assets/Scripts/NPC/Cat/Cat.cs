@@ -11,6 +11,7 @@ public class Cat : NPC
     [SerializeField] float _jumpCD, _jumpDis, _jumpForce, _dropDis;
     [SerializeField] bool _canJump, _onFloor, _searchObj;
     [SerializeField] LayerMask _mask, _floorMask;
+    [SerializeField] List<AudioClip> _clips;
     Rigidbody _rb;
     float _lastJump, _rbDrag;
     bool _antiSpam;
@@ -157,12 +158,15 @@ public class Cat : NPC
 
         //_targetObject.Drop();
 
+        SelectAudio();
+
         _targetObject = null;
         _lastJump = Time.time;
     }
 
     void OnFloor()
     {
+        _audioSource.clip = null;
         if (_onFloor) return;
         //StartCoroutine(CheckForObjects());
         _targetObject = null;
@@ -177,5 +181,12 @@ public class Cat : NPC
     public override void GetDoubt(Vector3 pos)
     {
         //base.GetDoubt(pos);
+    }
+
+    private void SelectAudio()
+    {
+        int random = Random.Range(1, _clips.Count + 1);
+        _audioSource.clip = _clips[random];
+        _audioSource.Play();
     }
 }

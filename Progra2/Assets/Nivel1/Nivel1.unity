@@ -785,6 +785,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &10551845
 Rigidbody:
@@ -1586,6 +1589,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &25563944
 Rigidbody:
@@ -2150,6 +2156,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &27460600
 MonoBehaviour:
@@ -3456,6 +3465,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &57500393
 MonoBehaviour:
@@ -4941,6 +4953,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &90685415
 Rigidbody:
@@ -5478,6 +5493,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &91419470
 Rigidbody:
@@ -7333,6 +7351,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &130322812
 Rigidbody:
@@ -8023,6 +8044,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!65 &141667489
 BoxCollider:
@@ -10069,6 +10093,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &181400584
 Rigidbody:
@@ -10986,6 +11013,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -13962,6 +13992,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &213675998
 Rigidbody:
@@ -17190,6 +17223,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &245657216
 MonoBehaviour:
@@ -19204,6 +19240,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &295146590
 Rigidbody:
@@ -20376,6 +20415,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -23112,6 +23154,134 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1754478032499944977, guid: 58eae7bd37568064299f0ad49c5882fd, type: 3}
   m_PrefabInstance: {fileID: 616888623}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &403802496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 403802497}
+  - component: {fileID: 403802498}
+  m_Layer: 10
+  m_Name: DamageSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403802497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403802496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1311896963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &403802498
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403802496}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 54bca5f9b506e4e47b25b63ffda14c65, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.63
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &407178084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24638,6 +24808,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -25100,6 +25273,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -27036,6 +27212,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &457802967
 Rigidbody:
@@ -27691,6 +27870,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &462274625
 Rigidbody:
@@ -30215,6 +30397,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &476650983
 Rigidbody:
@@ -30921,6 +31106,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -31687,6 +31875,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &488727804
 MonoBehaviour:
@@ -32591,6 +32782,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &495126722
 MonoBehaviour:
@@ -33117,6 +33311,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &497564390
 Rigidbody:
@@ -33878,6 +34075,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &504012257
 Rigidbody:
@@ -34415,6 +34615,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &504167916
 Rigidbody:
@@ -35240,6 +35443,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!65 &517360922
 BoxCollider:
@@ -36066,6 +36272,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -37752,6 +37961,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &556946551
 MonoBehaviour:
@@ -39201,6 +39413,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &600380139
 MonoBehaviour:
@@ -40082,6 +40297,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &615972587
 MonoBehaviour:
@@ -41012,6 +41230,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &625218205
 Rigidbody:
@@ -43461,6 +43682,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &660261345
 MonoBehaviour:
@@ -45770,6 +45994,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &690954355
 MonoBehaviour:
@@ -46429,6 +46656,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &698450141
 MonoBehaviour:
@@ -47375,6 +47605,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &714550891
 Rigidbody:
@@ -48088,6 +48321,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &722659589
 MonoBehaviour:
@@ -49341,6 +49577,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &748702261
 Rigidbody:
@@ -51067,6 +51306,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &777521228
 MonoBehaviour:
@@ -51593,6 +51835,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &778452367
 Rigidbody:
@@ -54676,6 +54921,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &823609021
 MonoBehaviour:
@@ -55922,6 +56170,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &835295046
 Rigidbody:
@@ -57411,6 +57662,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &850170810
 MonoBehaviour:
@@ -58722,6 +58976,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &871315900
 MonoBehaviour:
@@ -60809,6 +61066,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &915142802
 MonoBehaviour:
@@ -61390,6 +61650,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 518073969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &926674024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926674025}
+  - component: {fileID: 926674026}
+  m_Layer: 6
+  m_Name: AudioDrop
+  m_TagString: Ignorenme
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &926674025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926674024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 895318702}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &926674026
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926674024}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: ae0bd896195c63e4b8adff179755f248, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &926751000
 GameObject:
   m_ObjectHideFlags: 0
@@ -61625,6 +62013,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &937418052
 MonoBehaviour:
@@ -65315,6 +65706,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &982212382
 Rigidbody:
@@ -68174,6 +68568,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1045491737
 Rigidbody:
@@ -69383,6 +69780,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1082023188
 MonoBehaviour:
@@ -71159,6 +71559,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1116699696
 MonoBehaviour:
@@ -72052,6 +72455,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1129448805
 MonoBehaviour:
@@ -72590,6 +72996,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1132435341
 MonoBehaviour:
@@ -73262,6 +73671,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1134691322
 MonoBehaviour:
@@ -74432,6 +74844,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1148223451
 MonoBehaviour:
@@ -75187,6 +75602,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1155989776
 MonoBehaviour:
@@ -75960,6 +76378,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1170791179
 MonoBehaviour:
@@ -81962,6 +82383,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1205903654
 Rigidbody:
@@ -82504,6 +82928,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1209108565
 Rigidbody:
@@ -83158,6 +83585,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1224805559
 MonoBehaviour:
@@ -83684,6 +84114,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1225465443
 Rigidbody:
@@ -88370,6 +88803,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1269206939
 Rigidbody:
@@ -90862,6 +91298,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 4441103370495016658, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
   m_PrefabInstance: {fileID: 3193108461530179667}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1311896963 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7134040274822169308, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+  m_PrefabInstance: {fileID: 3193108461530179667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1313874858
 Mesh:
   m_ObjectHideFlags: 0
@@ -91419,6 +91860,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1315841955
 Rigidbody:
@@ -93917,6 +94361,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1352004307
 MonoBehaviour:
@@ -95519,6 +95966,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1397418985
 MonoBehaviour:
@@ -98085,6 +98535,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1463423108
 Rigidbody:
@@ -100062,6 +100515,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -101883,6 +102339,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1542424408
 Rigidbody:
@@ -103223,6 +103682,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1561426681
 MonoBehaviour:
@@ -104863,6 +105325,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1599666199
 Rigidbody:
@@ -105070,6 +105535,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1600717972
 MonoBehaviour:
@@ -105108,6 +105576,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!1 &1610664588
 GameObject:
@@ -107848,6 +108319,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!65 &1691968082
 BoxCollider:
@@ -108535,6 +109009,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1693225529
 MonoBehaviour:
@@ -111702,6 +112179,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1719805642
 MonoBehaviour:
@@ -112748,6 +113228,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1732475154
 MonoBehaviour:
@@ -114766,6 +115249,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -115530,6 +116016,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1803015121
 MonoBehaviour:
@@ -116045,6 +116534,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1805799400
 Rigidbody:
@@ -116768,6 +117260,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &1820561017
 Rigidbody:
@@ -122343,6 +122838,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1967590462
 MonoBehaviour:
@@ -123453,6 +123951,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &1992802074
 MonoBehaviour:
@@ -126579,6 +127080,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &2045277103
 MonoBehaviour:
@@ -127539,6 +128043,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &2056803723
 MonoBehaviour:
@@ -128791,6 +129298,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!65 &2079310175
 BoxCollider:
@@ -129623,6 +130133,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &2086254472
 MonoBehaviour:
@@ -130272,6 +130785,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!54 &2090207380
 Rigidbody:
@@ -133542,7 +134058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &957332948223901185
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -143265,6 +143781,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6243371337675859211, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1203636167}
+    - targetCorrespondingSourceObject: {fileID: 6243371337675859211, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 926674025}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5681049869587572080, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
       insertIndex: -1
@@ -146006,6 +146525,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7719623663122840347, guid: 4601ba73c12bfa340bddd7be0dfa3115, type: 3}
     - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: _sourceDamage
+      value: 
+      objectReference: {fileID: 403802498}
+    - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: _suctionForce
       value: 30
       objectReference: {fileID: 0}
@@ -146251,7 +146774,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7134040274822169308, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 403802497}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
 --- !u!114 &3288026254429187355
@@ -149549,6 +150075,22 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8630213021870871516, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
+      propertyPath: _mask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630213021870871516, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
+      propertyPath: _clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630213021870871516, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
+      propertyPath: _clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 425d555f22117604d8de08d07756d1a2, type: 3}
+    - target: {fileID: 8630213021870871516, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
+      propertyPath: _clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b481c1c3e7e929409ee27343abe619d, type: 3}
+    - target: {fileID: 8630213021870871516, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
       propertyPath: _navMeshNodes.Array.size
       value: 42
       objectReference: {fileID: 0}
@@ -150049,7 +150591,7 @@ PrefabInstance:
     - target: {fileID: 2296729396452396123, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: fdf3da566c3f3ee42b32bf47feb4ac51, type: 3}
+      objectReference: {fileID: 32900000, guid: dc075cba25a34c44c8ad5816c4beecc7, type: 3}
     - target: {fileID: 2296729396452396123, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       propertyPath: m_TargetCamera
       value: 
@@ -151471,6 +152013,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0.2
   bonk: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!4 &7967565569276737659
 Transform:
@@ -151527,6 +152072,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0.2
   bonk: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!33 &7993484729655052308
 MeshFilter:
@@ -151593,7 +152141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &8062934187518145201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151620,7 +152168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3487305278792986359, guid: 24527f26013393e42bcac00f9abb71e8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5015773812862095160, guid: 24527f26013393e42bcac00f9abb71e8, type: 3}
       propertyPath: m_VideoClip
@@ -152285,6 +152833,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &8500100049841525690
 MonoBehaviour:
@@ -152599,6 +153150,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!114 &8609870948721029823
 MonoBehaviour:

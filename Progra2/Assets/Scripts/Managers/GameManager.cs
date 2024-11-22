@@ -134,6 +134,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject imagenBlanco, imagenRojo;
 
+    public AudioSource Drop;
+
 
 }
 

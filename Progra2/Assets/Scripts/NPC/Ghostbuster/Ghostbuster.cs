@@ -25,6 +25,7 @@ public class Ghostbuster : NPC , ICanSlide
     [SerializeField] int maxTraps;
     [SerializeField] int minTrapTime;
     [SerializeField] int currentTraps;
+    [SerializeField] AudioSource _sourceDamage;
 
     public delegate void EventVoid();
     public event EventVoid OnAttackStart, OnAttackEnd;
@@ -273,6 +274,7 @@ public class Ghostbuster : NPC , ICanSlide
         if (Vector3.SqrMagnitude(direction) <= (_killRange * _killRange) && Time.time - _waitKill > _atkDelay)
         {
             _target.GetDamage();
+            _sourceDamage.Play();
             EndAttack();
         }
         //if ( Vector3.Angle(transform.forward, direction) < 30f)

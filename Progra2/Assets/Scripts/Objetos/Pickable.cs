@@ -20,6 +20,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     [SerializeField] AudioClip bonk;
 
+    [SerializeField] LayerMask agarrado;
+
     #region Comment
     //public delegate void DelegateEventVoid();
     //public event DelegateEventVoid OnThrow, OnDrop;
@@ -311,7 +313,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
             _renderer = GetComponent<Renderer>();
             _renderer.material = _materialFade;
 
-            gameObject.layer = 0;// default
+            //agarrado = 13;
+            gameObject.layer = 0;
         }
 
 
@@ -357,7 +360,11 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //if (holding == false) return;
         _lastInteract = Time.time;
 
-        GameManager.Instance.imagenBlanco.SetActive(true);
+        if (!Input.GetMouseButtonDown(0))
+        {
+        GameManager.Instance.imagenBlanco.SetActive(true);           
+        }
+        GameManager.Instance.Drop.Play();
 
         GameManager.Instance.HandState.holding = false;
         GameManager.Instance.HandState.pointing = false;

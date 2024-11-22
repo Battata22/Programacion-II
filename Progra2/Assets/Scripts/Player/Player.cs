@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//using System.Drawing;
-//using Unity.Burst.CompilerServices;
-//using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +9,8 @@ public class Player : MonoBehaviour, IRoomDetectable
 
     bool inmortal = false;
     bool _canMove = true;
+
+    [SerializeField] bool tutorial = false;
 
     [Header("Cosas necesarias")]
     [SerializeField] int _hp;
@@ -243,6 +242,13 @@ public class Player : MonoBehaviour, IRoomDetectable
             randomAxis = 0;
             scapeSpam = 0;
         }
+
+        #region I
+        if (!tutorial)
+        {
+            GameManager.Instance.Drop = GameObject.FindGameObjectWithTag("Ignorenme").GetComponent<AudioSource>();
+        }
+        #endregion
     }
 
     //bool useMovement = true;
@@ -542,13 +548,15 @@ public class Player : MonoBehaviour, IRoomDetectable
         }
     }
 
+    #region Comment
     //void CreateShadow()
     //{
     //    if (currentShadows >= _maxShadows) return;
     //    Shadow newShadow = Instantiate(_shadowPrefab, transform.position, Quaternion.identity);
     //    newShadow.Initialize();
     //    currentShadows++;
-    //}
+    //} 
+    #endregion
 
     void MakeNoise()
     {
