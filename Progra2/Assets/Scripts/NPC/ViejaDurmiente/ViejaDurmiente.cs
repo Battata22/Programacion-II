@@ -35,8 +35,8 @@ public class ViejaDurmiente : MonoBehaviour
     void StartGame()
     {
         abuela.SetActive(true);
-        gato.SetActive(true);
-        perro.SetActive(true);
+        //gato.SetActive(true);
+        //perro.SetActive(true);
         gameObject.SetActive(false);
         startRun();
         GameManager.Instance.Master1.ActivarGB();

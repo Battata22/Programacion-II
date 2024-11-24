@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviour
     public List<Luces> _lights = new ();
 
     public List<Transform> AiNodes;
+    public List<Transform> activeNodes;
+    public AINodeManager AINodeManager;
 
     [SerializeField] private Cam _camera;
     public Cam Camera 
@@ -135,6 +138,28 @@ public class GameManager : MonoBehaviour
     public GameObject imagenBlanco, imagenRojo;
 
     public AudioSource Drop;
+
+    public Slider terrorBar;
+
+
+
+    //De momento GameManager se va a encargar de Ganar, porque si, porque puedo y lo valgo
+    private bool _activateWinCondition = false;
+    public event DelegateType.VoidDelegate ActivateWinCondition = delegate { };
+    private void Update()
+    {
+        if(!_activateWinCondition && terrorBar.value >= terrorBar.maxValue)
+        {
+            ActivateWinCondition();
+            _activateWinCondition = true;
+        }
+    }
+
+    public void CompleteLevel()
+    {
+        SceneManager.LoadScene("Victoria");
+
+    }
 
 
 }

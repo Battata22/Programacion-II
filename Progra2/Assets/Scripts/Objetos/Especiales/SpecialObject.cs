@@ -9,14 +9,19 @@ public abstract class SpecialObject : MonoBehaviour
     [SerializeField] protected LayerMask _detectableLayers;
     public DelegateType.VoidDelegateTrans currentAbility;
 
+    //Solo pora testear
+    protected bool trapCrated = false;
+
     protected virtual void Awake()
     {
-        CreateTrap();
+        //CreateTrap();
     }
 
     public virtual void CreateTrap()
     {
         //currentTraps++;
+        if (trapCrated) return;
+
         currentAbility = ObjectAbility;
         //crear Trampa
         var newTrap = Instantiate(_trapPrefab, transform.position + transform.forward, Quaternion.identity);
@@ -24,6 +29,8 @@ public abstract class SpecialObject : MonoBehaviour
         newTrap.transform.forward = transform.forward;
         newTrap.Initialize(currentAbility, _trapCD);
         //Iniciar trampa
+
+        trapCrated = true;
     }
 
     //public void TrapActivada()

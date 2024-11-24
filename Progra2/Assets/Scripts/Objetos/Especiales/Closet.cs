@@ -2,21 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Closet : SpecialObject
+public class Closet : SpecialObject, ILockeable
 {
     [SerializeField] GameObject jumpScaredPrefab;
+    [SerializeField] bool locked;
+
+    public event DelegateType.VoidDelegate ActionActive = delegate { };
+
+    public void Lock()
+    {
+        locked = true;
+    }
+
+    public void Unlock()
+    {
+        locked = false;
+    }
+
     protected override void Awake()
     {
+        //CreateTrap();
+    }
+
+    //Solo para Testeo
+    private void Update()
+    {
+        if(locked) return;
         CreateTrap();
     }
 
     protected override void ObjectAbility(Transform origin)
     {
 
-        Instantiate(jumpScaredPrefab, transform.position, Quaternion.identity);
 
         Collider[] coliders = Physics.OverlapSphere(origin.position, _detectRadius, _detectableLayers);
         Debug.Log(coliders.Length);
+
+        if(coliders.Length <= 0 ) 
+        {
+            Debug.Log($"<color=red> NINGUN ASUSTABLE EN RANGO DE {transform.name} </color>");
+            return;
+        }
+
+        Instantiate(jumpScaredPrefab, transform.position, Quaternion.identity);
+
+        ActionActive();
         foreach (Collider colider in coliders)
         {
             if(colider.transform.TryGetComponent<Asustable>(out Asustable asus))

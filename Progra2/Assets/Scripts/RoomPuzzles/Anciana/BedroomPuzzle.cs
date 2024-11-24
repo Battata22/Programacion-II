@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BedroomPuzzle : MonoBehaviour
+{
+    [SerializeField] Key _keyPrefab;
+    [SerializeField] Asustable _granny;
+    [SerializeField] Closet _closet;
+    [SerializeField] Door[] _doors;
+    [SerializeField] GameObject[] _pets;
+    [SerializeField] RoomTrigger[] _nextRooms;
+    AINodeManager _nodeManager;
+
+    private void Start()
+    {
+        _granny.OnRagdollTrigger += SpawnKey;
+        _nodeManager = GetComponentInParent<AINodeManager>();
+    }
+
+    void SpawnKey()
+    {
+        Instantiate(_keyPrefab, _granny.transform.position, Quaternion.identity);
+        _granny.OnRagdollTrigger -= SpawnKey;
+        _closet.ActionActive += CompleteRoom;
+    }
+
+    void CompleteRoom()
+    {
+        Debug.Log($"<color=green> CUARTO COMPLETADO </color>");
+
+        foreach(var door in _doors)
+        {
+            door.OpenDoor();
+        }
+
+        bool resetList = true;
+        foreach(var room in _nextRooms)
+        {
+            _nodeManager.SetActiveNodes(room.roomIndex, resetList);
+            resetList = false;
+        }
+
+        foreach(var pet in _pets)
+        {
+            pet.SetActive(true);
+        }
+        _closet.ActionActive -= CompleteRoom;
+
+    }
+
+    private void OnDestroy()
+    {
+        _granny.OnRagdollTrigger -= SpawnKey;
+        _closet.ActionActive -= CompleteRoom;
+
+    }
+}

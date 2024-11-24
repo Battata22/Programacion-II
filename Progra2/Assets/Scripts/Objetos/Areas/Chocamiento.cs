@@ -139,7 +139,7 @@ public class Chocamiento : MonoBehaviour, IRoomDetectable
     {
         _farthestNode = null;
         var farthestDis = -1f;
-        var nodes = GameManager.Instance.AiNodes;
+        var nodes = GameManager.Instance.activeNodes;
         foreach(var node in nodes)
         {
             var Dis = (node.position - transform.position).sqrMagnitude;

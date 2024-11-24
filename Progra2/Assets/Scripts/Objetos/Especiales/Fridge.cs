@@ -10,7 +10,7 @@ public class Fridge : SpecialObject
 
     protected override void Awake()
     {
-        CreateTrap();
+        //CreateTrap();
     }
 
     //public override void CreateTrap()

@@ -32,7 +32,10 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     [SerializeField] bool tutorial = false;
 
+    //Eventos
     public event DelegateType.VoidDelegate OnSlideStop = delegate { };
+    public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
+
 
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
@@ -360,7 +363,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
         waitStun = 0;
         stuned = true;
 
-        _myRagdollSwitch.ActivateRagdoll();
+        //_myRagdollSwitch.ActivateRagdoll();
+        CallRagdollOn();
     }
 
     public void StopStun()
@@ -443,6 +447,9 @@ public class Asustable : NPC, ICanSlide, IPossessable
     void Ganarga(float num)
     {
         _sliderBarra.value += num;
+
+        GameManager.Instance.terrorBar.value += num;
+
         //if (_sliderBarra.value <= 1)
         //{
         //    GameManager.Instance.Player.nivel = 1;
@@ -582,6 +589,13 @@ public class Asustable : NPC, ICanSlide, IPossessable
     public void CallRagdollOn()
     {
         _myRagdollSwitch.ActivateRagdoll();
+        OnRagdollTrigger();
+    }
+
+    public void CallRagdollOn(Vector3 dir)
+    {
+        _myRagdollSwitch.ActivateRagdoll(dir);
+        OnRagdollTrigger();
     }
     /// <summary>
     /// Cambia de ragdoll a NPC normal

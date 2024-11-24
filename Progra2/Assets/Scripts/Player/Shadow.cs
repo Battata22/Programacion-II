@@ -74,7 +74,8 @@ public class Shadow : MonoBehaviour
             if (asus.TryGetComponent<EnableRagdoll>(out EnableRagdoll enRag))
             {
                 var dir = new Vector3(asus.transform.position.x - transform.position.x, asus.transform.position.y + 1 - transform.position.x, asus.transform.position.z - transform.position.z).normalized;
-                enRag.ActivateRagdoll(dir);
+                //enRag.ActivateRagdoll(dir);
+                asus.CallRagdollOn(dir);
             }
             else
                 asus.CallRagdollOn();

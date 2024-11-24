@@ -28,7 +28,7 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
 
     [SerializeField] protected Transform _actualNode;
     [SerializeField] protected List<Transform> _navMeshNodes = new();
-    [SerializeField] public List<Transform> _testNodes = new();
+    //[SerializeField] public List<Transform> _testNodes = new();
     //protected Animator _anim;
 
     public List<Transform> NavMeshNodes    
@@ -53,7 +53,7 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
         //yield return new WaitForEndOfFrame();
         //_navMeshNodes.Clear();
         //_navMeshNodes = GameManager.Instance.AiNodes;
-        _testNodes = GameManager.Instance.AiNodes;
+        //_testNodes = GameManager.Instance.AiNodes;
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = speedNormal;
         //Initialize();
@@ -144,6 +144,15 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
 
     protected virtual Transform GetNewNode(Transform lastNode = null)
     {
+        Transform newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
+
+        while (lastNode == newNodeTest)
+        {
+            newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
+        }
+
+        return newNodeTest;
+
         Transform newNode = _navMeshNodes[Random.Range(1, _navMeshNodes.Count)];
 
         while(lastNode == newNode) 

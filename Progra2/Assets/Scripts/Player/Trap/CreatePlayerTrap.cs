@@ -91,12 +91,13 @@ public class CreatePlayerTrap : MonoBehaviour
     public void TrapActivada()
     {
 
-        trapSlider.value++;
+        //trapSlider.value++;
+        GameManager.Instance.terrorBar.value++;
 
-        if (trapSlider.value >= trapSlider.maxValue)
-        {
-            SceneManager.LoadScene("Victoria");
-        }
+        //if (trapSlider.value >= trapSlider.maxValue)
+        //{
+        //    SceneManager.LoadScene("Victoria");
+        //}
         counterTimer = 0;
     }
 

@@ -7,7 +7,7 @@ public class LavamanoTrap : SpecialObject
     [SerializeField] List<GameObject> aguas = new List<GameObject>();
     protected override void Awake()
     {
-        CreateTrap();
+        //CreateTrap();
     }
 
     protected override void ObjectAbility(Transform origin)
@@ -24,5 +24,11 @@ public class LavamanoTrap : SpecialObject
         var newTrap = Instantiate(_trapPrefab, transform.position + transform.forward + new Vector3(0.8f,0.2f,1), Quaternion.identity);
         newTrap.transform.forward = transform.forward;
         newTrap.Initialize(currentAbility, _trapCD);
+    }
+
+    //u kow
+    public void CallAbility()
+    {
+        ObjectAbility(transform);
     }
 }

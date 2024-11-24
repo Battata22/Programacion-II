@@ -54,6 +54,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     ParticulasEfectos partEfectosScript;
 
+    protected ItemSaver _saver;
+
     protected virtual void Start()
     {
         rompscript = GetComponent<Rompible>();
@@ -172,6 +174,9 @@ public class Pickable : Obj_Interactuable , IEnchantable
         //_scareAmount = 1f;
         _dropLayers = GameManager.Instance.DropLayers;
         particleGen = GetComponentInChildren<ParticleSystem>();
+
+        _saver = new ItemSaver(this.transform);
+
     }
 
     protected virtual void Update()
@@ -202,6 +207,9 @@ public class Pickable : Obj_Interactuable , IEnchantable
             pickUpScript.sosteniendoBool = false;
             pickUpScript._audioSource.loop = false;
         }
+
+        _saver.FakeUpdate();
+
 
         #region Comment
         //if (holding && !_trowed)

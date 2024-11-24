@@ -13,6 +13,7 @@ public abstract class SFX : Pickable
 
     protected virtual void Awake()
     {
+        //base.Awake();
         _audioSource = GetComponent<AudioSource>();
         _col = GetComponents<Collider>();
         _chocamiento = GetComponent<Chocamiento>();
