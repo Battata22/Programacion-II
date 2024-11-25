@@ -21,5 +21,6 @@ public class GameplayModeTrigger : MonoBehaviour
         }
         StartGampelayPhase();
         gameObject.SetActive(false);
+        GameManager.Instance._master2.ActivarGB();
     }
 }

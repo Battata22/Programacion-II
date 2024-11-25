@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
         set { _master1 = value; }
     }
 
+    public MasterNivel2 _master2;
+
     private Animator _animPuerta;
     public Animator AnimPuerta
     {
