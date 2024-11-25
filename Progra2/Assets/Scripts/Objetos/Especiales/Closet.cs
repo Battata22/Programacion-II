@@ -17,6 +17,7 @@ public class Closet : SpecialObject, ILockeable
     public void Unlock()
     {
         locked = false;
+        CreateTrap();
     }
 
     protected override void Awake()
@@ -27,8 +28,8 @@ public class Closet : SpecialObject, ILockeable
     //Solo para Testeo
     private void Update()
     {
-        if(locked) return;
-        CreateTrap();
+        //if(locked) return;
+        //CreateTrap();
     }
 
     protected override void ObjectAbility(Transform origin)

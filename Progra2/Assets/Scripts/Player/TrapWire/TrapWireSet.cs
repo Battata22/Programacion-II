@@ -31,7 +31,7 @@ public class TrapWireSet : MonoBehaviour
 
         if (SelectorUI.habAct == 5)
         {
-            if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 100, mask)) //5dist
+            if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 100, mask) && !hit.transform.GetComponent<RoomTrigger>()) //5dist
             {
                 visualRef.transform.position = hit.point;
                 Renderer visualRender = visualRef.GetComponent<Renderer>();
@@ -92,7 +92,7 @@ public class TrapWireSet : MonoBehaviour
     public void SetTrap()
     {
         //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, mask))
+        if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, mask) && !hit.transform.GetComponent<RoomTrigger>())
         //if (Physics.Raycast(ray, out hit, mask))
         {
             var newFirstTrap = Instantiate(trapPrefab1, hit.point /*new Vector3(hit.point.x, hit.point.y, hit.point.z)*/, Quaternion.identity);
@@ -105,7 +105,7 @@ public class TrapWireSet : MonoBehaviour
     {
         //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, mask) && (Vector3.SqrMagnitude(primerTrapLugar.position - hit.point) < (_maxDistance * _maxDistance)))
+        if (Physics.SphereCast(camCenter.position, 0.15f, camCenter.forward, out hit, 5, mask) && (Vector3.SqrMagnitude(primerTrapLugar.position - hit.point) < (_maxDistance * _maxDistance)) && !hit.transform.GetComponent<RoomTrigger>())
         //if (Physics.Raycast(ray, out hit, mask))
         {
             var newSecondTrap = Instantiate(trapPrefab2, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);

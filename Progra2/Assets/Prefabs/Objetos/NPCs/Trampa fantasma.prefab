@@ -9726,7 +9726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3487542540953632939
 Transform:
   m_ObjectHideFlags: 0
@@ -9876,8 +9876,8 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
+  DopplerLevel: 0
+  MinDistance: 3
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -9913,7 +9913,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9973,6 +9973,7 @@ MonoBehaviour:
   _doubtRange: 40
   scareAmount: 0
   musicOutput: 0
+  actualRoom: 0
 --- !u!135 &8470797882671365746
 SphereCollider:
   m_ObjectHideFlags: 0

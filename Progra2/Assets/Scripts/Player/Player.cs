@@ -357,19 +357,19 @@ public class Player : MonoBehaviour, IRoomDetectable
     {
         if (_hp == 3)
         {
-            _vidaUI.sprite = _vidaFull;
+            //_vidaUI.sprite = _vidaFull;
             //_mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[0];
             _mesh.GetComponent<MeshRenderer>().sharedMaterial = _hpMats[0];
         }
         else if (_hp == 2)
         {
-            _vidaUI.sprite = _vidaMedia;
+            //_vidaUI.sprite = _vidaMedia;
             //_mesh.GetComponent<MeshRenderer>().materials[0] = _hpMats[1];
             _mesh.GetComponent<MeshRenderer>().sharedMaterial = _hpMats[1];
         }
         else if (_hp == 1)
         {
-            _vidaUI.sprite = _vidaBaja;
+            //_vidaUI.sprite = _vidaBaja;
             //_mesh.GetComponent<Renderer>().materials[0] = _hpMats[2];
             _mesh.GetComponent<Renderer>().sharedMaterial = _hpMats[2];
         }

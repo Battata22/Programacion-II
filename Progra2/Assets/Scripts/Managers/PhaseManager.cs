@@ -18,6 +18,7 @@ public class PhaseManager : MonoBehaviour
     private void Start()
     {
         ViejaDurmiente.startRun += GameplayPhase;
+        GameplayModeTrigger.StartGampelayPhase += GameplayPhase;
     }
 
     private void Update()
@@ -54,5 +55,14 @@ public class PhaseManager : MonoBehaviour
         //Trampas no spawneables
         GameplayPhaseActive();
         trapPhase= false;
+
+        ViejaDurmiente.startRun -= GameplayPhase;
+        GameplayModeTrigger.StartGampelayPhase -= GameplayPhase;
+    }
+
+    private void OnDestroy()
+    {
+        ViejaDurmiente.startRun -= GameplayPhase;
+        GameplayModeTrigger.StartGampelayPhase -= GameplayPhase;
     }
 }

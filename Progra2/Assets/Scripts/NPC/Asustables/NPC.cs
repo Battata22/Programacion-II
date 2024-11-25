@@ -63,6 +63,8 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
     public void Initialize()
     {
         //_target = GameManager.Instance.Player.transform;
+        //_agent.enabled = true;
+
 
         _actualNode = GetNewNode();
 

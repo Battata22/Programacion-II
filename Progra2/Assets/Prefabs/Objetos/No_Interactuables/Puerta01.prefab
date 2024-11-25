@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 7335837691058100678}
   - component: {fileID: 4231176189532623918}
   - component: {fileID: 4410439334767753888}
+  - component: {fileID: 2945918122037796525}
+  - component: {fileID: 235281258056211641}
+  - component: {fileID: 6255270277951047115}
+  - component: {fileID: 3974607951582594464}
   m_Layer: 0
   m_Name: Puerta01
   m_TagString: Untagged
@@ -27,10 +31,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000221816853672152}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.04, y: 0.55, z: -11.13}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,3 +109,55 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 124.124756, y: 223.89876, z: 26.59082}
   m_Center: {x: -62.062263, y: 111.94938, z: 0.10797787}
+--- !u!114 &2945918122037796525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000221816853672152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a688c7919ce79744946547a510aa72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &235281258056211641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000221816853672152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a688c7919ce79744946547a510aa72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!208 &6255270277951047115
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000221816853672152}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 62.062004, y: 111.949005, z: 13.295001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -62.062004, y: 111.949005, z: 0.108}
+  m_TimeToStationary: 0.5
+--- !u!114 &3974607951582594464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000221816853672152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a688c7919ce79744946547a510aa72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

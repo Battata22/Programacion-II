@@ -83,7 +83,7 @@ public class VideoIntro : MonoBehaviour
 
     void prendido()
     {
-        postit.SetActive(true);
+        //postit.SetActive(true);
         abuelaDormida.SetActive(true);
         gus.enabled = true;
         hand.enabled = true;
@@ -103,9 +103,9 @@ public class VideoIntro : MonoBehaviour
     }
 
     void TPGus()
-        {
+    {
         player.transform.position = entrada.transform.position;
-        }
+    }
 
     public void SkipButton()
     {

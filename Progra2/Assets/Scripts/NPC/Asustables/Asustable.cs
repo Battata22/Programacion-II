@@ -446,7 +446,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     void Ganarga(float num)
     {
-        _sliderBarra.value += num;
+        //_sliderBarra.value += num;
 
         GameManager.Instance.terrorBar.value += num;
 

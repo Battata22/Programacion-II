@@ -148,7 +148,8 @@ public class GameManager : MonoBehaviour
     public event DelegateType.VoidDelegate ActivateWinCondition = delegate { };
     private void Update()
     {
-        if(!_activateWinCondition && terrorBar.value >= terrorBar.maxValue)
+        //primera parte del if momentaneamente
+        if(terrorBar != null && !_activateWinCondition && terrorBar.value >= terrorBar.maxValue)
         {
             ActivateWinCondition();
             _activateWinCondition = true;
