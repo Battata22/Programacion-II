@@ -9,7 +9,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Chocamiento))]
 public class Pickable : Obj_Interactuable , IEnchantable
 {
-    public bool _pickedUp, _trowed, rompible = false;
+    public bool _pickedUp, _trowed, rompible = false, blessed = false, aguaRompible = false;
     public PickUp pickUpScript;
     public ParticleSystem particleGen, trailGen;
     protected float _parMaxTime = 5f;
@@ -294,37 +294,38 @@ public class Pickable : Obj_Interactuable , IEnchantable
 
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error,int playerLevel)
     {
-
-        if (pickUpScript.isHolding == false && Time.time - _lastInteract > _cd)
+        if (!blessed)
         {
-            if (!(playerLevel >= lvlRequired))
+            if (pickUpScript.isHolding == false && Time.time - _lastInteract > _cd)
             {
-                //Debug.Log("<color=yellow> Nivel Insuficiente</color>");
-                return;
+                if (!(playerLevel >= lvlRequired))
+                {
+                    //Debug.Log("<color=yellow> Nivel Insuficiente</color>");
+                    return;
+                }
+                base.Interact(_audio, agarre, error, playerLevel);
+                _lastInteract = Time.time;
+                Unenchant(GameManager.Instance.Player);
+
+                _rb.useGravity = false;
+                _rb.velocity = Vector3.zero;
+                _canMove = true;
+                _pickedUp = true;
+                pickUpScript.isHolding = true;
+                _onAir = true;
+                if (_navObstacle != null) _navObstacle.enabled = false;
+                //_col.enabled = false;
+                foreach (Collider c in _col)
+                    c.isTrigger = true;
+                _rb.constraints = RigidbodyConstraints.None;
+                pickUpScript.esperaragarre = 0;
+                _renderer = GetComponent<Renderer>();
+                _renderer.material = _materialFade;
+
+                //agarrado = 13;
+                gameObject.layer = 0;
             }
-            base.Interact(_audio, agarre, error, playerLevel);
-            _lastInteract = Time.time;
-            Unenchant(GameManager.Instance.Player);
-
-            _rb.useGravity = false;
-            _rb.velocity = Vector3.zero;
-            _canMove = true;
-            _pickedUp = true;
-            pickUpScript.isHolding = true;
-            _onAir = true;
-            if(_navObstacle != null) _navObstacle.enabled = false;
-            //_col.enabled = false;
-            foreach(Collider c in _col)
-                c.isTrigger = true;
-            _rb.constraints = RigidbodyConstraints.None;
-            pickUpScript.esperaragarre = 0;
-            _renderer = GetComponent<Renderer>();
-            _renderer.material = _materialFade;
-
-            //agarrado = 13;
-            gameObject.layer = 0;
         }
-
 
     }
 
@@ -460,6 +461,11 @@ public class Pickable : Obj_Interactuable , IEnchantable
                 if (rompible == true)
                 {
                     rompscript.Rompe();
+                    Destroy(gameObject);
+                }
+
+                if (aguaRompible == true)
+                {
                     Destroy(gameObject);
                 }
             }

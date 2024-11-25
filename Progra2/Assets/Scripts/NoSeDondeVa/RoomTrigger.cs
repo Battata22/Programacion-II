@@ -10,8 +10,8 @@ public class RoomTrigger : MonoBehaviour
     [SerializeField] Transform[] _roomNodes;
     [SerializeField] AINodeManager _nodeManager;
 
-    [SerializeField] bool _activeOnStart = false;    
-    
+    [SerializeField] bool _activeOnStart = false;
+
 
     private IEnumerator Start()
     {
@@ -45,4 +45,5 @@ public class RoomTrigger : MonoBehaviour
             coso.SetRoom(_thisRoom);
         }
     }
+
 }

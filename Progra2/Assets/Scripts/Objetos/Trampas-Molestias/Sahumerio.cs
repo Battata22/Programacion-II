@@ -4,37 +4,30 @@ using UnityEngine;
 
 public class Sahumerio : MonoBehaviour
 {
-    [SerializeField] float checkCooldown, radioCheck;
-    [SerializeField] LayerMask targetLayer;
-    [SerializeField] bool prendido = false;
+    [SerializeField] bool prendido = false, reset = false;
+    [SerializeField] int actualRoom;
+    [SerializeField] float ogSpeed;
 
 
     void Start()
     {
-        
+        ogSpeed = GameManager.Instance.Player._speed;
     }
 
 
     void Update()
     {
-        CheckRoom();
-    }
-
-    void CheckRoom()
-    {
-        if (prendido)
+        if (prendido && GameManager.Instance.Player.actualRoom == gameObject.GetComponent<Pickable>().actualRoom)
         {
-            Collider[] collCercanos = Physics.OverlapSphere(transform.position, radioCheck, targetLayer);
-            foreach (Collider coll in collCercanos)
-            {
-                coll.gameObject.TryGetComponent<CollidersCasa2>(out CollidersCasa2 collCasa2Script);
-                if (collCasa2Script != null)
-                {
-                    collCasa2Script.sahumerioDentro = true;
-                    //HAY QUE APAGARLO
-                }
-            }
+            GameManager.Instance.Player._speed = 5;
+            reset = false;
         }
-
+        else if (prendido && GameManager.Instance.Player.actualRoom != gameObject.GetComponent<Pickable>().actualRoom && !reset)
+        {
+            GameManager.Instance.Player._speed = ogSpeed;
+            reset = true;
+        }
     }
+
+
 }

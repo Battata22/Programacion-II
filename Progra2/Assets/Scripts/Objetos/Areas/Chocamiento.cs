@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class Chocamiento : MonoBehaviour, IRoomDetectable
+public class Chocamiento : MonoBehaviour
 {
     [SerializeField] AreasSustoYDuda areas;
     [SerializeField] AreasSustoYDudaSonoros areasSonoro;
@@ -58,7 +58,7 @@ public class Chocamiento : MonoBehaviour, IRoomDetectable
             if (collider.gameObject.TryGetComponent<NPC>(out _npcInRange))
             {
                 //Debug.Log("<color=pink> NPC en area Susto </color>");
-                if (Vector3.Distance(pos, _npcInRange.transform.position) <= _scareRange && actualRoom == _npcInRange.actualRoom)
+                if (Vector3.Distance(pos, _npcInRange.transform.position) <= _scareRange && gameObject.GetComponent<Pickable>().actualRoom == _npcInRange.actualRoom)
                 //if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
                 {
                     GetBetterNode(_npcInRange, GameManager.Instance.Player);
@@ -201,9 +201,5 @@ public class Chocamiento : MonoBehaviour, IRoomDetectable
         _farthestNode3 = null;
     }
 
-    public float actualRoom;
-    public void SetRoom(int room)
-    {
-        actualRoom = room;
-    }
+
 }
