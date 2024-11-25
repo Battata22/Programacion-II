@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IRoomDetectable
     [SerializeField] Material[] _hpMats;
 
     [Header("Movement")]
-    [SerializeField] float _speed, _frezzeCD, _slowCD;
+    public float _speed, _frezzeCD, _slowCD;
     float _salto;
     float _xAxis, _zAxis;
     Vector3 _dir = new();
