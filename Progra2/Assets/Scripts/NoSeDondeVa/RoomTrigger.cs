@@ -24,14 +24,14 @@ public class RoomTrigger : MonoBehaviour
         {
             if (node.position != Vector3.zero)
                 finalNodes.Add(node);
-            else
-                Debug.Log($"<color=green> {transform.name} elimino nodo {node.name}</color>");
+            //else
+                //Debug.Log($"<color=green> {transform.name} elimino nodo {node.name}</color>");
         }
 
         //_nodeManager.roomsNodes.Add(finalNodes);
         _nodeManager.SetRoomNodesList(finalNodes, out roomIndex);
 
-        Debug.Log($"<color=yellow> {roomIndex} </color>");
+        //Debug.Log($"<color=yellow> {roomIndex} </color>");
         yield return new WaitForEndOfFrame();
 
         if(_activeOnStart)

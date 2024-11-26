@@ -7,9 +7,9 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Chocamiento))]
-public class Pickable : Obj_Interactuable , IEnchantable
+public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 {
-    public bool _pickedUp, _trowed, rompible = false, blessed = false, aguaRompible = false;
+    public bool _pickedUp, _trowed, rompible = false, aguaRompible = false;
     public PickUp pickUpScript;
     public ParticleSystem particleGen, trailGen;
     protected float _parMaxTime = 5f;
@@ -193,8 +193,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
             {
                 GameManager.Instance.Tutorial.EndThrow();
             }
-            pickUpScript.sosteniendoBool = false;
-            pickUpScript._audioSource.loop = false;
+            //pickUpScript.sosteniendoBool = false;
+            //pickUpScript._audioSource.loop = false;
         }
 
         if (holding && Input.GetMouseButtonDown(0))
@@ -204,8 +204,8 @@ public class Pickable : Obj_Interactuable , IEnchantable
             {
                 GameManager.Instance.Tutorial.EndDrop();
             }
-            pickUpScript.sosteniendoBool = false;
-            pickUpScript._audioSource.loop = false;
+            //pickUpScript.sosteniendoBool = false;
+            //pickUpScript._audioSource.loop = false;
         }
 
         _saver.FakeUpdate();
@@ -360,6 +360,9 @@ public class Pickable : Obj_Interactuable , IEnchantable
             var newTrail = Instantiate(GameManager.Instance.TrailGen, transform);
             trailGen = newTrail.GetComponent<ParticleSystem>();
         }
+
+        pickUpScript.sosteniendoBool = false;
+        pickUpScript._audioSource.loop = false;
     }
 
     public void Drop()
@@ -398,6 +401,9 @@ public class Pickable : Obj_Interactuable , IEnchantable
         _rb.useGravity = true;
         _renderer.material = _materialNormal;
         GameManager.Instance.Player.GetComponent<AudioSource>().Stop();
+
+        pickUpScript.sosteniendoBool = false;
+        pickUpScript._audioSource.loop = false;
 
     }
 
@@ -630,5 +636,29 @@ public class Pickable : Obj_Interactuable , IEnchantable
         OutLineEnchanted.SetFloat("_Thickness", 0f);
         player.enchantedObjects.Remove(this);
         _enchanted = false;
+    }
+
+    public void GetBlssed()
+    {
+        //Debug.Log($"<color=yellow> {gameObject.name} Blessed </color>");
+        blessed = true;
+    }
+
+    private void OnDestroy()
+    {
+        if (_pickedUp)
+        {
+            GameManager.Instance.HandState.holding = false;
+            GameManager.Instance.HandState.relax = true;
+            GameManager.Instance.HandState.ChangeState();
+
+            _pickedUp = false;
+            pickUpScript.isHolding = false;
+            _onAir = true;
+            _renderer.material = _materialNormal;
+            pickUpScript.sosteniendoBool = false;
+            pickUpScript._audioSource.loop = false;
+
+        }
     }
 }

@@ -14,6 +14,8 @@ public class Obj_Interactuable : MonoBehaviour , IRoomDetectable
     public bool holding = false;
     public Weight weight;
 
+    public bool blessed = false;
+
     public enum Weight
     {
         low,

@@ -217,7 +217,11 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
         _agent.speed = speedNormal;
         _doubt = false;
         _inPlace = false;
-        GetNewNode();
+        _actualNode = GetNewNode();
+
+        _actualNode = GetNewNode(_actualNode);
+        _agent.SetDestination(_actualNode.position);
+
         _agent.SetDestination(_actualNode.position);
     }
 

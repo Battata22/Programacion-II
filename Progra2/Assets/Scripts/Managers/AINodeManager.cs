@@ -23,8 +23,8 @@ public class AINodeManager : MonoBehaviour
         {
             if (node.position != Vector3.zero)
                 finalNodes.Add(node);
-            else
-                Debug.Log($"<color=red>Nodo descartado: {node.name}</color>");
+            //else
+                //Debug.Log($"<color=red>Nodo descartado: {node.name}</color>");
         }
 
         GameManager.Instance.AiNodes.AddRange(finalNodes);

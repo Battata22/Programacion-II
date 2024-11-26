@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Sahumerio : MonoBehaviour
 {
-    [SerializeField] bool prendido = false, reset = false;
+    [SerializeField] public bool prendido = false;
+    [SerializeField] bool reset = false;
     [SerializeField] int actualRoom;
     [SerializeField] float ogSpeed;
 

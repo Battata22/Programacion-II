@@ -26,7 +26,7 @@ public class AtravesarNPC : MonoBehaviour
         if (player != null)
         {
             
-            asustableScript.GetShivers(shiver);
+            //asustableScript.GetShivers(shiver);
             //asustableScript._audioSource.clip = shiver;
             //asustableScript._audioSource.Play();
             

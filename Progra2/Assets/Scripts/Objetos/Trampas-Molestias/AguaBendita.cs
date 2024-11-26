@@ -28,7 +28,8 @@ public class AguaBendita : MonoBehaviour
         Collider[] collCercanos = Physics.OverlapSphere(transform.position, radioCheck, targetLayer);
         foreach (Collider coll in collCercanos)
         {
-            coll.gameObject.GetComponent<Pickable>().blessed = true;
+            if(coll.gameObject.TryGetComponent<IBlessable>(out var coso))
+                coso.GetBlssed();
         }
         
     }

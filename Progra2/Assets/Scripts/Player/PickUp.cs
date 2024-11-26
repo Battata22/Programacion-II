@@ -34,6 +34,8 @@ public class PickUp : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log($"OnAir {isHolding} Sosteniendo {sosteniendoBool}");
+
         esperaragarre += Time.deltaTime;
 
         //Debug.DrawRay(transform.position, transform.forward * _rayDistance, Color.red);
@@ -181,9 +183,10 @@ public class PickUp : MonoBehaviour
         {
             var obj = hit.transform.gameObject;            
 
-            if (obj!=_lastOn && _lastOn != null)
+            if (obj!=_lastOn)
             {
                 lineOn = false;
+                if (_lastOn != null)
                 _lastOn.GetComponent<Obj_Interactuable>().SlcFxOff();
                 if (GameManager.Instance.HandState.pointing)
                 {
