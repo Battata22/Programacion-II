@@ -184,7 +184,7 @@ public class TronadoPrefab : MonoBehaviour
 
         for (int i = 0; i < asustables.Count; i++)
         {
-            asustables[i].CallRagdollOff();
+            asustables[i].CallRagdollOff(0, true);
             //StartCoroutine(asustables[i].CallRagdollOff());
         }
 

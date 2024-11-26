@@ -141,17 +141,35 @@ public class GameManager : MonoBehaviour
 
     public AudioSource Drop;
 
-    public Slider terrorBar;
+    public Slider _terrorBar;
+    public Slider terrorBar
+    {
+        get{ return _terrorBar; }
+        set 
+        {
+            Debug.Log($"<color=green> Barra de terror Seteada {value}</color>");
+            _terrorBar = value; 
+        }
+    }
 
 
 
     //De momento GameManager se va a encargar de Ganar, porque si, porque puedo y lo valgo
     private bool _activateWinCondition = false;
     public event DelegateType.VoidDelegate ActivateWinCondition = delegate { };
+
+    //private IEnumerator Start()
+    //{
+    //    yield return new WaitForEndOfFrame();
+
+    //    Debug.Log($"<color=yellow>terrorBar {terrorBar.name} condicion ya activada {_activateWinCondition}</color>");
+    //}
+
     private void Update()
     {
         //primera parte del if momentaneamente
-        if(terrorBar != null && !_activateWinCondition && terrorBar.value >= terrorBar.maxValue)
+
+        if (terrorBar != null && !_activateWinCondition && terrorBar.value >= terrorBar.maxValue)
         {
             ActivateWinCondition();
             _activateWinCondition = true;
