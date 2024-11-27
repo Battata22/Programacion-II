@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MasterNivel2 : MonoBehaviour
 {
-    public GameObject gb;
+    public GameObject gb, exo;
     void Start()
     {
         GameManager.Instance._master2 = this;
@@ -12,7 +12,7 @@ public class MasterNivel2 : MonoBehaviour
 
     public void ActivarGB()
     {
-        Invoke("GB", 1.46f);
+        Invoke("Exo", 1.46f);
         GameManager.Instance.AnimPuerta.SetTrigger("GB_Arrives");
         GameManager.Instance.CamGBCanvas.PrendidoRAW();
     }
@@ -20,5 +20,10 @@ public class MasterNivel2 : MonoBehaviour
     void GB()
     {
         gb.SetActive(true);
+    }
+
+    void Exo()
+    {
+        exo.SetActive(true);
     }
 }

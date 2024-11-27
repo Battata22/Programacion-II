@@ -36,7 +36,7 @@ public class CamDistance : MonoBehaviour
         //Cuando el raycast es cortado por la pared entre medio se pone a hacer magia
 
         // Crea Raycast     origen  / direccion   /devuelve algo/  largo del ray/  layer que lo puede cortar/
-        if (Physics.Raycast(_origin, _ray.normalized, out hit, _rayDistance, _layerMask))
+        if (Physics.Raycast(_origin, _ray.normalized, out hit, _rayDistance, _layerMask) && !hit.transform.TryGetComponent<RoomTrigger>(out var room))
         {
             //Debug de testeo
             //Debug.Log(hit.transform.name);

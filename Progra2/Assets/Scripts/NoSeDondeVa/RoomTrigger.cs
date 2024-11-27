@@ -38,11 +38,43 @@ public class RoomTrigger : MonoBehaviour
             _nodeManager.SetActiveNodes(roomIndex);
     }
 
+    [SerializeField] ParticleSystem[] _sahumerioParticles;
+
+    void ActivarParticulasSahumerio()
+    {
+        foreach(var  particle in _sahumerioParticles)
+        {
+            particle.Play();
+        }
+    }
+
+    void DesactivarParticulasSahumerio()
+    {
+        foreach (var particle in _sahumerioParticles)
+        {
+            particle.Stop();
+        }
+
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<IRoomDetectable>(out var coso))
         {
             coso.SetRoom(_thisRoom);
+        }
+        if(other.TryGetComponent<Sahumerio>(out var sahumerio) && sahumerio.prendido)
+        {
+            ActivarParticulasSahumerio();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.TryGetComponent<Sahumerio>(out var sahumerio))
+        {
+            DesactivarParticulasSahumerio();
         }
     }
 

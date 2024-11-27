@@ -9,7 +9,7 @@ public class TronadoPrefab : MonoBehaviour
 
     List<Asustable> asustables = new();
 
-    List<RagdollHips> _npcRagdosll = new();
+    [SerializeField] List<RagdollHips> _npcRagdosll = new();
 
     void Start()
     {

@@ -36,6 +36,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
     public event DelegateType.VoidDelegate OnSlideStop = delegate { };
     public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
 
+    public DelegateType.VoidDelegate NpcUpdate = delegate { };
+
 
     #region Comment
     //[SerializeField] float speedNormal, speedScared, speedDoubt;
@@ -82,6 +84,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
     private void Awake()
     {
         _myRagdollSwitch = GetComponent<EnableRagdoll>();
+        NpcUpdate = Brain;
     }
 
     protected override void Start()
@@ -119,6 +122,119 @@ public class Asustable : NPC, ICanSlide, IPossessable
         //    GetScaredTuto();
         //}
 
+        //if (waitStun >= tiempoDeStun && stuned)
+        //{
+        //    StopStun();
+        //    stuned = false;
+        //}
+
+        //if (!_AIActive) return;
+        //if (_actualNode == null) Initialize();
+        //if ((!_doubt && !_lookingActive && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
+        //{
+        //    StartCoroutine(LookAround());
+        //    #region comment
+        //    //_actualNode = GetNewNode(_actualNode);
+
+        //    //_agent.SetDestination(_actualNode.position);
+
+        //    //Debug.Log($"Nodo actua {_actualNode}"); 
+        //    #endregion
+        //}
+        //if (_doubt && Vector3.SqrMagnitude(transform.position - new Vector3(_searchingPos.x, transform.position.y, _searchingPos.z)) <= (_changeNodeDist * _changeNodeDist))
+        //{
+        //    _agent.speed = 0;
+
+        //    if (!_inPlace)
+        //    {
+        //        //_inPlace = true;
+        //        //_waitDoubt = 0;
+
+        //        _anim.SetBool("Doubt", false);
+        //        StartSearching();
+        //        _anim.SetBool("Search", true);
+        //    }
+        //}
+
+
+        //_waitShivers += Time.deltaTime;
+        //_waitscared += Time.deltaTime;
+        //waitMoco += Time.deltaTime;
+        //waitStun += Time.deltaTime;
+        //if (_doubt)
+        //    _searchingTimer += Time.deltaTime;
+
+        //if (_searchingTimer > 12f)
+        //{
+        //    StopSearching();
+        //    _anim.SetBool("Walking", true);
+        //    _anim.SetBool("Doubt", false);
+        //}
+
+        //if (_inPlace) _waitDoubt += Time.deltaTime;
+
+        //if (_waitShivers >= tiempoDeSusto && shivers == true)
+        //{
+        //    //_agent.speed = speedNormal;
+        //    StopShivers();
+        //}
+        //if (_waitShivers >= cdDeSusto && shivers == true)
+        //{
+        //    shivers = false;
+        //}
+
+        //if (waitMoco >= tiempoDeMoco && mocod)
+        //{
+        //    StopMoco();
+        //    mocod = false;
+        //}
+
+
+
+        //if (scared == true && _waitscared >= tiempoDeSusto)
+        //{
+        //    //_agent.speed = speedNormal;
+        //    //_scared = false;
+
+        //    StopScare();
+        //}
+
+        //if (_doubt && _inPlace && _waitDoubt >= 2)
+        //{
+        //    #region comment
+        //    //_agent.speed = speedNormal;
+        //    //_doubt = false;
+        //    //_inPlace = false;
+        //    //GetNewNode();
+        //    //_agent.SetDestination(_actualNode.position);
+        //    #endregion
+
+        //    StopSearching();
+        //    _anim.SetBool("Walking", true);
+        //    _anim.SetBool("Search", false);
+        //}
+
+        ////if (!_doubt) _waitDoubt = 0;
+
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    Ganarga(4f);
+        //    //Ganarga(1f);
+        //    //Ganarga(1f);
+        //    //Ganarga(1f);
+        //}
+
+        //if (_sliding && Time.time - lastSlide > minSlideTime && _rb.velocity.sqrMagnitude < 0.1f * 0.1f)
+        //{
+        //    StopSlide();
+        //}
+
+        NpcUpdate();
+
+    }
+
+    void Brain()
+    {
         if (waitStun >= tiempoDeStun && stuned)
         {
             StopStun();
@@ -226,6 +342,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
             StopSlide();
         }
 
+    
     }
 
     public override void GetScared(float scareAmount, Transform direction = null)
@@ -266,6 +383,11 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _agent.speed = speedNormal;
         scared = false;
         _particulas.scared = false;
+    }
+
+    public void CallStopScare()
+    {
+        StopScare();
     }
 
 

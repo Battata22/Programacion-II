@@ -8,6 +8,8 @@ public class CanillaBanhoDepa : SpecialObject
     [SerializeField] Espejo _espejo;
     [SerializeField] Asustable _target;
     [SerializeField] Bath _bath;
+    [SerializeField] ParticleSystem niebla;
+
 
     bool inPos = false, trapActive = false;
 
@@ -38,7 +40,9 @@ public class CanillaBanhoDepa : SpecialObject
     void ActivarCanilla()
     {
         Debug.Log("Activar sonido");
-        Debug.Log("Activar Particulas de neblina");
+        //Debug.Log("Activar Particulas de neblina");
+        niebla.gameObject.SetActive(true);
+
 
         //trapActive = true;
 

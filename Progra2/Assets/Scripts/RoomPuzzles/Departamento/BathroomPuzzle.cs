@@ -44,6 +44,7 @@ public class BathroomPuzzle : MonoBehaviour
         }
         _bath.ActionActive -= CompleteRoom;
 
+        GameManager.Instance._master2.ActivarGB();
     }
 
     private void OnDestroy()

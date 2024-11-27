@@ -30,10 +30,10 @@ public class Rociadores : MonoBehaviour
     {
         Debug.Log("<color=blue> ROCIADOREES ACTIVOS </color>");
         activo = true;
-        //foreach(var obj in _aguaGen)
-        //{
-        //    obj.Play();
-        //}
+        foreach (var obj in _aguaGen)
+        {
+            obj.Play();
+        }
 
 
         OnRociadoresActive();

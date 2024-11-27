@@ -186,7 +186,7 @@ public class Cat : NPC
     private void SelectAudio()
     {
         int random = Random.Range(1, _clips.Count + 1);
-        _audioSource.clip = _clips[random];
+        _audioSource.clip = _clips[random]; 
         _audioSource.Play();
     }
 }
