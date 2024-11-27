@@ -6,6 +6,7 @@ public class CruzBehaviour : MonoBehaviour
 {
     [SerializeField] float pulsoCooldown, radioDetect, force;
     [SerializeField] LayerMask player;
+    [SerializeField] GameObject _pulseArea;
     float wait;
 
     void Start()
@@ -27,6 +28,7 @@ public class CruzBehaviour : MonoBehaviour
     public void Pushing()
     {
         Collider[] collDetectados = Physics.OverlapSphere(transform.position, radioDetect, player);
+        Instantiate(_pulseArea, transform.position, Quaternion.identity);
         foreach (Collider collider in collDetectados)
         {
             collider.TryGetComponent<Rigidbody>(out Rigidbody _rb);

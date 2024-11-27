@@ -47,6 +47,8 @@ public class BedroomPuzzle : MonoBehaviour
         }
         _closet.ActionActive -= CompleteRoom;
 
+        GameManager.Instance.Master1.ActivarGB();
+
     }
 
     private void OnDestroy()

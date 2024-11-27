@@ -6092,6 +6092,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!1001 &105275574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15659,6 +15660,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!65 &240702932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18465,6 +18467,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!1001 &281484949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27987,6 +27990,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!65 &470775453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33579,6 +33583,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!43 &502345351
 Mesh:
   m_ObjectHideFlags: 0
@@ -59939,6 +59944,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!4 &888959129
 Transform:
   m_ObjectHideFlags: 0
@@ -91670,6 +91676,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!43 &1431491166
 Mesh:
   m_ObjectHideFlags: 0
@@ -95594,6 +95601,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 1
+  _sahumerioParticles: []
 --- !u!65 &1521537033
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102386,6 +102394,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!65 &1658949315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102415,6 +102424,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2005211996}
     m_Modifications:
+    - target: {fileID: 3017855419731056757, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3176552413933412721, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
       propertyPath: m_Name
       value: Heladera01
@@ -102431,9 +102444,13 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4208116417153743508, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4955247353599719660, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4955247353599719660, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
       propertyPath: _doubtRange
@@ -102453,6 +102470,10 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
     - target: {fileID: 6874627398478504718, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223367247272703091, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
+      propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8574801626698771017, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
@@ -102495,7 +102516,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6874627398478504718, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
+    - {fileID: 4955247353599719660, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
+    - {fileID: 4208116417153743508, guid: 81bf9037898d389499a5c0b7b6c60005, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -109105,6 +109129,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!1 &1761924557
 GameObject:
   m_ObjectHideFlags: 0
@@ -109162,6 +109187,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!65 &1761924560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113903,6 +113929,7 @@ MonoBehaviour:
   _roomNodes: []
   _nodeManager: {fileID: 0}
   _activeOnStart: 0
+  _sahumerioParticles: []
 --- !u!65 &1850452375
 BoxCollider:
   m_ObjectHideFlags: 0

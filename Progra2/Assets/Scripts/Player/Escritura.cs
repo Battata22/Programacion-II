@@ -13,7 +13,7 @@ public class Escritura : MonoBehaviour
             Physics.Raycast(transform.position, transform.forward, out hit);
             if (hit.collider != null && hit.transform.gameObject.GetComponent<Espejo>() != null)
             {
-                hit.transform.gameObject.GetComponent<Espejo>().Escritura();
+                //hit.transform.gameObject.GetComponent<Espejo>().Escritura();
             }
         }
 

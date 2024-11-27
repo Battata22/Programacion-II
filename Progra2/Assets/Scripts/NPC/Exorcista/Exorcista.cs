@@ -231,6 +231,10 @@ public class Exorcista : NPC
 
         _myAguaBehavior.Bless();
 
+
+        if (Random.Range(0, 3) == 0)
+            Instantiate(_holyWatherPrefab, transform.position, Quaternion.identity);
+
         _agent.speed = speedNormal;
         
         _isBlessing = false;

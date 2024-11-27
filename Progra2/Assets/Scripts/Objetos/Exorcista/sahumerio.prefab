@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.25, y: 0.69821465, z: -6.21}
-  m_LocalScale: {x: 0.51386, y: 0.51386, z: 0.51386}
+  m_LocalScale: {x: 1, y: 1, z: 0.51386}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,7 +46,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3752594173127790418}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -8894091688422599319, guid: d2ad98c23a689974496c25a838a2165a, type: 3}
 --- !u!23 &503641266330857230
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -111,8 +111,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.1460285, y: 0.14695142, z: 1.366525}
+  m_Center: {x: 0.00000005215406, y: 0.07050573, z: -0.00050574535}
 --- !u!54 &1948853218437234537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -275,6 +275,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: bfac56422fb9af14688d5ee0fbb894b7, type: 2}
   _materialFade: {fileID: 2100000, guid: 7baa7a45a7d5e414f8e63446a0158e2d, type: 2}
@@ -286,7 +287,6 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
-  blessed: 0
   aguaRompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
