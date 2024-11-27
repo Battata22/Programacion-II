@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sahumerio : MonoBehaviour
 {
-    [SerializeField] public bool prendido = false;
+    [SerializeField] public bool prendido = true;
     [SerializeField] bool reset = false;
     [SerializeField] int actualRoom;
     [SerializeField] float ogSpeed;
@@ -15,6 +15,12 @@ public class Sahumerio : MonoBehaviour
         ogSpeed = GameManager.Instance.Player._speed;
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (prendido && collision.transform.TryGetComponent<IFlamable>(out var flamable))
+            flamable.SetOnFire();
+    }
 
     void Update()
     {

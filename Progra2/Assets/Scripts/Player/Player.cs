@@ -328,7 +328,7 @@ public class Player : MonoBehaviour, IRoomDetectable
 
     public void CrazyScape(Vector3 dir)
     {
-        Debug.Log("ESCAPE FANTASTICO LLAMADO");
+        //Debug.Log("ESCAPE FANTASTICO LLAMADO");
 
         bouncy = true;
 
