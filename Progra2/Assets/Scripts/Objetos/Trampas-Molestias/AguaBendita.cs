@@ -5,7 +5,7 @@ using UnityEngine;
 public class AguaBendita : MonoBehaviour
 {
     [SerializeField] float radioCheck;
-    [SerializeField] LayerMask targetLayer;
+    [SerializeField] LayerMask targetLayer, playerLayer;
 
     void Start()
     {
@@ -31,6 +31,13 @@ public class AguaBendita : MonoBehaviour
             if(coll.gameObject.TryGetComponent<IBlessable>(out var coso))
                 coso.GetBlssed();
         }
-        
+
+        Collider[] playersCercanos = Physics.OverlapSphere(transform.position, radioCheck, playerLayer);
+        foreach (Collider player in playersCercanos)
+        {
+
+            GameManager.Instance.Player.GetComponent<Player>().GetDamage();
+        }
+
     }
 }

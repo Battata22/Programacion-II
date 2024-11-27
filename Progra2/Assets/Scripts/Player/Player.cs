@@ -642,7 +642,7 @@ public class Player : MonoBehaviour, IRoomDetectable
 
     void RestartScene()
     {
-        SceneManager.LoadScene("Nivel1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void ActivateEnchantedCoroutine(Transform myPos)

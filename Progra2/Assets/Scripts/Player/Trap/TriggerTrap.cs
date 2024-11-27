@@ -19,4 +19,13 @@ public class TriggerTrap : MonoBehaviour
             parentScript.AsustableDetected(asus);
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        var asus = other.gameObject.GetComponent<Asustable>();
+        if (asus && (asus.scared || asus._doubt))
+        {
+            parentScript.AsustableDetected(asus);
+        }
+    }
 }

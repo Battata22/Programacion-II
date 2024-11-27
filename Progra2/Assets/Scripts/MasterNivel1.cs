@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class MasterNivel1 : MonoBehaviour
@@ -13,6 +14,7 @@ public class MasterNivel1 : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     public GameObject gb;
     float waitVideo;
+    [SerializeField] Slider slider;
 
     private void Awake()
     {
@@ -30,7 +32,10 @@ public class MasterNivel1 : MonoBehaviour
 
     void Update()
     {
-
+        if (slider.value >= slider.maxValue)
+        {
+            SceneManager.LoadScene("Victoria");
+        }
     }
 
     public void ActivarGB()

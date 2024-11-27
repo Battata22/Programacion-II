@@ -49,7 +49,10 @@ MonoBehaviour:
   Gb: []
   _lights: []
   AiNodes: []
+  activeNodes: []
+  AINodeManager: {fileID: 0}
   _camera: {fileID: 0}
+  _master2: {fileID: 0}
   DropLayers:
     serializedVersion: 2
     m_Bits: 2147483904
@@ -73,6 +76,10 @@ MonoBehaviour:
   firstVisualLinea: {fileID: 0}
   imagenBlanco: {fileID: 0}
   imagenRojo: {fileID: 0}
+  Drop: {fileID: 0}
+  _terrorBar: {fileID: 0}
+  Rociadores: {fileID: 0}
+  jumpscareBoo: {fileID: 8300000, guid: 6c8867ae01823664586c7106520aa25e, type: 3}
 --- !u!114 &6406709151201570989
 MonoBehaviour:
   m_ObjectHideFlags: 0

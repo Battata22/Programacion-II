@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ObjectTrap : MonoBehaviour, IInteractable
 {
 
-    [SerializeField] GameObject _mesh;
+    [SerializeField] GameObject _mesh, icono;
 
     public delegate void VoidDelegate();
     public event VoidDelegate OnTrapActive = delegate { };
@@ -14,10 +15,18 @@ public class ObjectTrap : MonoBehaviour, IInteractable
     bool canAct = true;
     float _cd;
     SpriteRenderer _icono;
+    [SerializeField] Transform _lookingAt;
 
     private void Start()
     {
         _icono = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (_lookingAt == null) _lookingAt = GameManager.Instance.Camera.transform;
+
+        icono.transform.LookAt(_lookingAt.position);
     }
 
     public void Initialize(DelegateType.VoidDelegateTrans newAction, float newCD)

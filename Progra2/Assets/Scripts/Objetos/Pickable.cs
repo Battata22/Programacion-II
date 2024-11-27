@@ -3,6 +3,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.ParticleSystem;
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -181,6 +182,18 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
     protected virtual void Update()
     {
+
+        if (blessed)
+        {
+            a part = GetComponentInChildren<a>();
+            if (!part.particulas.isPlaying)
+            {
+                part.particulas.Play();
+            }
+
+        }
+
+
         //if(_materialNormal == null) _materialNormal = GetComponent<Material>();
         if (_camera == null) _camera = GameManager.Instance.Camera.transform;
         if(_itemHolder == null) _itemHolder = GameManager.Instance.ItemHolde;

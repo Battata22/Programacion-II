@@ -154,6 +154,8 @@ public class GameManager : MonoBehaviour
 
     public Rociadores Rociadores;
 
+    public AudioClip jumpscareBoo;
+
 
     //De momento GameManager se va a encargar de Ganar, porque si, porque puedo y lo valgo
     private bool _activateWinCondition = false;
@@ -175,12 +177,25 @@ public class GameManager : MonoBehaviour
             ActivateWinCondition();
             _activateWinCondition = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene("Nivel2");
+        }
     }
 
     public void CompleteLevel()
     {
-        SceneManager.LoadScene("Victoria");
 
+        if (SceneManager.GetActiveScene().name == "Nivel1")
+        {
+            //SceneManager.LoadScene("Nivel2");
+            SceneManager.LoadScene("Niveles");
+        }
+        else
+        {
+            SceneManager.LoadScene("Victoria");
+        }
     }
 
 
