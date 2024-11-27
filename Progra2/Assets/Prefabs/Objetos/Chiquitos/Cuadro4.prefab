@@ -157,6 +157,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5c39ea8f893fa094ab85df457275351c, type: 2}
   _materialFade: {fileID: 2100000, guid: 326c3fc1aafa1e14cb8c54a91275fdd3, type: 2}
@@ -164,15 +165,21 @@ MonoBehaviour:
   _dropLayers:
     serializedVersion: 2
     m_Bits: 0
+  actualRoom: 0
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
   _navObstacle: {fileID: 0}
   _scareAmount: 0
+  bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!82 &8106983085963649917
 AudioSource:

@@ -27,28 +27,30 @@ public class SelectorBotones : MonoBehaviour
             imagen.color = Color.gray;
         }
 
+
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-            selectedActual = 1;
+            SelectorUI.habAct = 1;
         }
         else if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            selectedActual = 2;
+            SelectorUI.habAct = 2;
         }
         else if (Input.GetKeyUp(KeyCode.Alpha3))
         {
-            selectedActual = 3;
+            SelectorUI.habAct = 3;
         }
         else if (Input.GetKeyUp(KeyCode.Alpha4))
         {
-            selectedActual = 4;
+            SelectorUI.habAct = 4;
         }
         else if (Input.GetKeyUp(KeyCode.Alpha5))
         {
-            selectedActual = 5;
+            SelectorUI.habAct = 5;
         }
 
         SelectedAction();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
