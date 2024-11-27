@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Rociadores Rociadores;
 
 
     //De momento GameManager se va a encargar de Ganar, porque si, porque puedo y lo valgo

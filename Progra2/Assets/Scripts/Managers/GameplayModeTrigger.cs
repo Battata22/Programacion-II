@@ -10,7 +10,8 @@ public class GameplayModeTrigger : MonoBehaviour
     public static event PhaseChange StartGampelayPhase;
     private void OnTriggerEnter(Collider other)
     {
-        StartGameplay();
+        if(other.transform.TryGetComponent<Pickable>(out var obj) && obj._trowed)
+            StartGameplay();
     }
 
     void StartGameplay()

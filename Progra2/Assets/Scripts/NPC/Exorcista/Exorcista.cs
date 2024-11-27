@@ -66,7 +66,7 @@ public class Exorcista : NPC
     
     void NormalNpcMovement()
     {
-        Debug.Log("<color=#0ee874> Update de NPC </color>");
+        //Debug.Log("<color=#0ee874> Update de NPC </color>");
 
         if (_actualNode == null) Initialize();
 
@@ -147,7 +147,7 @@ public class Exorcista : NPC
         }
         else
         {
-            Debug.Log($"<color=red>Exorcista en duda, Siguiente llamado a aaccion en {wait}</color>");
+            //Debug.Log($"<color=red>Exorcista en duda, Siguiente llamado a aaccion en {wait}</color>");
             StartCoroutine(ChooseAction(wait, lastAction));
         }
 
@@ -202,7 +202,7 @@ public class Exorcista : NPC
 
     void CheckIfInBlessRange()
     {
-        Debug.Log("<color=cyan> Update de Agua Bendita </color>");
+        //Debug.Log("<color=cyan> Update de Agua Bendita </color>");
 
         if(_targetPos != null && _agent.destination != _targetPos.position)
             _agent.SetDestination(_targetPos.position);
@@ -269,7 +269,7 @@ public class Exorcista : NPC
         //_lastCruz = Instantiate(_cruzPrefab, transform.position, Quaternion.identity);
 
         _targetPos = GetNewNode(_actualNode);
-        Debug.Log($"<color=red> Posicion a la que hay que caminar {_targetPos.position} </color>");
+        //Debug.Log($"<color=red> Posicion a la que hay que caminar {_targetPos.position} </color>");
 
 
         _agent.SetDestination(_targetPos.position);
@@ -281,7 +281,7 @@ public class Exorcista : NPC
 
     void CheckIfInCrossPos()
     {
-        Debug.Log("<color=#e8a70e> Update de Cruz </color>");
+        //Debug.Log("<color=#e8a70e> Update de Cruz </color>");
         //Debug.Log($"<color=#e8a70e> Pos {transform.position} Targer {_targetPos.position} </color>");
 
         if(_targetPos != null && _agent.destination != _targetPos.position)
@@ -371,7 +371,7 @@ public class Exorcista : NPC
 
     void CheckIfInSahumerioPos()
     {
-        Debug.Log("<color=#e80ec0> Update de SAhumerio </color>");
+        //Debug.Log("<color=#e80ec0> Update de SAhumerio </color>");
 
         if (_targetPos != null && _agent.destination != _targetPos.position)
             _agent.SetDestination(_targetPos.position);
