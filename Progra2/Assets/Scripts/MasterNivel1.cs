@@ -32,10 +32,10 @@ public class MasterNivel1 : MonoBehaviour
 
     void Update()
     {
-        if (slider.value >= slider.maxValue)
-        {
-            SceneManager.LoadScene("Victoria");
-        }
+        //if (slider.value >= slider.maxValue)
+        //{
+        //    SceneManager.LoadScene("Victoria");
+        //}
     }
 
     public void ActivarGB()
