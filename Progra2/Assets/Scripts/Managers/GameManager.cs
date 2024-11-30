@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
         {           
             Destroy(this);
         }
-  
+
         //_npc = null;
+        terrorBar = null;
     }
     #endregion
     
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
 
     public AudioSource Drop;
 
-    public Slider _terrorBar;
+    private Slider _terrorBar;
     public Slider terrorBar
     {
         get{ return _terrorBar; }

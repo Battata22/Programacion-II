@@ -21786,6 +21786,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: feedf915eef284040b1cc8472af7da14, type: 3}
     - target: {fileID: 33119673611423073, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33119673611423073, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
       propertyPath: _materialFade
       value: 
       objectReference: {fileID: 2100000, guid: 609e90b9cdc64a6428a6b1fb4fbf0ec3, type: 2}
@@ -21793,6 +21797,10 @@ PrefabInstance:
       propertyPath: _materialNormal
       value: 
       objectReference: {fileID: 2100000, guid: e6f2d8052e45d804e86e1b25c58cf1a1, type: 2}
+    - target: {fileID: 126108909505383629, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1818267991419319405, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
       propertyPath: MinDistance
       value: 3
@@ -21824,6 +21832,10 @@ PrefabInstance:
     - target: {fileID: 4703014054113934698, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
       propertyPath: m_Size.z
       value: 43.86266
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703014054113934698, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4703014054113934698, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
       propertyPath: m_Center.x
@@ -21902,6 +21914,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8918361057827977355, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918361057827977355, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
       propertyPath: areaSonoro
       value: 
       objectReference: {fileID: 6479006537298369615, guid: 73f6cff95ec2f9d45a5f76c2ed13b5c1, type: 3}
@@ -21917,7 +21933,9 @@ PrefabInstance:
       propertyPath: scareAmount
       value: 0.2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 33119673611423073, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
+    - {fileID: 1926672446888079862, guid: 2b8c06c555259cd4eaafa496a5a0e594, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

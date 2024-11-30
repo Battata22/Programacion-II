@@ -52,7 +52,7 @@ public class ObjectTrap : MonoBehaviour, IInteractable
     {
         _mesh.SetActive(false);
         canAct = false;
-        _icono.sprite = null;
+        //_icono.sprite = null;
 
         //Debug.Log($"Inactive for {_cd} seconds");
 

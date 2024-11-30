@@ -18,8 +18,8 @@ public class DepaRoomPuzzle : SpecialObject
 
     private void Update()
     {
-        var slider = GameManager.Instance._terrorBar;
-        if(createTrap && slider.value >= slider.maxValue)
+        
+        if(createTrap && GameManager.Instance.terrorBar.value >= GameManager.Instance.terrorBar.maxValue)
         {
             createTrap = false;
             CreateTrap();
@@ -35,6 +35,13 @@ public class DepaRoomPuzzle : SpecialObject
         createTrap = true;
         GameManager.Instance.ActivateWinCondition -= CreateTrap;
 
+    }
+
+    public override void CreateTrap()
+    {
+        base.CreateTrap();
+        //aea
+        GameManager.Instance.ActivateWinCondition -= CreateTrap;
     }
 
     protected override void ObjectAbility(Transform origin)
