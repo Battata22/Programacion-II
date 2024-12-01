@@ -82,4 +82,10 @@ public class Bath : SpecialObject
         Destroy(spookyJumpscare);
 
     }
+
+    public override void CreateTrap()
+    {
+        base.CreateTrap();
+        GameManager.Instance.pasoActual = 3;
+    }
 }

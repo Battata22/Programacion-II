@@ -10,6 +10,10 @@ public class CanillaBanhoDepa : SpecialObject
     [SerializeField] Bath _bath;
     [SerializeField] ParticleSystem niebla;
 
+    private void Start()
+    {
+        GameManager.Instance.pasoActual = 1;
+    }
 
     bool inPos = false, trapActive = false;
 
@@ -43,7 +47,7 @@ public class CanillaBanhoDepa : SpecialObject
         //Debug.Log("Activar Particulas de neblina");
         niebla.gameObject.SetActive(true);
 
-
+        GameManager.Instance.pasoActual = 2;
         //trapActive = true;
 
         CreateTrap();

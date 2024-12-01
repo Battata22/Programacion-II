@@ -46,6 +46,7 @@ public class BoxBehavior : MonoBehaviour, IFlamable
 
         GameManager.Instance.Rociadores.OnRociadoresActive += ExtinguishFire;
         GameManager.Instance.Rociadores.objectsOnFire++;
+        GameManager.Instance.pasoActual = 4;
     }
 
 }
