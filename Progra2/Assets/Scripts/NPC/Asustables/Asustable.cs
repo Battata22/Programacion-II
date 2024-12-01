@@ -117,6 +117,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     private void Update()
     {
+        #region Old Update
         //if (tutorial == true)
         //{
         //    GetScaredTuto();
@@ -227,7 +228,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
         //if (_sliding && Time.time - lastSlide > minSlideTime && _rb.velocity.sqrMagnitude < 0.1f * 0.1f)
         //{
         //    StopSlide();
-        //}
+        //} 
+        #endregion
 
         NpcUpdate();
 
@@ -561,10 +563,19 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _lookingActive = false;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
-        GameManager.Instance.Npc.Remove(this);
+        base.OnDestroy();
+        PhaseManager.TrapPhaseActive -= TrapPhase;
+        PhaseManager.GameplayPhaseActive -= GameplayPhase;
+
+
+
     }
+    //private void OnDestroy()
+    //{
+    //    GameManager.Instance.Npc.Remove(this);
+    //}
 
     void Ganarga(float num)
     {

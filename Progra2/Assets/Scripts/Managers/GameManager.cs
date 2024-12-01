@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {           
-            Destroy(this);
+            //Destroy(this);
+            Destroy(this.gameObject);
         }
 
         //_npc = null;
@@ -142,14 +143,15 @@ public class GameManager : MonoBehaviour
 
     public AudioSource Drop;
 
-    private Slider _terrorBar;
+    [SerializeField] private Slider _terrorBar;
     public Slider terrorBar
     {
         get{ return _terrorBar; }
         set 
         {
-            Debug.Log($"<color=green> Barra de terror Seteada {value}</color>");
+            //Debug.Log($"<color=green> Barra de terror Seteada {value}</color>");
             _terrorBar = value; 
+            //DeactivateBar();
         }
     }
 
@@ -181,22 +183,49 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
+            var coso = GetComponent<PhaseManager>();
+            coso.CallTrapPhase();
+
             SceneManager.LoadScene("Nivel2");
+        }
+        if(Input.GetKeyDown(KeyCode.K)) 
+        {
+            var coso = GetComponent<PhaseManager>();
+            coso.CallTrapPhase();
+
+            SceneManager.LoadScene("Nivel1");
         }
     }
 
     public void CompleteLevel()
     {
 
+        var coso = GetComponent<PhaseManager>();
+        coso.CallTrapPhase();
+
         if (SceneManager.GetActiveScene().name == "Nivel1")
         {
-            //SceneManager.LoadScene("Nivel2");
+            //SceneManager.LoadScene("Nivel2");          
+
             SceneManager.LoadScene("Niveles");
         }
         else
         {
             SceneManager.LoadScene("Victoria");
         }
+    }
+
+    public void ActivateTerrorBar()
+    {
+        _terrorBar.gameObject.SetActive(true);
+        //a
+
+        _terrorBar.value = 0f;
+    }
+
+    private void OnDestroy()
+    {
+        
     }
 
     public int pasoActual;

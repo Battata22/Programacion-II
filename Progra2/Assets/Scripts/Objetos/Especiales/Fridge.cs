@@ -8,10 +8,6 @@ public class Fridge : SpecialObject
     [SerializeField] Ice icePrefab;
     [SerializeField] GameObject partcleGen;
 
-    protected override void Awake()
-    {
-        //CreateTrap();
-    }
 
     //public override void CreateTrap()
     //{

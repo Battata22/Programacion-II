@@ -36,7 +36,7 @@ public class AINodeManager : MonoBehaviour
     //List<Transform> activeNodes = new();
     public void SetActiveNodes(int index, bool callClear = false)
     {
-        Debug.Log($"AHHHHHHHHHHHHHHHHHHHHHH {index}");
+        //Debug.Log($"AHHHHHHHHHHHHHHHHHHHHHH {index}");
         if(callClear)
             ClearActiveNodes();
 

@@ -10,6 +10,7 @@ public class DepaRoomPuzzle : SpecialObject
 
     bool inPos = false, trapActive = false, createTrap = false;
 
+    bool trampaCreada = false;
 
     private void Start()
     {
@@ -28,6 +29,10 @@ public class DepaRoomPuzzle : SpecialObject
         {
             inPos = true;
         }
+        //if(GameManager.Instance.terrorBar.value >= GameManager.Instance.terrorBar.maxValue)
+        //{
+        //    CreateTrap();
+        //}
     }
 
     public void Shit()
@@ -39,6 +44,9 @@ public class DepaRoomPuzzle : SpecialObject
 
     public override void CreateTrap()
     {
+        //if (trampaCreada) return;
+        //trampaCreada = true;
+
         base.CreateTrap();
         //aea
         GameManager.Instance.ActivateWinCondition -= CreateTrap;

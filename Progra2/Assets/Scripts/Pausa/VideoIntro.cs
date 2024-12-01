@@ -70,7 +70,7 @@ public class VideoIntro : MonoBehaviour
         marco3.enabled = false;
         vida.enabled = false;
         crosshair.SetActive(false);
-        barra.SetActive(false);
+        //barra.SetActive(false);
         //gato.SetActive(false);
         //perro.SetActive(false);
         //abuela.SetActive(false);
@@ -92,7 +92,7 @@ public class VideoIntro : MonoBehaviour
         marco3.enabled = true;
         vida.enabled = true;
         crosshair.SetActive(true);
-        barra.SetActive(true);
+        //barra.SetActive(true);
         //gato.SetActive(true);
         //perro.SetActive(true);
         //abuela.SetActive(true);

@@ -13,28 +13,47 @@ public class UltimateLiving : SpecialObject
 
     Player _player;
 
-    float countDown, waitScared;
     bool active = false, used = false;
+    float countDown, waitScared;
+
+    bool trapCreated = false;
 
     private void Start()
     {
         GameManager.Instance.ActivateWinCondition += CreateTrap;
     }
 
+    private void Update()
+    {
+        if(!trapCreated && GameManager.Instance.terrorBar.value >= GameManager.Instance.terrorBar.maxValue) 
+        {
+            CreateTrap();
+        }
+    }
+
     public override void CreateTrap()
     {
         base.CreateTrap();
+        trapCrated = true;
         GameManager.Instance.ActivateWinCondition -= CreateTrap;
     }
 
     protected override void ObjectAbility(Transform origin)
     {
         //Ultimate copiada del player
-        StartCoroutine(DoUltimate(tiempoInAir));
+        try
+        {
+            StartCoroutine(DoUltimate(tiempoInAir));
+        }
+        catch
+        {
+            Invoke("CallWin", 1f);
+        }
     }
 
     IEnumerator DoUltimate(float newWait)
     {
+
         var wait = new WaitForSeconds(newWait);
 
         Levitar();

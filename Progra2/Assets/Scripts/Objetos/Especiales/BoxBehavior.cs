@@ -39,7 +39,7 @@ public class BoxBehavior : MonoBehaviour, IFlamable
     {
         //Activar particulas de humo
         if (OnFire) return;
-        Debug.Log($"<color=red> Set on fire </color>");
+        //Debug.Log($"<color=red> Set on fire </color>");
 
         OnFire = true;
         _fireGen.Play();

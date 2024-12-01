@@ -642,6 +642,9 @@ public class Player : MonoBehaviour, IRoomDetectable
 
     void RestartScene()
     {
+        //var coso = GameManager.Instance.GetComponent<PhaseManager>();
+        //coso.CallTrapPhase();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -748,5 +751,11 @@ public class Player : MonoBehaviour, IRoomDetectable
     public void SetRoom(int room)
     {
         actualRoom = room;
+    }
+
+    private void OnDestroy()
+    {
+        PhaseManager.TrapPhaseActive -= TrapPhase;
+        PhaseManager.GameplayPhaseActive -= GameplayPhase;
     }
 }

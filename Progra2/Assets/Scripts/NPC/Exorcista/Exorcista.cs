@@ -357,7 +357,7 @@ public class Exorcista : NPC
 
         if (_lastSahumerio != null && _lastSahumerio.prendido)
         {
-            Debug.Log($"<color=magenta> Ya existe un sahumerio prendido en la casa </color>");
+            //Debug.Log($"<color=magenta> Ya existe un sahumerio prendido en la casa </color>");
             ResetActionChoose(HolyObject.Sahumerio);
             return;
         }

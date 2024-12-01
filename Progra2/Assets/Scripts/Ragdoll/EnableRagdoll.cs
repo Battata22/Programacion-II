@@ -37,7 +37,7 @@ public class EnableRagdoll : MonoBehaviour
 
     public void ActivateRagdoll()
     {
-        print("<color=green> Ragdoll Activado </color>");
+        //print("<color=green> Ragdoll Activado </color>");
 
         var ragdoll = Instantiate(_ragdollPrefab, transform.position, Quaternion.identity);
         ragdoll.Initialize(this, transform.forward, _forceMult, _impulsePelvis);
@@ -47,7 +47,7 @@ public class EnableRagdoll : MonoBehaviour
 
     public void ActivateRagdoll(Vector3 dir)
     {
-        print("<color=green> Ragdoll Activado </color>");
+        //print("<color=green> Ragdoll Activado </color>");
 
         var ragdoll = Instantiate(_ragdollPrefab, transform.position, Quaternion.identity);
         ragdoll.Initialize(this, dir, _forceMult, _impulsePelvis);
@@ -58,7 +58,7 @@ public class EnableRagdoll : MonoBehaviour
     public void DeactivateRagdoll()
     {
 
-        print("<color=red> Ragdoll Desactivado </color>");
+        //print("<color=red> Ragdoll Desactivado </color>");
 
         _npc.TurnOn();
         OnDeactivate();

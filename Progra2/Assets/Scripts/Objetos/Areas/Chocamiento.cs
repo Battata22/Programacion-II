@@ -97,7 +97,7 @@ public class Chocamiento : MonoBehaviour
         //GetBetterNode(_npcInRange, GameManager.Instance.Player);
         //print("despues del nodo");
         asustableScript.GetScared(scareAmount, _finalNode);
-        print("despues del get scared");
+        //print("despues del get scared");
 
     }
 

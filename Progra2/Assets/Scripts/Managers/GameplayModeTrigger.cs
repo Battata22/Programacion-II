@@ -7,7 +7,7 @@ public class GameplayModeTrigger : MonoBehaviour
 {
     [SerializeField] GameObject[] _objectToActivate;
     public delegate void PhaseChange();
-    public static event PhaseChange StartGampelayPhase;
+    public static event PhaseChange StartGampelayPhase = delegate { };
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.TryGetComponent<Pickable>(out var obj) && obj._trowed)
@@ -20,8 +20,11 @@ public class GameplayModeTrigger : MonoBehaviour
         {
             obj.SetActive(true);
         }
-        StartGampelayPhase();
+
+        //StartGampelayPhase();
+        GameManager.Instance.GetComponent<PhaseManager>().CallGamePlayPhase();
+
         gameObject.SetActive(false);
-        GameManager.Instance._master2.ActivarGB();
+        //GameManager.Instance._master2.ActivarGB();
     }
 }

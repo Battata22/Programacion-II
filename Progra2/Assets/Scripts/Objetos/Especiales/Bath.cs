@@ -63,7 +63,7 @@ public class Bath : SpecialObject
 
 
         var spookyJumpscare = Instantiate(_jumpScarePrefab, transform.position + new Vector3(0,1,0), transform.rotation);
-        Debug.Log($"<color=#ff00ff> Sonido de calaca tocando trompeta </color>");
+        //Debug.Log($"<color=#ff00ff> Sonido de calaca tocando trompeta </color>");
 
         yield return new WaitForSeconds(0.2f);
 

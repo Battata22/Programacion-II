@@ -24,7 +24,7 @@ public class BathroomPuzzle : MonoBehaviour
 
     void CompleteRoom()
     {
-        Debug.Log($"<color=green> CUARTO COMPLETADO </color>");
+        //Debug.Log($"<color=green> CUARTO COMPLETADO </color>");
 
         foreach (var door in _doors)
         {

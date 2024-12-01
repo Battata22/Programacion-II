@@ -78,7 +78,7 @@ public class CanillaBanhoDepa : SpecialObject
         yield return new WaitForSeconds(0.5f);
 
         _espejo.Escritura();
-        Debug.Log($"<color=#ff00ff> IGNACIOOOOOOO </color>");
+        //Debug.Log($"<color=#ff00ff> IGNACIOOOOOOO </color>");
 
         yield return new WaitForSeconds(0.2f);
 

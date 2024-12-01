@@ -141,7 +141,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
     public void AsustableDetected(Asustable target)
     {
-        print($"<color=#18f18F> Austable detectado </color>");
+        //print($"<color=#18f18F> Austable detectado </color>");
         // Trampa Activada +1
         Interact();
     }

@@ -7,7 +7,7 @@ public class ViejaDurmiente : MonoBehaviour
     [SerializeField] GameObject gato, abuela, perro;
     [SerializeField] SpriteRenderer icono;
     public delegate void StartRun();
-    public static event StartRun startRun;
+    public static event StartRun startRun = delegate { };
 
     void Start()
     {
@@ -37,8 +37,11 @@ public class ViejaDurmiente : MonoBehaviour
         abuela.SetActive(true);
         //gato.SetActive(true);
         //perro.SetActive(true);
+
+        //startRun();
+        GameManager.Instance.GetComponent<PhaseManager>().CallGamePlayPhase();
+
         gameObject.SetActive(false);
-        startRun();
         //GameManager.Instance.Master1.ActivarGB();
     }
 }

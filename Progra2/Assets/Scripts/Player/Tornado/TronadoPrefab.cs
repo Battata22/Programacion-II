@@ -19,7 +19,7 @@ public class TronadoPrefab : MonoBehaviour
         Invoke("SelfDestruct", duracion);
 
         Collider[] collidersNPCs = Physics.OverlapSphere(transform.position, radio * 4, maskNPC);
-        print(collidersNPCs.Length);
+        //print(collidersNPCs.Length);
 
         foreach (Collider colliderNPC in collidersNPCs)
         {
@@ -37,7 +37,7 @@ public class TronadoPrefab : MonoBehaviour
         {
             if (col.transform.GetComponent<RagdollHips>() != null)
             {
-                print(col.transform.name);
+                //print(col.transform.name);
                 _npcRagdosll.Add(col.transform.GetComponent<RagdollHips>());
                 doShit = true;
             }
@@ -82,7 +82,7 @@ public class TronadoPrefab : MonoBehaviour
     {
         foreach (var ragdolls in _npcRagdosll)
         {
-            Debug.Log("Afectando a la vieja");
+            //Debug.Log("Afectando a la vieja");
             Rigidbody rb = ragdolls.GetComponent<Rigidbody>();
             var dir = transform.position - ragdolls.transform.position;
             rb.AddForce((dir * rotSpeed * (1 / Vector3.Distance(transform.position, ragdolls.transform.position)) * Time.fixedDeltaTime) / rb.mass * 70, ForceMode.Impulse);

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PhaseManager : MonoBehaviour
 {
-    public static event DelegateType.VoidDelegate TrapPhaseActive;
-    public static event DelegateType.VoidDelegate GameplayPhaseActive;
+    public static event DelegateType.VoidDelegate TrapPhaseActive = delegate { };
+    public static event DelegateType.VoidDelegate GameplayPhaseActive = delegate { };
 
     bool trapPhase = true;
 
-    private void Awake()
-    {
-        TrapPhaseActive = delegate { };
-        GameplayPhaseActive = delegate { };
-    }
+    //private void Awake()
+    //{
+    //    TrapPhaseActive = delegate { };
+    //    GameplayPhaseActive = delegate { };
+    //}
 
     private void Start()
     {
@@ -45,6 +45,16 @@ public class PhaseManager : MonoBehaviour
         //Trampas spawneables
         TrapPhaseActive();
         trapPhase = true;
+    }
+
+    public void CallTrapPhase()
+    {
+        TrapPhase();
+    }
+
+    public void CallGamePlayPhase()
+    {
+        GameplayPhase();
     }
 
     void GameplayPhase()

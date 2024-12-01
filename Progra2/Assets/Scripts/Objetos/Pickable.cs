@@ -72,6 +72,9 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         _speed = 10f;
         _cd = 1;
 
+        _rb.interpolation = RigidbodyInterpolation.Interpolate;
+        _rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
         #region Comment
         //if (!mediano && !grande)
         //{
@@ -113,6 +116,9 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                 break;
 
             case Weight.high:
+
+                _rb.constraints = RigidbodyConstraints.FreezeAll;
+
                 _cd = 3;
                 _rb.mass = 20f;
 
@@ -186,7 +192,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         if (blessed)
         {
             a part = GetComponentInChildren<a>();
-            if (!part.particulas.isPlaying)
+            if (part != null &&!part.particulas.isPlaying)
             {
                 part.particulas.Play();
             }
@@ -545,20 +551,20 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
     public virtual void NerfObj(float num = 0.5f)
     {
-        Debug.Log("<color=red> Objeto nerfeado </color>");  
+        //Debug.Log("<color=red> Objeto nerfeado </color>");  
         _scareAmount *= num;
     }
     protected IEnumerator ActivateNavObstacle()
     {
-        Debug.Log("<color=blue> LLAMADO A ACTIVAR </color>");
+        //Debug.Log("<color=blue> LLAMADO A ACTIVAR </color>");
         yield return new WaitForSeconds(2f);
         if (holding || _onAir || _navObstacle.enabled)
         {
-            Debug.Log("<color=red> NO ACTIVAR </color>");
+            //Debug.Log("<color=red> NO ACTIVAR </color>");
         }
         else
         {
-            Debug.Log("<color=green> ACTIVADO </color>");
+            //Debug.Log("<color=green> ACTIVADO </color>");
             _navObstacle.enabled = true;
         }
     }

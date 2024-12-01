@@ -30926,10 +30926,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3743949817775891713, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 813849259}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6400518002289214810, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1041688318}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
 --- !u!114 &1041688315 stripped
 MonoBehaviour:
@@ -30942,34 +30939,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5455817b625d3a341b608e5693874baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1041688316 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6400518002289214810, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
-  m_PrefabInstance: {fileID: 1041688314}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1041688317 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3743949817775891713, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
   m_PrefabInstance: {fileID: 1041688314}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1041688318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041688316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ca38d4e3c8aef40afe1c7d6d2aa253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1041688319 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7545947425505315286, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
   m_PrefabInstance: {fileID: 1041688314}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041688316}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
@@ -32350,7 +32330,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _AIActive: 0
+  _AIActive: 1
   actualRoom: 0
   tiempoDeSusto: 2.3
   cdDeSusto: 10
@@ -54523,6 +54503,10 @@ PrefabInstance:
     - target: {fileID: 6004991956307945265, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004991956307945265, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6918435160359324280, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
       propertyPath: m_LocalPosition.x

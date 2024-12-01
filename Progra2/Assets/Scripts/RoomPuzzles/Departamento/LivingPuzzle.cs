@@ -23,7 +23,7 @@ public class LivingPuzzle : MonoBehaviour
 
     void CompleteRoom()
     {
-        Debug.Log($"<color=green> CUARTO COMPLETADO </color>");
+        //Debug.Log($"<color=green> CUARTO COMPLETADO </color>");
 
         foreach (var door in _doors)
         {
@@ -49,6 +49,8 @@ public class LivingPuzzle : MonoBehaviour
         GameManager.Instance.Rociadores.OnRociadoresActive -= CompleteRoom;
 
         _roomPuzzle.Shit();
+
+        GameManager.Instance.ActivateTerrorBar();
 
     }
 

@@ -105,7 +105,7 @@ public class SelectorUI : MonoBehaviour
 
     public void Test(Transform noSeUsaPeroConfiaQueEstoEsLaMejorManera)
     {
-        print($"<color=#2CD9C9> Llamada Habilidad con F habilidad activa {habAct}</color>");
+        //print($"<color=#2CD9C9> Llamada Habilidad con F habilidad activa {habAct}</color>");
     }
 
     //public void Nada()
