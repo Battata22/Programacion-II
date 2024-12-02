@@ -46,8 +46,6 @@ public class CanillaBanhoDepa : SpecialObject
         Debug.Log("Activar sonido");
         //Debug.Log("Activar Particulas de neblina");
         niebla.gameObject.SetActive(true);
-
-        GameManager.Instance.pasoActual = 2;
         //trapActive = true;
 
         CreateTrap();
@@ -65,7 +63,7 @@ public class CanillaBanhoDepa : SpecialObject
 
     IEnumerator WaitToScare()
     {
-
+        GameManager.Instance.pasoActual = 2;
         //trapActive = true;
 
         while (inPos == false)

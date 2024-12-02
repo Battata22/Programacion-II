@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -60,11 +61,14 @@ public class UltimateLiving : SpecialObject
 
         yield return wait;
 
-        Caida();
+        //Caida();
     }
 
     void Levitar()
     {
+        Invoke("CallWin", tiempoInAir + 1);
+        Invoke("Caida", tiempoInAir);
+
         active = true;
 
         used = true;
@@ -72,7 +76,6 @@ public class UltimateLiving : SpecialObject
         countDown = 0;
 
         Collider[] collidersNPC = Physics.OverlapSphere(transform.position, radio, maskNPC);
-
         foreach (var collider in collidersNPC)
         {
 
@@ -84,9 +87,9 @@ public class UltimateLiving : SpecialObject
 
         }
 
-
         Collider[] colliders = Physics.OverlapSphere(transform.position, radio, maskUlti);
 
+        print(colliders.Length);
         foreach (var collider in colliders)
         {
 
@@ -117,7 +120,6 @@ public class UltimateLiving : SpecialObject
     void Caida()
     {
         //ultState.color = Color.red;
-
         waitScared = 0;
 
         Collider[] collidersNPC = Physics.OverlapSphere(transform.position, radio, maskNPC);
@@ -128,7 +130,6 @@ public class UltimateLiving : SpecialObject
 
         foreach (var collider in colliders)
         {
-
             if (collider.GetComponent<Rigidbody>() != null)
             {
                 Pickable pickScript = collider.GetComponent<Pickable>();
@@ -138,6 +139,7 @@ public class UltimateLiving : SpecialObject
                     rb.useGravity = true;
                     rb.AddForce(transform.up * -fuerzaTorque);
                 }
+
 
                 if (collider.GetComponent<NavMeshObstacle>() != null)
                 {
@@ -151,7 +153,6 @@ public class UltimateLiving : SpecialObject
 
         foreach (var collider in collidersNPC)
         {
-
             if (collider.GetComponent<Asustable>() != null)
             {
                 if (collider.GetComponent<Asustable>() != null)

@@ -46,7 +46,13 @@ public class BoxBehavior : MonoBehaviour, IFlamable
 
         GameManager.Instance.Rociadores.OnRociadoresActive += ExtinguishFire;
         GameManager.Instance.Rociadores.objectsOnFire++;
+
+        GameManager.Instance.cajasAct += 1;
+
+        if (GameManager.Instance.cajasAct >= 3)
+        {
         GameManager.Instance.pasoActual = 4;
+        }
     }
 
 }

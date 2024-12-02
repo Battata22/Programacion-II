@@ -78,7 +78,8 @@ public class Bath : SpecialObject
         Destroy(cortina.gameObject);
 
         yield return new WaitForSeconds(0.15f);
-        
+        GameManager.Instance.pasoActual = 3;
+
         Destroy(spookyJumpscare);
 
     }
@@ -86,6 +87,6 @@ public class Bath : SpecialObject
     public override void CreateTrap()
     {
         base.CreateTrap();
-        GameManager.Instance.pasoActual = 3;
+
     }
 }

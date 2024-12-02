@@ -230,6 +230,8 @@ public class GameManager : MonoBehaviour
 
     public int pasoActual;
 
+    public int cajasAct;
+
 }
 
 

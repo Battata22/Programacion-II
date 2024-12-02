@@ -8,6 +8,11 @@ public class Lock : MonoBehaviour, ILockeable
     public int id {  get { return _id; }}
 
     [SerializeField] Transform _target;
+
+    private void Start()
+    {
+        GameManager.Instance.pasoActual = 0;
+    }
     public void Unlock()
     {
         if (!_target.TryGetComponent<ILockeable>(out var worthless))
@@ -17,6 +22,7 @@ public class Lock : MonoBehaviour, ILockeable
         }
         worthless.Unlock();
         KeyUsed();
+        GameManager.Instance.pasoActual = 1;
 
     }
 
