@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -40,7 +41,7 @@ public class CreatePlayerTrap : MonoBehaviour
         }
 
 
-        textoTraps.text = ("Trampas Utilizadas: " + currentTraps + " de " + maxTraps);
+        textoTraps.text = ("Trampas en uso: " + currentTraps + " de " + maxTraps + Environment.NewLine + "Objetivo actual: " + ObjetivoActual());
 
         // 0 siempre, 6 7 y 8 por que todavia no existe trampa para ellos
         if (SelectorUI.habAct != 0 && SelectorUI.habAct != 3 && SelectorUI.habAct != 5 && SelectorUI.habAct != 6 && SelectorUI.habAct != 7 && SelectorUI.habAct != 8)
@@ -104,5 +105,37 @@ public class CreatePlayerTrap : MonoBehaviour
     void Test()
     {
         print($"<color=#C8318F> Funcion  del Create Trap </color>");
+    }
+
+    string ObjetivoActual()
+    {
+        if (SceneManager.GetActiveScene().name == "Nivel2")
+        {
+            if (GameManager.Instance.pasoActual == 0)
+                return "Abre el candado con la llave que tiene la abuela";
+            else if (GameManager.Instance.pasoActual == 1)
+                return "Rompe la canilla con un objeto pesado";
+            else if (GameManager.Instance.pasoActual == 2)
+                return "Congela a la abuela cuando este cerca de la heladera";
+            else if (GameManager.Instance.pasoActual == 3)
+                return "Asusta a la abuela y llena la barra para poder activar el susto final";
+            else
+                return "Nose que paso";
+        }
+        else if (SceneManager.GetActiveScene().name == "Nivel1")
+        {
+            if (GameManager.Instance.pasoActual == 1)
+                return "Rompe la canilla tirandole un objeto";
+            else if (GameManager.Instance.pasoActual == 2)
+                return "Asusta al Warren cuando este cerca de la ducha";
+            else if (GameManager.Instance.pasoActual == 3)
+                return "Quema 3 cajas con el sahumerio";
+            else if (GameManager.Instance.pasoActual == 4)
+                return "Asusta a Warren para poder activar el susto de la computadora";
+            else
+                return "Nose que paso";
+        }
+        else
+            return "Nose que paso";
     }
 }
