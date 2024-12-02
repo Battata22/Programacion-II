@@ -12,6 +12,8 @@ public class BedroomPuzzle : MonoBehaviour
     [SerializeField] RoomTrigger[] _nextRooms;
     AINodeManager _nodeManager;
 
+    [SerializeField] CanillaTrigger _canillaTrigger;
+
     private void Start()
     {
         _granny.OnRagdollTrigger += SpawnKey;
@@ -48,7 +50,7 @@ public class BedroomPuzzle : MonoBehaviour
         _closet.ActionActive -= CompleteRoom;
 
         GameManager.Instance.Master1.ActivarGB();
-
+        _canillaTrigger.CallShit();
     }
 
     private void OnDestroy()

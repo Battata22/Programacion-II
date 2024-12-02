@@ -86323,6 +86323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c0f8f60fb222843bed43876228082d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1315170645 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4200371465143338713, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+  m_PrefabInstance: {fileID: 1682990218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1315841947
 GameObject:
   m_ObjectHideFlags: 0
@@ -95692,6 +95697,7 @@ MonoBehaviour:
   _nextRooms:
   - {fileID: 1761924559}
   - {fileID: 1850452374}
+  _canillaTrigger: {fileID: 1315170644}
 --- !u!4 &1523199452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6760133334114399497, guid: 4476f9fec3bac5048baa4f0063aeb676, type: 3}
@@ -102695,9 +102701,41 @@ PrefabInstance:
       propertyPath: aguas.Array.data[5]
       value: 
       objectReference: {fileID: 1641680966}
+    - target: {fileID: 2385075037389377549, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_Size.x
+      value: 77.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385075037389377549, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_Size.y
+      value: 55.35354
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385075037389377549, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_Size.z
+      value: 107.588066
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385075037389377549, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385075037389377549, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_Center.y
+      value: 90.58462
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385075037389377549, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_Center.z
+      value: -80
+      objectReference: {fileID: 0}
     - target: {fileID: 4166243246662787096, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
       propertyPath: m_Name
       value: BlockACocina02Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200371465143338713, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200371465143338713, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 5814393821784665299, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
       propertyPath: nivel2
@@ -102747,6 +102785,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8153532183449764385, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: _granny
+      value: 
+      objectReference: {fileID: 1895521800}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -138891,9 +138933,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3550298213631615053, guid: cbe3d609851b1db43a55b7bc002feef8, type: 3}
+      propertyPath: canillaPos
+      value: 
+      objectReference: {fileID: 1315170645}
+    - target: {fileID: 3550298213631615053, guid: cbe3d609851b1db43a55b7bc002feef8, type: 3}
       propertyPath: _sliderBarra
       value: 
       objectReference: {fileID: 796551207}
+    - target: {fileID: 3550298213631615053, guid: cbe3d609851b1db43a55b7bc002feef8, type: 3}
+      propertyPath: resetInDoubt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550298213631615053, guid: cbe3d609851b1db43a55b7bc002feef8, type: 3}
+      propertyPath: resetInScare
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550298213631615053, guid: cbe3d609851b1db43a55b7bc002feef8, type: 3}
+      propertyPath: canillaDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3550298213631615053, guid: cbe3d609851b1db43a55b7bc002feef8, type: 3}
       propertyPath: _navMeshNodes.Array.data[0]
       value: 

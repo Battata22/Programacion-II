@@ -36,6 +36,9 @@ public class Asustable : NPC, ICanSlide, IPossessable
     public event DelegateType.VoidDelegate OnSlideStop = delegate { };
     public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
 
+    [Header("<color=green> Update Resets </color>")]
+    [SerializeField] bool resetInScare = true, resetInDoubt = true;
+
     public DelegateType.VoidDelegate NpcUpdate = delegate { };
 
 
@@ -350,6 +353,13 @@ public class Asustable : NPC, ICanSlide, IPossessable
     public override void GetScared(float scareAmount, Transform direction = null)
     {
         if (!_AIActive) return;
+        if (resetInScare)
+        {
+            canillaActive = false;
+            NpcUpdate = Brain;
+        }
+        else
+            return;
         //if (_scared) return;
         //if (scareAmount < 0.1f) return;
         //Debug.Log("Susto de Asustable");
@@ -507,6 +517,13 @@ public class Asustable : NPC, ICanSlide, IPossessable
     {
         if (!_AIActive) return;
         if (scared) return;
+        if (resetInDoubt)
+        {
+            canillaActive = false;
+            NpcUpdate = Brain;
+        }
+        else
+            return;
         //Debug.Log("Duda de asustable");
         _anim.SetBool("Doubt", true);
         _anim.SetBool("Walking", false);
@@ -563,15 +580,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _lookingActive = false;
     }
 
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        PhaseManager.TrapPhaseActive -= TrapPhase;
-        PhaseManager.GameplayPhaseActive -= GameplayPhase;
 
-
-
-    }
     //private void OnDestroy()
     //{
     //    GameManager.Instance.Npc.Remove(this);
@@ -583,6 +592,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
         GameManager.Instance.terrorBar.value += num;
 
+        #region comment
         //if (_sliderBarra.value <= 1)
         //{
         //    GameManager.Instance.Player.nivel = 1;
@@ -600,7 +610,8 @@ public class Asustable : NPC, ICanSlide, IPossessable
         //if (_sliderBarra.value >= _sliderBarra.maxValue)
         //{
         //    SceneManager.LoadScene("Victoria");
-        //}
+        //} 
+        #endregion
     }
 
     float lastSlide = -1, minSlideTime = 0.1f;
@@ -775,5 +786,104 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
         
         _rb.AddForce(transform.forward * 50 * Time.fixedDeltaTime, ForceMode.Impulse);
+    }
+
+    
+
+    // Soy un hijo de puta
+    // Esto solo lo usa la vieja
+    // Lo llama la canilla del nivel 2
+    // eso
+    [Header("<color=red> SOLO PARA LA ABUELA </color>")]
+    [SerializeField] Transform canillaPos;
+    [SerializeField] public float canillaDuration;
+    CanillaTrigger canilla;
+
+    public bool canillaActive = false;
+
+    public void CallCanilla(CanillaTrigger newCanilla)
+    {
+        if (canillaActive) return;
+
+        canilla = newCanilla;
+
+        if (!_AIActive) return;
+        if (scared)
+        {
+            canilla.CallShit();
+            return;
+        }
+        if(_doubt)
+        {
+            StopSearching();
+        }
+
+        _agent.SetDestination(canillaPos.position);
+
+        NpcUpdate = CanillaUpdate;
+    }
+
+    protected void CanillaUpdate()
+    {
+        if (!canillaActive && Vector3.SqrMagnitude(transform.position - new Vector3(canillaPos.position.x, transform.position.y, canillaPos.position.z)) <= (_changeNodeDist * _changeNodeDist))
+        {
+            _agent.speed = 0;
+
+            StartCoroutine(UseCanilla());
+        }
+    }
+
+    protected IEnumerator UseCanilla()
+    {
+        //hacer ruidos y efectos
+        Debug.Log("Canilla prendida");
+        canillaActive = true;
+        //Hacer anims
+        Debug.Log("Vija Usando Canilla");
+        transform.forward = -canillaPos.forward;
+
+        _anim.SetBool("Doubt", false);
+        _anim.SetBool("Walking", false);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Search", false);
+
+        _anim.SetBool("Idle", true);
+
+        yield return new WaitForSeconds(canillaDuration);
+
+        //llamar a reset
+
+        //if (!scared && !_doubt)
+        //{
+        //    Debug.Log("Vieja Reseteada");
+
+        //    canillaActive = false;
+
+        //    _actualNode = GetNewNode();
+        //    _agent.SetDestination(_actualNode.position);
+        //    NpcUpdate = Brain;
+
+        //}
+
+        Debug.Log("Vieja Reseteada");
+
+        canillaActive = false;
+
+        NpcUpdate = Brain;
+        _actualNode = GetNewNode(_actualNode);
+        _agent.SetDestination(_actualNode.position);
+        _agent.speed = speedNormal;
+
+        Debug.Log("Fin Canilla");
+        //canilla.CallShit();
+    }
+
+
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        PhaseManager.TrapPhaseActive -= TrapPhase;
+        PhaseManager.GameplayPhaseActive -= GameplayPhase;
     }
 }
