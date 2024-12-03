@@ -14,6 +14,7 @@ public class Fridge : SpecialObject
     bool inPos = false, trapActive = false;
 
 
+
     #region trash
     //public override void CreateTrap()
     //{
@@ -53,12 +54,16 @@ public class Fridge : SpecialObject
         _target.GetDoubt(transform.position);
 
         trapActive = true;
-
-        StartCoroutine(WaitToScare(origin));
+        if (!alreadyActive)
+            StartCoroutine(WaitToScare(origin));
     }
 
+    bool alreadyActive = false;
+    
     IEnumerator WaitToScare(Transform origin)
     {
+
+        alreadyActive = true;
         while (inPos == false)
         {
             yield return null;
@@ -101,7 +106,7 @@ public class Fridge : SpecialObject
         Destroy(newSnowGen, 2f);
 
         trapActive = false;
-        Destroy(_trap);
+        Destroy(_trap);     
 
     }
 }

@@ -736,7 +736,7 @@ public class Player : MonoBehaviour, IRoomDetectable
     void TrapPhase()
     {
         print($"<color=#8315d6> Player en fase de trampas </color>");
-        _pickUpScript.interecatKey = KeyCode.None;
+        //_pickUpScript.interecatKey = KeyCode.None;
         GetComponent<CreatePlayerTrap>().trapKey = KeyCode.F;
     }
 

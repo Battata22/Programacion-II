@@ -13,7 +13,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
     //public delegate void VoidDelegate();
     public DelegateType.VoidDelegateTrans myAction;
-    bool canAct = true;
+    bool canAct = false;
     float _cd;
 
     [SerializeField] Sprite tornadoFoto, sombraFoto, encantarFoto, mocoFoto, hiloFoto;
@@ -107,6 +107,16 @@ public class PlayerTrap : MonoBehaviour, IInteractable
         //_createTrapScript = newScript;
         myAction = newAction;
         _cd = newCD;
+
+
+
+        Invoke("CallActive", 2f);
+    }
+
+    void CallActive()
+    {
+        canAct = true;
+
     }
 
     public void Interact()
@@ -185,6 +195,18 @@ public class PlayerTrap : MonoBehaviour, IInteractable
     void DestroyTrap(Transform a)
     {
         Destroy(gameObject);
+    }
+
+
+    public void CallDestroy()
+    {
+        //Debug.Log("Entro el Destroy");
+
+        Destroy(gameObject);
+
+        //Debug.Log("Despues de destroy");
+
+        GameManager.Instance.createPlayerTrap.currentTraps--;
     }
 
     private void OnDestroy()

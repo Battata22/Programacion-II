@@ -82,6 +82,7 @@ public class CanillaBanhoDepa : SpecialObject
 
         _target.GetScared(1f);
 
+        Destroy(_trap);
         //llamar bath create
         _bath.CreateTrap();
     }

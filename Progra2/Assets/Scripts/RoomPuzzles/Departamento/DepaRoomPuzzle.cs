@@ -61,14 +61,17 @@ public class DepaRoomPuzzle : SpecialObject
     {
         _target.NpcUpdate = delegate { };
 
+
         _target.CallStopScare();
 
         _target.GetDoubt(_pantalla.transform.position);
 
+        _target.DesactivarResets();
         _pantalla.SetActive(true);
 
         yield return new WaitForSeconds(14);
 
+        _target.canRagdoll = true;
         _target.CallRagdollOn();
         //_target.CallRagdollOff(1, true);
 

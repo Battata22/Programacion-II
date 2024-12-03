@@ -47,12 +47,15 @@ public class Bath : SpecialObject
         _target.GetDoubt(transform.position);
 
         trapActive = true;
-
-        StartCoroutine(WaitToScare());
+        if (!alreadyActive)
+            StartCoroutine(WaitToScare());
     }
+
+    bool alreadyActive = false;
 
     IEnumerator WaitToScare()
     {
+        alreadyActive = true;
         while(inPos == false)
         {
             yield return null;
@@ -82,6 +85,7 @@ public class Bath : SpecialObject
 
         Destroy(spookyJumpscare);
         trapActive = false;
+        Destroy(_trap);
 
 
     }

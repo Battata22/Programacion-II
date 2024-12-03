@@ -1,26 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AguaBendita : MonoBehaviour
 {
     [SerializeField] float radioCheck;
     [SerializeField] LayerMask targetLayer, playerLayer;
+    [SerializeField] SplashScript _splashGen;
 
     void Start()
     {
         gameObject.GetComponent<Pickable>().aguaRompible = true;
     }
 
-
-    void Update()
-    {
-        
-    }
-
     private void OnDestroy()
     {
         BlessEverything();
+        var newShit = Instantiate(_splashGen, transform.position, transform.rotation);
+        newShit.Initialize();
     }
 
     public void BlessEverything()

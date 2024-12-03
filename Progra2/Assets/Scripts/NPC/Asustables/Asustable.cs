@@ -38,6 +38,7 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     [Header("<color=green> Update Resets </color>")]
     [SerializeField] bool resetInScare = true, resetInDoubt = true;
+    [SerializeField] public bool canRagdoll = true;
 
     public DelegateType.VoidDelegate NpcUpdate = delegate { };
 
@@ -657,7 +658,9 @@ public class Asustable : NPC, ICanSlide, IPossessable
         _agent.enabled = true;
         _agent.SetDestination(_actualNode.position);
 
+
         OnSlideStop();
+        GetScared(1f);
 
     }
 
@@ -732,12 +735,14 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     public void CallRagdollOn()
     {
+        if (!canRagdoll) return;
         _myRagdollSwitch.ActivateRagdoll();
         OnRagdollTrigger();
     }
 
     public void CallRagdollOn(Vector3 dir)
     {
+        if (!canRagdoll) return;
         _myRagdollSwitch.ActivateRagdoll(dir);
         OnRagdollTrigger();
     }
@@ -878,7 +883,12 @@ public class Asustable : NPC, ICanSlide, IPossessable
         //canilla.CallShit();
     }
 
-
+    public void DesactivarResets()
+    {
+        resetInScare = false;
+        resetInDoubt = false;
+        canRagdoll = false;
+    }
 
     protected override void OnDestroy()
     {

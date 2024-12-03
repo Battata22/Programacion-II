@@ -21,7 +21,7 @@ public class PickUp : MonoBehaviour
     public delegate void EventDelegateVoid();
     public event EventDelegateVoid OnPickUp, OnInteract, OnEnchanted;
 
-    public KeyCode interecatKey = KeyCode.None;
+    [SerializeField] public KeyCode interecatKey = KeyCode.E;
 
     private void Awake()
     {
@@ -144,13 +144,24 @@ public class PickUp : MonoBehaviour
                 _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
             }
 
-            if(Input.GetKeyDown(interecatKey) && hit.transform.TryGetComponent<IInteractable>(out var inte))
+            if(Input.GetKeyDown(interecatKey) && hit.transform.TryGetComponent<PlayerTrap>(out var trap)  /* && hit.transform.TryGetComponent<IInteractable>(out var inte)*/)
             {
-                //Debug.Log($"<color=red> nteractuable {hit.transform.name} Detectado </color>");
-                if (hit.collider.gameObject.name != "PlayerTrap(Clone)")
-                {
-                    inte.Interact();
-                }
+                //Debug.Log($"<color=red> iteractuable {hit.transform.name} Detectado </color>");
+                //if (hit.transform.name != "PlayerTrap(Clone)")
+                //{
+                //    //inte.Interact();
+                //    Debug.Log("Llamado a destroy trap");
+                //    hit.transform.GetComponent<PlayerTrap>().CallDestroy();
+                //}
+                //else
+                //    Debug.Log($"If falso {hit.transform.name}");
+
+                trap.CallDestroy();
+            }
+
+            if(Input.GetKeyDown(interecatKey) && hit.transform.TryGetComponent<ObjectTrap>(out var objTrap))
+            {
+                objTrap.Interact();
             }
 
             //IEnchantable obj;

@@ -27,6 +27,17 @@ public class TrapDetecter : MonoBehaviour
                 deleted = true;
                 Destroy(gameObject);
             }
+            collider.transform.TryGetComponent<RagdollHips>(out var npc);
+            if(npc != null)
+            {
+                GameManager.Instance.Player.gameObject.TryGetComponent<CreatePlayerTrap>(out CreatePlayerTrap create);
+                if (deleted == false)
+                {
+                    create.currentTraps--;
+                }
+                deleted = true;
+                Destroy(gameObject);
+            }
         }
     }
  
