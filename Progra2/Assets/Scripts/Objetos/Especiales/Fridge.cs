@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.UI.Image;
 
 public class Fridge : SpecialObject
 {
     [SerializeField] Ice icePrefab;
     [SerializeField] GameObject partcleGen;
+    [SerializeField] Asustable _target;
+
+    bool inPos = false, trapActive = false;
 
 
+    #region trash
     //public override void CreateTrap()
     //{
     //    //currentTraps++;
@@ -31,9 +37,39 @@ public class Fridge : SpecialObject
     //        SceneManager.LoadScene("Victoria");
     //    }
     //    counterTimer = 0;
-    //}
+    //} 
+    #endregion
+
+    private void Update()
+    {
+        if (trapActive && !inPos && Vector3.SqrMagnitude(_target.transform.position - transform.position) < (_detectRadius * 0.8) * (_detectRadius * 0.8))
+        {
+            inPos = true;
+        }
+    }
 
     protected override void ObjectAbility(Transform origin)
+    {
+        _target.GetDoubt(transform.position);
+
+        trapActive = true;
+
+        StartCoroutine(WaitToScare(origin));
+    }
+
+    IEnumerator WaitToScare(Transform origin)
+    {
+        while (inPos == false)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        Frezze(origin);
+    }
+
+    void Frezze(Transform origin)
     {
         Debug.Log("<color=#34d5eb> Get Frosty GIL </color>");
         //RaycastHit hit;
@@ -61,7 +97,11 @@ public class Fridge : SpecialObject
                 newIce.Initialize(colider.transform);
             }
         }
-        var newSnowGen = Instantiate(partcleGen, transform.position + new Vector3(0,1.5f,0), transform.rotation);
+        var newSnowGen = Instantiate(partcleGen, transform.position + new Vector3(0, 1.5f, 0), transform.rotation);
         Destroy(newSnowGen, 2f);
+
+        trapActive = false;
+        Destroy(_trap);
+
     }
 }

@@ -81,6 +81,8 @@ public class Bath : SpecialObject
         GameManager.Instance.pasoActual = 3;
 
         Destroy(spookyJumpscare);
+        trapActive = false;
+
 
     }
 

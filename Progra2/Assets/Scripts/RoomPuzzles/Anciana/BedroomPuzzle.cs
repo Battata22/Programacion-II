@@ -14,6 +14,8 @@ public class BedroomPuzzle : MonoBehaviour
 
     [SerializeField] CanillaTrigger _canillaTrigger;
 
+    [SerializeField] Transform keyRescue;
+
     private void Start()
     {
         _granny.OnRagdollTrigger += SpawnKey;
@@ -49,8 +51,16 @@ public class BedroomPuzzle : MonoBehaviour
         }
         _closet.ActionActive -= CompleteRoom;
 
-        GameManager.Instance.Master1.ActivarGB();
+        //GameManager.Instance.Master1.ActivarGB();
         _canillaTrigger.CallShit();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.TryGetComponent<Key>(out var key))
+        {
+            key.transform.position = keyRescue.position + new Vector3(0,1,0);
+        }
     }
 
     private void OnDestroy()

@@ -420,8 +420,11 @@ public class Ghostbuster : NPC , ICanSlide
 
     public void AttackShadow(GameObject shadow)
     {
-        if (_angry) return;
         if (!_canAttack) return;
+        if (_angry)
+        {
+            StopAnger();
+        }
         _fighting = true;
         //_agent.speed = 0f;
         StopSearching();

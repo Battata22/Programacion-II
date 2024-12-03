@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.UI.Image;
 
 public class Closet : SpecialObject, ILockeable
 {
     [SerializeField] GameObject jumpScaredPrefab;
+    [SerializeField] Asustable _target;
     [SerializeField] bool locked;
+
+    bool inPos = false, trapActive = false;
+
 
     public event DelegateType.VoidDelegate ActionActive = delegate { };
 
@@ -30,16 +36,39 @@ public class Closet : SpecialObject, ILockeable
     {
         //if(locked) return;
         //CreateTrap();
+        if(trapActive && !inPos && Vector3.SqrMagnitude(_target.transform.position - transform.position) < (_detectRadius * 0.8) * (_detectRadius * 0.8))
+        {
+            inPos = true;
+        }
     }
 
     protected override void ObjectAbility(Transform origin)
     {
+        _target.GetDoubt(transform.position);
 
+        trapActive = true;
 
+        StartCoroutine(WaitToScare(origin));
+    }
+
+    IEnumerator WaitToScare(Transform origin)
+    {
+        while (inPos == false)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        JumpScare(origin);
+    }
+
+    void JumpScare(Transform origin)
+    {
         Collider[] coliders = Physics.OverlapSphere(origin.position, _detectRadius, _detectableLayers);
         Debug.Log(coliders.Length);
 
-        if(coliders.Length <= 0 ) 
+        if (coliders.Length <= 0)
         {
             Debug.Log($"<color=red> NINGUN ASUSTABLE EN RANGO DE {transform.name} </color>");
             return;
@@ -50,7 +79,7 @@ public class Closet : SpecialObject, ILockeable
         ActionActive();
         foreach (Collider colider in coliders)
         {
-            if(colider.transform.TryGetComponent<Asustable>(out Asustable asus))
+            if (colider.transform.TryGetComponent<Asustable>(out Asustable asus))
             {
                 if (asus.TryGetComponent<EnableRagdoll>(out EnableRagdoll enRag))
                 {
@@ -64,5 +93,8 @@ public class Closet : SpecialObject, ILockeable
 
             }
         }
+
+        trapActive = false;
+        Destroy(_trap);
     }
 }

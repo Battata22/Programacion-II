@@ -651,6 +651,7 @@ public class Player : MonoBehaviour, IRoomDetectable
     void ActivateEnchantedCoroutine(Transform myPos)
     {
         StartCoroutine(ActivateEnchanteds());
+        enchantedTrap = false;
     }
 
     private IEnumerator ActivateEnchanteds()

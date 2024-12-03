@@ -22,6 +22,8 @@ public class CreatePlayerTrap : MonoBehaviour
     float counterTimer;
     bool sumado = false;
 
+
+
     private void Awake()
     {
         GameManager.Instance.createPlayerTrap = this;
@@ -112,13 +114,13 @@ public class CreatePlayerTrap : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Nivel2")
         {
             if (GameManager.Instance.pasoActual == 0)
-                return "Abre el candado con la llave que tiene la abuela";
+                return "Abre el candado";
             else if (GameManager.Instance.pasoActual == 1)
                 return "Rompe la canilla con un objeto pesado";
             else if (GameManager.Instance.pasoActual == 2)
-                return "Congela a la abuela cuando este cerca de la heladera";
+                return "Congela a la abuela";
             else if (GameManager.Instance.pasoActual == 3)
-                return "Asusta a la abuela y llena la barra para poder activar el susto final";
+                return "llena la barra";
             else
                 return "Nose que paso";
         }
@@ -131,7 +133,7 @@ public class CreatePlayerTrap : MonoBehaviour
             else if (GameManager.Instance.pasoActual == 3)
                 return "Quema 3 cajas con el sahumerio";
             else if (GameManager.Instance.pasoActual == 4)
-                return "Asusta a Warren para poder activar el susto de la computadora";
+                return "Asusta a Warren";
             else
                 return "Nose que paso";
         }

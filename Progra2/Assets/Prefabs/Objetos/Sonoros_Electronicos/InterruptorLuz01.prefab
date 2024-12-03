@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 3756351189230713937}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.671999, y: 0.9024983, z: -11.09}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.016999997, y: 0.017, z: 0.016999997}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -305,6 +305,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -312,6 +313,7 @@ MonoBehaviour:
   _dropLayers:
     serializedVersion: 2
     m_Bits: 0
+  actualRoom: 0
   _luces:
   - {fileID: 0}
   - {fileID: 0}

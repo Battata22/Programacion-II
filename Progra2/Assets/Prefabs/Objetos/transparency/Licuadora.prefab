@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 8193699240616083398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1, y: 0.06, z: -7.45}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.016, y: 0.016, z: 0.016}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -255,6 +255,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 946131db5cc259642aa7a043a9ea732e, type: 2}
   _materialFade: {fileID: 2100000, guid: f0d3fd8bd45d63845aaad28df6563d86, type: 2}
@@ -262,9 +263,11 @@ MonoBehaviour:
   _dropLayers:
     serializedVersion: 2
     m_Bits: 0
+  actualRoom: 0
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -272,6 +275,9 @@ MonoBehaviour:
   _navObstacle: {fileID: 0}
   _scareAmount: 0
   bonk: {fileID: 0}
+  agarrado:
+    serializedVersion: 2
+    m_Bits: 0
   _enchanted: 0
 --- !u!65 &5145043498322206975
 BoxCollider:

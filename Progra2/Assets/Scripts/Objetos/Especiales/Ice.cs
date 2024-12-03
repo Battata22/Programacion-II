@@ -18,6 +18,8 @@ public class Ice : MonoBehaviour
             asus.OnSlideStop += CallDestroy;
         if (target.TryGetComponent<Ghostbuster>(out gobo))
             gobo.OnSlideStop += CallDestroy;
+
+        Destroy(gameObject, 5f);
     }
 
     void CallDestroy()

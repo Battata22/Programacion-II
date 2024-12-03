@@ -47,6 +47,7 @@ public class KitchenPuzzle : MonoBehaviour
         _granny.OnSlideStop -= CompleteRoom;
 
         GameManager.Instance.ActivateTerrorBar();
+        GameManager.Instance.Master1.ActivarGB();
         _canillaTrigger.EndCallEvent();
     }
 

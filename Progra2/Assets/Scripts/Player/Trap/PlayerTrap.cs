@@ -102,7 +102,7 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
         icono.transform.LookAt(_lookingAt.position);
     }
-    public void Initialize(CreatePlayerTrap newScript, DelegateType.VoidDelegateTrans newAction, float newCD)
+    public void Initialize(CreatePlayerTrap newScript, DelegateType.VoidDelegateTrans newAction, float newCD, bool isShadow = false)
     {
         //_createTrapScript = newScript;
         myAction = newAction;
@@ -124,6 +124,24 @@ public class PlayerTrap : MonoBehaviour, IInteractable
 
         myAction(transform);
         OnTrapActive();
+        Destroy(gameObject);
+        //CreatePlayerTrap.TrapActivada();
+    }
+    public void Interact(Ghostbuster gb)
+    {
+        if (!canAct) return;
+        StartCoroutine(SetInactive());
+
+        #region Comment
+        //if (_createShadowScript)
+        //{
+        //    _createShadowScript.SpawnShadow(transform);
+        //}
+        //else 
+        #endregion
+
+        myAction(transform);
+        //OnTrapActive();
         Destroy(gameObject);
         //CreatePlayerTrap.TrapActivada();
     }

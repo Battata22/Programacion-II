@@ -7,6 +7,9 @@ public abstract class SpecialObject : MonoBehaviour
     [SerializeField] protected ObjectTrap _trapPrefab;
     [SerializeField] protected float _trapCD, _frostDist, _detectRadius;
     [SerializeField] protected LayerMask _detectableLayers;
+
+    protected ObjectTrap _trap;
+
     public DelegateType.VoidDelegateTrans currentAbility;
 
     //Solo pora testear
@@ -30,6 +33,7 @@ public abstract class SpecialObject : MonoBehaviour
         newTrap.Initialize(currentAbility, _trapCD);
         //Iniciar trampa
 
+        _trap = newTrap;
         trapCrated = true;
     }
 
