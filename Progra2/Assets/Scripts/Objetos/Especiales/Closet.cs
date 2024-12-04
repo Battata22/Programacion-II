@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.UI.Image;
+
 
 public class Closet : SpecialObject, ILockeable
 {
@@ -61,6 +60,7 @@ public class Closet : SpecialObject, ILockeable
         yield return new WaitForSeconds(0.5f);
 
         JumpScare(origin);
+        GameManager.Instance.pasoActual = 1;
     }
 
     void JumpScare(Transform origin)

@@ -72,6 +72,7 @@ public class Fridge : SpecialObject
         yield return new WaitForSeconds(0.5f);
 
         Frezze(origin);
+        GameManager.Instance.pasoActual = 3;
     }
 
     void Frezze(Transform origin)

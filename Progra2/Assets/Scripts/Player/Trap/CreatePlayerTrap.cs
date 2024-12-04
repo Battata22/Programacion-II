@@ -115,12 +115,16 @@ public class CreatePlayerTrap : MonoBehaviour
         {
             if (GameManager.Instance.pasoActual == 0)
                 return "Abre el candado";
+            else if(GameManager.Instance.pasoActual == 6)
+                return "Activa el susto";
             else if (GameManager.Instance.pasoActual == 1)
                 return "Rompe la canilla con un objeto pesado";
+            else if (GameManager.Instance.pasoActual == 7)
+                return "Congela a la abuela";
             else if (GameManager.Instance.pasoActual == 2)
                 return "Congela a la abuela";
             else if (GameManager.Instance.pasoActual == 3)
-                return "llena la barra";
+                return "Asusta a la abuela y llena la barra";
             else
                 return "Nose que paso";
         }

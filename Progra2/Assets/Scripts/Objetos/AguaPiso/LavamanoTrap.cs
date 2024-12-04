@@ -15,6 +15,7 @@ public class LavamanoTrap : SpecialObject
         foreach(GameObject go in aguas)
         {
             go.SetActive(true);
+            GameManager.Instance.pasoActual = 7;
         }
     }
 

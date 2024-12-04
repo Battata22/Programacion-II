@@ -22,7 +22,7 @@ public class Lock : MonoBehaviour, ILockeable
         }
         worthless.Unlock();
         KeyUsed();
-        GameManager.Instance.pasoActual = 1;
+        GameManager.Instance.pasoActual = 6;
 
     }
 

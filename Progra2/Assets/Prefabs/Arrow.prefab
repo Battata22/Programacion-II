@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 473024934532250773}
   - component: {fileID: 2341183359073331255}
   - component: {fileID: 3500586582980931029}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +176,10 @@ PrefabInstance:
     - target: {fileID: 6623442743974758889, guid: d81c42103340c9d4d9a1e2c61ae18335, type: 3}
       propertyPath: m_Name
       value: Particle interactuable (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623442743974758889, guid: d81c42103340c9d4d9a1e2c61ae18335, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7079050194035990974, guid: d81c42103340c9d4d9a1e2c61ae18335, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
