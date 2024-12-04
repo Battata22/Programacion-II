@@ -9992,7 +9992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089406986903818001, guid: ee652c8dd5cceac4ea4248adfd18645a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.708
+      value: -0.656
       objectReference: {fileID: 0}
     - target: {fileID: 1089406986903818001, guid: ee652c8dd5cceac4ea4248adfd18645a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10033,6 +10033,10 @@ PrefabInstance:
     - target: {fileID: 6140551427749716792, guid: ee652c8dd5cceac4ea4248adfd18645a, type: 3}
       propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140551427749716792, guid: ee652c8dd5cceac4ea4248adfd18645a, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6140551427749716792, guid: ee652c8dd5cceac4ea4248adfd18645a, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
