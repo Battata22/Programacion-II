@@ -30973,6 +30973,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7545947425505315286, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: m_MaxValue
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7566353081548288173, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -44589,7 +44593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3247895656373087483, guid: 12df5c8d618d7e940b0a9b9d4c16528f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563817395190994166, guid: 12df5c8d618d7e940b0a9b9d4c16528f, type: 3}
       propertyPath: _doubtRange
@@ -49484,7 +49488,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausaMenu: {fileID: 42357540}
   pausaOpciones: {fileID: 1036545478}
+  videoPlayer: {fileID: 2088014209}
   camScript: {fileID: 464794178}
+  meado: {fileID: 1115380889}
   audioSources:
   - {fileID: 2075143694}
   - {fileID: 1254500954}
@@ -58753,6 +58759,10 @@ PrefabInstance:
     - target: {fileID: 3304567134145022474, guid: a135140178fb9044e8881877819ba5ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134272025559022448, guid: a135140178fb9044e8881877819ba5ee, type: 3}
+      propertyPath: weight
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -6,7 +6,7 @@ public class CanillaTrigger : MonoBehaviour
 {
     [SerializeField] Asustable _granny;
     float randomWait;
-    bool canActivateCanilla = true;
+    bool canActivateCanilla = false;
 
     LavamanoTrap _daddy;
     public event DelegateType.VoidDelegate OnCanillaBreak = delegate { };

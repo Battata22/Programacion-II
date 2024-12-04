@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class MenuPausa : MonoBehaviour
 {
     public GameObject pausaMenu, pausaOpciones;
+    [SerializeField] VideoPlayer videoPlayer;
     public CamRotation camScript;
+    [SerializeField] AudioSource meado;
     [SerializeField] List<AudioSource> audioSources;
     [SerializeField] List<AudioSource> sonando;
     [SerializeField] VideoIntro videoIntroScript;
@@ -35,7 +38,18 @@ public class MenuPausa : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         camScript.enabled = false;
-        for(int i = 0; i < audioSources.Count; i++)
+
+        if (SceneManager.GetActiveScene().name == "Nivel1")
+        {
+            videoPlayer.Pause();
+            if (meado.isPlaying == true)
+            {
+                meado.Pause();
+            }
+        }
+
+
+        for (int i = 0; i < audioSources.Count; i++)
         {
             if (audioSources[i].isPlaying == true)
             {
@@ -54,11 +68,23 @@ public class MenuPausa : MonoBehaviour
         paused = false;
         pausaMenu.SetActive(false);
         Time.timeScale = 1;
+
+        if (SceneManager.GetActiveScene().name == "Nivel1")
+        {
+            videoPlayer.Play();
+            if (meado.isPlaying == false)
+            {
+                meado.Play();
+            }
+        }
+
+
         for (int i = 0; i < sonando.Count; i++)
         {
             sonando[i].Play();
         }
         sonando.Clear();
+
     }
 
     public void MenuOpciones()

@@ -797,7 +797,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &23714154
 AudioSource:
   m_ObjectHideFlags: 0
@@ -913,6 +912,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -1862,7 +1862,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &54928879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1882,6 +1881,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -1893,6 +1893,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -2352,7 +2353,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &63421430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,6 +2372,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -2383,6 +2384,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -3722,7 +3724,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &82515936
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3769,6 +3770,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -3780,6 +3782,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -4891,7 +4894,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &116373156
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4959,6 +4961,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -4970,6 +4973,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -5430,7 +5434,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &116543890
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5858,7 +5861,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &116610200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5974,6 +5976,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -6123,7 +6126,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &116958535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6143,6 +6145,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -6154,6 +6157,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -7203,7 +7207,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &133765880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7630,6 +7633,7 @@ MonoBehaviour:
     m_Bits: 805307392
   icePrefab: {fileID: 0}
   partcleGen: {fileID: 0}
+  _target: {fileID: 0}
 --- !u!1001 &141233369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8566,7 +8570,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &175419520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9561,7 +9564,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &189313583
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9608,6 +9610,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -9619,6 +9622,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -10101,7 +10105,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &195971035
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10169,6 +10172,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -10180,6 +10184,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -10649,7 +10654,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &203136037
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10696,6 +10700,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -10707,6 +10712,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -11028,6 +11034,7 @@ MonoBehaviour:
   canvas: {fileID: 345914878}
   videoPlayer: {fileID: 345914869}
   gb: {fileID: 1989997716}
+  slider: {fileID: 0}
 --- !u!4 &205198396
 Transform:
   m_ObjectHideFlags: 0
@@ -11145,6 +11152,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8791706780283491841, guid: 17118b2265eb7ba46bfd6b28c4103093, type: 3}
   m_PrefabInstance: {fileID: 207057668}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &209423093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 101591297357451140, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+  m_PrefabInstance: {fileID: 2045873717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &209423097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209423093}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.407601, y: 5.2025332, z: 0.71835345}
+  m_Center: {x: 0, y: 0.0000016689299, z: 0}
 --- !u!1001 &210269255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13137,7 +13170,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &251377612
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13184,6 +13216,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -13195,6 +13228,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -13955,7 +13989,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &261972582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13975,6 +14008,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -13986,6 +14020,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -15455,7 +15490,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &290626561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15475,6 +15509,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -15486,6 +15521,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -16112,7 +16148,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &296146437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16518,7 +16553,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausaMenu: {fileID: 1533303035}
   pausaOpciones: {fileID: 17812501}
+  videoPlayer: {fileID: 0}
   camScript: {fileID: 232009259}
+  meado: {fileID: 0}
   audioSources:
   - {fileID: 63952120}
   - {fileID: 232009262}
@@ -17244,7 +17281,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &319181718
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17291,6 +17327,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -17302,6 +17339,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -17966,7 +18004,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &339670623
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18013,6 +18050,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -18024,6 +18062,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -19487,7 +19526,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &362717432
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19603,6 +19641,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -20118,7 +20157,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &371716578
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20234,6 +20272,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -20923,7 +20962,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &387108406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20970,6 +21008,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -20981,6 +21020,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -22003,7 +22043,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &431542154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22475,7 +22514,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &433636045
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22522,6 +22560,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -22533,6 +22572,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -23350,7 +23390,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &442646725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24230,7 +24269,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &459665865
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24277,6 +24315,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -24288,6 +24327,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -24874,6 +24914,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5c39ea8f893fa094ab85df457275351c, type: 2}
   _materialFade: {fileID: 2100000, guid: 326c3fc1aafa1e14cb8c54a91275fdd3, type: 2}
@@ -24910,6 +24951,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5c39ea8f893fa094ab85df457275351c, type: 2}
   _materialFade: {fileID: 2100000, guid: 326c3fc1aafa1e14cb8c54a91275fdd3, type: 2}
@@ -24921,6 +24963,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -24952,7 +24995,6 @@ MonoBehaviour:
   _doubtRange: 24
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &461478693
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25319,7 +25361,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &464616790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25339,6 +25380,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -25350,6 +25392,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -25974,7 +26017,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &485598628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25994,6 +26036,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -26005,6 +26048,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -26270,7 +26314,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &492562616
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26317,6 +26360,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -26328,6 +26372,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -27065,7 +27110,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!136 &501561133
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -27328,6 +27372,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5c39ea8f893fa094ab85df457275351c, type: 2}
   _materialFade: {fileID: 2100000, guid: 326c3fc1aafa1e14cb8c54a91275fdd3, type: 2}
@@ -27364,6 +27409,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 5c39ea8f893fa094ab85df457275351c, type: 2}
   _materialFade: {fileID: 2100000, guid: 326c3fc1aafa1e14cb8c54a91275fdd3, type: 2}
@@ -27375,6 +27421,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -27406,7 +27453,6 @@ MonoBehaviour:
   _doubtRange: 24
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &503695817
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27800,7 +27846,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &506162788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27820,6 +27865,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -27831,6 +27877,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -28340,7 +28387,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &506289277
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28387,6 +28433,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -28398,6 +28445,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -28985,7 +29033,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &516424379
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29032,6 +29079,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -29043,6 +29091,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -29879,7 +29928,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &537743776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29899,6 +29947,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -29910,6 +29959,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -32842,7 +32892,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &616430163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32862,6 +32911,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -32873,6 +32923,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -33503,7 +33554,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &639589276
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33550,6 +33600,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -33561,6 +33612,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -34060,7 +34112,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &642991612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34080,6 +34131,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -34091,6 +34143,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -34598,7 +34651,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &645303172
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35277,7 +35329,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &663340201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35324,6 +35375,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -35335,6 +35387,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -36752,7 +36805,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &700040496
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38023,7 +38075,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &740781210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38429,7 +38480,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &744317797
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38545,6 +38595,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -39065,7 +39116,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &761529628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39085,6 +39135,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -39096,6 +39147,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -39880,7 +39932,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &762665569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39900,6 +39951,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -39911,6 +39963,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -40616,7 +40669,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &781886411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41088,7 +41140,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &787876720
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41135,6 +41186,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -41146,6 +41198,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -41965,7 +42018,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &804396101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42012,6 +42064,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -42023,6 +42076,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -42567,7 +42621,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &818477134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42587,6 +42640,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -42598,6 +42652,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -43372,7 +43427,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &836019627
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43419,6 +43473,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -43430,6 +43485,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -43910,7 +43966,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &840590495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44762,7 +44817,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &861791495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44782,6 +44836,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -44793,6 +44848,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -46152,7 +46208,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &895686639
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -46199,6 +46254,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -46210,6 +46266,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -47141,7 +47198,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &915694775
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47188,6 +47244,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -47199,6 +47256,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -48721,7 +48779,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &950693632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48741,6 +48798,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -48752,6 +48810,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -49278,7 +49337,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &952420022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49298,6 +49356,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -49309,6 +49368,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -49920,7 +49980,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &958854353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49940,6 +49999,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -49951,6 +50011,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -50714,7 +50775,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &974875276
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50761,6 +50821,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -50772,6 +50833,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -51537,7 +51599,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &998560911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51557,6 +51618,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -51568,6 +51630,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -52521,7 +52584,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1021209063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52922,7 +52984,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &1023049908
 AudioSource:
   m_ObjectHideFlags: 0
@@ -53038,6 +53099,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -53483,7 +53545,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1028890552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54060,7 +54121,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1030729234
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -54107,6 +54167,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -54118,6 +54179,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -55327,7 +55389,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1054056280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55347,6 +55408,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -55358,6 +55420,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -55944,7 +56007,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1058992175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56540,7 +56602,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1069653952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56560,6 +56621,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -56571,6 +56633,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -57841,7 +57904,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1096373553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -57888,6 +57950,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -57899,6 +57962,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -58572,7 +58636,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1106413227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62579,7 +62642,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1118759593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62626,6 +62688,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -62637,6 +62700,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -64204,7 +64268,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1160054754
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64251,6 +64314,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -64262,6 +64326,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -64761,7 +64826,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1160058911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64781,6 +64845,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -64792,6 +64857,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -65301,7 +65367,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1161495944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65321,6 +65386,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -65332,6 +65398,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -66687,7 +66754,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1186417146
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66734,6 +66800,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -66745,6 +66812,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -67576,7 +67644,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &1202361156
 AudioSource:
   m_ObjectHideFlags: 0
@@ -67692,6 +67759,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -68582,7 +68650,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1223052827
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68985,7 +69052,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1244167445
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69032,6 +69098,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -69043,6 +69110,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -69819,7 +69887,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1264325882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73729,7 +73796,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1374681911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74820,7 +74886,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1395703096
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74867,6 +74932,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -74878,6 +74944,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -75705,7 +75772,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1405929698
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75752,6 +75818,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -75763,6 +75830,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -77148,7 +77216,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1417911060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77168,6 +77235,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -77179,6 +77247,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -78696,7 +78765,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1447763785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78716,6 +78784,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -78727,6 +78796,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -79214,7 +79284,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1453321233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79234,6 +79303,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -79245,6 +79315,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -80615,7 +80686,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1483445576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80635,6 +80705,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -80646,6 +80717,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -81391,7 +81463,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1508085477
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -81438,6 +81509,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: fb03d77e774bcd34c8505aaa9a1bf93d, type: 2}
   _materialFade: {fileID: 2100000, guid: a68c40db49b279c40b00734c4f84ee91, type: 2}
@@ -81449,6 +81521,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -82472,7 +82545,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1538091058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82492,6 +82564,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -82503,6 +82576,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -83041,7 +83115,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1546862523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83061,6 +83134,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -83072,6 +83146,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -83682,7 +83757,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1568998551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85052,7 +85126,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1584939642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87635,7 +87708,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1605488740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88107,7 +88179,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1608086925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88127,6 +88198,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -88138,6 +88210,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -88588,7 +88661,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1619932016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -89297,7 +89369,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1629565205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89317,6 +89388,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -89328,6 +89400,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -90205,7 +90278,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1648876694
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -91498,7 +91570,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1668076914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -91545,6 +91616,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -91556,6 +91628,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -92378,7 +92451,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1682058102
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92425,6 +92497,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -92436,6 +92509,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -93069,7 +93143,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1692197693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93089,6 +93162,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -93100,6 +93174,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -94802,7 +94877,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1715827374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94822,6 +94896,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -94833,6 +94908,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -95431,7 +95507,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1718281023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95834,7 +95909,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &1719705607
 AudioSource:
   m_ObjectHideFlags: 0
@@ -95950,6 +96024,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -96271,7 +96346,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1722182516
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96318,6 +96392,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -96329,6 +96404,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -96828,7 +96904,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1723923472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96848,6 +96923,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -96859,6 +96935,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -97728,7 +97805,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1731021577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97748,6 +97824,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -97759,6 +97836,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -98268,7 +98346,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1731079918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98336,6 +98413,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -98347,6 +98425,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -99196,7 +99275,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1762516984
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99243,6 +99321,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -99254,6 +99333,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -99838,7 +99918,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1767300989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99858,6 +99937,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -99869,6 +99949,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -100376,7 +100457,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1769800680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100396,6 +100476,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -100407,6 +100488,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -101507,7 +101589,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1792211519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101527,6 +101608,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -101538,6 +101620,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -102264,7 +102347,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1794985085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102736,7 +102818,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1795008602
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102783,6 +102864,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -102794,6 +102876,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -104844,7 +104927,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1861670849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104864,6 +104946,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: e26466c9f0e755649b67d163c05e009c, type: 2}
   _materialFade: {fileID: 2100000, guid: 53e70bba529bb1c4eb9b2e157b36acdd, type: 2}
@@ -104875,6 +104958,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -105718,7 +105802,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1885950004
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105765,6 +105848,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -105776,6 +105860,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -106256,7 +106341,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &1895785354
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106807,7 +106891,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1899340775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106827,6 +106910,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -106838,6 +106922,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -107808,7 +107893,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &1914807088
 AudioSource:
   m_ObjectHideFlags: 0
@@ -107924,6 +108008,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -108255,7 +108340,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1923210350
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108302,6 +108386,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -108313,6 +108398,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -108892,7 +108978,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &1929357084
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108939,6 +109024,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -108950,6 +109036,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -109652,7 +109739,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &1950174023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109672,6 +109758,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: 3f9f80aec3c372f47b07075b63d5741f, type: 2}
   _materialFade: {fileID: 2100000, guid: 1f6e2ebb34e779649ae32a7ebf386bc2, type: 2}
@@ -109683,6 +109770,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -116783,7 +116871,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &2021042281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116803,6 +116890,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -116814,6 +116902,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -117835,7 +117924,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!54 &2034767199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117882,6 +117970,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 232009255}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 2100000, guid: c7a3d20ac6c26b349a5d157e0098aee3, type: 2}
   _materialFade: {fileID: 2100000, guid: 805623673a042234aaf288fbfa490074, type: 2}
@@ -117893,6 +117982,7 @@ MonoBehaviour:
   _pickedUp: 0
   _trowed: 0
   rompible: 0
+  aguaRompible: 0
   pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
@@ -118749,6 +118839,91 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044866153}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2045873717
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 101591297357451140, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_Name
+      value: TumbaCuerda
+      objectReference: {fileID: 0}
+    - target: {fileID: 101591297357451140, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005253748705269491, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_text
+      value: 'Habilidad: Cuerda
+
+        Dejas una cuerda tensada entre punta A y
+        punto B la cual hace caer a los vivos si pasan corriendo por ella.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7810864
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7810864
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7810864
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872657506395611145, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2188479949018237512, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+    - {fileID: 3482226128159487778, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 101591297357451140, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 209423097}
+  m_SourcePrefab: {fileID: 100100000, guid: 43ae186fc3a593141a06903230c0e970, type: 3}
 --- !u!1001 &2048744304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119095,7 +119270,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &2057869676
 AudioSource:
   m_ObjectHideFlags: 0
@@ -119211,6 +119385,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -119594,7 +119769,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!82 &2068645367
 AudioSource:
   m_ObjectHideFlags: 0
@@ -119710,6 +119884,7 @@ MonoBehaviour:
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
+  blessed: 0
   lvlRequired: 0
   _materialNormal: {fileID: 0}
   _materialFade: {fileID: 0}
@@ -121341,7 +121516,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!65 &2101644197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -128075,7 +128249,6 @@ MonoBehaviour:
   _doubtRange: 0
   scareAmount: 1
   musicOutput: 0
-  actualRoom: 0
 --- !u!114 &2139303813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130280,4 +130453,5 @@ SceneRoots:
   - {fileID: 462918970}
   - {fileID: 946601215}
   - {fileID: 123125795}
+  - {fileID: 2045873717}
   - {fileID: 53429845}

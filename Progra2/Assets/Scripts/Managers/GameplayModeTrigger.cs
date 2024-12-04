@@ -14,6 +14,11 @@ public class GameplayModeTrigger : MonoBehaviour
             StartGameplay();
     }
 
+    private void Start()
+    {
+        GameManager.Instance.pasoActual = 0;
+    }
+
     void StartGameplay()
     {
         foreach (var obj in _objectToActivate)
@@ -21,6 +26,7 @@ public class GameplayModeTrigger : MonoBehaviour
             obj.SetActive(true);
         }
 
+        GameManager.Instance.pasoActual = 1;
         //StartGampelayPhase();
         GameManager.Instance.GetComponent<PhaseManager>().CallGamePlayPhase();
 

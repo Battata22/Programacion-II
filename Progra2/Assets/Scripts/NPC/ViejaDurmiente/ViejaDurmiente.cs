@@ -13,6 +13,7 @@ public class ViejaDurmiente : MonoBehaviour
     {
         icono = GetComponentInChildren<SpriteRenderer>();
         icono.sprite = null;
+        GameManager.Instance.pasoActual = 8;
     }
 
 
@@ -37,7 +38,7 @@ public class ViejaDurmiente : MonoBehaviour
         abuela.SetActive(true);
         //gato.SetActive(true);
         //perro.SetActive(true);
-
+        GameManager.Instance.pasoActual = 0;
         //startRun();
         GameManager.Instance.GetComponent<PhaseManager>().CallGamePlayPhase();
 

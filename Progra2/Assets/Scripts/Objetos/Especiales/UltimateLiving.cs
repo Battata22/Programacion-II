@@ -28,6 +28,7 @@ public class UltimateLiving : SpecialObject
         if(!trapCreated && GameManager.Instance.terrorBar.value >= GameManager.Instance.terrorBar.maxValue) 
         {
             CreateTrap();
+            GameManager.Instance.pasoActual = 4;
         }
     }
 
@@ -53,7 +54,7 @@ public class UltimateLiving : SpecialObject
 
     IEnumerator DoUltimate(float newWait)
     {
-
+        GameManager.Instance.pasoActual = 5;
         var wait = new WaitForSeconds(newWait);
 
         Levitar();

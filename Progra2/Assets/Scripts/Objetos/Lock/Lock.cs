@@ -11,7 +11,7 @@ public class Lock : MonoBehaviour, ILockeable
 
     private void Start()
     {
-        GameManager.Instance.pasoActual = 0;
+
     }
     public void Unlock()
     {

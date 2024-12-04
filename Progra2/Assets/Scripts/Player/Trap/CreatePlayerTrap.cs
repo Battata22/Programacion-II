@@ -113,8 +113,10 @@ public class CreatePlayerTrap : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Nivel2")
         {
-            if (GameManager.Instance.pasoActual == 0)
-                return "Abre el candado";
+            if (GameManager.Instance.pasoActual == 8)
+                return "Despierta a la abuela";
+            else if (GameManager.Instance.pasoActual == 0)
+                return "Tira a la abuela al piso y abre el candado con la llave";
             else if(GameManager.Instance.pasoActual == 6)
                 return "Activa el susto";
             else if (GameManager.Instance.pasoActual == 1)
@@ -125,13 +127,21 @@ public class CreatePlayerTrap : MonoBehaviour
                 return "Congela a la abuela";
             else if (GameManager.Instance.pasoActual == 3)
                 return "Asusta a la abuela y llena la barra";
+            else if (GameManager.Instance.pasoActual == 4)
+                return "Activa el susto especial";
+            else if (GameManager.Instance.pasoActual == 5)
+                return "Espera y disfruta";
             else
                 return "Nose que paso";
         }
         else if (SceneManager.GetActiveScene().name == "Nivel1")
         {
-            if (GameManager.Instance.pasoActual == 1)
+            if (GameManager.Instance.pasoActual == 0)
+                return "Tirale algo a Warren para asustarlo";
+            else if(GameManager.Instance.pasoActual == 1)
                 return "Rompe la canilla tirandole un objeto";
+            else if (GameManager.Instance.pasoActual == 7)
+                return "Activa el susto de la canilla";
             else if (GameManager.Instance.pasoActual == 2)
                 return "Asusta al Warren cuando este cerca de la ducha";
             else if (GameManager.Instance.pasoActual == 3)

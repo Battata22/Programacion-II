@@ -138,11 +138,12 @@ public class PickUp : MonoBehaviour
             //}
 
             // En vez de anhadir una condicion al de arriba lo escribiste otra vez XD
-            if (Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0 && _objScript.gameObject.GetComponent<Luces>() == null)
-            {
-                _objScript.gameObject.AddComponent<PossessObject>();
-                _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
-            }
+
+            //if (Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0 && _objScript.gameObject.GetComponent<Luces>() == null)
+            //{
+            //    _objScript.gameObject.AddComponent<PossessObject>();
+            //    _player.StartPossession(_objScript.gameObject.GetComponent<PossessObject>());
+            //}
 
             if(Input.GetKeyDown(interecatKey) && hit.transform.TryGetComponent<PlayerTrap>(out var trap)  /* && hit.transform.TryGetComponent<IInteractable>(out var inte)*/)
             {

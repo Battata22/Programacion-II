@@ -12,7 +12,7 @@ public class CanillaBanhoDepa : SpecialObject
 
     private void Start()
     {
-        GameManager.Instance.pasoActual = 1;
+        //GameManager.Instance.pasoActual = 1;
     }
 
     bool inPos = false, trapActive = false;
@@ -50,6 +50,8 @@ public class CanillaBanhoDepa : SpecialObject
 
         CreateTrap();
 
+        GameManager.Instance.pasoActual = 7;
+
     }
 
     protected override void ObjectAbility(Transform origin)
@@ -63,7 +65,6 @@ public class CanillaBanhoDepa : SpecialObject
 
     IEnumerator WaitToScare()
     {
-        GameManager.Instance.pasoActual = 2;
         //trapActive = true;
 
         while (inPos == false)
@@ -81,6 +82,7 @@ public class CanillaBanhoDepa : SpecialObject
         yield return new WaitForSeconds(0.2f);
 
         _target.GetScared(1f);
+        GameManager.Instance.pasoActual = 2;
 
         Destroy(_trap);
         //llamar bath create
