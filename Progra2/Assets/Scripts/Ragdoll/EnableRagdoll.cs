@@ -10,7 +10,7 @@ public class EnableRagdoll : MonoBehaviour
     [SerializeField] RagdollBehaviour _ragdollPrefab;
     [SerializeField] float _forceMult;
     [SerializeField] bool _impulsePelvis;
-    Rigidbody _rb;
+    public Rigidbody _rb;
     NPC _npc;
     ParticulasEfectos partEfectosScript;
 
@@ -60,8 +60,8 @@ public class EnableRagdoll : MonoBehaviour
 
         //print("<color=red> Ragdoll Desactivado </color>");
 
-        _npc.TurnOn();
         OnDeactivate();
+        _npc.TurnOn();
 
         //Action = ActivateRagdoll;
     }

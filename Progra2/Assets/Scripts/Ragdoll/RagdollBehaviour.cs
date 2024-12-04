@@ -28,6 +28,12 @@ public class RagdollBehaviour : MonoBehaviour
         ApplyForce();
     }
 
+    //private void FixedUpdate()
+    //{
+    //    var dir = (new Vector3(_pelvisBone.transform.position.x, _myOwner.transform.position.y, _pelvisBone.transform.position.z) - _myOwner.transform.position).normalized;
+    //    _myOwner._rb.AddForce(dir * Time.fixedDeltaTime * 5, ForceMode.Acceleration);
+    //}
+
     void ApplyForce()
     {
         if (!_impulsePelvis)
@@ -39,6 +45,7 @@ public class RagdollBehaviour : MonoBehaviour
     void Rip()
     {
         _myOwner.transform.position = _pelvisBone.transform.position;
+        //_myOwner.transform.position = new Vector3(_pelvisBone.transform.position.x, _myOwner.transform.position.x, _pelvisBone.transform.position.z);
         Destroy(gameObject);
     }
 

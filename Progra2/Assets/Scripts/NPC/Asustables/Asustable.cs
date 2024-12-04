@@ -239,6 +239,14 @@ public class Asustable : NPC, ICanSlide, IPossessable
 
     }
 
+    void SaveShit()
+    {
+        if (transform.position.y > 4.5f && _agent.enabled) 
+        {
+
+        }
+    }
+
     void Brain()
     {
         if (waitStun >= tiempoDeStun && stuned)
