@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         //print(stepPoints.Length);
+
     }
 
 
@@ -19,7 +20,18 @@ public class PlayerMove : MonoBehaviour
     {
         if (moving == false && Input.GetKeyDown(KeyCode.F))
         {
-            SceneManager.LoadScene("Nivel" + (posPlayer + 1));
+
+            if (posPlayer == 1)
+            {
+                //GameManager.Instance.ChargeDone();
+                GameManager.Instance.masterNiveles.ChargeDone();
+            }
+            else
+            {
+                SceneManager.LoadScene("Nivel" + (posPlayer + 1));
+            }
+
+
         }
 
         if (Input.GetKeyDown(KeyCode.D) && moving == false)

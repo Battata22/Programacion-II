@@ -33,6 +33,11 @@ public class DepaRoomPuzzle : SpecialObject
         //{
         //    CreateTrap();
         //}
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            CallWin();
+        }
     }
 
     public void Shit()

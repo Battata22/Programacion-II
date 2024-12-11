@@ -1,31 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MasterNiveles : MonoBehaviour
+public class LoadManagerNivel1 : MonoBehaviour
 {
-    public bool chargeDone = false, cargando = false;
+    public bool chargeDone = false;
     public int sceneElegida;
-
     void Start()
     {
-        GameManager.Instance.masterNiveles = this;
-    }
-
-
-    void Update()
-    {
-        if (cargando == false)
-        {
-            StartCoroutine(LoadAsyncSceneRoutine(sceneElegida));
-            cargando=true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Menu");
-        }
+        GameManager.Instance.loadNivel1 = this;
+        StartCoroutine(LoadAsyncSceneRoutine(sceneElegida));
     }
     public void ChargeDone() => chargeDone = true;
     private IEnumerator LoadAsyncSceneRoutine(int index)
@@ -42,7 +26,7 @@ public class MasterNiveles : MonoBehaviour
                     asyncLoad.allowSceneActivation = true;
                 else
                 {
-                    print("ya estamos cargados");
+                    print("papito");
                     yield return null;
                 }
             }

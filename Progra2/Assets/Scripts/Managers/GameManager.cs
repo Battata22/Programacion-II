@@ -197,6 +197,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public LoadManagerNivel1 loadNivel1;
+
     public void CompleteLevel()
     {
 
@@ -205,9 +207,10 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Nivel1")
         {
-            //SceneManager.LoadScene("Nivel2");          
+            loadNivel1.ChargeDone();
+            print("loadNiveles");
 
-            SceneManager.LoadScene("Niveles");
+            //SceneManager.LoadScene("Niveles");
         }
         else
         {
@@ -231,6 +234,8 @@ public class GameManager : MonoBehaviour
     public int pasoActual;
 
     public int cajasAct;
+
+    public MasterNiveles masterNiveles;
 
 }
 

@@ -4800,6 +4800,7 @@ GameObject:
   - component: {fileID: 1567175137}
   - component: {fileID: 1567175138}
   - component: {fileID: 1567175139}
+  - component: {fileID: 1567175140}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5033,6 +5034,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1567175140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567175133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d48d62ec5543a49b37696387688cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargeDone: 0
+  sceneElegida: 2
 --- !u!1 &1623370132
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,9 +5479,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 655679653}
-        m_TargetAssemblyTypeName: BotonesMenu, Assembly-CSharp
-        m_MethodName: PlayOnClicked
+      - m_Target: {fileID: 1567175140}
+        m_TargetAssemblyTypeName: LoadManager, Assembly-CSharp
+        m_MethodName: ChargeDone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5878,8 +5893,30 @@ PrefabInstance:
     - {fileID: 5677896273588057618, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6004991956307945265, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1806302193}
   m_SourcePrefab: {fileID: 100100000, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
+--- !u!1 &1806302192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6004991956307945265, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
+  m_PrefabInstance: {fileID: 1806302191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1806302193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806302192}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d48d62ec5543a49b37696387688cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargeDone: 0
+  sceneElegida: 0
 --- !u!1 &1837011920
 GameObject:
   m_ObjectHideFlags: 0
