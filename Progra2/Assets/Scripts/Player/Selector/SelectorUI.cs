@@ -10,7 +10,7 @@ public class SelectorUI : MonoBehaviour
     [SerializeField] GameObject pointerRef;
     [SerializeField] Image fondo, fondoCirc, s1, s2, s3, s4, s5, s6, s7, s8;
     [SerializeField] Canvas tab;
-    [SerializeField] bool enTecla = false;
+    [SerializeField] bool enTecla = false, nivel5 = false;
     public static int habAct;
     //public delegate void habManager();
 
@@ -28,6 +28,7 @@ public class SelectorUI : MonoBehaviour
     {
         habilitiesManager = delegate { }; //Nada;
         habilitiesManager += Test;
+        SelectorDesactivado();
     }
 
 
@@ -41,18 +42,22 @@ public class SelectorUI : MonoBehaviour
 
         pointerRef.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f);
 
-        if (Input.GetKey(openMenu))
+        if (!nivel5)
         {
+            if (Input.GetKey(openMenu))
+            {
 
-            SelectorActivo();
+                SelectorActivo();
 
+            }
+            else
+            {
+
+                SelectorDesactivado();
+
+            }
         }
-        else
-        {
 
-            SelectorDesactivado();
-
-        }
     }
 
     public void SelectorActivo()

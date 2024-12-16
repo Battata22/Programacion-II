@@ -9,6 +9,7 @@ public class SelectorBotones : MonoBehaviour
     [SerializeField] float scale;
     Image imagen;
     int verde, selectedActual;
+    [SerializeField] bool nivel5 = false;
 
     void Start()
     {
@@ -28,26 +29,31 @@ public class SelectorBotones : MonoBehaviour
         }
 
 
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        if (!nivel5)
         {
-            SelectorUI.habAct = 1;
+            if (Input.GetKeyUp(KeyCode.Alpha1))
+            {
+                SelectorUI.habAct = 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha2))
+            {
+                SelectorUI.habAct = 2;
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha3))
+            {
+                SelectorUI.habAct = 3;
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha4))
+            {
+                SelectorUI.habAct = 4;
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha5))
+            {
+                SelectorUI.habAct = 5;
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Alpha2))
-        {
-            SelectorUI.habAct = 2;
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha3))
-        {
-            SelectorUI.habAct = 3;
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha4))
-        {
-            SelectorUI.habAct = 4;
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha5))
-        {
-            SelectorUI.habAct = 5;
-        }
+
+
 
         SelectedAction();
 
