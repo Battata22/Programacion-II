@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -18,8 +21,14 @@ public class VideoIntro : MonoBehaviour
     bool tepeado = false;
     //[SerializeField] tiempo
 
+
+
     void Start()
     {
+
+        ElectorVideo();
+
+
         if (tutorial == false)
         {
             apagado();
@@ -110,5 +119,30 @@ public class VideoIntro : MonoBehaviour
     public void SkipButton()
     {
         waitVideo = 1000;
+    }
+
+    void ElectorVideo()
+    {
+        #region No
+        //(Application.dataPath + "/Videos");
+
+        //videosObject = Resources.LoadAll(Application.dataPath + "/Videos");
+
+        //listaTexto = Directory.GetFiles(Application.dataPath + "/Videos", "*.mp4");
+
+        //DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/Videos");
+        //FileInfo[] info = dir.GetFiles("*.mp4");
+
+        //foreach (FileInfo f in info)
+        //{
+        //    print(f.Name);
+        //    videosLista.Add(f.ConvertTo());
+        //} 
+        #endregion
+
+
+        int elegido = Random.Range(0, CatalizadorVideos.videoClips.Length);
+
+        videoPlayer.clip = CatalizadorVideos.videoClips[elegido];
     }
 }
