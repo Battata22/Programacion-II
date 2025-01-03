@@ -473,14 +473,24 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                     AudioSource source = GetComponent<AudioSource>();
                     source.clip = bonk;
                     source.Play();
+                    //if (weight != Weight.low)
+                    //{
+                    //    newNpc.CallRagdollOn();
+                    //    newNpc.CallRagdollOff(1f, true);
+                    //    //StartCoroutine(newNpc.CallRagdollOff(1f, true));
+
+                    //}
+                }
+
+                if(collision.gameObject.TryGetComponent<IRagdoll>(out IRagdoll rag))
+                {
                     if (weight != Weight.low)
                     {
-                        newNpc.CallRagdollOn();
-                        newNpc.CallRagdollOff(1f, true);
+                        rag.CallRagdollOn();
+                        rag.CallRagdollOff(1f, true);
                         //StartCoroutine(newNpc.CallRagdollOff(1f, true));
 
                     }
-
                 }
 
                 if (rompible == true)

@@ -39256,6 +39256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &599622228
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -53518,6 +53519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &790835314
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -59882,6 +59884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &887764231
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -72083,6 +72086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!1001 &1118094291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84368,6 +84372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &1273011468
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -86624,6 +86629,22 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 4441103370495016658, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
   m_PrefabInstance: {fileID: 3193108461530179667}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1311896964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311896952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5a67c1101d5ea469385ad4c802dfdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ragdollPrefab: {fileID: 7453612887976267122, guid: 4149d457e924dc44fa68c3a0730cdb23, type: 3}
+  _forceMult: 50
+  _impulsePelvis: 0
+  _rb: {fileID: 0}
 --- !u!43 &1313874858
 Mesh:
   m_ObjectHideFlags: 0
@@ -89032,6 +89053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &1342217059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -101368,6 +101390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &1623416897
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -110566,6 +110589,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2131736677}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1787473266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2888273109924621265, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+  m_PrefabInstance: {fileID: 3193108461530179667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1789972063
 GameObject:
   m_ObjectHideFlags: 0
@@ -124469,6 +124497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &2066587202
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -141930,6 +141959,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghostbuster
       objectReference: {fileID: 0}
+    - target: {fileID: 3079976728656513823, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      propertyPath: _mesh
+      value: 
+      objectReference: {fileID: 1787473266}
     - target: {fileID: 3711835268439765556, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: _actualNode
       value: 
@@ -142145,7 +142182,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3079976728656513823, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1311896964}
   m_SourcePrefab: {fileID: 100100000, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
 --- !u!114 &3288026254429187355
 MonoBehaviour:

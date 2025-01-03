@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Cam : MonoBehaviour
 {
+    [SerializeField] bool _followPlayer = true;
     [SerializeField] public Vector3 point;
     [SerializeField] Transform _target;
 
@@ -17,6 +18,12 @@ public class Cam : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_followPlayer) 
+            UpdatePosition();  
+    }
+
+    private void UpdatePosition()
+    {
         //el punto se lo da el CamDistance
         if (usePoint)
         {
@@ -26,8 +33,13 @@ public class Cam : MonoBehaviour
         {
             transform.position = _target.position;
         }
-        
+
         transform.forward = _target.forward;
+    }
+
+    public void FollowPlayer(bool doFollow)
+    {
+        _followPlayer = doFollow;
     }
 
     //QUIZA ESTO ESTABA PARA EL MUSEO

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 //using static UnityEditor.PlayerSettings;
 
-public class Ghostbuster : NPC , ICanSlide
+public class Ghostbuster : NPC , ICanSlide, IRagdoll
 {
     [Header("<color=red> Ghostbuster </color>")]
     [SerializeField] GB_FOV _gbFov;
@@ -39,6 +39,20 @@ public class Ghostbuster : NPC , ICanSlide
 
     public event DelegateType.VoidDelegate OnSlideStop = delegate { };
 
+    //Ragdoll
+    public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
+
+    [SerializeField] GameObject _mesh;
+
+    EnableRagdoll _myRagdollSwitch;
+
+    [SerializeField] public bool canRagdoll = true;
+    bool inRagdoll = false;
+
+    protected void Awake()
+    {
+        _myRagdollSwitch = GetComponent<EnableRagdoll>();
+    }
 
     protected override void Start()
     {
@@ -405,6 +419,7 @@ public class Ghostbuster : NPC , ICanSlide
         //_isAttacking = true;
         //_particleGen.gameObject.SetActive(true);
         //if (_gbFov.hasLOS)
+        if(!inRagdoll)
             StartAttack();
 
         //yield return new WaitForSeconds(_attackDuration);
@@ -529,5 +544,72 @@ public class Ghostbuster : NPC , ICanSlide
 
         OnSlideStop();
 
+    }
+
+    public override void TurnOff()
+    {
+        transform.GetComponent<Collider>().enabled = false;
+        //_AIActive = false;
+        _agent.speed = 0f;
+        _agent.enabled = false;
+        _mesh.SetActive(false);
+    }
+
+    public override void TurnOn()
+    {
+        transform.GetComponent<Collider>().enabled = true;
+        _mesh.SetActive(true);
+        //_AIActive = true;
+        _agent.enabled = true;
+        _agent.speed = speedNormal;
+        if (_actualNode != null)
+            _agent.SetDestination(_actualNode.position);
+    }
+
+    public void CallRagdollOn()
+    {
+        if (!canRagdoll) return;
+        if (_angry) StopAnger();
+        if (_isAttacking) EndAttack();
+        if (_fighting) StartCoroutine(StopFight(0));
+        //StopAnger();
+        //EndAttack();
+        _myRagdollSwitch.ActivateRagdoll();
+        OnRagdollTrigger();
+        inRagdoll = true;
+    }
+
+
+    public void CallRagdollOn(Vector3 dir)
+    {
+        if (!canRagdoll) return;
+        if(_angry) StopAnger();
+        if(_isAttacking) EndAttack();
+        if (_fighting) StartCoroutine(StopFight(0));
+        _myRagdollSwitch.ActivateRagdoll(dir);
+        OnRagdollTrigger();
+        inRagdoll = true;
+
+    }
+    public void CallRagdollOff(float wait = 0f, bool scareOnEnd = false)
+    {
+        StartCoroutine(RagdollOff(wait, scareOnEnd));
+    }
+
+    private IEnumerator RagdollOff(float wait = 0f, bool scareOnEnd = false)
+    {
+        yield return new WaitForSeconds(wait);
+        _myRagdollSwitch.DeactivateRagdoll();
+        if (scareOnEnd)
+        {
+            //_canAttack = true;
+            GetScared(1f, _actualNode);
+        }
+        inRagdoll = false;
+
+        //if (tutorial == true)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 }

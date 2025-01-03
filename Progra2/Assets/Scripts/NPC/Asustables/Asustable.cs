@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Asustable : NPC, ICanSlide, IPossessable
+public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 {
     //[Header("AI")]
     //[SerializeField] float _changeNodeDist = 0.5f;
