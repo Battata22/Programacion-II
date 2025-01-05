@@ -37,9 +37,14 @@ public class BallaBehaivour : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
+        if(collision.gameObject.GetComponent<GB_Boss>() != null)
+        {
+            collision.gameObject.GetComponent<GB_Boss>().GetDamage(GameManager.Instance.Player.GetComponent<PewPew>().damage);
+        }
+
         if (collision != null && collision.gameObject.GetComponent<BallaBehaivour>() == null)
         {
-            print("choco con " + collision.gameObject.name);
+            //print("choco con " + collision.gameObject.name);
             Destroy(gameObject);
         }
     }

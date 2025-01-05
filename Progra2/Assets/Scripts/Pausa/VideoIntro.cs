@@ -10,9 +10,9 @@ using UnityEngine.Video;
 
 public class VideoIntro : MonoBehaviour
 {
-    [SerializeField] bool tutorial = false;
+    [SerializeField] bool tutorial = false, boss = false;
     [SerializeField] Image marco1, marco2, marco3, vida, negro;
-    [SerializeField] GameObject player, entrada, barra, crosshair, skipBoton, postit /* gato, abuela, perro */, textoTraps, abuelaDormida;
+    [SerializeField] GameObject player, entrada, barra, crosshair, skipBoton, postit /* gato, abuela, perro */, textoTraps, abuelaDormida, sliderBoss;
     public VideoPlayer videoPlayer;
     [SerializeField] MeshRenderer gus, hand;
 
@@ -88,6 +88,10 @@ public class VideoIntro : MonoBehaviour
         postit.SetActive(false);
         textoTraps.SetActive(false);
         abuelaDormida.SetActive(false);
+        if (boss == true)
+        {
+            sliderBoss.SetActive(false);
+        }
     }
 
     void prendido()
@@ -109,6 +113,10 @@ public class VideoIntro : MonoBehaviour
         skipBoton.SetActive(false);
         textoTraps.SetActive(true);
         //GameManager.Instance.Tutorial.StartPickUp();
+        if (boss == true)
+        {
+            sliderBoss.SetActive(true);
+        }
     }
 
     void TPGus()

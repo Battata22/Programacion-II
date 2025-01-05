@@ -8,6 +8,11 @@ public class PewPew : MonoBehaviour
     [SerializeField] bool semi = true;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject shootHere;
+    //public float damage
+    //{
+    //    get { return damage; }
+    //}
+    public float damage;
 
 
     void Update()
