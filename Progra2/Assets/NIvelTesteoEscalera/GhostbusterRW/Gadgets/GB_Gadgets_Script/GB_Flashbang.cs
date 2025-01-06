@@ -59,6 +59,9 @@ public class GB_Flashbang : GB_Gadget
             {
                 // Player detectado, llamar GB
                 Debug.Log($"<color=green> Gus Detectado </color>");
+
+                if (_myOwner != null)
+                    _myOwner.GetAngry();
             }
         }
     }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -49,6 +50,25 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
     [SerializeField] public bool canRagdoll = true;
     bool inRagdoll = false;
 
+    [Header("<color=yellow> Gadgets </color>")]
+    [SerializeField] GB_GadgetSpawner _GadgetSpawner;
+    [SerializeField] Transform _pulseOrigin;
+    [SerializeField] float _repairTime;
+    [SerializeField] float _timeBtRepairs;
+    [SerializeField] float _spawnGadgetWait;
+
+    List<GB_Gadget> _activeGadgets = new();
+    List<GB_Gadget> _brokenGadgets = new();
+
+    float _lastRepairCall = 0;
+    float _lastGadgetSpwTime = 0;
+    bool _inRepairPos = false;
+    bool _isTringToRepair = false;
+    bool _hasObjToRepair = false;
+
+    bool _lookingActive = false;
+
+
     protected void Awake()
     {
         _myRagdollSwitch = GetComponent<EnableRagdoll>();
@@ -97,6 +117,13 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             return;
         }
 
+        //Rework, reparar objetos
+        if (_hasObjToRepair && Time.time - _lastRepairCall > _timeBtRepairs)
+        {
+            GoRepairGadget();
+            _lastRepairCall = Time.time;
+        }
+
         if (_firstAnger == true)
         {
             _waitTrampa += Time.deltaTime;
@@ -106,21 +133,35 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             }
         }
 
-        if ((!_doubt && !_angry &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
+        if(Time.time - _lastGadgetSpwTime > _spawnGadgetWait)
         {
-            //Debug.Log("<color=#26c5f0> LLege al destino </color>");
+            _lastGadgetSpwTime = Time.time;
 
-            _actualNode = GetNewNode(_actualNode);
-
-            _agent.SetDestination(_actualNode.position);
+            //1 para la cam, se pone a mano en el gb_gadgetSpawner
+            _GadgetSpawner.SpawnGadget(transform, 1, this);
         }
+
+        if ((!_doubt && !_lookingActive && !_angry && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
+        {
+            StartCoroutine(LookAround());
+        }
+
+        //REEMPLAZADO POR EL IF DE ARRIBA
+        //if ((!_doubt && !_angry &&Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
+        //{
+        //    //Debug.Log("<color=#26c5f0> LLege al destino </color>");
+
+        //    _actualNode = GetNewNode(_actualNode);
+
+        //    _agent.SetDestination(_actualNode.position);
+        //}
 
         if (_doubt)
             _searchingTimer += Time.deltaTime;
         if (_searchingTimer > 12f) StopSearching();
         if (_inPlace) _waitDoubt += Time.deltaTime;
 
-        if (_doubt && Vector3.SqrMagnitude(transform.position - new Vector3(_searchingPos.x, transform.position.y, _searchingPos.z)) <= (_changeNodeDist * _changeNodeDist))
+        if (_doubt && Vector3.SqrMagnitude(transform.position - new Vector3(_searchingPos.x, transform.position.y, _searchingPos.z)) <= (_changeNodeDist * _changeNodeDist * 1.5f))
         {
             //_agent.speed = 0;
 
@@ -128,10 +169,30 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             {
                 StartSearching();
                 SetSpeed();
+
+                _GadgetSpawner.SpawnGadget(_pulseOrigin, 0, this);//pulso  scaner
+
                 _anim.SetBool("Idle", true);
                 _anim.SetBool("Walking", false);
             }
         }
+
+        //Rework repair object
+        if (_isTringToRepair && !_inRepairPos && Vector3.SqrMagnitude(transform.position - _brokenGadgets[0].transform.position) <= (_changeNodeDist * _changeNodeDist * 4))
+        {
+            _inRepairPos = true;
+
+            //Debug.Log($"<color=yellow> Llamando corrutina reparar </color>");
+
+            StartCoroutine(StartRepairGadget(_repairTime));
+        }
+        else if (_inRepairPos)
+        {
+            //Debug.Log($"<color=yellow> Estoy del otro lado del if </color>");
+
+            _inRepairPos = false;
+        }
+
         if (_doubt && _inPlace && _waitDoubt >= 2)
         {
             _anim.SetBool("Idle", false);
@@ -148,9 +209,10 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             {
                 //Debug.Log("Te veo");
                 GetAngry();
+
+                //GetScared(1);
             }           
         }
-        //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA agria
 
         if (_angry && !_isAttacking && Time.time - _waitAnger > _angerTime)
         {
@@ -159,7 +221,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             _agent.SetDestination(GetNewNode(_actualNode).position);
             //Debug.Log("<color=green> Despues de set destination </color>");
         }
-        if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && !_sliding && _gbFov.hasLOS
+        if (!_isAttacking && !_target.underAttack && _canAttack && !_target.possessing && !_sliding && _gbFov.hasLOS && _angry
             && /*_gbFov.hasLOS &&*/ !_startingAttack &&Vector3.SqrMagnitude(transform.position - _target.transform.position) <= (_attackRange * _attackRange))
         {
             StartCoroutine(DelayAttack());
@@ -182,27 +244,27 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
     public override void GetDoubt(Vector3 pos)
     {
-        GetAngry();
+        //GetAngry();
 
-        ////activar duda
-        ////Debug.Log("<color=yellow> Escuche algo </color>");
-        //if (_angry) return;
-        //if (_isAttacking) return;
-        //if (!_canAttack) return;
-        //if (_fighting) return;
-        //_anim.SetFloat("zAxis", 1);
-        ////Debug.Log("Duda de asustable");
+        //activar duda
+        //Debug.Log("<color=yellow> Escuche algo </color>");
+        if (_angry) return;
+        if (_isAttacking) return;
+        if (!_canAttack) return;
+        if (_fighting) return;
+        _anim.SetFloat("zAxis", 1);
+        //Debug.Log("Duda de asustable");
 
-        //_doubt = true;
+        _doubt = true;
 
-        //_audioSource.clip = doubtClip;
-        //_audioSource.Play();
+        _audioSource.clip = doubtClip;
+        _audioSource.Play();
 
-        ////_agent.speed = speedDoubt;
-        //SetSpeed();
+        //_agent.speed = speedDoubt;
+        SetSpeed();
 
-        //_agent.SetDestination(pos);
-        //_searchingPos = pos;
+        _agent.SetDestination(pos);
+        _searchingPos = pos;
     }
 
     public override void GetScared(float scareAmount, Transform a = null)
@@ -210,10 +272,15 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
         //Activar Anger supongo
         //Debug.Log("<color=red> YA TE VOY A AGARRAR </color>");
-        GetAngry();
+
+        //GetAngry();
+
+        //Rework Tirar Flashbang
+
+        _GadgetSpawner.SpawnGadget(_pulseOrigin, 0, this);
     }
 
-    void GetAngry()
+    public void GetAngry()
     {
         if (!_canAttack) return;
         if(_isAttacking) return;
@@ -539,7 +606,10 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         _rb.velocity = Vector3.zero;
         _agent.enabled = true;
 
-        GetAngry();
+        //GetAngry();
+        //Spawn scaner pulse
+        GetScared(1);
+
         //_agent.SetDestination(_actualNode.position);
 
         OnSlideStop();
@@ -612,4 +682,107 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         //    Destroy(gameObject);
         //}
     }
+
+    //REWORK STARTS HERE
+
+    public void AddToRepairList(GB_Gadget gadget)
+    {
+        //Debug.Log($"<color=magenta> Objeto agregado </color>");
+
+
+        _brokenGadgets.Add(gadget);
+
+        _hasObjToRepair = true;
+
+    }
+
+    void GoRepairGadget()
+    {
+        //muro de if, si no esta haciendo nada, intenta reparar
+        /*
+         * no atacando
+         * no enojado
+         * no dudando?
+         * no resbalando
+         * no ragdoll
+        */
+
+        //ir a pos de objeto roto index 0
+        //reparar
+
+        //Debug.Log($"<color=magenta> LLendo a reparar</color>");
+
+
+        if (_isAttacking) return;
+        if (_angry) return;
+        if (_doubt) return;
+        if (_sliding) return;
+        if (inRagdoll) return;
+
+        //Debug.Log($"<color=magenta> Pase el muro de if </color>");
+
+
+        _isTringToRepair = true;
+
+        _agent.SetDestination(_brokenGadgets[0].transform.position);
+    }
+
+    IEnumerator StartRepairGadget(float wait)
+    {
+        //do anim de reparar
+        //Debug.Log($"<color=magenta> Intentando Reparar </color>");
+
+
+        yield return new WaitForSeconds(wait);
+
+        //Debug.Log($"<color=magenta> Reparar llamado </color>");
+
+
+        if (_inRepairPos)
+            RepairGadgets(_brokenGadgets[0]);
+    }
+
+    void RepairGadgets(GB_Gadget gadget)
+    {
+        //Reparar objeto
+        //Dejar de intentar reparar
+        //Checkear si quedan por arreglar
+        Debug.Log($"<color=magenta> Objeto reparado </color>");
+
+        gadget.Repair();
+        _brokenGadgets.Remove(gadget);
+
+        _isTringToRepair = false;
+
+        if (_brokenGadgets.Count < 1)
+            _hasObjToRepair = false;
+    }
+
+    private IEnumerator LookAround()
+    {
+        _lookingActive = true;
+
+        _anim.SetBool("Walking", false);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("Search", false);
+        _anim.SetBool("Doubt", false);
+        _anim.SetBool("InPos", true);
+
+
+        var _waitRandom = Random.Range(2f, 5f);
+
+        WaitForSeconds wait = new WaitForSeconds(_waitRandom);
+        yield return wait;
+
+        _anim.SetBool("Walking", true);
+        _anim.SetBool("InPos", false);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("Search", false);
+
+        _actualNode = GetNewNode(_actualNode);
+        _agent.SetDestination(_actualNode.position);
+
+        _lookingActive = false;
+    }
+
 }

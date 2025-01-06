@@ -4,43 +4,31 @@ using UnityEngine;
 
 public class GB_Cam : GB_Gadget
 {
-    [SerializeField] int _hp;
-    [SerializeField] float _speed;
-    [SerializeField,Range(0, 180), Tooltip("Aplica a ambos lados")] float _maxAngle;
-    [SerializeField] float rot;
+    [SerializeField] Animator _camAnimator;
 
-    [SerializeField] Animator _animator;
+    [SerializeField] int _maxHp;
+    int _hp;
+
+    GameObject _detectionCone;
+
+    //[SerializeField] float _speed;
+    //[SerializeField,Range(0, 180), Tooltip("Aplica a ambos lados")] float _maxAngle;
+    //[SerializeField] float rot;
+
+    //[SerializeField] Animator _animator;
 
 
-    float rotDir = -1;
+    //float rotDir = -1;
 
-    private void FixedUpdate()
+    private void Awake()
     {
-        //RotateCam();
+        _hp = _maxHp;
     }
 
-    void RotateCam()
+    private void Start()
     {
-        rot = rotDir * _speed * Time.fixedDeltaTime;
-
-        transform.Rotate(0, transform.rotation.y + rot, 0);
-        if(rotDir > 0)
-        {
-            if (transform.rotation.y > _maxAngle)
-            {
-                rotDir *= -1;
-                Debug.Log($"Direccion cambiada {rotDir}");
-            }
-        }
-        else
-        {
-            if (transform.rotation.y < _maxAngle)
-            {
-                rotDir *= -1;
-                Debug.Log($"Direccion cambiada {rotDir}");
-            }
-        }
-        
+        _detectionCone = GetComponentInChildren<GB_CamCone>().gameObject;
+        _camAnimator = GetComponentInChildren<Animator>();
     }
 
     public void DetectGhost()
@@ -48,15 +36,21 @@ public class GB_Cam : GB_Gadget
         //Pitido
         //Activar flash bang del GB
 
-        Debug.Log($"<color=green> Gus Detectado </color>");
+        //Debug.Log($"<color=green> Gus Detectado </color>");
+
+        if (_myOwner != null)
+            _myOwner.GetDoubt(transform.position);
     }
 
     public override void GetDamage(int dmgAmount = 1)
     {
         _hp -= dmgAmount;
 
-        if (_hp < 0 )
+        if (_hp <= 0)
             Break();
+
+        //Debug.Log($"<color=red> AHHHHHHHHH </color>");
+
     }
 
     public override void Break()
@@ -65,7 +59,14 @@ public class GB_Cam : GB_Gadget
         // desactivar deteccion
         // si no se cae hacer que se caiga, para efectos dramaticos
 
+        if(_isBroken) return;
 
+        _detectionCone.SetActive(false);
+        _isBroken = true;
+        _camAnimator.SetBool("Broken", true);
+
+        _myOwner.AddToRepairList(this);
+        OnBreak();
     }
 
     public override void Repair()
@@ -73,6 +74,28 @@ public class GB_Cam : GB_Gadget
         // efectos de reparacion
         // reactivar mierda
 
+        if (!_isBroken) return;
 
+        _hp = _maxHp;
+
+        _camAnimator.SetBool("Repair", true);
+        _detectionCone.SetActive(true);
+        _isBroken = false;
+
+
+        OnRepair();
+    }
+
+    //Developer
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftAlt))
+        {
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                Repair();
+            }       
+        }
     }
 }

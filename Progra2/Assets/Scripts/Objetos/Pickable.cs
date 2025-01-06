@@ -482,15 +482,20 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                     //}
                 }
 
-                if(collision.gameObject.TryGetComponent<IRagdoll>(out IRagdoll rag))
+                if(collision.gameObject.TryGetComponent<IRagdoll>(out IRagdoll rag) && weight != Weight.low)
                 {
-                    if (weight != Weight.low)
-                    {
+                    //if (weight != Weight.low)
+                    //{
                         rag.CallRagdollOn();
                         rag.CallRagdollOff(1f, true);
                         //StartCoroutine(newNpc.CallRagdollOff(1f, true));
 
-                    }
+                    //}
+                }
+
+                if(collision.gameObject.TryGetComponent<GB_Gadget>(out var gadget))
+                {
+                    gadget.GetDamage((int)weight + 1);
                 }
 
                 if (rompible == true)
