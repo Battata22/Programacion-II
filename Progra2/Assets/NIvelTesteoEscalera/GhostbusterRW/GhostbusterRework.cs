@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.Rendering;
 //using static UnityEditor.PlayerSettings;
 
-public class Ghostbuster : NPC , ICanSlide, IRagdoll
+public class GhostbusterRework : Ghostbuster , ICanSlide, IRagdoll
 {
+    //marcada con //:^| las variables commentadas por estar compartidas con el GB antiguo
+
     [Header("<color=red> Ghostbuster </color>")]
     [SerializeField] GB_FOV _gbFov;
     [SerializeField] float _torque, _angerRange, _angerTime , _attackRange, _suctionForce, _attackDuration, _atkDelay, _attackCD, _killRange, _shadowFightTime, _spamScape;
-    public float _waitAnger, _lastAttack = -1, _waitTrampa, _waitTrampaRandom, _waitKill;
+    //:^| public float _waitAnger, _lastAttack = -1, _waitTrampa, _waitTrampaRandom, _waitKill;
 
     [SerializeField] Player _target;
     [SerializeField] TrampaGB trampaPrefab;
@@ -46,13 +48,14 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
     EnableRagdoll _myRagdollSwitch;
 
-    [SerializeField] public bool canRagdoll = true;
+    //:^| [SerializeField] public bool canRagdoll = true;
     bool inRagdoll = false;
 
-    protected void Awake()
-    {
-        _myRagdollSwitch = GetComponent<EnableRagdoll>();
-    }
+    //:^| 
+    //protected void Awake()
+    //{
+    //    _myRagdollSwitch = GetComponent<EnableRagdoll>();
+    //}
 
     protected override void Start()
     {
@@ -69,7 +72,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         _smokeGen = _parGens[0];
         _anim = GetComponentInChildren<Animator>();
         _anim.SetBool("Walking", true);
-        if (_actualNode != null)
+        if (this._actualNode != null)
             _agent.SetDestination(_actualNode.position);
         foreach(var trap in GameManager.Instance.PlayerTraps)
         {
@@ -244,7 +247,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
     void StartAttack()
     {
         if (!_canAttack) return;
-        if(OnAttackStart != null)
+        if(this.OnAttackStart != null)
             OnAttackStart();
         _anim.SetBool("Idle", false);
         _anim.SetBool("Walking", false);
@@ -306,7 +309,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         //if(!_isAttacking) return;
         //Debug.Log("Terminando Ataque");
         //_agent.speed = speedNormal;
-        if (OnAttackEnd != null)
+        if (this.OnAttackEnd != null)
             OnAttackEnd();
         _anim.SetFloat("zAxis", 0);
         _anim.SetBool("Attacking", false);
@@ -433,7 +436,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
     //    return base.GetNewNode(lastNode);
     //}
 
-    public virtual void AttackShadow(GameObject shadow)
+    public override void AttackShadow(GameObject shadow)
     {
         if (!_canAttack) return;
         if (_angry)
@@ -503,7 +506,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
     float lastSlide = -1, minSlideTime = 0.1f;
 
-    public virtual void StartSlide(Vector3 dir ,float _impulseForce = 8f)
+    public override void StartSlide(Vector3 dir ,float _impulseForce = 8f)
     {
         if (_isAttacking) return;
         //Debug.Log("<color=green> Slide de Asustable </color>");
@@ -527,7 +530,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
     }
 
-    public virtual void StopSlide()
+    public override void StopSlide()
     {
         //desactivar gravedad
         //activar friccion?
@@ -562,11 +565,11 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         //_AIActive = true;
         _agent.enabled = true;
         _agent.speed = speedNormal;
-        if (_actualNode != null)
+        if (this._actualNode != null)
             _agent.SetDestination(_actualNode.position);
     }
 
-    public virtual void CallRagdollOn()
+    public override void CallRagdollOn()
     {
         if (!canRagdoll) return;
         if (_angry) StopAnger();
@@ -580,7 +583,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
     }
 
 
-    public virtual void CallRagdollOn(Vector3 dir)
+    public override void CallRagdollOn(Vector3 dir)
     {
         if (!canRagdoll) return;
         if(_angry) StopAnger();
@@ -591,7 +594,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         inRagdoll = true;
 
     }
-    public virtual void CallRagdollOff(float wait = 0f, bool scareOnEnd = false)
+    public override void CallRagdollOff(float wait = 0f, bool scareOnEnd = false)
     {
         StartCoroutine(RagdollOff(wait, scareOnEnd));
     }

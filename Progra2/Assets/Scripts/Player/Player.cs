@@ -296,22 +296,22 @@ public class Player : MonoBehaviour, IRoomDetectable
         RaycastHit hitR, hitL, hitF, hitB;
         Vector3 pos = new Vector3(transform.position.x, transform.position.y+1f, transform.position.z);
 
-        if (Physics.SphereCast(pos,0.25f, transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")) && !hitR.transform.GetComponent<RoomTrigger>() && xAxis > 0)
+        if (Physics.SphereCast(pos,0.25f, transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")) && !hitR.transform.GetComponent<Collider>().isTrigger && xAxis > 0)
         {
             //Debug.Log("<color=ellow> Wall Detected R </color>");
             return;
         }
-        if (Physics.SphereCast(pos,0.25f, -transform.right, out hitL, 0.52f, LayerMask.GetMask("NoTras")) && !hitL.transform.GetComponent<RoomTrigger>() && xAxis < 0)
+        if (Physics.SphereCast(pos,0.25f, -transform.right, out hitL, 0.52f, LayerMask.GetMask("NoTras")) && !hitL.transform.GetComponent<Collider>().isTrigger && xAxis < 0)
         {
             //Debug.Log("<color=ellow> Wall Detected L </color>");
             return;
         }
-        if (Physics.SphereCast(pos,0.25f, transform.forward,out hitF, 0.52f, LayerMask.GetMask("NoTras")) && !hitF.transform.GetComponent<RoomTrigger>() && zAxis > 0)
+        if (Physics.SphereCast(pos,0.25f, transform.forward,out hitF, 0.52f, LayerMask.GetMask("NoTras")) && !hitF.transform.GetComponent<Collider>().isTrigger && zAxis > 0)
         {
             //Debug.Log("<color=ellow> Wall Detected F </color>");
             return;
         }
-        if (Physics.SphereCast(pos,0.25f, -transform.forward,out hitB, 0.52f, LayerMask.GetMask("NoTras")) && !hitB.transform.GetComponent<RoomTrigger>() && zAxis < 0)
+        if (Physics.SphereCast(pos,0.25f, -transform.forward,out hitB, 0.52f, LayerMask.GetMask("NoTras")) && !hitB.transform.GetComponent<Collider>().isTrigger && zAxis < 0)
         {
             //Debug.Log("<color=ellow> Wall Detected B </color>");
             return;
