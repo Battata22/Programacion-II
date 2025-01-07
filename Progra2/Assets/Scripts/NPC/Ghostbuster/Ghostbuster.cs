@@ -47,8 +47,10 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
     EnableRagdoll _myRagdollSwitch;
 
+
+    [Header("<color=green> Ragdoll </color>")]
     [SerializeField] public bool canRagdoll = true;
-    bool inRagdoll = false;
+    [SerializeField, Tooltip("<color=red> DON'T TOUCH, ONLY TO READ </color>")]bool inRagdoll = false;
 
     [Header("<color=yellow> Gadgets </color>")]
     [SerializeField] GB_GadgetSpawner _GadgetSpawner;
@@ -109,8 +111,10 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             _canAttack = true;
             //_agent.speed = speedNormal;
             SetSpeed();
-            _actualNode = GetNewNode(_actualNode);
-            _agent.SetDestination(_actualNode.position);
+            //_actualNode = GetNewNode(_actualNode);
+            //_agent.SetDestination(_actualNode.position);
+            SetNewDestination(_actualNode);
+
             _anim.SetBool("Idle", false);
             _anim.SetFloat("zAxis", 0f);
             _anim.SetBool("Walking", true);
@@ -252,6 +256,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         if (_isAttacking) return;
         if (!_canAttack) return;
         if (_fighting) return;
+        if (inRagdoll) return;
         _anim.SetFloat("zAxis", 1);
         //Debug.Log("Duda de asustable");
 
@@ -295,7 +300,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         _angry = true;
         SetSpeed();
         _waitAnger = Time.time;
-        StartCoroutine(ChaseTarget());
+        StartCoroutine(ChaseTarget(0.5f));
     }
 
     void StopAnger()
@@ -305,6 +310,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         SetSpeed();
         //StopCoroutine(ChaseTarget());
 
+        ChaseTarget(0);
     }
 
     
@@ -444,7 +450,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
     }
 
-    private IEnumerator ChaseTarget()
+    private IEnumerator ChaseTarget(float newWait)
     {
         
         _activeChase = true;
@@ -454,7 +460,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         //https://www.youtube.com/watch?v=5T5BY1j2MkE no abrir
 
         //if(!_angry) yield return null;
-        WaitForSeconds wait = new WaitForSeconds(0.5f);
+        WaitForSeconds wait = new WaitForSeconds(newWait);
 
         while (_angry && _canAttack && _agent.enabled)
         {
@@ -467,9 +473,10 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         if (!_isAttacking && _canAttack && _agent.enabled)
         {
             //Debug.Log("<color=#ef5ae4>Termina Cazeria</color>");
-            _actualNode = GetNewNode(_actualNode);
-            _agent.SetDestination(_actualNode.position);
+            //_actualNode = GetNewNode(_actualNode);
+            //_agent.SetDestination(_actualNode.position);
 
+            SetNewDestination(_actualNode);
             yield return null;
         }
         _activeChase = false;
@@ -636,12 +643,16 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             _agent.SetDestination(_actualNode.position);
     }
 
+    //RAGDOLL HERE
+    #region Raggdoll Calls
     public virtual void CallRagdollOn()
     {
         if (!canRagdoll) return;
         if (_angry) StopAnger();
         if (_isAttacking) EndAttack();
         if (_fighting) StartCoroutine(StopFight(0));
+        if (_sliding) StopSlide();
+        if (_startingAttack) _startingAttack = false;
         //StopAnger();
         //EndAttack();
         _myRagdollSwitch.ActivateRagdoll();
@@ -653,9 +664,12 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
     public virtual void CallRagdollOn(Vector3 dir)
     {
         if (!canRagdoll) return;
-        if(_angry) StopAnger();
-        if(_isAttacking) EndAttack();
+        if (_angry) StopAnger();
+        if (_isAttacking) EndAttack();
         if (_fighting) StartCoroutine(StopFight(0));
+        if (_sliding) StopSlide();
+        if (_startingAttack) _startingAttack = false;
+
         _myRagdollSwitch.ActivateRagdoll(dir);
         OnRagdollTrigger();
         inRagdoll = true;
@@ -675,13 +689,27 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             //_canAttack = true;
             GetScared(1f, _actualNode);
         }
+        if (_actualNode == GameManager.Instance.Player)
+        {
+            //_actualNode = GetNewNode();
+            //_agent.SetDestination(_actualNode.position);
+
+            SetNewDestination();
+        }
         inRagdoll = false;
+
+        //SetSpeed();
+
+
 
         //if (tutorial == true)
         //{
         //    Destroy(gameObject);
         //}
-    }
+    } 
+    #endregion
+
+
 
     //REWORK STARTS HERE
 
@@ -756,6 +784,8 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
         if (_brokenGadgets.Count < 1)
             _hasObjToRepair = false;
+
+        SetNewDestination(null);
     }
 
     private IEnumerator LookAround()
@@ -779,10 +809,27 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         _anim.SetBool("Idle", false);
         _anim.SetBool("Search", false);
 
-        _actualNode = GetNewNode(_actualNode);
-        _agent.SetDestination(_actualNode.position);
+        //_actualNode = GetNewNode(_actualNode);
+        //_agent.SetDestination(_actualNode.position);
+        SetNewDestination(_actualNode);
+
+        SetSpeed();
 
         _lookingActive = false;
+    }
+
+    void SetNewDestination(Transform lastDest = null)
+    {
+
+        if (lastDest != null)
+            _actualNode = GetNewNode(lastDest);
+        else
+            _actualNode = GetNewNode();
+
+        _agent.SetDestination(_actualNode.position);
+
+        SetSpeed();
+        Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");
     }
 
 }
