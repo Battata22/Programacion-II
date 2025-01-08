@@ -520,7 +520,8 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
     protected void OnTriggerEnter(Collider other)
     {
-        if (!other.transform.GetComponent<RoomTrigger>() && (other.gameObject.layer == 31 || other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
+        //                   GetComponent<RoomTrigger>()
+        if (!other.transform.GetComponent<Collider>().isTrigger && (other.gameObject.layer == 31 || other.gameObject.layer == 8) && holding)// 31 wall y 8 NoTras
         {
             Drop();
         }

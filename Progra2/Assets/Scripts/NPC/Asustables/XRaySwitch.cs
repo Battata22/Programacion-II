@@ -50,7 +50,8 @@ public class XRaySwitch : MonoBehaviour
 
         foreach (Transform child in children)
         {
-            child.gameObject.layer = layer;
+            if (!child.gameObject.GetComponent<GB_CamCone>())
+                child.gameObject.layer = layer;
         }
     }
 

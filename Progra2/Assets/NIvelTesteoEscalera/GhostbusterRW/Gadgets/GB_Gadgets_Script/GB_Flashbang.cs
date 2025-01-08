@@ -10,6 +10,13 @@ public class GB_Flashbang : GB_Gadget
     [SerializeField] float _maxScale;
 
     float _currentTime;
+    bool _doDoubt = false;
+
+    public override void Initialize(Ghostbuster newOwner, bool doDoubt = false)
+    {
+        base.Initialize(newOwner, doDoubt);
+        _doDoubt = doDoubt;
+    }
 
     public override void GetDamage(int noSeUsaXDD)
     {
@@ -58,10 +65,13 @@ public class GB_Flashbang : GB_Gadget
             if (CheckLOS(player.transform, transform))
             {
                 // Player detectado, llamar GB
-                Debug.Log($"<color=green> Gus Detectado </color>");
+                //Debug.Log($"<color=green> Gus Detectado </color>");
 
                 if (_myOwner != null)
-                    _myOwner.GetAngry();
+                    if (!_doDoubt)
+                        _myOwner.GetAngry();
+                    else
+                        _myOwner.GetDoubt(player.transform.position);
             }
         }
     }
@@ -95,12 +105,12 @@ public class GB_Flashbang : GB_Gadget
         if (Physics.Raycast(owner.position, dir, out hit, dir.magnitude,obstructions))
         {      
             // Devuelve false cuando el rayo es cortado por paredes
-            Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
+            //Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
             return false;
         }
         else
         {
-            Debug.Log($"<color=red> No se corto el rayo </color>");
+            //Debug.Log($"<color=red> No se corto el rayo </color>");
             return true;
         }
     }

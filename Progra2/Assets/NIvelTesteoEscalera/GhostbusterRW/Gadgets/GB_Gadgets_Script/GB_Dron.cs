@@ -1,5 +1,5 @@
+//using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +11,9 @@ public class GB_Dron : GB_Gadget
     [Header("Logic")]
     [SerializeField] float _changeNodeDist;
     Transform _actualNode = null;
+    [SerializeField] GB_Flashbang _pulsePrefab;
+    [SerializeField] Transform _pulseOrigin;
+    [SerializeField, Tooltip("False = GetAngry, True = GetDoubt")] bool _doDoubt;
 
     bool _IAACtive = false;
 
@@ -18,6 +21,14 @@ public class GB_Dron : GB_Gadget
     [SerializeField] int _maxHp;
     [SerializeField] float _speed;
     int _hp;
+
+    public override void Initialize(Ghostbuster newOwner)
+    {
+        gameObject.SetActive(true);
+        //TurnOn();
+        base.Initialize(newOwner);
+
+    }
 
     private void Awake()
     {
@@ -37,9 +48,10 @@ public class GB_Dron : GB_Gadget
         if (!_IAACtive) return;
         if(!_isBroken && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist))
         {
-            Debug.Log("AHHHHHHHH");
+            //Debug.Log("AHHHHHHHH");
             //Invoke("SetNewDestination", 1f);
             SetNewDestination(_actualNode);
+            SpawnPulse(_myOwner);
         }
     }
 
@@ -47,8 +59,11 @@ public class GB_Dron : GB_Gadget
     {
         if (_isBroken) return;
 
+        Debug.Log($"<color=red> AHHHH CARALHO, VOCE E MOITO RUIM FHILO DA PUTA </color>");
+
         _isBroken = true;
-        _agent.speed = 0f;
+        //_agent.speed = 0f;
+        TurnOff();
 
         _myOwner.AddToRepairList(this);
         OnBreak();
@@ -56,6 +71,8 @@ public class GB_Dron : GB_Gadget
 
     public override void GetDamage(int dmgAmount = 1)
     {
+        Debug.Log($"<color=red> OWCh, digo digo BIP! </color>");
+
         _hp -= dmgAmount;
 
         if (_hp <= 0)
@@ -70,26 +87,27 @@ public class GB_Dron : GB_Gadget
 
         _isBroken = false;
 
-        SetNewDestination(_actualNode);
-        _agent.speed = _speed;
+        //SetNewDestination(_actualNode);
+        //_agent.speed = _speed;
+        TurnOn();
 
         OnRepair();
     }
 
     protected Transform GetNewNode(Transform lastNode = null)
     {
-        Debug.Log("ENTRE A NEW NODE");
+        //Debug.Log("ENTRE A NEW NODE");
 
         Transform newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
 
-        Debug.Log("ANTES DEL WHILE");
+        //Debug.Log("ANTES DEL WHILE");
 
         while (lastNode == newNodeTest)
         {
             newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
         }
 
-        Debug.Log("SALI DEL WHILE");
+        //Debug.Log("SALI DEL WHILE");
 
 
         return newNodeTest;
@@ -118,6 +136,31 @@ public class GB_Dron : GB_Gadget
 
         _agent.SetDestination(_actualNode.position);
 
-        Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");
+        //Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");
+    }
+    void SpawnPulse(Ghostbuster owner)
+    {
+        var gadget = Instantiate(_pulsePrefab, _pulseOrigin.position, _pulseOrigin.rotation);
+
+        //if (owner != null)
+            gadget.Initialize(owner, _doDoubt);
+    }
+
+    void TurnOff()
+    {
+        transform.GetComponent<Collider>().enabled = false;
+        //_AIActive = false;
+        _agent.speed = 0f;
+        _agent.enabled = false;
+    }
+
+    void TurnOn()
+    {
+        transform.GetComponent<Collider>().enabled = true;
+        //_AIActive = true;
+        _agent.enabled = true;
+        _agent.speed = _speed;
+        if (_actualNode != null)
+            _agent.SetDestination(_actualNode.position);
     }
 }

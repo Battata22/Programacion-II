@@ -142,7 +142,9 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
             _lastGadgetSpwTime = Time.time;
 
             //1 para la cam, se pone a mano en el gb_gadgetSpawner
-            _GadgetSpawner.SpawnGadget(transform, 1, this);
+            //_GadgetSpawner.SpawnGadget(transform, 1, this);
+            _GadgetSpawner.SpawnRandomGadget(transform, this);
+            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aa aa a agria
         }
 
         if ((!_doubt && !_lookingActive && !_angry && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
@@ -829,7 +831,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         _agent.SetDestination(_actualNode.position);
 
         SetSpeed();
-        Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");
+        //Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");
     }
 
 }

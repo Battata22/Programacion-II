@@ -22,7 +22,9 @@ public class AreaLadrido : MonoBehaviour
         if (player != null)
         {
             //print("adentro");
-            dogScript.Ladrido();
+            //dogScript.Ladrido();
+
+            dogScript.StartAlert();
         }
     }
 

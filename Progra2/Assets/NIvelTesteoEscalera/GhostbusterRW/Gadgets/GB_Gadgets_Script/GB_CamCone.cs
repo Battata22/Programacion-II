@@ -16,7 +16,7 @@ public class GB_CamCone : MonoBehaviour
             if (CheckLOS(player.transform, transform))
             {
                 // Player detectado, llamar GB
-                Debug.Log($"<color=green> Gus Detectado </color>");
+                //Debug.Log($"<color=green> Gus Detectado </color>");
                 gbCam.DetectGhost();
             }
         }
@@ -33,12 +33,12 @@ public class GB_CamCone : MonoBehaviour
         if (Physics.Raycast(owner.position, dir, out hit, dir.magnitude, obstructions))
         {
             // Devuelve false cuando el rayo es cortado por paredes
-            Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
+            //Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
             return false;
         }
         else
         {
-            Debug.Log($"<color=red> No se corto el rayo </color>");
+            //Debug.Log($"<color=red> No se corto el rayo </color>");
             return true;
         }
     }
