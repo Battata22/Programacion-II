@@ -25,6 +25,8 @@ public class Chocamiento : MonoBehaviour
 
     Transform _farthestNode, _farthestNode2, _farthestNode3, _finalNode;
 
+    public event DelegateType.VoidDelegate OnChocoActive = delegate { };
+
 
     private void Awake()
     {
@@ -81,6 +83,9 @@ public class Chocamiento : MonoBehaviour
                 }
             }
         }
+
+        OnChocoActive();
+
         ResetFarthestNode();
 
     }

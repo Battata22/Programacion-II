@@ -118,6 +118,7 @@ public class Cat : NPC
         while (_searchObj)
         {
             yield return wait;
+            #region comment
             //_targetObject = null;
             //Collider[] _objs;
             //Debug.Log("Chequeando");
@@ -132,7 +133,8 @@ public class Cat : NPC
             //        _targetObject = p;
             //        Debug.Log($"<color=green>Target {_targetObject.name}</color>");
             //    }
-            //}
+            //} 
+            #endregion
 
             CheckObjects();
             

@@ -97,6 +97,8 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         {
             trap.OnTrapActive += GetAngry;
         }
+
+        _lastGadgetSpwTime = Time.time;
     }
 
     private void Update()
@@ -474,6 +476,8 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
         if (!_isAttacking && _canAttack && _agent.enabled)
         {
+            //Quiero creer que esto es para dejar de perseguir;
+
             //Debug.Log("<color=#ef5ae4>Termina Cazeria</color>");
             //_actualNode = GetNewNode(_actualNode);
             //_agent.SetDestination(_actualNode.position);
@@ -665,13 +669,25 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
     public virtual void CallRagdollOn(Vector3 dir)
     {
+        //if (!canRagdoll) return;
+        //if (_angry) StopAnger();
+        //if (_isAttacking) EndAttack();
+        //if (_fighting) StartCoroutine(StopFight(0));
+        //if (_sliding) StopSlide();
+        //if (_startingAttack) _startingAttack = false;
+
+        //_myRagdollSwitch.ActivateRagdoll(dir);
+        //OnRagdollTrigger();
+        //inRagdoll = true;
+
         if (!canRagdoll) return;
         if (_angry) StopAnger();
         if (_isAttacking) EndAttack();
         if (_fighting) StartCoroutine(StopFight(0));
         if (_sliding) StopSlide();
         if (_startingAttack) _startingAttack = false;
-
+        //StopAnger();
+        //EndAttack();
         _myRagdollSwitch.ActivateRagdoll(dir);
         OnRagdollTrigger();
         inRagdoll = true;

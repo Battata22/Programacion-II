@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -12,12 +14,30 @@ public class DogScript : NPC
     bool playing = false, areaSpawn = false;
 
     //Rework
+    //Ladrido
     [SerializeField] float _doubtTime;
-    [SerializeField,Tooltip("<color=green> How much time is needed to bark once in doubt state </color>")]
+    [SerializeField, Tooltip("<color=green> How much time is needed to bark once in doubt state </color>")]
     float _mercyTime;
     float _timeToBark, _lastDoubt, _timeToEndDoubt;
 
     DelegateType.VoidDelegate InputCheck = delegate { };
+
+    //Juguetes
+    [SerializeField] Transform _toy;
+    [SerializeField] float _playDuration;
+    float _playingTime;
+    bool _chassingToy = false , _playing = false;
+
+    DelegateType.VoidDelegate DoPlayCheck = delegate { };
+
+    //Ragdolleador
+    [SerializeField] DogRagdollHitbox _ragHitbox;
+
+    protected override void Start()
+    {
+        base.Start();
+        _ragHitbox = GetComponentInChildren<DogRagdollHitbox>();
+    }
 
     private void Update()
     {
@@ -41,6 +61,7 @@ public class DogScript : NPC
         }
 
         InputCheck();
+        DoPlayCheck();
 
         //if (_doubt)
         //    _searchingTimer += Time.deltaTime;
@@ -74,6 +95,8 @@ public class DogScript : NPC
 
     public void StartAlert()
     {
+        if (_chassingToy) return;
+
         //Dejar quieto al perro
         //Hacer sonido para llamar atencion del player
         //Arrancar a dudar
@@ -125,5 +148,95 @@ public class DogScript : NPC
         _lastDoubt = Time.time;
 
         _agent.speed = speedNormal;
+    }
+
+    //Toy shit
+
+    public void StartChaseToy(Transform newToy)
+    {
+        if (_playing) return;
+        EndAlert();
+        //if(_chassingToy) return;
+
+        Debug.Log($"<color=blue> Busca la pelota </color>");
+
+        _chassingToy = true;
+        _toy = newToy;
+
+        _agent.speed = speedScared;
+
+        StartCoroutine(ChaseToy());
+        RagdollHitboxState(true);
+
+        DoPlayCheck += StartPlayCheck;
+        //DoChaseToy += ChaseToy;
+
+    }
+
+    IEnumerator ChaseToy()
+    {
+        Debug.Log($"<color=blue> Buscando </color>");
+
+        var wait = new WaitForSeconds(0.5f);
+
+        while ( _chassingToy )
+        {
+            _actualNode = _toy.transform;
+            _agent.SetDestination(_actualNode.position);
+
+            yield return wait;
+        }
+
+    }
+
+    void StartPlayCheck()
+    {
+        if (_playing && Time.time - _playingTime > _playDuration)
+        {
+            StopPlaying();
+        }
+        if (!_playing && Vector3.SqrMagnitude(transform.position - _toy.position) <= (_changeNodeDist * _changeNodeDist * 2))
+        {
+            //Debug.Log("<color=#26c5f0> LLege al destino </color>");
+
+            PlayWithToy();
+        }
+    }
+
+    void PlayWithToy()
+    {
+        //DoPlayCheck = delegate { };
+        Debug.Log($"<color=blue> ke vonita da peloitta </color>");
+
+        _chassingToy = false;
+        _playing = true;
+
+        _agent.speed = 0f;
+
+        RagdollHitboxState(false);
+
+        _playingTime = Time.time;
+
+    }
+
+    void StopPlaying()
+    {
+        Debug.Log($"<color=blue> pelota aburrida fea pelotuda </color>");
+
+
+        _playing = false;
+
+        _actualNode = GetNewNode(_actualNode);
+
+        _agent.SetDestination(_actualNode.position);
+
+        _agent.speed = speedNormal;
+
+
+    }
+
+    void RagdollHitboxState(bool newState)
+    {
+        _ragHitbox.active = newState;
     }
 }
