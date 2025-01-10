@@ -2,41 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaLadrido : MonoBehaviour
+public class CatArea : MonoBehaviour
 {
-    [SerializeField] DogScript dogScript;
+    Cat _cat;
     [SerializeField] LayerMask obstructions;
 
-    void Start()
+
+    private void Start()
     {
-        dogScript = GetComponentInParent<DogScript>();
+        _cat = GetComponentInParent<Cat>();
     }
-
-
     void Update()
     {
-        Dev_DrawRay();      
+        Dev_DrawRay();
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
-        if (player != null)
+        if(other.gameObject.TryGetComponent<Player>(out var player))
         {
-            //print("adentro");
-            //dogScript.Ladrido();
             if (CheckLOS(player.transform, transform))
-                dogScript.StartAlert();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Player player = other.gameObject.GetComponent<Player>();
-        if (player != null)
-        {
-            //print("afuera");
-            dogScript.StopLadrido();
+            {
+                _cat.JumpToPLayer();
+            }
         }
     }
 

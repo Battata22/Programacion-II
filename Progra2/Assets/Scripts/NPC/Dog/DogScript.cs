@@ -18,6 +18,8 @@ public class DogScript : NPC
     [SerializeField] float _doubtTime;
     [SerializeField, Tooltip("<color=green> How much time is needed to bark once in doubt state </color>")]
     float _mercyTime;
+    [SerializeField] DogAlertIcon _alertIcon;
+
     float _timeToBark, _lastDoubt, _timeToEndDoubt;
 
     DelegateType.VoidDelegate InputCheck = delegate { };
@@ -37,6 +39,8 @@ public class DogScript : NPC
     {
         base.Start();
         _ragHitbox = GetComponentInChildren<DogRagdollHitbox>();
+        _alertIcon = GetComponentInChildren<DogAlertIcon>();
+        _alertIcon.SetMaxTimers(_doubtTime,_mercyTime);
     }
 
     private void Update()
@@ -77,6 +81,8 @@ public class DogScript : NPC
         playing = true;
         _audioSource.clip = _clipLadrido;
         _audioSource.Play();
+
+        _alertIcon.active = false;
     }
 
     public void StopLadrido()
@@ -106,6 +112,7 @@ public class DogScript : NPC
         //Debug.Log($"<color=green>ENTRADA A START ALETR</color>");
 
         _agent.speed = 0;
+        _alertIcon.active = true;
 
         //Debug.Log($"<color=green> INPUT CHECK ACTIVADO </color>");
 
@@ -137,6 +144,9 @@ public class DogScript : NPC
             Ladrido();
         }
 
+        _alertIcon.timer = _timeToEndDoubt;
+        _alertIcon.charge = _timeToBark;
+
     }
 
     void EndAlert()
@@ -146,6 +156,9 @@ public class DogScript : NPC
         _timeToBark = 0;
         _timeToEndDoubt = 0;
         _lastDoubt = Time.time;
+
+        _alertIcon.active = false;
+
 
         _agent.speed = speedNormal;
     }

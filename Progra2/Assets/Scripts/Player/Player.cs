@@ -76,8 +76,14 @@ public class Player : MonoBehaviour, IRoomDetectable
     public bool enchantedTrap = false;
 
 
+    //Necesario para rework de gato
+    delegate void DelVoid2Float(float a, float b);
+    DelVoid2Float MyMovement = delegate { };
+
     private void Awake()
     {
+        MyMovement = Movement;//necesario rework gato
+
         GameManager.Instance.Player = this;
         GameManager.Instance.ItemHolde = _itemHolder;
         _rb = GetComponent<Rigidbody>();
@@ -258,7 +264,8 @@ public class Player : MonoBehaviour, IRoomDetectable
         if (!_canMove) return;
         if (_xAxis != 0 || _zAxis != 0)
         {
-            Movement(_xAxis, _zAxis);
+            //Movement(_xAxis, _zAxis);
+            MyMovement(_xAxis, _zAxis);
         }
         if (underAttack) LockedMovement();
 
@@ -758,5 +765,67 @@ public class Player : MonoBehaviour, IRoomDetectable
     {
         PhaseManager.TrapPhaseActive -= TrapPhase;
         PhaseManager.GameplayPhaseActive -= GameplayPhase;
+    }
+
+    //necesario para gato Rework
+    void InvertedMovement(float xAxis, float zAxis)
+    {
+        if (underAttack) return;
+        //if(!useMovement) return;
+
+        #region Comment
+        //{
+        //    //LockedMovement();
+        //    //transform.RotateAround(attacker.transform.position, Vector3.up, lastAxis * 100 * Time.fixedDeltaTime);
+        //}
+        //else
+        //{
+        //    _dir = (transform.right * xAxis + transform.forward * zAxis).normalized;
+
+        //    //transform.position += _dir * _speed * Time.fixedDeltaTime;
+        //    _rb.position += _dir * _speed *Time.fixedDeltaTime;
+        //    //_rb.AddForce(_dir * _speed * Time.fixedDeltaTime, ForceMode.Force);
+        //} 
+        #endregion
+
+        RaycastHit hitR, hitL, hitF, hitB;
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+
+        if (Physics.SphereCast(pos, 0.25f, -transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")) && !hitR.transform.GetComponent<Collider>().isTrigger && xAxis > 0)
+        {
+            //Debug.Log("<color=ellow> Wall Detected R </color>");
+            return;
+        }
+        if (Physics.SphereCast(pos, 0.25f, transform.right, out hitL, 0.52f, LayerMask.GetMask("NoTras")) && !hitL.transform.GetComponent<Collider>().isTrigger && xAxis < 0)
+        {
+            //Debug.Log("<color=ellow> Wall Detected L </color>");
+            return;
+        }
+        if (Physics.SphereCast(pos, 0.25f, -transform.forward, out hitF, 0.52f, LayerMask.GetMask("NoTras")) && !hitF.transform.GetComponent<Collider>().isTrigger && zAxis > 0)
+        {
+            //Debug.Log("<color=ellow> Wall Detected F </color>");
+            return;
+        }
+        if (Physics.SphereCast(pos, 0.25f, transform.forward, out hitB, 0.52f, LayerMask.GetMask("NoTras")) && !hitB.transform.GetComponent<Collider>().isTrigger && zAxis < 0)
+        {
+            //Debug.Log("<color=ellow> Wall Detected B </color>");
+            return;
+        }
+
+        _dir = (transform.right * -xAxis + transform.forward * -zAxis).normalized;
+        _rb.position += _dir * _speed * Time.fixedDeltaTime;
+    }
+
+    public void InvertMovement()
+    {
+        Debug.Log("<color=red>Invert</color>");
+        MyMovement = InvertedMovement;
+    }
+
+    public void RestoreNormalMovement()
+    {
+        Debug.Log("<color=red>Normal</color>");
+
+        MyMovement = Movement;
     }
 }

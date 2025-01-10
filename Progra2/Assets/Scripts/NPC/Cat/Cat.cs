@@ -16,7 +16,12 @@ public class Cat : NPC
     float _lastJump, _rbDrag;
     bool _antiSpam;
 
-    
+    //Rework
+    DelegateType.VoidDelegate CountDown = delegate { };
+    [Header("<color=cyan> JumpShit </color>")]
+    [SerializeField] float _fightDuration;
+    float _fightTime = 0f;
+    bool _canJumpToPlayer = true;
     
 
     protected override void Start()
@@ -88,6 +93,8 @@ public class Cat : NPC
         {
             _targetObject.Drop();
         }
+
+        CountDown();
     }
 
     void CheckObjects()
@@ -190,5 +197,55 @@ public class Cat : NPC
         int random = Random.Range(1, _clips.Count + 1);
         _audioSource.clip = _clips[random]; 
         _audioSource.Play();
+    }
+
+    //Rework
+    public void JumpToPLayer()
+    {
+        if(!_canJumpToPlayer) return;
+        Player player = GameManager.Instance.Player;
+        var dir = (player.transform.position - transform.position).normalized;
+        _agent.enabled = false;
+        _canJumpToPlayer = false;
+        _antiSpam = false;
+        _rb.useGravity = true;
+        _onFloor = false;
+        _searchObj = false;
+        //_rb.AddForce(transform.up * _jumpForce  , ForceMode.Impulse);
+        _rb.drag = 0f;
+        transform.forward = new Vector3(dir.x, 0, dir.z);
+        _rb.AddForce(transform.up * _jumpForce * _rb.mass * 0.5f, ForceMode.Impulse);
+        _rb.AddForce(dir * _jumpForce * _rb.mass, ForceMode.Impulse);
+
+        //_targetObject.Drop();
+
+        SelectAudio();
+
+        _lastJump = Time.time;
+
+
+        player.InvertMovement();
+
+        CountDown = LeaveCountDown;
+    }
+
+    void LeaveCountDown()
+    {
+        _fightTime += Time.deltaTime;
+
+        if(_fightTime > _fightDuration) 
+        {
+            LeavePlayer();
+        }
+    }
+
+    void LeavePlayer()
+    {
+        CountDown = delegate { };
+        _fightTime = 0;
+        _canJumpToPlayer = true;
+
+        GameManager.Instance.Player.RestoreNormalMovement();
+
     }
 }
