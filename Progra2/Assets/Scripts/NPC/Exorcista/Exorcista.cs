@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Exorcista : NPC
+public class Exorcista : NPC, IRagdoll
 {
     //a
     [Header("Solo para saber")]
@@ -39,8 +39,29 @@ public class Exorcista : NPC
 
     bool _lookingActive = false;
 
+    //RAGDOLL
+    public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
+
+    [SerializeField] GameObject _mesh;
+
+    EnableRagdoll _myRagdollSwitch;
+
+    [Header("<color=yellow>RAGDOLL SHIT</color>")]
+    [SerializeField] public bool canRagdoll = true;
+    [SerializeField, Tooltip("<color=red> DON'T TOUCH, ONLY TO READ </color>")] bool _inRagdoll = false;
+    public bool inRagdoll { get { return _inRagdoll; } }
+
+    //Rework
+    bool _angry = false;
+    bool _atking = false;
+    Transform _angerPos;
+    ExorcistaAttack _myAttack;
+
     private void Awake()
     {
+        _myRagdollSwitch = GetComponent<EnableRagdoll>();
+        _myAttack = GetComponent<ExorcistaAttack>();
+
         StartCoroutine(ChooseAction(5f, HolyObject.Count));
         _myNpcMovement = NormalNpcMovement;
         usingNpcAi = true;
@@ -126,7 +147,7 @@ public class Exorcista : NPC
         //choose = (int)HolyObject.Cross;
         //choose = (int)HolyObject.Sahumerio;
 
-        if (!_doubt)
+        if (!_doubt && !_angry)
         {
             switch ((HolyObject)choose)
             {
@@ -155,7 +176,67 @@ public class Exorcista : NPC
 
     public override void GetScared(float a, Transform t = null)
     {
-        base.GetScared(a, t);
+        //base.GetScared(a, t);
+
+        Debug.Log("<color=blue>Entre a scare</color>");
+        GetAngry(t);
+    }
+
+    void GetAngry(Transform newPos)
+    {
+        //desactivar todos los otros comportamientods
+        //acercarce a la pos
+        //tirar particulas agua
+        //activar hitbox
+        //inmune a ragdoll?
+        if (_inRagdoll) return;
+
+        Debug.Log("<color=blue>Entre a angry</color>");
+
+        //canRagdoll = false;
+        _angry = true;
+
+        _WatherActions = delegate { };
+        _CrossAction = delegate { };
+        _SahumerioActions = delegate { };
+
+        _angerPos = newPos;
+
+        _agent.SetDestination(_angerPos.position);
+        _agent.speed = speedScared;
+
+        _myNpcMovement = AngryUpdate;
+
+        _myAttack.OnWatherEnd += EndAnger;
+
+    }
+
+    void AngryUpdate()
+    {
+        Debug.Log("<color=blue>Updateando angry</color>");
+
+        if (_angry && Vector3.SqrMagnitude(new Vector3(transform.position.x, 0, transform.position.z) -
+            new Vector3(_angerPos.position.x, 0, _angerPos.position.z)) <= (1.5f * 1.5f *2))
+        {
+            _agent.speed = 0;
+            canRagdoll = false;
+
+            _myAttack.DoHolyWatherAttack();
+        }
+    }
+
+    void EndAnger()
+    {
+        Debug.Log("<color=blue>Se termino el anger</color>");
+
+
+        _myAttack.OnWatherEnd -= EndAnger;
+        
+        canRagdoll = true;
+        _angry = false;
+
+        ResetActionChoose();
+
     }
 
     public override void GetDoubt(Vector3 pos)
@@ -420,11 +501,16 @@ public class Exorcista : NPC
         _SahumerioActions = delegate { };
 
         usingNpcAi = true;
+        _angry = false;
 
         _myNpcMovement = NormalNpcMovement;
 
-        _actualNode = GetNewNode(_actualNode);
-        _agent.SetDestination(_actualNode.position);
+        //_actualNode = GetNewNode(_actualNode);
+        //_agent.SetDestination(_actualNode.position);
+        SetNewDestination(_actualNode);
+
+
+        _agent.speed = speedNormal;
 
         float num = Random.Range(10, 15f);
         StartCoroutine(ChooseAction(num, lastAction));
@@ -451,11 +537,88 @@ public class Exorcista : NPC
         _anim.SetBool("Idle", false);
         _anim.SetBool("Search", false);
 
-        _actualNode = GetNewNode(_actualNode);
-        _agent.SetDestination(_actualNode.position);
+        //_actualNode = GetNewNode(_actualNode);
+        //_agent.SetDestination(_actualNode.position);
+        SetNewDestination(_actualNode);
 
         _lookingActive = false;
     }
+
+    //RAGDOLL
+    public void CallRagdollOn()
+    {
+        if (!canRagdoll) return;
+        _myRagdollSwitch.ActivateRagdoll();
+        OnRagdollTrigger();
+        _inRagdoll = true;
+
+    }
+
+    public void CallRagdollOn(Vector3 dir)
+    {
+        if (!canRagdoll) return;
+        _myRagdollSwitch.ActivateRagdoll(dir);
+        OnRagdollTrigger();
+        _inRagdoll = true;
+
+    }
+
+    public void CallRagdollOff(float wait = 0, bool scareOnEnd = false)
+    {
+        StartCoroutine(RagdollOff(wait, scareOnEnd));
+    }
+
+    IEnumerator RagdollOff(float wait = 0f, bool scareOnEnd = false)
+    {
+        yield return new WaitForSeconds(wait);
+        _myRagdollSwitch.DeactivateRagdoll();
+        if (scareOnEnd)
+            GetScared(1f, _actualNode);
+        
+        _inRagdoll = false;
+
+    }
+
+    public override void TurnOn()
+    {
+        transform.GetComponent<Collider>().enabled = true;
+        _mesh.SetActive(true);
+        //_AIActive = true;
+        _agent.enabled = true;
+        _agent.speed = speedNormal;
+        if (_actualNode != null && !_angry)
+            _agent.SetDestination(_actualNode.position);
+        if (_angry)
+            _agent.SetDestination(_angerPos.position);
+
+        ResetActionChoose();
+    }
+
+    public override void TurnOff()
+    {
+        transform.GetComponent<Collider>().enabled = false;
+        //_AIActive = false;
+        _agent.speed = 0f;
+        _agent.enabled = false;
+        _mesh.SetActive(false);
+    }
+
+    void SetNewDestination(Transform lastDest = null)
+    {
+        if (_angry) return;
+        if (lastDest != null)
+            _actualNode = GetNewNode(lastDest);
+        else
+            _actualNode = GetNewNode();
+
+        _agent.SetDestination(_actualNode.position);
+
+        //SetSpeed();
+        //Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");
+    }
+
+    //REWORK
+
 
     enum HolyObject
     {

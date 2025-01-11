@@ -230,9 +230,14 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
         GameManager.Instance.Npc.Remove(this);
     }
 
-    public virtual void TurnOn() { }
+    public virtual void TurnOn() {
+        Debug.Log("<color=red>TURN ON NO IMPLEMENTADO</color>");
+    }
 
-    public virtual void TurnOff() { }
+    public virtual void TurnOff() {
+        Debug.Log("<color=red>TURN OFF NO IMPLEMENTADO</color>");
+
+    }
 
 
     public int actualRoom;

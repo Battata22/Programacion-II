@@ -64,6 +64,12 @@ public class Chocamiento : MonoBehaviour
                 //if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
                 {
                     GetBetterNode(_npcInRange, GameManager.Instance.Player);
+
+                    if(_npcInRange.TryGetComponent<Exorcista>(out var exorcista))
+                    {
+                        exorcista.GetScared(scareAmount, transform);
+                    }
+                    else
                     _npcInRange.GetScared(scareAmount, _finalNode);
 
                     #region Comment
