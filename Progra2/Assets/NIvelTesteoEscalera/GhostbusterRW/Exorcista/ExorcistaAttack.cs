@@ -25,6 +25,7 @@ public class ExorcistaAttack : MonoBehaviour
         {
             Debug.Log("<color=yellow>Estas en ragdoll pah, que intentas?</color>");
             EndWatherAtk();
+            
             return;
         }
 
