@@ -57,6 +57,11 @@ public class AINodeManager : MonoBehaviour
         GameManager.Instance.activeNodes.Clear();
     }
 
+    public List<Transform> GetNodesOnList(int index)
+    {
+        return roomsNodes[index];
+    }
+
 
     private void OnDestroy()
     {

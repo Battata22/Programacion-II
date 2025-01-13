@@ -31,11 +31,11 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
     //[SerializeField] public List<Transform> _testNodes = new();
     //protected Animator _anim;
 
-    public List<Transform> NavMeshNodes    
-    { 
-        get { return _navMeshNodes; }
-        set { _navMeshNodes = value; }
-    }
+    //public List<Transform> NavMeshNodes    
+    //{ 
+    //    get { return _navMeshNodes; }
+    //    set { _navMeshNodes = value; }
+    //}
 
     protected Vector3 _searchingPos;
     [SerializeField] protected bool _AIActive;
@@ -44,8 +44,23 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
 
     protected Particulas _particulas;
 
+    public int actualRoom;
+
+    //REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK REWORK 
+    //Rework para niveles con multiples salas activas a la vez
+    [Header("<color=blue>TEST ROOMS INDIVIDUALES</color>")]
+    [SerializeField] bool _useOwnNodes = false;
+    public bool useOwnNode 
+    { 
+        get { return _useOwnNodes; } 
+        set { } 
+    }//geter setter, evita que algun script toque el valor de _useOwnNode
+    [SerializeField] RoomTrigger[] _myRooms;
+    [SerializeField] AINodeManager _nodeManager;
+
     protected virtual void Start()
     {
+
         GameManager.Instance.Npc.Add(this);
         _audioSource = GetComponentInChildren<AudioSource>();
         _particulas = GetComponentInChildren<Particulas>();
@@ -58,6 +73,12 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
         _agent.speed = speedNormal;
         //Initialize();
         //_actualNode = GetNewNode();
+    }
+
+    private void OnEnable()
+    {
+        if (useOwnNode)
+            GetOwnNodes();
     }
 
     public void Initialize()
@@ -146,23 +167,29 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
 
     protected virtual Transform GetNewNode(Transform lastNode = null)
     {
-        Transform newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
-
-        while (lastNode == newNodeTest)
+        if (!useOwnNode)
         {
-            newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
+
+            Transform newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
+
+            while (lastNode == newNodeTest)
+            {
+                newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];
+            }
+
+            return newNodeTest;
         }
-
-        return newNodeTest;
-
-        Transform newNode = _navMeshNodes[Random.Range(1, _navMeshNodes.Count)];
-
-        while(lastNode == newNode) 
+        else
         {
-            newNode = _navMeshNodes[Random.Range(1, _navMeshNodes.Count)];
+            Transform newNode = _navMeshNodes[Random.Range(1, _navMeshNodes.Count)];
+
+            while (lastNode == newNode)
+            {
+                newNode = _navMeshNodes[Random.Range(1, _navMeshNodes.Count)];
+            }
+
+            return newNode;
         }
-        
-        return newNode;
     }
 
     public virtual void GetScared(float a, Transform t = null)
@@ -240,7 +267,6 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
     }
 
 
-    public int actualRoom;
     public virtual void SetRoom(int room)
     {
         actualRoom = room;
@@ -251,4 +277,15 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
     //{
     //    Debug.Log("Slide de NPC");
     //}
+
+    void GetOwnNodes()
+    {
+        _navMeshNodes.Clear();
+
+        foreach(var room in _myRooms)
+        {
+            _navMeshNodes.AddRange(_nodeManager.GetNodesOnList(room.roomIndex));
+        }
+
+    }
 }

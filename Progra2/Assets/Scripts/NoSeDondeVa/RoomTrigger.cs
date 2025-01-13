@@ -62,7 +62,7 @@ public class RoomTrigger : MonoBehaviour
     {
         if(other.TryGetComponent<IRoomDetectable>(out var coso))
         {
-            coso.SetRoom(_thisRoom);
+            coso.SetRoom(roomIndex);
         }
         if(other.TryGetComponent<Sahumerio>(out var sahumerio) && sahumerio.prendido)
         {

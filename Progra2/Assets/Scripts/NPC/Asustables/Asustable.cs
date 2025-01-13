@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 {
     //[Header("AI")]
     //[SerializeField] float _changeNodeDist = 0.5f;
+    [Header("<color=yellow>ASUSTABLE</color>")]
+    [SerializeField] bool soloParaTenerBienElHeader;
 
     public float tiempoDeSusto, cdDeSusto, tiempoDeMoco, tiempoDeStun;
     public float _waitShivers, _waitscared, _waitRandom, waitMoco, waitStun;//, _waitDoubt, _searchingTimer;
@@ -361,6 +364,14 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
     public override void GetScared(float scareAmount, Transform direction = null)
     {
+        //Confia mano
+        if (!useOwnNode)
+            GetFarthestNode();
+        else
+            GetFarthestNode(useOwnNode);
+
+        GetBetterNode(this, GameManager.Instance.Player);
+
         if (!_AIActive) return;
         if (resetInScare)
         {
@@ -388,11 +399,15 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _audioSource.Play();
         _waitscared = 0;
         GetNewNode(_actualNode);
+
+        direction = _finalNode;
+
         if (direction != null)
             _actualNode = direction;
         _agent.SetDestination(_actualNode.position);
         Ganarga(scareAmount);
 
+        ResetFarthestNode();
     }
 
     protected override void StopScare()
@@ -556,7 +571,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
         if (!scared)
         {
-            _waitRandom = Random.Range(2f, 5f);
+            _waitRandom = UnityEngine.Random.Range(2f, 5f);
             //_anim.SetFloat("zAxis", 1f);
             _anim.SetBool("Walking", false);
             _anim.SetBool("Idle", false);
@@ -897,6 +912,100 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         resetInDoubt = false;
         canRagdoll = false;
     }
+
+    //Conseguir nodo mas lejano
+    //Antes estaba en Chocamiento
+
+    Transform _farthestNode = null;
+    Transform _farthestNode2 = null;
+    Transform _farthestNode3 = null;
+    Transform _finalNode = null;
+
+    void GetFarthestNode()
+    {
+        _farthestNode = null;
+        var farthestDis = -1f;
+        var nodes = GameManager.Instance.activeNodes;
+        foreach (var node in nodes)
+        {
+            var Dis = (node.position - transform.position).sqrMagnitude;
+            if (Dis > farthestDis)
+            {
+                farthestDis = Dis;
+                _farthestNode3 = _farthestNode2;
+                _farthestNode2 = _farthestNode;
+                _farthestNode = node;
+            }
+        }
+        //print($"<color=magenta> Nodo mas lejano {_farthestNode.name} </color>");
+    }
+
+    void GetFarthestNode(bool usandoNodoPropio)
+    {
+        _farthestNode = null;
+        var farthestDis = -1f;
+        var nodes = _navMeshNodes;
+        foreach (var node in nodes)
+        {
+            var Dis = (node.position - transform.position).sqrMagnitude;
+            if (Dis > farthestDis)
+            {
+                farthestDis = Dis;
+                _farthestNode3 = _farthestNode2;
+                _farthestNode2 = _farthestNode;
+                _farthestNode = node;
+            }
+        }
+        //print($"<color=magenta> Nodo mas lejano {_farthestNode.name} </color>");
+    }
+
+    void GetBetterNode(NPC target, Player player)
+    {
+        //Debug.Log($"NPC detectado {target.name}");
+        //Debug.Log($"Player detectado {player.name}");
+
+        var playerVector = player.transform.position - target.transform.position;
+        if (_farthestNode == null) Debug.Log("Nodo mas lejano = Null");
+        if (target == null) Debug.Log("Como carajo falta el nps?");
+        var node1vector = _farthestNode.position - target.transform.position;
+        var angle1 = Vector3.Angle(playerVector, node1vector);
+
+        Single angle2 = angle1;
+        Single angle3 = angle1;
+        if (_farthestNode2 != null)
+        {
+            Vector3 node2Vector = _farthestNode2.position - target.transform.position;
+            angle2 = Vector3.Angle(playerVector, node2Vector);
+        }
+
+        if (_farthestNode3 != null)
+        {
+            var node3Vector = _farthestNode3.position - target.transform.position;
+            angle3 = Vector3.Angle(playerVector, node3Vector);
+        }
+
+
+        _finalNode = _farthestNode;
+
+        if (angle1 > angle2 && angle1 > angle3)
+            _finalNode = _farthestNode;
+        if (angle2 > angle1 && angle2 > angle3)
+            _finalNode = _farthestNode2;
+        if (angle3 > angle1 && angle2 > angle3)
+            _finalNode = _farthestNode3;
+
+        //_farthestNode = null;
+        //_farthestNode2 = null;
+        //_farthestNode3 = null;
+    }
+
+    void ResetFarthestNode()
+    {
+        _farthestNode = null;
+        _farthestNode2 = null;
+        _farthestNode3 = null;
+    }
+
 
     protected override void OnDestroy()
     {

@@ -50,7 +50,7 @@ public class Chocamiento : MonoBehaviour
         _audioSource.clip = GameManager.Instance.choque;
         _audioSource.Play();
  
-        GetFarthestNode();
+        //GetFarthestNode();
 
         Collider[] colliders;
         colliders = Physics.OverlapSphere(pos, _doubtRange, _layer);
@@ -60,10 +60,13 @@ public class Chocamiento : MonoBehaviour
             if (collider.gameObject.TryGetComponent<NPC>(out _npcInRange))
             {
                 //Debug.Log("<color=pink> NPC en area Susto </color>");
+
+                Debug.Log($"<color=green> Room de Objeto {gameObject.GetComponent<Pickable>().actualRoom} Room de asustable {_npcInRange.actualRoom}</color>");
+
                 if (Vector3.Distance(pos, _npcInRange.transform.position) <= _scareRange && gameObject.GetComponent<Pickable>().actualRoom == _npcInRange.actualRoom)
                 //if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)
                 {
-                    GetBetterNode(_npcInRange, GameManager.Instance.Player);
+                    //GetBetterNode(_npcInRange, GameManager.Instance.Player);
 
                     if(_npcInRange.TryGetComponent<Exorcista>(out var exorcista))
                     {
@@ -92,7 +95,7 @@ public class Chocamiento : MonoBehaviour
 
         OnChocoActive();
 
-        ResetFarthestNode();
+        //ResetFarthestNode();
 
     }
 
