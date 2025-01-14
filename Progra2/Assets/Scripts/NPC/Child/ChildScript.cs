@@ -1,0 +1,203 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+
+public class ChildScript : NPC
+{
+    //a
+
+    //que hace el pendejito?
+    //sigue al player
+    //se asusta si otro se asusta cerca
+    //cuando se asusta llora?
+    //cuando llora distrae a alguno de sus padres?
+    //ragdoll lo hace llorar?
+
+    //si hay un pendejito en area, chocamiento no asusta?
+    //
+
+    //pendejito desactiva trampas?
+    //
+
+    //gb se da cuenta que el pendejito te sigue y tira escaneres cerca?
+    //"Hecho", GbChildDetector hace dudar a alguien si ve al pendejo caminando
+
+    //cosas que poner por inspector
+    [Header("<color=green>Pendejito</color>")]
+    [SerializeField] Asustable[] _parents;
+    [SerializeField] LayerMask _npcMask;
+    [SerializeField] float _scareRange;
+    [SerializeField] float _cryDuration;
+
+    //bools
+    bool _chasingPlayer = false;
+    bool _crying = false;
+    
+
+    public bool ChasingPlayer { get { return _chasingPlayer; } set { } }
+
+    //delegates
+    DelegateType.VoidDelegate DoCheckScare = delegate { };
+    //event DelegateType.VoidDelegateTrans OnCryEnter = delegate { };
+
+    private void Awake()
+    {
+        DoCheckScare = CheckScare;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        SetNewDestination();
+    }
+
+    private void Update()
+    {
+        if (!_AIActive) return;
+
+        if (_agent.enabled && (!_doubt && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
+        {
+            //Debug.Log("<color=#26c5f0> LLege al destino </color>");
+            SetNewDestination(_actualNode);
+
+        }
+
+
+        //if (Input.GetKey(KeyCode.LeftAlt))
+        //    if (Input.GetKey(KeyCode.Alpha0))
+        //        StartChase();
+
+
+
+        DoCheckScare();
+    }
+
+    public override void GetScared(float a, Transform t = null)
+    {
+        //base.GetScared(a, t);
+    }
+
+    public override void GetDoubt(Vector3 pos)
+    {
+        //base.GetDoubt(pos);
+    }
+
+    void CheckScare()
+    {
+        //Debug.Log($"<color=#aaf4f1>Buscando npcs asustados</color>");
+
+        Collider[] allInRange = Physics.OverlapSphere(transform.position, _scareRange, _npcMask);
+        //List<Asustable> npcInRange = new();
+
+        foreach(var npc in allInRange)
+        {
+            if (npc.TryGetComponent<Asustable>(out var adultos) && adultos.scared)
+            {
+                //Debug.Log($"<color=#aaf4f1> {npc.name} esta asustado</color>r>");
+
+                Cry();
+            }
+            //else
+                //Debug.Log($"<color=#aaf4f1>{npc.name} no esta asustado</color>");
+
+        }
+    }
+
+    void Cry()
+    {
+        DoCheckScare = delegate { };
+
+        Debug.Log($"<color=#e7aaf4>ahhhh ahhhhh bua bua *bebe llorando*</color>");
+        _agent.speed = 0f;
+
+        _crying = true;
+        _chasingPlayer = false;
+
+        //call parents
+
+        CallParent();
+        
+        //OnCryEnter(transform);
+    }
+
+    public void StopCry()
+    {
+        Debug.Log($"<color=#e7aaf4></color>");
+        _agent.speed = speedNormal;
+
+        _crying = false;
+
+        DoCheckScare += CheckScare;
+    }
+
+    IEnumerator ChasePlayer()
+    {
+        Debug.Log($"<color=#f4aac2></color>");
+
+        while (_chasingPlayer)
+        {
+            var player = GameManager.Instance.Player.transform;
+            _agent.SetDestination(player.position);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public void StartChase()
+    {
+        if (_crying) return;
+        if (_chasingPlayer) return;
+
+        Debug.Log($"<color=green>Arranca a perseguir al player la ctm</color>");
+        Debug.Log($"<color=green>{GameManager.Instance.Player.name} {GameManager.Instance.Player.transform.position}</color>");
+
+        _chasingPlayer = true;
+
+        StartCoroutine(ChasePlayer());
+
+        _agent.speed = speedNormal;
+    }
+
+    void CallParent()
+    {    
+        float lastDist = -1;
+        int _closeParentIndex = 0;
+
+        for (int i = 0; i < _parents.Length; i++)
+        {
+            float tempDist = (transform.position - _parents[i].transform.position).sqrMagnitude;
+
+            if(lastDist == -1)
+            {
+                lastDist = tempDist;
+                _closeParentIndex = i;
+            }
+
+            if (tempDist < lastDist)
+            {
+                lastDist = tempDist;
+                _closeParentIndex = i;
+            }
+        }
+
+        _parents[_closeParentIndex].AddBabyCryingList(this);
+    }
+
+    void SetNewDestination(Transform lastDest = null)
+    {
+
+        if (lastDest != null)
+            _actualNode = GetNewNode(lastDest);
+        else
+            _actualNode = GetNewNode();
+
+        _agent.SetDestination(_actualNode.position);
+
+        _agent.speed = speedNormal;
+        //Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");
+    }
+
+}

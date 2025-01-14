@@ -61,7 +61,7 @@ public class Chocamiento : MonoBehaviour
             {
                 //Debug.Log("<color=pink> NPC en area Susto </color>");
 
-                Debug.Log($"<color=green> Room de Objeto {gameObject.GetComponent<Pickable>().actualRoom} Room de asustable {_npcInRange.actualRoom}</color>");
+                //Debug.Log($"<color=green> Room de Objeto {gameObject.GetComponent<Pickable>().actualRoom} Room de asustable {_npcInRange.actualRoom}</color>");
 
                 if (Vector3.Distance(pos, _npcInRange.transform.position) <= _scareRange && gameObject.GetComponent<Pickable>().actualRoom == _npcInRange.actualRoom)
                 //if (Vector3.SqrMagnitude(pos - _npcInRange.transform.position) <= (_scareRange * _scareRange) && scareAmount > 0)

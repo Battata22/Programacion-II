@@ -260,6 +260,30 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
         if (!_AIActive) return;
         if (_actualNode == null) Initialize();
+
+        /*
+         * Baby Chacks
+        */
+
+        if(_hasChildCrying && Time.time - _lastCalmCall > _timeBtBabyCalm)
+        {
+            GoCalmBaby();
+            _lastCalmCall = Time.time;
+        }
+        if(_isTryingToCalm && !_inChildPos && Vector3.SqrMagnitude(transform.position - _cryChildList[0].transform.position) <= (_changeNodeDist * _changeNodeDist * 4))
+        {
+            _inChildPos = true;
+
+            StartCoroutine(StartCalmBaby(_calmDuration));
+        }
+        //else if(_inChildPos)
+        //{
+        //    Debug.Log("why?");
+        //    _inChildPos = false;
+        //}
+
+
+
         if ((!_doubt && !_lookingActive && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
         {
             StartCoroutine(LookAround());
@@ -359,7 +383,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
             StopSlide();
         }
 
-    
+        
     }
 
     public override void GetScared(float scareAmount, Transform direction = null)
@@ -940,6 +964,9 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         //print($"<color=magenta> Nodo mas lejano {_farthestNode.name} </color>");
     }
 
+
+    //para conseguir los nodos al asustarse
+    #region Conseguir nodos
     void GetFarthestNode(bool usandoNodoPropio)
     {
         _farthestNode = null;
@@ -1005,7 +1032,80 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _farthestNode2 = null;
         _farthestNode3 = null;
     }
+    #endregion
 
+    //Logica para calmar al bebe qlia que esta bien bonito (esta bien culero (vuela alto super wario man ))
+    //https://www.youtube.com/watch?v=RPIbVe1m6ZE&ab_channel=AppleCold
+
+    #region CalmBabyLogic
+    [Header("<color=yellow> BABY SHIT </color>")]
+    [SerializeField] float _timeBtBabyCalm;
+    [SerializeField] float _calmDuration;
+
+    List<ChildScript> _cryChildList = new();
+
+    float _lastCalmCall;
+
+    bool _hasChildCrying = false;
+    bool _isTryingToCalm = false;
+    bool _inChildPos = false;
+    
+    public void AddBabyCryingList(ChildScript newChild)
+    {
+        if (!_cryChildList.Contains(newChild))
+        {
+            Debug.Log($"<color=#c69144>Bebe añadido a lista</color>");
+
+            _cryChildList.Add(newChild);
+        }
+
+        _hasChildCrying = true;
+    }
+
+    void GoCalmBaby()
+    {
+        //muros de if necesarios
+        Debug.Log($"<color=#44c675>LLendo a buscar {_cryChildList[0].name}</color>");
+
+        _isTryingToCalm = true;
+
+        _agent.SetDestination(_cryChildList[0].transform.position);
+    }
+
+    IEnumerator StartCalmBaby(float wait)
+    {
+        Debug.Log($"<color=#7f44c6>Entre a la corrutina</color>");
+        yield return new WaitForSeconds(wait);
+
+        Debug.Log($"<color=#7f44c6>Antes del if</color>");
+
+        if (_inChildPos)
+        {
+            CalmBaby(_cryChildList[0]);
+            _inChildPos=false;
+        }
+
+    }
+
+    void CalmBaby(ChildScript newChild)
+    {
+        Debug.Log($"<color=#c6446f>Bebe calmado</color>");
+
+        newChild.StopCry();
+        _cryChildList.Remove(newChild);
+
+        _isTryingToCalm = false;
+
+        if (_cryChildList.Count < 1)
+            _hasChildCrying = false;
+
+        //SetNewDestination();
+        _actualNode = GetNewNode();
+        _agent.SetDestination(_actualNode.position);
+
+        _agent.speed = speedNormal;
+    }
+    #endregion
 
     protected override void OnDestroy()
     {

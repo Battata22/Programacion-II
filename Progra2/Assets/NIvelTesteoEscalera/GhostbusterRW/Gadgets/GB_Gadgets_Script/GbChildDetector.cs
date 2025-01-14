@@ -1,0 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+[RequireComponent(typeof(SphereCollider))]
+public class GbChildDetector : MonoBehaviour
+{
+    [SerializeField] NPC _myOwner;
+    [SerializeField] LayerMask obstructions;
+
+    private void Start()
+    {
+        _myOwner = GetComponentInParent<NPC>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.TryGetComponent<ChildScript>(out var child) && child.ChasingPlayer)
+        {
+            if (_myOwner != null && CheckLOS(child.transform, transform))
+            {
+                Debug.Log("<color=green>Pendejito detectado</color>");
+                _myOwner.GetDoubt(child.transform.position);
+            }
+        }
+    }
+
+    bool CheckLOS(Transform player, Transform owner)
+    {
+        var dir = player.position - owner.position;
+        //var dist = dir.magnitude;
+
+        dev_dir = dir;
+        dev_origin = owner;
+
+        RaycastHit hit;
+        if (Physics.Raycast(owner.position, dir, out hit, dir.magnitude, obstructions))
+        {
+            // Devuelve false cuando el rayo es cortado por paredes
+            //Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
+            return false;
+        }
+        else
+        {
+            //Debug.Log($"<color=red> No se corto el rayo </color>");
+            return true;
+        }
+    }
+
+    Transform dev_origin;
+    Vector3 dev_dir;
+    void Dev_DrawRay()
+    {
+        if (dev_origin == null || dev_dir == Vector3.zero) return;
+
+        Debug.DrawRay(dev_origin.position, dev_dir);
+    }
+}
