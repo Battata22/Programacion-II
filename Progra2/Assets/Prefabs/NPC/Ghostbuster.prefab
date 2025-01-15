@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1024
   _xRayLayer:
     serializedVersion: 2
     m_Bits: 268435456
@@ -1810,6 +1810,8 @@ GameObject:
   - component: {fileID: 3528524870732373835}
   - component: {fileID: 7845987670314757221}
   - component: {fileID: 1415266847925416060}
+  - component: {fileID: 3288573717930036598}
+  - component: {fileID: 365260552509032387}
   m_Layer: 10
   m_Name: Ghostbuster
   m_TagString: Untagged
@@ -2019,6 +2021,9 @@ MonoBehaviour:
   - {fileID: 0}
   _AIActive: 1
   actualRoom: 0
+  _useOwnNodes: 0
+  _myRooms: []
+  _nodeManager: {fileID: 0}
   _gbFov: {fileID: 0}
   _torque: 180
   _angerRange: 3
@@ -2050,6 +2055,14 @@ MonoBehaviour:
   minTrapTime: 25
   currentTraps: 0
   _sourceDamage: {fileID: 6602253991604814675}
+  _mesh: {fileID: 2888273109924621265}
+  canRagdoll: 1
+  inRagdoll: 0
+  _GadgetSpawner: {fileID: 365260552509032387}
+  _pulseOrigin: {fileID: 1757932378943692258}
+  _repairTime: 3
+  _timeBtRepairs: 5
+  _spawnGadgetWait: 10
 --- !u!114 &3528524870732373835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2062,7 +2075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68890c2f9fa393428595e9fe15f6d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 6
+  _radius: 4
   _angle: 120
   _targetMask:
     serializedVersion: 2
@@ -2121,6 +2134,41 @@ CapsuleCollider:
   m_Height: 1.8339844
   m_Direction: 1
   m_Center: {x: 0, y: 0.9169922, z: 0}
+--- !u!114 &3288573717930036598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079976728656513823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5a67c1101d5ea469385ad4c802dfdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ragdollPrefab: {fileID: 7453612887976267122, guid: 4149d457e924dc44fa68c3a0730cdb23, type: 3}
+  _forceMult: 50
+  _impulsePelvis: 0
+  _rb: {fileID: 0}
+--- !u!114 &365260552509032387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079976728656513823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ef1d20aa6401441ac820a859cb786f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gB_Gadgets:
+  - gadget: {fileID: 7851611977891250292, guid: 44e401f3ead1e4f4f9b46f2560b88547, type: 3}
+    _amount: -10
+  - gadget: {fileID: 7887591928015202142, guid: bd7efd6db13441c4f9aae8db4f9f2270, type: 3}
+    _amount: 3
+  - gadget: {fileID: 7718355786703326994, guid: 50858d530ccfed843819e653d2effa03, type: 3}
+    _amount: 1
 --- !u!1 &3110956301743931460
 GameObject:
   m_ObjectHideFlags: 0

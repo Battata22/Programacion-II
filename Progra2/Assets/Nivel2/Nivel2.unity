@@ -118179,6 +118179,11 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7010649114436227071, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
   m_PrefabInstance: {fileID: 1001534975744977123}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1960549495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 847146606709050210, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+  m_PrefabInstance: {fileID: 1001534975744977123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1961627656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118187,14 +118192,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 829373012305300208, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277154580461409591, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841585180730297879, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2629300078748160706, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
       propertyPath: m_Name
       value: CasaAncianaRemake
       objectReference: {fileID: 0}
+    - target: {fileID: 4117613161795758479, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970583647407050434, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970583647407050434, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970583647407050434, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80b5eb7f64dc97449bfe29b5146c3ddd, type: 2}
+    - target: {fileID: 4970583647407050434, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: da2cd15affca98443baa7df0ff17a223, type: 2}
     - target: {fileID: 5333134481734006131, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 20211d0230cfde8429d7a791e8f7909a, type: 2}
+    - target: {fileID: 5644000886401533893, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644000886401533893, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644000886401533893, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80b5eb7f64dc97449bfe29b5146c3ddd, type: 2}
+    - target: {fileID: 5644000886401533893, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e4f7d140fe6b5845bedf32211c6c37b, type: 2}
     - target: {fileID: 5751455357229196020, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -118234,6 +118287,14 @@ PrefabInstance:
     - target: {fileID: 5751455357229196020, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373782218242433646, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3838385948349057304, guid: 7522b978e407e0547ba90687a60e2e54, type: 3}
+    - target: {fileID: 7306240896226100722, guid: ee5da7cf1e0795c4b977fca59e3f1061, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -145706,6 +145767,14 @@ PrefabInstance:
     - target: {fileID: 1323151112387181237, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
       propertyPath: m_Name
       value: Camera Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336376924059548371, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
+      propertyPath: origin
+      value: 
+      objectReference: {fileID: 1960549495}
+    - target: {fileID: 5336376924059548371, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5336376924059548371, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
       propertyPath: _targetObject

@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ChildScript : NPC
 {
+    
     //a
 
     //que hace el pendejito?
