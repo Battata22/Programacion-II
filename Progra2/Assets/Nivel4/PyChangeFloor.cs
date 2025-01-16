@@ -9,6 +9,7 @@ public class PyChangeFloor : MonoBehaviour
     [SerializeField] float _ofset;
     [SerializeField] KeyCode _goUp;
     [SerializeField] KeyCode _goDown;
+    
 
     private void Awake()
     {
@@ -38,9 +39,15 @@ public class PyChangeFloor : MonoBehaviour
         {
             if(hit.transform.TryGetComponent<Piso>(out var piso))
             {
+                if (piso.useParent)
+                {
+                    _player.transform.position = new Vector3(_player.transform.position.x, piso.myParent.transform.position.y + _ofset, _player.transform.position.z);
+
+                    return;
+                }
                 //Debug.Log($"<color=red> Player pos {_player.transform.position} Floor pos {piso.transform.position} </color>");
 
-                _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y + _ofset, _player.transform.position.z);
+                _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y - piso.transform.localPosition.y + _ofset, _player.transform.position.z);
                 
                 //Debug.Log($"<color=green> Player Final {_player.transform.position} Floor pos {piso.transform.position} </color>");
 
@@ -55,9 +62,16 @@ public class PyChangeFloor : MonoBehaviour
         {
             if (hit.transform.TryGetComponent<Piso>(out var piso))
             {
+                if (piso.useParent)
+                {
+                    _player.transform.position = new Vector3(_player.transform.position.x, piso.myParent.transform.position.y + _ofset, _player.transform.position.z);
+
+                    return;
+                }
+
                 //Debug.Log($"<color=red> Player pos {_player.transform.position} Floor pos {piso.transform.position} </color>");
 
-                _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y + _ofset, _player.transform.position.z);
+                _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y - piso.transform.localPosition.y+ _ofset, _player.transform.position.z);
                 
                 //Debug.Log($"<color=green> Player Final {_player.transform.position} Floor pos {piso.transform.position} </color>");
                 
