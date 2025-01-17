@@ -28,7 +28,7 @@ public class BathroomPuzzle : MonoBehaviour
 
         foreach (var door in _doors)
         {
-            door.OpenDoor();
+            door.UnlockDoor();
         }
 
         bool resetList = true;

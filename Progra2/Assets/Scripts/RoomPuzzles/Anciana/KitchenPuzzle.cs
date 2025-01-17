@@ -33,7 +33,7 @@ public class KitchenPuzzle : MonoBehaviour
         
         foreach (var door in _doors)
         {
-            door.OpenDoor();
+            door.UnlockDoor();
         }
 
         bool resetList = true;

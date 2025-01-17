@@ -27,7 +27,7 @@ public class LivingPuzzle : MonoBehaviour
 
         foreach (var door in _doors)
         {
-            door.OpenDoor();
+            door.UnlockDoor();
         }
 
         bool resetList = true;
