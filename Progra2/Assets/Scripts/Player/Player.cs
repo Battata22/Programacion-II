@@ -305,22 +305,22 @@ public class Player : MonoBehaviour, IRoomDetectable
 
         if (Physics.SphereCast(pos,0.25f, transform.right, out hitR, 0.52f, LayerMask.GetMask("NoTras")) && !hitR.transform.GetComponent<Collider>().isTrigger && xAxis > 0)
         {
-            //Debug.Log("<color=ellow> Wall Detected R </color>");
+            //Debug.Log($"<color=yellow> Wall Detected R {hitR.transform.name}</color>");
             return;
         }
         if (Physics.SphereCast(pos,0.25f, -transform.right, out hitL, 0.52f, LayerMask.GetMask("NoTras")) && !hitL.transform.GetComponent<Collider>().isTrigger && xAxis < 0)
         {
-            //Debug.Log("<color=ellow> Wall Detected L </color>");
+            //Debug.Log($"<color=yellow> Wall Detected L {hitL.transform.name}</color>");
             return;
         }
         if (Physics.SphereCast(pos,0.25f, transform.forward,out hitF, 0.52f, LayerMask.GetMask("NoTras")) && !hitF.transform.GetComponent<Collider>().isTrigger && zAxis > 0)
         {
-            //Debug.Log("<color=ellow> Wall Detected F </color>");
+            //Debug.Log($"<color=yellow> Wall Detected F {hitF.transform.name}</color>");
             return;
         }
         if (Physics.SphereCast(pos,0.25f, -transform.forward,out hitB, 0.52f, LayerMask.GetMask("NoTras")) && !hitB.transform.GetComponent<Collider>().isTrigger && zAxis < 0)
         {
-            //Debug.Log("<color=ellow> Wall Detected B </color>");
+            //Debug.Log($"<color=yellow> Wall Detected B {hitB.transform.name}</color>");
             return;
         }
 

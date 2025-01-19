@@ -8,9 +8,24 @@ public class ChildGusDetector : MonoBehaviour
 {
     [SerializeField] ChildScript _myOwner;
     [SerializeField] LayerMask obstructions;
-    private void Start()
+
+    bool _active = false;
+    //private void Start()
+    //{
+    //    _myOwner = GetComponentInParent<ChildScript>();
+    //}
+
+    public void Initialize(ChildScript newOwner)
     {
-        _myOwner = GetComponentInParent<ChildScript>();
+        _myOwner = newOwner;
+        _active = true;
+        transform.GetComponent<Collider>().enabled = true;
+    }
+
+    private void Update()
+    {
+        if (!_active) return;
+        Movement();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,6 +39,11 @@ public class ChildGusDetector : MonoBehaviour
                 _myOwner.StartChase();
             }
         }
+    }
+
+    void Movement()
+    {
+        transform.position = _myOwner.detectorOrigin.position;
     }
 
     bool CheckLOS(Transform player, Transform owner)
