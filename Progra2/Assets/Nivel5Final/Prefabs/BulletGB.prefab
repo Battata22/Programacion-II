@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1702326351710470041}
   - component: {fileID: 6323134605903100496}
   - component: {fileID: 3247355545886064785}
-  - component: {fileID: -6255004634176808151}
-  m_Layer: 0
-  m_Name: Bullet
+  - component: {fileID: 6392350819597822515}
+  m_Layer: 11
+  m_Name: BulletGB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c96a696ea83747c47a422a2420f254bb, type: 2}
+  - {fileID: 2100000, guid: 3e96be4137f09de4a9df9717faf1fb8c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,11 +101,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.65
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3247355545886064785
 Rigidbody:
@@ -129,12 +129,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-6255004634176808151
+--- !u!114 &6392350819597822515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4455774762851429715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 445346771fdf8a342a8a206f88a7bef5, type: 3}
+  m_Script: {fileID: 11500000, guid: e4fb5b3c25b376141a197999528a9670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 800
+  speed: 90
