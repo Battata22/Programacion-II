@@ -22,6 +22,7 @@ public class PuzzleNene : Nivel3Puzzle
     int _parentIndex = 0;
     [SerializeField] SFXToy[] _toys;
     [SerializeField] Door[] _doors;
+    [SerializeField] Door _childRoomDoor;
 
     [SerializeField] RoomTrigger[] _nextRooms;
     AINodeManager _nodeManager;
@@ -60,13 +61,32 @@ public class PuzzleNene : Nivel3Puzzle
             _nodeManager.SetActiveNodes(room.roomIndex, resetList);
             resetList = false;
         }
+
+
+        foreach(var parent in _parents)
+        {
+            parent.gameObject.SetActive(true);
+            parent.StartUseOwnNode();
+        }
     }
 
     void ActivateParent()
     {
-        Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+        //  Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+
         _parents[_parentIndex].gameObject.SetActive(true);
         _parentIndex++;
+
+        _childRoomDoor.OnDoorClose += LockChildDoor;
+        _childRoomDoor.UnlockDoor();
+        //_doors[0].UnlockDoor();
+
         _pendejito.OnChildLaugh -= ActivateParent;
+    }
+
+    void LockChildDoor()
+    {
+        _childRoomDoor.OnDoorClose -= LockChildDoor;
+        _childRoomDoor.LockDoor();
     }
 }

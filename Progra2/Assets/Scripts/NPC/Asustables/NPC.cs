@@ -53,7 +53,14 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
     public bool useOwnNode 
     { 
         get { return _useOwnNodes; } 
-        set { } 
+        protected set
+        {
+            _useOwnNodes = value;
+            if (value)
+            {
+                GetOwnNodes();
+            }
+        } 
     }//geter setter, evita que algun script toque el valor de _useOwnNode
     [SerializeField] RoomTrigger[] _myRooms;
     [SerializeField] AINodeManager _nodeManager;
@@ -287,5 +294,23 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
             _navMeshNodes.AddRange(_nodeManager.GetNodesOnList(room.roomIndex));
         }
 
+    }
+
+    public void StartUseOwnNode()
+    {
+        if (_myRooms.Length == 0 || _nodeManager == null)
+        {
+            Debug.Log($"<color=red>QUE HACES PELOTUDO?, falta asignar cosas xd </color>/n" +
+                $"<color=green>Rooms asignadas {_myRooms.Length}| NodeManager {_nodeManager.name}</color>");
+            return;
+        }
+
+        useOwnNode = true;
+
+    }
+
+    public void StopUseOwnNode()
+    {
+        useOwnNode = false;
     }
 }

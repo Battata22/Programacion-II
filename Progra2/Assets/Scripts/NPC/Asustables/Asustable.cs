@@ -40,7 +40,9 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
 
     [Header("<color=green> Update Resets </color>")]
-    [SerializeField] bool resetInScare = true, resetInDoubt = true;
+    [SerializeField] bool resetInScare = true;
+    [SerializeField] bool resetInDoubt = true;
+
     [SerializeField] public bool canRagdoll = true;
 
     public DelegateType.VoidDelegate NpcUpdate = delegate { };
@@ -1042,6 +1044,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     [SerializeField] float _timeBtBabyCalm;
     [SerializeField] float _calmDuration;
 
+    [SerializeField]
     List<ChildScript> _cryChildList = new();
 
     float _lastCalmCall;
@@ -1052,9 +1055,15 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     
     public void AddBabyCryingList(ChildScript newChild)
     {
-        if (!_cryChildList.Contains(newChild))
+        bool childOnList = false;
+        foreach(var child in _cryChildList)
         {
-            Debug.Log($"<color=#c69144>Bebe añadido a lista</color>");
+            if(child == newChild) childOnList = true;
+        }
+
+        if (!childOnList)
+        {
+            //Debug.Log($"<color=#c69144>Bebe añadido a lista</color>");
 
             _cryChildList.Add(newChild);
         }
@@ -1065,7 +1074,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     void GoCalmBaby()
     {
         //muros de if necesarios
-        Debug.Log($"<color=#44c675>LLendo a buscar {_cryChildList[0].name}</color>");
+        //Debug.Log($"<color=#44c675>LLendo a buscar {_cryChildList[0].name}</color>");
 
         _isTryingToCalm = true;
 
@@ -1074,10 +1083,10 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
     IEnumerator StartCalmBaby(float wait)
     {
-        Debug.Log($"<color=#7f44c6>Entre a la corrutina</color>");
+        //Debug.Log($"<color=#7f44c6>Entre a la corrutina</color>");
         yield return new WaitForSeconds(wait);
 
-        Debug.Log($"<color=#7f44c6>Antes del if</color>");
+        //Debug.Log($"<color=#7f44c6>Antes del if</color>");
 
         if (_inChildPos)
         {
@@ -1089,7 +1098,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
     void CalmBaby(ChildScript newChild)
     {
-        Debug.Log($"<color=#c6446f>Bebe calmado</color>");
+        //Debug.Log($"<color=#c6446f>Bebe calmado</color>");
 
         newChild.StopCry();
         _cryChildList.Remove(newChild);

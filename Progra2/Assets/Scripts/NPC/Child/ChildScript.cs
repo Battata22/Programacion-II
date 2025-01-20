@@ -41,6 +41,7 @@ public class ChildScript : NPC
     [Header("Deteccion de Gus")]
     [SerializeField] ChildGusDetector _triggerPref;
     ChildGusDetector _myGusDetector;
+    [SerializeField, Tooltip("Solo aplica para deteccion de npc adultos")] LayerMask obstructions;
 
     [SerializeField] Transform _detectorOrigin;
     public Transform detectorOrigin
@@ -72,16 +73,21 @@ public class ChildScript : NPC
     {
         base.Start();
 
-        SetNewDestination();
+        _myGusDetector = Instantiate(_triggerPref, Vector3.zero, Quaternion.identity);
+        _myGusDetector.Initialize(this);
 
-        var col = Instantiate(_triggerPref, Vector3.zero, Quaternion.identity);
-        col.Initialize(this);
+        gameObject.SetActive(false);
+
+        //SetNewDestination();
     }
 
     private void OnEnable()
     {
         if (_myGusDetector != null)
             _myGusDetector.gameObject.SetActive(true);
+
+        if (_actualNode == null)
+            SetNewDestination();
     }
 
     private void OnDisable()
@@ -134,8 +140,8 @@ public class ChildScript : NPC
             if (npc.TryGetComponent<Asustable>(out var adultos) && adultos.scared)
             {
                 //Debug.Log($"<color=#aaf4f1> {npc.name} esta asustado</color>r>");
-
-                Cry();
+                if (CheckLOS(adultos.transform, transform))
+                    Cry();
             }
             //else
                 //Debug.Log($"<color=#aaf4f1>{npc.name} no esta asustado</color>");
@@ -143,11 +149,34 @@ public class ChildScript : NPC
         }
     }
 
+
+
+    bool CheckLOS(Transform parent, Transform owner)
+    {
+        var dir = parent.position - owner.position;
+        //var dist = dir.magnitude;
+
+        RaycastHit hit;
+        if (Physics.Raycast(owner.position + new Vector3(0,0.2f,0), dir, out hit, dir.magnitude, obstructions))
+        {
+            // Devuelve false cuando el rayo es cortado por paredes
+            //Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
+            return false;
+        }
+        else
+        {
+            //Debug.Log($"<color=red> No se corto el rayo </color>");
+            return true;
+        }
+    }
+
     void Cry()
     {
         DoCheckScare = delegate { };
 
-        Debug.Log($"<color=#e7aaf4>ahhhh ahhhhh bua bua *bebe llorando*</color>");
+        _myGusDetector.active = false;
+
+        //Debug.Log($"<color=#e7aaf4>ahhhh ahhhhh bua bua *bebe llorando*</color>");
         _agent.speed = 0f;
 
         //_crying = true;
@@ -164,18 +193,20 @@ public class ChildScript : NPC
 
     public void StopCry()
     {
-        Debug.Log($"<color=#e7aaf4></color>");
+        Debug.Log($"<color=#e7aaf4>Brutal</color>");//https://cdn.eldeforma.com/wp-content/uploads/2020/07/brutal-meme.jpg
         _agent.speed = speedNormal;
 
         //_crying = false;
         _childState = ChildState.None;
 
         DoCheckScare += CheckScare;
+
+        _myGusDetector.active = true;
     }
 
     IEnumerator ChasePlayer()
     {
-        Debug.Log($"<color=#f4aac2></color>");
+        //Debug.Log($"<color=#f4aac2></color>");
 
         while (_childState == ChildState.ChasingPlayer)
         {
@@ -192,8 +223,8 @@ public class ChildScript : NPC
         //if (_chasingPlayer) return;
         if (_childState == ChildState.ChasingPlayer) return;
 
-        Debug.Log($"<color=green>Arranca a perseguir al player la ctm</color>");
-        Debug.Log($"<color=green>{GameManager.Instance.Player.name} {GameManager.Instance.Player.transform.position}</color>");
+        //Debug.Log($"<color=green>Arranca a perseguir al player la ctm</color>");
+        //Debug.Log($"<color=green>{GameManager.Instance.Player.name} {GameManager.Instance.Player.transform.position}</color>");
 
         //_chasingPlayer = true;
         _childState = ChildState.ChasingPlayer;
@@ -278,6 +309,7 @@ public class ChildScript : NPC
         {
             Debug.Log("<color=green>JAJA jugueye</color>");
 
+            OnChildLaugh();
             StartCoroutine(Laugh());
         }
     }
@@ -286,10 +318,11 @@ public class ChildScript : NPC
     {
         DoCheckToy = delegate { };
 
+        _myGusDetector.active = false;
         var duration = 0f;
         _childState = ChildState.Playing;
 
-        while (duration < _playingDuration || _childState == ChildState.Playing)
+        while (duration < _playingDuration && _childState == ChildState.Playing)
         {
             if(duration % 2 == 0)
             {
@@ -304,6 +337,8 @@ public class ChildScript : NPC
         
         _childState = ChildState.None;
         SetNewDestination();
+        _myGusDetector.active = true;
+
     }
 
     public enum ChildState

@@ -8,7 +8,14 @@ public class ChildGusDetector : MonoBehaviour
 {
     [SerializeField] ChildScript _myOwner;
     [SerializeField] LayerMask obstructions;
-
+    public bool active
+    {
+        get { return _active; }
+        set
+        {
+            ActiveSwitch(value);
+        }
+    }
     bool _active = false;
     //private void Start()
     //{
@@ -34,7 +41,7 @@ public class ChildGusDetector : MonoBehaviour
         {
             if (_myOwner != null && CheckLOS(other.transform, transform))
             {
-                Debug.Log("<color=green>Gus detectado</color>");
+                //Debug.Log("<color=green>Gus detectado</color>");
                 
                 _myOwner.StartChase();
             }
@@ -66,6 +73,12 @@ public class ChildGusDetector : MonoBehaviour
             //Debug.Log($"<color=red> No se corto el rayo </color>");
             return true;
         }
+    }
+
+    void ActiveSwitch(bool state)
+    {
+        gameObject.GetComponent<Collider>().enabled = state;
+        _active = state;
     }
 
     Transform dev_origin;

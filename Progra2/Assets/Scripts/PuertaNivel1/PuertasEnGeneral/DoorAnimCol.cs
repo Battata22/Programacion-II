@@ -9,13 +9,13 @@ public class DoorAnimCol : MonoBehaviour
 
     public void ActivateCol()
     {
-        Debug.Log("Si Me Ves Muchas Veces Llora");
+        //Debug.Log("Si Me Ves Muchas Veces Llora");
         //_myDoor.SetColider(true);
     }
 
     public void DeactivateCol()
     {
-        Debug.Log("Activate colicion de mierda puta");
+        //Debug.Log("Activate colicion de mierda puta");
         //_myDoor.SetColider(false);
     }
 }

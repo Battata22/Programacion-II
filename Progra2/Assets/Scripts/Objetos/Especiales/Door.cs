@@ -20,9 +20,19 @@ public class Door : MonoBehaviour
     [SerializeField] Collider _myColider;
     bool _isOpen = false;
 
+    public event DelegateType.VoidDelegate OnDoorOpen = delegate { };
+    public event DelegateType.VoidDelegate OnDoorClose = delegate { };
+
     private void Start()
     {
         _myAnim = GetComponentInChildren<Animator>();
+    }
+
+    public void LockDoor()
+    {
+        _locked = true;
+        transform.GetComponent<NavMeshObstacle>().enabled = true;
+        //Debug.Log("Puerta Cerrada");
     }
 
     public void UnlockDoor()
@@ -57,15 +67,17 @@ public class Door : MonoBehaviour
         if(Vector3.Angle(dir, transform.forward) > 90)
         {
             _myAnim.SetBool("OpenF", true);
-            Debug.Log("<color=blue>Abro para adelante</color>");
+            //Debug.Log("<color=blue>Abro para adelante</color>");
         }
         else
         {
             _myAnim.SetBool("OpenB", true);
-            Debug.Log("<color=blue>Abro para atras</color>");
+            //Debug.Log("<color=blue>Abro para atras</color>");
         }
         _isOpen = true;
         SetColider(!_isOpen);
+
+        OnDoorOpen();
     }
 
     void CloseAnim()
@@ -74,6 +86,8 @@ public class Door : MonoBehaviour
         _isOpen = false;
         _myAnim.SetBool("Close", true);
         SetColider(!_isOpen);
+
+        OnDoorClose();
     }
 
     public void SetColider(bool newState)
