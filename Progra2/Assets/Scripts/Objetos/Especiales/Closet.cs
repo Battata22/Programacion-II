@@ -43,7 +43,7 @@ public class Closet : SpecialObject, ILockeable
 
     protected override void ObjectAbility(Transform origin)
     {
-        _target.GetDoubt(transform.position);
+        _target.GetDoubt(transform.position, roomIndex);
 
         trapActive = true;
 

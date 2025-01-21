@@ -27,6 +27,7 @@ public class PuzzleNene : Nivel3Puzzle
     [SerializeField] RoomTrigger[] _nextRooms;
     AINodeManager _nodeManager;
 
+    [SerializeField] PuzzleLvl3Cocina _nextPuzzle;
     private void Start()
     {
         _nodeManager = GetComponentInParent<AINodeManager>();
@@ -68,6 +69,8 @@ public class PuzzleNene : Nivel3Puzzle
             parent.gameObject.SetActive(true);
             parent.StartUseOwnNode();
         }
+
+        _nextPuzzle.StartPuzzle();
     }
 
     void ActivateParent()

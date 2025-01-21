@@ -8,17 +8,11 @@ public class CollHab : MonoBehaviour
     Asustable asScript;
     Pickable pickableScript;
 
-    void Start()
-    {
-        
-    }
-
-
     void Update()
     {
         if (item && npc && !asustado)
         {
-            asScript.GetScared(pickableScript._scareAmount);
+            asScript.GetScared(pickableScript._scareAmount,-1);// ahora scare usa index room porque soy un enfermo
             asustado = true;
         }
     }

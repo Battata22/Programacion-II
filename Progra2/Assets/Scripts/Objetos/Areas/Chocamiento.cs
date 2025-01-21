@@ -70,10 +70,10 @@ public class Chocamiento : MonoBehaviour
 
                     if(_npcInRange.TryGetComponent<Exorcista>(out var exorcista))
                     {
-                        exorcista.GetScared(scareAmount, transform);
+                        exorcista.GetScared(scareAmount, _objScript.actualRoom , transform);
                     }
                     else
-                    _npcInRange.GetScared(scareAmount, _finalNode);
+                    _npcInRange.GetScared(scareAmount, _objScript.actualRoom , _finalNode);
 
                     #region Comment
                     //if (_objScript)
@@ -88,7 +88,7 @@ public class Chocamiento : MonoBehaviour
                 }
                 else
                 {
-                    _npcInRange.GetDoubt(pos);
+                    _npcInRange.GetDoubt(pos, _objScript.actualRoom);
                 }
             }
         }
@@ -110,7 +110,7 @@ public class Chocamiento : MonoBehaviour
         //print("antes del nodo");
         //GetBetterNode(_npcInRange, GameManager.Instance.Player);
         //print("despues del nodo");
-        asustableScript.GetScared(scareAmount, _finalNode);
+        asustableScript.GetScared(scareAmount, _objScript.actualRoom, _finalNode);
         //print("despues del get scared");
 
     }
@@ -132,7 +132,7 @@ public class Chocamiento : MonoBehaviour
             //Debug.Log("<color=blue> Buscando Npc en Duda</color>");
             if (collider.TryGetComponent<NPC>(out _npcInRange))
             {
-                _npcInRange.GetDoubt(pos);
+                _npcInRange.GetDoubt(pos, _objScript.actualRoom);
 
                 #region Comment
                 //Debug.Log("<color=pink> NPC en area Duda </color>");

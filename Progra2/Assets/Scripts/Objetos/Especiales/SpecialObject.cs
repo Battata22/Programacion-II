@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SpecialObject : MonoBehaviour
+public abstract class SpecialObject : MonoBehaviour, IRoomDetectable
 {
     [SerializeField] protected ObjectTrap _trapPrefab;
     [SerializeField] protected float _trapCD, _frostDist, _detectRadius;
@@ -55,4 +55,10 @@ public abstract class SpecialObject : MonoBehaviour
     }
 
     protected abstract void ObjectAbility(Transform origin);
+
+    [SerializeField] protected int roomIndex;
+    public void SetRoom(int room)
+    {
+        roomIndex = room;
+    }
 }

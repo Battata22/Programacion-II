@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreasSustoYDuda : MonoBehaviour
+public class AreasSustoYDuda : MonoBehaviour, IRoomDetectable
 {
     
     private AudioSource _audioSource;
@@ -10,6 +10,8 @@ public class AreasSustoYDuda : MonoBehaviour
     float wait;
     Vector3 muymuylejano = new Vector3(1000f, 1000f, 1000f);
     protected bool dudando = false, asustado = false;
+
+    protected int actualRoom;
 
     protected virtual void Awake()
     {
@@ -32,5 +34,9 @@ public class AreasSustoYDuda : MonoBehaviour
             Destroy(gameObject);
         }
     }
-        
+
+    public void SetRoom(int room)
+    {
+        actualRoom = room;
+    }
 }

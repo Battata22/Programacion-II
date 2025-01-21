@@ -42,9 +42,10 @@ public class LivingPuzzle : MonoBehaviour
             pet.SetActive(true);
         }
 
+        var myIndex = transform.GetComponent<RoomTrigger>().roomIndex;
         foreach (var asus in asustables)
         {
-            asus.GetScared(1);
+            asus.GetScared(1, myIndex);
         }
         GameManager.Instance.Rociadores.OnRociadoresActive -= CompleteRoom;
 

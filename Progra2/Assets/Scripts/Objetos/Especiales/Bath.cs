@@ -44,7 +44,7 @@ public class Bath : SpecialObject
 
     protected override void ObjectAbility(Transform origin)
     {
-        _target.GetDoubt(transform.position);
+        _target.GetDoubt(transform.position, -1);
 
         trapActive = true;
         if (!alreadyActive)

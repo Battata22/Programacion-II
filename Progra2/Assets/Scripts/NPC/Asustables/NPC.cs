@@ -199,7 +199,7 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
         }
     }
 
-    public virtual void GetScared(float a, Transform t = null)
+    public virtual void GetScared(float a, int roomIndex, Transform t = null)
     {
         //https://www.youtube.com/watch?v=eVrYbKBrI7o
     }
@@ -220,7 +220,7 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
         _agent.speed = speedNormal;
     }
 
-    public virtual void GetDoubt(Vector3 pos)
+    public virtual void GetDoubt(Vector3 pos, int roomIndex)
     {
         if (!_agent.enabled) return;
         //Debug.Log(" Duda de Npc");

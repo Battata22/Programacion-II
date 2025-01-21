@@ -69,7 +69,7 @@ public class DepaRoomPuzzle : SpecialObject
 
         _target.CallStopScare();
 
-        _target.GetDoubt(_pantalla.transform.position);
+        _target.GetDoubt(_pantalla.transform.position, -1);
 
         _target.DesactivarResets();
         _pantalla.SetActive(true);

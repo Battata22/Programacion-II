@@ -250,7 +250,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         }
     }
 
-    public override void GetDoubt(Vector3 pos)
+    public override void GetDoubt(Vector3 pos, int g)
     {
         //GetAngry();
 
@@ -276,7 +276,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         _searchingPos = pos;
     }
 
-    public override void GetScared(float scareAmount, Transform a = null)
+    public override void GetScared(float scareAmount, int roomIndex ,Transform a = null)
     {
 
         //Activar Anger supongo
@@ -621,7 +621,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
         //GetAngry();
         //Spawn scaner pulse
-        GetScared(1);
+        GetScared(1,actualRoom);
 
         //_agent.SetDestination(_actualNode.position);
 
@@ -705,7 +705,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         if (scareOnEnd)
         {
             //_canAttack = true;
-            GetScared(1f, _actualNode);
+            GetScared(1f, actualRoom,_actualNode);
         }
         if (_actualNode == GameManager.Instance.Player)
         {

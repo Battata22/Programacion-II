@@ -39,7 +39,7 @@ public class GB_Cam : GB_Gadget
         //Debug.Log($"<color=green> Gus Detectado </color>");
 
         if (_myOwner != null)
-            _myOwner.GetDoubt(transform.position);
+            _myOwner.GetDoubt(transform.position,-1);
     }
 
     public override void GetDamage(int dmgAmount = 1)

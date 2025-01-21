@@ -118,12 +118,12 @@ public class ChildScript : NPC
         DoCheckToy();
     }
 
-    public override void GetScared(float a, Transform t = null)
+    public override void GetScared(float a,int roomIndex, Transform t = null)
     {
         //base.GetScared(a, t);
     }
 
-    public override void GetDoubt(Vector3 pos)
+    public override void GetDoubt(Vector3 pos, int g)
     {
         //base.GetDoubt(pos);
     }
@@ -201,6 +201,7 @@ public class ChildScript : NPC
 
         DoCheckScare += CheckScare;
 
+        SetNewDestination();
         _myGusDetector.active = true;
     }
 

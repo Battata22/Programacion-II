@@ -82,7 +82,7 @@ public class UltimateLiving : SpecialObject
             if (collider.GetComponent<Asustable>() != null)
             {
                 Asustable asustableScript = collider.GetComponent<Asustable>();
-                asustableScript.GetDoubt(collider.transform.position);
+                asustableScript.GetDoubt(collider.transform.position,-1);
             }
 
         }
@@ -158,7 +158,7 @@ public class UltimateLiving : SpecialObject
                 if (collider.GetComponent<Asustable>() != null)
                 {
                     Asustable asustableScript = collider.GetComponent<Asustable>();
-                    asustableScript.GetScared(1f);
+                    asustableScript.GetScared(1f,-1);
 
                 }
             }

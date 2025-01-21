@@ -25,7 +25,7 @@ public class TronadoPrefab : MonoBehaviour
         {
             if (colliderNPC.TryGetComponent<Asustable>(out Asustable asusScript))
             {
-                asusScript.GetDoubt(transform.position);
+                asusScript.GetDoubt(transform.position, -1);
                 asustables.Add(asusScript);
                 asusScript.CallRagdollOn();
 
@@ -194,7 +194,7 @@ public class TronadoPrefab : MonoBehaviour
         {
             if (colliderNPC.TryGetComponent<Asustable>(out Asustable asusScript))
             {
-                asusScript.GetScared(0.5f);
+                asusScript.GetScared(0.5f, -1);
             }
         }
 

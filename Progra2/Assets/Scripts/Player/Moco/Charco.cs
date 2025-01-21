@@ -12,6 +12,7 @@ public class Charco : MonoBehaviour
     [SerializeField] float _internalCD;
     float lastSlide;
     [SerializeField] int _uses;
+    
 
     private void Awake()
     {

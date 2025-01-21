@@ -71,7 +71,7 @@ public class GB_Flashbang : GB_Gadget
                     if (!_doDoubt)
                         _myOwner.GetAngry();
                     else
-                        _myOwner.GetDoubt(player.transform.position);
+                        _myOwner.GetDoubt(player.transform.position,-1);
             }
         }
     }

@@ -33,6 +33,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
     EnableRagdoll _myRagdollSwitch;
 
+    [SerializeField] bool _ignoreOtherRooms = false;
     [SerializeField] bool tutorial = false;
 
     //Eventos
@@ -388,8 +389,19 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         
     }
 
-    public override void GetScared(float scareAmount, Transform direction = null)
+    
+
+    public override void GetScared(float scareAmount, int roomIndex,Transform direction = null)
     {
+        if (!_AIActive) return;
+        if (_ignoreOtherRooms && roomIndex != actualRoom && roomIndex >= 0)//negative num to always scare i guess
+        {
+            Debug.Log("<color=red>QUE CHOTO ME IMPORTA?</color>");
+            return;
+        }
+        else if (roomIndex < 0)
+            Debug.Log($"<color=red> {roomIndex} es negativo, npc asustado </color>");
+
         //Confia mano
         if (!useOwnNode)
             GetFarthestNode();
@@ -398,7 +410,6 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
         GetBetterNode(this, GameManager.Instance.Player);
 
-        if (!_AIActive) return;
         if (resetInScare)
         {
             canillaActive = false;
@@ -563,10 +574,20 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _agent.speed = speedNormal;
     }
 
-    public override void GetDoubt(Vector3 pos)
+    public override void GetDoubt(Vector3 pos, int roomIndex)
     {
         if (!_AIActive) return;
         if (scared) return;
+        if(_ignoreOtherRooms && roomIndex == actualRoom && roomIndex >=0)
+        {
+            Debug.Log($"<color=red>No escuche un choto, estoy sordisimo</color>");
+            return;
+        }
+        else if(roomIndex < 0)
+        {
+            Debug.Log($"<color=green>{roomIndex} Tengo el ogete lleno de preguntas</color>");
+        }
+
         if (resetInDoubt)
         {
             canillaActive = false;
@@ -709,7 +730,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
 
         OnSlideStop();
-        GetScared(1f);
+        GetScared(1f, actualRoom);
 
     }
 
@@ -813,7 +834,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         yield return new WaitForSeconds(wait);
         _myRagdollSwitch.DeactivateRagdoll();
         if (scareOnEnd)
-            GetScared(1f, _actualNode);
+            GetScared(1f, actualRoom,_actualNode);
         if (tutorial == true)
         {
             Destroy(gameObject);

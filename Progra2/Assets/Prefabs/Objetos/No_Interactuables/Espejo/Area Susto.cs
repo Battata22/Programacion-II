@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaSusto : MonoBehaviour
+public class AreaSusto : MonoBehaviour,IRoomDetectable
 {
     [SerializeField] Espejo espejoScript;
     [SerializeField] bool asuste = false;
+    [SerializeField] int actualRoom;
 
     private void Start()
     {
@@ -17,8 +18,15 @@ public class AreaSusto : MonoBehaviour
         if (espejoScript.activo == true && other.GetComponent<Asustable>() != null && asuste == false)
         {
             Asustable asus = other.GetComponent<Asustable>();
-            asus.GetScared(0.5f);
+            asus.GetScared(0.5f, actualRoom);
             asuste = true;
         }
+    }
+
+
+    public void SetRoom(int room)
+    {
+        Debug.Log($"Espejo room {room}");
+        actualRoom = room;
     }
 }

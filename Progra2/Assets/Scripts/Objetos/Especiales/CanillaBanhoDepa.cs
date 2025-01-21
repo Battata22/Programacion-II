@@ -56,7 +56,7 @@ public class CanillaBanhoDepa : SpecialObject
 
     protected override void ObjectAbility(Transform origin)
     {
-        _target.GetDoubt(transform.position);
+        _target.GetDoubt(transform.position, roomIndex);
 
         trapActive = true;
 
@@ -81,7 +81,7 @@ public class CanillaBanhoDepa : SpecialObject
 
         yield return new WaitForSeconds(0.2f);
 
-        _target.GetScared(1f);
+        _target.GetScared(1f,roomIndex);
         GameManager.Instance.pasoActual = 2;
 
         Destroy(_trap);

@@ -174,7 +174,7 @@ public class Exorcista : NPC, IRagdoll
 
     }
 
-    public override void GetScared(float a, Transform t = null)
+    public override void GetScared(float a, int roomIndex, Transform t = null)
     {
         //base.GetScared(a, t);
 
@@ -239,14 +239,14 @@ public class Exorcista : NPC, IRagdoll
 
     }
 
-    public override void GetDoubt(Vector3 pos)
+    public override void GetDoubt(Vector3 pos, int g)
     {
         if (!usingNpcAi)
         {
             Debug.Log($"<color=green>Exorcista realizando accion, ignora doubt</color>");
             return;
         }
-        base.GetDoubt(pos);
+        base.GetDoubt(pos, -1);
     }
 
     void UseHolyWather()
@@ -573,7 +573,7 @@ public class Exorcista : NPC, IRagdoll
         yield return new WaitForSeconds(wait);
         _myRagdollSwitch.DeactivateRagdoll();
         if (scareOnEnd)
-            GetScared(1f, _actualNode);
+            GetScared(1f, actualRoom, _actualNode);
         
         _inRagdoll = false;
 

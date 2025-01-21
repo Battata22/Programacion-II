@@ -94,7 +94,7 @@ public class DogScript : NPC
         EndAlert();
     }
 
-    public override void GetDoubt(Vector3 pos)
+    public override void GetDoubt(Vector3 pos, int g)
     {
         //base.GetDoubt(pos);
     }

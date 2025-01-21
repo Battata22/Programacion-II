@@ -21,7 +21,7 @@ public class GbChildDetector : MonoBehaviour
             if (_myOwner != null && CheckLOS(child.transform, transform))
             {
                 Debug.Log("<color=green>Pendejito detectado</color>");
-                _myOwner.GetDoubt(child.transform.position);
+                _myOwner.GetDoubt(child.transform.position, -1);
             }
         }
     }

@@ -8,12 +8,8 @@ public class Susto : AreasSustoYDuda
 
     protected override void Awake()
     {
-
-    }
-
-    protected override void Start()
-    {
-
+        base.Awake();
+        Debug.Log("Nunca voy a aparecer porque ya no me usan");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +18,7 @@ public class Susto : AreasSustoYDuda
 
         if (other.TryGetComponent<NPC>(out NPC _npcScript))
         {
-            _npcScript.GetScared(scareAmount);
+            _npcScript.GetScared(scareAmount, actualRoom);
             asustado = true;
         }
     }

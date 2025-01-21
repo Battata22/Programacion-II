@@ -21,7 +21,7 @@ public class TrampaGB : MonoBehaviour
         if (player != null)
         {
             //chocamientoScript.Choco(player.transform.position);
-            _gBScript.GetDoubt(player.transform.position);
+            _gBScript.GetDoubt(player.transform.position,-1);
             player._traped = true;
             var _newObj = Instantiate(_electricArea, this.transform.position,Quaternion.identity);
             //dejarte quieto 1s o 0.5s

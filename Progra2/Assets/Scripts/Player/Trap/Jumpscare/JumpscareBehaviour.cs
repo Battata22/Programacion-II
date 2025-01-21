@@ -104,7 +104,7 @@ public class JumpscareBehaviour : MonoBehaviour
         {
             if(_npcInRange != null)
             {
-                _npcInRange.GetScared(1);
+                _npcInRange.GetScared(1, -1);
                 GameManager.Instance.barraGanar.value++;
                 //sustos.value++;
             }
