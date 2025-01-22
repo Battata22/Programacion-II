@@ -11,15 +11,20 @@ public class Cat : NPC
     [SerializeField] float _jumpCD, _jumpDis, _jumpForce, _dropDis;
     [SerializeField] bool _canJump, _onFloor, _searchObj;
     [SerializeField] LayerMask _mask, _floorMask;
-    [SerializeField] List<AudioClip> _clips;
+    [SerializeField] List<AudioClip> _clips;//why not an array? ni...
     Rigidbody _rb;
     float _lastJump, _rbDrag;
     bool _antiSpam;
 
     //Rework
     DelegateType.VoidDelegate CountDown = delegate { };
-    [Header("<color=cyan> JumpShit </color>")]
+    [Header("<color=#00ffff> JumpShit </color>")]
+    [SerializeField] CatAlertIcon _alertIcon;
     [SerializeField] float _fightDuration;
+    [SerializeField] public float timeToJump;
+    [SerializeField] Transform _triggerHolder;
+    [SerializeField] CatArea _triggerPrefab;
+    CatArea _myGusDetector;
     float _fightTime = 0f;
     bool _canJumpToPlayer = true;
     
@@ -31,6 +36,14 @@ public class Cat : NPC
         //StartCoroutine(CheckForObjects());
         _rb = GetComponent<Rigidbody>();
         _rbDrag = _rb.drag;
+
+        //SpawnCatTrigger
+        _alertIcon = GetComponentInChildren<CatAlertIcon>();
+        _alertIcon.SetMaxTimers(timeToJump, 1);
+
+
+        _myGusDetector = Instantiate(_triggerPrefab, _triggerHolder.position, Quaternion.identity);
+        _myGusDetector.Initialize(this, _triggerHolder);
     }
 
     private void Update()
@@ -95,10 +108,13 @@ public class Cat : NPC
         }
 
         CountDown();
+        DoJumpCountDown();
     }
 
     void CheckObjects()
     {
+        if (true) return;// lo se, soy un capo para desactivar cosas
+
         _targetObject = null;
         Collider[] _objs;
         //Debug.Log("Chequeando");
@@ -152,6 +168,7 @@ public class Cat : NPC
 
     void JumpToObject()
     {
+
         var dir = (_targetObject.transform.position - transform.position).normalized;
         _agent.enabled = false;
         _canJump = false;
@@ -194,17 +211,72 @@ public class Cat : NPC
 
     private void SelectAudio()
     {
-        int random = Random.Range(1, _clips.Count + 1);
+        int random = Random.Range(1, _clips.Count);
         _audioSource.clip = _clips[random]; 
         _audioSource.Play();
     }
 
     //Rework
+
+    bool _gusInRange;
+    float _jumpPlayerTimer = 0;
+    DelegateType.VoidDelegate DoJumpCountDown = delegate { };
+
+    public void StartAlert()
+    {
+        _agent.speed = 0;
+
+        //_alertIcon.active = true;
+        _gusInRange = true;
+        //Start CountDoun
+        DoJumpCountDown = JumpPlayerCountDown;
+        _alertIcon.active = true;
+    }
+
+    public void StopAlert() 
+    {
+        
+        Debug.Log($"<color=magenta>Chilling</color>");
+
+        DoJumpCountDown = delegate { };
+
+        _agent.speed = speedNormal;
+
+        _gusInRange = false;
+        _jumpPlayerTimer = 0;
+
+        _alertIcon.active = false;
+    }
+
+    void JumpPlayerCountDown()
+    {
+        _jumpPlayerTimer += Time.deltaTime;
+        if (_jumpPlayerTimer % 1 == 0)
+            Debug.Log($"<color=red>Contando para saltarle al pedazo de puto de Gus</color>");
+
+        if(_gusInRange && _jumpPlayerTimer > timeToJump)
+        {
+            DoJumpCountDown = delegate { };
+            _jumpPlayerTimer = 0;
+            _gusInRange = false;
+            JumpToPLayer();
+        }
+
+        _alertIcon.timer = _jumpPlayerTimer;
+        //_alertIcon.charge = _timeToBark;
+    }
+
+
+
     public void JumpToPLayer()
     {
         if(!_canJumpToPlayer) return;
+        Debug.Log($"<color=red>Andatehhhhhhhhhhhhhhh</color>");
+        _alertIcon.active = false;
+
+
         Player player = GameManager.Instance.Player;
-        var dir = (player.transform.position - transform.position).normalized;
+        var dir = ((player.transform.position+new Vector3(0,2,0)) - transform.position).normalized;
         _agent.enabled = false;
         _canJumpToPlayer = false;
         _antiSpam = false;
@@ -247,5 +319,17 @@ public class Cat : NPC
 
         GameManager.Instance.Player.RestoreNormalMovement();
 
+    }
+
+    private void OnEnable()
+    {
+        if(_myGusDetector != null)
+            _myGusDetector.active = true;
+    }
+
+    private void OnDisable()
+    {
+        if (_myGusDetector != null)
+            _myGusDetector.active = false;
     }
 }
