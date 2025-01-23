@@ -95,12 +95,15 @@ public class Cat : NPC
             {
                 OnFloor();
             }
-        }        
+        }
+
 
         if (!_antiSpam && _searchObj)
         {
             StartCoroutine(CheckForObjects());
         }
+        //else
+        //    Debug.Log($"<color=blue> AntiSpam = {_antiSpam} || SerchObj = {_searchObj}</color>");
 
         if(!_onFloor && _targetObject != null && Vector3.SqrMagnitude(transform.position - _targetObject.transform.position) <= (_dropDis * _dropDis))
         {
@@ -113,7 +116,7 @@ public class Cat : NPC
 
     void CheckObjects()
     {
-        if (true) return;// lo se, soy un capo para desactivar cosas
+        //if (true) return;// lo se, soy un capo para desactivar cosas
 
         _targetObject = null;
         Collider[] _objs;
@@ -127,6 +130,8 @@ public class Cat : NPC
                 //Debug.Log($"<color=orange>Detectado {p.name}</color>");
                 //Debug.Log("Encontrado");
                 _targetObject = p;
+                Debug.Log($"<color=magenta>{p.name} Agarrado</color>");
+
                 //Debug.Log($"<color=green>Target {_targetObject.name}</color>");
             }
         }
@@ -137,7 +142,7 @@ public class Cat : NPC
         _antiSpam = true;
         
         WaitForSeconds wait = new WaitForSeconds(0.2f);
-        //Debug.Log("Funcionando");
+        Debug.Log($"<color=green>CheckForObject Activo</color>");
         while (_searchObj)
         {
             yield return wait;
@@ -162,12 +167,15 @@ public class Cat : NPC
             CheckObjects();
             
         }
-        
+
+        Debug.Log($"<color=red>CheckForObject Desactivado</color>");
+
         //Debug.Log("Stoped");
     }
 
     void JumpToObject()
     {
+        if (true) return;// lo se, soy un capo para desactivar cosas
 
         var dir = (_targetObject.transform.position - transform.position).normalized;
         _agent.enabled = false;
@@ -202,6 +210,8 @@ public class Cat : NPC
         _agent.SetDestination(_actualNode.position);
         _rb.useGravity = false;
         _onFloor = true;
+
+        //_searchObj = true;
     }
 
     public override void GetDoubt(Vector3 pos, int g)
@@ -224,6 +234,8 @@ public class Cat : NPC
 
     public void StartAlert()
     {
+        if (!_canJumpToPlayer) return;
+
         _agent.speed = 0;
 
         //_alertIcon.active = true;
@@ -231,6 +243,8 @@ public class Cat : NPC
         //Start CountDoun
         DoJumpCountDown = JumpPlayerCountDown;
         _alertIcon.active = true;
+        _searchObj = true;
+
     }
 
     public void StopAlert() 
@@ -238,6 +252,7 @@ public class Cat : NPC
         
         Debug.Log($"<color=magenta>Chilling</color>");
 
+        _searchObj = false;
         DoJumpCountDown = delegate { };
 
         _agent.speed = speedNormal;
@@ -274,7 +289,6 @@ public class Cat : NPC
         Debug.Log($"<color=red>Andatehhhhhhhhhhhhhhh</color>");
         _alertIcon.active = false;
 
-
         Player player = GameManager.Instance.Player;
         var dir = ((player.transform.position+new Vector3(0,2,0)) - transform.position).normalized;
         _agent.enabled = false;
@@ -295,10 +309,12 @@ public class Cat : NPC
 
         _lastJump = Time.time;
 
-
         player.InvertMovement();
 
         CountDown = LeaveCountDown;
+        _targetObject.Drop();
+        _targetObject = null;
+
     }
 
     void LeaveCountDown()
