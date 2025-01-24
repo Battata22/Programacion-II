@@ -21,6 +21,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     public bool shivers = false, scared = false, mocod = false, stuned = false;//, _doubt = false, _inPlace = false;
     bool _lookingActive = false;
 
+    [SerializeField] bool _infiniteScare = false;
+
     [SerializeField] Slider _sliderBarra;
 
     [SerializeField] AudioClip gritoClip, doubtClip;
@@ -315,7 +317,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
 
         _waitShivers += Time.deltaTime;
-        _waitscared += Time.deltaTime;
+        if (!_infiniteScare)
+            _waitscared += Time.deltaTime;
         waitMoco += Time.deltaTime;
         waitStun += Time.deltaTime;
         if (_doubt)
@@ -390,7 +393,18 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     }
 
     
+    public void InfiniteScared(bool infiniteScare)
+    {
+        _infiniteScare = infiniteScare;
+    }
 
+    /// <summary>
+    /// set room index to a negative num to always scare
+    /// ///  || direction null = random node of npc
+    /// </summary>
+    /// <param name="scareAmount"></param>
+    /// <param name="roomIndex"></param>
+    /// <param name="direction"></param>
     public override void GetScared(float scareAmount, int roomIndex,Transform direction = null)
     {
         if (!_AIActive) return;
@@ -437,7 +451,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _waitscared = 0;
         GetNewNode(_actualNode);
 
-        direction = _finalNode;
+        if (direction == null)
+            direction = _finalNode;
 
         if (direction != null)
             _actualNode = direction;

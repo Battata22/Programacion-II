@@ -142,7 +142,7 @@ public class CutoutWall : MonoBehaviour
         //Debug.Log("Entre al reset");
         for (int i = 0; i < _hitObjects.Length; i++)
         {
-            Debug.Log($"<color=grey>Pared Actualizada</color>");
+            //Debug.Log($"<color=grey>Pared Actualizada</color>");
 
             Material[] materials = _hitObjects[i].transform.GetComponent<Renderer>().materials;
 

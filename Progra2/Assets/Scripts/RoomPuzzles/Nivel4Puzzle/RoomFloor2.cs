@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using CasaFiesta;
+
+public class RoomFloor2 : Nivel4Puzzle
+{
+    [SerializeField] Asustable[] _myNpc;
+    [SerializeField] Transform _exit;
+    [SerializeField] RoomTrigger _myRoom;
+    [SerializeField] HouseExitTrigger _houseExit;
+
+    private void Awake()
+    {
+        _myRoom = GetComponent<RoomTrigger>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            CompletePuzzle();
+        }
+    }
+
+    void CompletePuzzle()
+    {
+        foreach (var npc in _myNpc)
+        {
+            _houseExit.AddToList(npc.gameObject);
+            npc.InfiniteScared(true);
+            npc.GetScared(1f, -1, _exit);
+        }
+    }
+}

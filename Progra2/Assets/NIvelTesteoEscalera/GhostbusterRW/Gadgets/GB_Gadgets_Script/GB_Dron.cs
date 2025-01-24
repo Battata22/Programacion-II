@@ -22,12 +22,16 @@ public class GB_Dron : GB_Gadget
     [SerializeField] float _speed;
     int _hp;
 
+    [Header("Use GB nodes")]
+    [SerializeField] bool _useOwnNode = false;
+
+
     public override void Initialize(Ghostbuster newOwner)
     {
         gameObject.SetActive(true);
         //TurnOn();
         base.Initialize(newOwner);
-
+        _useOwnNode = newOwner.useOwnNode;
     }
 
     private void Awake()
@@ -96,6 +100,23 @@ public class GB_Dron : GB_Gadget
 
     protected Transform GetNewNode(Transform lastNode = null)
     {
+        if (_useOwnNode)
+        {
+            Transform newOwnNode = _myOwner.NavMeshNodes[Random.Range(0, _myOwner.NavMeshNodes.Count)];
+
+            //Debug.Log("ANTES DEL WHILE");
+
+            while (lastNode == newOwnNode)
+            {
+                newOwnNode = _myOwner.NavMeshNodes[Random.Range(0, _myOwner.NavMeshNodes.Count)];
+            }
+
+            //Debug.Log("SALI DEL WHILE");
+
+
+            return newOwnNode;
+        }
+
         //Debug.Log("ENTRE A NEW NODE");
 
         Transform newNodeTest = GameManager.Instance.activeNodes[Random.Range(0, GameManager.Instance.activeNodes.Count)];

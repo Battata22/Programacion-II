@@ -28,6 +28,7 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
 
     [SerializeField] protected Transform _actualNode;
     [SerializeField] protected List<Transform> _navMeshNodes = new();
+    public List<Transform> NavMeshNodes { get { return _navMeshNodes; } }
     //[SerializeField] public List<Transform> _testNodes = new();
     //protected Animator _anim;
 

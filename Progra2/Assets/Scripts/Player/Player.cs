@@ -68,6 +68,7 @@ public class Player : MonoBehaviour, IRoomDetectable
     PickUp _pickUpScript;
     Collider _colider;
     [SerializeField] GameObject _mesh;
+    public GameObject mesh {  get { return _mesh; } }
 
     Material _electricMat;
     //[SerializeField] MeshRenderer _renderer;

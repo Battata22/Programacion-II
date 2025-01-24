@@ -8,6 +8,8 @@ public class GB_Flashbang : GB_Gadget
     [SerializeField] float _scaleDuration;
     [SerializeField] float _scaleSpeed;
     [SerializeField] float _maxScale;
+    [SerializeField] bool active = true;
+
 
     float _currentTime;
     bool _doDoubt = false;
@@ -38,6 +40,7 @@ public class GB_Flashbang : GB_Gadget
 
     private void Awake()
     {
+        if (!active) return;
         _currentTime = 0;
         Destroy(gameObject, _scaleDuration);
         dev_ogScale = transform.localScale;
@@ -62,12 +65,12 @@ public class GB_Flashbang : GB_Gadget
 
         if(other.transform.TryGetComponent<Player>(out Player player))
         {
-            if (CheckLOS(player.transform, transform))
+            if (CheckLOS(player.mesh.transform, transform))
             {
                 // Player detectado, llamar GB
                 //Debug.Log($"<color=green> Gus Detectado </color>");
 
-                if (_myOwner != null)
+                if (_myOwner != null && active)
                     if (!_doDoubt)
                         _myOwner.GetAngry();
                     else
@@ -78,6 +81,7 @@ public class GB_Flashbang : GB_Gadget
 
     void ScaleObject()
     {
+        if ((!active)) return;
         if (transform.localScale.x >= _maxScale) return;
         //{
         //    _currentTime = 0f;
@@ -102,16 +106,31 @@ public class GB_Flashbang : GB_Gadget
         dev_origin = owner;
 
         RaycastHit hit;
-        if (Physics.Raycast(owner.position, dir, out hit, dir.magnitude,obstructions))
-        {      
-            // Devuelve false cuando el rayo es cortado por paredes
-            //Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
-            return false;
+        //if (Physics.Raycast(owner.position, dir, out hit, dir.magnitude,obstructions))
+        //{      
+        //    // Devuelve false cuando el rayo es cortado por paredes
+        //    Debug.Log($"<color=green> Rayo cortado por {hit.transform.name} </color>");
+        //    return false;
+        //}
+        //else
+        //{
+        //    Debug.Log($"<color=red> No se corto el rayo </color>");
+        //    return true;
+        //}
+
+        if(Physics.Raycast(owner.position, dir, out hit, dir.magnitude, obstructions) && hit.transform.TryGetComponent<Player>(out var ply))
+        {
+            //Debug.Log($"<color=red> No se corto el rayo </color>");
+
+            //no se corto el rayo
+            return true;
         }
         else
         {
-            //Debug.Log($"<color=red> No se corto el rayo </color>");
-            return true;
+            //Debug.Log($"<color=green> Rayo cortado por No Se XD </color>");
+
+            //rayo cortado
+            return false;
         }
     }
 

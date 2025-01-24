@@ -1055,51 +1055,13 @@ MonoBehaviour:
   speedDoubt: 2.5
   _audioSource: {fileID: 0}
   _actualNode: {fileID: 0}
-  _navMeshNodes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _navMeshNodes: []
   _AIActive: 0
   actualRoom: 0
+  _useOwnNodes: 0
+  _myRooms: []
+  _nodeManager: {fileID: 0}
+  soloParaTenerBienElHeader: 0
   tiempoDeSusto: 2.3
   cdDeSusto: 10
   tiempoDeMoco: 5
@@ -1118,7 +1080,17 @@ MonoBehaviour:
   doubtClip: {fileID: 8300000, guid: 010829522d58ec84a896907199dcd622, type: 3}
   _anim: {fileID: 0}
   _mesh: {fileID: 6387985415324060030}
+  _ignoreOtherRooms: 0
   tutorial: 0
+  resetInScare: 1
+  resetInDoubt: 1
+  canRagdoll: 1
+  canillaPos: {fileID: 0}
+  canillaDuration: 0
+  canillaActive: 0
+  _timeBtBabyCalm: 0
+  _calmDuration: 0
+  _cryChildList: []
 --- !u!82 &1961191671246290836
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1230,6 +1202,7 @@ MonoBehaviour:
   _ragdollPrefab: {fileID: 1636323018149207460, guid: f4e09a3654927c64193e536ba2e61135, type: 3}
   _forceMult: 50
   _impulsePelvis: 0
+  _rb: {fileID: 0}
 --- !u!114 &8049693357650427122
 MonoBehaviour:
   m_ObjectHideFlags: 0

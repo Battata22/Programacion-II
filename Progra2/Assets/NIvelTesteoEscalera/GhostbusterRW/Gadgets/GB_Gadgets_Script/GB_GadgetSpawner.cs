@@ -29,7 +29,7 @@ public class GB_GadgetSpawner : MonoBehaviour
         switch (gB_Gadgets[index]._amount)
         {
             case -10:
-                Debug.Log($"<color=yellow>{gB_Gadgets[index].gadget.name} usado, Infinitos restantes </color>");
+                //Debug.Log($"<color=yellow>{gB_Gadgets[index].gadget.name} usado, Infinitos restantes </color>");
                 break;
             case > 0:
                 gB_Gadgets[index]._amount--;

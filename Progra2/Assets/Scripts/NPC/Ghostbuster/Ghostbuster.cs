@@ -812,9 +812,9 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
         _anim.SetBool("Walking", false);
         _anim.SetBool("Idle", false);
-        _anim.SetBool("Search", false);
-        _anim.SetBool("Doubt", false);
-        _anim.SetBool("InPos", true);
+        //_anim.SetBool("Search", false);//no esta en anim
+        //_anim.SetBool("Doubt", false);//tampoco
+        //_anim.SetBool("InPos", true);//vos sabes
 
 
         var _waitRandom = Random.Range(2f, 5f);
@@ -823,9 +823,9 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         yield return wait;
 
         _anim.SetBool("Walking", true);
-        _anim.SetBool("InPos", false);
+        //_anim.SetBool("InPos", false);//no existe en anim
         _anim.SetBool("Idle", false);
-        _anim.SetBool("Search", false);
+        //_anim.SetBool("Search", false);//same
 
         //_actualNode = GetNewNode(_actualNode);
         //_agent.SetDestination(_actualNode.position);
