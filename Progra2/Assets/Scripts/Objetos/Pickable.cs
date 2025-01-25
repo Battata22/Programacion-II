@@ -10,8 +10,9 @@ using static UnityEngine.ParticleSystem;
 [RequireComponent(typeof(Chocamiento))]
 public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 {
-    public bool _pickedUp, _trowed, rompible = false, aguaRompible = false;
+    [Header("<color=yellow>Pickeable</color>")]
     public PickUp pickUpScript;
+    public bool _pickedUp, _trowed, rompible = false, aguaRompible = false;
     public ParticleSystem particleGen, trailGen;
     protected float _parMaxTime = 5f;
     public float parTime;

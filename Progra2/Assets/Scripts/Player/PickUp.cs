@@ -11,7 +11,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] float _rayDistance, _radius;
     public bool isHolding = false, sosteniendoBool = false;
     public float esperaragarre;
-    Player _playerScript;
+    [SerializeField]Player _playerScript;
     Obj_Interactuable _objScript;
     Pickable _pickableScript;
     [SerializeField] LayerMask _detectableMask, _objMask;
@@ -129,6 +129,9 @@ public class PickUp : MonoBehaviour
                 //{
                 //    GameManager.Instance.Tutorial.EndInteract();
                 //}
+
+                if(hit.transform.TryGetComponent<IInteractable>(out var interactable))
+                    interactable.Interact();
             }
 
             //if (Input.GetKeyDown(KeyCode.Q) && interactuable && _objScript.weight == 0)

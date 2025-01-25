@@ -32,6 +32,10 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
     Rigidbody _rb;
     bool _sliding;
+    public bool sliding
+    {
+        get { return _sliding; }
+    }
 
     EnableRagdoll _myRagdollSwitch;
 

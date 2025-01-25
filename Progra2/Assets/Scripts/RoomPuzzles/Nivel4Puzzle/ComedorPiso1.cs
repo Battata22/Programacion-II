@@ -5,15 +5,25 @@ using UnityEngine;
 
 public class ComedorPiso1 : Nivel4Puzzle
 {
+    //idea, hacer que se pegue un slide
+    // si el slide le pega a la mesa de vidrio
+    //la rompe y compreta el puzzle
+
     [SerializeField] Asustable[] _myNpc;
     [SerializeField] Transform _exit;
     [SerializeField] RoomTrigger _myRoom;
     [SerializeField] HouseExitTrigger _houseExit;
+    [SerializeField] GlassTable _table;
 
-    //a
+    bool _roomCompleted = false;
     private void Awake()
     {
         _myRoom = GetComponent<RoomTrigger>();
+    }
+
+    private void Start()
+    {
+        ActivatePuzzle();
     }
 
     private void Update()
@@ -31,6 +41,32 @@ public class ComedorPiso1 : Nivel4Puzzle
             _houseExit.AddToList(npc.gameObject);
             npc.InfiniteScared(true);
             npc.GetScared(1f, -1, _exit);
+        }
+
+        _roomCompleted = true;
+        StartCoroutine(ConstantScare());
+    }
+
+    public override void ActivatePuzzle()
+    {
+        //Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
+        _table.OnBroken += CompletePuzzle;
+    }
+
+    IEnumerator ConstantScare()
+    {
+        while (_roomCompleted)
+        {
+            foreach(var npc in _myNpc)
+            {
+                if (npc.gameObject.activeInHierarchy)
+                    npc.GetScared(1f, -1, _exit);
+                _roomCompleted = npc.gameObject.activeInHierarchy;
+            }
+
+            Debug.Log($"<color=red>Puzzle asustando constantemente</color>");
+
+            yield return new WaitForSeconds(1f);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace CasaFiesta
 {
     public abstract class Nivel4Puzzle : MonoBehaviour
     {
-
+        abstract public void ActivatePuzzle();
     }
 }

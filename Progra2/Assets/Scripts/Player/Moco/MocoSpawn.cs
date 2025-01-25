@@ -83,6 +83,7 @@ public class MocoSpawn : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Techo>())
             {
+                //Debug.Log($"<color=green> Techo encontrado, posicion do moco {hit.point}</color>");
                 Instantiate(moco, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
             }
         }

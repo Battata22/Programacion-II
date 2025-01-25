@@ -35,6 +35,7 @@ public class PyChangeFloor : MonoBehaviour
 
     void GoUp()
     {
+        if (_player.underAttack) return;
         if(Physics.Raycast(_player.transform.position, _player.transform.up, out var hit, 20f,_layerCheck))
         {
             if(hit.transform.TryGetComponent<Piso>(out var piso))
@@ -58,6 +59,7 @@ public class PyChangeFloor : MonoBehaviour
 
     void GoDown()
     {
+        if (_player.underAttack) return;
         if (Physics.Raycast(_player.transform.position - new Vector3(0, 01f, 0), -_player.transform.up, out var hit, 20f, _layerCheck))
         {
             if (hit.transform.TryGetComponent<Piso>(out var piso))

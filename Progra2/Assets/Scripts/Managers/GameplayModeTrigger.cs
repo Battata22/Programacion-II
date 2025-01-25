@@ -8,18 +8,18 @@ public class GameplayModeTrigger : MonoBehaviour
     [SerializeField] GameObject[] _objectToActivate;
     public delegate void PhaseChange();
     public static event PhaseChange StartGampelayPhase = delegate { };
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if(other.transform.TryGetComponent<Pickable>(out var obj) && obj._trowed)
             StartGameplay();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         GameManager.Instance.pasoActual = 0;
     }
 
-    void StartGameplay()
+    protected virtual void StartGameplay()
     {
         foreach (var obj in _objectToActivate)
         {

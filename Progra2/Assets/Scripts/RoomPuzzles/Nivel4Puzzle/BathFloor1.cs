@@ -32,4 +32,9 @@ public class BathFloor1 : Nivel4Puzzle
             npc.GetScared(1f, -1, _exit);
         }
     }
+
+    public override void ActivatePuzzle()
+    {
+        Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
+    }
 }

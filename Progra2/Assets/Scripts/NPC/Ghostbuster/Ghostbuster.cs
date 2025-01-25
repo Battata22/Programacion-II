@@ -74,7 +74,15 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
     protected void Awake()
     {
         _myRagdollSwitch = GetComponent<EnableRagdoll>();
+        _lastGadgetSpwTime = Time.time;
+
     }
+
+    //de alguna forma esto crashea unity ;p
+    //private void OnEnable()
+    //{
+    //    //_lastGadgetSpwTime = Time.time - _spawnGadgetWait * 0.3f;
+    //}
 
     protected override void Start()
     {
@@ -145,7 +153,8 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 
             //1 para la cam, se pone a mano en el gb_gadgetSpawner
             //_GadgetSpawner.SpawnGadget(transform, 1, this);
-            _GadgetSpawner.SpawnRandomGadget(transform, this);
+            if (!_isAttacking && _canAttack)
+                _GadgetSpawner.SpawnRandomGadget(transform, this);
             //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aa aa a agria
         }
 
