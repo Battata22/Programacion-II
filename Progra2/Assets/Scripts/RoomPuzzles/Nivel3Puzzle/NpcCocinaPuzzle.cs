@@ -11,6 +11,8 @@ namespace CasaCatolicaPuzzle
         PuzzleLvl3Cocina _myPuzzle;
 
         public bool taQuePela = false;
+        public bool tieneChocolate = false;
+
         //a
         public void Initialize(PuzzleLvl3Cocina newPuzzle)
         {
@@ -44,6 +46,25 @@ namespace CasaCatolicaPuzzle
 
         //}
 
+        public void GoTakeDessert()
+        {
+            Debug.Log($"<color=#aaf90f> Npc take dessert </color>");
+
+            _myAsustable.SetSpecificDestination(_myPuzzle._fridge.transform);
+            _myPuzzle._fridge.PrenderHeladera();
+            _myAsustable.OnScareEnd -= GoTakeDessert;
+
+
+        }
+
+        public void GetChocolateCasero()//codeo bien void, no apto para artistas
+        {
+            tieneChocolate = true;
+
+            _myAsustable.OnSlideStop += _myPuzzle.CompletePuzzle;
+            _myAsustable.OnRagdollEnd += _myPuzzle.CompletePuzzle;
+        }
+
         public void GoCheckMicrowave()
         {
             Debug.Log($"<color=#aaf90f> Npc Check microwave</color>");
@@ -54,7 +75,7 @@ namespace CasaCatolicaPuzzle
 
         public void DrestroyMeBaby()
         {
-
+            Destroy(this);
         }
 
         public void QuemarNpc()
@@ -62,6 +83,8 @@ namespace CasaCatolicaPuzzle
             Debug.Log($"<color=#aaf90f> Npc quemado</color>");
 
             _myAsustable.GetScared(1, -1);
+
+            _myAsustable.OnScareEnd += GoTakeDessert;
         }
 
         private void OnDestroy()

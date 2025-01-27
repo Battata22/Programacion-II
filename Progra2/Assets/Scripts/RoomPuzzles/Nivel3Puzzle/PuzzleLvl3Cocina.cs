@@ -33,6 +33,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
     [SerializeField] public NpcCocinaPuzzle npcPuzzle;
     [SerializeField] public SFXMicroondas microwave;
     [SerializeField] public MicroondasPuzzle microPuzzle;
+    [SerializeField] public FridgePuzzle _fridge;
 
     [SerializeField] RoomTrigger[] _nextRooms;
     [SerializeField] Door[] _roomDoors;
@@ -70,8 +71,11 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         LockDoors();
     }
 
-    void CompletePuzzle()
+    public void CompletePuzzle()
     {
+        npcInRoom.OnSlideStop -= CompletePuzzle;
+        npcInRoom.OnRagdollEnd -= CompletePuzzle;
+
         foreach (var door in _finalDoors)
         {
             door.UnlockDoor();
@@ -85,6 +89,8 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         }
 
         _exorcista.gameObject.SetActive(true);
+
+        npcPuzzle.DrestroyMeBaby();
     }
 
     void LockDoors()

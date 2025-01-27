@@ -45,7 +45,17 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     //Eventos
     public event DelegateType.VoidDelegate OnSlideStop = delegate { };
     public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
+    public event DelegateType.VoidDelegate OnRagdollEnd = delegate { };
     public event DelegateType.VoidDelegate OnNodePosition = delegate { };
+
+    public event DelegateType.VoidDelegate OnScareStart = delegate { };
+    public event DelegateType.VoidDelegate OnScareEnd = delegate { };
+    public event DelegateType.VoidDelegate OnDoubtStart = delegate { };
+    //public event DelegateType.VoidDelegate OnDoubtEnd = delegate { };
+
+    public event DelegateType.VoidDelegate OnTurnOff = delegate { };
+    public event DelegateType.VoidDelegate OnTurnOn = delegate { };
+
 
     [Header("<color=green> Update Resets </color>")]
     [SerializeField] bool resetInScare = true;
@@ -465,7 +475,9 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _agent.SetDestination(_actualNode.position);
         Ganarga(scareAmount);
 
+
         ResetFarthestNode();
+        OnScareStart();
     }
 
     protected override void StopScare()
@@ -477,6 +489,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _agent.speed = speedNormal;
         scared = false;
         _particulas.scared = false;
+
+        OnScareEnd();
     }
 
     public void CallStopScare()
@@ -631,6 +645,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
         _agent.SetDestination(pos);
         _searchingPos = pos;
+
+        OnDoubtStart();
     }
 
     private IEnumerator LookAround()
@@ -812,6 +828,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _agent.speed = 0f;
         _agent.enabled = false;
         _mesh.SetActive(false);
+
+        OnTurnOff();
     }
 
     public override void TurnOn()
@@ -823,6 +841,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _agent.speed = speedNormal;
         if (_actualNode != null)
             _agent.SetDestination(_actualNode.position);
+
+        OnTurnOn();
     }
 
     public void CallRagdollOn()
@@ -861,6 +881,8 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         {
             Destroy(gameObject);
         }
+
+        OnRagdollEnd();
     }
 
     public void GetScaredTuto()

@@ -77,6 +77,8 @@ public class MicroondasPuzzle : Nivel3Puzzle
 
         _contando = true;
         duration = newDuration;
+
+        _myPuzzle.npcInRoom.SetNewDestination();
     }
 
     public void RestartCountDown(float newDuration)
