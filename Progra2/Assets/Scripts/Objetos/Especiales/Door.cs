@@ -55,13 +55,14 @@ public class Door : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (_locked) return;
+        //if (_locked) return;
         CloseAnim();
     }
 
     void PlayAnim(NPC npc)
     {
         if (_myAnim == null) return;
+        if (_isOpen) return;
         var dir = (new Vector3(npc.transform.position.x,transform.position.y,npc.transform.position.z) - transform.position).normalized;
 
         if(Vector3.Angle(dir, transform.forward) > 90)
@@ -83,9 +84,11 @@ public class Door : MonoBehaviour
     void CloseAnim()
     {
         if (_myAnim == null) return;
-        _isOpen = false;
+        if(!_isOpen) return;
+
         _myAnim.SetBool("Close", true);
         SetColider(!_isOpen);
+        _isOpen = false;
 
         OnDoorClose();
     }

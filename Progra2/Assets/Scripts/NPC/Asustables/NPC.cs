@@ -260,6 +260,23 @@ public abstract class NPC : MonoBehaviour, IRoomDetectable
         //_agent.SetDestination(_actualNode.position);
     }
 
+    public virtual void SetNewDestination(Transform lastDest = null)
+    {
+        if (lastDest != null)
+            _actualNode = GetNewNode(lastDest);
+        else
+            _actualNode = GetNewNode();
+
+        _agent.SetDestination(_actualNode.position);
+    }
+
+    public virtual void SetSpecificDestination(Transform newDest)
+    {
+        _actualNode = newDest;
+
+        _agent.SetDestination(_actualNode.position);
+    }
+
     protected virtual void OnDestroy()
     {
         GameManager.Instance.Npc.Remove(this);

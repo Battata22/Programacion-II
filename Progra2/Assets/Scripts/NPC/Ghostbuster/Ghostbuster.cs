@@ -845,15 +845,16 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         _lookingActive = false;
     }
 
-    void SetNewDestination(Transform lastDest = null)
+    public override void SetNewDestination(Transform lastDest = null)
     {
 
-        if (lastDest != null)
-            _actualNode = GetNewNode(lastDest);
-        else
-            _actualNode = GetNewNode();
+        //if (lastDest != null)
+        //    _actualNode = GetNewNode(lastDest);
+        //else
+        //    _actualNode = GetNewNode();
 
-        _agent.SetDestination(_actualNode.position);
+        //_agent.SetDestination(_actualNode.position);
+        base.SetNewDestination(lastDest);
 
         SetSpeed();
         //Debug.Log($"<color=cyan> Nuevo Destino Elegido {_actualNode.name} </color>");

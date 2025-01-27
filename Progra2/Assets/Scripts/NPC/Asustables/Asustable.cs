@@ -45,6 +45,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     //Eventos
     public event DelegateType.VoidDelegate OnSlideStop = delegate { };
     public event DelegateType.VoidDelegate OnRagdollTrigger = delegate { };
+    public event DelegateType.VoidDelegate OnNodePosition = delegate { };
 
     [Header("<color=green> Update Resets </color>")]
     [SerializeField] bool resetInScare = true;
@@ -271,7 +272,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         if (_actualNode == null) Initialize();
 
         /*
-         * Baby Chacks
+         * Baby Checks
         */
 
         if(_hasChildCrying && Time.time - _lastCalmCall > _timeBtBabyCalm)
@@ -295,6 +296,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
 
         if ((!_doubt && !_lookingActive && Vector3.SqrMagnitude(transform.position - _actualNode.position) <= (_changeNodeDist * _changeNodeDist)))
         {
+            OnNodePosition();
             StartCoroutine(LookAround());
             #region comment
             //_actualNode = GetNewNode(_actualNode);
@@ -634,6 +636,7 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
     private IEnumerator LookAround()
     {
         _lookingActive = true;
+
 
         if (!scared)
         {

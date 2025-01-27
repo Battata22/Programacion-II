@@ -70,7 +70,9 @@ public class PuzzleNene : Nivel3Puzzle
             parent.StartUseOwnNode();
         }
 
-        _nextPuzzle.StartPuzzle();
+        _pendejito.StartUseOwnNode();
+
+        //_nextPuzzle.StartPuzzle();
     }
 
     void ActivateParent()

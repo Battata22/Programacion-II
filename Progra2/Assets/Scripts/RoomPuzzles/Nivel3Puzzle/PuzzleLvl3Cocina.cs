@@ -1,11 +1,13 @@
 using CasaCatolicaPuzzle;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PuzzleLvl3Cocina : Nivel3Puzzle
 {
-    //idea
+    //idea vieja
     //bloquear puertas de la cocina cuando entre el adulto
     //el npc se pone a preparar algo para calmar al pendejo
     //hay que hacer que eso salga mal, como?
@@ -13,12 +15,32 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
     //hacer que la tire
     //Hacer que el horno tire fogo?
 
+    //idea
+    //npc se acerca a calentar la lechita
+    //despues de un rato la agarra
+    //player puede pasar de rosca el microndas
+    //si npc agarra se quema/ asusta / tira la merda
 
-    [SerializeField] Asustable _npcInRoom;
+    //despues
+    //hace la leche en algo fragil
+    //si le pegas un slide o ragdoll deja caer la segunda leche
+
+    //tercer shit
+    //agarra unas galletas y se las lleva al pendejo
+
+    //hacer scrip por separado para jugar con la ia del npc
+    [SerializeField] public Asustable npcInRoom;
+    [SerializeField] public NpcCocinaPuzzle npcPuzzle;
+    [SerializeField] public SFXMicroondas microwave;
+    [SerializeField] public MicroondasPuzzle microPuzzle;
+
+    [SerializeField] RoomTrigger[] _nextRooms;
     [SerializeField] Door[] _roomDoors;
     [SerializeField] Door[] _finalDoors;
     [SerializeField] Exorcista _exorcista;
-    [SerializeField] RoomTrigger[] _nextRooms;
+    [SerializeField] int _currentStage = 0;
+    public int CurrentStage {  get { return _currentStage; } }
+
     AINodeManager _nodeManager;
 
 
@@ -28,17 +50,24 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (_npcInRoom == null)
-    //    {
-    //        _npcInRoom= other.gameObject.GetComponent<Asustable>();
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.GetComponent<Asustable>() == npcInRoom)
+        {
+            StartPuzzle();
+        }
+    }
 
     public void StartPuzzle()
     {
-        
+        _currentStage++;
+
+        npcPuzzle = npcInRoom.transform.AddComponent<NpcCocinaPuzzle>();
+        npcPuzzle.Initialize(this);
+        npcPuzzle.StartMicrowave();
+        microwave.MicroondasPuzzle.active = true;
+
+        LockDoors();
     }
 
     void CompletePuzzle()

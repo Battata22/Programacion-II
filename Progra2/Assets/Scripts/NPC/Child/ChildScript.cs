@@ -260,7 +260,7 @@ public class ChildScript : NPC
         _parents[_closeParentIndex].AddBabyCryingList(this);
     }
 
-    void SetNewDestination(Transform lastDest = null)
+    public override void SetNewDestination(Transform lastDest = null)
     {
 
         if (lastDest != null)
