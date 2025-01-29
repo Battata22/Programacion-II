@@ -54,11 +54,15 @@ namespace CasaCatolicaPuzzle
             _myPuzzle._fridge.PrenderHeladera();
             _myAsustable.OnScareEnd -= GoTakeDessert;
 
+            _myPuzzle._fridge.DaleElChocolate += GetChocolateCasero;
+
 
         }
 
         public void GetChocolateCasero()//codeo bien void, no apto para artistas
         {
+            _myPuzzle._fridge.DaleElChocolate -= GetChocolateCasero;
+            if (tieneChocolate) return;
             tieneChocolate = true;
 
             _myAsustable.OnSlideStop += _myPuzzle.CompletePuzzle;

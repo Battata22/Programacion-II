@@ -38,6 +38,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
     [SerializeField] RoomTrigger[] _nextRooms;
     [SerializeField] Door[] _roomDoors;
     [SerializeField] Door[] _finalDoors;
+    [SerializeField] Asustable[] _finalNpcs;
     [SerializeField] Exorcista _exorcista;
     [SerializeField] int _currentStage = 0;
     public int CurrentStage {  get { return _currentStage; } }
@@ -73,6 +74,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
     public void CompletePuzzle()
     {
+        Debug.Log("<color=#f0b100>Puzzle completado</color>");
         npcInRoom.OnSlideStop -= CompletePuzzle;
         npcInRoom.OnRagdollEnd -= CompletePuzzle;
 
@@ -87,6 +89,15 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
             _nodeManager.SetActiveNodes(room.roomIndex, resetList);
             resetList = false;
         }
+
+        foreach(var npc in _finalNpcs)
+        {
+            npc.StopUseOwnNode();
+        }
+
+        microPuzzle.doCheck = false;
+
+        _exorcista.gameObject.SetActive(true);
 
         _exorcista.gameObject.SetActive(true);
 

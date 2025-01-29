@@ -12,6 +12,8 @@ namespace CasaCatolicaPuzzle
         [SerializeField] float checkDist;
         [SerializeField] public bool active = false;
 
+        public event DelegateType.VoidDelegate DaleElChocolate = delegate { };
+
         private void Update()
         {
             if (doCheck && Vector3.SqrMagnitude(_myPuzzle.npcPuzzle.transform.position - transform.position) < (checkDist * checkDist))
@@ -25,6 +27,7 @@ namespace CasaCatolicaPuzzle
             doCheck = false;
             //npc agarra postre
             Debug.Log("<color=#a1670b>Pero tenía tantas ganas de comerme el chocolate</color>");
+            DaleElChocolate();
             _myPuzzle.npcInRoom.SetNewDestination();
         }
 
