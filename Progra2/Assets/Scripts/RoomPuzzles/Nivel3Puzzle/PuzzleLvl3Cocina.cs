@@ -71,7 +71,14 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
         LockDoors();
     }
+    
+    /*
+    al completar el puzzle
+    el gil en la cocina sale corriendo
+    ell que esta con el niño lo deja en el cuarto de los adultos
+    el exorcista entra
 
+    */
     public void CompletePuzzle()
     {
         Debug.Log("<color=#f0b100>Puzzle completado</color>");
@@ -93,6 +100,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         foreach(var npc in _finalNpcs)
         {
             npc.StopUseOwnNode();
+            npc.SetNewDestination();
         }
 
         microPuzzle.doCheck = false;

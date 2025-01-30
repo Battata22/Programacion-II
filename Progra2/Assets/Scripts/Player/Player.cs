@@ -307,25 +307,25 @@ public class Player : MonoBehaviour, IRoomDetectable
         //                                                                   LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos, 0.25f, transform.right, out hitR, 0.52f, _stopLayer) && !hitR.transform.GetComponent<Collider>().isTrigger && xAxis > 0)
         {
-            //Debug.Log($"<color=yellow> Wall Detected R {hitR.transform.name}</color>");
+            Debug.Log($"<color=yellow> Wall Detected R {hitR.transform.name}</color>");
             //if (hitR.transform.tag == "MagicWall" || (!hitR.transform.GetComponent<Collider>().isTrigger && xAxis > 0))
                 return;
         }//                                                                  LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos,0.25f, -transform.right, out hitL, 0.52f, _stopLayer) && !hitL.transform.GetComponent<Collider>().isTrigger && xAxis < 0)
         {
-            //Debug.Log($"<color=yellow> Wall Detected L {hitL.transform.name}</color>");
+            Debug.Log($"<color=yellow> Wall Detected L {hitL.transform.name}</color>");
             //if (hitL.transform.tag == "MagicWall" || (!hitL.transform.GetComponent<Collider>().isTrigger && xAxis < 0))
             return;
         }//                                                                  LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos,0.25f, transform.forward,out hitF, 0.52f, _stopLayer) && !hitF.transform.GetComponent<Collider>().isTrigger && zAxis > 0)
         {
-            //Debug.Log($"<color=yellow> Wall Detected F {hitF.transform.name}</color>");
+            Debug.Log($"<color=yellow> Wall Detected F {hitF.transform.name}</color>");
             //if (hitF.transform.tag == "MagicWall" || (!hitF.transform.GetComponent<Collider>().isTrigger && zAxis > 0))
                 return;
         }//                                                                   LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos,0.25f, -transform.forward,out hitB, 0.52f, _stopLayer) && !hitB.transform.GetComponent<Collider>().isTrigger && zAxis < 0)
         {
-            //Debug.Log($"<color=yellow> Wall Detected B {hitB.transform.name}</color>");
+            Debug.Log($"<color=yellow> Wall Detected B {hitB.transform.name}</color>");
             //if (hitB.transform.tag == "MagicWall" || (!hitB.transform.GetComponent<Collider>().isTrigger && zAxis < 0))
                 return;
         }        
