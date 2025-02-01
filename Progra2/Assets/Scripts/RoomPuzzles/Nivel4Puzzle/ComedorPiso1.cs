@@ -13,7 +13,7 @@ public class ComedorPiso1 : Nivel4Puzzle
     [SerializeField] Transform _exit;
     [SerializeField] RoomTrigger _myRoom;
     [SerializeField] HouseExitTrigger _houseExit;
-    [SerializeField] GlassTable _table;
+    [SerializeField] GlassTable _table;   
 
     bool _roomCompleted = false;
     private void Awake()
@@ -34,17 +34,32 @@ public class ComedorPiso1 : Nivel4Puzzle
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(_roomCompleted && other.gameObject == _houseOwner.gameObject)
+        {
+            Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
+
+            _houseOwner.StartKickOut(3f);
+        }
+    }
+
     void CompletePuzzle()
     {
-        foreach (var npc in _myNpc)
-        {
-            _houseExit.AddToList(npc.gameObject);
-            npc.InfiniteScared(true);
-            npc.GetScared(1f, -1, _exit);
-        }
+        #region shit
+        //foreach (var npc in _myNpc)
+        //{
+        //    _houseExit.AddToList(npc.gameObject);
+        //    npc.InfiniteScared(true);
+        //    npc.GetScared(1f, -1, _exit);
+        //}
+
+        //_roomCompleted = true;
+        //StartCoroutine(ConstantScare()); 
+        #endregion
 
         _roomCompleted = true;
-        StartCoroutine(ConstantScare());
+        _houseOwner.AddToCompleteList(this);
     }
 
     public override void ActivatePuzzle()
@@ -68,5 +83,19 @@ public class ComedorPiso1 : Nivel4Puzzle
 
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    public override void KickOutNpc()
+    {
+
+        foreach (var npc in _myNpc)
+        {
+            _houseExit.AddToList(npc.gameObject);
+            npc.InfiniteScared(true);
+            npc.GetScared(1f, -1, _exit);
+        }
+
+        _roomCompleted = true;
+        StartCoroutine(ConstantScare());
     }
 }

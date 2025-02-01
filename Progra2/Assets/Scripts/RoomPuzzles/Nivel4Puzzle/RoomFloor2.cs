@@ -16,13 +16,13 @@ public class RoomFloor2 : Nivel4Puzzle
         _myRoom = GetComponent<RoomTrigger>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            CompletePuzzle();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.UpArrow))
+    //    {
+    //        CompletePuzzle();
+    //    }
+    //}
 
     void CompletePuzzle()
     {
@@ -37,5 +37,10 @@ public class RoomFloor2 : Nivel4Puzzle
     public override void ActivatePuzzle()
     {
         Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
+    }
+
+    public override void KickOutNpc()
+    {
+        throw new System.NotImplementedException();
     }
 }

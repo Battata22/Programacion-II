@@ -37,4 +37,9 @@ public class BathFloor1 : Nivel4Puzzle
     {
         Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
     }
+
+    public override void KickOutNpc()
+    {
+        throw new System.NotImplementedException();
+    }
 }
