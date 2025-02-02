@@ -10,8 +10,14 @@ public class LivingPuzzle : MonoBehaviour
     [SerializeField] RoomTrigger[] _nextRooms;
     [SerializeField] Asustable[] asustables;
     AINodeManager _nodeManager;
+    [SerializeField] Fireflies _fireFlies;
+    [SerializeField] Fireflies _fliesPrefab;
+    [SerializeField] List<Sahumerio> _sahumerios = new();
 
     [SerializeField] DepaRoomPuzzle _roomPuzzle;
+
+    bool _fliesActive = false;
+    bool _puzzleActive = false;
 
     private IEnumerator Start()
     {
@@ -19,6 +25,36 @@ public class LivingPuzzle : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
         GameManager.Instance.Rociadores.OnRociadoresActive += CompleteRoom;
+    }
+
+    private void Update()
+    {
+        if (_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
+        {
+            _fliesActive = true;
+            var newFlies = Instantiate(_fliesPrefab, _sahumerios[Random.Range(0, _sahumerios.Count)].transform.position, Quaternion.identity);
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
+        }
+    }
+
+    void DeactivateFlies() 
+    {
+        _fliesActive = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent<Sahumerio>(out var sahumerio))
+        {
+            AddSahumerio(sahumerio);
+        }
+    }
+
+    public void StartPuzzle()
+    {
+        _puzzleActive = true;
+        _fireFlies.gameObject.SetActive(true);
     }
 
     void CompleteRoom()
@@ -50,11 +86,24 @@ public class LivingPuzzle : MonoBehaviour
         GameManager.Instance.Rociadores.OnRociadoresActive -= CompleteRoom;
 
         _roomPuzzle.Shit();
+        _fireFlies.gameObject.SetActive(false);
 
         GameManager.Instance.ActivateTerrorBar();
 
     }
 
+    void AddSahumerio(Sahumerio newSahumerio)
+    {
+        bool addToList = true;
+        foreach(var sahumerios in _sahumerios)
+        {
+            if(sahumerios == newSahumerio)
+                addToList = false;
+        }
+
+        if(addToList)
+            _sahumerios.Add(newSahumerio);
+    }
     private void OnDestroy()
     {
         GameManager.Instance.Rociadores.OnRociadoresActive -= CompleteRoom;

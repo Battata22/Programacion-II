@@ -14,7 +14,14 @@ public class BathroomPuzzle : MonoBehaviour
     [SerializeField] Door[] _doors;
     [SerializeField] GameObject[] _pets;
     [SerializeField] RoomTrigger[] _nextRooms;
+    [SerializeField] Fireflies _fireFlies;
+    [SerializeField] Fireflies _fliesPrefab;
+    [SerializeField] Pickable[] _pickables;
     AINodeManager _nodeManager;
+    [SerializeField, Tooltip("The Living Puzzle")] LivingPuzzle _nextPuzzle;
+
+    bool _fliesActive = false;
+    bool _puzzleActive = true;
 
     private void Start()
     {
@@ -22,9 +29,25 @@ public class BathroomPuzzle : MonoBehaviour
         _bath.ActionActive += CompleteRoom;
     }
 
+    private void Update()
+    {
+        if (_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
+        {
+            _fliesActive = true;
+            var newFlies = Instantiate(_fliesPrefab, _pickables[Random.Range(0, _pickables.Length)].transform.position, Quaternion.identity);
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
+        }
+    }
+    void DeactivateFlies()
+    {
+        _fliesActive = false;
+    }
+
     void CompleteRoom()
     {
         //Debug.Log($"<color=green> CUARTO COMPLETADO </color>");
+        _nextPuzzle.StartPuzzle();
 
         foreach (var door in _doors)
         {
@@ -43,6 +66,9 @@ public class BathroomPuzzle : MonoBehaviour
             pet.SetActive(true);
         }
         _bath.ActionActive -= CompleteRoom;
+
+        _puzzleActive = false;
+        _fireFlies.gameObject.SetActive(false);
 
         GameManager.Instance._master2.ActivarGB();
     }

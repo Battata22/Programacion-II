@@ -2,7 +2,6 @@ using CasaCatolicaPuzzle;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PuzzleLvl3Cocina : Nivel3Puzzle

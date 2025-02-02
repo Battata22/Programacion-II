@@ -5,6 +5,7 @@ using UnityEngine;
 public class BedroomPuzzle : MonoBehaviour
 {
     [SerializeField] Key _keyPrefab;
+    [SerializeField] Fireflies _fliesPrefab;
     [SerializeField] Asustable _granny;
     [SerializeField] Closet _closet;
     [SerializeField] Door[] _doors;
@@ -16,6 +17,9 @@ public class BedroomPuzzle : MonoBehaviour
 
     [SerializeField] Transform keyRescue;
 
+    [SerializeField] List<Fireflies> _allFlies = new();
+    [SerializeField, Tooltip("The Kitchen Puzzle")] KitchenPuzzle _nextPuzzle;
+
     private void Start()
     {
         _granny.OnRagdollTrigger += SpawnKey;
@@ -24,7 +28,11 @@ public class BedroomPuzzle : MonoBehaviour
 
     void SpawnKey()
     {
-        Instantiate(_keyPrefab, _granny.transform.position, Quaternion.identity);
+        var newKey = Instantiate(_keyPrefab, _granny.transform.position, Quaternion.identity);
+
+        var newFlies = Instantiate(_fliesPrefab, newKey.transform.position, Quaternion.identity);
+        newFlies.SetFocusObj(newKey.transform);
+
         _granny.OnRagdollTrigger -= SpawnKey;
         _closet.ActionActive += CompleteRoom;
     }
@@ -32,6 +40,11 @@ public class BedroomPuzzle : MonoBehaviour
     void CompleteRoom()
     {
         Debug.Log($"<color=green> CUARTO COMPLETADO </color>");
+
+        foreach(var flies in _allFlies)
+        {
+            flies.gameObject.SetActive(false);
+        }
 
         foreach(var door in _doors)
         {
@@ -52,7 +65,16 @@ public class BedroomPuzzle : MonoBehaviour
         _closet.ActionActive -= CompleteRoom;
 
         //GameManager.Instance.Master1.ActivarGB();
+        _nextPuzzle.StartPuzzle();
         _canillaTrigger.CallShit();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Fireflies>(out var fireflies) && fireflies._state == Fireflies.State.idle)
+        {
+            AddFlies(fireflies);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -60,6 +82,23 @@ public class BedroomPuzzle : MonoBehaviour
         if(other.TryGetComponent<Key>(out var key))
         {
             key.transform.position = keyRescue.position + new Vector3(0,1,0);
+        }        
+    }
+
+    void AddFlies(Fireflies newFlies)
+    {
+        bool addToList = true;
+        foreach(var fly in _allFlies)
+        {
+            if(fly == newFlies)
+                addToList = false;
+        }
+
+        if (addToList)
+        {
+            Debug.Log($"<color=green>{newFlies.name} Añadido a la lista</color>");
+            _allFlies.Add(newFlies);
+            newFlies.GetComponent<SphereCollider>().enabled = false;
         }
     }
 

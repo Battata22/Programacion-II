@@ -11,13 +11,40 @@ public class KitchenPuzzle : MonoBehaviour
     [SerializeField] Door[] _doors;
     [SerializeField] Cat _cat;
     [SerializeField] RoomTrigger[] _nextRooms;
+    [SerializeField] Fireflies _fireflies;
+    [SerializeField] Fireflies _fliesPrefab;
+    [SerializeField] Pickable[] _midObjs;
     AINodeManager _nodeManager;
 
+    bool _fliesActive = false;
+    bool _puzzleActive = false;
     private void Start()
     {
         _granny.OnSlideStop += CompleteRoom;
         _nodeManager = GetComponentInParent<AINodeManager>();
         _canillaTrigger.OnCanillaBreak += SetWather;
+    }
+
+    private void Update()
+    {
+        if(_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
+        {
+            _fliesActive = true;
+            var newFlies = Instantiate(_fliesPrefab, _midObjs[Random.Range(0, _midObjs.Length)].transform.position, Quaternion.identity);
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
+        }
+    }
+
+    public void StartPuzzle()
+    {
+        _puzzleActive = true;
+        _fireflies.gameObject.SetActive(true);
+    }
+
+    void DeactivateFlies()
+    {
+        _fliesActive = false;
     }
 
     void SetWather()
@@ -43,8 +70,10 @@ public class KitchenPuzzle : MonoBehaviour
             resetList = false;
         }
 
-        _cat.gameObject.SetActive(false);
+        //_cat.gameObject.SetActive(false);
         _granny.OnSlideStop -= CompleteRoom;
+
+        _fireflies.gameObject.SetActive(false);
 
         GameManager.Instance.ActivateTerrorBar();
         GameManager.Instance.Master1.ActivarGB();

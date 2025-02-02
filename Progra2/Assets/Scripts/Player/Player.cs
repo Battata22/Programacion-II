@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IRoomDetectable
 {
-
+    //a
     bool inmortal = false;
     bool _canMove = true;
 

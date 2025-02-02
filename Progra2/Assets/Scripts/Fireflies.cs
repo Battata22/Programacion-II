@@ -5,15 +5,18 @@ using UnityEngine;
 public class Fireflies : MonoBehaviour
 {
     //Procrastinando, si señor
+    [SerializeField] Transform _focusObject;
     [SerializeField] Vector3 _initialPos;
     [SerializeField] Player _player;
     [SerializeField] ParticleSystem _myParticleSys;
     [SerializeField] float _spd;
     [SerializeField] float _offset;
     [SerializeField] int _pulses;
-    [SerializeField] State _state;
+    [SerializeField] public State _state { get;protected set; }
 
     [SerializeField] int _pulsesLeft;
+
+    public event DelegateType.VoidDelegate OnPulseEnd = delegate { };
     private void Awake()
     {
         _initialPos = transform.position;
@@ -29,8 +32,7 @@ public class Fireflies : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.V) && _state == State.idle) 
         {
-            _pulsesLeft = _pulses;
-            _state = State.active;
+            ActivateMovement(false);
         }
 
         if(_state == State.idle)
@@ -41,12 +43,45 @@ public class Fireflies : MonoBehaviour
         {
             StartCoroutine(Movement());
         }
+
+        if(_focusObject != null && _focusObject.position != _initialPos) 
+        {
+            _initialPos = _focusObject.position;
+        }
+
+    }
+
+    public void ActivateMovement(bool destroyOnEnd)
+    {
+        _pulsesLeft = _pulses;
+        _state = State.active;
+
+        if (destroyOnEnd)
+            OnPulseEnd += DestroyMe;
+
+    }
+
+    void DestroyMe()
+    {
+        Destroy(gameObject, 3f);
+    }
+
+    public void SetFocusObj(Transform newObj)
+    {
+        _myParticleSys.Stop();
+
+        _focusObject = newObj;
+
+        _myParticleSys.Play();
     }
 
     void StartIdle()
     {
         _myParticleSys.Stop();
-        transform.position = _initialPos;
+        //if (_focusObject != null)
+            transform.position = _initialPos;
+        //else 
+        //    transform.position = _focusObject.position;
         _state = State.idle;
         _myParticleSys.Play();
     }
@@ -77,13 +112,16 @@ public class Fireflies : MonoBehaviour
 
         _pulsesLeft--;
         if(_pulsesLeft <= 0)
+        {
+            OnPulseEnd();
             StartIdle();
+        }
         else
         {
             _state = State.active;
         }
     }
-    enum State
+    public enum State
     {
         idle,
         active,
