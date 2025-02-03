@@ -10365,6 +10365,7 @@ MonoBehaviour:
   _detectableLayers:
     serializedVersion: 2
     m_Bits: 805307392
+  roomIndex: 0
   icePrefab: {fileID: -8326843510666921108, guid: 1f0b5f09a1ad1834398f0f111117ea35, type: 3}
   partcleGen: {fileID: 4807766667118608628, guid: dfe196be0a8440e468d0c175005e9689, type: 3}
   _target: {fileID: 0}
@@ -10520,6 +10521,7 @@ MonoBehaviour:
   _detectableLayers:
     serializedVersion: 2
     m_Bits: 805307392
+  roomIndex: 0
   aguas:
   - {fileID: 0}
   - {fileID: 0}
@@ -20378,11 +20380,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 0}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -31047,11 +31049,13 @@ MonoBehaviour:
   scared: 0
   mocod: 0
   stuned: 0
+  _infiniteScare: 0
   _sliderBarra: {fileID: 0}
   gritoClip: {fileID: 8300000, guid: 857ec6ddae490824d9ebb24bc57328c8, type: 3}
   doubtClip: {fileID: 8300000, guid: 3911e78dd270efa4c8a88636157da8a6, type: 3}
   _anim: {fileID: 0}
   _mesh: {fileID: 4066976859881825801}
+  _ignoreOtherRooms: 0
   tutorial: 0
   resetInScare: 1
   resetInDoubt: 1
@@ -31061,6 +31065,7 @@ MonoBehaviour:
   canillaActive: 0
   _timeBtBabyCalm: 0
   _calmDuration: 0
+  _cryChildList: []
 --- !u!54 &1095215741
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31941,6 +31946,7 @@ MonoBehaviour:
   _detectableLayers:
     serializedVersion: 2
     m_Bits: 268436480
+  roomIndex: 0
   _espejo: {fileID: 119977977}
   _target: {fileID: 1095215740}
   _bath: {fileID: 1854123987}
@@ -41429,6 +41435,10 @@ MonoBehaviour:
   - {fileID: 1692794306}
   _nextRooms:
   - {fileID: 1445267767}
+  _fireFlies: {fileID: 0}
+  _fliesPrefab: {fileID: 0}
+  _pickables: []
+  _nextPuzzle: {fileID: 0}
 --- !u!4 &1342135383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1311354748470797070, guid: cd5b72b3cd1886e45bbea83179390f41, type: 3}
@@ -43111,6 +43121,9 @@ MonoBehaviour:
   - {fileID: 1599260677}
   asustables:
   - {fileID: 1095215740}
+  _fireFlies: {fileID: 0}
+  _fliesPrefab: {fileID: 0}
+  _sahumerios: []
   _roomPuzzle: {fileID: 1610211755}
 --- !u!82 &1449804080 stripped
 AudioSource:
@@ -46424,6 +46437,7 @@ MonoBehaviour:
   _detectableLayers:
     serializedVersion: 2
     m_Bits: 536871936
+  roomIndex: 0
   _pantalla: {fileID: 516066565}
   _target: {fileID: 1095215740}
 --- !u!4 &1610211756
@@ -51021,6 +51035,7 @@ MonoBehaviour:
   _detectableLayers:
     serializedVersion: 2
     m_Bits: 536871936
+  roomIndex: 0
   _jumpScarePrefab: {fileID: 8156124905910852461, guid: 42021bc77ef5f8e45b178ff701d1b3fe, type: 3}
   _target: {fileID: 1095215740}
   cortina: {fileID: 450393713}
@@ -62839,6 +62854,63 @@ Transform:
   - {fileID: 1529311660636836597}
   m_Father: {fileID: 8980911683880600306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4905995973760303427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4237208232117016359, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_Name
+      value: LaserSatelitalOfTheCock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232460123560377601, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0d21e87b9967a449a9c9f92998be527, type: 3}
 --- !u!4 &4910102405307971619
 Transform:
   m_ObjectHideFlags: 0
@@ -69285,6 +69357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae938154a96099544b50aabc8771d2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myParent: {fileID: 0}
+  _useParent: 0
 --- !u!4 &8197380252231801610
 Transform:
   m_ObjectHideFlags: 0
@@ -70111,3 +70185,4 @@ SceneRoots:
   - {fileID: 2446052039105725327}
   - {fileID: 2059119093}
   - {fileID: 1625014156}
+  - {fileID: 4905995973760303427}
