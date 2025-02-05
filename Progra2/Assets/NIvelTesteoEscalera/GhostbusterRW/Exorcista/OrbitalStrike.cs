@@ -110,6 +110,7 @@ public class OrbitalStrike : MonoBehaviour
             player.GetComponent<Player>().GetDamage();
         }
 
+        #region comment
         //GameManager.Instance.Player.GetDamage();
 
         //var player = GameManager.Instance.Player;
@@ -122,7 +123,8 @@ public class OrbitalStrike : MonoBehaviour
         //    Debug.Log($"<color=red>Player = {player.name}</color>");
 
         //    player.GetDamage();
-        //}
+        //} 
+        #endregion
     }
 
     void StopAttack()
