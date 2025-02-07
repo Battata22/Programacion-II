@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Key : Pickable
 {
-    protected int _myId;
+    [Header("<color=yellow>Key</color>")]
+    [SerializeField] protected int _myId;
 
     protected override void OnCollisionEnter(Collision collision)
     {

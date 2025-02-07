@@ -9,6 +9,8 @@ public class Chest : MonoBehaviour, ILockeable
     // se abre y dentro hay objetos
     // nig...
 
+    [SerializeField] Disco _discoPrefab;
+
     [SerializeField] bool _locked;
     public bool locked { get { return _locked; } }
 
@@ -17,12 +19,19 @@ public class Chest : MonoBehaviour, ILockeable
 
     public void Lock()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("<color=red> Toy cershado ura</color>");
+
+
     }
 
     public void Unlock()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("<color=green>ah</color>");
+
+        //cambia el mesh
+        //crear disco choto
+        var disco = Instantiate(_discoPrefab,transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
+
     }
 
 

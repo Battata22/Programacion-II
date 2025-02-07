@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Pickable))]
 public class Disco : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //ya esta, xd
+    [SerializeField] AudioClip _song;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.transform.TryGetComponent<TocaDiscos>(out var tocaDiscos))
+        {
+            DoShit(tocaDiscos);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void DoShit(TocaDiscos caca)
     {
-        
+        caca.ChangeDisc(_song);
+        Destroy(gameObject);
     }
 }

@@ -35,6 +35,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
     [SerializeField] public FridgePuzzle _fridge;
 
     [SerializeField] RoomTrigger[] _nextRooms;
+    [SerializeField] ComedorPuzzle _nextPuzzle;
     [SerializeField] Door[] _roomDoors;
     [SerializeField] Door[] _finalDoors;
     [SerializeField] Asustable[] _finalNpcs;
@@ -44,6 +45,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
     AINodeManager _nodeManager;
 
+    bool _roomComplete = false;
 
     private void Start()
     {
@@ -81,6 +83,8 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
     public void CompletePuzzle()
     {
         Debug.Log("<color=#f0b100>Puzzle completado</color>");
+        _roomComplete = true;
+
         npcInRoom.OnSlideStop -= CompletePuzzle;
         npcInRoom.OnRagdollEnd -= CompletePuzzle;
 
@@ -109,10 +113,13 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         _exorcista.gameObject.SetActive(true);
 
         npcPuzzle.DrestroyMeBaby();
+
+        _nextPuzzle.StartPuzzle();
     }
 
     void LockDoors()
     {
+        if(_roomComplete) return;
         foreach (var door in _roomDoors)
         {
             door.LockDoor();

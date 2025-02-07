@@ -877,12 +877,14 @@ public class Asustable : NPC, ICanSlide, IPossessable, IRagdoll
         _myRagdollSwitch.DeactivateRagdoll();
         if (scareOnEnd)
             GetScared(1f, actualRoom,_actualNode);
+
+        OnRagdollEnd();
+
         if (tutorial == true)
         {
             Destroy(gameObject);
         }
 
-        OnRagdollEnd();
     }
 
     public void GetScaredTuto()

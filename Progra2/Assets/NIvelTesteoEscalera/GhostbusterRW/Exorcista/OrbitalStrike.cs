@@ -30,7 +30,7 @@ public class OrbitalStrike : MonoBehaviour
 
     private void Update()
     {
-        if(!_canAtk && Time.time - _lastAtk > _atkCd)
+        if(!_onAtk && !_canAtk && Time.time - _lastAtk > _atkCd)
         {
             _canAtk=true;
         }
@@ -45,7 +45,7 @@ public class OrbitalStrike : MonoBehaviour
         }
     }
 
-    void StartAttack()
+    public void StartAttack()
     {
         if (!_canAtk) return;
         Debug.Log("<color=green>Arranca el ataque</color>");
@@ -127,7 +127,7 @@ public class OrbitalStrike : MonoBehaviour
         #endregion
     }
 
-    void StopAttack()
+    public void StopAttack()
     {
         Debug.Log("<color=yellow>Frena el ataque</color>");
 

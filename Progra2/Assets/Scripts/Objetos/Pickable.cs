@@ -339,8 +339,8 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                     c.isTrigger = true;
                 _rb.constraints = RigidbodyConstraints.None;
                 pickUpScript.esperaragarre = 0;
-                _renderer = GetComponent<Renderer>();
-                _renderer.material = _materialFade;
+                //_renderer = GetComponent<Renderer>();
+                //_renderer.material = _materialFade;
 
                 //agarrado = 13;
                 gameObject.layer = 0;
@@ -369,7 +369,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         _pickedUp = false;
         pickUpScript.isHolding = false;
         _onAir = true;
-        _renderer.material = _materialNormal;
+        //_renderer.material = _materialNormal;
         _audio.clip = arrojar;
         _audio.Play();
 
@@ -419,7 +419,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         holding = false;
         _canMove = false;
         _rb.useGravity = true;
-        _renderer.material = _materialNormal;
+        //_renderer.material = _materialNormal;
         GameManager.Instance.Player.GetComponent<AudioSource>().Stop();
 
         pickUpScript.sosteniendoBool = false;
