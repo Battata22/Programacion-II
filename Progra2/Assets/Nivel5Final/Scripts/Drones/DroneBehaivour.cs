@@ -17,6 +17,8 @@ public class DroneBehaivour : MonoBehaviour
 
     void Start()
     {
+        //hacer que siempre siga, no circule y que mientars mas cerca mas lento vaya y vaya soltando bombas siempre (o a x rango del player)
+
         //conseguir la info del player
         target = GameManager.Instance.Player.gameObject;
         rb = GetComponent<Rigidbody>();
@@ -34,30 +36,45 @@ public class DroneBehaivour : MonoBehaviour
 
     void Update()
     {
-        if (onTarget == false)
-        {
-            dir = target.transform.position - transform.position;
-        }
-        else
-        {
-            Circular();
 
-            waitCarga += Time.deltaTime;
+        dir = target.transform.position - transform.position;
 
-            if (waitCarga >= cdCarga)
-            {
-                waitCarga = 0;
-                SoltarCarga();
-            } 
+        waitCarga += Time.deltaTime;
+
+        if (waitCarga >= cdCarga)
+        {
+            waitCarga = 0;
+            SoltarCarga();
         }
+
+        //cambiar velocidad segun distancia (speed * dis?)
+
+        //if (onTarget == false)
+        //{
+        //    dir = target.transform.position - transform.position;
+        //}
+        //else
+        //{
+        //    Circular();
+
+        //    waitCarga += Time.deltaTime;
+
+        //    if (waitCarga >= cdCarga)
+        //    {
+        //        waitCarga = 0;
+        //        SoltarCarga();
+        //    } 
+        //}
         // x = 5
         // x = 5 ~~ 5 +- 0.5
         // x >= min y <= max
-        if (transform.position.x >= target.transform.position.x - distanciaVentaja && transform.position.x <= target.transform.position.x + distanciaVentaja && transform.position.z >= target.transform.position.z - distanciaVentaja && transform.position.z <= target.transform.position.z + distanciaVentaja)
-        {
-            //print("encima");
-            onTarget = true;
-        }
+
+        //apago esto para apagar el circular
+        //if (transform.position.x >= target.transform.position.x - distanciaVentaja && transform.position.x <= target.transform.position.x + distanciaVentaja && transform.position.z >= target.transform.position.z - distanciaVentaja && transform.position.z <= target.transform.position.z + distanciaVentaja)
+        //{
+        //    //print("encima");
+        //    onTarget = true;
+        //}
 
     }
 
@@ -100,7 +117,15 @@ public class DroneBehaivour : MonoBehaviour
 
     void GoToTarget()
     {
-        transform.position += new Vector3(dir.x, dir.y + altura, dir.z) * speed * Time.fixedDeltaTime;
+        if ((Vector3.Distance(transform.position, target.transform.position) - 10) >= 1)
+        {
+            transform.position += new Vector3(dir.x, dir.y + altura, dir.z) * speed * Time.fixedDeltaTime;
+        }
+        else
+        {
+            transform.position += new Vector3(dir.x, dir.y + altura, dir.z) * speed * Time.fixedDeltaTime * (Vector3.Distance(transform.position, target.transform.position) - 10);
+        }
+
     }
 
     void Circular()
