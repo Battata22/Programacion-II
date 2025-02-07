@@ -87,7 +87,9 @@ public class Luces : Obj_Interactuable
                     OutLine = mat;
                     _OGthik = OutLine.GetFloat("_Thickness");
                     OutLine.SetFloat("_Thickness", -0.02f);
-                }              
+                    OutLine.SetFloat("_Active", 0);
+
+                }
             }
         }
 
@@ -165,6 +167,7 @@ public class Luces : Obj_Interactuable
     public override void SlcFxOff()
     {
         base.SlcFxOff();
+        OutLine.SetFloat("_Active", 0);
         OutLine.SetFloat("_Thickness", -0.02f);
     }
 

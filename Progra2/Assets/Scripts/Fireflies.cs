@@ -78,8 +78,10 @@ public class Fireflies : MonoBehaviour
     void StartIdle()
     {
         _myParticleSys.Stop();
+        _myParticleSys.emissionRate = 10;
+
         //if (_focusObject != null)
-            transform.position = _initialPos;
+        transform.position = _initialPos;
         //else 
         //    transform.position = _focusObject.position;
         _state = State.idle;
@@ -100,6 +102,7 @@ public class Fireflies : MonoBehaviour
 
         _myParticleSys.Stop();
         transform.position = _player.transform.position + new Vector3(0,1,0);
+        _myParticleSys.emissionRate = 50;
         _myParticleSys.Play();
 
         while(_state == State.inMovement && Vector3.SqrMagnitude(_initialPos-transform.position) > (0.5f * 0.5f)) 

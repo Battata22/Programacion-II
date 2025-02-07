@@ -156,19 +156,22 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                     OutLine = mat;
                     _OGthik = OutLine.GetFloat("_Thickness");
                     OutLine.SetFloat("_Thickness", 0f);
+                    OutLine.SetFloat("_Active", 0);
                 }
-                else if (mat.name == "M_Fade (Instance)")
-                {
-                    Fade = mat;
-                    _OGcolor = Fade.GetColor("_baseColor");
-                    var noAlpha = new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f);
-                    Fade.SetColor("_baseColor", noAlpha);//     = new Color(_fade.color.r, _fade.color.g, _fade.color.b, 0f);   
+                //else if (mat.name == "M_Fade (Instance)")
+                //{
+                //    Fade = mat;
+                //    _OGcolor = Fade.GetColor("_baseColor");
+                //    var noAlpha = new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f);
+                //    Fade.SetColor("_baseColor", noAlpha);//     = new Color(_fade.color.r, _fade.color.g, _fade.color.b, 0f);   
                     
-                }
+                //}
                 if(mat.name == "M_Outline_Yellow (Instance)")
                 {
                     OutLineEnchanted = mat;
                     OutLineEnchanted.SetFloat("_Thickness", 0f);
+                    OutLine.SetFloat("_Active", 0);
+
                 }
             }
         }
@@ -295,20 +298,24 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
 
         if (holding)
-        {
+        //{
             transform.position = _target.position;
-            if (Fade.GetColor("_baseColor") != _OGcolor)
-            {
-                Fade.SetColor("_baseColor", _OGcolor);
-            }
-        }
-        else
-        {
-            if (Fade.GetColor("_baseColor") == _OGcolor)
-            {
-                Fade.SetColor("_baseColor", new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f));
-            }
-        }
+        //    //if (Fade.GetColor("_baseColor") != _OGcolor)
+        //    //{
+        //    //    Fade.SetColor("_baseColor", _OGcolor);
+        //    //}
+        //    if (transform.TryGetComponent<Material>(out var fade) && fade.GetFloat("_Fade") != 0.5f)
+        //        fade.SetFloat("_Fade", 0.5f);
+        //}
+        //else
+        //{
+        //    //if (Fade.GetColor("_baseColor") == _OGcolor)
+        //    //{
+        //    //    Fade.SetColor("_baseColor", new Color(_OGcolor.r, _OGcolor.g, _OGcolor.b, 0f));
+        //    //}
+        //    if (transform.TryGetComponent<Material>(out var fade) && fade.GetFloat("_Fade") == 0.5f)
+        //        fade.SetFloat("_Fade", 0f);
+        //}
 
     }
 
@@ -343,7 +350,16 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                 //_renderer.material = _materialFade;
 
                 //agarrado = 13;
+
                 gameObject.layer = 0;
+
+
+                if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") != 0.5f)
+                {
+                    //Debug.Log($" Esto se supone que es el fade {transform.GetComponent<Material>().name}");
+                    renderer.materials[0].SetFloat("_Fade", 0.5f);
+                }
+
             }
         }
 
@@ -383,6 +399,17 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
         pickUpScript.sosteniendoBool = false;
         pickUpScript._audioSource.loop = false;
+
+        //if (transform.TryGetComponent<Material>(out var fade) /*&& fade.GetFloat("_Fade") == 0.5f*/)
+        //{
+        //    Debug.Log($" Esto se supone que es el fade {fade.name} pero en salida XD");
+        //    fade.SetFloat("_Fade", 0f);
+        //}
+        if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") == 0.5f)
+        {
+            //Debug.Log($" Esto se supone que es el fade {transform.GetComponent<Material>().name}");
+            renderer.materials[0].SetFloat("_Fade", 0f);
+        }
     }
 
     public void Drop()
@@ -424,6 +451,17 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
         pickUpScript.sosteniendoBool = false;
         pickUpScript._audioSource.loop = false;
+
+        //if (transform.TryGetComponent<Material>(out var fade) /*&& fade.GetFloat("_Fade") == 0.5f*/)
+        //{
+        //    Debug.Log($" Esto se supone que es el fade {fade.name} pero en salida XD");
+        //    fade.SetFloat("_Fade", 0f);
+        //}
+        if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") == 0.5f)
+        {
+            //Debug.Log($" Esto se supone que es el fade {transform.GetComponent<Material>().name}");
+            renderer.materials[0].SetFloat("_Fade", 0f);
+        }
 
     }
 
@@ -549,6 +587,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         //shaders aca
         //Debug.Log("<Color=blue> Prendido</color>"); 
         #endregion
+        OutLine.SetFloat("_Active", 1);
         OutLine.SetFloat("_Thickness", _OGthik);
         particleGen.Play();
         parTime = Time.time;
@@ -563,7 +602,8 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         //Debug.Log("<Color=red> APAGADO </color>"); 
         #endregion
         OutLine.SetFloat("_Thickness", 0f);
-        particleGen.Stop(); 
+        OutLine.SetFloat("_Active", 0);
+        particleGen.Stop();
     }
 
     public virtual void NerfObj(float num = 0.5f)
@@ -609,6 +649,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
             pl.enchantedObjects.Add(this);
 
         OutLineEnchanted.SetFloat("_Thickness", _OGthik - 0.005f);
+        OutLineEnchanted.SetFloat("_Active", 1);
         _enchanted = true;
     }
     public virtual void EnchantedAction(Player _player)
@@ -669,6 +710,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         //{
         //}   
         #endregion
+        OutLineEnchanted.SetFloat("_Active", 0);
         OutLineEnchanted.SetFloat("_Thickness", 0f);
         player.enchantedObjects.Remove(this);
         _enchanted = false;

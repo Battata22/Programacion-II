@@ -154,6 +154,7 @@ public class Obj_Interactuable : MonoBehaviour , IRoomDetectable
 
         //shaders aca
         //Debug.Log("<Color=blue> Prendido</color>");
+        OutLine.SetFloat("_Active", 1);
         OutLine.SetFloat("_Thickness", _OGthik);
         _outLineAntispam = false;
     }
