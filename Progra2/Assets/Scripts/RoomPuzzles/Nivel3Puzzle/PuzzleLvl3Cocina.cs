@@ -47,15 +47,50 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
     bool _roomComplete = false;
 
+    //Fireflies
+    [Header("<color=green>Fireflies</color>")]
+    [SerializeField] Fireflies _fliesPrefab;
+    [SerializeField] bool _puzzleActive = false;
+    bool _fliesActive = false;
+
     private void Start()
     {
         _nodeManager = GetComponentInParent<AINodeManager>();
 
     }
 
+    private void Update()
+    {
+        if (_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
+        {
+            _fliesActive = true;
+
+            Fireflies newFlies;
+
+            switch(_currentStage)
+            {
+                case 1:
+                    newFlies = Instantiate(_fliesPrefab, microwave.transform.position, Quaternion.identity);
+                    newFlies.SetFocusObj(microwave.transform);
+                    break;
+                default:
+                    newFlies = Instantiate(_fliesPrefab, npcInRoom.transform.position, Quaternion.identity);
+                    newFlies.SetFocusObj(npcInRoom.transform);
+                    break;
+            }
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
+        }
+    }
+
+    void DeactivateFlies()
+    {
+        _fliesActive = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.GetComponent<Asustable>() == npcInRoom)
+        if (other.transform.GetComponent<Asustable>() == npcInRoom && !_roomComplete)
         {
             StartPuzzle();
         }
@@ -70,6 +105,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         npcPuzzle.StartMicrowave();
         microwave.MicroondasPuzzle.active = true;
 
+        _puzzleActive = true;
         LockDoors();
     }
     
@@ -115,6 +151,12 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         npcPuzzle.DrestroyMeBaby();
 
         _nextPuzzle.StartPuzzle();
+        _puzzleActive = false;
+    }
+
+    public void ChangeState()
+    {
+        _currentStage++;
     }
 
     void LockDoors()

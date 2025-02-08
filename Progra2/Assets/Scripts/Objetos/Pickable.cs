@@ -532,7 +532,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                     //}
                 }
 
-                if(collision.gameObject.TryGetComponent<GB_Gadget>(out var gadget))
+                if(collision.gameObject.TryGetComponent<IDamageable>(out var gadget))
                 {
                     gadget.GetDamage((int)weight + 1);
                 }
@@ -716,7 +716,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         _enchanted = false;
     }
 
-    public void GetBlssed()
+    public virtual void GetBlssed()
     {
         //Debug.Log($"<color=yellow> {gameObject.name} Blessed </color>");
         blessed = true;

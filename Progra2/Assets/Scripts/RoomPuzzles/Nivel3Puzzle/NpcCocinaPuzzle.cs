@@ -86,6 +86,8 @@ namespace CasaCatolicaPuzzle
         {
             Debug.Log($"<color=#aaf90f> Npc quemado</color>");
 
+            _myPuzzle.ChangeState();
+
             _myAsustable.GetScared(1, -1);
 
             _myAsustable.OnScareEnd += GoTakeDessert;

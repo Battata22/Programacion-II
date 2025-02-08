@@ -27,6 +27,14 @@ public class PuzzleNene : Nivel3Puzzle
     AINodeManager _nodeManager;
 
     [SerializeField] PuzzleLvl3Cocina _nextPuzzle;
+
+    //Fireflies
+    [Header("<color=green>Fireflies</color>")]
+    [SerializeField] Fireflies _fliesPrefab;
+    bool _puzzleActive = true;
+    bool _fliesActive = false;
+
+
     private void Start()
     {
         _nodeManager = GetComponentInParent<AINodeManager>();
@@ -38,6 +46,27 @@ public class PuzzleNene : Nivel3Puzzle
 
     }
 
+    private void Update()
+    {
+        if (_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
+        {
+            _fliesActive = true;
+
+            int index = Random.Range(0, _toys.Length);
+
+            var newFlies = Instantiate(_fliesPrefab, _toys[index].transform.position, Quaternion.identity);
+
+            newFlies.SetFocusObj(_toys[index].transform);
+
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
+        }
+    }
+
+    void DeactivateFlies()
+    {
+        _fliesActive = false;
+    }
 
     //lo hago aca porque tengo retriso
     void SubscribeChildToToy()
@@ -71,6 +100,7 @@ public class PuzzleNene : Nivel3Puzzle
 
         _pendejito.StartUseOwnNode();
 
+        _puzzleActive = false;
         //_nextPuzzle.StartPuzzle();
     }
 

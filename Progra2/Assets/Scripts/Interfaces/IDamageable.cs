@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBlessable
+public interface IDamageable
 {
-    public abstract void GetBlssed();
+    public abstract void GetDamage(int dmgAmount = 1);
 }

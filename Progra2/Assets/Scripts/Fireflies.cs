@@ -90,8 +90,14 @@ public class Fireflies : MonoBehaviour
 
     void IdleMovement()
     {
-        //
-        transform.position = _initialPos + new Vector3(0,Mathf.Sin(Time.time) * _offset,0);
+        ////
+        //if (followNpc)
+        //{
+        //    transform.position = _focusObject.position + new Vector3(0, 1, 0);
+        //}
+        //else
+        //transform.position = _initialPos + new Vector3(0,Mathf.Sin(Time.time) * _offset,0);
+        transform.position = _focusObject.position + new Vector3(0,Mathf.Sin(Time.time) * _offset,0);
     }
 
     IEnumerator Movement()
@@ -105,9 +111,11 @@ public class Fireflies : MonoBehaviour
         _myParticleSys.emissionRate = 50;
         _myParticleSys.Play();
 
-        while(_state == State.inMovement && Vector3.SqrMagnitude(_initialPos-transform.position) > (0.5f * 0.5f)) 
+        //while(_state == State.inMovement && Vector3.SqrMagnitude(_initialPos-transform.position) > (0.5f * 0.5f)) 
+        while(_state == State.inMovement && Vector3.SqrMagnitude(_focusObject.position-transform.position) > (0.5f * 0.5f))
         {
-            var dir = (_initialPos - transform.position).normalized;
+            //var dir = (_initialPos - transform.position).normalized;
+            var dir = (_focusObject.position - transform.position).normalized;
             transform.position += dir * _spd * Time.deltaTime;
 
             yield return new WaitForEndOfFrame();
@@ -124,6 +132,13 @@ public class Fireflies : MonoBehaviour
             _state = State.active;
         }
     }
+
+    //bool followNpc = false;
+    //public void FollowNpc()
+    //{
+    //    followNpc = true;
+    //}
+    
     public enum State
     {
         idle,

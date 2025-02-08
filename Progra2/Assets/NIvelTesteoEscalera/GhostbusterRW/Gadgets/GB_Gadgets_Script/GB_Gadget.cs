@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GB_Gadget : MonoBehaviour
+public abstract class GB_Gadget : MonoBehaviour, IDamageable
 {
     protected Ghostbuster _myOwner;
 

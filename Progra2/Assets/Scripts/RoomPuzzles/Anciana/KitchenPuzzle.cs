@@ -30,7 +30,9 @@ public class KitchenPuzzle : MonoBehaviour
         if(_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
         {
             _fliesActive = true;
-            var newFlies = Instantiate(_fliesPrefab, _midObjs[Random.Range(0, _midObjs.Length)].transform.position, Quaternion.identity);
+            int index = Random.Range(0, _midObjs.Length);
+            var newFlies = Instantiate(_fliesPrefab, _midObjs[index].transform.position, Quaternion.identity);
+            newFlies.SetFocusObj(_midObjs[index].transform);
             newFlies.OnPulseEnd += DeactivateFlies;
             newFlies.ActivateMovement(true);
         }

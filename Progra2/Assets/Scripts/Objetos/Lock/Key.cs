@@ -14,4 +14,11 @@ public class Key : Pickable
         else
             base.OnCollisionEnter(collision);
     }
+
+    public override void GetBlssed()
+    {
+        Debug.Log("<color=yellow> JAJA QUE BOLUDO INTENTO ENCANTAR LA LLAVE ¯|_(`-`)_/¯</color>");
+
+    }
+
 }
