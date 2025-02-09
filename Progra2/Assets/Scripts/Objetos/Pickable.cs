@@ -354,10 +354,10 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                 gameObject.layer = 0;
 
 
-                if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") != 0.5f)
+                if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") != 1.3f)
                 {
                     //Debug.Log($" Esto se supone que es el fade {transform.GetComponent<Material>().name}");
-                    renderer.materials[0].SetFloat("_Fade", 0.5f);
+                    renderer.materials[0].SetFloat("_Fade", 1.3f);
                 }
 
             }
@@ -405,7 +405,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         //    Debug.Log($" Esto se supone que es el fade {fade.name} pero en salida XD");
         //    fade.SetFloat("_Fade", 0f);
         //}
-        if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") == 0.5f)
+        if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") == 1.3f)
         {
             //Debug.Log($" Esto se supone que es el fade {transform.GetComponent<Material>().name}");
             renderer.materials[0].SetFloat("_Fade", 0f);
@@ -457,7 +457,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         //    Debug.Log($" Esto se supone que es el fade {fade.name} pero en salida XD");
         //    fade.SetFloat("_Fade", 0f);
         //}
-        if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") == 0.5f)
+        if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") == 1.3f)
         {
             //Debug.Log($" Esto se supone que es el fade {transform.GetComponent<Material>().name}");
             renderer.materials[0].SetFloat("_Fade", 0f);

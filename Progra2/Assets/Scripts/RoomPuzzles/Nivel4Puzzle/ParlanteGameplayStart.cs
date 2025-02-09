@@ -7,7 +7,7 @@ public class ParlanteGameplayStart : GameplayModeTrigger
     [SerializeField] float tempo;
     private void Awake()
     {
-        StartCoroutine(SoyUnBoludo());
+        //StartCoroutine(SoyUnBoludo());
     }
 
     private void OnCollisionEnter(Collision collision)

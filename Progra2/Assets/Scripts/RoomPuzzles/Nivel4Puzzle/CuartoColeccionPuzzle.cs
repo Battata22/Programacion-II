@@ -22,13 +22,13 @@ public class CuartoColeccionPuzzzle : Nivel4Puzzle
     bool completed = false;
     bool llamandoDuenho = false;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            CompletePuzzle();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.UpArrow))
+    //    {
+    //        CompletePuzzle();
+    //    }
+    //}
 
     public void CompletePuzzle()
     {
@@ -63,6 +63,7 @@ public class CuartoColeccionPuzzzle : Nivel4Puzzle
         }
     }
 
+    #region comment
     //IEnumerator LlamarOwner()
     //{
     //    var wait = new WaitForSeconds(0.3f);
@@ -81,7 +82,8 @@ public class CuartoColeccionPuzzzle : Nivel4Puzzle
     //    _houseExit.AddToList(_npcInRoom.transform.gameObject);
     //    _npcInRoom.InfiniteScared(true);
     //    _npcInRoom.GetScared(1,-1, _houseExit.transform);
-    //}
+    //} 
+    #endregion
 
     public override void ActivatePuzzle()
     {

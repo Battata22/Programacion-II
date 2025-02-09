@@ -22,34 +22,33 @@ public class CamDistance : MonoBehaviour
     private void Update()
     {
         //guardar pos dle pj, en teoria pos del mesh pero no queria usar mesh de una porque soy especial
-        _origin = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        
+        if (transform.GetComponent<Player>())
+            _origin = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        else
+            _origin = transform.position;
+
         //direccion del ray
         Vector3 _ray = (_lookingAt.position - _origin).normalized;
 
-        //crea rayo verde solo para el editor en unity
-        //Debug.DrawRay(_origin, _ray * _rayDistance, Color.green);
-
         RaycastHit hit;
         
-        //Crea Raycast desde el player al camera holder (pos default de la camara)
-        //Cuando el raycast es cortado por la pared entre medio se pone a hacer magia
+        Debug.DrawRay(_origin, _ray * _rayDistance, Color.green);
 
-        // Crea Raycast     origen  / direccion   /devuelve algo/  largo del ray/  layer que lo puede cortar/
+        // Crea Raycast     origen / direccion  /devuelve algo /largo del ray/ layer que lo puede cortar/
         if (Physics.Raycast(_origin, _ray.normalized, out hit, _rayDistance, _layerMask) && !hit.transform.TryGetComponent<RoomTrigger>(out var room))
         {
-            //Debug de testeo
-            //Debug.Log(hit.transform.name);
-
             //Al colicionar con una pared, guarda el liugar y activa el uso de punto para la posicion d ela camara
 
             _point = hit.point;
+
+            var chota = hit.normal;
+            _cam.surfaceNormal = chota;
+
             //if (hit.transform.TryGetComponent<Pickable>(out var objecto) && objecto.holding)
             //    _cam.usePoint = false;
             //else
-                _cam.usePoint = true;
-            
-
+            _cam.usePoint = true;
+                
         }
         else if(_cam.usePoint)
         {
@@ -62,14 +61,6 @@ public class CamDistance : MonoBehaviour
     {
         if (_cam.usePoint)
         {
-            /*
-             * Intento de evitar spam de cambio de camara
-            if ((_point - _cam.point).magnitude > 0.1f)
-            {
-                _cam.point = _point;
-            }
-            */
-
             //Da cordenadas del punto en la pared
             _cam.point = _point;
         }

@@ -7,7 +7,9 @@ public class Cam : MonoBehaviour
 {
     [SerializeField] bool _followPlayer = true;
     [SerializeField] public Vector3 point;
+    [SerializeField] public Vector3 surfaceNormal;
     [SerializeField] Transform _target;
+    [SerializeField] float _offset;
 
     public bool usePoint=false;
 
@@ -27,7 +29,10 @@ public class Cam : MonoBehaviour
         //el punto se lo da el CamDistance
         if (usePoint)
         {
-            transform.position = point;
+            var dis = Vector3.Angle(surfaceNormal, transform.forward);
+            
+            transform.position = point + surfaceNormal * (dis * _offset);
+            //transform.position = point;
         }
         else
         {
