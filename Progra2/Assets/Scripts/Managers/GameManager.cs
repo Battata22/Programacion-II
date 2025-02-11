@@ -237,6 +237,8 @@ public class GameManager : MonoBehaviour
 
     public MasterNiveles masterNiveles;
 
+    public GB_Boss GB_BossScript;
+
 }
 
 

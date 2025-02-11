@@ -37,6 +37,11 @@ public class DroneBehaivour : MonoBehaviour
     void Update()
     {
 
+        if(GameManager.Instance.GB_BossScript.fase != 2)
+        {
+            Destroy(gameObject);
+        }
+
         dir = target.transform.position - transform.position;
 
         waitCarga += Time.deltaTime;

@@ -7,22 +7,25 @@ public class GB_Boss : MonoBehaviour
     public float maxHp, actualHp;
     [SerializeField] GameObject parentDefenceWall;
     [SerializeField] Player player;
-    [SerializeField] bool accion = false, defenceWallState = false, animIdle = true, resetWaitAspirado = false;
+    [SerializeField] bool Atacado = false, defenceWallState = false, animIdle = true, resetWaitAspirado = false;
     [SerializeField] Collider col;
     [SerializeField] Animator _anim;
     ParticleSystem[] _parGens;
     [SerializeField] ParticleSystem _tornadoGen;
-    [SerializeField] float rotY, speedRot, _suctionForce, limiteAceSuccion, duracionAspirado, velRotParedesAspirado;
+    [SerializeField] float rotY, speedRot, _suctionForce, limiteAceSuccion, duracionAspirado, cdApirado, velRotParedesAspirado;
     [SerializeField] GameObject padreParedesPlayer, padreAtaquesIsaac;
+    [SerializeField] GameObject[] espejos;
     public delegate void EventBossAccion();
     public event EventBossAccion Accion;
+    public int fase = 0;
 
     public static bool isInSafeZone = false;
     float aceSuccion;
-    float waitAspirado;
+    float waitAspirado, waitCdAspirado;
 
     void Start()
     {
+        GameManager.Instance.GB_BossScript = this;
         actualHp = maxHp;
         col = GetComponent<Collider>();
         _anim = GetComponentInChildren<Animator>();
@@ -35,18 +38,37 @@ public class GB_Boss : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            accion = !accion;
+            Atacado = !Atacado;
+        }
+        if(actualHp < maxHp)
+        {
+            Atacado = true;
         }
     }
 
     void FixedUpdate()
     {
-        if (accion == true)
+        if (Atacado == true)
         {
+            if(actualHp >= (maxHp / 3) * 2)
+            {
+                print("primer tercio");
+                Fase1();
+            }
+            else if (actualHp >= maxHp / 3)
+            {
+                print("segundo tercio");
+                Fase2();
+            }
+            else
+            {
+                print("tercer tercio");
+                Fase3();
+            }
             //DefenceWall();
             //Aspirado(duracionAspirado);
             //AtaqueIsaac();
-            AtaqueDrones();
+            //AtaqueDrones();
         }
         else
         {
@@ -63,6 +85,45 @@ public class GB_Boss : MonoBehaviour
         }
     }
 
+    void Fase1()
+    {
+        fase = 1;
+        Aspirado(duracionAspirado);
+        //AtaqueIsaac();
+    }
+
+    void Fase2()
+    {
+        fase = 2;
+        #region EndFase1
+        if (padreParedesPlayer.transform.position.y > -10)
+        {
+            padreParedesPlayer.transform.position -= new Vector3(0f, 20 * Time.deltaTime, 0f);
+        }
+        if (animIdle == false)
+        {
+            _anim.SetBool("Idle", true);
+            _anim.SetBool("Attacking", false);
+            _tornadoGen.Stop();
+
+            animIdle = true;
+        }
+        #endregion
+        SpawnEspejos();
+        AtaqueDrones();
+        DefenceWall();
+    }
+    void Fase3()
+    {
+        fase = 3;
+        #region EndFase2
+        parentDefenceWall.SetActive(false);
+        col.enabled = true; 
+        #endregion
+        AtaqueIsaac();
+
+    }
+
     void DefenceWall()
     {
         if (defenceWallState ==  false)
@@ -76,7 +137,9 @@ public class GB_Boss : MonoBehaviour
             col.enabled = true;
         }
 
-        defenceWallState = !defenceWallState;
+        //defenceWallState = !defenceWallState;
+
+
 
     }
 
@@ -157,9 +220,23 @@ public class GB_Boss : MonoBehaviour
             }
             else
             {
-                waitAspirado = 0;
-                resetWaitAspirado = false;
-                accion = false;
+                waitCdAspirado += Time.deltaTime;
+                if (animIdle == false)
+                {
+                    _anim.SetBool("Idle", true);
+                    _anim.SetBool("Attacking", false);
+                    _tornadoGen.Stop();
+
+                    animIdle = true;
+                }
+                if (waitCdAspirado >= cdApirado)
+                {
+                    waitAspirado = 0;
+                    waitCdAspirado = 0;
+                    resetWaitAspirado = false;
+                }
+
+                //Atacado = false;
             }
 
             //StartCoroutine(BajarParedes());
@@ -171,6 +248,15 @@ public class GB_Boss : MonoBehaviour
 
 
 
+    }
+
+    void SpawnEspejos()
+    {
+        for (int i = 0; i < espejos.Length; i++)
+        {
+            print(i);
+            espejos[i].SetActive(true);
+        }
     }
 
     IEnumerator BajarParedes()
@@ -236,5 +322,7 @@ public class GB_Boss : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+
 
 }
