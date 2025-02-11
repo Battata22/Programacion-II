@@ -9,13 +9,16 @@ public class Cam : MonoBehaviour
     [SerializeField] public Vector3 point;
     [SerializeField] public Vector3 surfaceNormal;
     [SerializeField] Transform _target;
+    [SerializeField] Transform _camCenter;
     [SerializeField] float _offset;
+    [SerializeField] float _maxDist;
 
     public bool usePoint=false;
 
     private void Start()
     {
         GameManager.Instance.Camera = this;
+        _maxDist = _target.localPosition.sqrMagnitude;
     }
 
     private void LateUpdate()
@@ -27,7 +30,7 @@ public class Cam : MonoBehaviour
     private void UpdatePosition()
     {
         //el punto se lo da el CamDistance
-        if (usePoint)
+        if (usePoint && Vector3.SqrMagnitude(point-_camCenter.position) <= _maxDist)
         {
             var dis = Vector3.Angle(surfaceNormal, transform.forward);
             
