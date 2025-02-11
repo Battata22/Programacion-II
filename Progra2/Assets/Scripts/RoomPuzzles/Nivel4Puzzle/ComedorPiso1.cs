@@ -23,7 +23,7 @@ public class ComedorPiso1 : Nivel4Puzzle
 
     private void Start()
     {
-        ActivatePuzzle();
+        //ActivatePuzzle();
     }
 
     private void Update()
@@ -65,6 +65,7 @@ public class ComedorPiso1 : Nivel4Puzzle
     public override void ActivatePuzzle()
     {
         //Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
+
         _table.OnBroken += CompletePuzzle;
     }
 

@@ -206,7 +206,7 @@ public class PickUp : MonoBehaviour
                 if (GameManager.Instance.HandState.pointing)
                 {
                     GameManager.Instance.HandState.pointing = false;
-                    GameManager.Instance.HandState.ChangeState();
+                    GameManager.Instance.HandState.ChangeState(HandState.HandPose.relax);
                 }
             }
             if (!lineOn && obj.TryGetComponent<Obj_Interactuable>(out Obj_Interactuable o) && o.OutLine != null && _playerScript.nivel >= o.lvlRequired)
@@ -216,7 +216,7 @@ public class PickUp : MonoBehaviour
                 o.SlcFxOn();
                 GameManager.Instance.HandState.pointing = true;
                 GameManager.Instance.HandState.relax = false;
-                GameManager.Instance.HandState.ChangeState();
+                GameManager.Instance.HandState.ChangeState(HandState.HandPose.point);
                 
             }           
             
@@ -230,7 +230,7 @@ public class PickUp : MonoBehaviour
                 if (GameManager.Instance.HandState.pointing)
                 {
                     GameManager.Instance.HandState.pointing = false;
-                    GameManager.Instance.HandState.ChangeState();
+                    GameManager.Instance.HandState.ChangeState(HandState.HandPose.relax);
                 }
             }
         }

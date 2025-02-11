@@ -13,7 +13,7 @@ public class DiscoBall : MonoBehaviour, IDamageable
     [SerializeField] int _maxHp;
     int _hp;
     [SerializeField] float _dmgCd;
-    bool _imbecil = false; // in englis "invincible"
+    [SerializeField] bool _imbecil = true; // in englis "invincible"
 
     Rigidbody _rb;
 
@@ -64,6 +64,11 @@ public class DiscoBall : MonoBehaviour, IDamageable
         {
             Break();
         }
+    }
+    //a
+    public void CanGetDamage(bool newState)
+    {
+        _imbecil = !newState;
     }
 
     void Break()

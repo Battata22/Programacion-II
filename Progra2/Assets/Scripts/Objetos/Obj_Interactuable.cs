@@ -123,7 +123,9 @@ public class Obj_Interactuable : MonoBehaviour , IRoomDetectable
         GameManager.Instance.HandState.holding = false;
         GameManager.Instance.HandState.pointing = false;
         GameManager.Instance.HandState.relax = true;
-        GameManager.Instance.HandState.ChangeState();
+
+
+        GameManager.Instance.HandState.ChangeState(HandState.HandPose.relax);
 
         holding = false;
         _canMove = false;

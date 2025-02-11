@@ -9,6 +9,10 @@ public abstract class SFX : Pickable
     protected int random1;
     protected Chocamiento _chocamiento;
     protected AudioClip _audioClip;
+
+    public event DelegateType.VoidDelegate OnPlay = delegate { };
+    public event DelegateType.VoidDelegate OnStop = delegate { };
+
     
 
     protected virtual void Awake()
@@ -76,12 +80,16 @@ public abstract class SFX : Pickable
                 _audioSource.clip = _audio1;
             }
             _audioSource.Play();
+
+            OnPlay();
         }
         else if (isPlaying == true)
         {
             isPlaying = false;
             _audioSource.Pause();
             _audioSource.loop = false;
+
+            OnStop();
         }
         _chocamiento.ChocoSonoro(transform.position);
     }

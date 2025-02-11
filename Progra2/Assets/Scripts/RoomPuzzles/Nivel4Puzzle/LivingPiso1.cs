@@ -21,6 +21,8 @@ namespace CasaFiesta
         public override void ActivatePuzzle()
         {
             Debug.Log("Huh?");
+
+            _discoBall.CanGetDamage(true);
         }
 
         private void OnTriggerEnter(Collider other)

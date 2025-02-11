@@ -289,9 +289,9 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         else if (!holding)
         {
 
-            GameManager.Instance.HandState.holding = true;
             GameManager.Instance.HandState.relax = false;
-            GameManager.Instance.HandState.ChangeState();
+            GameManager.Instance.HandState.ChangeState(HandState.HandPose.hold);
+            GameManager.Instance.HandState.holding = true;
 
             holding = true;
         }
@@ -428,7 +428,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         GameManager.Instance.HandState.holding = false;
         GameManager.Instance.HandState.pointing = false;
         GameManager.Instance.HandState.relax = true;
-        GameManager.Instance.HandState.ChangeState();
+        GameManager.Instance.HandState.ChangeState(HandState.HandPose.relax);
         if (_navObstacle != null)
         {
             //_navObstacle.enabled = true;
@@ -728,7 +728,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         {
             GameManager.Instance.HandState.holding = false;
             GameManager.Instance.HandState.relax = true;
-            GameManager.Instance.HandState.ChangeState();
+            GameManager.Instance.HandState.ChangeState(HandState.HandPose.relax);
 
             _pickedUp = false;
             pickUpScript.isHolding = false;

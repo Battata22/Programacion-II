@@ -1,3 +1,4 @@
+using CasaFiesta;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class ParlanteGameplayStart : GameplayModeTrigger
 {
     [SerializeField] float tempo;
+    [SerializeField] Nivel4Puzzle[] _allPuzzles;
     private void Awake()
     {
         //StartCoroutine(SoyUnBoludo());
@@ -15,6 +17,16 @@ public class ParlanteGameplayStart : GameplayModeTrigger
         if(collision.transform.TryGetComponent<IWhaterContainer>(out var container) && container.CheckWather())
         {
             StartGameplay();
+        }
+    }
+
+    protected override void StartGameplay()
+    {
+        base.StartGameplay();
+
+        foreach(var item in _allPuzzles)
+        {
+            item.ActivatePuzzle();
         }
     }
 
