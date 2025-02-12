@@ -81,6 +81,7 @@ public class Player : MonoBehaviour, IRoomDetectable
     //Necesario para rework de gato
     delegate void DelVoid2Float(float a, float b);
     DelVoid2Float MyMovement = delegate { };
+    [SerializeField] GiracionViolenta gataRompeHogares;
 
     private void Awake()
     {
@@ -827,6 +828,13 @@ public class Player : MonoBehaviour, IRoomDetectable
     {
         Debug.Log("<color=red>Invert</color>");
         MyMovement = InvertedMovement;
+
+        //if(gataRompeHogares != null)
+        //{
+            Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            gataRompeHogares.gameObject.SetActive(true);
+        //}
+
     }
 
     public void RestoreNormalMovement()
@@ -834,5 +842,8 @@ public class Player : MonoBehaviour, IRoomDetectable
         Debug.Log("<color=red>Normal</color>");
 
         MyMovement = Movement;
+
+        //if (gataRompeHogares != null)
+            gataRompeHogares.gameObject.SetActive(false);
     }
 }

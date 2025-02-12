@@ -312,8 +312,11 @@ public class Cat : NPC
         player.InvertMovement();
 
         CountDown = LeaveCountDown;
-        _targetObject.Drop();
-        _targetObject = null;
+        if (_targetObject != null)
+        {
+            _targetObject.Drop();
+            _targetObject = null;
+        }
 
     }
 
