@@ -58,9 +58,13 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
     protected ItemSaver _saver;
 
+    [SerializeField] LayerMask _posibleObstacles;
+
     protected virtual void Start()
     {
         rompscript = GetComponent<Rompible>();
+        _posibleObstacles = GameManager.Instance.objMoveObstacles;
+
 
         #region Comment
         //_camera = GameManager.Instance.Camera.transform;
@@ -317,6 +321,52 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         //        fade.SetFloat("_Fade", 0f);
         //}
 
+        if (CheckForObstacles())
+            StopMovement();
+
+    }
+
+    bool canCheck = false;
+
+    bool CheckForObstacles()
+    {
+        if (!canCheck) return false;
+
+        Debug.Log("<color=#7043f7> Buscando objetos</color>");
+
+        bool result = false;
+
+        var obstacles = Physics.OverlapSphere(transform.position, 0.2f, _posibleObstacles);
+
+        foreach(var obstacle in obstacles)
+        {
+            if(obstacle.gameObject.GetComponent<Door>() && !obstacle.isTrigger)
+                result = true;
+            if(obstacle.gameObject.GetComponent<ActivateWallCol>())
+                result = true;
+            if(obstacle.gameObject.GetComponent<Piso>())
+                result = true;
+        }
+
+        return result;
+    }
+
+    IEnumerator CanCheckUpdater()
+    {
+        canCheck = false;
+
+        yield return new WaitForSeconds(0.1f);
+
+        canCheck = true;
+    }
+
+    public void StopMovement()
+    {
+        Debug.Log("<color=#4394f7> Tatequieto </color>");
+        
+        Drop();
+
+
     }
 
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error,int playerLevel)
@@ -325,11 +375,14 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         {
             if (pickUpScript.isHolding == false && Time.time - _lastInteract > _cd)
             {
+
                 if (!(playerLevel >= lvlRequired))
                 {
                     //Debug.Log("<color=yellow> Nivel Insuficiente</color>");
                     return;
                 }
+                StartCoroutine(CanCheckUpdater());
+
                 base.Interact(_audio, agarre, error, playerLevel);
                 _lastInteract = Time.time;
                 Unenchant(GameManager.Instance.Player);

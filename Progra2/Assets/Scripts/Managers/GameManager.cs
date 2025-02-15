@@ -239,6 +239,9 @@ public class GameManager : MonoBehaviour
 
     public GB_Boss GB_BossScript;
 
+    public LayerMask objMoveObstacles;
+
+
 }
 
 

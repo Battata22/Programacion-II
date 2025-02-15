@@ -10744,6 +10744,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -70.655
       objectReference: {fileID: 0}
+    - target: {fileID: 4956606256943120630, guid: dba38489193ab8c4ca128c8e1ce6cdb8, type: 3}
+      propertyPath: _posibleObstacles.m_Bits
+      value: 2147483904
+      objectReference: {fileID: 0}
     - target: {fileID: 5703854150638405865, guid: dba38489193ab8c4ca128c8e1ce6cdb8, type: 3}
       propertyPath: m_Name
       value: tachoDeBasura01 (2)
@@ -28632,6 +28636,10 @@ PrefabInstance:
       propertyPath: _cam
       value: 
       objectReference: {fileID: 752110227}
+    - target: {fileID: 5894330111274566517, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+      propertyPath: invertRay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6243371337675859211, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.86
@@ -36873,6 +36881,9 @@ MonoBehaviour:
   _scareAmount: 0
   bonk: {fileID: 0}
   agarrado:
+    serializedVersion: 2
+    m_Bits: 0
+  _posibleObstacles:
     serializedVersion: 2
     m_Bits: 0
   _enchanted: 0

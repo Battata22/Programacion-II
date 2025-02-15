@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,6 @@ public class CamDistance : MonoBehaviour
     //pinto de colision
     Vector3 _point;
 
-
     private void Update()
     {
         //guardar pos dle pj, en teoria pos del mesh pero no queria usar mesh de una porque soy especial
@@ -30,12 +30,14 @@ public class CamDistance : MonoBehaviour
         //direccion del ray
         Vector3 _ray = (_lookingAt.position - _origin).normalized;
 
+        float distanceToUse = _rayDistance;
+
         RaycastHit hit;
         
-        Debug.DrawRay(_origin, _ray * _rayDistance, Color.green);
+        Debug.DrawRay(_origin, _ray * distanceToUse, Color.green);
 
         // Crea Raycast     origen / direccion  /devuelve algo /largo del ray/ layer que lo puede cortar/
-        if (Physics.Raycast(_origin, _ray.normalized, out hit, _rayDistance, _layerMask) && !hit.transform.TryGetComponent<RoomTrigger>(out var room))
+        if (Physics.Raycast(_origin, _ray.normalized, out hit, distanceToUse, _layerMask) /*&& !hit.transform.TryGetComponent<RoomTrigger>(out var room)*/ && !hit.collider.isTrigger)
         {
             //Al colicionar con una pared, guarda el liugar y activa el uso de punto para la posicion d ela camara
 
@@ -54,7 +56,7 @@ public class CamDistance : MonoBehaviour
         {
             //Desactiva uso de punto
             _cam.usePoint = false;
-        }       
+        }
     }
 
     private void LateUpdate()
