@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CasaCatolicaPuzzle;
+using UnityEngine.Audio;
 
 public class MicroondasPuzzle : Nivel3Puzzle
 {
@@ -32,12 +33,27 @@ public class MicroondasPuzzle : Nivel3Puzzle
 
     public bool startCheck = false;
 
+    bool _yaQueme = false;
+
+    AudioSource _auSource;
+    [SerializeField] AudioMixerGroup _myMixer;
+    [SerializeField] AudioClip _beep;
+
+    private void Awake()
+    {
+        _auSource = gameObject.AddComponent<AudioSource>();
+        _auSource.outputAudioMixerGroup = _myMixer;
+    }
+
     private void Update()
     {
         if(doCheck && Vector3.SqrMagnitude(_myPuzzle.npcPuzzle.transform.position - transform.position) < (checkDist * checkDist))
         {
             if (_myPuzzle.npcPuzzle.taQuePela)
+            {
+                _yaQueme=true;
                 _myPuzzle.npcPuzzle.QuemarNpc();
+            }
         }
 
         if(startCheck && !_contando && Vector3.SqrMagnitude(_myPuzzle.npcPuzzle.transform.position - transform.position) < (checkDist * checkDist))
@@ -67,6 +83,7 @@ public class MicroondasPuzzle : Nivel3Puzzle
 
         _myPuzzle.npcPuzzle.GoCheckMicrowave();
 
+        StartCoroutine(VeniGilVeniiii());
     }
 
     public void StartCountDown(float newDuration)
@@ -88,6 +105,19 @@ public class MicroondasPuzzle : Nivel3Puzzle
         duration = newDuration;
         deberiaQuemar = true;
         _myPuzzle.npcPuzzle.taQuePela = deberiaQuemar;
+    }
+
+    IEnumerator VeniGilVeniiii()
+    {
+
+        while (!_yaQueme)
+        {
+            _auSource.PlayOneShot(_beep);
+
+            _myPuzzle.npcPuzzle.GoCheckMicrowave();
+
+            yield return new WaitForSeconds(5f);
+        }
     }
 
 }

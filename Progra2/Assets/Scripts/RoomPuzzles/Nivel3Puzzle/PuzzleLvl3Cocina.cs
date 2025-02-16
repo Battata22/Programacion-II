@@ -47,6 +47,9 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
     bool _roomComplete = false;
 
+    [SerializeField] Chocotorta _chotocorta;
+    [SerializeField] Transform _npcHando;
+
     //Fireflies
     [Header("<color=green>Fireflies</color>")]
     [SerializeField] Fireflies _fliesPrefab;
@@ -101,7 +104,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         _currentStage++;
 
         npcPuzzle = npcInRoom.transform.AddComponent<NpcCocinaPuzzle>();
-        npcPuzzle.Initialize(this);
+        npcPuzzle.Initialize(this, _chotocorta, _npcHando);
         npcPuzzle.StartMicrowave();
         microwave.MicroondasPuzzle.active = true;
 

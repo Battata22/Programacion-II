@@ -362,11 +362,9 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
     public void StopMovement()
     {
-        Debug.Log("<color=#4394f7> Tatequieto </color>");
+        //Debug.Log("<color=#4394f7> Tatequieto </color>");
         
         Drop();
-
-
     }
 
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error,int playerLevel)

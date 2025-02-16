@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class SFX : Pickable
 {
+    [Header("<color=green> SFX </color>")]
     public AudioSource _audioSource;
     [SerializeField] protected bool isPlaying = false, clip = false;
     protected int random1;

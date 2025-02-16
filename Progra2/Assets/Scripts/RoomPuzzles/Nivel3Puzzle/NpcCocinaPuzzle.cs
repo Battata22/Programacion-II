@@ -13,11 +13,19 @@ namespace CasaCatolicaPuzzle
         public bool taQuePela = false;
         public bool tieneChocolate = false;
 
+        [SerializeField] Chocotorta _chotocorta;
+        [SerializeField] Transform _npcHando;
+
+        Chocotorta _newChoco;
+
         //a
-        public void Initialize(PuzzleLvl3Cocina newPuzzle)
+        public void Initialize(PuzzleLvl3Cocina newPuzzle, Chocotorta newChoto, Transform Tha_Hando)
         {
             Debug.Log("<color=green>asdasdasd iniciado</color>");
             _myPuzzle = newPuzzle;
+
+            _chotocorta = newChoto;
+            _npcHando = Tha_Hando;
         }
 
         private void Awake()
@@ -61,9 +69,16 @@ namespace CasaCatolicaPuzzle
 
         public void GetChocolateCasero()//codeo bien void, no apto para artistas
         {
-            _myPuzzle._fridge.DaleElChocolate -= GetChocolateCasero;
+
             if (tieneChocolate) return;
             tieneChocolate = true;
+            _myPuzzle._fridge.DaleElChocolate -= GetChocolateCasero;
+
+            Debug.Log($"<color=#aaf90f>Debug para demostrar que el event no esta vacio y no soy un boludo (que capo que soy)</color>");
+
+            _newChoco = Instantiate(_chotocorta, _npcHando.position, Quaternion.identity);
+            //_newChoco.transform.localPosition = Vector3.zero;
+            _newChoco.Initialize(_npcHando, _myAsustable, _myPuzzle);
 
             _myAsustable.OnSlideStop += _myPuzzle.CompletePuzzle;
             _myAsustable.OnRagdollEnd += _myPuzzle.CompletePuzzle;
