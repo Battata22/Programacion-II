@@ -38,7 +38,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.014358303, y: 0.014358303, z: 0.014358303}
+  m_LocalScale: {x: 0.013, y: 0.013, z: 0.013}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7259066471405461292}
@@ -184,6 +184,9 @@ MonoBehaviour:
   _scareAmount: 0
   bonk: {fileID: 0}
   agarrado:
+    serializedVersion: 2
+    m_Bits: 0
+  _posibleObstacles:
     serializedVersion: 2
     m_Bits: 0
   _enchanted: 0
