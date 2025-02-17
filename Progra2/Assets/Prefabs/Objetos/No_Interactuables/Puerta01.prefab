@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8067271654544632314}
   - component: {fileID: 9168580974342317800}
   - component: {fileID: 3765865381893202230}
-  m_Layer: 31
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 4410439334767753888}
   - component: {fileID: 2945918122037796525}
   - component: {fileID: 6255270277951047115}
-  m_Layer: 31
+  m_Layer: 8
   m_Name: Puerta01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,6 +263,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myAnim: {fileID: 0}
   _angle: 0
+  _normalLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _lockedLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
   _locked: 0
   _myColider: {fileID: 4410439334767753888}
 --- !u!208 &6255270277951047115

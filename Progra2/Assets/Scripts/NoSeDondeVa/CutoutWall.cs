@@ -11,6 +11,8 @@ public class CutoutWall : MonoBehaviour
 
     [SerializeField]Transform origin;
 
+    [SerializeField] float _rad;
+
     RaycastHit[] _hitObjects;
     //RaycastHit[] _lastHitObjs;
 
@@ -83,9 +85,11 @@ public class CutoutWall : MonoBehaviour
         Debug.DrawLine(origin.position, origin.position + offset, Color.red);
         //RaycastHit[] hitObjects = Physics.RaycastAll(_targetObject.transform.position, _targetObject.transform.forward, 1f, _wallLayer);
         _hitObjects = null;
-        _hitObjects = Physics.RaycastAll(origin.position, offset, offset.magnitude, _wallLayer);
+        //_hitObjects = Physics.RaycastAll(origin.position, offset, offset.magnitude, _wallLayer);
+        _hitObjects = Physics.SphereCastAll(origin.position, _rad, offset, offset.magnitude, _wallLayer);
 
-        if( _hitObjects != null )
+
+        if ( _hitObjects != null )
         StartCoroutine(ResetLastObj(cutoutPos));
 
         for (int i = 0; i < _hitObjects.Length; i++)

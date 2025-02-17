@@ -60,6 +60,10 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
     [SerializeField] LayerMask _posibleObstacles;
 
+    public event DelegateType.VoidDelegate OnPickUp = delegate { };
+    //public event DelegateType.VoidDelegate On
+
+
     protected virtual void Start()
     {
         rompscript = GetComponent<Rompible>();
@@ -332,7 +336,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
     {
         if (!canCheck) return false;
 
-        Debug.Log("<color=#7043f7> Buscando objetos</color>");
+        //Debug.Log("<color=#7043f7> Buscando objetos</color>");
 
         bool result = false;
 
@@ -403,7 +407,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                 //agarrado = 13;
 
                 gameObject.layer = 0;
-
+                OnPickUp();
 
                 if (transform.TryGetComponent<MeshRenderer>(out var renderer) && renderer.materials[0].GetFloat("_Fade") != 1.3f)
                 {
