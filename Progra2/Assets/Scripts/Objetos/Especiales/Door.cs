@@ -28,9 +28,9 @@ public class Door : MonoBehaviour, IInteractable
     void Awake()
     {
 
-        _normalLayer.value = gameObject.layer;
+        //_normalLayer.value = gameObject.layer;
 
-        Debug.Log($"{gameObject.layer}, {_normalLayer.value}, {_lockedLayer.value}");
+        //Debug.Log($"{gameObject.layer}, {_normalLayer.value}, {_lockedLayer.value}");
 
     }
 
@@ -41,7 +41,7 @@ public class Door : MonoBehaviour, IInteractable
 
     public void LockDoor()
     {
-        gameObject.layer = _lockedLayer.value;
+        gameObject.layer = LayerMask.NameToLayer("Wall");
 
         _locked = true;
         transform.GetComponent<NavMeshObstacle>().enabled = true;
@@ -50,7 +50,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public void UnlockDoor()
     {
-        gameObject.layer = _normalLayer.value;
+        gameObject.layer = LayerMask.NameToLayer("NoTras");
+
         //Desactivo porque soy la verga compadre
         _locked = false;
 
@@ -74,7 +75,8 @@ public class Door : MonoBehaviour, IInteractable
     private void OnTriggerExit(Collider other)
     {
         //if (_locked) return;
-        CloseAnim();
+        if (other.transform.GetComponent<NPC>() || other.transform.GetComponent<Player>())
+            CloseAnim();
     }
 
     void PlayAnim(Transform opener)
