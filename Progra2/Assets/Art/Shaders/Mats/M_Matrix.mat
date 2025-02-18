@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Gradient:
-        m_Texture: {fileID: 2800000, guid: ebb5f29c459fb5f4ab5ead31c497d28e, type: 3}
+        m_Texture: {fileID: 2800000, guid: df5562932d2680941a0e771193dc4fec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1b43d1eb0d0b33645a52ce7845bd9ff3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatrixText:
@@ -51,11 +51,12 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _UseTexture: 0
+    - _UseTexture: 1
     m_Colors:
-    - _ColorOfEffect: {r: 0, g: 1, b: 0.0833332, a: 0}
-    - _ScrollSpeed: {r: 0, g: 0.1, b: 0, a: 0}
-    - _TilingValue: {r: 1, g: 1, b: 0, a: 0}
+    - _ColorOfEffect: {r: 0, g: 1, b: 0.08333317, a: 0}
+    - _ScrollSpeed: {r: 0, g: 0.3, b: 0, a: 0}
+    - _TextureColor: {r: 0.01022696, g: 1, b: 0, a: 0.1764706}
+    - _TilingValue: {r: 4, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4849911286141669928
 MonoBehaviour:
