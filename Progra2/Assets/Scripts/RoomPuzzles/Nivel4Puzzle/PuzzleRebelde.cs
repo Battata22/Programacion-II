@@ -10,7 +10,7 @@ namespace CasaFiesta
         [Header("<color=green>Special</color>")]
         [SerializeField] Asustable[] _myNpc;
         [SerializeField] Pickable _cuadro;
-        [SerializeField] GameObject _tapon;
+        [SerializeField] TaponPared _tapon;
         [SerializeField] Door[] _doors;
         [SerializeField] HouseExitTrigger _houseExit;
 
@@ -88,7 +88,7 @@ namespace CasaFiesta
             _cuadro.OnPickUp -= SacarTapon;
 
             //Sonido de Zelda
-            _tapon.SetActive(false);
+            _tapon.ChangeToTrigger();
         }
     }
 }

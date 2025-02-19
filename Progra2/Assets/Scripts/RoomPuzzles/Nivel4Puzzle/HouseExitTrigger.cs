@@ -8,9 +8,13 @@ public class HouseExitTrigger : MonoBehaviour
 {
     [SerializeField] List<GameObject> _wantToExit = new();
     [SerializeField] Ghostbuster[] _ghostBusters;
-    [SerializeField] int _exitsCount;
+    [SerializeField] int _exitsToGB;
+    [SerializeField] int _exitsToWin;
+
     int internalCount;
+    
     bool _gbActive = false;
+    bool _barActive = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,9 +42,14 @@ public class HouseExitTrigger : MonoBehaviour
         coso.SetActive(false);
 
         internalCount++;
-        if(internalCount >= _exitsCount)
+        if(internalCount >= _exitsToGB)
         {
             ActivateGB();
+        }
+
+        if(internalCount >= _exitsToWin) 
+        {
+            ActivateBar();
         }
     }
 
@@ -53,6 +62,17 @@ public class HouseExitTrigger : MonoBehaviour
         {
             gb.gameObject.SetActive(true);
         }
+    }
+
+    void ActivateBar()
+    {
+        Debug.Log("<color=blue> ACTIVATE HDP </color>");
+        if(_barActive) return;
+        _barActive = true;
+        Debug.Log("<color=blue> me active UwO </color>");
+
+        GameManager.Instance.ActivateTerrorBar();
+
     }
 
     public void AddToList(GameObject newObj)
