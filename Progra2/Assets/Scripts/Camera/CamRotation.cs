@@ -48,7 +48,7 @@ public class CamRotation : MonoBehaviour
     private void LateUpdate()
     {
         _playerOrientation.rotation = Quaternion.Euler(0, _yRotation, 0);
-        if (_meshOrientation != null)
+        if (_meshOrientation != null /*&& GameManager.Instance.Camera.followPlayer*/)
             _meshOrientation.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
     }
 

@@ -9,6 +9,7 @@ public class PyChangeFloor : MonoBehaviour
     [SerializeField] float _ofset;
     [SerializeField] KeyCode _goUp;
     [SerializeField] KeyCode _goDown;
+    [SerializeField] ParticleSystem _puffParticle;
     
 
     private void Awake()
@@ -40,19 +41,22 @@ public class PyChangeFloor : MonoBehaviour
         {
             if(hit.transform.TryGetComponent<Piso>(out var piso))
             {
-                if (piso.useParent)
-                {
-                    _player.transform.position = new Vector3(_player.transform.position.x, piso.myParent.transform.position.y + _ofset, _player.transform.position.z);
 
-                    return;
-                }
+                //if (piso.useParent)
+                //{
+                //    _player.transform.position = new Vector3(_player.transform.position.x, piso.myParent.transform.position.y + _ofset, _player.transform.position.z);
+
+                //    return;
+                //}
                 //Debug.Log($"<color=red> Player pos {_player.transform.position} Floor pos {piso.transform.position} </color>");
 
-                _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y - piso.transform.localPosition.y + _ofset, _player.transform.position.z);
-                
-                //Debug.Log($"<color=green> Player Final {_player.transform.position} Floor pos {piso.transform.position} </color>");
+                var puff = Instantiate(_puffParticle, transform.position, Quaternion.identity);
+                Destroy(puff, 0.5f);
 
-                //Debug.Log($"<color=yellow> Piso detectado {piso.name} </color>");
+                _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y - piso.transform.localPosition.y + _ofset, _player.transform.position.z);
+
+                GameManager.Instance.Camera.ChangeFloor();
+
             }
         }
     }
@@ -64,20 +68,19 @@ public class PyChangeFloor : MonoBehaviour
         {
             if (hit.transform.TryGetComponent<Piso>(out var piso))
             {
-                if (piso.useParent)
-                {
-                    _player.transform.position = new Vector3(_player.transform.position.x, piso.myParent.transform.position.y + _ofset, _player.transform.position.z);
+                GameManager.Instance.Camera.ChangeFloor();
 
-                    return;
-                }
+                //if (piso.useParent)
+                //{
+                //    _player.transform.position = new Vector3(_player.transform.position.x, piso.myParent.transform.position.y + _ofset, _player.transform.position.z);
 
-                //Debug.Log($"<color=red> Player pos {_player.transform.position} Floor pos {piso.transform.position} </color>");
+                //    return;
+                //}
+
+                var puff = Instantiate(_puffParticle, transform.position, Quaternion.identity);
+                Destroy(puff, 0.5f);
 
                 _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y - piso.transform.localPosition.y+ _ofset, _player.transform.position.z);
-                
-                //Debug.Log($"<color=green> Player Final {_player.transform.position} Floor pos {piso.transform.position} </color>");
-                
-                //Debug.Log($"<color=yellow> Piso detectado {piso.name} </color>");
             }
         }
     }

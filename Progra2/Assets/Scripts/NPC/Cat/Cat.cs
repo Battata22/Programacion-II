@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody  ))]
 public class Cat : NPC
@@ -24,6 +25,9 @@ public class Cat : NPC
     [SerializeField] public float timeToJump;
     [SerializeField] Transform _triggerHolder;
     [SerializeField] CatArea _triggerPrefab;
+    [SerializeField] float _chaseDuration;
+    [SerializeField, Tooltip("firs Min Time, sec Max Time")] float[] _timeBtChase = new float[2];
+
     CatArea _myGusDetector;
     float _fightTime = 0f;
     bool _canJumpToPlayer = true;
@@ -44,6 +48,8 @@ public class Cat : NPC
 
         _myGusDetector = Instantiate(_triggerPrefab, _triggerHolder.position, Quaternion.identity);
         _myGusDetector.Initialize(this, _triggerHolder);
+
+        StartCoroutine(StopChase());
     }
 
     private void Update()
@@ -245,6 +251,7 @@ public class Cat : NPC
         _alertIcon.active = true;
         _searchObj = true;
 
+        StartCoroutine(StopChase());
     }
 
     public void StopAlert() 
@@ -351,4 +358,55 @@ public class Cat : NPC
         if (_myGusDetector != null)
             _myGusDetector.active = false;
     }
+
+    void StartChasePlayer()
+    {
+        StartCoroutine(ChaseTarget());
+        StartCoroutine(ChaseDuration());
+    }
+
+    bool _activeChase = false;
+
+    IEnumerator ChaseTarget()
+    {
+        _activeChase = true;
+        var target = GameManager.Instance.Player;
+        //Debug.Log("<color=#825aef>Inicia Cazeria</color>");
+        //consigue pos de Gus cada medio segundo
+
+        while (_activeChase && _onFloor && _canJump && _agent.enabled)
+        {
+            _actualNode = target.transform;
+            _agent.SetDestination(_actualNode.position);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        _activeChase = false;
+        //yield return null;       
+    }
+
+    IEnumerator StopChase()
+    {
+        _activeChase = false;
+
+        var nextChase = Random.Range(_timeBtChase[0], _timeBtChase[1]);
+
+        _actualNode = GetNewNode(_actualNode);
+        _agent.SetDestination(_actualNode.position);
+
+        yield return new WaitForSeconds(nextChase);
+        StartChasePlayer();
+    }
+
+    IEnumerator ChaseDuration()
+    {
+
+        yield return new WaitForSeconds(_chaseDuration);
+
+        if( _activeChase )
+            StartCoroutine(StopChase());
+
+    }
+
 }

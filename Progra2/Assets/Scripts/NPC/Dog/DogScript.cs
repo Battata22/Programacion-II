@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -24,6 +23,9 @@ public class DogScript : NPC
 
     DelegateType.VoidDelegate InputCheck = delegate { };
 
+    [SerializeField] float _chaseDuration;
+    [SerializeField, Tooltip("firs Min Time, sec Max Time")] float[] _timeBtChase = new float[2];
+
     //Juguetes
     [SerializeField] Transform _toy;
     [SerializeField] float _playDuration;
@@ -41,6 +43,8 @@ public class DogScript : NPC
         _ragHitbox = GetComponentInChildren<DogRagdollHitbox>();
         _alertIcon = GetComponentInChildren<DogAlertIcon>();
         _alertIcon.SetMaxTimers(_doubtTime,_mercyTime);
+
+        StartCoroutine(StopChase());
     }
 
     private void Update()
@@ -99,10 +103,12 @@ public class DogScript : NPC
         //base.GetDoubt(pos);
     }
 
+    [SerializeField] bool _alert = false;
+
     public void StartAlert()
     {
         if (_chassingToy) return;
-
+        _alert = true;
         //Dejar quieto al perro
         //Hacer sonido para llamar atencion del player
         //Arrancar a dudar
@@ -158,9 +164,11 @@ public class DogScript : NPC
         _lastDoubt = Time.time;
 
         _alertIcon.active = false;
-
+        _alert = false;
 
         _agent.speed = speedNormal;
+
+        StartCoroutine(StopChase());
     }
 
     //Toy shit
@@ -169,6 +177,7 @@ public class DogScript : NPC
     {
         if (_playing) return;
         EndAlert();
+        StartCoroutine(StopChase());
         //if(_chassingToy) return;
 
         Debug.Log($"<color=blue> Busca la pelota </color>");
@@ -251,5 +260,64 @@ public class DogScript : NPC
     void RagdollHitboxState(bool newState)
     {
         _ragHitbox.active = newState;
+    }
+
+
+    void StartChasePlayer()
+    {
+        Debug.Log("<color=green>Start Chase</color>");
+
+        StartCoroutine(ChaseTarget());
+        StartCoroutine(ChaseDuration());
+    }
+
+    bool _activeChase = false;
+
+    IEnumerator ChaseTarget()
+    {
+        Debug.Log("<color=green>Woof Woof MADAFAKA</color>");
+
+        _activeChase = true;
+        var target = GameManager.Instance.Player;
+        //Debug.Log("<color=#825aef>Inicia Cazeria</color>");
+        //consigue pos de Gus cada medio segundo
+
+        while (_activeChase && !_playing && _agent.enabled && !_chassingToy)
+        {
+            Debug.Log("<color=green>Come here PUSSY</color>");
+
+            _actualNode = target.transform;
+            _agent.SetDestination(_actualNode.position);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        _activeChase = false;
+        //yield return null;       
+    }
+
+    IEnumerator StopChase()
+    {
+        Debug.Log("<color=green>Stop Chase</color>");
+
+        _activeChase = false;
+
+        var nextChase = Random.Range(_timeBtChase[0], _timeBtChase[1]);
+
+        _actualNode = GetNewNode(_actualNode);
+        _agent.SetDestination(_actualNode.position);
+
+        yield return new WaitForSeconds(nextChase);
+        StartChasePlayer();
+    }
+
+    IEnumerator ChaseDuration()
+    {
+
+        yield return new WaitForSeconds(_chaseDuration);
+
+        if (_activeChase)
+            StartCoroutine(StopChase());
+
     }
 }

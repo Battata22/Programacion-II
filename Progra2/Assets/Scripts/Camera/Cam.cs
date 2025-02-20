@@ -12,6 +12,10 @@ public class Cam : MonoBehaviour
     [SerializeField] Transform _camCenter;
     [SerializeField] float _offset;
     [SerializeField] float _maxDist;
+    [SerializeField] float _stopChangeDist;
+    [SerializeField] float _camSpeed;
+
+    public bool followPlayer { get { return _followPlayer; } }
 
     public bool usePoint=false;
 
@@ -49,6 +53,33 @@ public class Cam : MonoBehaviour
     {
         _followPlayer = doFollow;
     }
+
+    public void ChangeFloor()
+    {
+        _followPlayer = false;
+
+        StartCoroutine(FloorMovement());
+    }
+
+    IEnumerator FloorMovement()
+    {
+        yield return new WaitForSeconds(0.02f);
+
+        while (!_followPlayer)
+        {
+            var dir = (_target.position - transform.position).normalized;
+
+            transform.position += dir * _camSpeed * Time.deltaTime;
+            transform.forward = _target.forward;
+
+            if (Vector3.SqrMagnitude(_target.position - transform.position) <= (_stopChangeDist * _stopChangeDist))
+                _followPlayer = true;
+
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    
 
     //QUIZA ESTO ESTABA PARA EL MUSEO
 
