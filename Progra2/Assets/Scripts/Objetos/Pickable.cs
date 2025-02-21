@@ -158,6 +158,8 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         {
             foreach (var mat in _renderer.materials)
             {
+                Debug.Log($"<color=yellow> La recalcada concha de su madre {mat.name}</color>");
+
                 //print(mat.name);
                 if (mat.name == "M_Outline (Instance)")
                 {
@@ -178,7 +180,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
                 {
                     OutLineEnchanted = mat;
                     OutLineEnchanted.SetFloat("_Thickness", 0f);
-                    OutLine.SetFloat("_Active", 0);
+                    OutLineEnchanted.SetFloat("_Active", 0);
 
                 }
             }

@@ -9,6 +9,9 @@ namespace CasaFiesta
         [SerializeField] protected HoseOwner _houseOwner;
         [SerializeField] protected Transform _posForHouseOwner;
 
+        [SerializeField] protected string[] _objectiveTexts;
+        protected int _textIndex = 0;
+
         abstract public void ActivatePuzzle();
         public virtual Transform GiveDestination()
         {
@@ -16,5 +19,24 @@ namespace CasaFiesta
         }
 
         abstract public void KickOutNpc();
+
+        protected void ChangeText()
+        {
+            GameManager.Instance.ChangeObjectiveText(_objectiveTexts[_textIndex]);
+        }
+
+        protected void ChangeText(string text)
+        {
+            GameManager.Instance.ChangeObjectiveText(text);
+
+        }
+
+        protected virtual void OnTriggerExit(Collider other)
+        {
+            if(GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex && GameManager.Instance._objectiveText.text == _objectiveTexts[_textIndex])
+            {
+                GameManager.Instance.ChangeObjectiveText("Busca a alguien para asustar");
+            }
+        }
     }
 }

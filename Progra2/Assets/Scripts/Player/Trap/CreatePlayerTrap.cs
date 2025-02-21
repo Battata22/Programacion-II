@@ -42,8 +42,11 @@ public class CreatePlayerTrap : MonoBehaviour
             currentTraps = 0;
         }
 
+        if(SceneManager.GetActiveScene().name == "Nivel2" || SceneManager.GetActiveScene().name == "Nivel1")
+            textoTraps.text = ("Trampas en uso: " + currentTraps + " de " + maxTraps + Environment.NewLine + "Objetivo actual: " + ObjetivoActual());
+        else
+            textoTraps.text = ("Trampas en uso: " + currentTraps + " de " + maxTraps /*+ Environment.NewLine + "Objetivo actual: " + ObjetivoActual()*/);
 
-        textoTraps.text = ("Trampas en uso: " + currentTraps + " de " + maxTraps + Environment.NewLine + "Objetivo actual: " + ObjetivoActual());
 
         // 0 siempre, 6 7 y 8 por que todavia no existe trampa para ellos
         if (SelectorUI.habAct != 0 && SelectorUI.habAct != 3 && SelectorUI.habAct != 5 && SelectorUI.habAct != 6 && SelectorUI.habAct != 7 && SelectorUI.habAct != 8)

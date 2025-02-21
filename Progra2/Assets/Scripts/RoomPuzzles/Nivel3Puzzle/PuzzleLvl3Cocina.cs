@@ -110,6 +110,9 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
         _puzzleActive = true;
         LockDoors();
+
+        _textIndex = 0;
+        ChangeText();
     }
     
     /*
@@ -155,11 +158,17 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
         _nextPuzzle.StartPuzzle();
         _puzzleActive = false;
+
+        _textIndex = _objectiveTexts.Length-1;
+        ChangeText();
     }
 
     public void ChangeState()
     {
         _currentStage++;
+
+        _textIndex = 1;
+        ChangeText();
     }
 
     void LockDoors()

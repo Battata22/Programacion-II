@@ -154,7 +154,6 @@ MeshRenderer:
   - {fileID: 2100000, guid: bfac56422fb9af14688d5ee0fbb894b7, type: 2}
   - {fileID: 2100000, guid: 854da2abd8d209b4a8aad738ad1de993, type: 2}
   - {fileID: 2100000, guid: 43cdf23c8ce6ea34ebbaac5fa93f7be7, type: 2}
-  - {fileID: 2100000, guid: 3347a6b0c3eaad64d8f61f5fccea0bda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -353,28 +352,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
-  _cd: 0
+  _cd: 1
   _lastInteract: 0
   _speed: 10
   _itemHolder: {fileID: 0}
   holding: 0
   weight: 0
   blessed: 0
-  lvlRequired: 0
+  lvlRequired: 1
   _materialNormal: {fileID: 2100000, guid: bfac56422fb9af14688d5ee0fbb894b7, type: 2}
   _materialFade: {fileID: 2100000, guid: 7baa7a45a7d5e414f8e63446a0158e2d, type: 2}
   _renderer: {fileID: 0}
   _dropLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483904
   actualRoom: 0
+  pickUpScript: {fileID: 0}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 0}
-  particleGen: {fileID: 0}
-  trailGen: {fileID: 0}
+  particleGen: {fileID: 458969681388355582, guid: 1b621bf1d559ad74fb73fb8bbef8a3fb, type: 3}
+  trailGen: {fileID: 8564050039465103683, guid: 821a626557e257845b48dbd576cfef1f, type: 3}
   parTime: 0
   _navObstacle: {fileID: 0}
   _scareAmount: 0
@@ -382,6 +381,9 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 2147483904
   _enchanted: 0
 --- !u!114 &2048729799881911621
 MonoBehaviour:

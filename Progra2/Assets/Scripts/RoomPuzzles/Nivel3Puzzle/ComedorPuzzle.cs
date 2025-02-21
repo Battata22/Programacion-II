@@ -13,6 +13,8 @@ public class ComedorPuzzle : Nivel3Puzzle
     [SerializeField] Fireflies _chestFlies;
     [SerializeField] Fireflies _discoFlies;
 
+
+
     int _currentState = 0;
 
     //Fireflies
@@ -58,6 +60,9 @@ public class ComedorPuzzle : Nivel3Puzzle
         _puzzleActive = true;
         _tocaDiscos.OnDiscPlay += CompletePuzzle;
         _chest.OnChestOpen += ChangeState;
+        _chest.OnChestOpen += ChestText;
+
+
     }
 
     void CompletePuzzle()
@@ -76,6 +81,9 @@ public class ComedorPuzzle : Nivel3Puzzle
         _puzzleActive = false;
         GameManager.Instance.ActivateTerrorBar();
         Destroy(_discoFlies.gameObject);
+
+        _textIndex = _objectiveTexts.Length-1;
+        ChangeText();
     }
 
     void ChangeState()
@@ -87,9 +95,34 @@ public class ComedorPuzzle : Nivel3Puzzle
         if (_currentState == 1)
         {
             _chestFlies.gameObject.SetActive(true);
+
+            _textIndex = 1;
+            ChangeText();
         }
         else
+        {
             _chestFlies.gameObject.SetActive(false);
+        }
+    }
+
+    bool alreadyCall = false;
+    public void EnterRoom()
+    {
+        if (!_puzzleActive) return;
+
+        if (alreadyCall) return;
+        alreadyCall = true;
+
+        _textIndex = 0;
+        ChangeText();
+    }
+
+    void ChestText()
+    {
+        _chest.OnChestOpen -= ChestText;
+
+        _textIndex = 1;
+        ChangeText();
     }
 
 

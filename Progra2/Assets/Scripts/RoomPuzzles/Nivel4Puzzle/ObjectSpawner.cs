@@ -7,6 +7,7 @@ public class ObjectSpawner : MonoBehaviour, IInteractable
     [SerializeField] Vector3 _spawnPos;
     [SerializeField] GameObject[] _objectToSpawn;
 
+    public event DelegateType.VoidDelegate OnObjectSpawn = delegate { };
     
     void SpawnObject(int index = 0)
     {
@@ -17,6 +18,8 @@ public class ObjectSpawner : MonoBehaviour, IInteractable
         }
 
         var newObj = Instantiate(_objectToSpawn[index], _spawnPos, Quaternion.identity);
+
+        OnObjectSpawn();
     }
 
     IEnumerator SpawnAll()

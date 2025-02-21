@@ -11,8 +11,15 @@ namespace CasaFiesta
 
         [SerializeField] PuzzleRebelde _ogPuzzle;
 
+        private void Start()
+        {
+            _ogPuzzle._otraHabitacion = this.GetComponent<RoomTrigger>();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
+            _ogPuzzle.SegundoTrigger(other);
+
             if(other.transform.TryGetComponent<StinkBomb>(out var bomb))
             {
                 bomb.OnExplode += ExplodeInRoom;

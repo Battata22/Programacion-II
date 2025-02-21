@@ -11,6 +11,7 @@ namespace CasaFiesta
         [SerializeField] Asustable _npcInRoom;
         [SerializeField] DiscoBall _discoBall;
 
+        bool _active = false;
         bool completed = false;
 
         private void Start()
@@ -22,11 +23,17 @@ namespace CasaFiesta
         {
             Debug.Log("Huh?");
 
+            _active = true;
             _discoBall.CanGetDamage(true);
+
+            ChangeText();
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if(_active && other.gameObject.GetComponent<Player>())
+                ChangeText();
+
             if (completed && other.gameObject == _houseOwner.gameObject)
             {
                 Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
@@ -45,6 +52,10 @@ namespace CasaFiesta
 
             completed = true;
             _houseOwner.AddToCompleteList(this);
+
+            _textIndex =1;
+            if (GameManager.Instance.Player.actualRoom == GetComponent<RoomTrigger>().roomIndex)
+                ChangeText();
         }
 
         public override void KickOutNpc()

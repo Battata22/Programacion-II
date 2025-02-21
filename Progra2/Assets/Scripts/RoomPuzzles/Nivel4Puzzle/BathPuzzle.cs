@@ -26,6 +26,8 @@ namespace CasaFiesta
         bool _pisoMojado = false;
         bool _puzzleCompleted = false;
 
+        bool _active=false;
+
         private void Awake()
         {
             myRoom = GetComponent<RoomTrigger>();
@@ -33,7 +35,10 @@ namespace CasaFiesta
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent<SFX>(out var electronico))
+            if (_active && other.gameObject.GetComponent<Player>())
+                ChangeText();
+
+            if (other.TryGetComponent<SFX>(out var electronico))
             {
                 var poronga = electronico.gameObject.AddComponent<ElectronicoPuzzle>();
                 poronga.Initialize(this, myRoom);
@@ -48,12 +53,17 @@ namespace CasaFiesta
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        protected override void OnTriggerExit(Collider other)
         {
             if(other.TryGetComponent<ElectronicoPuzzle>(out var pingo))
             {
                 _electronicosInRoom.Remove(pingo);
                 Destroy(pingo);
+            }
+
+            if (GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex && GameManager.Instance._objectiveText.text == _objectiveTexts[_textIndex])
+            {
+                GameManager.Instance.ChangeObjectiveText("Busca a alguien para asustar");
             }
         }
 
@@ -71,11 +81,16 @@ namespace CasaFiesta
             _puzzleCompleted = true;
 
             _houseOwner.AddToCompleteList(this);
+
+            _textIndex = _objectiveTexts.Length - 1;
+            ChangeText();
         }
 
         public override void ActivatePuzzle()
         {
             Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
+
+            _active = true;
         }
 
         public void ActivarAgua()
@@ -88,6 +103,9 @@ namespace CasaFiesta
             {
                 charco.gameObject.SetActive(true);
             }
+
+            _textIndex = 1;
+            ChangeText();
         }
 
         public override void KickOutNpc()

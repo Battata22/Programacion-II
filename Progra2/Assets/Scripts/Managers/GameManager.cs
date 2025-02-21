@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -240,6 +241,13 @@ public class GameManager : MonoBehaviour
     public GB_Boss GB_BossScript;
 
     public LayerMask objMoveObstacles;
+
+    public TMP_Text _objectiveText;
+
+    public void ChangeObjectiveText(string newText)
+    {
+        _objectiveText.text = newText;
+    }
 
 
 }

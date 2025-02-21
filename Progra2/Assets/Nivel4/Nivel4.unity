@@ -7330,7 +7330,6 @@ GameObject:
   - component: {fileID: 292842499}
   - component: {fileID: 292842501}
   - component: {fileID: 292842500}
-  - component: {fileID: 292842502}
   - component: {fileID: 292842503}
   m_Layer: 8
   m_Name: Banho
@@ -7399,28 +7398,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.799954, y: 4.018663, z: 9.188078}
   m_Center: {x: -6.854225, y: 1.7825853, z: -8.341634}
---- !u!114 &292842502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292842498}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5cba6c070d52e2429910cafaa2d9b51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _houseOwner: {fileID: 0}
-  _posForHouseOwner: {fileID: 0}
-  _myNpc:
-  - {fileID: 240615240}
-  - {fileID: 1176673474}
-  myRoom: {fileID: 0}
-  _houseExit: {fileID: 809068702}
-  _inodoroPuzzle: {fileID: 0}
-  _charcos: []
-  _electronicosInRoom: []
 --- !u!114 &292842503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10437,6 +10414,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7633268054846231982, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
+      propertyPath: _objectiveText
+      value: 
+      objectReference: {fileID: 910001963}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15135,6 +15116,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _houseOwner: {fileID: 1738865155}
   _posForHouseOwner: {fileID: 1443595772}
+  _objectiveTexts:
+  - Moja el piso
+  - Zap Zap
+  - Busca a alguien para asustar
   _myNpc:
   - {fileID: 1330393855}
   myRoom: {fileID: 0}
@@ -18481,11 +18466,11 @@ PrefabInstance:
       objectReference: {fileID: 1421272615}
     - target: {fileID: 7134040274822169308, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.87
+      value: 3.84
       objectReference: {fileID: 0}
     - target: {fileID: 7134040274822169308, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.884
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7134040274822169308, guid: 416f51e4059803a40a39a432692a9d69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20102,6 +20087,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _houseOwner: {fileID: 1738865155}
   _posForHouseOwner: {fileID: 146468332}
+  _objectiveTexts:
+  - Haz caer la bola disco
+  - Busca a alguien para asustar
   _houseExit: {fileID: 809068702}
   _npcInRoom: {fileID: 1942677191}
   _discoBall: {fileID: 345121174}
@@ -22937,6 +22925,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904076677}
   m_CullTransparentMesh: 1
+--- !u!114 &910001963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2037482934378130906, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+  m_PrefabInstance: {fileID: 792737565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &913706650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32723,6 +32722,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _houseOwner: {fileID: 1738865155}
   _posForHouseOwner: {fileID: 1437876298}
+  _objectiveTexts:
+  - Hay algo en la paerd
+  - Abre el armario
+  - "Apesta al \xF1o\xF1o"
+  - Busca a alguien para asustar
   _myNpc:
   - {fileID: 526028184}
   _cuadro: {fileID: 393102785}
@@ -32732,6 +32736,8 @@ MonoBehaviour:
   - {fileID: 1991211417}
   - {fileID: 495585862}
   _houseExit: {fileID: 809068702}
+  _armario: {fileID: 514409368}
+  _otraHabitacion: {fileID: 0}
 --- !u!114 &1403598303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42010,6 +42016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _houseOwner: {fileID: 1738865155}
   _posForHouseOwner: {fileID: 1466693177}
+  _objectiveTexts:
+  - este texto no se tendria que mostrar
+  - Busca a alguien para asustar
   _npcInRoom: {fileID: 1466693173}
   _coleccionables:
   - {fileID: 17727293}
@@ -42209,6 +42218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _houseOwner: {fileID: 1738865155}
   _posForHouseOwner: {fileID: 407797765}
+  _objectiveTexts:
+  - Haz resbalar a las personas sobre la mesa
+  - Busca a alguien para asustar
   _myNpc:
   - {fileID: 1065303011}
   - {fileID: 2045181095}

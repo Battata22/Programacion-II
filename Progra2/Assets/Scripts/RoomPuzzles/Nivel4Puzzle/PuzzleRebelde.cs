@@ -13,8 +13,18 @@ namespace CasaFiesta
         [SerializeField] TaponPared _tapon;
         [SerializeField] Door[] _doors;
         [SerializeField] HouseExitTrigger _houseExit;
+        [SerializeField] ObjectSpawner _armario;
+
+        public RoomTrigger _otraHabitacion;
 
         bool _roomCompleted = false;
+        bool _active = false;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_active && other.gameObject.GetComponent<Player>())
+                ChangeText();
+        }
 
         public void CompletePuzzle()
         {
@@ -25,18 +35,26 @@ namespace CasaFiesta
             {
                 door.UnlockDoor();
             }
+
+            _textIndex = _objectiveTexts.Length-1;
+            ChangeText();
+
         }
 
         public override void ActivatePuzzle()
         {
             Debug.Log("<color=magenta> Bloquie las puertas porque me dan asco todos </color>");
 
+            _active = true;
+
             foreach (var door in _doors)
             {
                 door.LockDoor();
             }
 
+            _armario.OnObjectSpawn += BombaSpawneada;
             _cuadro.OnPickUp += SacarTapon;
+
         }
 
         public override void KickOutNpc()
@@ -89,6 +107,32 @@ namespace CasaFiesta
 
             //Sonido de Zelda
             _tapon.ChangeToTrigger();
+
+            _textIndex = 1;
+            ChangeText();
+
+        }
+
+        void BombaSpawneada()
+        {
+            _armario.OnObjectSpawn -= BombaSpawneada;
+
+            _textIndex = 2;
+            ChangeText();
+        }
+
+        public void SegundoTrigger(Collider other)
+        {
+            if (_active && other.gameObject.GetComponent<Player>())
+                ChangeText();
+        }
+
+        protected override void OnTriggerExit(Collider other)
+        {
+            if ((GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex && GameManager.Instance.Player.actualRoom != _otraHabitacion.roomIndex) && GameManager.Instance._objectiveText.text == _objectiveTexts[_textIndex])
+            {
+                GameManager.Instance.ChangeObjectiveText("Busca a alguien para asustar");
+            }
         }
     }
 }

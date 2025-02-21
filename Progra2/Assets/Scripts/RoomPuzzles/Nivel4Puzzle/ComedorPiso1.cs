@@ -13,7 +13,9 @@ public class ComedorPiso1 : Nivel4Puzzle
     [SerializeField] Transform _exit;
     [SerializeField] RoomTrigger _myRoom;
     [SerializeField] HouseExitTrigger _houseExit;
-    [SerializeField] GlassTable _table;   
+    [SerializeField] GlassTable _table;
+
+    bool _active = false;
 
     bool _roomCompleted = false;
     private void Awake()
@@ -36,7 +38,10 @@ public class ComedorPiso1 : Nivel4Puzzle
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_roomCompleted && other.gameObject == _houseOwner.gameObject)
+        if (_active && other.gameObject.GetComponent<Player>())
+            ChangeText();
+
+        if (_roomCompleted && other.gameObject == _houseOwner.gameObject)
         {
             Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
 
@@ -60,11 +65,16 @@ public class ComedorPiso1 : Nivel4Puzzle
 
         _roomCompleted = true;
         _houseOwner.AddToCompleteList(this);
+
+        _textIndex = 1;
+        if (GameManager.Instance.Player.actualRoom == GetComponent<RoomTrigger>().roomIndex)
+            ChangeText();
     }
 
     public override void ActivatePuzzle()
     {
         //Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
+        _active = true;
 
         _table.OnBroken += CompletePuzzle;
     }

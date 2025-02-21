@@ -3,108 +3,133 @@ using System.Collections.Generic;
 using UnityEngine;
 using CasaFiesta;
 
-public class CuartoColeccionPuzzzle : Nivel4Puzzle
+
+namespace CasaFiesta
 {
-    /*
-     * idea
-     * Cuarto lleno de mierdas coleccionables
-     * ir activando las weas
-     * despues de romper un par de cosas el dueño de la casa aparece
-     * el dueño se enoja y hecha a la mierda al borrachin
-    */
-
-    [SerializeField] public Asustable _npcInRoom;
-    [SerializeField] List<ObjetoColeccion> _coleccionables = new();
-    [SerializeField, Tooltip("X objects broke to complete puzzle")] int hasToBreak;
-    int _brokenObjs=0;
-    [SerializeField] HouseExitTrigger _houseExit;
-
-    bool completed = false;
-    bool llamandoDuenho = false;
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.UpArrow))
-    //    {
-    //        CompletePuzzle();
-    //    }
-    //}
-
-    public void CompletePuzzle()
+    public class CuartoColeccionPuzzzle : Nivel4Puzzle
     {
-        Debug.Log($"<color=#5d14c4>entre a complete</color>");
+        /*
+         * idea
+         * Cuarto lleno de mierdas coleccionables
+         * ir activando las weas
+         * despues de romper un par de cosas el dueño de la casa aparece
+         * el dueño se enoja y hecha a la mierda al borrachin
+        */
 
-        if (completed) return;
-        Debug.Log($"<color=#5d14c4>pase el if de complete</color>");
+        [SerializeField] public Asustable _npcInRoom;
+        [SerializeField] List<ObjetoColeccion> _coleccionables = new();
+        [SerializeField, Tooltip("X objects broke to complete puzzle")] int hasToBreak;
+        int _brokenObjs = 0;
+        [SerializeField] HouseExitTrigger _houseExit;
 
-        //llamado cuando se rompen X coleccionables
-        //llamar duenho
-        //hacer que borracho salga de casa
+        bool completed = false;
+        bool llamandoDuenho = false;
 
-        completed = true;
-        _houseOwner.AddToCompleteList(this);
+        bool _active = false;
 
-        //completed = true;
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.UpArrow))
+        //    {
+        //        CompletePuzzle();
+        //    }
+        //}
 
-        //llamandoDuenho=true;
-        //StartCoroutine(LlamarOwner());
-        ////_houseOwner.SetSpecificDestination(_npcInRoom.transform);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (completed && other.gameObject == _houseOwner.gameObject)
+        public void CompletePuzzle()
         {
-            //llamandoDuenho = false;
-            //Invoke("KickOut", 3f);
+            Debug.Log($"<color=#5d14c4>entre a complete</color>");
 
-            Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
-            _houseOwner.StartKickOut(3f);
+            if (completed) return;
+            Debug.Log($"<color=#5d14c4>pase el if de complete</color>");
+
+            //llamado cuando se rompen X coleccionables
+            //llamar duenho
+            //hacer que borracho salga de casa
+
+            completed = true;
+            _houseOwner.AddToCompleteList(this);
+
+            _textIndex = 1;
+            ChangeText();
+
+            //completed = true;
+
+            //llamandoDuenho=true;
+            //StartCoroutine(LlamarOwner());
+            ////_houseOwner.SetSpecificDestination(_npcInRoom.transform);
         }
-    }
 
-    #region comment
-    //IEnumerator LlamarOwner()
-    //{
-    //    var wait = new WaitForSeconds(0.3f);
-    //    while (llamandoDuenho)
-    //    {
-    //        _houseOwner.SetSpecificDestination(_npcInRoom.transform);
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_active && other.gameObject.GetComponent<Player>())
+            {
+                if (_textIndex == 0)
+                    ChangeText($"Los Juguetes son para jugar \n Objetos rotos {_brokenObjs} de {hasToBreak}");
+                else
+                    ChangeText();
+            }
 
-    //        yield return wait;
-    //    }
-    //}
+            if (completed && other.gameObject == _houseOwner.gameObject)
+            {
+                //llamandoDuenho = false;
+                //Invoke("KickOut", 3f);
 
-    //void KickOut()
-    //{
-    //    Debug.Log($"<color=#5d14c4>echando a borracho</color>");
+                Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
+                _houseOwner.StartKickOut(3f);
+            }
+        }
 
-    //    _houseExit.AddToList(_npcInRoom.transform.gameObject);
-    //    _npcInRoom.InfiniteScared(true);
-    //    _npcInRoom.GetScared(1,-1, _houseExit.transform);
-    //} 
-    #endregion
+        #region comment
+        //IEnumerator LlamarOwner()
+        //{
+        //    var wait = new WaitForSeconds(0.3f);
+        //    while (llamandoDuenho)
+        //    {
+        //        _houseOwner.SetSpecificDestination(_npcInRoom.transform);
 
-    public override void ActivatePuzzle()
-    {
-        Debug.Log("Huh?");
-    }
+        //        yield return wait;
+        //    }
+        //}
 
-    public void ObjectBroken()
-    {
-        Debug.Log($"<color=#5d14c4>Entre a romper</color>");
-        _brokenObjs++;
-        if(_brokenObjs >= hasToBreak)
-            CompletePuzzle();
-    }
+        //void KickOut()
+        //{
+        //    Debug.Log($"<color=#5d14c4>echando a borracho</color>");
 
-    public override void KickOutNpc()
-    {
-        Debug.Log($"<color=#5d14c4>echando a borracho</color>");
+        //    _houseExit.AddToList(_npcInRoom.transform.gameObject);
+        //    _npcInRoom.InfiniteScared(true);
+        //    _npcInRoom.GetScared(1,-1, _houseExit.transform);
+        //} 
+        #endregion
+
+        public override void ActivatePuzzle()
+        {
+            Debug.Log("Huh?");
+
+            _active = true;
+        }
+
+        public void ObjectBroken()
+        {
+            Debug.Log($"<color=#5d14c4>Entre a romper</color>");
+            _brokenObjs++;
 
 
-        _houseExit.AddToList(_npcInRoom.gameObject);
-        _npcInRoom.InfiniteScared(true);
-        _npcInRoom.GetScared(1, -1, _houseExit.transform);
+            _textIndex = 0;
+            if (!completed)
+                ChangeText($"Los Juguetes son para jugar \n Objetos rotos {_brokenObjs} de {hasToBreak}");
+
+            if (_brokenObjs >= hasToBreak)
+                CompletePuzzle();
+        }
+
+        public override void KickOutNpc()
+        {
+            Debug.Log($"<color=#5d14c4>echando a borracho</color>");
+
+
+            _houseExit.AddToList(_npcInRoom.gameObject);
+            _npcInRoom.InfiniteScared(true);
+            _npcInRoom.GetScared(1, -1, _houseExit.transform);
+        }
     }
 }

@@ -1280,6 +1280,7 @@ GameObject:
   - component: {fileID: 96592907}
   - component: {fileID: 96592906}
   - component: {fileID: 96592909}
+  - component: {fileID: 96592910}
   m_Layer: 8
   m_Name: CuartoPadres
   m_TagString: Untagged
@@ -1381,6 +1382,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _laserOfTheCock: {fileID: 981690537}
   _isIn: 0
+--- !u!114 &96592910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96592904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12d7cf2d272ef74d8280bd361fbae13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conchudo: {fileID: 767201855}
 --- !u!1001 &106488328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4787,6 +4801,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7633268054846231982, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
+      propertyPath: _objectiveText
+      value: 
+      objectReference: {fileID: 792737568}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5357,6 +5375,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee6cc0beda18eb4a954f53c4951940c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectiveTexts:
+  - Sobrecalienta la leche
+  - Haz que la mujer tire el postre
+  - Busca el cofre
+  _textIndex: 0
   npcInRoom: {fileID: 1738865151}
   npcPuzzle: {fileID: 0}
   microwave: {fileID: 2014464150}
@@ -7369,6 +7392,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde5233541ba82f4c8e2b6ecbfb07f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectiveTexts:
+  - Abre el cofre
+  - Reproduce el disco
+  - Asusta a todos
+  _textIndex: 0
   _npcs:
   - {fileID: 1738865151}
   - {fileID: 395215544}
@@ -7896,6 +7924,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &792737568 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2037482934378130906, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+  m_PrefabInstance: {fileID: 792737565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &796930738
 GameObject:
   m_ObjectHideFlags: 0
@@ -8346,6 +8385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0539721bbf261c34099d7afd017b8105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectiveTexts:
+  - Juega con el pasmarote
+  - Haz llorar a la nenasa
+  - Ve a la cocina
+  _textIndex: 0
   _pendejito: {fileID: 166676120}
   _parents:
   - {fileID: 395215544}
@@ -8475,6 +8519,7 @@ MonoBehaviour:
   _ofset: 0
   _goUp: 32
   _goDown: 306
+  _puffParticle: {fileID: 0}
 --- !u!1 &877775000
 GameObject:
   m_ObjectHideFlags: 0
@@ -20365,6 +20410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9abb12954260d49bdfeff4d0de3163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectiveTexts: []
+  _textIndex: 0
   _myPuzzle: {fileID: 504035246}
   duration: 10000
   active: 0

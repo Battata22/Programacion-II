@@ -44,6 +44,9 @@ public class PuzzleNene : Nivel3Puzzle
         _pendejito.OnChildLaugh += ActivateParent;
         _pendejito.OnChildCry += CompletePuzzle;
 
+        _textIndex = 0;
+        ChangeText();
+
     }
 
     private void Update()
@@ -102,6 +105,9 @@ public class PuzzleNene : Nivel3Puzzle
 
         _puzzleActive = false;
         //_nextPuzzle.StartPuzzle();
+
+        _textIndex = _objectiveTexts.Length-1;
+        ChangeText();
     }
 
     void ActivateParent()
@@ -116,6 +122,9 @@ public class PuzzleNene : Nivel3Puzzle
         //_doors[0].UnlockDoor();
 
         _pendejito.OnChildLaugh -= ActivateParent;
+
+        _textIndex = 1;
+        ChangeText();
     }
 
     void LockChildDoor()
