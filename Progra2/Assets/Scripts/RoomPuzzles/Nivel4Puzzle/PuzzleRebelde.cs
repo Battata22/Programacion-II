@@ -17,8 +17,8 @@ namespace CasaFiesta
 
         public RoomTrigger _otraHabitacion;
 
-        bool _roomCompleted = false;
-        bool _active = false;
+        //bool _completed = false;
+        //bool _active = false;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -28,7 +28,7 @@ namespace CasaFiesta
 
         public void CompletePuzzle()
         {
-            _roomCompleted = true;
+            _completed = true;
             _houseOwner.AddToCompleteList(this);
 
             foreach(var door in _doors)
@@ -43,7 +43,7 @@ namespace CasaFiesta
 
         public override void ActivatePuzzle()
         {
-            Debug.Log("<color=magenta> Bloquie las puertas porque me dan asco todos </color>");
+            //Debug.Log("<color=magenta> Bloquie las puertas porque me dan asco todos </color>");
 
             _active = true;
 
@@ -51,6 +51,8 @@ namespace CasaFiesta
             {
                 door.LockDoor();
             }
+
+            _cuadro.ignorePickUp = false;
 
             _armario.OnObjectSpawn += BombaSpawneada;
             _cuadro.OnPickUp += SacarTapon;
@@ -66,19 +68,19 @@ namespace CasaFiesta
                 npc.GetScared(1f, -1, _houseExit.transform);
             }
 
-            _roomCompleted = true;
+            _completed = true;
             StartCoroutine(ConstantScare());
         }
 
         IEnumerator ConstantScare()
         {
-            while (_roomCompleted)
+            while (_completed)
             {
                 foreach (var npc in _myNpc)
                 {
                     if (npc.gameObject.activeInHierarchy)
                         npc.GetScared(1f, -1, _houseExit.transform);
-                    _roomCompleted = npc.gameObject.activeInHierarchy;
+                    _completed = npc.gameObject.activeInHierarchy;
                 }
 
                 Debug.Log($"<color=red>Puzzle asustando constantemente</color>");
@@ -90,7 +92,7 @@ namespace CasaFiesta
         public bool CheckComplete(GameObject newObj)
         {
             //Debug.Log($"<color=green>Entre al check {_roomCompleted}</color>");
-            if(_roomCompleted && newObj == _houseOwner.gameObject)
+            if(_completed && newObj == _houseOwner.gameObject)
             {
                 Debug.Log("<color=green>SALTE DE AQUI PERRO</color>");
 
@@ -133,6 +135,52 @@ namespace CasaFiesta
             {
                 GameManager.Instance.ChangeObjectiveText("Busca a alguien para asustar");
             }
+        }
+
+        protected override void Fireflies()
+        {
+            if (!_active) return;
+            if (_fliesActive) return;
+            if (!(GameManager.Instance.Player.actualRoom == GetComponent<RoomTrigger>().roomIndex || GameManager.Instance.Player.actualRoom == _otraHabitacion.roomIndex)) return;
+
+            if (base._completed)
+            {
+                PointToOtherRooms();
+                return;
+            }
+
+            switch (_textIndex)
+            {
+                case 0:
+                    DoShit(_tapon.transform);
+                    break;
+                case 1:
+                case 2:
+                    if (_armario.objectSpawned == null)
+                        DoShit(_armario.transform);
+                    else
+                        DoShit(_armario.objectSpawned.transform);
+                    break;
+                default:
+                    PointToOtherRooms();
+                    break;
+
+            }
+
+            
+        }
+
+        void DoShit(Transform newTarget)
+        {
+            _fliesActive = true;
+
+            Fireflies newFlies;
+
+            newFlies = Instantiate(_fireflies, newTarget.position, Quaternion.identity);
+            newFlies.SetFocusObj(newTarget.transform);
+
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
         }
     }
 }

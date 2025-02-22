@@ -43,4 +43,9 @@ public class RoomFloor2 : Nivel4Puzzle
     {
         throw new System.NotImplementedException();
     }
+
+    protected override void Fireflies()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -5,12 +5,15 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour, IInteractable
 {
     [SerializeField] Vector3 _spawnPos;
-    [SerializeField] GameObject[] _objectToSpawn;
+    [SerializeField] StinkBomb[] _objectToSpawn;
+    [SerializeField] StinkBomb _objectSpawned = null;
+    public StinkBomb objectSpawned { get { return _objectSpawned; } }
 
     public event DelegateType.VoidDelegate OnObjectSpawn = delegate { };
     
     void SpawnObject(int index = 0)
     {
+        if (objectSpawned != null) return;
         if(index <= -1)
         {
             StartCoroutine(SpawnAll());
@@ -18,6 +21,8 @@ public class ObjectSpawner : MonoBehaviour, IInteractable
         }
 
         var newObj = Instantiate(_objectToSpawn[index], _spawnPos, Quaternion.identity);
+        _objectSpawned = newObj;
+        _objectSpawned.OnExplode += EraseLastBomb;
 
         OnObjectSpawn();
     }
@@ -30,6 +35,12 @@ public class ObjectSpawner : MonoBehaviour, IInteractable
 
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    void EraseLastBomb()
+    {
+        _objectSpawned.OnExplode -= EraseLastBomb;
+        _objectSpawned = null;
     }
 
     public void Interact()

@@ -64,6 +64,14 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
     //public event DelegateType.VoidDelegate On
 
 
+    //Esto lo hago especificamente por el cuadro en la casa fiesta
+    [SerializeField, Tooltip("<color=red> PARA EL CUADRO DE PABLO EN LA CASA FIESTA</color>")] protected bool _ignorePickUp = false;
+    public bool ignorePickUp 
+    { 
+        get { return _ignorePickUp; }
+        set { _ignorePickUp = value; }
+    }
+
     protected virtual void Start()
     {
         rompscript = GetComponent<Rompible>();
@@ -158,7 +166,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
         {
             foreach (var mat in _renderer.materials)
             {
-                Debug.Log($"<color=yellow> La recalcada concha de su madre {mat.name}</color>");
+                //Debug.Log($"<color=yellow> La recalcada concha de su madre {mat.name}</color>");
 
                 //print(mat.name);
                 if (mat.name == "M_Outline (Instance)")
@@ -375,6 +383,7 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
     public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error,int playerLevel)
     {
+        if(_ignorePickUp) return;
         if (!blessed)
         {
             if (pickUpScript.isHolding == false && Time.time - _lastInteract > _cd)

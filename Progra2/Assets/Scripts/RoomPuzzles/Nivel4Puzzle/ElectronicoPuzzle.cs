@@ -12,7 +12,7 @@ namespace CasaFiesta
         [SerializeField] BathPuzzle _myPuzzle;
         public bool active { get { return _active; }}
 
-        int puzzleIndex;
+        [SerializeField] int puzzleIndex;
 
         private void Awake()
         {
@@ -21,10 +21,11 @@ namespace CasaFiesta
             _myElectronic.OnStop += LaMeme;
         }
 
-        public void Initialize(BathPuzzle newPuzzle, RoomTrigger puzzleRoom)
+        private IEnumerator Start()
         {
-            puzzleIndex = puzzleRoom.roomIndex;
-            _myPuzzle = newPuzzle;
+            yield return new WaitForEndOfFrame();
+            puzzleIndex = _myPuzzle.transform.GetComponent<RoomTrigger>().roomIndex;
+
         }
 
         private void OnCollisionEnter(Collision collision)

@@ -12,7 +12,8 @@ namespace CasaFiesta
         [SerializeField] public bool active;
         [SerializeField] float _checkDist;
         [SerializeField] CuartoColeccionPuzzzle _myPuzzle;
-        bool broken = false;
+        bool _broken = false;
+        public bool broken { get { return _broken; } }
 
         DelegateType.VoidDelegate DoCheck = delegate { };
 
@@ -41,7 +42,7 @@ namespace CasaFiesta
             if (!active) return;
 
             var fakePos = new Vector3(transform.position.x, _myPuzzle._npcInRoom.transform.position.y, transform.position.z);
-            if(!broken && Vector3.SqrMagnitude(_myPuzzle._npcInRoom.transform.position - fakePos) < (_checkDist * _checkDist))
+            if(!_broken && Vector3.SqrMagnitude(_myPuzzle._npcInRoom.transform.position - fakePos) < (_checkDist * _checkDist))
             {
                 BreakObj();
             }
@@ -49,9 +50,9 @@ namespace CasaFiesta
 
         void BreakObj()
         {
-            if (broken) return;
+            if (_broken) return;
             Debug.Log($"<color=yellow>Objeto {name} perdio un valo de ${Random.Range(20,10001)} </color>");
-            broken = true;
+            _broken = true;
 
             _myPuzzle.ObjectBroken();
         }

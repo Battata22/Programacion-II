@@ -102,7 +102,7 @@ public class Fireflies : MonoBehaviour
 
     IEnumerator Movement()
     {
-        Debug.Log("Entre a la corrutina");
+        //Debug.Log("Entre a la corrutina");
         _state = State.inMovement;
         //_pulsesLeft = _pulses;
 

@@ -15,9 +15,9 @@ public class ComedorPiso1 : Nivel4Puzzle
     [SerializeField] HouseExitTrigger _houseExit;
     [SerializeField] GlassTable _table;
 
-    bool _active = false;
+    //bool _active = false;
 
-    bool _roomCompleted = false;
+    //bool _completed = false;
     private void Awake()
     {
         _myRoom = GetComponent<RoomTrigger>();
@@ -28,8 +28,9 @@ public class ComedorPiso1 : Nivel4Puzzle
         //ActivatePuzzle();
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             CompletePuzzle();
@@ -41,7 +42,7 @@ public class ComedorPiso1 : Nivel4Puzzle
         if (_active && other.gameObject.GetComponent<Player>())
             ChangeText();
 
-        if (_roomCompleted && other.gameObject == _houseOwner.gameObject)
+        if (_completed && other.gameObject == _houseOwner.gameObject)
         {
             Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
 
@@ -63,7 +64,7 @@ public class ComedorPiso1 : Nivel4Puzzle
         //StartCoroutine(ConstantScare()); 
         #endregion
 
-        _roomCompleted = true;
+        _completed = true;
         _houseOwner.AddToCompleteList(this);
 
         _textIndex = 1;
@@ -81,13 +82,13 @@ public class ComedorPiso1 : Nivel4Puzzle
 
     IEnumerator ConstantScare()
     {
-        while (_roomCompleted)
+        while (_completed)
         {
             foreach(var npc in _myNpc)
             {
                 if (npc.gameObject.activeInHierarchy)
                     npc.GetScared(1f, -1, _exit);
-                _roomCompleted = npc.gameObject.activeInHierarchy;
+                _completed = npc.gameObject.activeInHierarchy;
             }
 
             Debug.Log($"<color=red>Puzzle asustando constantemente</color>");
@@ -106,7 +107,30 @@ public class ComedorPiso1 : Nivel4Puzzle
             npc.GetScared(1f, -1, _exit);
         }
 
-        _roomCompleted = true;
+        _completed = true;
         StartCoroutine(ConstantScare());
+    }
+
+    protected override void Fireflies()
+    {
+        if (!_active) return;
+        if (_fliesActive) return;
+        if (GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex) return;
+
+        if (base._completed)
+        {
+            PointToOtherRooms();
+            return;
+        }
+
+        _fliesActive = true;
+
+        Fireflies newFlies;
+
+        newFlies = Instantiate(_fireflies, _table.transform.position, Quaternion.identity);
+        newFlies.SetFocusObj(_table.transform);
+
+        newFlies.OnPulseEnd += DeactivateFlies;
+        newFlies.ActivateMovement(true);
     }
 }

@@ -32,8 +32,11 @@ namespace CasaFiesta
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.GetComponent<PapelPuzzle>())
+            if (other.transform.TryGetComponent<PapelPuzzle>(out var papel))
+            {
                 GetDamage();
+                papel.UsePaper();
+            }
         }
 
         void GetDamage()
@@ -49,6 +52,7 @@ namespace CasaFiesta
             {
                 _hp = 0;
                 MyInteract = Flood;
+                _bathPuzzle.InodoroTapado();
             }
         }
 

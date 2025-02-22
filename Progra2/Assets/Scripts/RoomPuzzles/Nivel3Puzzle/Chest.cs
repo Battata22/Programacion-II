@@ -11,6 +11,8 @@ public class Chest : MonoBehaviour, ILockeable
 
     [SerializeField] Disco _discoPrefab;
     [SerializeField] Fireflies _discoFlies;
+    [SerializeField] Mesh _openChest;
+    [SerializeField] Mesh _closeChest;
 
     [SerializeField] bool _locked;
     public bool locked { get { return _locked; } }
@@ -21,6 +23,8 @@ public class Chest : MonoBehaviour, ILockeable
     public void Lock()
     {
         Debug.Log("<color=red> Toy cershado ura</color>");
+
+        GetComponent<MeshFilter>().mesh = _closeChest;
 
         OnChestClose();
     }
@@ -34,6 +38,8 @@ public class Chest : MonoBehaviour, ILockeable
         var disco = Instantiate(_discoPrefab,transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
         _discoFlies.gameObject.SetActive(true);
         _discoFlies.SetFocusObj(disco.transform);
+
+        GetComponent<MeshFilter>().mesh = _openChest;
 
         OnChestOpen();
     }

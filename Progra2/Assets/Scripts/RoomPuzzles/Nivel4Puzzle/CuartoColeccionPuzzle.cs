@@ -17,36 +17,37 @@ namespace CasaFiesta
         */
 
         [SerializeField] public Asustable _npcInRoom;
-        [SerializeField] List<ObjetoColeccion> _coleccionables = new();
+        [SerializeField] ObjetoColeccion[] _coleccionables;
         [SerializeField, Tooltip("X objects broke to complete puzzle")] int hasToBreak;
         int _brokenObjs = 0;
         [SerializeField] HouseExitTrigger _houseExit;
 
-        bool completed = false;
+        //bool _completed = false;
         bool llamandoDuenho = false;
 
-        bool _active = false;
+        //bool _active = false;
 
-        //private void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.UpArrow))
-        //    {
-        //        CompletePuzzle();
-        //    }
-        //}
+        protected override void Update()
+        {
+            //    if (Input.GetKeyDown(KeyCode.UpArrow))
+            //    {
+            //        CompletePuzzle();
+            //    }
+            base.Update();
+        }
 
         public void CompletePuzzle()
         {
             Debug.Log($"<color=#5d14c4>entre a complete</color>");
 
-            if (completed) return;
+            if (_completed) return;
             Debug.Log($"<color=#5d14c4>pase el if de complete</color>");
 
             //llamado cuando se rompen X coleccionables
             //llamar duenho
             //hacer que borracho salga de casa
 
-            completed = true;
+            _completed = true;
             _houseOwner.AddToCompleteList(this);
 
             _textIndex = 1;
@@ -69,7 +70,7 @@ namespace CasaFiesta
                     ChangeText();
             }
 
-            if (completed && other.gameObject == _houseOwner.gameObject)
+            if (_completed && other.gameObject == _houseOwner.gameObject)
             {
                 //llamandoDuenho = false;
                 //Invoke("KickOut", 3f);
@@ -115,7 +116,7 @@ namespace CasaFiesta
 
 
             _textIndex = 0;
-            if (!completed)
+            if (!_completed)
                 ChangeText($"Los Juguetes son para jugar \n Objetos rotos {_brokenObjs} de {hasToBreak}");
 
             if (_brokenObjs >= hasToBreak)
@@ -130,6 +131,41 @@ namespace CasaFiesta
             _houseExit.AddToList(_npcInRoom.gameObject);
             _npcInRoom.InfiniteScared(true);
             _npcInRoom.GetScared(1, -1, _houseExit.transform);
+        }
+
+        protected override void Fireflies()
+        {
+            if (!_active) return;
+            if (_fliesActive) return;
+            if (GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex) return;
+
+            if (_completed)
+            {
+                PointToOtherRooms();
+                return;
+            }
+
+            _fliesActive = true;
+
+            Fireflies newFlies;
+
+            var index = GetRandomObject();
+
+            newFlies = Instantiate(_fireflies, _coleccionables[index].transform.position, Quaternion.identity);
+            newFlies.SetFocusObj(_coleccionables[index].transform);
+
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
+        }
+
+        int GetRandomObject()
+        {
+            int num = Random.Range(0, _coleccionables.Length);
+
+            while (_coleccionables[num].broken)
+                num = Random.Range(0, _coleccionables.Length);
+
+            return num;
         }
     }
 }

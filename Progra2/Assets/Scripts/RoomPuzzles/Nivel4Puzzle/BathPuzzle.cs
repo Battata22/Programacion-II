@@ -21,16 +21,29 @@ namespace CasaFiesta
         [SerializeField] HouseExitTrigger _houseExit;
         [SerializeField] InodoroPuzzle _inodoroPuzzle;
         [SerializeField] GameObject[] _charcos;
-        [SerializeField] List<ElectronicoPuzzle> _electronicosInRoom = new();
+        [SerializeField] ElectronicoPuzzle _electronicoInRoom;
+
+        //a
+        [SerializeField] PapelPuzzle[] _papeles;
 
         bool _pisoMojado = false;
         bool _puzzleCompleted = false;
 
-        bool _active=false;
+        //bool _active=false;
 
         private void Awake()
         {
             myRoom = GetComponent<RoomTrigger>();
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                CompletePuzzle();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -38,12 +51,12 @@ namespace CasaFiesta
             if (_active && other.gameObject.GetComponent<Player>())
                 ChangeText();
 
-            if (other.TryGetComponent<SFX>(out var electronico))
-            {
-                var poronga = electronico.gameObject.AddComponent<ElectronicoPuzzle>();
-                poronga.Initialize(this, myRoom);
-                _electronicosInRoom.Add(poronga);
-            }
+            //if (other.TryGetComponent<SFX>(out var electronico))
+            //{
+            //    var poronga = electronico.gameObject.AddComponent<ElectronicoPuzzle>();
+            //    poronga.Initialize(this, myRoom);
+            //    _electronicoInRoom.Add(poronga);
+            //}
 
             if (_puzzleCompleted && other.gameObject == _houseOwner.gameObject)
             {
@@ -55,23 +68,15 @@ namespace CasaFiesta
 
         protected override void OnTriggerExit(Collider other)
         {
-            if(other.TryGetComponent<ElectronicoPuzzle>(out var pingo))
-            {
-                _electronicosInRoom.Remove(pingo);
-                Destroy(pingo);
-            }
+            //if(other.TryGetComponent<ElectronicoPuzzle>(out var pingo))
+            //{
+            //    _electronicoInRoom.Remove(pingo);
+            //    Destroy(pingo);
+            //}
 
             if (GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex && GameManager.Instance._objectiveText.text == _objectiveTexts[_textIndex])
             {
                 GameManager.Instance.ChangeObjectiveText("Busca a alguien para asustar");
-            }
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                CompletePuzzle();
             }
         }
 
@@ -88,7 +93,7 @@ namespace CasaFiesta
 
         public override void ActivatePuzzle()
         {
-            Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
+            //Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
 
             _active = true;
         }
@@ -104,7 +109,7 @@ namespace CasaFiesta
                 charco.gameObject.SetActive(true);
             }
 
-            _textIndex = 1;
+            _textIndex = 2;
             ChangeText();
         }
 
@@ -152,6 +157,70 @@ namespace CasaFiesta
 
                 yield return new WaitForSeconds(1f);
             }
+        }
+
+        protected override void Fireflies()
+        {
+            if (!_active) return;
+            if (_fliesActive) return;
+            if (GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex) return;
+
+            if (_completed)
+            {
+                PointToOtherRooms();
+                return;
+            }
+
+            switch (_textIndex)
+            {
+                case 0:
+                    var index = GetRandomPaper();
+                    DoShit(_papeles[index].transform);
+                    break;
+                case 1:
+                    DoShit(_inodoroPuzzle.transform);
+                    break;
+                case 2:
+                    DoShit(_electronicoInRoom.transform);
+                    break;
+                default:
+                    PointToOtherRooms();
+                    break;
+            }
+
+
+        }
+
+        void DoShit(Transform newTarget)
+        {
+            _fliesActive = true;
+
+            Fireflies newFlies;
+
+
+            newFlies = Instantiate(_fireflies, newTarget.position, Quaternion.identity);
+            newFlies.SetFocusObj(newTarget);
+
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
+        }
+
+        int GetRandomPaper()
+        {
+            int num = Random.Range(0,_papeles.Length);
+
+            while (_papeles[num].used)
+            {
+                num = Random.Range(0, _papeles.Length);
+            }
+
+            return num;
+        }
+
+        public void InodoroTapado()
+        {
+            _textIndex = 1;
+            ChangeText();
         }
     }
 }

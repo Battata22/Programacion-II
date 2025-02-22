@@ -11,8 +11,11 @@ namespace CasaFiesta
         [SerializeField] Asustable _npcInRoom;
         [SerializeField] DiscoBall _discoBall;
 
-        bool _active = false;
-        bool completed = false;
+        
+
+        //bool _active = false;
+        //bool _completed = false;
+        //bool _fliesActive = false;
 
         private void Start()
         {
@@ -21,7 +24,7 @@ namespace CasaFiesta
 
         public override void ActivatePuzzle()
         {
-            Debug.Log("Huh?");
+            //Debug.Log("Huh?");
 
             _active = true;
             _discoBall.CanGetDamage(true);
@@ -34,7 +37,7 @@ namespace CasaFiesta
             if(_active && other.gameObject.GetComponent<Player>())
                 ChangeText();
 
-            if (completed && other.gameObject == _houseOwner.gameObject)
+            if (_completed && other.gameObject == _houseOwner.gameObject)
             {
                 Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
 
@@ -47,10 +50,10 @@ namespace CasaFiesta
             _discoBall.OnBreak -= CompletePuzzle;
             Debug.Log($"<color=#5d14c4>entre a complete</color>");
 
-            if (completed) return;
+            if (_completed) return;
             Debug.Log($"<color=#5d14c4>pase el if de complete</color>");
 
-            completed = true;
+            _completed = true;
             _houseOwner.AddToCompleteList(this);
 
             _textIndex =1;
@@ -66,6 +69,29 @@ namespace CasaFiesta
             _houseExit.AddToList(_npcInRoom.gameObject);
             _npcInRoom.InfiniteScared(true);
             _npcInRoom.GetScared(1, -1, _houseExit.transform);
+        }
+
+        protected override void Fireflies()
+        {
+            if (!_active) return;
+            if (_fliesActive) return;
+            if (GameManager.Instance.Player.actualRoom != GetComponent<RoomTrigger>().roomIndex) return;
+
+            if (_completed)
+            {
+                PointToOtherRooms();
+                return;
+            }
+
+            _fliesActive = true;
+
+            Fireflies newFlies;
+
+            newFlies = Instantiate(_fireflies, _discoBall.transform.position, Quaternion.identity);
+            newFlies.SetFocusObj(_discoBall.transform);
+
+            newFlies.OnPulseEnd += DeactivateFlies;
+            newFlies.ActivateMovement(true);
         }
     }
 }

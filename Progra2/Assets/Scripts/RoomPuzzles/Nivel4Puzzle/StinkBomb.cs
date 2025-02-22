@@ -14,7 +14,6 @@ public class StinkBomb : Pickable, IInteractable
     bool _active = false;
     bool _exploded = false;
 
-
     public void Interact()
     {
         if(_exploded) return;
