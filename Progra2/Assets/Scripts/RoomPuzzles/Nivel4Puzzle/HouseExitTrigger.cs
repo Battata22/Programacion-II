@@ -16,6 +16,14 @@ public class HouseExitTrigger : MonoBehaviour
     bool _gbActive = false;
     bool _barActive = false;
 
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.M) && Input.GetKeyUp(KeyCode.N))
+        {
+            ActivateGB(1);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (CheckInList(other.gameObject))
@@ -62,6 +70,14 @@ public class HouseExitTrigger : MonoBehaviour
         {
             gb.gameObject.SetActive(true);
         }
+    }
+
+    void ActivateGB(int anyNum)
+    {
+        if (_gbActive) return;
+        _gbActive = true;
+
+        _ghostBusters[0].gameObject.SetActive(true);
     }
 
     void ActivateBar()

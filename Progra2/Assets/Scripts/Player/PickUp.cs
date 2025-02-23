@@ -223,6 +223,7 @@ public class PickUp : MonoBehaviour
         }
         else
         {
+            //if (lineOn && _lastOn && _lastOn.TryGetComponent<IInteractable>(out var o) && o.GetOutLine())
             if (lineOn && _lastOn && _lastOn.TryGetComponent<Obj_Interactuable>(out Obj_Interactuable o) && o.OutLine != null)
             {
                 lineOn = false;

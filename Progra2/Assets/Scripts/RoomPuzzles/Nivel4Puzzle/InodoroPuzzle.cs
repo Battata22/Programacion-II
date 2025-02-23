@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CasaFiesta
 {
-    public class InodoroPuzzle : MonoBehaviour,IInteractable
+    public class InodoroPuzzle : Obj_Interactuable
     {
         [SerializeField] int _maxHp;
         int _hp;
@@ -56,7 +56,7 @@ namespace CasaFiesta
             }
         }
 
-        public void Interact()
+        public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error, int playerLevel)
         {
             if (_onCd) return;
             Debug.Log("<color=#0bf1ff> Interact.wav </color>");

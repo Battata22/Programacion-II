@@ -9,7 +9,8 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
 {
     [Header("<color=red> Ghostbuster </color>")]
     [SerializeField] GB_FOV _gbFov;
-    [SerializeField] float _torque, _angerRange, _angerTime , _attackRange, _suctionForce, _attackDuration, _atkDelay, _attackCD, _killRange, _shadowFightTime, _spamScape;
+    [SerializeField] float _torque, _angerRange, _angerTime , _attackRange, _suctionForce, _attackDuration, _atkDelay, _attackCD, _killRange, _shadowFightTime;
+    [SerializeField] int _spamScape;
     public float _waitAnger, _lastAttack = -1, _waitTrampa, _waitTrampaRandom, _waitKill;
 
     [SerializeField] Player _target;

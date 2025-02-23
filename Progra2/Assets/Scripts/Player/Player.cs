@@ -38,7 +38,25 @@ public class Player : MonoBehaviour, IRoomDetectable
     Vector3 _dir = new();
 
 
-    public bool underAttack, _traped = false, _canFrezze2 = true, cameraShake = false;
+    public bool _underAttack;
+    public bool underAttack
+    {
+        get { return _underAttack; }
+        set 
+        {
+            _underAttack = value;
+            _keyObject.SetActive(value);
+
+            if (value)
+            {
+                Debug.Log("DALE WACHO");
+                StartCoroutine(ChooseScapeInput());
+            }
+
+        }
+    }
+
+    public bool _traped = false, _canFrezze2 = true, cameraShake = false;
     public Ghostbuster attacker;
 
 
@@ -225,24 +243,29 @@ public class Player : MonoBehaviour, IRoomDetectable
 
         if (underAttack)
         {
-            if (!_suctionAntiSpam)
-                StartCoroutine(SuctionMult());
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+            //if (!_suctionAntiSpam)
+            //    StartCoroutine(SuctionMult());
+            if (Input.GetKeyDown(_scapeKey))
             {
                 scapeSpam++;
-                _suctionMul = 0.5f;
+                //_suctionMul = 0.5f;
+
+                _keyFill= 0;
+                
+
+                ChangeInput(_scapeKey);
 
                 _marcoColor[0].color = Color.Lerp(_actCol1, _OGmarcoColor1, scapeSpam * 0.1f / 3);
                 _marcoColor[1].color = Color.Lerp(_actCol2, _OGmarcoColor2, scapeSpam * 0.1f / 3);
                 _marcoColor[2].color = Color.Lerp(_actCol3, _OGmarcoColor3, scapeSpam * 0.1f / 3);
 
-                if (scapeSpam % 2 == 0 || scapeSpam == 0)
-                {
+                
+                //if (scapeSpam % 2 == 0 || scapeSpam == 0)
                     if (Random.Range(0, 2) == 1)
                         randomAxis = -1;
                     else
-                        randomAxis = 1;
-                }
+                         randomAxis = 1;
+                
             }
         }
         
@@ -260,10 +283,112 @@ public class Player : MonoBehaviour, IRoomDetectable
         #endregion
     }
 
+
+    [Header("<color=red> Cosas para el QTE </color>")]
+    [SerializeField] GameObject _keyObject;
+    [SerializeField] RawImage _keysImage;
+    [SerializeField] Texture[] _keysTexture;
+    [SerializeField] Image _fill;
+    [SerializeField] KeyCode _scapeKey;
+    [SerializeField] float _timeBtKeyChange;
+    [SerializeField] float _keyFill = 0;
+    [SerializeField] int _missesToHit;
+    int _miss= 0;
+    public int miss { get { return _miss; } }
+
+    IEnumerator ChooseScapeInput()
+    {
+        Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+
+        if (underAttack)
+        {
+
+            ChangeInput(_scapeKey);
+            var lastKey = _scapeKey;
+
+            yield return new WaitForSeconds(_timeBtKeyChange);
+            if(_scapeKey == lastKey)
+            {
+                _miss++;
+                Debug.Log($"<color=red> Cagaste {miss} / 3 </color>");
+
+                if (_miss >= _missesToHit)
+                {
+                    _suctionMul = 10f;
+                    _scapeKey = KeyCode.None;
+                }
+                else
+                    StartCoroutine(ChooseScapeInput());
+            }
+        }
+    }
+
+    void ChangeInput(KeyCode keyCode)
+    {
+        var lastKey = keyCode;
+
+        int num = Random.Range(0, 4);
+
+        KeyCode newKey;
+
+        switch (num)
+        {
+            case 0:
+                newKey = KeyCode.W;
+                break;
+            case 1:
+                newKey = KeyCode.A;
+                break;
+            case 2:
+                newKey = KeyCode.S;
+                break;
+            default:
+                newKey = KeyCode.D;
+                break;
+        }
+
+        while (lastKey == newKey)
+        {
+            num = Random.Range(0, 4);
+            switch (num)
+            {
+                case 0:
+                    newKey = KeyCode.W;
+                    break;
+                case 1:
+                    newKey = KeyCode.A;
+                    break;
+                case 2:
+                    newKey = KeyCode.S;
+                    break;
+                default:
+                    newKey = KeyCode.D;
+                    break;
+            }
+        }
+
+        _keysImage.texture = _keysTexture[num];
+        _keyFill = 0;
+        UpdateFill();
+
+        _scapeKey = newKey;
+        Debug.Log($"<color=yellow> {_scapeKey}</color>");
+    }
+
+    void UpdateFill()
+    {
+        _fill.fillAmount = _keyFill / _timeBtKeyChange;
+    }
     //bool useMovement = true;
 
     private void FixedUpdate()
     {
+        if (underAttack)
+        {
+            _keyFill += Time.fixedDeltaTime;
+            UpdateFill();
+        }
+        
         if (!_canMove) return;
         if (_xAxis != 0 || _zAxis != 0)
         {
@@ -302,31 +427,31 @@ public class Player : MonoBehaviour, IRoomDetectable
         //    //_rb.AddForce(_dir * _speed * Time.fixedDeltaTime, ForceMode.Force);
         //} 
         #endregion
-
+        //Frenar en seco contra las paredes, evita traspasarlas cuando te moves contra la esquina
         RaycastHit hitR, hitL, hitF, hitB;
         Vector3 pos = new Vector3(transform.position.x, transform.position.y+1f, transform.position.z);
         //                                                                   LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos, 0.25f, transform.right, out hitR, 0.52f, _stopLayer) && !hitR.transform.GetComponent<Collider>().isTrigger && xAxis > 0)
         {
-            Debug.Log($"<color=yellow> Wall Detected R {hitR.transform.name}</color>");
+            //Debug.Log($"<color=yellow> Wall Detected R {hitR.transform.name}</color>");
             //if (hitR.transform.tag == "MagicWall" || (!hitR.transform.GetComponent<Collider>().isTrigger && xAxis > 0))
                 return;
         }//                                                                  LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos,0.25f, -transform.right, out hitL, 0.52f, _stopLayer) && !hitL.transform.GetComponent<Collider>().isTrigger && xAxis < 0)
         {
-            Debug.Log($"<color=yellow> Wall Detected L {hitL.transform.name}</color>");
+            //Debug.Log($"<color=yellow> Wall Detected L {hitL.transform.name}</color>");
             //if (hitL.transform.tag == "MagicWall" || (!hitL.transform.GetComponent<Collider>().isTrigger && xAxis < 0))
             return;
         }//                                                                  LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos,0.25f, transform.forward,out hitF, 0.52f, _stopLayer) && !hitF.transform.GetComponent<Collider>().isTrigger && zAxis > 0)
         {
-            Debug.Log($"<color=yellow> Wall Detected F {hitF.transform.name}</color>");
+            //Debug.Log($"<color=yellow> Wall Detected F {hitF.transform.name}</color>");
             //if (hitF.transform.tag == "MagicWall" || (!hitF.transform.GetComponent<Collider>().isTrigger && zAxis > 0))
                 return;
         }//                                                                   LayerMask.GetMask("NoTras")
         if (Physics.SphereCast(pos,0.25f, -transform.forward,out hitB, 0.52f, _stopLayer) && !hitB.transform.GetComponent<Collider>().isTrigger && zAxis < 0)
         {
-            Debug.Log($"<color=yellow> Wall Detected B {hitB.transform.name}</color>");
+            //Debug.Log($"<color=yellow> Wall Detected B {hitB.transform.name}</color>");
             //if (hitB.transform.tag == "MagicWall" || (!hitB.transform.GetComponent<Collider>().isTrigger && zAxis < 0))
                 return;
         }        
@@ -526,7 +651,7 @@ public class Player : MonoBehaviour, IRoomDetectable
 
     }
 
-    float _suctionMul = 1;
+    float _suctionMul = 0;
     bool _suctionAntiSpam = false;
 
     private IEnumerator SuctionMult()
@@ -545,7 +670,7 @@ public class Player : MonoBehaviour, IRoomDetectable
             }
             
         }
-        _suctionMul = 0.5f;
+        _suctionMul = 0f;
         _suctionAntiSpam = false;
     }
 

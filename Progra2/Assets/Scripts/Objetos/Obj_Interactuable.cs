@@ -168,6 +168,8 @@ public class Obj_Interactuable : MonoBehaviour , IRoomDetectable
         //sader aca
         if (_outLineAntispam) return;
         //Debug.Log("<Color=red> APAGADO </color>");
+        OutLine.SetFloat("_Active", 0);
+
         OutLine.SetFloat("_Thickness", 0f);
         _outLineAntispam = true ;
     }
