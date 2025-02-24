@@ -10,6 +10,7 @@ namespace CasaFiesta
 
         [SerializeField] bool _active;
         [SerializeField] BathPuzzle _myPuzzle;
+        [SerializeField] ParticleSystem _chispasGen;
         public bool active { get { return _active; }}
 
         [SerializeField] int puzzleIndex;
@@ -30,6 +31,11 @@ namespace CasaFiesta
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (_active)
+            {
+                //Spawn Chispas
+                var chispas = Instantiate(_chispasGen,transform.position, Quaternion.identity);
+            }
             if(_active && collision.transform.GetComponent<Piso>() && _myElectronic.actualRoom == puzzleIndex)
             {
                 _myPuzzle.ZapitiZapZap();

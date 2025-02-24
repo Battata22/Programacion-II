@@ -8,6 +8,7 @@ public class GlassTable : MonoBehaviour
 {
     Rigidbody _rb;
     [SerializeField] int _hitNeeded;
+    [SerializeField] Mesh _meshRoto;
     int _hitCount = 0;
 
     public event DelegateType.VoidDelegate OnBroken = delegate {};
@@ -43,7 +44,9 @@ public class GlassTable : MonoBehaviour
         //Change model
         Debug.Log($"<color=red>Mesa rota</color>");
         OnBroken();
-        Destroy(this);
+
+        GetComponent<MeshFilter>().mesh = _meshRoto;
+        //Destroy(this);
         //disable script
     }
 }

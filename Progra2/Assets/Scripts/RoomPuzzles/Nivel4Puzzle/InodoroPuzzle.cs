@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CasaFiesta
 {
-    public class InodoroPuzzle : Obj_Interactuable
+    public class InodoroPuzzle : Obj_Interactuable, IInteractable
     {
         [SerializeField] int _maxHp;
         int _hp;
@@ -29,6 +29,28 @@ namespace CasaFiesta
         //    if (collision.transform.GetComponent<PapelPuzzle>())
         //        GetDamage();
         //}
+
+        private void Start()
+        {
+            _renderer = GetComponent<Renderer>();
+
+            if (_renderer != null)
+            {
+                foreach (var mat in _renderer.materials)
+                {
+                    //Debug.Log($"<color=yellow> La recalcada concha de su madre {mat.name}</color>");
+
+                    //print(mat.name);
+                    if (mat.name == "M_Outline (Instance)")
+                    {
+                        OutLine = mat;
+                        _OGthik = OutLine.GetFloat("_Thickness");
+                        OutLine.SetFloat("_Thickness", 0f);
+                        OutLine.SetFloat("_Active", 0);
+                    }
+                }
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -58,11 +80,24 @@ namespace CasaFiesta
 
         public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error, int playerLevel)
         {
+            //if (_onCd) return;
+            //Debug.Log("<color=#0bf1ff> Interact.wav </color>");
+
+            //StartCoroutine(Coso());
+
+            //MyInteract();
+
+            Debug.Log("<color=red> Jaja que pendejo, intento agarrar un inodoro</color>");
+
+        }
+
+        public void Interact()
+        {
             if (_onCd) return;
             Debug.Log("<color=#0bf1ff> Interact.wav </color>");
 
             StartCoroutine(Coso());
-            
+
             MyInteract();
         }
 
