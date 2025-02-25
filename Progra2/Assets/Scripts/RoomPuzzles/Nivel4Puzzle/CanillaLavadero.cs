@@ -21,6 +21,10 @@ namespace CasaFiesta
 
         }
 
+        public event DelegateType.VoidDelegate OnCanillaOn = delegate { };
+        public event DelegateType.VoidDelegate OnCanillaOff = delegate { };
+
+
         private void Start()
         {
             _renderer = GetComponent<Renderer>();
@@ -54,11 +58,15 @@ namespace CasaFiesta
             {
                 _active = false;
                 Debug.Log($"<color=red> Canilla  </color>");
+
+                OnCanillaOff();
             }
             else
             {
                 _active = true;
                 Debug.Log($"<color=green> Canilla prendida </color>");
+
+                OnCanillaOn();
             }
         }
 

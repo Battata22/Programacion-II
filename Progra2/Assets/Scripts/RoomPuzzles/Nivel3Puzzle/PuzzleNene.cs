@@ -35,7 +35,7 @@ public class PuzzleNene : Nivel3Puzzle
     bool _fliesActive = false;
 
 
-    private void Start()
+    private IEnumerator Start()
     {
         _nodeManager = GetComponentInParent<AINodeManager>();
 
@@ -44,9 +44,17 @@ public class PuzzleNene : Nivel3Puzzle
         _pendejito.OnChildLaugh += ActivateParent;
         _pendejito.OnChildCry += CompletePuzzle;
 
+        yield return new WaitForEndOfFrame();
+
+        //_textIndex = 0;
+        //ChangeText();
+        LCDTM();
+    }
+
+    public void LCDTM()
+    {
         _textIndex = 0;
         ChangeText();
-
     }
 
     private void Update()

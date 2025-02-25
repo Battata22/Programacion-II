@@ -20243,6 +20243,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!114 &563920200
 MonoBehaviour:
@@ -21961,6 +21965,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+--- !u!4 &645358365 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8721169277632506808, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+  m_PrefabInstance: {fileID: 645358364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &649698218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53607,6 +53616,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 733135851}
+    - target: {fileID: 325262965950171026, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
+      propertyPath: _camCenter
+      value: 
+      objectReference: {fileID: 645358365}
     - target: {fileID: 1323151112387181237, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
       propertyPath: m_Name
       value: Camera Player

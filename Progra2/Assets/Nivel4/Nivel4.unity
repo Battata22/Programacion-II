@@ -5870,6 +5870,7 @@ GameObject:
   - component: {fileID: 221730254}
   - component: {fileID: 221730253}
   - component: {fileID: 221730255}
+  - component: {fileID: 221730256}
   m_Layer: 8
   m_Name: Lavadero
   m_TagString: Untagged
@@ -5948,6 +5949,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myElectronicos:
   - {fileID: 1263616488}
+--- !u!114 &221730256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221730251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d2c0128a2ca5b4b9dcfcaf3f3c1cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canilla: {fileID: 1033148739}
+  _balde: {fileID: 1812240369}
+  _parlanteGameplayStart: {fileID: 1682179929}
+  _fliesPrefab: {fileID: 3349335814714581579, guid: ae03755fc8b4ce14e94ee7934401b2df, type: 3}
+  _flechas: []
+  _fliesKey: 118
+  _objectiveTexts:
+  - Prende la canilla
+  - LLena el balde
+  - Moja el parlante
 --- !u!1001 &224609806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11305,7 +11328,7 @@ PrefabInstance:
     - target: {fileID: 7633268054846231982, guid: 53066d2615aa3564e80eb9561da9234e, type: 3}
       propertyPath: _objectiveText
       value: 
-      objectReference: {fileID: 910001963}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13389,6 +13412,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5043191417243740334, guid: 1e7f85cc29c37494f8d7d26739315090, type: 3}
   m_PrefabInstance: {fileID: 511251351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &512192072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6187309424523634317, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+  m_PrefabInstance: {fileID: 792737565}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &514409366
 PrefabInstance:
@@ -20817,6 +20845,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 521205520145697461, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 521205520145697461, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 521205520145697461, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 521205520145697461, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 542456049236856911, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -20929,6 +20973,14 @@ PrefabInstance:
       propertyPath: entrada
       value: 
       objectReference: {fileID: 152895668}
+    - target: {fileID: 6049938149989691467, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: _lavadero
+      value: 
+      objectReference: {fileID: 221730256}
+    - target: {fileID: 6049938149989691467, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: _marcoTexto
+      value: 
+      objectReference: {fileID: 512192072}
     - target: {fileID: 6049938149989691467, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       propertyPath: abuelaDormida
       value: 
@@ -24427,6 +24479,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myElectronicos: []
+--- !u!1 &893089304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7806473840883879312, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+  m_PrefabInstance: {fileID: 1033148737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &893548253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25049,17 +25106,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 652bbe399e430c54a96267a1c9577933, type: 3}
---- !u!114 &910001963 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2037482934378130906, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
-  m_PrefabInstance: {fileID: 792737565}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &917214060
 GameObject:
   m_ObjectHideFlags: 0
@@ -27329,8 +27375,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1164425059}
     m_Modifications:
     - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.012623
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.013526999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.401
+      value: -8.31
       objectReference: {fileID: 0}
     - target: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27368,20 +27422,91 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5916454562302464061, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916454562302464061, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cdf23c8ce6ea34ebbaac5fa93f7be7, type: 2}
+    - target: {fileID: 5916454562302464061, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cdf23c8ce6ea34ebbaac5fa93f7be7, type: 2}
     - target: {fileID: 7806473840883879312, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
       propertyPath: m_Name
       value: Lavamanos
       objectReference: {fileID: 0}
+    - target: {fileID: 7806473840883879312, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7806473840883879312, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1033148739}
+    - targetCorrespondingSourceObject: {fileID: 7806473840883879312, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1033148755}
   m_SourcePrefab: {fileID: 100100000, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
 --- !u!4 &1033148738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3113664948549136393, guid: deb2f30fd3356c844af611cf3cf34ed2, type: 3}
   m_PrefabInstance: {fileID: 1033148737}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1033148739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893089304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16a1153d96a64144a212d1461359cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _cd: 0
+  _lastInteract: 0
+  _speed: 0
+  _itemHolder: {fileID: 0}
+  holding: 0
+  weight: 0
+  blessed: 0
+  lvlRequired: 0
+  _materialNormal: {fileID: 0}
+  _materialFade: {fileID: 0}
+  _renderer: {fileID: 0}
+  _dropLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  actualRoom: 0
+--- !u!65 &1033148755
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893089304}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 68.04474, y: 162.1911, z: 56.428993}
+  m_Center: {x: -0.00005960464, y: 81.09555, z: 5.3108635}
 --- !u!1 &1035566238
 GameObject:
   m_ObjectHideFlags: 0
@@ -29210,6 +29335,10 @@ PrefabInstance:
     - target: {fileID: 4166243246662787096, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
       propertyPath: m_Name
       value: BlockACocina02Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814393821784665299, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
+      propertyPath: cajas
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6198695811692287578, guid: bc923788c108f6c4a833e3aa038ed8a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44505,7 +44634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1687232569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44518,6 +44647,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16a1153d96a64144a212d1461359cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _cd: 0
+  _lastInteract: 0
+  _speed: 0
+  _itemHolder: {fileID: 0}
+  holding: 0
+  weight: 0
+  blessed: 0
+  lvlRequired: 0
+  _materialNormal: {fileID: 0}
+  _materialFade: {fileID: 0}
+  _renderer: {fileID: 0}
+  _dropLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  actualRoom: 0
 --- !u!65 &1687232570
 BoxCollider:
   m_ObjectHideFlags: 0

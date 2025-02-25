@@ -1,3 +1,4 @@
+using CasaFiesta;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +22,9 @@ public class VideoIntro : MonoBehaviour
     bool tepeado = false;
     //[SerializeField] tiempo
 
-
+    [SerializeField] LavaderoPuzzle _lavadero;
+    [SerializeField] GameObject _marcoTexto;
+    [SerializeField] PuzzleNene _puzzleNene;
 
     void Start()
     {
@@ -92,6 +95,9 @@ public class VideoIntro : MonoBehaviour
         {
             sliderBoss.SetActive(false);
         }
+
+        if(_marcoTexto!=null)
+            _marcoTexto.SetActive(false);
     }
 
     void prendido()
@@ -117,6 +123,13 @@ public class VideoIntro : MonoBehaviour
         {
             sliderBoss.SetActive(true);
         }
+
+        if (_marcoTexto != null)
+            _marcoTexto.SetActive(true);
+        if(_lavadero != null)
+            _lavadero.ActivarPuzzle();
+        if (_puzzleNene != null)
+            _puzzleNene.LCDTM();
     }
 
     void TPGus()

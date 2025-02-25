@@ -22,12 +22,12 @@ public class ParlanteGameplayStart : GameplayModeTrigger
 
     protected override void StartGameplay()
     {
-        base.StartGameplay();
-
         foreach(var item in _allPuzzles)
         {
             item.ActivatePuzzle();
         }
+
+        base.StartGameplay();
     }
 
     IEnumerator SoyUnBoludo()
