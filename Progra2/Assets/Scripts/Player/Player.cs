@@ -680,6 +680,13 @@ public class Player : MonoBehaviour, IRoomDetectable
         _rb.AddForce(direction * forceMult * Time.fixedDeltaTime * _suctionMul, ForceMode.Force);
     }
 
+    public void ApplyForce(Vector3 direction, float forceMult, GB_Boss gbBossScript)
+    {
+        if (forceMult == 0) _rb.velocity = Vector3.zero;
+        _rb.AddForce(direction * forceMult * Time.fixedDeltaTime * 0.5f, ForceMode.Force);
+    }
+
+
     void LifeSaver(float _dis)
     {
         if(_dis <= -15)

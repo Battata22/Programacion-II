@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GB_Boss : MonoBehaviour
 {
-    public float maxHp, actualHp;
+    public float maxHp, actualHp, AumentoSpeed;
     [SerializeField] GameObject parentDefenceWall;
     [SerializeField] Player player;
-    [SerializeField] bool Atacado = false, defenceWallState = false, animIdle = true, resetWaitAspirado = false;
+    [SerializeField] bool Atacado = false, defenceWallState = false, animIdle = true, resetWaitAspirado = false, velAumentada = false;
     [SerializeField] Collider col;
     [SerializeField] Animator _anim;
     ParticleSystem[] _parGens;
@@ -16,13 +16,14 @@ public class GB_Boss : MonoBehaviour
     [SerializeField] GameObject padreParedesPlayer, padreAtaquesIsaac;
     [SerializeField] GameObject[] espejos;
     [SerializeField] GameObject torretasPadre;
+    [SerializeField] Rigidbody playerRB;
     public delegate void EventBossAccion();
     public event EventBossAccion Accion;
     public int fase = 0;
 
     public static bool isInSafeZone = false;
-    float aceSuccion;
-    float waitAspirado, waitCdAspirado;
+    [SerializeField] float aceSuccion;
+    [SerializeField] float waitAspirado, waitCdAspirado;
 
     void Start()
     {
@@ -33,14 +34,17 @@ public class GB_Boss : MonoBehaviour
         _parGens = GetComponentsInChildren<ParticleSystem>();
         _tornadoGen = _parGens[1];
         player = GameManager.Instance.Player;
+        playerRB = GameManager.Instance.Player.gameObject.GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Atacado = !Atacado;
-        }
+        //print(isInSafeZone);
+
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    Atacado = !Atacado;
+        //}
         if(actualHp < maxHp)
         {
             Atacado = true;
@@ -128,7 +132,45 @@ public class GB_Boss : MonoBehaviour
         #endregion
         AtaqueIsaac();
         RevivirTorretas();
+        AtaqueDrones();
+        DefenceWall();
+        AspiradoBoss(duracionAspirado);
+        AumentarVelPlayer();
+    }
 
+    public void Kill()
+    {
+        #region EndFase1
+        if (padreParedesPlayer.transform.position.y > -10)
+        {
+            padreParedesPlayer.transform.position -= new Vector3(0f, 20 * Time.deltaTime, 0f);
+        }
+        if (animIdle == false)
+        {
+            _anim.SetBool("Idle", true);
+            _anim.SetBool("Attacking", false);
+            _tornadoGen.Stop();
+
+            animIdle = true;
+        }
+        #endregion
+        #region EndFase2
+        parentDefenceWall.SetActive(false);
+        Destroy(parentDefenceWall);
+        col.enabled = true;
+        #endregion
+        padreAtaquesIsaac.SetActive(false);
+        isaac = false;
+        Destroy(gameObject);
+    }
+
+    void AumentarVelPlayer()
+    {
+        if (velAumentada == false)
+        {
+            GameManager.Instance.Player._speed = GameManager.Instance.Player._speed * AumentoSpeed;
+            velAumentada = true;
+        }
     }
 
     void DefenceWall()
@@ -146,7 +188,73 @@ public class GB_Boss : MonoBehaviour
 
         //defenceWallState = !defenceWallState;
 
+    }
 
+    void AspiradoBoss(float dur)
+    {
+        if (resetWaitAspirado == false)
+        {
+            waitAspirado = 0;
+            resetWaitAspirado = true;
+        }
+
+        waitAspirado += Time.deltaTime;
+
+        if (waitAspirado <= dur)
+        {
+
+            if (animIdle == true)
+            {
+                _anim.SetBool("Idle", false);
+                _anim.SetBool("Attacking", true);
+                _tornadoGen.Play();
+
+                animIdle = false;
+            }
+
+
+            transform.LookAt(new Vector3(player.transform.position.x, rotY, player.transform.position.z));
+
+            Vector3 direction = player.transform.position - transform.position;
+
+            //succion
+
+            player.ApplyForce(-direction, _suctionForce * Time.fixedDeltaTime * aceSuccion * 2, this);
+
+            if (aceSuccion < limiteAceSuccion)
+            {
+                aceSuccion += Time.deltaTime * 0.5f;
+            }
+
+        }
+        #region Old
+        else
+        {
+            if (padreParedesPlayer.transform.position.y > -10)
+            {
+                padreParedesPlayer.transform.position -= new Vector3(0f, 20 * Time.deltaTime, 0f);
+            }
+            else
+            {
+                waitCdAspirado += Time.deltaTime;
+                if (animIdle == false)
+                {
+                    _anim.SetBool("Idle", true);
+                    _anim.SetBool("Attacking", false);
+                    _tornadoGen.Stop();
+
+                    animIdle = true;
+                }
+                if (waitCdAspirado >= cdApirado)
+                {
+                    waitAspirado = 0;
+                    waitCdAspirado = 0;
+                    resetWaitAspirado = false;
+                }
+
+            }
+        } 
+        #endregion
 
     }
 
@@ -187,7 +295,9 @@ public class GB_Boss : MonoBehaviour
             //succion
             if (isInSafeZone == false)
             {
-                player.ApplyForce(-direction, _suctionForce * Time.fixedDeltaTime * aceSuccion);
+
+                player.ApplyForce(-direction, _suctionForce * Time.fixedDeltaTime * aceSuccion, this);
+
 
                 if (aceSuccion < limiteAceSuccion)
                 {
@@ -333,11 +443,6 @@ public class GB_Boss : MonoBehaviour
     void RevivirTorretas()
     {
         TorretaPadre.laserOn = true;
-    }
-
-    public void Kill()
-    {
-        Destroy(gameObject);
     }
 
 }
