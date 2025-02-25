@@ -15,13 +15,13 @@ public class CargaBehaviour : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        if (GameManager.Instance.GB_BossScript.fase != 2)
-        {
-            Destroy(gameObject);
-        }
-    }
+    //void Update()
+    //{
+    //    if (GameManager.Instance.GB_BossScript.fase != 2)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     private void FixedUpdate()
     {
@@ -40,10 +40,13 @@ public class CargaBehaviour : MonoBehaviour
             print("epoto");
         }
 
-        if (other.gameObject.GetComponent<FuncionEspejo>().agarrado == true)
+        if (other.gameObject.GetComponent<FuncionEspejo>() != null)
         {
-            print("espejito espejito");
-            cochoConEspejo = true;
+            if(other.gameObject.GetComponent<FuncionEspejo>().agarrado == true)
+            {
+                print("espejito espejito");
+                cochoConEspejo = true;
+            }
         }
         else if(other != null && other.gameObject.GetComponent<DroneBehaivour>() == null)
         {
@@ -53,6 +56,8 @@ public class CargaBehaviour : MonoBehaviour
 
             print("bum");
         }
+
+
 
 
 

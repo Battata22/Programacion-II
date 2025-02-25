@@ -37,10 +37,10 @@ public class DroneBehaivour : MonoBehaviour
     void Update()
     {
 
-        if(GameManager.Instance.GB_BossScript.fase != 2)
-        {
-            Destroy(gameObject);
-        }
+        //if(GameManager.Instance.GB_BossScript.fase != 2)
+        //{
+        //    Destroy(gameObject);
+        //}
 
         dir = target.transform.position - transform.position;
 
@@ -152,9 +152,6 @@ public class DroneBehaivour : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (GB_Boss.isDroneAlive == true)
-        {
-            GB_Boss.isDroneAlive = false;
-        }
+        GB_Boss.isDroneAlive = false;
     }
 }

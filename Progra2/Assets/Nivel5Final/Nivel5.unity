@@ -8131,6 +8131,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1862367821}
+    - target: {fileID: 325262965950171026, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
+      propertyPath: _camCenter
+      value: 
+      objectReference: {fileID: 1862367833}
     - target: {fileID: 1323151112387181237, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
       propertyPath: m_Name
       value: Camera Player
@@ -9539,7 +9543,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 948274563}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1717328093}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1075490370
 GameObject:
@@ -11881,6 +11885,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5132254938530896173, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5611648126378737714, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -12051,6 +12059,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587005937327098009, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906867578800170848, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6962449657491119888, guid: ffd51e0028daa4746b091c8b9405d1a2, type: 3}
@@ -13041,7 +13053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399875150006510074, guid: d56dc384848ea1f4da54f21ee562a560, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.61
+      value: -37.1
       objectReference: {fileID: 0}
     - target: {fileID: 1399875150006510074, guid: d56dc384848ea1f4da54f21ee562a560, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14358,6 +14370,7 @@ Transform:
   - {fileID: 543450651899909861}
   - {fileID: 1639488499}
   - {fileID: 1458660098}
+  - {fileID: 1063684601}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1717328094
@@ -15784,6 +15797,11 @@ MonoBehaviour:
   _detectableMask:
     serializedVersion: 2
     m_Bits: 1
+--- !u!4 &1862367833 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5766728487237538168, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
+  m_PrefabInstance: {fileID: 1862367819}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1862367842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6243371337675859211, guid: 50d567b54746db24fb275c906bfd3cbe, type: 3}
@@ -17511,6 +17529,10 @@ PrefabInstance:
       value: GhostbusterBoss
       objectReference: {fileID: 0}
     - target: {fileID: 6619026812568331190, guid: 56803e6342d3fb44183553cb35453d9a, type: 3}
+      propertyPath: AumentoSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619026812568331190, guid: 56803e6342d3fb44183553cb35453d9a, type: 3}
       propertyPath: padreAtaquesIsaac
       value: 
       objectReference: {fileID: 454950836}
@@ -17833,5 +17855,4 @@ SceneRoots:
   - {fileID: 2132039511}
   - {fileID: 7634532484747947007}
   - {fileID: 1717328093}
-  - {fileID: 1063684601}
   - {fileID: 1308919850165724381}
