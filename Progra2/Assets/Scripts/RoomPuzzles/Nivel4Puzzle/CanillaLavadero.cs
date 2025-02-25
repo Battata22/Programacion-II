@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CasaFiesta
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class CanillaLavadero : MonoBehaviour, IInteractable
+    public class CanillaLavadero : Obj_Interactuable, IInteractable
     {
         bool _active;
         public bool active
@@ -19,6 +19,33 @@ namespace CasaFiesta
                 _active = value;
             }
 
+        }
+
+        private void Start()
+        {
+            _renderer = GetComponent<Renderer>();
+
+            if (_renderer != null)
+            {
+                foreach (var mat in _renderer.materials)
+                {
+                    //Debug.Log($"<color=yellow> La recalcada concha de su madre {mat.name}</color>");
+
+                    //print(mat.name);
+                    if (mat.name == "M_Outline (Instance)")
+                    {
+                        OutLine = mat;
+                        _OGthik = OutLine.GetFloat("_Thickness");
+                        OutLine.SetFloat("_Thickness", 0f);
+                        OutLine.SetFloat("_Active", 0);
+                    }
+                }
+            }
+        }
+
+        public override void Interact(AudioSource _audio, AudioClip agarre, AudioClip error, int playerLevel)
+        {
+            Debug.Log($"<color=red>JAJA miralo, agarrando el aire</color>");
         }
 
         public void Interact()
