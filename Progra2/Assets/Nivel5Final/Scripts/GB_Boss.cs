@@ -15,6 +15,7 @@ public class GB_Boss : MonoBehaviour
     [SerializeField] float rotY, speedRot, _suctionForce, limiteAceSuccion, duracionAspirado, cdApirado, velRotParedesAspirado;
     [SerializeField] GameObject padreParedesPlayer, padreAtaquesIsaac;
     [SerializeField] GameObject[] espejos;
+    [SerializeField] GameObject torretasPadre;
     public delegate void EventBossAccion();
     public event EventBossAccion Accion;
     public int fase = 0;
@@ -43,6 +44,11 @@ public class GB_Boss : MonoBehaviour
         if(actualHp < maxHp)
         {
             Atacado = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            TorretaPadre.laserOn = true;
         }
     }
 
@@ -121,6 +127,7 @@ public class GB_Boss : MonoBehaviour
         col.enabled = true; 
         #endregion
         AtaqueIsaac();
+        RevivirTorretas();
 
     }
 
@@ -323,6 +330,14 @@ public class GB_Boss : MonoBehaviour
         }
     }
 
+    void RevivirTorretas()
+    {
+        TorretaPadre.laserOn = true;
+    }
 
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
 
 }

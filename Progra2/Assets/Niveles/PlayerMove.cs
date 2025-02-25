@@ -38,14 +38,14 @@ public class PlayerMove : MonoBehaviour
         {
             moving = true;
             der = true;
-            //if (posPlayer < stepPoints.Length - 1)
-            //{
-            //    posDir += 1;
-            //}
-            if (posPlayer < 1)
+            if (posPlayer < stepPoints.Length - 1)
             {
                 posDir += 1;
             }
+            //if (posPlayer < 1)
+            //{
+            //    posDir += 1;
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.A) && moving == false)
