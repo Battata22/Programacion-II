@@ -11,6 +11,8 @@ public class PyChangeFloor : MonoBehaviour
     [SerializeField] KeyCode _goDown;
     [SerializeField] ParticleSystem _puffParticle;
     
+    public event DelegateType.VoidDelegate OnFloorUp = delegate { };
+    public event DelegateType.VoidDelegate OnFloorDown = delegate { };
 
     private void Awake()
     {
@@ -59,6 +61,8 @@ public class PyChangeFloor : MonoBehaviour
 
             }
         }
+
+        OnFloorUp();
     }
 
     void GoDown()
@@ -83,6 +87,13 @@ public class PyChangeFloor : MonoBehaviour
                 _player.transform.position = new Vector3(_player.transform.position.x, piso.transform.position.y - piso.transform.localPosition.y+ _ofset, _player.transform.position.z);
             }
         }
+
+        OnFloorDown();
+    }
+
+    void ChangeText()
+    {
+
     }
 
     //dev

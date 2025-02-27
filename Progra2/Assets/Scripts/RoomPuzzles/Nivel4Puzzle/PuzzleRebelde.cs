@@ -14,6 +14,7 @@ namespace CasaFiesta
         [SerializeField] Door[] _doors;
         [SerializeField] HouseExitTrigger _houseExit;
         [SerializeField] ObjectSpawner _armario;
+        [SerializeField] ParticleSystem _stinkGen;
 
         public RoomTrigger _otraHabitacion;
 
@@ -35,6 +36,8 @@ namespace CasaFiesta
             {
                 door.UnlockDoor();
             }
+
+            _stinkGen.Play();
 
             _textIndex = _objectiveTexts.Length-1;
             ChangeText();

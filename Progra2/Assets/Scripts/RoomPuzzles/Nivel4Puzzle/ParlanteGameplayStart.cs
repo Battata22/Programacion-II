@@ -7,6 +7,8 @@ public class ParlanteGameplayStart : GameplayModeTrigger
 {
     [SerializeField] float tempo;
     [SerializeField] Nivel4Puzzle[] _allPuzzles;
+
+    [SerializeField] TextoCambiaPiso _pingo;
     private void Awake()
     {
         //StartCoroutine(SoyUnBoludo());
@@ -26,6 +28,7 @@ public class ParlanteGameplayStart : GameplayModeTrigger
         {
             item.ActivatePuzzle();
         }
+        _pingo.Activate();
 
         base.StartGameplay();
     }

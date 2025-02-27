@@ -202,7 +202,14 @@ public class Pickable : Obj_Interactuable , IEnchantable, IBlessable
 
         //_scareAmount = 1f;
         _dropLayers = GameManager.Instance.DropLayers;
-        particleGen = GetComponentInChildren<ParticleSystem>();
+        //particleGen = GetComponentInChildren<ParticleSystem>();
+
+        if (particleGen == null)
+        {
+            var newPObj = Instantiate(GameManager.Instance.ParticleObj, transform);
+            particleGen = newPObj.GetComponent<ParticleSystem>();
+            particleGen.Stop();
+        }
 
         _saver = new ItemSaver(this.transform);
 

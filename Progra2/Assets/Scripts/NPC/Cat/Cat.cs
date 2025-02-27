@@ -28,6 +28,8 @@ public class Cat : NPC
     [SerializeField] float _chaseDuration;
     [SerializeField, Tooltip("firs Min Time, sec Max Time")] float[] _timeBtChase = new float[2];
 
+    [SerializeField] MeshRenderer _meshRenderer;
+
     CatArea _myGusDetector;
     float _fightTime = 0f;
     bool _canJumpToPlayer = true;
@@ -296,6 +298,9 @@ public class Cat : NPC
         Debug.Log($"<color=red>Andatehhhhhhhhhhhhhhh</color>");
         _alertIcon.active = false;
 
+        //if (_activeChase)
+            StartCoroutine(StopChase());
+
         Player player = GameManager.Instance.Player;
         var dir = ((player.transform.position+new Vector3(0,2,0)) - transform.position).normalized;
         _agent.enabled = false;
@@ -325,6 +330,7 @@ public class Cat : NPC
             _targetObject = null;
         }
 
+        Invoke("DeactivateMesh", 0.5f);
     }
 
     void LeaveCountDown()
@@ -337,11 +343,21 @@ public class Cat : NPC
         }
     }
 
+    void DeactivateMesh()
+    {
+        _meshRenderer.enabled = false;
+
+    }
+
     void LeavePlayer()
     {
         CountDown = delegate { };
         _fightTime = 0;
         _canJumpToPlayer = true;
+
+        //activar mesh
+        transform.position = GameManager.Instance.Player.transform.position;
+        _meshRenderer.enabled = true;
 
         GameManager.Instance.Player.RestoreNormalMovement();
 

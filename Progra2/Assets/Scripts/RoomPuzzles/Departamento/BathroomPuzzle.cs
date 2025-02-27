@@ -34,7 +34,9 @@ public class BathroomPuzzle : MonoBehaviour
         if (_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
         {
             _fliesActive = true;
-            var newFlies = Instantiate(_fliesPrefab, _pickables[Random.Range(0, _pickables.Length)].transform.position, Quaternion.identity);
+            var randomObj = _pickables[Random.Range(0, _pickables.Length)];
+            var newFlies = Instantiate(_fliesPrefab, randomObj.transform.position, Quaternion.identity);
+            newFlies.SetFocusObj(randomObj.transform);
             newFlies.OnPulseEnd += DeactivateFlies;
             newFlies.ActivateMovement(true);
         }
