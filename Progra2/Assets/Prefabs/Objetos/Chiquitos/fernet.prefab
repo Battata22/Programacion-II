@@ -69,8 +69,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7115962ac36610d4bbff2e5c87ea1280, type: 2}
-  - {fileID: 2100000, guid: 7115962ac36610d4bbff2e5c87ea1280, type: 2}
-  - {fileID: 2100000, guid: 7115962ac36610d4bbff2e5c87ea1280, type: 2}
+  - {fileID: 2100000, guid: 43cdf23c8ce6ea34ebbaac5fa93f7be7, type: 2}
+  - {fileID: 2100000, guid: 854da2abd8d209b4a8aad738ad1de993, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -277,6 +277,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &8220860742681145322
 BoxCollider:

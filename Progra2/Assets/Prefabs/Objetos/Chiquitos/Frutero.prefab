@@ -16,6 +16,10 @@ GameObject:
   - component: {fileID: 6647239877977201147}
   - component: {fileID: 8364962870079741719}
   - component: {fileID: 8220219087689982477}
+  - component: {fileID: 664055920484948943}
+  - component: {fileID: 8359649026736756553}
+  - component: {fileID: 3281050618247354938}
+  - component: {fileID: 2403403891694923686}
   m_Layer: 7
   m_Name: Frutero
   m_TagString: Untagged
@@ -31,9 +35,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89767898964615153}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.017, y: 0.017, z: 0.017}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5562165112069992144}
@@ -181,6 +185,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &8364962870079741719
 BoxCollider:
@@ -201,8 +209,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 48.06012, y: 20.881516, z: 48.06006}
-  m_Center: {x: 0, y: 10.440758, z: 0}
+  m_Size: {x: 4.560465, y: 20.881512, z: 35.23207}
+  m_Center: {x: 19, y: 10.440756, z: 0}
 --- !u!82 &8220219087689982477
 AudioSource:
   m_ObjectHideFlags: 0
@@ -299,6 +307,90 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &664055920484948943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89767898964615153}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 38.49253, y: 3.4212573, z: 41.18705}
+  m_Center: {x: 0, y: 1.7106286, z: 0}
+--- !u!65 &8359649026736756553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89767898964615153}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.560465, y: 20.881512, z: 35.23207}
+  m_Center: {x: -18.599371, y: 10.440756, z: 0}
+--- !u!65 &3281050618247354938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89767898964615153}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 42.261204, y: 20.881512, z: 3.4806654}
+  m_Center: {x: 0.14957258, y: 10.440756, z: -18.871183}
+--- !u!65 &2403403891694923686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89767898964615153}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 42.261204, y: 20.881512, z: 3.4806654}
+  m_Center: {x: 0.14957258, y: 10.440756, z: 19.4}
 --- !u!1 &2992872448161527200
 GameObject:
   m_ObjectHideFlags: 0
