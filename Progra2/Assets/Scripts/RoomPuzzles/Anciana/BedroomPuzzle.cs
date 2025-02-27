@@ -20,6 +20,8 @@ public class BedroomPuzzle : MonoBehaviour
     [SerializeField] List<Fireflies> _allFlies = new();
     [SerializeField, Tooltip("The Kitchen Puzzle")] KitchenPuzzle _nextPuzzle;
 
+    List<GameObject> _destroyList = new();
+
     private void Start()
     {
         _granny.OnRagdollTrigger += SpawnKey;
@@ -32,6 +34,8 @@ public class BedroomPuzzle : MonoBehaviour
 
         var newFlies = Instantiate(_fliesPrefab, newKey.transform.position, Quaternion.identity);
         newFlies.SetFocusObj(newKey.transform);
+
+        _destroyList.Add(newFlies.gameObject);
 
         _granny.OnRagdollTrigger -= SpawnKey;
         _closet.ActionActive += CompleteRoom;
@@ -63,6 +67,9 @@ public class BedroomPuzzle : MonoBehaviour
             pet.SetActive(true);
         }
         _closet.ActionActive -= CompleteRoom;
+
+        foreach (var destro in _destroyList)
+            Destroy(destro);
 
         //GameManager.Instance.Master1.ActivarGB();
         _nextPuzzle.StartPuzzle();

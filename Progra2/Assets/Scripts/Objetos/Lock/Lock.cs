@@ -9,6 +9,7 @@ public class Lock : MonoBehaviour, ILockeable
 
     [SerializeField] Transform _target;
 
+    [SerializeField] Fireflies _myFlies;
     private void Start()
     {
 
@@ -24,6 +25,8 @@ public class Lock : MonoBehaviour, ILockeable
         KeyUsed();
         GameManager.Instance.pasoActual = 6;
 
+        if(_myFlies != null )
+            Destroy(_myFlies.gameObject);
     }
 
     void ILockeable.Lock()

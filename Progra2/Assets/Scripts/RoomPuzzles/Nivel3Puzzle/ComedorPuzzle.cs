@@ -13,7 +13,7 @@ public class ComedorPuzzle : Nivel3Puzzle
     [SerializeField] Fireflies _chestFlies;
     [SerializeField] Fireflies _discoFlies;
 
-
+    [SerializeField] UltimateCatolica _ultimate;
 
     int _currentState = 0;
 
@@ -77,6 +77,7 @@ public class ComedorPuzzle : Nivel3Puzzle
             npc.GetScared(1f,-1);
         }
 
+        _ultimate.Activar();
 
         _puzzleActive = false;
         GameManager.Instance.ActivateTerrorBar();

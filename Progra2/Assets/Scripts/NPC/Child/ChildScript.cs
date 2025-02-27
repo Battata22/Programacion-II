@@ -306,7 +306,7 @@ public class ChildScript : NPC
 
     void CheckToyDist()
     {
-        if(_childState!=ChildState.Playing && Vector3.SqrMagnitude(_toyPos.position - transform.position) < (_changeNodeDist * _changeNodeDist * 2))
+        if(_childState!=ChildState.Playing && Vector3.SqrMagnitude(_toyPos.position - transform.position) < (_detecToyRadius * _detecToyRadius * 0.3f))//_changeNodeDist * _changeNodeDist * 2
         {
             Debug.Log("<color=green>JAJA jugueye</color>");
 

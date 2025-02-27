@@ -125,7 +125,9 @@ public class PuzzleNene : Nivel3Puzzle
         _parents[_parentIndex].gameObject.SetActive(true);
         _parentIndex++;
 
-        _childRoomDoor.OnDoorClose += LockChildDoor;
+        //_childRoomDoor.OnDoorClose += LockChildDoor;
+
+        hasToLock = true;
         _childRoomDoor.UnlockDoor();
         //_doors[0].UnlockDoor();
 
@@ -140,4 +142,16 @@ public class PuzzleNene : Nivel3Puzzle
         _childRoomDoor.OnDoorClose -= LockChildDoor;
         _childRoomDoor.LockDoor();
     }
+
+    bool hasToLock = false;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(hasToLock && other.transform.GetComponent<Asustable>())
+        {
+            hasToLock = false;
+            Invoke("LockChildDoor", 0.5f);
+        }
+    }
+
 }

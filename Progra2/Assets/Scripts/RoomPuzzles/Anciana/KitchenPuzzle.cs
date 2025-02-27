@@ -80,6 +80,8 @@ public class KitchenPuzzle : MonoBehaviour
         GameManager.Instance.ActivateTerrorBar();
         GameManager.Instance.Master1.ActivarGB();
         _canillaTrigger.EndCallEvent();
+
+        _puzzleActive = false;
     }
 
     private void OnDestroy()
