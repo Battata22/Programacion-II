@@ -45,14 +45,20 @@ public class GB_Boss : MonoBehaviour
         //{
         //    Atacado = !Atacado;
         //}
+
         if(actualHp < maxHp)
         {
             Atacado = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    TorretaPadre.laserOn = true;
+        //}
+
+        if(fase > 1)
         {
-            TorretaPadre.laserOn = true;
+            AumentarVelPlayer();
         }
     }
 
@@ -135,7 +141,6 @@ public class GB_Boss : MonoBehaviour
         AtaqueDrones();
         DefenceWall();
         AspiradoBoss(duracionAspirado);
-        AumentarVelPlayer();
     }
 
     public void Kill()

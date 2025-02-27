@@ -87,4 +87,13 @@ public class FuncionEspejo : MonoBehaviour
 
         arreglos = true;
     }
+
+    public void RomperEspejo()
+    {
+        //hacer que salgan volando las piezas del espejo
+
+        Destroy(gameObject);
+
+        //hacer que hagan respawn
+    }
 }

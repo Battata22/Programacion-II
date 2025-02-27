@@ -152,6 +152,7 @@ public class DroneBehaivour : MonoBehaviour
 
     private void OnDestroy()
     {
+        print("moristie");
         GB_Boss.isDroneAlive = false;
     }
 }

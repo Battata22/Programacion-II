@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -25,6 +26,14 @@ public class HandState : MonoBehaviour
         _up = transform.up;
 
         ChangeState(HandState.HandPose.relax);
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "Nivel5")
+        {
+            ChangeState(HandPose.gun);
+        }
     }
 
     public void ChangeState(HandPose newPose)
@@ -80,4 +89,5 @@ public class HandState : MonoBehaviour
         hold,
         gun
     }
+
 }
