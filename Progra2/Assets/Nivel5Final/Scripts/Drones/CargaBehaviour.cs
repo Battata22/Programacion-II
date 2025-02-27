@@ -46,6 +46,7 @@ public class CargaBehaviour : MonoBehaviour
             {
                 print("espejito espejito");
                 cochoConEspejo = true;
+                other.gameObject.GetComponent<FuncionEspejo>().RomperEspejo();
             }
         }
         else if(other != null && other.gameObject.GetComponent<DroneBehaivour>() == null)
