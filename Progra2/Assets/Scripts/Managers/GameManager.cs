@@ -206,12 +206,13 @@ public class GameManager : MonoBehaviour
         var coso = GetComponent<PhaseManager>();
         coso.CallTrapPhase();
 
-        if (SceneManager.GetActiveScene().name == "Nivel1")
+        if (SceneManager.GetActiveScene().name != "Nivel5")
         {
-            loadNivel1.ChargeDone();
+            if (SceneManager.GetActiveScene().name == "Nivel1")
+                loadNivel1.ChargeDone();
             print("loadNiveles");
 
-            //SceneManager.LoadScene("Niveles");
+            SceneManager.LoadScene("Niveles");
         }
         else
         {

@@ -32,7 +32,11 @@ public class LivingPuzzle : MonoBehaviour
         if (_puzzleActive && Input.GetKeyDown(KeyCode.V) && !_fliesActive)
         {
             _fliesActive = true;
-            var newFlies = Instantiate(_fliesPrefab, _sahumerios[Random.Range(0, _sahumerios.Count)].transform.position, Quaternion.identity);
+
+            var target = _sahumerios[Random.Range(0, _sahumerios.Count)].transform;
+
+            var newFlies = Instantiate(_fliesPrefab,target.position, Quaternion.identity);
+            newFlies.SetFocusObj(target);
             newFlies.OnPulseEnd += DeactivateFlies;
             newFlies.ActivateMovement(true);
         }
@@ -89,6 +93,8 @@ public class LivingPuzzle : MonoBehaviour
         _fireFlies.gameObject.SetActive(false);
 
         GameManager.Instance.ActivateTerrorBar();
+
+        _puzzleActive = false;
 
     }
 

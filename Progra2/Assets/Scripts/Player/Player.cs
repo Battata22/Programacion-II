@@ -254,6 +254,7 @@ public class Player : MonoBehaviour, IRoomDetectable
                 
 
                 ChangeInput(_scapeKey);
+                //ChooseScapeInput();
 
                 _marcoColor[0].color = Color.Lerp(_actCol1, _OGmarcoColor1, scapeSpam * 0.1f / 3);
                 _marcoColor[1].color = Color.Lerp(_actCol2, _OGmarcoColor2, scapeSpam * 0.1f / 3);
