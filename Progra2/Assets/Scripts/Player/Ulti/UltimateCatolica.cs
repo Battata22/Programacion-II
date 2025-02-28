@@ -20,6 +20,7 @@ public class UltimateCatolica : SpecialObject
 
     [SerializeField] string[] _textosSatanicosos;
 
+    [SerializeField] ChildScript _childScript;
 
     bool createTrap = false;
     Vector3 _rotPivot = Vector3.zero;
@@ -80,6 +81,8 @@ public class UltimateCatolica : SpecialObject
                 ragdoll.CallRagdollOn();
             }
         }
+
+        _childScript.gameObject.SetActive(false);
 
         DoRot = RotameEsta;
         GameManager.Instance.ChangeObjectiveText(_textosSatanicosos[1]);

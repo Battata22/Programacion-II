@@ -41,6 +41,8 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
     [SerializeField] Asustable[] _finalNpcs;
     [SerializeField] Exorcista _exorcista;
     [SerializeField] int _currentStage = 0;
+    [SerializeField] public ParticleSystem _smokeMicroWave;
+
     public int CurrentStage {  get { return _currentStage; } }
 
     AINodeManager _nodeManager;

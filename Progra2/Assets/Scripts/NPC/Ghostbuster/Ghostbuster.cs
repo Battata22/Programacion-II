@@ -375,6 +375,7 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         if (Vector3.SqrMagnitude(direction) <= (_killRange * _killRange) && Time.time - _waitKill > _atkDelay)
         {
             _target.GetDamage();
+            _target.ResetMiss();
             _sourceDamage.Play();
             EndAttack();
         }

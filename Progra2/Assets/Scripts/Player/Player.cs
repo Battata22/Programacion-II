@@ -50,7 +50,9 @@ public class Player : MonoBehaviour, IRoomDetectable
             if (value)
             {
                 Debug.Log("DALE WACHO");
-                StartCoroutine(ChooseScapeInput());
+                //StartCoroutine(ChooseScapeInput());
+                _miss = 0;
+                ChangeInput(KeyCode.None);
             }
 
         }
@@ -291,42 +293,76 @@ public class Player : MonoBehaviour, IRoomDetectable
     [SerializeField] Texture[] _keysTexture;
     [SerializeField] Image _fill;
     [SerializeField] KeyCode _scapeKey;
+    [SerializeField] KeyCode _lastKey;
     [SerializeField] float _timeBtKeyChange;
     [SerializeField] float _keyFill = 0;
     [SerializeField] int _missesToHit;
     int _miss= 0;
     public int miss { get { return _miss; } }
 
-    IEnumerator ChooseScapeInput()
+    //IEnumerator ChooseScapeInput()
+    //{
+    //    Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+
+    //    if (underAttack)
+    //    {
+
+    //        ChangeInput(_scapeKey);
+    //        var lastKey = _scapeKey;
+
+    //        yield return new WaitForSeconds(_timeBtKeyChange);
+    //        if(_scapeKey == lastKey)
+    //        {
+    //            _miss++;
+    //            Debug.Log($"<color=red> Cagaste {miss} / 3 </color>");
+
+    //            if (_miss >= _missesToHit)
+    //            {
+    //                _suctionMul = 10f;
+    //                _scapeKey = KeyCode.None;
+    //            }
+    //            else
+    //                StartCoroutine(ChooseScapeInput());
+    //        }
+    //    }
+    //}
+
+    void MissCheck()
     {
-        Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-
-        if (underAttack)
+        if(_keyFill >= _timeBtKeyChange)
         {
+            _miss++;
+            Debug.Log($"<color=red> Cagaste {miss} / 3 </color>");
 
-            ChangeInput(_scapeKey);
-            var lastKey = _scapeKey;
-
-            yield return new WaitForSeconds(_timeBtKeyChange);
-            if(_scapeKey == lastKey)
+            if (_miss >= _missesToHit)
             {
-                _miss++;
-                Debug.Log($"<color=red> Cagaste {miss} / 3 </color>");
+                _suctionMul = 10f;
+                _scapeKey = KeyCode.None;
 
-                if (_miss >= _missesToHit)
-                {
-                    _suctionMul = 10f;
-                    _scapeKey = KeyCode.None;
-                }
-                else
-                    StartCoroutine(ChooseScapeInput());
+                _keysImage.color = new Color(1, 1, 1, 0.5f);
+                randomAxis = 0;
+                //apagar teclas supongo;
+
+            }
+            else
+            {
+                ChangeInput(_scapeKey);
             }
         }
+
+    }
+
+    public void ResetMiss()
+    {
+        //_miss = 0;
+        _suctionMul = 0f;
     }
 
     void ChangeInput(KeyCode keyCode)
     {
-        var lastKey = keyCode;
+        _keysImage.color = new Color(1, 1, 1, 1);
+
+        _lastKey = keyCode;
 
         int num = Random.Range(0, 4);
 
@@ -348,7 +384,7 @@ public class Player : MonoBehaviour, IRoomDetectable
                 break;
         }
 
-        while (lastKey == newKey)
+        while (_lastKey == newKey)
         {
             num = Random.Range(0, 4);
             switch (num)
@@ -387,6 +423,7 @@ public class Player : MonoBehaviour, IRoomDetectable
         if (underAttack)
         {
             _keyFill += Time.fixedDeltaTime;
+            MissCheck();
             UpdateFill();
         }
         

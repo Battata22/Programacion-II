@@ -7,6 +7,8 @@ public class ActivateWallCol : MonoBehaviour
     [SerializeField] LayerMask _ogMask;
     [SerializeField] LayerMask _noTras;
 
+    [SerializeField] List<Ghostbuster> _gbOnLevel;
+
     private void Awake()
     {
         //_ogMask = gameObject.layer;

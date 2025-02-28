@@ -106,6 +106,8 @@ namespace CasaCatolicaPuzzle
             _myAsustable.GetScared(1, -1);
 
             _myAsustable.OnScareEnd += GoTakeDessert;
+
+            _myPuzzle._smokeMicroWave.Play();
         }
 
         private void OnDestroy()

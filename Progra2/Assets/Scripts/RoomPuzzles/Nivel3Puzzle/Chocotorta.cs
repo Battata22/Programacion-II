@@ -32,6 +32,12 @@ public class Chocotorta : MonoBehaviour
         _myAsus = newAsus;
         _cocinaPlz = newPlz;
 
+        var coliders = GetComponentsInChildren<Collider>();
+        foreach (Collider colider in coliders)
+        {
+            colider.enabled = false;
+        }
+
         _myAsus.OnRagdollTrigger += Throw;
         _myAsus.OnSlideStop += Throw;
 
@@ -50,6 +56,12 @@ public class Chocotorta : MonoBehaviour
     void Throw()
     {
         MyMovement = delegate { };
+
+        var coliders = GetComponentsInChildren<Collider>();
+        foreach (Collider colider in coliders)
+        {
+            colider.enabled = false;
+        }
 
         _myAsus.OnRagdollTrigger -= Throw;
         _myAsus.OnSlideStop -= Throw;
