@@ -30,7 +30,7 @@ public class DroneBehaivour : MonoBehaviour
 
         rb.AddForceAtPosition(transform.up * fuerzaImpulso, transform.position, ForceMode.Impulse);
 
-        Destroy(gameObject, lifeTime);
+        //Destroy(gameObject, lifeTime);
     }
 
 
@@ -154,5 +154,6 @@ public class DroneBehaivour : MonoBehaviour
     {
         print("moristie");
         GB_Boss.isDroneAlive = false;
+        print(GB_Boss.isDroneAlive);
     }
 }

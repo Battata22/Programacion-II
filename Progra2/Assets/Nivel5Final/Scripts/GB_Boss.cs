@@ -31,6 +31,7 @@ public class GB_Boss : MonoBehaviour
         actualHp = maxHp;
         col = GetComponent<Collider>();
         _anim = GetComponentInChildren<Animator>();
+        _anim.SetBool("Die", false);
         _parGens = GetComponentsInChildren<ParticleSystem>();
         _tornadoGen = _parGens[1];
         player = GameManager.Instance.Player;
@@ -166,7 +167,16 @@ public class GB_Boss : MonoBehaviour
         #endregion
         padreAtaquesIsaac.SetActive(false);
         isaac = false;
-        Destroy(gameObject);
+        //anim
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("Attacking", false);
+        _anim.SetBool("Die", true);
+
+        // matar el dron
+        // apagar los laseres
+        // pantalla de victoria
+
+        //Destroy(gameObject);
     }
 
     void AumentarVelPlayer()
@@ -301,7 +311,7 @@ public class GB_Boss : MonoBehaviour
             if (isInSafeZone == false)
             {
 
-                player.ApplyForce(-direction, _suctionForce * Time.fixedDeltaTime * aceSuccion, this);
+                player.ApplyForce(-direction, _suctionForce * Time.fixedDeltaTime * aceSuccion, this, true);
 
 
                 if (aceSuccion < limiteAceSuccion)
@@ -372,12 +382,19 @@ public class GB_Boss : MonoBehaviour
 
     }
 
+    [SerializeField] bool espejosActivados = false;
+
     void SpawnEspejos()
     {
-        for (int i = 0; i < espejos.Length; i++)
+        if (espejosActivados == false)
         {
-            print(i);
-            espejos[i].SetActive(true);
+            for (int i = 0; i < espejos.Length; i++)
+            {
+                print(i);
+                espejos[i].SetActive(true);
+
+            }
+            espejosActivados = true;
         }
     }
 
@@ -427,6 +444,7 @@ public class GB_Boss : MonoBehaviour
         //Instantiate(drone, new Vector3(transform.position.x, transform.position.y + 20, transform.position.z), Quaternion.identity);
         if (isDroneAlive == false)
         {
+            print("spawndrone");
             Instantiate(drone, transform.position, Quaternion.identity);
         }
 
