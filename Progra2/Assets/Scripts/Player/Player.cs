@@ -724,6 +724,12 @@ public class Player : MonoBehaviour, IRoomDetectable
         _rb.AddForce(direction * forceMult * Time.fixedDeltaTime * 0.5f, ForceMode.Force);
     }
 
+    public void ApplyForce(Vector3 direction, float forceMult, GB_Boss gbBossScript, bool a)
+    {
+        if (forceMult == 0) _rb.velocity = Vector3.zero;
+        _rb.AddForce(direction * forceMult * Time.fixedDeltaTime * 0.5f, ForceMode.Impulse);
+    }
+
 
     void LifeSaver(float _dis)
     {
@@ -799,6 +805,31 @@ public class Player : MonoBehaviour, IRoomDetectable
         {
             SceneManager.LoadScene("Derrota");
         }
+
+        if(SceneManager.GetActiveScene().name == "Nivel5")
+        {
+            GameManager.Instance.CorazonesBehaviourScript.Prendido();
+        }
+    }
+
+    public void GetHealed()
+    {
+        if (inmortal) return;
+        if (_hp < 3)
+        {
+            _hp++;
+        }
+
+        //GameManager.Instance.imagenRojo.SetActive(true);
+
+        //if (_particleSystem != null)
+        //    _particleSystem.Play();
+
+        SpriteVidaUpdate();
+        //if (_hp <= 0)
+        //{
+        //    SceneManager.LoadScene("Derrota");
+        //}
     }
 
     #region Comment

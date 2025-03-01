@@ -250,6 +250,7 @@ public class GameManager : MonoBehaviour
         _objectiveText.text = newText;
     }
 
+    public CorazonesBehaviour CorazonesBehaviourScript;
 
 }
 

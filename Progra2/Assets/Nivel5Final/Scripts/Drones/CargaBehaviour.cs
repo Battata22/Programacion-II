@@ -71,10 +71,14 @@ public class CargaBehaviour : MonoBehaviour
         rb.useGravity = false;
 
         Collider[] playerScript = Physics.OverlapSphere(transform.position, radioExplosion, maskPlayer);
-        if (playerScript[0] != null) //error aca
+        foreach (Collider collider in playerScript)
         {
-            playerScript[0].gameObject.GetComponent<Player>().GetDamage();
+            collider.gameObject.GetComponent<Player>().GetDamage();
         }
+        //if (playerScript[0] != null) //error aca
+        //{
+        //    playerScript[0].gameObject.GetComponent<Player>().GetDamage();
+        //}
 
     }
 
