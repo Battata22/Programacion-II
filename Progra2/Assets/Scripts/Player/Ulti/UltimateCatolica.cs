@@ -91,6 +91,8 @@ public class UltimateCatolica : SpecialObject
 
     void RotameEsta()
     {
+        Debug.Log("AAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHH");
+
         _houseCenter.transform.RotateAround(_rotPivot, transform.forward, 90 * _rotSpeed * Time.fixedDeltaTime);
         
         if(_houseCenter.transform.rotation.z % 170 >= 1)
