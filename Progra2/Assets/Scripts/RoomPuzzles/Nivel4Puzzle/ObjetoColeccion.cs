@@ -10,24 +10,24 @@ namespace CasaFiesta
     public class ObjetoColeccion : MonoBehaviour, IInteractable
     {
         [SerializeField] public bool active;
-        [SerializeField] float _checkDist;
-        [SerializeField] CuartoColeccionPuzzzle _myPuzzle;
-        bool _broken = false;
+        [SerializeField] protected float _checkDist;
+        [SerializeField] protected CuartoColeccionPuzzzle _myPuzzle;
+        protected bool _broken = false;
         public bool broken { get { return _broken; } }
 
-        DelegateType.VoidDelegate DoCheck = delegate { };
+        protected DelegateType.VoidDelegate DoCheck = delegate { };
 
-        private void Awake()
+        protected void Awake()
         {
             gameObject.layer = LayerMask.NameToLayer("Objeto");
         }
 
-        private void Update()
+        protected void Update()
         {
             DoCheck();
         }
 
-        public void Interact()
+        public virtual void Interact()
         {
             Debug.Log($"<color=yellow> Veni {_myPuzzle._npcInRoom.name} culo roto </color>");
 
@@ -37,7 +37,7 @@ namespace CasaFiesta
             active= true;
         }
 
-        void DetectNpc()
+        protected void DetectNpc()
         {
             if (!active) return;
 
@@ -48,7 +48,7 @@ namespace CasaFiesta
             }
         }
 
-        void BreakObj()
+        protected virtual void BreakObj()
         {
             if (_broken) return;
             Debug.Log($"<color=yellow>Objeto {name} perdio un valo de ${Random.Range(20,10001)} </color>");

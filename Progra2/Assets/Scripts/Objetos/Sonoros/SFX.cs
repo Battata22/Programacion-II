@@ -71,6 +71,8 @@ public abstract class SFX : Pickable
 
     public virtual void PlayMusic(AudioClip _audio1)
     {
+        if (quemado) return;
+
         if (isPlaying == false)
         {
             isPlaying = true;
@@ -104,5 +106,20 @@ public abstract class SFX : Pickable
 
         _enchanted = false;
         Debug.Log("<color=purple> Accion realizada </color>");
+    }
+
+    bool quemado=false;
+
+    public void Quemar()
+    {
+        quemado = true;
+
+        isPlaying = false;
+        _audioSource.Pause();
+        _audioSource.loop = false;
+
+        //Explotido sonido
+
+        OnStop();
     }
 }

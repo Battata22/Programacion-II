@@ -101,13 +101,7 @@ public class Luces : Obj_Interactuable
 
         if (usos >= random && !rotas)
         {
-            rotas = true;
-            if (OnBroken != null)
-            {
-                OnBroken(2);
-                //Debug.Log("Luz Rota");
-            }
-            Bluetooth();
+            Quemar();   
         }
 
     }
@@ -144,6 +138,18 @@ public class Luces : Obj_Interactuable
         }
         on = false;
         switchPar.on = on;
+    }
+
+    public void Quemar()
+    {
+        rotas = true;
+        if (OnBroken != null)
+        {
+            OnBroken(2);
+            //Debug.Log("Luz Rota");
+        }
+        Apagado();
+        Bluetooth();
     }
 
     public void Encendido()

@@ -131,6 +131,8 @@ namespace CasaFiesta
             _houseExit.AddToList(_npcInRoom.gameObject);
             _npcInRoom.InfiniteScared(true);
             _npcInRoom.GetScared(1, -1, _houseExit.transform);
+
+            StartCoroutine(ConstantScare());
         }
 
         protected override void Fireflies()
@@ -166,6 +168,22 @@ namespace CasaFiesta
                 num = Random.Range(0, _coleccionables.Length);
 
             return num;
+        }
+
+        IEnumerator ConstantScare()
+        {
+            while (_completed)
+            {
+                
+
+                if (_npcInRoom.gameObject.activeInHierarchy)
+                    _npcInRoom.GetScared(1f, -1, _houseExit.transform);
+                _completed = _npcInRoom.gameObject.activeInHierarchy;
+
+                Debug.Log($"<color=red>Puzzle asustando constantemente</color>");
+
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 }
