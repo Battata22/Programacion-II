@@ -30,7 +30,19 @@ public class ParlanteGameplayStart : GameplayModeTrigger
         }
         _pingo.Activate();
 
-        base.StartGameplay();
+        //base.StartGameplay();
+
+        foreach (var obj in _objectToActivate)
+        {
+            obj.SetActive(true);
+        }
+
+        GameManager.Instance.pasoActual = 1;
+        //StartGampelayPhase();
+        GameManager.Instance.GetComponent<PhaseManager>().CallGamePlayPhase();
+
+        this.enabled = false;
+
     }
 
     IEnumerator SoyUnBoludo()

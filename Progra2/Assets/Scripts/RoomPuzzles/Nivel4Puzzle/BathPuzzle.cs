@@ -96,6 +96,8 @@ namespace CasaFiesta
             //Debug.Log($"<color=red> Activar Puzzle no hace nada XDD </color>");
 
             _active = true;
+
+            _inodoroPuzzle.SetCanInteract(true);
         }
 
         public void ActivarAgua()

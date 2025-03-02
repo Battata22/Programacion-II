@@ -10,10 +10,15 @@ public class ObjectSpawner : MonoBehaviour, IInteractable
     public StinkBomb objectSpawned { get { return _objectSpawned; } }
 
     public event DelegateType.VoidDelegate OnObjectSpawn = delegate { };
-    
+
+    [SerializeField] bool _canSpawn;
+    public bool canSpawn { get { return _canSpawn; } }
+
     void SpawnObject(int index = 0)
     {
+        if (!_canSpawn) return;
         if (objectSpawned != null) return;
+
         if(index <= -1)
         {
             StartCoroutine(SpawnAll());
@@ -41,6 +46,11 @@ public class ObjectSpawner : MonoBehaviour, IInteractable
     {
         _objectSpawned.OnExplode -= EraseLastBomb;
         _objectSpawned = null;
+    }
+
+    public void SetCanSpawn(bool state)
+    {
+        _canSpawn = state;
     }
 
     public void Interact()

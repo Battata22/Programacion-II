@@ -11,6 +11,8 @@ public class HouseExitTrigger : MonoBehaviour
     [SerializeField] int _exitsToGB;
     [SerializeField] int _exitsToWin;
 
+    [SerializeField] Asustable _houseOwner;
+
     int internalCount;
     
     bool _gbActive = false;
@@ -89,6 +91,7 @@ public class HouseExitTrigger : MonoBehaviour
 
         GameManager.Instance.ActivateTerrorBar();
 
+        _houseOwner.StopUseOwnNode();
     }
 
     public void AddToList(GameObject newObj)

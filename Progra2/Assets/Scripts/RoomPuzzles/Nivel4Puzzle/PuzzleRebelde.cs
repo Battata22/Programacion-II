@@ -56,6 +56,7 @@ namespace CasaFiesta
             }
 
             _cuadro.ignorePickUp = false;
+            _armario.SetCanSpawn(true);
 
             _armario.OnObjectSpawn += BombaSpawneada;
             _cuadro.OnPickUp += SacarTapon;

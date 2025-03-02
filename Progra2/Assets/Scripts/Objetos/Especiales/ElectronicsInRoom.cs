@@ -13,8 +13,9 @@ namespace CasaFiesta
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.TryGetComponent<PlayerUltimateFiesta>(out var ultimate) && ultimate.ultimateActive)
-            {
+            //if(other.gameObject.TryGetComponent<PlayerUltimateFiesta>(out var ultimate) && ultimate.ultimateActive)
+            if(other.gameObject.TryGetComponent<PlayerUltimateFiesta>(out var ultimate) && PlayerUltimateFiesta.ultimateActive)
+                {
                 ExplodeElectronis(ultimate);
             }
         }

@@ -12,16 +12,25 @@ namespace CasaFiesta
         [SerializeField] BathPuzzle _bathPuzzle;
         [SerializeField] float _useCd;
 
+        AudioSource _myAudio;
+        [SerializeField] AudioClip[] _aguas;
+
         bool _canGetDmg = true;
         bool _onCd = false;
         bool flooded = false;
 
+        [SerializeField] bool _canInteract = false;
+        public bool canInteract { get { return _canInteract; } }
+
         event DelegateType.VoidDelegate MyInteract = delegate { };
 
-        void Awake() 
+        void Awake()
         {
             MyInteract = NormalUse;
             _hp = _maxHp;
+
+            _myAudio = GetComponent<AudioSource>();
+            _myAudio.loop = false;
         }
 
         //private void OnCollisionEnter(Collision collision)
@@ -70,7 +79,7 @@ namespace CasaFiesta
 
             _hp--;
 
-            if(_hp <= 0 && !flooded)
+            if (_hp <= 0 && !flooded)
             {
                 _hp = 0;
                 MyInteract = Flood;
@@ -93,7 +102,9 @@ namespace CasaFiesta
 
         public void Interact()
         {
+            if (!_canInteract) return;
             if (_onCd) return;
+
             Debug.Log("<color=#0bf1ff> Interact.wav </color>");
 
             StartCoroutine(Coso());
@@ -105,6 +116,9 @@ namespace CasaFiesta
         {
             //play flush noise
             Debug.Log("<color=#00ffff> Agua.wav </color>");
+
+            _myAudio.clip = _aguas[0];
+            _myAudio.Play();
         }
 
         void Flood()
@@ -122,6 +136,9 @@ namespace CasaFiesta
             flooded = true;
 
             MyInteract = delegate { };
+
+            _myAudio.clip = _aguas[1];
+            _myAudio.Play();
         }
 
         IEnumerator Coso()
@@ -138,6 +155,11 @@ namespace CasaFiesta
             yield return new WaitForSeconds(0.1f);
 
             _canGetDmg = true;
+        }
+
+        public void SetCanInteract(bool state)
+        {
+            _canInteract = state;
         }
     }
 }

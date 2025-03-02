@@ -114,6 +114,7 @@ namespace CasaFiesta
             Debug.Log($"<color=#5d14c4>Entre a romper</color>");
             _brokenObjs++;
 
+            _npcInRoom.GetScared(1,-1);
 
             _textIndex = 0;
             if (!_completed)

@@ -45,6 +45,7 @@ namespace CasaFiesta
 
         protected void ChangeText()
         {
+            if (PlayerUltimateFiesta.ultimateActive) return;
             GameManager.Instance.ChangeObjectiveText(_objectiveTexts[_textIndex]);
         }
 

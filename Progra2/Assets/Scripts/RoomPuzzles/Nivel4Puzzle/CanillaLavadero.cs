@@ -24,10 +24,17 @@ namespace CasaFiesta
         public event DelegateType.VoidDelegate OnCanillaOn = delegate { };
         public event DelegateType.VoidDelegate OnCanillaOff = delegate { };
 
+        AudioSource _myAudio;
+        [SerializeField] AudioClip _canillaAud;
 
         private void Start()
         {
             _renderer = GetComponent<Renderer>();
+
+            _myAudio = GetComponent<AudioSource>();
+            _myAudio.loop = true;
+            _myAudio.clip = _canillaAud;
+
 
             if (_renderer != null)
             {
@@ -58,6 +65,7 @@ namespace CasaFiesta
             {
                 _active = false;
                 Debug.Log($"<color=red> Canilla  </color>");
+                _myAudio.Stop();
 
                 OnCanillaOff();
             }
@@ -65,6 +73,8 @@ namespace CasaFiesta
             {
                 _active = true;
                 Debug.Log($"<color=green> Canilla prendida </color>");
+                _myAudio.Play();
+
 
                 OnCanillaOn();
             }

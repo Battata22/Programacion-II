@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class GameplayModeTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject[] _objectToActivate;
+    [SerializeField]protected GameObject[] _objectToActivate;
     public delegate void PhaseChange();
     public static event PhaseChange StartGampelayPhase = delegate { };
     protected virtual void OnTriggerEnter(Collider other)

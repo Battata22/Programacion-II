@@ -9115,7 +9115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2945918122037796525, guid: 1d9add7aaf144f248afe990073aaa1ad, type: 3}
       propertyPath: _locked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5323329093654622187, guid: 1d9add7aaf144f248afe990073aaa1ad, type: 3}
       propertyPath: m_LocalScale.x
@@ -18309,6 +18309,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1850452373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263340936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2945918122037796525, guid: 1d9add7aaf144f248afe990073aaa1ad, type: 3}
+  m_PrefabInstance: {fileID: 159344436}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a688c7919ce79744946547a510aa72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &265143725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1912582793208517601, guid: b977c39395c8fb04d8605a14735d5040, type: 3}
@@ -96733,6 +96744,7 @@ MonoBehaviour:
   _doors:
   - {fileID: 1916680651}
   - {fileID: 2102738284}
+  - {fileID: 263340936}
   _pets:
   - {fileID: 1543798501}
   - {fileID: 602305800}
@@ -101980,11 +101992,6 @@ PolygonCollider2D:
       - {x: -36.535828, y: 21.996643}
       - {x: -32.15722, y: 27.273495}
   m_UseDelaunayMesh: 0
---- !u!23 &1624381316 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2653802545363388635, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
-  m_PrefabInstance: {fileID: 6722261864400659708}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1628437128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4081571101967602308, guid: 04f7b481f07fc1049afa3ebe907cd06e, type: 3}
@@ -118146,7 +118153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2945918122037796525, guid: 1d9add7aaf144f248afe990073aaa1ad, type: 3}
       propertyPath: _locked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5323329093654622187, guid: 1d9add7aaf144f248afe990073aaa1ad, type: 3}
       propertyPath: m_LocalScale.x
@@ -146263,10 +146270,6 @@ PrefabInstance:
       propertyPath: timeToJump
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8630213021870871516, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
-      propertyPath: _meshRenderer
-      value: 
-      objectReference: {fileID: 1624381316}
     - target: {fileID: 8630213021870871516, guid: 5727e150af30f8b4faae76f04fa270fb, type: 3}
       propertyPath: _chaseDuration
       value: 15

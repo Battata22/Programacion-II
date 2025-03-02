@@ -43,6 +43,8 @@ public class Cat : NPC
         _rb = GetComponent<Rigidbody>();
         _rbDrag = _rb.drag;
 
+        //_meshRenderer = GetComponent<MeshRenderer>();
+
         //SpawnCatTrigger
         _alertIcon = GetComponentInChildren<CatAlertIcon>();
         _alertIcon.SetMaxTimers(timeToJump, 1);

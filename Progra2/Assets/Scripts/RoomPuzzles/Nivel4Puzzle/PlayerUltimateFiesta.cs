@@ -11,17 +11,22 @@ namespace CasaFiesta
         [SerializeField] ParticleSystem _sparky;
 
         [SerializeField] HoseOwner _nig;
+        [SerializeField] string[] _ultiText;
 
-        public bool ultimateActive { get { return _ultimateActive; } }
+        [SerializeField] Asustable _houseOwner;
+        [SerializeField] AudioSource _myAudio;
+        [SerializeField] AudioClip[] _explotido;
+
+        public static bool ultimateActive { get; protected set; }
 
         private void Update()
         {
-            if(!_ultimateActive && GameManager.Instance.terrorBar.isActiveAndEnabled && GameManager.Instance.terrorBar.value >= GameManager.Instance.terrorBar.maxValue)
+            if (!_ultimateActive && GameManager.Instance.terrorBar.isActiveAndEnabled && GameManager.Instance.terrorBar.value >= GameManager.Instance.terrorBar.maxValue)
             {
                 ActivateUltimate();
             }
 
-            if(!ultimateActive && Input.GetKeyDown(KeyCode.P)) 
+            if (!ultimateActive && Input.GetKeyDown(KeyCode.P))
             {
                 ActivateUltimate();
             }
@@ -31,8 +36,14 @@ namespace CasaFiesta
         {
             if (_ultimateActive) return;
             _ultimateActive = true;
+            ultimateActive = true;
 
             Debug.Log("<color=green>ULTI ACTIVA tenes 10 segundos</color>");
+
+            ChangeText($"Destruye las habitaciones \n Habitaciones rotas {roomsDestroy} de 7");
+
+            _houseOwner.StopUseOwnNode();
+
 
             //StartCoroutine(Ganar());
         }
@@ -56,24 +67,26 @@ namespace CasaFiesta
                 if (electronic.TryGetComponent<Rigidbody>(out var rb))
                 {
                     var dir = electronic.up + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-                    
+
                     rb.constraints = RigidbodyConstraints.None;
                     rb.useGravity = true;
 
                     rb.AddForce(dir.normalized * 4f, ForceMode.VelocityChange);
                 }
 
-                if(electronic.TryGetComponent<Luces>(out var light))
+                if (electronic.TryGetComponent<Luces>(out var light))
                 {
                     light.Quemar();
                 }
 
-                if(electronic.TryGetComponent<SFX>(out var sfx))
+                if (electronic.TryGetComponent<SFX>(out var sfx))
                 {
                     sfx.Quemar();
                 }
 
-                var pikachu = Instantiate(_sparky,electronic.position,Quaternion.identity);
+                _myAudio.PlayOneShot(_explotido[Random.Range(0,_explotido.Length)]);
+
+                var pikachu = Instantiate(_sparky, electronic.position, Quaternion.identity);
                 Destroy(pikachu, pikachu.main.duration + 3f);
 
                 ga.GetScared(1, -1);
@@ -87,6 +100,9 @@ namespace CasaFiesta
         void Callejeros()
         {
             roomsDestroy++;
+
+            ChangeText($"Destruye las habitaciones \n Habitaciones rotas {roomsDestroy} de 7");
+
             if (roomsDestroy >= 7 && !winCalled)
             {
                 winCalled = true;
@@ -97,7 +113,7 @@ namespace CasaFiesta
         IEnumerator Ganar()
         {
             //yield return new WaitForSeconds(10f);
-            
+
             int aea = 0;
 
             while (aea < 5)
@@ -105,10 +121,19 @@ namespace CasaFiesta
                 aea++;
                 Debug.Log($"<color=red> GANASTE x{aea}</color>");
 
+                ChangeText($"YOU WIN");
+
                 yield return new WaitForSeconds(0.3f);
             }
 
             GameManager.Instance.CompleteLevel();
+        }
+
+        protected void ChangeText(string text)
+        {
+
+            GameManager.Instance.ChangeObjectiveText(text);
+            //GameManager.Instance.ChangeObjectiveText(_objectiveTexts[_textIndex]);
         }
     }
 }
