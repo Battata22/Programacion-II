@@ -135,6 +135,7 @@ public class VideoIntro : MonoBehaviour
     void TPGus()
     {
         player.transform.position = entrada.transform.position;
+        MusicaBossScript.prender = true;
     }
 
     public void SkipButton()

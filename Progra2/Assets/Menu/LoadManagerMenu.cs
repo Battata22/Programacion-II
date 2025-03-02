@@ -8,7 +8,7 @@ public class LoadManagerMenu : MonoBehaviour
     public int sceneElegida;
     void Start()
     {
-        StartCoroutine(LoadAsyncSceneRoutine(sceneElegida));
+        //StartCoroutine(LoadAsyncSceneRoutine(sceneElegida));
     }
     public void ChargeDone() => chargeDone = true;
     private IEnumerator LoadAsyncSceneRoutine(int index)

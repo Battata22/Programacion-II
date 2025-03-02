@@ -16,11 +16,11 @@ public class MasterNiveles : MonoBehaviour
 
     void Update()
     {
-        if (cargando == false)
-        {
-            StartCoroutine(LoadAsyncSceneRoutine(sceneElegida));
-            cargando=true;
-        }
+        //if (cargando == false)
+        //{
+        //    StartCoroutine(LoadAsyncSceneRoutine(sceneElegida));
+        //    cargando=true;
+        //}
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

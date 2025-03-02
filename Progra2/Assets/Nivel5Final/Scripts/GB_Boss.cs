@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GB_Boss : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GB_Boss : MonoBehaviour
     [SerializeField] GameObject[] espejos;
     [SerializeField] GameObject torretasPadre;
     [SerializeField] Rigidbody playerRB;
+    [SerializeField] AudioSource _audioSource;
     public delegate void EventBossAccion();
     public event EventBossAccion Accion;
     public int fase = 0;
@@ -24,6 +26,7 @@ public class GB_Boss : MonoBehaviour
     public static bool isInSafeZone = false;
     [SerializeField] float aceSuccion;
     [SerializeField] float waitAspirado, waitCdAspirado;
+    [SerializeField] VideoPlayer videoVictoria;
 
     void Start()
     {
@@ -36,6 +39,9 @@ public class GB_Boss : MonoBehaviour
         _tornadoGen = _parGens[1];
         player = GameManager.Instance.Player;
         playerRB = GameManager.Instance.Player.gameObject.GetComponent<Rigidbody>();
+        videoVictoria.Stop();
+        videoVictoria.enabled = false;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -77,11 +83,16 @@ public class GB_Boss : MonoBehaviour
                 print("segundo tercio");
                 Fase2();
             }
-            else
+            else if (actualHp >= 1)
             {
                 print("tercer tercio");
                 Fase3();
             }
+            else
+            {
+
+            }
+
             //DefenceWall();
             //Aspirado(duracionAspirado);
             //AtaqueIsaac();
@@ -144,6 +155,28 @@ public class GB_Boss : MonoBehaviour
         AspiradoBoss(duracionAspirado);
     }
 
+    public void Victoria()
+    {
+        //TP al boss
+        //transform.position = 
+        //mover la cam y dejarla quieta (dejar al pj quieto y inv), apagar
+
+        //Prender el video de victoria
+        //videoVictoria.enabled = true;
+        //videoVictoria.Play();
+
+        //Reproducir musica shitpost
+
+
+        //animacion baile
+        _anim.SetBool("Die", false);
+        _anim.SetBool("Baile", true);
+
+
+    }
+
+    public bool paraAudio = false;
+    [SerializeField] float tiempoEsperaKill;
     public void Kill()
     {
         #region EndFase1
@@ -161,10 +194,15 @@ public class GB_Boss : MonoBehaviour
         }
         #endregion
         #region EndFase2
+
         parentDefenceWall.SetActive(false);
         Destroy(parentDefenceWall);
         col.enabled = true;
         #endregion
+
+        paraAudio = true;
+
+        actualHp = 0;
         padreAtaquesIsaac.SetActive(false);
         isaac = false;
         //anim
@@ -176,6 +214,7 @@ public class GB_Boss : MonoBehaviour
         // apagar los laseres
         // pantalla de victoria
 
+        Invoke("Victoria", tiempoEsperaKill);
         //Destroy(gameObject);
     }
 
@@ -290,6 +329,7 @@ public class GB_Boss : MonoBehaviour
             {
                 _anim.SetBool("Idle", false);
                 _anim.SetBool("Attacking", true);
+                _audioSource.Play();
                 _tornadoGen.Play();
 
                 animIdle = false;
@@ -357,6 +397,7 @@ public class GB_Boss : MonoBehaviour
                 {
                     _anim.SetBool("Idle", true);
                     _anim.SetBool("Attacking", false);
+                    _audioSource.Stop();
                     _tornadoGen.Stop();
 
                     animIdle = true;
