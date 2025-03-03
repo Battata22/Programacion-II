@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CorazInd : MonoBehaviour
 {
+    [SerializeField] AudioClip heal;
 
     void Start()
     {
@@ -16,7 +17,17 @@ public class CorazInd : MonoBehaviour
         GameManager.Instance.CorazonesBehaviourScript.corazones.Remove(gameObject);
         GameManager.Instance.Player.GetHealed();
         GameManager.Instance.CorazonesBehaviourScript.Apagado();
-        Destroy(gameObject);
+
+        Collider collider = gameObject.GetComponent<Collider>();
+        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        AudioSource source = gameObject.GetComponent<AudioSource>();
+
+        collider.enabled = false;
+        meshRenderer.enabled = false;
+        source.clip = heal;
+        source.Play();
+
+        Destroy(gameObject, 0.5f);
     }
 
     private void OnTriggerEnter(Collider other)

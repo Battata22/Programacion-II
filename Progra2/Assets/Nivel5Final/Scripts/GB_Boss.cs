@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using static Unity.VisualScripting.Member;
 
 public class GB_Boss : MonoBehaviour
 {
@@ -26,7 +28,6 @@ public class GB_Boss : MonoBehaviour
     public static bool isInSafeZone = false;
     [SerializeField] float aceSuccion;
     [SerializeField] float waitAspirado, waitCdAspirado;
-    [SerializeField] VideoPlayer videoVictoria;
 
     void Start()
     {
@@ -39,8 +40,6 @@ public class GB_Boss : MonoBehaviour
         _tornadoGen = _parGens[1];
         player = GameManager.Instance.Player;
         playerRB = GameManager.Instance.Player.gameObject.GetComponent<Rigidbody>();
-        videoVictoria.Stop();
-        videoVictoria.enabled = false;
         _audioSource = GetComponent<AudioSource>();
     }
 
@@ -132,6 +131,7 @@ public class GB_Boss : MonoBehaviour
         {
             _anim.SetBool("Idle", true);
             _anim.SetBool("Attacking", false);
+            _audioSource.Stop();
             _tornadoGen.Stop();
 
             animIdle = true;
@@ -155,6 +155,8 @@ public class GB_Boss : MonoBehaviour
         AspiradoBoss(duracionAspirado);
     }
 
+    [SerializeField] float EsperaMenu;
+
     public void Victoria()
     {
         //TP al boss
@@ -172,11 +174,23 @@ public class GB_Boss : MonoBehaviour
         _anim.SetBool("Die", false);
         _anim.SetBool("Baile", true);
 
+        MusicaBossScript.cancionfinal = true;
 
+        VideoVictoria.victoria = true;
+
+
+        Invoke("CuchaCucha", EsperaMenu);
+
+    }
+
+    void CuchaCucha()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public bool paraAudio = false;
     [SerializeField] float tiempoEsperaKill;
+    [SerializeField] public static bool matarDrones = false;
     public void Kill()
     {
         #region EndFase1
@@ -201,6 +215,8 @@ public class GB_Boss : MonoBehaviour
         #endregion
 
         paraAudio = true;
+
+        matarDrones = true;
 
         actualHp = 0;
         padreAtaquesIsaac.SetActive(false);

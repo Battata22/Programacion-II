@@ -8,6 +8,7 @@ public class CargaBehaviour : MonoBehaviour
     [SerializeField] LayerMask maskPlayer, maskNPC;
     [SerializeField] Rigidbody rb;
     [SerializeField] bool cochoConEspejo = false;
+    [SerializeField] GameObject explosion;
 
     void Start()
     {
@@ -15,13 +16,13 @@ public class CargaBehaviour : MonoBehaviour
     }
 
 
-    //void Update()
-    //{
-    //    if (GameManager.Instance.GB_BossScript.fase != 2)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    void Update()
+    {
+        if (GB_Boss.matarDrones == true)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -37,6 +38,7 @@ public class CargaBehaviour : MonoBehaviour
         {
             GameManager.Instance.GB_BossScript.GetDamage(dmgBomba);
             Destroy(gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             print("epoto");
         }
 
@@ -66,15 +68,16 @@ public class CargaBehaviour : MonoBehaviour
 
     void Explosion()
     {
-        Destroy(gameObject, 3);
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        Instantiate(explosion, transform.position, Quaternion.identity);
 
         Collider[] playerScript = Physics.OverlapSphere(transform.position, radioExplosion, maskPlayer);
         foreach (Collider collider in playerScript)
         {
             collider.gameObject.GetComponent<Player>().GetDamage();
         }
+        Destroy(gameObject);
         //if (playerScript[0] != null) //error aca
         //{
         //    playerScript[0].gameObject.GetComponent<Player>().GetDamage();

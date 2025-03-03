@@ -26,10 +26,29 @@ public class LoadManagerMenu : MonoBehaviour
                 else
                 {
                     print("ya estamos cargados");
+                    ChargeDone();
                     yield return null;
                 }
             }
             yield return null;
         }
+    }
+
+    [SerializeField] GameObject canvasOG, canvasEspera;
+    public void Nivel1Fue()
+    {
+        StartCoroutine(LoadAsyncSceneRoutine(sceneElegida));
+        
+        //SceneManager.LoadScene("Nivel1");
+
+        //Activar Cargando
+        canvasOG.GetComponent<Canvas>().enabled = false;
+        canvasEspera.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        canvasOG.GetComponent<Canvas>().enabled = true;
+        canvasEspera.SetActive(false);
     }
 }

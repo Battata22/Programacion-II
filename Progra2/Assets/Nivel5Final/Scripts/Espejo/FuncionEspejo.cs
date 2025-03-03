@@ -9,11 +9,14 @@ public class FuncionEspejo : MonoBehaviour
     [SerializeField] float velRot,alturaSobreGus, rotAmpliada;
     [SerializeField] Animator animator;
     public bool agarrado = false;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip rebote;
 
     void Start()
     {
         target = GameManager.Instance.Player.gameObject;
         animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
 
@@ -28,7 +31,7 @@ public class FuncionEspejo : MonoBehaviour
         {
             transform.position = new Vector3(target.transform.position.x, target.transform.position.y + alturaSobreGus, target.transform.position.z);
 
-            if (pausa == false)
+            if (Time.timeScale != 0)
             {
                 Rotar(rotAmpliada);
             }
@@ -42,16 +45,12 @@ public class FuncionEspejo : MonoBehaviour
         }
         else
         {
-            if (pausa == false)
+            if (Time.timeScale != 0)
             {
                 Rotar(1);
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            pausa = !pausa;
-        }
     }
 
     void Rotar(float speedUp)
@@ -92,7 +91,13 @@ public class FuncionEspejo : MonoBehaviour
     {
         //hacer que salgan volando las piezas del espejo
 
-        Destroy(gameObject);
+        source.clip = rebote;
+        source.Play();
+
+        MeshRenderer[] mesh = GetComponentsInChildren<MeshRenderer>();
+        mesh[0].enabled = false;
+        mesh[1].enabled = false;
+        Destroy(gameObject, 0.3f);
 
         //hacer que hagan respawn
     }

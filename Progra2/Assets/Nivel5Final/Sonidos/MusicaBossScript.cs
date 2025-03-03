@@ -5,11 +5,13 @@ using UnityEngine;
 public class MusicaBossScript : MonoBehaviour
 {
     [SerializeField] AudioSource source;
-    public static bool prender = false, miPrimeritaVez = false;
+    [SerializeField] AudioClip music, victory;
+    public static bool prender = false, miPrimeritaVez = false, cancionfinal = false;
 
     void Start()
     {
         source = GetComponent<AudioSource>();
+        source.clip = music;
     }
 
 
@@ -28,6 +30,22 @@ public class MusicaBossScript : MonoBehaviour
         else if (Time.timeScale != 0 && source.isPlaying == false && miPrimeritaVez == true)
         {
             source.Play();
+        }
+
+        if (cancionfinal == true)
+        {
+            CancionVictory();
+        }
+
+    }
+
+    void CancionVictory()
+    {
+        if (source.clip != victory)
+        {
+            source.clip = victory;
+            source.Play();
+            cancionfinal = false;
         }
     }
 }

@@ -21,15 +21,19 @@ public class PlayerMove : MonoBehaviour
         if (moving == false && Input.GetKeyDown(KeyCode.F))
         {
 
-            if (posPlayer == 1)
-            {
-                //GameManager.Instance.ChargeDone();
-                GameManager.Instance.masterNiveles.ChargeDone();
-            }
-            else
-            {
-                SceneManager.LoadScene("Nivel" + (posPlayer + 1));
-            }
+            //if (posPlayer == 1)
+            //{
+            //    //GameManager.Instance.ChargeDone();
+            //    GameManager.Instance.masterNiveles.ChargeDone();
+            //}
+            //else
+            //{
+            //    SceneManager.LoadScene("Nivel" + (posPlayer + 1));
+            //}
+
+            Nivel1Fue((posPlayer + 2));
+
+            //SceneManager.LoadScene("Nivel" + (posPlayer + 1));
 
 
         }
@@ -79,6 +83,57 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool chargeDone = false, cargando = false;
+    public int sceneElegida;
+    public void ChargeDone() => chargeDone = true;
+    private IEnumerator LoadAsyncSceneRoutine(int index)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
+
+        asyncLoad.allowSceneActivation = false;
+
+        while (!asyncLoad.isDone)
+        {
+            if (asyncLoad.progress >= 0.9f)
+            {
+                if (chargeDone)
+                    asyncLoad.allowSceneActivation = true;
+                else
+                {
+                    print("ya estamos cargados");
+                    SceneManager.LoadScene(index);
+                    yield return null;
+                }
+            }
+            yield return null;
+        }
+    }
+
+    [SerializeField] GameObject canvasOG, canvasEspera;
+    [SerializeField] SpriteRenderer player;
+    [SerializeField] MeshRenderer mapa;
+    public void Nivel1Fue(int escena)
+    {
+        StartCoroutine(LoadAsyncSceneRoutine(escena));
+
+        //SceneManager.LoadScene("Nivel1");
+
+        //Activar Cargando
+        canvasOG.GetComponent<Canvas>().enabled = false;
+        player.enabled = false;
+        mapa.enabled = false;
+        canvasEspera.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        //canvasOG.GetComponent<Canvas>().enabled = true;
+
+        //player.enabled = true;
+        //mapa.enabled = true;
+        //canvasEspera.SetActive(false);
     }
 
     void MoveRight(int e)

@@ -46,10 +46,20 @@ public class DroneBehaivour : MonoBehaviour
 
         waitCarga += Time.deltaTime;
 
-        if (waitCarga >= cdCarga)
+        if (waitCarga >= cdCarga && GameManager.Instance.GB_BossScript.fase == 2)
         {
             waitCarga = 0;
             SoltarCarga();
+        }
+        else if (waitCarga >= cdCarga * 0.5f && GameManager.Instance.GB_BossScript.fase == 3)
+        {
+            waitCarga = 0;
+            SoltarCarga();
+        }
+
+        if (GB_Boss.matarDrones == true)
+        {
+            Destroy(gameObject);
         }
 
         //cambiar velocidad segun distancia (speed * dis?)
@@ -152,8 +162,8 @@ public class DroneBehaivour : MonoBehaviour
 
     private void OnDestroy()
     {
-        print("moristie");
+        //print("moristie");
         GB_Boss.isDroneAlive = false;
-        print(GB_Boss.isDroneAlive);
+        //print(GB_Boss.isDroneAlive);
     }
 }
