@@ -29,6 +29,7 @@ namespace CasaFiesta
             _active = true;
             _discoBall.CanGetDamage(true);
 
+            _flechas[0].SetActive(true);
             ChangeText();
         }
 
@@ -59,6 +60,9 @@ namespace CasaFiesta
             _textIndex =1;
             if (GameManager.Instance.Player.actualRoom == GetComponent<RoomTrigger>().roomIndex)
                 ChangeText();
+
+            _flechas[0].SetActive(false);
+
         }
 
         public override void KickOutNpc()

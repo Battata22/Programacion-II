@@ -9,6 +9,7 @@ public class ParlanteGameplayStart : GameplayModeTrigger
     [SerializeField] Nivel4Puzzle[] _allPuzzles;
 
     [SerializeField] TextoCambiaPiso _pingo;
+    [SerializeField] LavaderoPuzzle _lavadero;
     private void Awake()
     {
         //StartCoroutine(SoyUnBoludo());
@@ -43,6 +44,7 @@ public class ParlanteGameplayStart : GameplayModeTrigger
 
         this.enabled = false;
 
+        _lavadero.ChauFlechitas();
     }
 
     IEnumerator SoyUnBoludo()

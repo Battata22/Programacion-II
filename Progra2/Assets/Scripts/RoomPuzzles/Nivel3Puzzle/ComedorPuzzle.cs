@@ -57,6 +57,10 @@ public class ComedorPuzzle : Nivel3Puzzle
     public void StartPuzzle()
     {
         ChangeState();
+
+        _flechas[0].SetActive(true);
+        _flechas[1].SetActive(true);
+
         _puzzleActive = true;
         _tocaDiscos.OnDiscPlay += CompletePuzzle;
         _chest.OnChestOpen += ChangeState;
@@ -76,6 +80,10 @@ public class ComedorPuzzle : Nivel3Puzzle
         {
             npc.GetScared(1f,-1);
         }
+
+        //_flechas[0].SetActive(false);
+        _flechas[1].SetActive(false);
+        _flechas[2].SetActive(false);
 
         _ultimate.Activar();
 
@@ -99,10 +107,17 @@ public class ComedorPuzzle : Nivel3Puzzle
 
             _textIndex = 1;
             ChangeText();
+
+            _flechas[1].SetActive(false);
         }
         else
         {
             _chestFlies.gameObject.SetActive(false);
+        }
+
+        if( _currentState == 2)
+        {
+            _flechas[2].SetActive(true);
         }
     }
 

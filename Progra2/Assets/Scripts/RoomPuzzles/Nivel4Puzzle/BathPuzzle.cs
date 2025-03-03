@@ -89,6 +89,11 @@ namespace CasaFiesta
 
             _textIndex = _objectiveTexts.Length - 1;
             ChangeText();
+
+            foreach(var flecha in _flechas)
+            {
+                flecha.SetActive(false);
+            }
         }
 
         public override void ActivatePuzzle()
@@ -98,6 +103,14 @@ namespace CasaFiesta
             _active = true;
 
             _inodoroPuzzle.SetCanInteract(true);
+
+            _flechas[0].SetActive(true);
+            _flechas[1].SetActive(true);
+            _flechas[2].SetActive(true);
+            _flechas[3].SetActive(true);
+
+            _flechas[4].SetActive(true);//inodoro
+
         }
 
         public void ActivarAgua()
@@ -113,6 +126,8 @@ namespace CasaFiesta
 
             _textIndex = 2;
             ChangeText();
+
+            _flechas[5].SetActive(true);//Secadora
         }
 
         public override void KickOutNpc()

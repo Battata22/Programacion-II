@@ -70,6 +70,9 @@ public class ComedorPiso1 : Nivel4Puzzle
         _textIndex = 1;
         if (GameManager.Instance.Player.actualRoom == GetComponent<RoomTrigger>().roomIndex)
             ChangeText();
+
+        _flechas[0].SetActive(false);
+
     }
 
     public override void ActivatePuzzle()
@@ -78,6 +81,8 @@ public class ComedorPiso1 : Nivel4Puzzle
         _active = true;
 
         _table.OnBroken += CompletePuzzle;
+
+        _flechas[0].SetActive(true);
     }
 
     IEnumerator ConstantScare()

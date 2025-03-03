@@ -6,6 +6,8 @@ namespace CasaFiesta
 {
     public class PapelPuzzle : MonoBehaviour
     {
+        [SerializeField] GameObject _myArrow;
+
         //pingo
         bool _used = false;
         public bool used { get { return _used; } }
@@ -13,6 +15,8 @@ namespace CasaFiesta
         public void UsePaper()
         {
             _used = true;
+            if(_myArrow != null)
+                _myArrow.SetActive(false);
         }
 
     }

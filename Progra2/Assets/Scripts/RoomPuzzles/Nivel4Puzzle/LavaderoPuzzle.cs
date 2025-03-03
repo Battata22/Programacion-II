@@ -36,6 +36,8 @@ namespace CasaFiesta
             _textIndex = 0;
             ChangeText();
 
+            _flechas[0].SetActive(true);
+
             _canilla.OnCanillaOn += TextoCanilla;
             _balde.OnGetWather += TextoWatha;
         }
@@ -44,13 +46,27 @@ namespace CasaFiesta
         {
             _textIndex = 1;
             ChangeText();
+
+            _flechas[1].SetActive(true);
         }
 
         void TextoWatha()
         {
             _textIndex = 2;
             ChangeText();
+
+            _flechas[0].SetActive(false);
+            _flechas[2].SetActive(true);
         }
+
+        public void ChauFlechitas()
+        {
+            foreach(var flecha in _flechas)
+            {
+                flecha.SetActive(false);
+            }
+        }
+
 
         void ActivateFlies()
         {

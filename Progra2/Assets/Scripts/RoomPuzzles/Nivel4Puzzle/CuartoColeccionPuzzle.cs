@@ -107,6 +107,11 @@ namespace CasaFiesta
             Debug.Log("Huh?");
 
             _active = true;
+
+            foreach(var flecha in _flechas)
+            {
+                flecha.SetActive(true);
+            }
         }
 
         public void ObjectBroken()
@@ -114,7 +119,7 @@ namespace CasaFiesta
             Debug.Log($"<color=#5d14c4>Entre a romper</color>");
             _brokenObjs++;
 
-            _npcInRoom.GetScared(1,-1);
+            StartCoroutine(Perodemomedorep());
 
             _textIndex = 0;
             if (!_completed)
@@ -122,6 +127,15 @@ namespace CasaFiesta
 
             if (_brokenObjs >= hasToBreak)
                 CompletePuzzle();
+        }
+
+        IEnumerator Perodemomedorep()
+        {
+            //https://youtu.be/_ZNYjCTuE7I?si=crHMdNnJdBt5DlFz&t=7
+
+            yield return new WaitForSeconds(0.3f);
+            
+            _npcInRoom.GetScared(1, -1);
         }
 
         public override void KickOutNpc()

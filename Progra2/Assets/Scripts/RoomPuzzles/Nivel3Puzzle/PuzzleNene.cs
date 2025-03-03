@@ -109,6 +109,11 @@ public class PuzzleNene : Nivel3Puzzle
             parent.StartUseOwnNode();
         }
 
+        foreach(var flecha in _flechas)
+        {
+            flecha.SetActive(false);
+        }
+
         _pendejito.StartUseOwnNode();
 
         _puzzleActive = false;
@@ -135,6 +140,10 @@ public class PuzzleNene : Nivel3Puzzle
 
         _textIndex = 1;
         ChangeText();
+
+        _flechas[0].SetActive(false);
+        _flechas[1].SetActive(false);
+        _flechas[2].SetActive(true);
     }
 
     void LockChildDoor()

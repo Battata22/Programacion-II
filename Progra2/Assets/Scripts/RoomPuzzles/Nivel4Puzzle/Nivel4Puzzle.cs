@@ -20,6 +20,8 @@ namespace CasaFiesta
         [SerializeField] protected Nivel4Puzzle[] _nextPuzzles;
         [SerializeField] protected KeyCode _fliesActiveKey = KeyCode.V;
 
+        [SerializeField] protected GameObject[] _flechas;
+
         protected bool _completed = false;
         protected bool _active = false;
         protected bool _fliesActive = false;

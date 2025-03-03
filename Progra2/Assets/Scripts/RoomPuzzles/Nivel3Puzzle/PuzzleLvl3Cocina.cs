@@ -103,6 +103,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
     public void StartPuzzle()
     {
+        if (_roomComplete) return;
         _currentStage++;
 
         npcPuzzle = npcInRoom.transform.AddComponent<NpcCocinaPuzzle>();
@@ -115,6 +116,8 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
         _textIndex = 0;
         ChangeText();
+
+        _flechas[0].SetActive(true);
     }
     
     /*
@@ -150,6 +153,11 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
             npc.SetNewDestination();
         }
 
+        foreach(var flecha in _flechas)
+        {
+            flecha.SetActive(false);
+        }
+
         microPuzzle.doCheck = false;
 
         _exorcista.gameObject.SetActive(true);
@@ -171,6 +179,9 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
 
         _textIndex = 1;
         ChangeText();
+
+        _flechas[0].SetActive(false);
+        _flechas[1].SetActive(true);
     }
 
     void LockDoors()

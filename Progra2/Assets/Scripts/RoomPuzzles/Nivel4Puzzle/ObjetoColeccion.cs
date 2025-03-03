@@ -17,6 +17,8 @@ namespace CasaFiesta
 
         protected DelegateType.VoidDelegate DoCheck = delegate { };
 
+        [SerializeField] protected GameObject _myFlecha;
+
         protected void Awake()
         {
             gameObject.layer = LayerMask.NameToLayer("Objeto");
@@ -55,6 +57,10 @@ namespace CasaFiesta
             _broken = true;
 
             _myPuzzle.ObjectBroken();
+
+            if(_myFlecha != null)
+                _myFlecha.SetActive(false);
+
         }
 
     }

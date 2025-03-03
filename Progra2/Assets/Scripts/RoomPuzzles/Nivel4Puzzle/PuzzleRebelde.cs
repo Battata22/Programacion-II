@@ -42,6 +42,10 @@ namespace CasaFiesta
             _textIndex = _objectiveTexts.Length-1;
             ChangeText();
 
+            foreach(var flecha in _flechas)
+            {
+                flecha.SetActive(false);
+            }
         }
 
         public override void ActivatePuzzle()
@@ -61,6 +65,7 @@ namespace CasaFiesta
             _armario.OnObjectSpawn += BombaSpawneada;
             _cuadro.OnPickUp += SacarTapon;
 
+            _flechas[0].SetActive(true);
         }
 
         public override void KickOutNpc()
@@ -117,6 +122,9 @@ namespace CasaFiesta
             _textIndex = 1;
             ChangeText();
 
+            _flechas[0].SetActive(false);
+            _flechas[1].SetActive(true);
+
         }
 
         void BombaSpawneada()
@@ -125,6 +133,9 @@ namespace CasaFiesta
 
             _textIndex = 2;
             ChangeText();
+
+            _flechas[1].SetActive(false);
+            _flechas[2].SetActive(true);
         }
 
         public void SegundoTrigger(Collider other)
