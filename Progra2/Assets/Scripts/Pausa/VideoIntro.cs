@@ -23,6 +23,7 @@ public class VideoIntro : MonoBehaviour
     [SerializeField] LavaderoPuzzle _lavadero;
     [SerializeField] GameObject _marcoTexto;
     [SerializeField] PuzzleNene _puzzleNene;
+    [SerializeField] ParlanteGameplayStart _parlante;
 
     void Start()
     {
@@ -131,6 +132,9 @@ public class VideoIntro : MonoBehaviour
             _lavadero.ActivarPuzzle();
         if (_puzzleNene != null)
             _puzzleNene.LCDTM();
+
+        if(_parlante)
+            _parlante.StartMusic();
     }
 
     void TPGus()

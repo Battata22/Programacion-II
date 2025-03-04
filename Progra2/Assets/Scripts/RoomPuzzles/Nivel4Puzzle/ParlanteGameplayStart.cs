@@ -10,6 +10,10 @@ public class ParlanteGameplayStart : GameplayModeTrigger
 
     [SerializeField] TextoCambiaPiso _pingo;
     [SerializeField] LavaderoPuzzle _lavadero;
+
+    [SerializeField] GameObject[] _bailaores;
+    [SerializeField] AudioSource _myAudio;
+
     private void Awake()
     {
         //StartCoroutine(SoyUnBoludo());
@@ -25,6 +29,8 @@ public class ParlanteGameplayStart : GameplayModeTrigger
 
     protected override void StartGameplay()
     {
+        _myAudio.Stop();
+
         foreach(var item in _allPuzzles)
         {
             item.ActivatePuzzle();
@@ -36,6 +42,15 @@ public class ParlanteGameplayStart : GameplayModeTrigger
         foreach (var obj in _objectToActivate)
         {
             obj.SetActive(true);
+            if (obj.TryGetComponent<Asustable>(out var asus))
+            {
+                asus.GetScared(1, -1);
+            }
+        }
+
+        foreach(var item in _bailaores)
+        {
+            item.SetActive(false);
         }
 
         GameManager.Instance.pasoActual = 1;
@@ -69,4 +84,8 @@ public class ParlanteGameplayStart : GameplayModeTrigger
         Debug.Log("<color=yellow>Bailan las chetas B]</color>");
     }
 
+    public void StartMusic()
+    {
+        _myAudio.Play();
+    }
 }

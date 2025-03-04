@@ -10,7 +10,7 @@ namespace CasaFiesta
         [SerializeField] bool _ultimateActive = false;
         [SerializeField] ParticleSystem _sparky;
 
-        [SerializeField] HoseOwner _nig;
+        [SerializeField] HoseOwner _ga;
         [SerializeField] string[] _ultiText;
 
         [SerializeField] Asustable _houseOwner;
@@ -58,7 +58,7 @@ namespace CasaFiesta
 
         IEnumerator DoDestroys(List<Transform> electronicsInRoom)
         {
-            var ga = _nig.GetComponent<Asustable>();
+            var nig = _ga.GetComponent<Asustable>();
 
             foreach (var electronic in electronicsInRoom)
             {
@@ -89,7 +89,7 @@ namespace CasaFiesta
                 var pikachu = Instantiate(_sparky, electronic.position, Quaternion.identity);
                 Destroy(pikachu, pikachu.main.duration + 3f);
 
-                ga.GetScared(1, -1);
+                nig.GetScared(1, -1);
                 yield return new WaitForSeconds(0.3f);
             }
         }
