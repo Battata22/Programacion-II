@@ -101,9 +101,12 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
         }
     }
 
+    bool canChangeText = true;
+
     public void StartPuzzle()
     {
         if (_roomComplete) return;
+        if (!canChangeText) return;
         _currentStage++;
 
         npcPuzzle = npcInRoom.transform.AddComponent<NpcCocinaPuzzle>();
@@ -131,6 +134,7 @@ public class PuzzleLvl3Cocina : Nivel3Puzzle
     {
         Debug.Log("<color=#f0b100>Puzzle completado</color>");
         _roomComplete = true;
+        canChangeText = false;
 
         npcInRoom.OnSlideStop -= CompletePuzzle;
         npcInRoom.OnRagdollEnd -= CompletePuzzle;

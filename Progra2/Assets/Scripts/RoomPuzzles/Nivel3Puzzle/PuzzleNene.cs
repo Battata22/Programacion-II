@@ -27,6 +27,7 @@ public class PuzzleNene : Nivel3Puzzle
     AINodeManager _nodeManager;
 
     [SerializeField] PuzzleLvl3Cocina _nextPuzzle;
+    [SerializeField] GameObject[] _dormilonas;
 
     //Fireflies
     [Header("<color=green>Fireflies</color>")]
@@ -114,6 +115,11 @@ public class PuzzleNene : Nivel3Puzzle
             flecha.SetActive(false);
         }
 
+        foreach (var parent in _dormilonas)
+        {
+            parent.gameObject.SetActive(false);
+        }
+
         _pendejito.StartUseOwnNode();
 
         _puzzleActive = false;
@@ -143,7 +149,10 @@ public class PuzzleNene : Nivel3Puzzle
 
         _flechas[0].SetActive(false);
         _flechas[1].SetActive(false);
-        _flechas[2].SetActive(true);
+        _flechas[2].SetActive(false);
+        _flechas[_flechas.Length-1].SetActive(true);
+
+        _dormilonas[0].SetActive(true);
     }
 
     void LockChildDoor()

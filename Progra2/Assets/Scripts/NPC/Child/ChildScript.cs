@@ -43,6 +43,9 @@ public class ChildScript : NPC
     ChildGusDetector _myGusDetector;
     [SerializeField, Tooltip("Solo aplica para deteccion de npc adultos")] LayerMask obstructions;
 
+    [SerializeField] AudioClip _llanto;
+    [SerializeField] AudioClip _risa;
+
     [SerializeField] Transform _detectorOrigin;
     public Transform detectorOrigin
     {
@@ -172,6 +175,10 @@ public class ChildScript : NPC
 
     void Cry()
     {
+        _audioSource.clip = _llanto;
+        _audioSource.loop = true;
+        _audioSource.Play();
+
         DoCheckScare = delegate { };
 
         _myGusDetector.active = false;
@@ -193,6 +200,10 @@ public class ChildScript : NPC
 
     public void StopCry()
     {
+        _audioSource.loop = false;
+        _audioSource.Stop();
+
+
         Debug.Log($"<color=#e7aaf4>Brutal</color>");//https://cdn.eldeforma.com/wp-content/uploads/2020/07/brutal-meme.jpg
         _agent.speed = speedNormal;
 
@@ -311,6 +322,11 @@ public class ChildScript : NPC
             Debug.Log("<color=green>JAJA jugueye</color>");
 
             OnChildLaugh();
+
+            _audioSource.clip = _risa;
+            _audioSource.Play();
+            _audioSource.loop = true;
+
             StartCoroutine(Laugh());
         }
     }
@@ -339,6 +355,9 @@ public class ChildScript : NPC
         _childState = ChildState.None;
         SetNewDestination();
         _myGusDetector.active = true;
+
+        _audioSource.loop = false;
+        _audioSource.Stop();
 
     }
 
