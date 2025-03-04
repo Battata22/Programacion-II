@@ -13,6 +13,11 @@ public class CargaBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (GameManager.Instance.GB_BossScript.fase == 3)
+        {
+            rb.AddForce(-transform.up * 5, ForceMode.Force);
+            print("ASASDASDAS");
+        }
     }
 
 

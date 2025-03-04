@@ -1,11 +1,7 @@
 using CasaFiesta;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -22,12 +18,16 @@ public class VideoIntro : MonoBehaviour
     bool tepeado = false;
     //[SerializeField] tiempo
 
+    public static bool terminoElVideo = false;
+
     [SerializeField] LavaderoPuzzle _lavadero;
     [SerializeField] GameObject _marcoTexto;
     [SerializeField] PuzzleNene _puzzleNene;
 
     void Start()
     {
+
+        terminoElVideo = false;
 
         ElectorVideo();
 
@@ -58,6 +58,7 @@ public class VideoIntro : MonoBehaviour
                 TPGus();
                 tepeado = true;
                 GameManager.Instance.Player.UpdateTerrorFrame();
+                terminoElVideo = true;
             }
 
             waitVideo += Time.deltaTime;

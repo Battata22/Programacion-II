@@ -53,6 +53,7 @@ public class DroneBehaivour : MonoBehaviour
         }
         else if (waitCarga >= cdCarga * 0.5f && GameManager.Instance.GB_BossScript.fase == 3)
         {
+            speed = 5;
             waitCarga = 0;
             SoltarCarga();
         }

@@ -12,6 +12,9 @@ public class MusicaBossScript : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         source.clip = music;
+        prender = false;
+        miPrimeritaVez = false;
+        cancionfinal = false;
     }
 
 

@@ -58,11 +58,15 @@ public class FuncionEspejo : MonoBehaviour
         transform.eulerAngles += new Vector3(0f, velRot * speedUp, 0f);
     }
 
+    Player playerScript;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponentInParent<Player>() != null && agarrado == false)
+        if (other.gameObject.GetComponentInParent<Player>() != null && other.gameObject.GetComponentInParent<Player>().hasMirror == false && agarrado == false)
         {
             agarrado = true;
+            playerScript = other.gameObject.GetComponentInParent<Player>();
+            other.gameObject.GetComponentInParent<Player>().hasMirror = true;
         }
 
         if(other.gameObject.GetComponent<CargaBehaviour>() != null && agarrado == true)
@@ -97,6 +101,7 @@ public class FuncionEspejo : MonoBehaviour
         MeshRenderer[] mesh = GetComponentsInChildren<MeshRenderer>();
         mesh[0].enabled = false;
         mesh[1].enabled = false;
+        playerScript.hasMirror = false;
         Destroy(gameObject, 0.3f);
 
         //hacer que hagan respawn

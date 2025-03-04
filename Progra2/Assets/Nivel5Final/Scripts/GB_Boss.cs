@@ -41,6 +41,8 @@ public class GB_Boss : MonoBehaviour
         player = GameManager.Instance.Player;
         playerRB = GameManager.Instance.Player.gameObject.GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
+        _audioSource.mute = false;
+
     }
 
     private void Update()
@@ -52,7 +54,30 @@ public class GB_Boss : MonoBehaviour
         //    Atacado = !Atacado;
         //}
 
-        if(actualHp < maxHp)
+        //if (Time.timeScale == 0 && _audioSource.isPlaying == true && VideoIntro.terminoElVideo == true && fase == 1 || fase == 3)
+        //{
+        //    _audioSource.Pause();
+        //    print("pausado");
+        //}
+        //else if (Time.timeScale != 0 && _audioSource.isPlaying == false && VideoIntro.terminoElVideo == true && fase == 1 || fase == 3)
+        //{
+        //    _audioSource.Play();
+        //    print("reproducido");
+        //}
+
+        //if (Time.timeScale == 0 && _audioSource.isPlaying == true)
+        //{
+        //    _audioSource.enabled = false;
+        //    print("pausado");
+        //}
+        //else if (Time.timeScale != 0 && _audioSource.isPlaying == false)
+        //{
+        //    _audioSource.enabled = true;
+        //    _audioSource.Play();
+        //    print("reproducido");
+        //}
+
+        if (actualHp < maxHp)
         {
             Atacado = true;
         }
@@ -66,6 +91,37 @@ public class GB_Boss : MonoBehaviour
         {
             AumentarVelPlayer();
         }
+
+        if (paraAudio == true)
+        {
+            _audioSource.mute = true;
+            if (padreParedesPlayer.transform.position.y > -10)
+            {
+                padreParedesPlayer.transform.position -= new Vector3(0f, 20 * Time.deltaTime, 0f);
+            }
+            else
+            {
+                waitCdAspirado += Time.deltaTime;
+                if (animIdle == false)
+                {
+                    _anim.SetBool("Idle", true);
+                    _anim.SetBool("Attacking", false);
+                    _audioSource.Stop();
+                    _tornadoGen.Stop();
+
+                    animIdle = true;
+                }
+                if (waitCdAspirado >= cdApirado)
+                {
+                    waitAspirado = 0;
+                    waitCdAspirado = 0;
+                    resetWaitAspirado = false;
+                }
+
+                //Atacado = false;
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -152,7 +208,7 @@ public class GB_Boss : MonoBehaviour
         RevivirTorretas();
         AtaqueDrones();
         DefenceWall();
-        AspiradoBoss(duracionAspirado);
+        Aspirado(duracionAspirado, 2.5f);
     }
 
     [SerializeField] float EsperaMenu;
@@ -174,6 +230,8 @@ public class GB_Boss : MonoBehaviour
         _anim.SetBool("Die", false);
         _anim.SetBool("Baile", true);
 
+        col.enabled = false;
+
         MusicaBossScript.cancionfinal = true;
 
         VideoVictoria.victoria = true;
@@ -185,6 +243,9 @@ public class GB_Boss : MonoBehaviour
 
     void CuchaCucha()
     {
+        TorretaPadre.laserOn = false;
+        MusicaBossScript.cancionfinal = false;
+        VideoVictoria.victoria = false;
         SceneManager.LoadScene("Menu");
     }
 
@@ -220,6 +281,9 @@ public class GB_Boss : MonoBehaviour
 
         actualHp = 0;
         padreAtaquesIsaac.SetActive(false);
+
+       
+
         isaac = false;
         //anim
         _anim.SetBool("Idle", false);
@@ -328,8 +392,9 @@ public class GB_Boss : MonoBehaviour
 
     }
 
-    void Aspirado(float dur)
+    void Aspirado(float dur, float mult = 1)
     {
+
         if (resetWaitAspirado == false)
         {
             waitAspirado = 0;
@@ -367,7 +432,7 @@ public class GB_Boss : MonoBehaviour
             if (isInSafeZone == false)
             {
 
-                player.ApplyForce(-direction, _suctionForce * Time.fixedDeltaTime * aceSuccion, this, true);
+                player.ApplyForce(-direction, _suctionForce * Time.fixedDeltaTime * aceSuccion * mult, this, true);
 
 
                 if (aceSuccion < limiteAceSuccion)
@@ -379,8 +444,6 @@ public class GB_Boss : MonoBehaviour
             {
                 print("safezone");
             }
-
-
 
             #region Comment
             //Vector3 dir = transform.position - GameManager.Instance.Player.transform.position;
@@ -433,8 +496,6 @@ public class GB_Boss : MonoBehaviour
             //resetWaitAspirado = false;
             //accion = false;
         }
-
-
 
 
     }
@@ -523,6 +584,11 @@ public class GB_Boss : MonoBehaviour
     void RevivirTorretas()
     {
         TorretaPadre.laserOn = true;
+    }
+
+    private void OnDestroy()
+    {
+
     }
 
 }

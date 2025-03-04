@@ -10,7 +10,7 @@ public class TorretaPadre : MonoBehaviour
 
     void Start()
     {
-        
+      laserOn = false;
     }
 
 

@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IRoomDetectable
     bool inmortal = false;
     bool _canMove = true;
 
+    public bool hasMirror = false;
+
     [SerializeField] bool tutorial = false;
 
     [Header("Cosas necesarias")]
