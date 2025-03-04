@@ -16,7 +16,7 @@ public class BotonLaser : MonoBehaviour
 
     void Update()
     {
-       if (TorretaPadre.activadas == 3)
+       if (TorretaPadre.activadas >= 3)
        {
             renderer_.material = verde;
        } 

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class BallaGBBehaivour : MonoBehaviour
@@ -13,6 +12,14 @@ public class BallaGBBehaivour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Destroy(gameObject, 3f);
+    }
+
+    private void Update()
+    {
+        if (GB_Boss.matarDrones == true)
+        {
+            Destroy(gameObject);
+        }
     }
 
 
