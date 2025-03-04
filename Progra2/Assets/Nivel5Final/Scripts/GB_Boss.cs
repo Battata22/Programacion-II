@@ -42,6 +42,7 @@ public class GB_Boss : MonoBehaviour
         playerRB = GameManager.Instance.Player.gameObject.GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
         _audioSource.mute = false;
+        matarDrones = false;
 
     }
 
