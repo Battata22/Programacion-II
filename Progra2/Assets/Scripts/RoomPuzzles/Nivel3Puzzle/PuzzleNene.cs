@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CasaCatolicaPuzzle;
+using TMPro;
 
 public class PuzzleNene : Nivel3Puzzle
 {
@@ -56,6 +57,8 @@ public class PuzzleNene : Nivel3Puzzle
     {
         _textIndex = 0;
         ChangeText();
+
+        Tutorializador();
     }
 
     private void Update()
@@ -153,6 +156,8 @@ public class PuzzleNene : Nivel3Puzzle
         _flechas[_flechas.Length-1].SetActive(true);
 
         _dormilonas[0].SetActive(false);
+
+        TutoUpdate();
     }
 
     void LockChildDoor()
@@ -170,6 +175,38 @@ public class PuzzleNene : Nivel3Puzzle
             hasToLock = false;
             Invoke("LockChildDoor", 0.5f);
         }
+    }
+
+    [SerializeField] GameObject _marcoText;
+    [SerializeField] TMP_Text _tutorial;
+
+    event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+
+    bool interactuado = false;
+    void Tutorializador()
+    {
+        if (interactuado) return;
+
+
+        _marcoText.SetActive(true);
+
+        _tutorial.text = "'E' para Interactuar";
+
+        TutorialUpdate += TutoUpdate;
+    }
+
+    void TutoUpdate()
+    {
+        interactuado = true;
+
+        //if (Input.GetMouseButtonDown(2))
+        //{
+        TutorialUpdate -= TutoUpdate;
+
+        _tutorial.text = "";
+        _marcoText.SetActive(false);
+        //}
+
     }
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CasaFiesta;
+using TMPro;
 
 
 namespace CasaFiesta
@@ -68,6 +69,8 @@ namespace CasaFiesta
                     ChangeText($"Los Juguetes son para jugar \n Objetos rotos {_brokenObjs} de {hasToBreak}");
                 else
                     ChangeText();
+
+                Tutorializador();
             }
 
             if (_completed && other.gameObject == _houseOwner.gameObject)
@@ -77,6 +80,14 @@ namespace CasaFiesta
 
                 Debug.Log($"<color=red>{name} detecte al HouseOwner {_houseOwner.name}</color>");
                 _houseOwner.StartKickOut(3f);
+            }
+        }
+
+        protected override void OnTriggerExit(Collider other)
+        {
+            if(_marcoText.activeInHierarchy && _active)
+            {
+                _marcoText.SetActive(false);
             }
         }
 
@@ -127,6 +138,8 @@ namespace CasaFiesta
 
             if (_brokenObjs >= hasToBreak)
                 CompletePuzzle();
+
+            TutoUpdate();
         }
 
         IEnumerator Perodemomedorep()
@@ -199,6 +212,38 @@ namespace CasaFiesta
 
                 yield return new WaitForSeconds(1f);
             }
+        }
+
+        [SerializeField] GameObject _marcoText;
+        [SerializeField] TMP_Text _tutorial;
+
+        event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+
+        bool interactuado = false;
+        void Tutorializador()
+        {
+            if (interactuado) return;
+
+
+            _marcoText.SetActive(true);
+
+            _tutorial.text = "'E' para Interactuar";
+
+            TutorialUpdate += TutoUpdate;
+        }
+
+        void TutoUpdate()
+        {
+            interactuado = true;
+
+            //if (Input.GetMouseButtonDown(2))
+            //{
+            TutorialUpdate -= TutoUpdate;
+
+            _tutorial.text = "";
+            _marcoText.SetActive(false);
+            //}
+
         }
     }
 }
