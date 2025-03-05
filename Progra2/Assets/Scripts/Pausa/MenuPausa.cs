@@ -51,7 +51,7 @@ public class MenuPausa : MonoBehaviour
 
         for (int i = 0; i < audioSources.Count; i++)
         {
-            if (audioSources[i].isPlaying == true)
+            if (audioSources[i].GetComponent<AudioSource>() == true && audioSources[i].isPlaying == true)
             {
                 audioSources[i].Pause();
                 sonando.Add(audioSources[i]);
