@@ -28,7 +28,7 @@ public class VideoIntro : MonoBehaviour
     void Start()
     {
 
-        terminoElVideo = false;
+    terminoElVideo = false;
 
         ElectorVideo();
 

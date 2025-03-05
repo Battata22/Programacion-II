@@ -17,6 +17,8 @@ namespace CasaFiesta
         [SerializeField] AudioSource _myAudio;
         [SerializeField] AudioClip[] _explotido;
 
+        [SerializeField] Light[] luces;
+
         public static bool ultimateActive { get; protected set; }
 
         private void Update()
@@ -60,6 +62,11 @@ namespace CasaFiesta
         {
             var nig = _ga.GetComponent<Asustable>();
 
+            foreach (Light luz in luces)
+            {
+                luz.enabled = false;
+            }
+
             foreach (var electronic in electronicsInRoom)
             {
                 Debug.Log($"<color=yellow> PUUUM {electronic.name} </color>");
@@ -79,6 +86,7 @@ namespace CasaFiesta
                     light.Quemar();
                 }
 
+
                 if (electronic.TryGetComponent<SFX>(out var sfx))
                 {
                     sfx.Quemar();
@@ -92,6 +100,7 @@ namespace CasaFiesta
                 nig.GetScared(1, -1);
                 yield return new WaitForSeconds(0.3f);
             }
+
         }
 
         int roomsDestroy = 0;

@@ -2,22 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaltoyDash : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] bool midJump = false, dash = true;
+    [SerializeField] bool midJump = false, dash = true, space = false;
     [SerializeField] float fuerzaSalto, fuerzaFaseMas1;
+    [SerializeField] Image spaceBar;
+    [SerializeField] AudioSource audioSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         fuerzaSalto = 5;
+        spaceBar.enabled = false;
     }
 
 
     void Update()
     {
+
+        if (VideoIntro.terminoElVideo == true && spaceBar.enabled == false && space == false)
+        {
+            spaceBar.enabled = true;
+            space = true;
+        }
+
         print(GameManager.Instance.GB_BossScript.fase);
 
         if (GameManager.Instance.GB_BossScript.fase >= 2 && fuerzaSalto == 5)
@@ -63,6 +74,7 @@ public class SaltoyDash : MonoBehaviour
 
     void Dash()
     {
+        audioSource.Play();
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * fuerzaSalto, ForceMode.VelocityChange);
@@ -95,6 +107,9 @@ public class SaltoyDash : MonoBehaviour
         {
             rb.AddForce((-transform.right + -transform.forward).normalized * fuerzaSalto * 0.1f, ForceMode.VelocityChange);
         }
+
+        spaceBar.enabled = false;
+
         //rb.AddForce(transform.forward * fuerzaSalto * Time.deltaTime, ForceMode.Impulse);
     }
 
