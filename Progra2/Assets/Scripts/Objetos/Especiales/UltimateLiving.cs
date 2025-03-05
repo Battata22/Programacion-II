@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -37,11 +39,14 @@ public class UltimateLiving : SpecialObject
         base.CreateTrap();
         trapCrated = true;
         GameManager.Instance.ActivateWinCondition -= CreateTrap;
+
+        Tutorializador();
     }
 
     protected override void ObjectAbility(Transform origin)
     {
         //Ultimate copiada del player
+        TutoUpdate();
         try
         {
             StartCoroutine(DoUltimate(tiempoInAir));
@@ -178,6 +183,39 @@ public class UltimateLiving : SpecialObject
     private void OnDestroy()
     {
         GameManager.Instance.ActivateWinCondition -= CreateTrap;
+
+    }
+
+    [SerializeField] GameObject _marcoText;
+    [SerializeField] TMP_Text _tutorial;
+
+    event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+
+    bool spawned = false;
+    void Tutorializador()
+    {
+        if (spawned) return;
+
+        spawned = true;
+
+        _marcoText.SetActive(true);
+
+        _tutorial.text = "'E' para Interactuar";
+
+        TutorialUpdate += TutoUpdate;
+    }
+
+    void TutoUpdate()
+    {
+
+
+        //if (Input.GetMouseButtonDown(2))
+        //{
+            TutorialUpdate -= TutoUpdate;
+
+            _tutorial.text = "";
+            _marcoText.SetActive(false);
+        //}
 
     }
 }
