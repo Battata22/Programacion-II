@@ -152,7 +152,7 @@ public class PuzzleNene : Nivel3Puzzle
         _flechas[2].SetActive(false);
         _flechas[_flechas.Length-1].SetActive(true);
 
-        _dormilonas[0].SetActive(true);
+        _dormilonas[0].SetActive(false);
     }
 
     void LockChildDoor()

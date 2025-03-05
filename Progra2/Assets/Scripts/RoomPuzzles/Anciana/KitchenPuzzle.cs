@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class KitchenPuzzle : MonoBehaviour
@@ -36,6 +37,8 @@ public class KitchenPuzzle : MonoBehaviour
             newFlies.OnPulseEnd += DeactivateFlies;
             newFlies.ActivateMovement(true);
         }
+
+        TutorialUpdate();
     }
 
     public void StartPuzzle()
@@ -82,12 +85,41 @@ public class KitchenPuzzle : MonoBehaviour
         _canillaTrigger.EndCallEvent();
 
         _puzzleActive = false;
+
+        Tutorializador();
     }
 
     private void OnDestroy()
     {
         _granny.OnSlideStop -= CompleteRoom;
         _canillaTrigger.OnCanillaBreak -= SetWather;
+
+    }
+
+    [SerializeField] GameObject _marcoText;
+    [SerializeField] TMP_Text _tutorial;
+
+    event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+    void Tutorializador()
+    {
+        _marcoText.SetActive(true);
+
+        _tutorial.text = "'Click rueda de rato' para VisionX";
+
+        TutorialUpdate += TutoUpdate;
+    }
+
+    void TutoUpdate()
+    {
+
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            TutorialUpdate -= TutoUpdate;
+
+            _tutorial.text = "";
+            _marcoText.SetActive(false);
+        }
 
     }
 }

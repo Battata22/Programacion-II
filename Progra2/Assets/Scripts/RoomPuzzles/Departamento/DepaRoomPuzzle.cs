@@ -55,6 +55,8 @@ public class DepaRoomPuzzle : SpecialObject
         base.CreateTrap();
         //aea
         GameManager.Instance.ActivateWinCondition -= CreateTrap;
+
+        Tutorializador();
     }
 
     protected override void ObjectAbility(Transform origin)
