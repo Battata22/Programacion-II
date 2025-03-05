@@ -15,6 +15,10 @@ public class DiscoBall : MonoBehaviour, IDamageable
     [SerializeField] float _dmgCd;
     [SerializeField] bool _imbecil = true; // in englis "invincible"
 
+    [SerializeField] GameObject[] rotos;
+    [SerializeField] AudioSource _myAud;
+    [SerializeField] AudioClip _clip;
+
     Rigidbody _rb;
 
     public event DelegateType.VoidDelegate OnDamageTaken = delegate { };
@@ -76,6 +80,17 @@ public class DiscoBall : MonoBehaviour, IDamageable
 
         //cambiar mesh
         Debug.Log("<color=#ed9fd7>NYAA</color>");
+
+        foreach(var pingo in rotos)
+        {
+            pingo.SetActive(true);
+        }
+
+        _myAud.PlayOneShot(_clip);
+
+        transform.GetComponent<MeshRenderer>().enabled = false;
+        _rb.constraints = RigidbodyConstraints.FreezeAll;
+        transform.GetComponent<Collider>().enabled = false;
 
         OnBreak();
     }
