@@ -9,7 +9,7 @@ public class FuncionEspejo : MonoBehaviour
     [SerializeField] float velRot,alturaSobreGus, rotAmpliada;
     [SerializeField] Animator animator;
     public bool agarrado = false;
-    [SerializeField] AudioSource source;
+    [SerializeField] AudioSource source, rotohijo;
     [SerializeField] AudioClip rebote;
 
     void Start()
@@ -97,13 +97,22 @@ public class FuncionEspejo : MonoBehaviour
 
         source.clip = rebote;
         source.Play();
+        //rotohijo.Play();
 
         MeshRenderer[] mesh = GetComponentsInChildren<MeshRenderer>();
         mesh[0].enabled = false;
         mesh[1].enabled = false;
         playerScript.hasMirror = false;
+
         Destroy(gameObject, 0.3f);
+        //Invoke("Desactivar", 1f);
+
 
         //hacer que hagan respawn
+    }
+
+    void Desactivar()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
-using static Unity.VisualScripting.Member;
 
 public class GB_Boss : MonoBehaviour
 {
@@ -21,9 +21,13 @@ public class GB_Boss : MonoBehaviour
     [SerializeField] GameObject torretasPadre;
     [SerializeField] Rigidbody playerRB;
     [SerializeField] AudioSource _audioSource;
+    [SerializeField] GameObject limiteAspirado;
+    [SerializeField] SkinnedMeshRenderer mesh;
     public delegate void EventBossAccion();
     public event EventBossAccion Accion;
     public int fase = 0;
+
+    public static bool victory = false;
 
     public static bool isInSafeZone = false;
     [SerializeField] float aceSuccion;
@@ -43,6 +47,8 @@ public class GB_Boss : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _audioSource.mute = false;
         matarDrones = false;
+        victory = false;
+        limiteAspirado.SetActive(true);
 
     }
 
@@ -172,6 +178,7 @@ public class GB_Boss : MonoBehaviour
     void Fase1()
     {
         fase = 1;
+        TutorialTexto.pasoActual = 1;
         Aspirado(duracionAspirado);
         //AtaqueIsaac();
     }
@@ -179,6 +186,7 @@ public class GB_Boss : MonoBehaviour
     void Fase2()
     {
         fase = 2;
+        TutorialTexto.pasoActual = 2;
         #region EndFase1
         if (padreParedesPlayer.transform.position.y > -10)
         {
@@ -201,6 +209,14 @@ public class GB_Boss : MonoBehaviour
     void Fase3()
     {
         fase = 3;
+        if (TorretaPadre.activadas < 3)
+        {
+            TutorialTexto.pasoActual = 3;
+        }
+        else
+        {
+            TutorialTexto.pasoActual = 4;
+        }
         #region EndFase2
         parentDefenceWall.SetActive(false);
         col.enabled = true; 
@@ -228,8 +244,18 @@ public class GB_Boss : MonoBehaviour
 
 
         //animacion baile
+        TutorialTexto.pasoActual = 5;
+
+        limiteAspirado.SetActive(false);
+
+        mesh.enabled = false;
+        mesh.enabled = true;
+
+        victory = true;
+
         _anim.SetBool("Die", false);
         _anim.SetBool("Baile", true);
+
 
         col.enabled = false;
 

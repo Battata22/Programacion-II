@@ -7,17 +7,24 @@ public class SaltoyDash : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] bool midJump = false, dash = true;
-    [SerializeField] float fuerzaSalto;
+    [SerializeField] float fuerzaSalto, fuerzaFaseMas1;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        fuerzaSalto = 5;
     }
 
 
     void Update()
     {
-        
+        print(GameManager.Instance.GB_BossScript.fase);
+
+        if (GameManager.Instance.GB_BossScript.fase >= 2 && fuerzaSalto == 5)
+        {
+            fuerzaSalto = fuerzaFaseMas1;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Space) && midJump == false)
         {
