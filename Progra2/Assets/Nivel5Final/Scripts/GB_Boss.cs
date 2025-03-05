@@ -32,6 +32,7 @@ public class GB_Boss : MonoBehaviour
     public static bool isInSafeZone = false;
     [SerializeField] float aceSuccion;
     [SerializeField] float waitAspirado, waitCdAspirado;
+    [SerializeField] AudioSource _audioSourceBaby, SourceMusicaBoss;
 
     void Start()
     {
@@ -49,6 +50,8 @@ public class GB_Boss : MonoBehaviour
         matarDrones = false;
         victory = false;
         limiteAspirado.SetActive(true);
+        _audioSource.mute = false;
+        SourceMusicaBoss.enabled = true;
 
     }
 
@@ -152,7 +155,7 @@ public class GB_Boss : MonoBehaviour
                 print("tercer tercio");
                 Fase3();
             }
-            else if (actualHp <= 0)
+            else if (actualHp <= -1)
             {
                 Victoria();
                 //mesh.enabled = false;
@@ -236,7 +239,7 @@ public class GB_Boss : MonoBehaviour
 
 
 
-    [SerializeField] float EsperaMenu;
+    [SerializeField] float EsperaMenu, paredesPadree;
 
     public void Victoria()
     {
@@ -305,7 +308,10 @@ public class GB_Boss : MonoBehaviour
         isaac = false;
         _anim.SetBool("Idle", true);
         _anim.SetBool("Attacking", false);
-        actualHp = 34;
+        SourceMusicaBoss.enabled = false;
+        _audioSource.mute = true;
+        _audioSourceBaby.Play();
+        actualHp = 30;
     }
 
 
