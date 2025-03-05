@@ -35554,6 +35554,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3922267736303346483, guid: f1e7223cfe34c474f8aaf1073b4b2c90, type: 3}
+      propertyPath: _ignorePickUp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4478784091378091823, guid: f1e7223cfe34c474f8aaf1073b4b2c90, type: 3}
       propertyPath: m_Name
       value: Mesita de luz 1
@@ -40361,7 +40365,7 @@ MonoBehaviour:
   _posibleObstacles:
     serializedVersion: 2
     m_Bits: 0
-  _ignorePickUp: 0
+  _ignorePickUp: 1
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -53860,7 +53864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7003575775566923571, guid: 8c8b0a5654d33d641b39f728a36407d3, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2821651202603380051, guid: 8c8b0a5654d33d641b39f728a36407d3, type: 3}
