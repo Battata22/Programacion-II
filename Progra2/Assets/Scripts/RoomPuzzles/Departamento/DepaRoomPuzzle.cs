@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DepaRoomPuzzle : SpecialObject
@@ -59,6 +60,7 @@ public class DepaRoomPuzzle : SpecialObject
     protected override void ObjectAbility(Transform origin)
     {
         StartCoroutine(DoSecuence());
+        TutorialUpdate();
     }
 
     IEnumerator DoSecuence()
@@ -92,6 +94,34 @@ public class DepaRoomPuzzle : SpecialObject
     private void OnDestroy()
     {
         GameManager.Instance.ActivateWinCondition -= CreateTrap;
+
+    }
+
+    [SerializeField] GameObject _marcoText;
+    [SerializeField] TMP_Text _tutorial;
+
+    event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+    void Tutorializador()
+    {
+        _marcoText.SetActive(true);
+
+        _tutorial.text = "'E' para interactuar";
+
+        TutorialUpdate += TutoUpdate;
+    }
+
+    bool tabUsed = false;
+    void TutoUpdate()
+    {
+
+
+        //if (tabUsed && Input.GetKeyDown(KeyCode.F))
+        //{
+            TutorialUpdate -= TutoUpdate;
+
+            _tutorial.text = "";
+            _marcoText.SetActive(false);
+        //}
 
     }
 }

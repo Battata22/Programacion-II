@@ -41,6 +41,8 @@ public class LivingPuzzle : MonoBehaviour
             newFlies.OnPulseEnd += DeactivateFlies;
             newFlies.ActivateMovement(true);
         }
+
+        TutorialUpdate();
     }
 
     void DeactivateFlies() 
