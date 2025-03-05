@@ -9811,7 +9811,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &249768642
 BoxCollider:
@@ -14356,7 +14356,16 @@ PrefabInstance:
     - {fileID: -3932754658831945054, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
     - {fileID: 8779386657806128341, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1392778328126740488, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5623136618810378270}
+    - targetCorrespondingSourceObject: {fileID: 1392778328126740488, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8335788314686566912}
+    - targetCorrespondingSourceObject: {fileID: 1392778328126740488, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1122215270370843294}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3410586619715198893, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
       insertIndex: -1
@@ -14382,9 +14391,20 @@ MonoBehaviour:
   _maxHp: 3
   _dmgCd: 0.2
   _imbecil: 1
+  rotos:
+  - {fileID: 5717074583912948335}
+  - {fileID: 1324162458877718594}
+  - {fileID: 6202955334034294017}
+  _myAud: {fileID: 345121176}
+  _clip: {fileID: 8300000, guid: 56a438bbcd653874fa2a5fc10963b414, type: 3}
 --- !u!82 &345121176 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: -7154417231475259862, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
+  m_PrefabInstance: {fileID: 345121172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &345121181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1392778328126740488, guid: 46735297b2eabfc48b9ddc822d40fe67, type: 3}
   m_PrefabInstance: {fileID: 345121172}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &346155007
@@ -22082,7 +22102,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &569715211
 BoxCollider:
@@ -25310,7 +25330,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &654018299
 BoxCollider:
@@ -36152,7 +36172,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &892477831
 BoxCollider:
@@ -37919,7 +37939,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &931309143
 BoxCollider:
@@ -52795,7 +52815,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &1362747494
 BoxCollider:
@@ -54069,7 +54089,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &1403598300
 BoxCollider:
@@ -55129,7 +55149,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &1421272616
 BoxCollider:
@@ -69380,7 +69400,7 @@ MonoBehaviour:
   roomIndex: 0
   _roomNodes: []
   _nodeManager: {fileID: 0}
-  _activeOnStart: 1
+  _activeOnStart: 0
   _sahumerioParticles: []
 --- !u!65 &1750806229
 BoxCollider:
@@ -88758,11 +88778,11 @@ Transform:
   m_GameObject: {fileID: 6202955334034294017}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.36699915, y: 1.1905303, z: -4.5460005}
-  m_LocalScale: {x: 1.161, y: 1.161, z: 1.161}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 345121181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1127299365393161440
 MeshRenderer:
@@ -108351,11 +108371,11 @@ Transform:
   m_GameObject: {fileID: 5717074583912948335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.36699915, y: 1.1905303, z: -4.5460005}
-  m_LocalScale: {x: 1.161, y: 1.161, z: 1.161}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 345121181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5625509486714965780
 Transform:
@@ -117685,11 +117705,11 @@ Transform:
   m_GameObject: {fileID: 1324162458877718594}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.36699915, y: 1.1905303, z: -4.5460005}
-  m_LocalScale: {x: 1.161, y: 1.161, z: 1.161}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 345121181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8335788314686566913
 Rigidbody:
@@ -126776,9 +126796,6 @@ SceneRoots:
   - {fileID: 783636094}
   - {fileID: 1989758604}
   - {fileID: 345121172}
-  - {fileID: 5623136618810378270}
-  - {fileID: 8335788314686566912}
-  - {fileID: 1122215270370843294}
   - {fileID: 815458235}
   - {fileID: 43669141}
   - {fileID: 1954157065}
