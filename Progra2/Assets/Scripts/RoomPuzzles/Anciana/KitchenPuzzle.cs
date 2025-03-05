@@ -104,7 +104,7 @@ public class KitchenPuzzle : MonoBehaviour
     {
         _marcoText.SetActive(true);
 
-        _tutorial.text = "'Click rueda de rato' para VisionX";
+        _tutorial.text = "'Click rueda de raton' para VisionX";
 
         TutorialUpdate += TutoUpdate;
     }
