@@ -1890,11 +1890,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -1904,6 +1904,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &54928880
 Rigidbody:
@@ -2381,11 +2385,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -2395,6 +2399,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &63421431
 Rigidbody:
@@ -2840,6 +2848,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 232009258}
+    - target: {fileID: 325262965950171026, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
+      propertyPath: _camCenter
+      value: 
+      objectReference: {fileID: 232009260}
     - target: {fileID: 1290619265419908854, guid: 34b51bd290f94d443baf06ccd9a979d8, type: 3}
       propertyPath: m_RendererIndex
       value: -1
@@ -3779,11 +3791,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -3793,6 +3805,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &82515938
 BoxCollider:
@@ -4173,6 +4189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae938154a96099544b50aabc8771d2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myParent: {fileID: 0}
+  _useParent: 0
 --- !u!114 &92701568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4970,11 +4988,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -4984,6 +5002,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!33 &116373159
 MeshFilter:
@@ -6154,11 +6176,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -6168,6 +6190,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -7631,6 +7657,7 @@ MonoBehaviour:
   _detectableLayers:
     serializedVersion: 2
     m_Bits: 805307392
+  roomIndex: 0
   icePrefab: {fileID: 0}
   partcleGen: {fileID: 0}
   _target: {fileID: 0}
@@ -9619,11 +9646,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -9633,6 +9660,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &189313585
 BoxCollider:
@@ -10181,11 +10212,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -10195,6 +10226,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!33 &195971038
 MeshFilter:
@@ -10709,11 +10744,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -10723,6 +10758,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -13225,11 +13264,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -13239,6 +13278,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &251377614
 BoxCollider:
@@ -14017,11 +14060,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -14031,6 +14074,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &261972583
 Rigidbody:
@@ -15518,11 +15565,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -15532,6 +15579,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &290626562
 Rigidbody:
@@ -17336,11 +17387,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -17350,6 +17401,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &319181720
 BoxCollider:
@@ -18059,11 +18114,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -18073,6 +18128,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &339670625
 BoxCollider:
@@ -21017,11 +21076,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -21031,6 +21090,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -22569,11 +22632,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -22583,6 +22646,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &433636047
 BoxCollider:
@@ -24324,11 +24391,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -24338,6 +24405,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &459665867
 BoxCollider:
@@ -24960,11 +25031,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 0}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -24974,6 +25045,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!114 &461478692
 MonoBehaviour:
@@ -25389,11 +25464,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -25403,6 +25478,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &464616791
 Rigidbody:
@@ -26045,11 +26124,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -26059,6 +26138,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &485598629
 Rigidbody:
@@ -26369,11 +26452,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -26383,6 +26466,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &492562618
 BoxCollider:
@@ -27418,11 +27505,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 0}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -27432,6 +27519,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!114 &503695816
 MonoBehaviour:
@@ -27874,11 +27965,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -27888,6 +27979,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &506162789
 Rigidbody:
@@ -28442,11 +28537,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -28456,6 +28551,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &506289279
 BoxCollider:
@@ -29088,11 +29187,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -29102,6 +29201,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &516424381
 BoxCollider:
@@ -29956,11 +30059,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -29970,6 +30073,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &537743777
 Rigidbody:
@@ -32920,11 +33027,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -32934,6 +33041,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &616430164
 Rigidbody:
@@ -33609,11 +33720,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -33623,6 +33734,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -34140,11 +34255,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -34154,6 +34269,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &642991613
 Rigidbody:
@@ -35384,11 +35503,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -35398,6 +35517,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &663340203
 BoxCollider:
@@ -37868,6 +37991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!222 &734485758
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39144,11 +39268,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -39158,6 +39282,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &761529629
 Rigidbody:
@@ -39960,11 +40088,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -39974,6 +40102,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &762665570
 Rigidbody:
@@ -41195,11 +41327,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -41209,6 +41341,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &787876722
 BoxCollider:
@@ -42073,11 +42209,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -42087,6 +42223,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &804396103
 BoxCollider:
@@ -42649,11 +42789,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -42663,6 +42803,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &818477135
 Rigidbody:
@@ -43482,11 +43626,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -43496,6 +43640,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &836019629
 BoxCollider:
@@ -44845,11 +44993,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -44859,6 +45007,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &861791496
 Rigidbody:
@@ -46263,11 +46415,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -46277,6 +46429,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &895686641
 BoxCollider:
@@ -47253,11 +47409,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -47267,6 +47423,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &915694777
 BoxCollider:
@@ -48807,11 +48967,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -48821,6 +48981,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &950693633
 Rigidbody:
@@ -49365,11 +49529,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -49379,6 +49543,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &952420023
 Rigidbody:
@@ -50008,11 +50176,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -50022,6 +50190,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &958854354
 Rigidbody:
@@ -50830,11 +51002,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -50844,6 +51016,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &974875278
 BoxCollider:
@@ -51627,11 +51803,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -51641,6 +51817,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &998560912
 Rigidbody:
@@ -52334,6 +52514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!60 &1012289170
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -54176,11 +54357,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -54190,6 +54371,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1030729236
 BoxCollider:
@@ -55417,11 +55602,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -55431,6 +55616,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1054056281
 Rigidbody:
@@ -56630,11 +56819,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -56644,6 +56833,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1069653953
 Rigidbody:
@@ -57959,11 +58152,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -57973,6 +58166,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1096373555
 BoxCollider:
@@ -62224,6 +62421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!222 &1110994772
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -62697,11 +62895,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -62711,6 +62909,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -64323,11 +64525,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -64337,6 +64539,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1160054756
 BoxCollider:
@@ -64854,11 +65060,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -64868,6 +65074,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1160058912
 Rigidbody:
@@ -65395,11 +65605,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -65409,6 +65619,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1161495945
 Rigidbody:
@@ -65884,6 +66098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!222 &1163882325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -66809,11 +67024,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -66823,6 +67038,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1186417148
 BoxCollider:
@@ -67289,6 +67508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!222 &1198655548
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -69107,11 +69327,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -69121,6 +69341,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -71267,6 +71491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!222 &1274245959
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -74941,11 +75166,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -74955,6 +75180,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1395703098
 BoxCollider:
@@ -75827,11 +76056,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -75841,6 +76070,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1405929700
 BoxCollider:
@@ -77244,11 +77477,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -77258,6 +77491,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1417911061
 Rigidbody:
@@ -78793,11 +79030,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -78807,6 +79044,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1447763786
 Rigidbody:
@@ -79312,11 +79553,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -79326,11 +79567,16 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
   clip: 0
   _microondas: {fileID: 8300000, guid: 3c7094413612fb1469bc539b39f64221, type: 3}
+  _microondasPuzzle: {fileID: 0}
 --- !u!82 &1453321234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -80714,11 +80960,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -80728,6 +80974,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1483445577
 Rigidbody:
@@ -81518,11 +81768,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -81532,6 +81782,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
   _audioSource: {fileID: 0}
   isPlaying: 0
@@ -82573,11 +82827,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -82587,6 +82841,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1538091059
 Rigidbody:
@@ -83143,11 +83401,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -83157,6 +83415,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1546862524
 Rigidbody:
@@ -88207,11 +88469,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -88221,6 +88483,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1608086926
 Rigidbody:
@@ -89397,11 +89663,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -89411,6 +89677,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1629565206
 Rigidbody:
@@ -91625,11 +91895,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -91639,6 +91909,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1668076916
 BoxCollider:
@@ -92506,11 +92780,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -92520,6 +92794,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1682058104
 BoxCollider:
@@ -93171,11 +93449,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -93185,6 +93463,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1692197694
 Rigidbody:
@@ -94905,11 +95187,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -94919,6 +95201,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1715827375
 Rigidbody:
@@ -96401,11 +96687,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -96415,6 +96701,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1722182518
 BoxCollider:
@@ -96932,11 +97222,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -96946,6 +97236,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1723923473
 Rigidbody:
@@ -97833,11 +98127,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -97847,6 +98141,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1731021578
 Rigidbody:
@@ -98422,11 +98720,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -98436,6 +98734,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!33 &1731079921
 MeshFilter:
@@ -99330,11 +99632,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -99344,6 +99646,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1762516986
 BoxCollider:
@@ -99946,11 +100252,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -99960,6 +100266,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1767300990
 Rigidbody:
@@ -100485,11 +100795,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -100499,6 +100809,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1769800681
 Rigidbody:
@@ -101036,6 +101350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!222 &1778469545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -101617,11 +101932,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -101631,6 +101946,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1792211520
 Rigidbody:
@@ -102873,11 +103192,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -102887,6 +103206,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1795008604
 BoxCollider:
@@ -104955,11 +105278,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -104969,6 +105292,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1861670850
 Rigidbody:
@@ -105857,11 +106184,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -105871,6 +106198,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1885950006
 BoxCollider:
@@ -106919,11 +107250,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -106933,6 +107264,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1899340776
 Rigidbody:
@@ -108395,11 +108730,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -108409,6 +108744,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1923210352
 BoxCollider:
@@ -109033,11 +109372,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -109047,6 +109386,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &1929357086
 BoxCollider:
@@ -109767,11 +110110,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -109781,6 +110124,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &1950174024
 Rigidbody:
@@ -116899,11 +117246,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -116913,6 +117260,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!54 &2021042282
 Rigidbody:
@@ -117979,11 +118330,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 232009253}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 232009253}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -117993,6 +118344,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &2034767201
 BoxCollider:
@@ -121137,6 +121492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1.2
+  nivel5: 0
 --- !u!222 &2091102838
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -122696,6 +123052,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae938154a96099544b50aabc8771d2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myParent: {fileID: 0}
+  _useParent: 0
 --- !u!65 &2121241023
 BoxCollider:
   m_ObjectHideFlags: 0
