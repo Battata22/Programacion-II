@@ -9838,6 +9838,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!65 &3217823254708961867
 BoxCollider:
@@ -9869,7 +9873,7 @@ AudioSource:
   m_GameObject: {fileID: 9219142499776574887}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

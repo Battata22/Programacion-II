@@ -68,8 +68,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7115962ac36610d4bbff2e5c87ea1280, type: 2}
-  - {fileID: 2100000, guid: 7115962ac36610d4bbff2e5c87ea1280, type: 2}
-  - {fileID: 2100000, guid: 7115962ac36610d4bbff2e5c87ea1280, type: 2}
+  - {fileID: 2100000, guid: 43cdf23c8ce6ea34ebbaac5fa93f7be7, type: 2}
+  - {fileID: 2100000, guid: 854da2abd8d209b4a8aad738ad1de993, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,7 @@ AudioSource:
   m_GameObject: {fileID: 111371568093581093}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -276,6 +276,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!136 &3483330511842883291
 CapsuleCollider:

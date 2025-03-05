@@ -150,7 +150,7 @@ AudioSource:
   m_GameObject: {fileID: 2532773582904779363}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3132468079601955070, guid: 42ffe3eb829b615488848afe78dd8a9b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -285,11 +285,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   actualRoom: 0
+  pickUpScript: {fileID: 0}
   _pickedUp: 0
   _trowed: 0
   rompible: 0
   aguaRompible: 0
-  pickUpScript: {fileID: 0}
   particleGen: {fileID: 0}
   trailGen: {fileID: 0}
   parTime: 0
@@ -299,6 +299,10 @@ MonoBehaviour:
   agarrado:
     serializedVersion: 2
     m_Bits: 0
+  _posibleObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _ignorePickUp: 0
   _enchanted: 0
 --- !u!1 &4961550284522143699
 GameObject:
