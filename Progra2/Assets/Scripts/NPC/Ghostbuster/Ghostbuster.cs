@@ -363,6 +363,14 @@ public class Ghostbuster : NPC , ICanSlide, IRagdoll
         //    EndAttack(false); 
         //    return;
         //}
+        var alturaCheck = _target.transform.position.y - transform.position.y;
+        if (alturaCheck * alturaCheck > 1)
+        {
+            EndAttack();
+            _target.CrazyScape((_target.transform.position - transform.position).normalized);
+            return;
+        }
+
         if(_target.scapeSpam >= _spamScape)
         {
             EndAttack();

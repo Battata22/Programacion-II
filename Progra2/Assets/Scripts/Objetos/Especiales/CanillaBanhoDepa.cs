@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -23,6 +24,8 @@ public class CanillaBanhoDepa : SpecialObject
         {
             inPos = true;
         }
+
+        TutorialUpdate();
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -51,6 +54,35 @@ public class CanillaBanhoDepa : SpecialObject
         CreateTrap();
 
         GameManager.Instance.pasoActual = 7;
+
+        Tutorializador();
+
+    }
+
+    [SerializeField] GameObject _marcoText;
+    [SerializeField] TMP_Text _tutorial;
+
+    event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+    void Tutorializador()
+    {
+        _marcoText.SetActive(true);
+
+        _tutorial.text = "Apreta 'E' para interactuar";
+
+        TutorialUpdate += TutoUpdate;
+    }
+
+    void TutoUpdate()
+    {
+
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            TutorialUpdate -= TutoUpdate;
+
+            _tutorial.text = "";
+            _marcoText.SetActive(false);
+        }
 
     }
 

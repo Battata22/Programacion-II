@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 
@@ -23,6 +24,11 @@ public class BathroomPuzzle : MonoBehaviour
     bool _fliesActive = false;
     bool _puzzleActive = true;
 
+    [SerializeField] GameObject _marcoText;
+    [SerializeField] TMP_Text _tutorial;
+
+    event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+
     private void Start()
     {
         _nodeManager = GetComponentInParent<AINodeManager>();
@@ -40,6 +46,8 @@ public class BathroomPuzzle : MonoBehaviour
             newFlies.OnPulseEnd += DeactivateFlies;
             newFlies.ActivateMovement(true);
         }
+
+        TutorialUpdate();
     }
     void DeactivateFlies()
     {
@@ -73,7 +81,34 @@ public class BathroomPuzzle : MonoBehaviour
         _fireFlies.gameObject.SetActive(false);
 
         GameManager.Instance._master2.ActivarGB();
+
+        Tutorializador();
     }
+
+    void Tutorializador()
+    {
+        _marcoText.SetActive(true);
+
+        _tutorial.text = "Apreta 'V' para activar DOTS guia";
+
+        TutorialUpdate += TutoUpdate;
+    }
+
+    void TutoUpdate()
+    {
+
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            TutorialUpdate -= TutoUpdate;
+
+            _tutorial.text = "";
+            _marcoText.SetActive(false);
+        }
+
+    }
+
+
 
     private void OnDestroy()
     {

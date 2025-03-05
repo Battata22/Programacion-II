@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LivingPuzzle : MonoBehaviour
@@ -96,6 +97,8 @@ public class LivingPuzzle : MonoBehaviour
 
         _puzzleActive = false;
 
+        Tutorializador();
+
     }
 
     void AddSahumerio(Sahumerio newSahumerio)
@@ -113,5 +116,34 @@ public class LivingPuzzle : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.Rociadores.OnRociadoresActive -= CompleteRoom;
+    }
+
+    [SerializeField] GameObject _marcoText;
+    [SerializeField] TMP_Text _tutorial;
+
+    event DelegateType.VoidDelegate TutorialUpdate = delegate { };
+    void Tutorializador()
+    {
+        _marcoText.SetActive(true);
+
+        _tutorial.text = "'Tab' para menu de poderes \n 'F' para usar poder";
+
+        TutorialUpdate += TutoUpdate;
+    }
+
+    bool tabUsed = false;
+    void TutoUpdate()
+    {
+        if (Input.GetKeyUp(KeyCode.Tab))
+            tabUsed = true; ;
+
+        if (tabUsed && Input.GetKeyDown(KeyCode.F))
+        {
+            TutorialUpdate -= TutoUpdate;
+
+            _tutorial.text = "";
+            _marcoText.SetActive(false);
+        }
+
     }
 }
