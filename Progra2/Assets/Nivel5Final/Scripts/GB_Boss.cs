@@ -131,6 +131,8 @@ public class GB_Boss : MonoBehaviour
 
     }
 
+    [SerializeField] GameObject meshCuerpoTPose;
+
     void FixedUpdate()
     {
         if (Atacado == true)
@@ -150,8 +152,12 @@ public class GB_Boss : MonoBehaviour
                 print("tercer tercio");
                 Fase3();
             }
-            else
+            else if (actualHp <= 0)
             {
+                Victoria();
+                //mesh.enabled = false;
+                meshCuerpoTPose.SetActive(false);
+                col.enabled = false;
 
             }
 
@@ -228,6 +234,8 @@ public class GB_Boss : MonoBehaviour
         Aspirado(duracionAspirado, 2.5f);
     }
 
+
+
     [SerializeField] float EsperaMenu;
 
     public void Victoria()
@@ -268,12 +276,46 @@ public class GB_Boss : MonoBehaviour
 
     }
 
+    public void Baby()
+    {
+        #region EndFase1
+        if (padreParedesPlayer.transform.position.y > -10)
+        {
+            padreParedesPlayer.transform.position -= new Vector3(0f, 20 * Time.deltaTime, 0f);
+        }
+        if (animIdle == false)
+        {
+            _anim.SetBool("Idle", true);
+            _anim.SetBool("Attacking", false);
+            _tornadoGen.Stop();
+
+            animIdle = true;
+        }
+        #endregion
+        #region EndFase2
+
+        parentDefenceWall.SetActive(false);
+        Destroy(parentDefenceWall);
+        col.enabled = true;
+        #endregion
+        limiteAspirado.SetActive(false);
+        TutorialTexto.pasoActual = 6;
+        matarDrones = true;
+        padreAtaquesIsaac.SetActive(false);
+        isaac = false;
+        _anim.SetBool("Idle", true);
+        _anim.SetBool("Attacking", false);
+        actualHp = 34;
+    }
+
+
+
     void CuchaCucha()
     {
         TorretaPadre.laserOn = false;
         MusicaBossScript.cancionfinal = false;
         VideoVictoria.victoria = false;
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Creditos");
     }
 
     public bool paraAudio = false;
